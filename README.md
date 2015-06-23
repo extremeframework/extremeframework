@@ -2,7 +2,7 @@
 
 Extreme Framework is a clean PHP web development framework to help build high quality applications rapidly. It is actually "no-framework", with no footprint and limitation for developers. 
 
-### Clean And Well-Managed.
+### Clean And Well-Managed
 Extreme Framework uses MVC architecture with de-facto standards like ORM and Smarty template engine. This structure helps developers write clean and well-managed codes easily and quickly. In addition, an architecture with loose coupling components helps build large-scale applications easily with no hassle.
 
 ### Freedom With No Footprint
