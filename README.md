@@ -42,5 +42,5 @@ Extreme Framework is so lightweight and intuitive. There is almost no namespace,
     <{foreach from=$users item=user}>
         Hello <{$user->NAME}><br/>
     <{/foreach}>
-    
-Official Website: http://extremeframework.com/
+
+* Website: http://extremeframework.com/
