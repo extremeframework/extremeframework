@@ -5,6 +5,33 @@ Extreme Framework is a clean PHP web development framework to help build high qu
 ### Clean And Well-Managed.
 Extreme Framework uses MVC architecture with de-facto standards like ORM and Smarty template engine. This structure helps developers write clean and well-managed codes easily and quickly. In addition, an architecture with loose coupling components helps build large-scale applications easily with no hassle.
 
+    <?php
+    class SampleController 
+    { 
+        function showUsersWithSmartyAction() { 
+            $model = new UserModel();
+    
+            $model->find();
+    
+            $users = array();
+    
+            while ($model->fetch()) {
+                $users[] = clone $model;
+            }
+    
+            $smarty = Framework::load('smarty');
+    
+            $smarty->assign('users', $users);
+    
+            $smarty->display('users.tpl');
+        } 
+    } 
+    
+    // with users.tpl:
+    <{foreach from=$users item=user}>
+        <{$user->NAME}><br/>
+    <{/foreach}>
+
 ### Freedom With No Footprint
 Extreme Framework is actually a concept of “no-framework”. The base system is simply a simple routing mechanism to route requests to the right handlers. There is almost no footprint, limitation or constraints from the framework. Developers are left with all freedom, creativity and space to do whatever they wish.
 
