@@ -1,0 +1,26 @@
+Options All -Indexes
+
+<IfModule mod_deflate.c>
+    <FilesMatch "\.(html|php|txt|xml|js|css|json)$">
+        SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>
+
+RewriteEngine On
+
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* – [F,L]
+
+# Force HTTPS
+#RewriteCond %{HTTPS} != on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^js/(.+)$ ../public/js/$1 [L]
+RewriteRule ^css/(.+)$ ../public/css/$1 [L]
+RewriteRule ^images/(.+)$ ../public/images/$1 [L]
+RewriteRule ^fonts/(.+)$ ../public/fonts/$1 [L]
+RewriteRule ^lib/(.+)$ ../public/lib/$1 [L]
+RewriteRule ^uploads/(.+)$ ../public/uploads/$1 [L]
+RewriteRule ^themes/(.+)$ ../public/themes/$1 [L]
+
+RewriteRule ^(.+)$ index.php?p=$1 [QSA,L]
