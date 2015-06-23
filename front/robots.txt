@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /controller
+Disallow: /module
+Disallow: /helper
+Disallow: /templates
+#Sitemap: http://www.google.com/maps/views/sitemap.xml
+#Sitemap: http://www.google.com/adwords/sitemap.xml
