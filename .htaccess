@@ -1,0 +1,33 @@
+Options All -Indexes
+
+<IfModule mod_php5.c>
+php_value upload_max_filesize 100000000
+php_value post_max_size 110000000
+php_value memory_limit 120000000
+php_value max_input_time 20
+</IfModule>
+
+<IfModule mod_headers.c>
+Header unset ETag
+</IfModule>
+
+FileETag None
+
+RewriteEngine On
+
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* – [F,L]
+
+# Force HTTPS
+#RewriteCond %{HTTPS} != on
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteRule ^js/(.+)$ public/js/$1 [L]
+RewriteRule ^css/(.+)$ public/css/$1 [L]
+RewriteRule ^images/(.+)$ public/images/$1 [L]
+RewriteRule ^fonts/(.+)$ public/fonts/$1 [L]
+RewriteRule ^lib/(.+)$ public/lib/$1 [L]
+RewriteRule ^uploads/(.+)$ public/uploads/$1 [L]
+RewriteRule ^themes/(.+)$ front/themes/$1 [L]
+
+RewriteRule ^(.+)$ index.php?p=$1 [QSA,L]
