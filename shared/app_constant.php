@@ -20,7 +20,7 @@ define('DATE_FORMAT', 'mm-dd-yy');
 define('SMARTY_DATE_FORMAT', '%m-%d-%Y');
 
 // Copyright notice
-define('COPYRIGHT_NOTICE', 'Copyright © 2011-2015 VIETMAI Solutions Corporation. All rights reserved.');
+define('COPYRIGHT_NOTICE', 'Copyright &copy; 2011-2015 Extreme Framework. All rights reserved.');
 
 // Default user group
 define('DEFAULT_USER_GROUP', '2');
@@ -38,10 +38,10 @@ define('ORGANIZATION_NAME', 'Extreme Framework');
 define('ORGANIZATION_NAME_SHORT', 'Extreme Framework');
 
 // Support name
-define('SUPPORT_NAME', 'Extreme Framework Support');
+define('SUPPORT_NAME', 'Extreme Framework');
 
 // Support email
-define('SUPPORT_EMAIL', 'support@vietmaisolutions.com');
+define('SUPPORT_EMAIL', '');
 
 // Default public dashboard
 define('DEFAULT_PUBLIC_DASHBOARD', '3');
@@ -59,7 +59,7 @@ define('MAILER_SMTP_HOST', 'smtp.gmail.com');
 define('MAILER_SMTP_PORT', '465');
 
 // SMTP username
-define('MAILER_SMTP_USERNAME', 'support@vietmaisolutions.com');
+define('MAILER_SMTP_USERNAME', '');
 
 // SMTP password
 define('MAILER_SMTP_PASSWORD', '******');
@@ -67,16 +67,8 @@ define('MAILER_SMTP_PASSWORD', '******');
 // Save draft interval (seconds)
 define('SAVE_DRAFT_INTERVAL', '10');
 
-//________________(SOCIAL)____________________
-
-// Social :: Facebook URL
-define('SOCIAL_FACEBOOK_URL', 'https://www.facebook.com/pages/C%E1%BB%99ng-%C4%91%E1%BB%93ng-PHP-Vi%E1%BB%87t-Nam/261573760536525');
-
-// Social :: Disqus short name
-define('SOCIAL_DISQUS_SHORTNAME', 'vietmaisolutionscorporation');
-
-// Social :: Disqus language
-define('SOCIAL_DISQUS_LANGUAGE', 'vi');
+// SMTP encryption (tls|ssl)
+define('MAILER_SMTP_ENCRYPTION', 'ssl');
 
 //________________(SYNC)____________________
 
