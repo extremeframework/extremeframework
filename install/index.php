@@ -538,7 +538,7 @@ class Installer
     }
 
     function install_database_script() {
-		$filepath = dirname(__FILE__).'/../database.sql';
+		$filepath = dirname(__FILE__).'/database.sql';
 
 		if (!file_exists($filepath)) {
 		    return "Database script not found: $filepath";
