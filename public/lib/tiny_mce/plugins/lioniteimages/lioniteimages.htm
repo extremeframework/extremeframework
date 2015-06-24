@@ -1,0 +1,90 @@
+
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Lionite Image Manager</title>
+
+	<link rel="stylesheet" type="text/css" href="css/images.css">
+
+
+
+	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<script type="text/javascript" src="js/fileuploader.js"></script>
+
+	<script type="text/javascript" src="js/lioniteimages.js"></script>
+
+</head>
+
+<body>
+
+	<ul class="nav">
+
+		<li><a class="selected">Upload</a></li>
+
+		<li><a>Insert from URL</a></li>
+
+	</ul>
+
+	<div id="body">
+
+		<div class="tab upload">
+
+			<label>Choose file to upload</label>
+
+			<div class="file-upload"><a class="button">Browse</a></div>
+
+			<ul id="gallery">
+
+
+
+			</ul>
+
+		</div>
+
+
+
+		<div class="tab url" style="display:none;">
+
+			<label>Image URL</label>
+
+			<input type="text" name="src" /><br />
+
+			<label>Title</label>
+
+			<input type="text" name="title" /><br />
+
+			<label>Alternative text (alt)</label>
+
+			<input name="alt" type="text" /><br />
+
+			<label>Link image</label>
+
+			<input name="href" type="text" /><br />
+
+			<a class="urlinsert button">Insert image</a>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

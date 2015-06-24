@@ -1,0 +1,113 @@
+.left-side {
+    background: #424f63!important;
+}
+
+#globalmodal {
+    background-color: #E1E9F1;
+}
+
+.table {
+    border: none!important;
+}
+
+.layout-section-header span {
+    color: black;
+}
+
+.layout-block .ui-tabs .ui-tabs-panel {
+    background: #fff;
+}
+
+.layout-tabs ul,
+.edit-layout-tabs ul {
+    background-color: #fff;
+}
+
+.edit_details .equal-split td:nth-child(odd).form-row-description,
+.edit_details .equal-split td:nth-child(odd).form-row-attachment,
+.edit_details .equal-split td:nth-child(odd).form-row-note {
+    border-bottom: none!important;
+    vertical-align: top!important;
+}
+
+.edit_details .equal-split>tbody>tr>td:nth-child(odd),
+.view_details .equal-split>tbody>tr>td:nth-child(odd) {
+    border-bottom: 1px dashed #D2D2D2!important;
+    vertical-align: top!important;
+}
+
+.table td {
+    border: none!important;
+    padding: 10px 0 0px 0!important;
+    vertical-align: top!important;
+}
+
+.form-field-label label {
+    margin: 0;
+    padding-right: 10px;
+    padding-top: 5px;
+    min-height: 29px;
+    color: #444;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.edit-main .form-field-label label {
+    color: #333;
+}
+
+body.module .main-content {
+    background-color: #F1F1F1;
+}
+
+.view_details .form-field-label,
+.edit_details .form-field-label {
+    background: inherit;
+}
+
+.edit_details,
+.edit-main table,
+table.item_list td.onflyedit {
+    background-color: #fff;
+}
+
+.edit_details input[type="text"],
+.edit_details input[type="password"],
+.edit_details select,
+.edit_details textarea {
+    border-color: rgb(27, 194, 162);
+}
+
+table.item_list td.onflyedit input[type="text"],
+table.item_list td.onflyedit input[type="password"],
+table.item_list td.onflyedit select,
+table.item_list td.onflyedit textarea {
+    border-color: rgb(81, 81, 81);
+    width: 100%;
+}
+
+.defaultSkin table.mceLayout {
+    border: 1px solid #1BC2A2!important;
+}
+
+.edit_details .form-field .select2-container {
+    border: 1px solid #1BC2A2;
+    border-radius: 3px;
+    border-color: rgb(81, 81, 81);
+}
+
+.edit_details span.input-type-radio {
+    background-color: white;
+    padding: 6px 10px 2px 7px;
+    border: 1px solid #1BC2A2;
+    border-radius: 3px;
+}
+
+.mirror-name .attribute-value {
+    color: rgb(4, 132, 151);
+    border-left: 3px solid rgb(4, 132, 151);
+}
+
+.main-content h1.heading .h {
+    color: purple;
+}

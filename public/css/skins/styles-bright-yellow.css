@@ -1,0 +1,80 @@
+.module div#main-body {
+    background-color: #FFFFC1;
+}
+.left-side {
+    background: #424f63!important;
+}
+#globalmodal {
+    background-color: #FFFFC1;
+}
+
+.table {
+    background-color: #FFFFC1;
+    border: none!important;
+}
+
+.layout-section-header span {
+    color: black;
+}
+
+.layout-block .ui-tabs .ui-tabs-panel {
+    background: #FFFFC1;
+}
+
+.layout-tabs ul,
+.edit-layout-tabs ul {
+    background-color: #FFFFC1;
+}
+
+.edit_details .equal-split td:nth-child(odd).form-row-description,
+.edit_details .equal-split td:nth-child(odd).form-row-attachment,
+.edit_details .equal-split td:nth-child(odd).form-row-note {
+    border-bottom: none!important;
+    vertical-align: top!important;
+}
+
+.edit_details .equal-split>tbody>tr>td:nth-child(odd),
+.view_details .equal-split>tbody>tr>td:nth-child(odd) {
+    border-bottom: 1px dashed #D2D2D2!important;
+    vertical-align: top!important;
+}
+
+.table td {
+    border: none!important;
+    padding: 10px 0 0px 0!important;
+    vertical-align: middle!important;
+}
+
+.form-field-label label {
+    margin: 0;
+    padding-right: 10px;
+    padding-top: 5px;
+    min-height: 29px;
+}
+
+.view_details .form-field-label,
+.edit_details .form-field-label {
+    background: inherit;
+}
+
+.edit_details .form-field input,
+.edit_details .form-field textarea,
+.edit_details .form-field select {
+    border: 1px dashed #7FA1D8;
+    border-radius: 3px;
+}
+.defaultSkin table.mceLayout {
+    border: 1px dashed #7FA1D8!important;
+}
+
+.edit_details .form-field .select2-container {
+    border: 1px dashed #7FA1D8;
+    border-radius: 3px;
+}
+
+.edit_details span.input-type-radio {
+    background-color: white;
+    padding: 6px 10px 2px 7px;
+    border: 1px dashed #7FA1D8;
+    border-radius: 3px;
+}

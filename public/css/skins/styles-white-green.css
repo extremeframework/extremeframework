@@ -1,0 +1,38 @@
+@import url("styles-white-purple-v2.css");
+
+body.module .main-content {
+    background-color: #fff;
+}
+
+.edit_details input[type="text"], .edit_details input[type="password"], .edit_details select, .edit_details textarea, .edit_details span.input-type-radio {
+    border: 1px dashed #7FA1D8;
+    background-color: #F2F2F2;
+}
+
+.form-field-label label {
+    color: rgb(149, 149, 149);
+}
+
+.edit_details, .edit-main table, table.item_list td.onflyedit {
+    background-color: inherit;
+}
+
+.main-content h1.heading .h {
+    color: #0F7EC3;
+}
+
+.left-side {
+    width: 0;
+}
+
+.horizontal-menu {
+    margin-left: 0px;
+}
+
+body.module .main-content {
+    margin-left: 0px;
+}
+
+div.button-save-more {
+    background-color: #99A0A3;
+}
