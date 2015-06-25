@@ -1,1 +1,0 @@
-Thank you for your purchase. Click <a href="<{$smarty.const.APPLICATION_URL}>">here</a> to return to the home page.
