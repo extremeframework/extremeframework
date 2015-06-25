@@ -15,7 +15,7 @@ Extreme Framework has a full built-in system with core authentication, access ri
 Extreme Framework is so lightweight and intuitive. There is almost no namespace, convention, constraints or configuration to learn about. Anyone with basic PHP knowledge can start with Extreme Framework very quickly.
 
 ## Sample snippet
-
+```php
     <?php
     class GreetingController 
     { 
@@ -42,6 +42,7 @@ Extreme Framework is so lightweight and intuitive. There is almost no namespace,
     <{foreach from=$users item=user}>
         Hello <{$user->NAME}><br/>
     <{/foreach}>
+```
 
 ## References
 * Official site: http://extremeframework.com/
