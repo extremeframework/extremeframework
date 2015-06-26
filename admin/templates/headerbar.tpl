@@ -143,10 +143,10 @@
             <div class="top-all-menu">
                 <{if $has_all}>
                     <ul id="all-menu">
-                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer"><span class="res-text">All&nbsp;</span><b class="caret"></b></a>
+                        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer"><b class="caret"></b></a>
                             <ul class="dropdown-menu quick-create-menu" style="margin:0px">
                                 <li style="width:100%">
-                                    <span class="title">All</span>
+                                    <span class="title"><{label text="All"}></span>
                                     <hr/>
                                     <ul style="width:100%;margin: 0px;padding: 0px;">
                                         <{foreach from=$smarty.session.flatmenu item=menuitem}>

@@ -4,8 +4,15 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-defined('APPLICATION_DIR') OR exit();
-
 class AdminMenuController extends _AdminMenuController
 {
+    function changeAction() {
+        list($id) = explode('/', $_REQUEST['args']);
+
+        $auth = new AuthenticationController();
+
+        $auth->loadMenu($id);
+
+        Framework::redirect(APPLICATION_URL);
+    }
 }

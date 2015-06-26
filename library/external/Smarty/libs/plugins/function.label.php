@@ -100,17 +100,8 @@ function _label($text, $key = '', $format = '', $insidequote = false) {
             ';
         }
     } else {
-        switch ($format) {
-            case 'lower':
-                $text = strtolower($text);
-                break;
-
-            case 'upper':
-                $text = strtoupper($text);
-                break;
-
-            default:
-                break;
+        if (is_callable($format)) {
+            $text = $format($text);
         }
 
         echo $text;
