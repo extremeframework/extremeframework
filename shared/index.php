@@ -20,6 +20,11 @@ if (get_magic_quotes_gpc()) {
 }
 
 ///////////////////////////////////////////////////////////
+// Composer packages
+///////////////////////////////////////////////////////////
+include(dirname(__FILE__)."/../vendor/autoload.php");
+
+///////////////////////////////////////////////////////////
 // Configuration & settings
 ///////////////////////////////////////////////////////////
 include(dirname(__FILE__)."/app_config.php");
@@ -123,6 +128,9 @@ function application_route($url = null) {
 
     exit(0);
 }
+
+// Apply handshake plugin
+LicenseCheckHelper::apply_handshake_plugin();
 
 // Route application
 application_route();
