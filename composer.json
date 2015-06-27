@@ -1,0 +1,17 @@
+{
+    "name": "extremeframework/extremeframework",
+    "type": "library",
+    "description": "A PHP web application framework",
+    "keywords": ["framework"],
+    "homepage": "https://extremeframework.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "VIETMAI Solutions Corporation",
+            "homepage": "http://vietmaisolutions.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    }
+}
