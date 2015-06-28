@@ -6,18 +6,18 @@
  *
  * PHP versions 4 and 5
  *
- * LICENSE: This source file is subject to version 3.0 of the PHP license
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
  * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_0.txt.  If you did not receive a copy of
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
  * the PHP License and are unable to obtain it through the web, please
  * send a note to license@php.net so we can mail you a copy immediately.
  *
  * @category   Database
  * @package    DB_DataObject
  * @author     Alan Knowles <alan@akbkhome.com>
- * @copyright  1997-2006 The PHP Group
- * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Cast.php,v 1.15 2005/07/07 05:30:53 alan_k Exp $
+ * @copyright  1997-2008 The PHP Group
+ * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version    CVS: $Id: Cast.php 287158 2009-08-12 13:58:31Z alan_k $
  * @link       http://pear.php.net/package/DB_DataObject
  */
   
@@ -391,8 +391,20 @@ class DB_DataObject_Cast {
                 // this is funny - the parameter order is reversed ;)
                 return "'".mysqli_real_escape_string($db->connection, $this->value)."'";
              
-            
+            case 'sqlite':
+                // this is funny - the parameter order is reversed ;)
+                return "'".sqlite_escape_string($this->value)."'";
+           
+            case 'mssql':
+                
+                if(is_numeric($this->value)) {
+                    return $this->value;
+                }
+                $unpacked = unpack('H*hex', $this->value);
+                return '0x' . $unpacked['hex'];
+                        
                  
+   
             default:
                 return PEAR::raiseError("DB_DataObject_Cast cant handle blobs for Database:{$db->dsn['phptype']} Yet");
         }
@@ -419,10 +431,10 @@ class DB_DataObject_Cast {
         // perhaps we should support TEXT fields???
         // 
         
-        if (!($to & DB_DATAOBJECT_BLOB)) {
-            return PEAR::raiseError('Invalid Cast from a DB_DataObject_Cast::string to something other than a blob!'.
-                ' (why not just use native features)');
-        }
+        // $to == a string field which is the default type (0)
+        // so we do not test it here. - we assume that number fields
+        // will accept a string?? - which is stretching it a bit ...
+        // should probaly add that test as some point. 
         
         switch ($db->dsn['phptype']) {
             case 'pgsql':
@@ -435,7 +447,15 @@ class DB_DataObject_Cast {
             case 'mysqli':
                 return "'".mysqli_real_escape_string($db->connection, $this->value)."'";
 
-            
+            case 'mssql':
+                // copied from the old DB mssql code...?? not sure how safe this is.
+                return "'" . str_replace(
+                        array("'", "\\\r\n", "\\\n"),
+                        array("''", "\\\\\r\n\r\n", "\\\\\n\n"),
+                        $this->value 
+                    ) . "'";
+                
+
             default:
                 return PEAR::raiseError("DB_DataObject_Cast cant handle blobs for Database:{$db->dsn['phptype']} Yet");
         }
@@ -538,7 +558,6 @@ class DB_DataObject_Cast {
     {
         return $this->value; 
     }
-    
     
     
     
