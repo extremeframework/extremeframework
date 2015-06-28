@@ -372,7 +372,8 @@ table.item_list th.checkbox, table.item_list td.checkbox {
 table.item_list .checkbox label {
     padding-left: 10px;
 }
-table.item_list th.indicators {
+table.item_list th.indicators,
+table.item_list td.indicators {
     width: 1px;
 }
 table.item_list th,table.item_list td {
