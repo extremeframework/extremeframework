@@ -4,7 +4,7 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-class AjaxController extends AppController
+class AjaxController
 {
     function widgetAction() {
 		$class = isset($_REQUEST['class'])? $_REQUEST['class'] : '';
