@@ -111,100 +111,24 @@
     <{plugin key="user_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.changelog) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.fieldacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.objectacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.recyclebin) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.userlog) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
             <{if isset($smarty.session.acl.usermembership) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.userpreference) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
-            <{if isset($smarty.session.acl.workflowlog) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
             <{if $canaccess2anytab}>
             <div id="usertabs" class="section">
                 <ul>
-                                            <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
-                            <li><a href="#tab-changelogs"><{label key="L_CHANGE_LOG"}> <span class="badge changelog-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                            <li><a href="#tab-fieldacls"><{label key="L_FIELD_ACL"}> <span class="badge fieldacl-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                            <li><a href="#tab-objectacls"><{label key="L_OBJECT_ACL"}> <span class="badge objectacl-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
-                            <li><a href="#tab-recyclebins"><{label key="L_RECYCLE_BIN"}> <span class="badge recyclebin-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('UserLog') && isset($smarty.session.acl.userlog) }>
-                            <li><a href="#tab-userlogs"><{label key="L_USER_LOG"}> <span class="badge userlog-badge-count"></span></a></li>
-                        <{/if}>
                                             <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                             <li><a href="#tab-usermemberships"><{label key="L_USER_MEMBERSHIP"}> <span class="badge usermembership-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('UserPreference') && isset($smarty.session.acl.userpreference) }>
                             <li><a href="#tab-userpreferences"><{label key="L_USER_PREFERENCE"}> <span class="badge userpreference-badge-count"></span></a></li>
                         <{/if}>
-                                            <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                            <li><a href="#tab-workflowlogs"><{label key="L_WORKFLOW_LOG"}> <span class="badge workflowlog-badge-count"></span></a></li>
-                        <{/if}>
                                     </ul>
 
-                                    <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
-                        <div id="tab-changelogs">
-                        	<{if true || $tab == 'changelogs'}>
-                            	<h2 class="print"><{label key="L_CHANGE_LOG"}></h2>
-                                                                    <{ajaxmodule class="WidgetListChangeLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.changelog.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                        <div id="tab-fieldacls">
-                        	<{if true || $tab == 'fieldacls'}>
-                            	<h2 class="print"><{label key="L_FIELD_ACL"}></h2>
-                                                                    <{ajaxmodule class="WidgetListFieldAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.fieldacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                        <div id="tab-objectacls">
-                        	<{if true || $tab == 'objectacls'}>
-                            	<h2 class="print"><{label key="L_OBJECT_ACL"}></h2>
-                                                                    <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
-                        <div id="tab-recyclebins">
-                        	<{if true || $tab == 'recyclebins'}>
-                            	<h2 class="print"><{label key="L_RECYCLE_BIN"}></h2>
-                                                                    <{ajaxmodule class="WidgetListRecycleBin" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.recyclebin.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('UserLog') && isset($smarty.session.acl.userlog) }>
-                        <div id="tab-userlogs">
-                        	<{if true || $tab == 'userlogs'}>
-                            	<h2 class="print"><{label key="L_USER_LOG"}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.userlog.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
                                     <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                         <div id="tab-usermemberships">
                         	<{if true || $tab == 'usermemberships'}>
@@ -218,14 +142,6 @@
                         	<{if true || $tab == 'userpreferences'}>
                             	<h2 class="print"><{label key="L_USER_PREFERENCE"}></h2>
                                                                     <{ajaxmodule class="WidgetListUserPreference" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.userpreference.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                        <div id="tab-workflowlogs">
-                        	<{if true || $tab == 'workflowlogs'}>
-                            	<h2 class="print"><{label key="L_WORKFLOW_LOG"}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.workflowlog.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_NEW|ucwords"}> <{$smarty.const.L_USER_PREFERENCE|ucwords}></h3>
+    <h3><{label key="L_NEW" format="ucwords"}> <{$smarty.const.L_USER_PREFERENCE|ucwords}></h3>
 </div>
 
 

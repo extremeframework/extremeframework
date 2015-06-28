@@ -118,10 +118,10 @@
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{label key="L_COPY_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{label key="L_COPY_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -130,10 +130,10 @@
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -142,10 +142,10 @@
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{label key="L_DELETE_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{label key="L_DELETE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>

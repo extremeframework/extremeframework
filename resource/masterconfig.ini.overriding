@@ -1,0 +1,61 @@
+[adminmenuitem]
+listcolumns = NAME,MODULE,ORDERING,ENABLE_LEFT,ENABLE_TOP,ENABLE_QUICK,ENABLE_ALL
+widgetcolumns = NAME,MODULE,ORDERING,ENABLE_LEFT,ENABLE_TOP,ENABLE_QUICK,ENABLE_ALL
+mandatorycolumns = NAME
+
+[product]
+listcolumns = TITLE,ID_PRODUCT_CATEGORY,IMAGE
+widgetcolumns = TITLE,ID_PRODUCT_CATEGORY,IMAGE
+childtables = PRODUCT_GALLERY,PRODUCT_META,PRODUCT_VARIANT
+tooltipcol =
+
+[page]
+listcolumns = NAME,ID_TEMPLATE
+widgetcolumns = NAME,ID_TEMPLATE
+childtables = PAGE,PAGE_GALLERY,PAGE_LINK,PAGE_SECTION,PAGE_WIDGET
+
+[menu]
+childtables = MENU_ITEM
+
+[menuitem]
+listcolumns = TITLE,ID_MENU,ID_PAGE,ID_POST,ID_POST_CATEGORY,ORDERING
+widgetcolumns = TITLE,ID_MENU,ID_PAGE,ID_POST,ID_POST_CATEGORY,ORDERING
+
+[pagegallery]
+listcolumns = TITLE,ID_PAGE,IMAGE,ORDERING
+widgetcolumns = TITLE,ID_PAGE,IMAGE,ORDERING
+
+[pagelink]
+listcolumns = TITLE,ID_PAGE,ID_PAGE_LINK_TYPE,ORDERING
+widgetcolumns = TITLE,ID_PAGE,ID_PAGE_LINK_TYPE,ORDERING
+
+[pagesection]
+listcolumns = TITLE,ID_PAGE,IMAGE,ORDERING
+widgetcolumns = TITLE,ID_PAGE,IMAGE,ORDERING
+
+[pagewidget]
+listcolumns = TITLE,ID_PAGE,IMAGE,ID_WIDGET_TYPE,ORDERING
+widgetcolumns = TITLE,ID_PAGE,IMAGE,ID_WIDGET_TYPE,ORDERING
+
+[post]
+listcolumns = TITLE,IMAGE,ID_POST_CATEGORY,ID_TEMPLATE
+widgetcolumns = TITLE,IMAGE,ID_POST_CATEGORY,ID_TEMPLATE
+
+[postcategory]
+listcolumns = NAME,ID_TEMPLATE,ORDERING
+widgetcolumns = NAME,ID_TEMPLATE,ORDERING
+childtables = POST_CATEGORY,POST
+
+[postgallery]
+listcolumns = TITLE,ID_POST,IMAGE,ORDERING
+widgetcolumns = TITLE,ID_POST,IMAGE,ORDERING
+
+[postsection]
+listcolumns = TITLE,ID_POST,IMAGE,ORDERING
+widgetcolumns = TITLE,ID_POST,IMAGE,ORDERING
+
+[user]
+childtables = USER_MEMBERSHIP,USER_PREFERENCE
+
+[usergroup]
+childtables = ACCESS_RIGHT,USER_MEMBERSHIP

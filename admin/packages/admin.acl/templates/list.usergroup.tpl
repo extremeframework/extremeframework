@@ -117,23 +117,11 @@
     <div id="usergroupcopyrelations" style="display:none" title="<{$smarty.const.L_COPY}> <{$smarty.const.L_USER_GROUP|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -141,23 +129,11 @@
     <div id="usergroupapproverelations" style="display:none" title="<{$smarty.const.L_APPROVE}> <{$smarty.const.L_USER_GROUP|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -165,23 +141,11 @@
     <div id="usergroupdeleterelations" style="display:none" title="<{$smarty.const.L_DELETE}> <{$smarty.const.L_USER_GROUP|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>

@@ -118,112 +118,166 @@
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AclType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="acltype" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACL_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="acltype" /> <{label key="L_COPY_ALSO"}> <{label key="L_ACL_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfilter" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_FILTER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfilter" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_FILTER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLabel')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlabel" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LABEL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlabel" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LABEL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlanguage" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlanguage" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguageItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlanguageitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlanguageitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutfield" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutfield" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutsection" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutsection" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenu" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenu" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmodule" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MODULE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmodule" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminsequence" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminsequence" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminview" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_VIEW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminview" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_VIEW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{label key="L_COPY_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{label key="L_COPY_ALSO"}> <{label key="L_CHANGE_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{label key="L_COPY_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{label key="L_COPY_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD_ACL" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Menu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menu" /> <{label key="L_COPY_ALSO"}> <{label key="L_MENU" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('MenuItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_OBJECT_ACL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Option')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="option" /> <{label key="L_COPY_ALSO"}> <{label key="L_OPTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="option" /> <{label key="L_COPY_ALSO"}> <{label key="L_OPTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Page')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="page" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagegallery" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLink')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE_LINK" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLinkType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelinktype" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE_LINK_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagesection" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageWidget')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAGE_WIDGET" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parameter" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parameter" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parametergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parametergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parametertype" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parametertype" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Post')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostCategory')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postcategory" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_CATEGORY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelationType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelationtype" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_RELATION_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="posttype" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{label key="L_COPY_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{label key="L_COPY_ALSO"}> <{label key="L_RECYCLE_BIN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screen" /> <{label key="L_COPY_ALSO"}> <{label key="L_SCREEN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screen" /> <{label key="L_COPY_ALSO"}> <{label key="L_SCREEN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{label key="L_COPY_ALSO"}> <{label key="L_SCREEN_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{label key="L_COPY_ALSO"}> <{label key="L_SCREEN_FIELD" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Template')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="template" /> <{label key="L_COPY_ALSO"}> <{label key="L_TEMPLATE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('User')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="user" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="user" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserRole')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userrole" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_ROLE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userrole" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_ROLE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ValueType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="valuetype" /> <{label key="L_COPY_ALSO"}> <{label key="L_VALUE_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="valuetype" /> <{label key="L_COPY_ALSO"}> <{label key="L_VALUE_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetPosition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="widgetposition" /> <{label key="L_COPY_ALSO"}> <{label key="L_WIDGET_POSITION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="widgettype" /> <{label key="L_COPY_ALSO"}> <{label key="L_WIDGET_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Workflow')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflow" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflow" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -232,112 +286,166 @@
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AclType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="acltype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACL_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="acltype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ACL_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfilter" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_FILTER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfilter" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_FILTER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLabel')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlabel" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LABEL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlabel" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LABEL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlanguage" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlanguage" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguageItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlanguageitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlanguageitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutfield" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutfield" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutsection" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutsection" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenu" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenu" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmodule" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MODULE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmodule" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminsequence" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminsequence" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminview" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_VIEW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminview" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_VIEW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_CHANGE_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD_ACL" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Menu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menu" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_MENU" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('MenuItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OBJECT_ACL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Option')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="option" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OPTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="option" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OPTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Page')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="page" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagegallery" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLink')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE_LINK" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLinkType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelinktype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE_LINK_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagesection" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageWidget')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAGE_WIDGET" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parameter" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parameter" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parametergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parametergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parametertype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parametertype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Post')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostCategory')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postcategory" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_CATEGORY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelationType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelationtype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_RELATION_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="posttype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_RECYCLE_BIN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screen" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_SCREEN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screen" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_SCREEN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_SCREEN_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_SCREEN_FIELD" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Template')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="template" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_TEMPLATE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('User')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="user" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="user" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserRole')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userrole" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_ROLE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userrole" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_ROLE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ValueType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="valuetype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_VALUE_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="valuetype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_VALUE_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetPosition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="widgetposition" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WIDGET_POSITION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="widgettype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WIDGET_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Workflow')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflow" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflow" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -346,112 +454,166 @@
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACCESS_RIGHT" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AclType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="acltype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACL_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="acltype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ACL_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfilter" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_FILTER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfilter" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_FILTER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLabel')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlabel" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LABEL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlabel" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LABEL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlanguage" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlanguage" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LANGUAGE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLanguageItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlanguageitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlanguageitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LANGUAGE_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutfield" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutfield" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LAYOUT_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutsection" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutsection" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_LAYOUT_SECTION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenu" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenu" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmodule" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MODULE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmodule" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminsequence" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminsequence" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminview" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_VIEW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminview" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_VIEW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_CHANGE_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{label key="L_DELETE_ALSO"}> <{label key="L_DASHBOARD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{label key="L_DELETE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD_ACL" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Menu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menu" /> <{label key="L_DELETE_ALSO"}> <{label key="L_MENU" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('MenuItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OBJECT_ACL" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Option')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="option" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OPTION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="option" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OPTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Page')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="page" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagegallery" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLink')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE_LINK" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageLinkType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelinktype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE_LINK_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagesection" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PageWidget')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAGE_WIDGET" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parameter" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parameter" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parametergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parametergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parametertype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parametertype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Post')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostCategory')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postcategory" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_CATEGORY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostGallery')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostRelationType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelationtype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_RELATION_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostSection')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PostType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="posttype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{label key="L_DELETE_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{label key="L_DELETE_ALSO"}> <{label key="L_RECYCLE_BIN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screen" /> <{label key="L_DELETE_ALSO"}> <{label key="L_SCREEN" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screen" /> <{label key="L_DELETE_ALSO"}> <{label key="L_SCREEN" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{label key="L_DELETE_ALSO"}> <{label key="L_SCREEN_FIELD" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{label key="L_DELETE_ALSO"}> <{label key="L_SCREEN_FIELD" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('Template')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="template" /> <{label key="L_DELETE_ALSO"}> <{label key="L_TEMPLATE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('User')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="user" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="user" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserRole')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userrole" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_ROLE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userrole" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_ROLE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('ValueType')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="valuetype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_VALUE_TYPE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="valuetype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_VALUE_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetPosition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="widgetposition" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WIDGET_POSITION" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('WidgetType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="widgettype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WIDGET_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Workflow')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflow" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflow" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_APPLICATION" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_TRANSITION" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>

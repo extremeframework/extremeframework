@@ -30,5 +30,6 @@ Route::registerUrlRewriteType('page_with_date', function($model) {
 
 // Controller names
 Route::registerControllerNames(array(
-
+    'user' => 'User',
+    'userlog' => 'UserLog'
 ));

@@ -162,10 +162,34 @@
             <{if isset($smarty.session.acl.fieldacl) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.menu) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.menuitem) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.objectacl) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.option) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.page) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.pagegallery) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.pagelink) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.pagelinktype) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.pagesection) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.pagewidget) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.parameter) }>
@@ -177,6 +201,27 @@
             <{if isset($smarty.session.acl.parametertype) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.post) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.postcategory) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.postgallery) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.postrelation) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.postrelationtype) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.postsection) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.posttype) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.recyclebin) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -184,6 +229,9 @@
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.screenfield) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.template) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.user) }>
@@ -205,6 +253,12 @@
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.valuetype) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.widgetposition) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.widgettype) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.workflow) }>
@@ -274,11 +328,35 @@
                                             <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
                             <li><a href="#tab-fieldacls"><{label key="L_FIELD_ACL"}> <span class="badge fieldacl-badge-count"></span></a></li>
                         <{/if}>
+                                            <{if Framework::hasModule('Menu') && isset($smarty.session.acl.menu) }>
+                            <li><a href="#tab-menus"><{label key="L_MENU"}> <span class="badge menu-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
+                            <li><a href="#tab-menuitems"><{label key="L_MENU_ITEM"}> <span class="badge menuitem-badge-count"></span></a></li>
+                        <{/if}>
                                             <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
                             <li><a href="#tab-objectacls"><{label key="L_OBJECT_ACL"}> <span class="badge objectacl-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Option') && isset($smarty.session.acl.option) }>
                             <li><a href="#tab-options"><{label key="L_OPTION"}> <span class="badge option-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
+                            <li><a href="#tab-pages"><{label key="L_PAGE"}> <span class="badge page-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
+                            <li><a href="#tab-pagegalleries"><{label key="L_PAGE_GALLERY"}> <span class="badge pagegallery-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
+                            <li><a href="#tab-pagelinks"><{label key="L_PAGE_LINK"}> <span class="badge pagelink-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PageLinkType') && isset($smarty.session.acl.pagelinktype) }>
+                            <li><a href="#tab-pagelinktypes"><{label key="L_PAGE_LINK_TYPE"}> <span class="badge pagelinktype-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
+                            <li><a href="#tab-pagesections"><{label key="L_PAGE_SECTION"}> <span class="badge pagesection-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
+                            <li><a href="#tab-pagewidgets"><{label key="L_PAGE_WIDGET"}> <span class="badge pagewidget-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Parameter') && isset($smarty.session.acl.parameter) }>
                             <li><a href="#tab-parameters"><{label key="L_PARAMETER"}> <span class="badge parameter-badge-count"></span></a></li>
@@ -289,6 +367,27 @@
                                             <{if Framework::hasModule('ParameterType') && isset($smarty.session.acl.parametertype) }>
                             <li><a href="#tab-parametertypes"><{label key="L_PARAMETER_TYPE"}> <span class="badge parametertype-badge-count"></span></a></li>
                         <{/if}>
+                                            <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
+                            <li><a href="#tab-posts"><{label key="L_POST"}> <span class="badge post-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
+                            <li><a href="#tab-postcategories"><{label key="L_POST_CATEGORY"}> <span class="badge postcategory-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
+                            <li><a href="#tab-postgalleries"><{label key="L_POST_GALLERY"}> <span class="badge postgallery-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
+                            <li><a href="#tab-postrelations"><{label key="L_POST_RELATION"}> <span class="badge postrelation-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostRelationType') && isset($smarty.session.acl.postrelationtype) }>
+                            <li><a href="#tab-postrelationtypes"><{label key="L_POST_RELATION_TYPE"}> <span class="badge postrelationtype-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
+                            <li><a href="#tab-postsections"><{label key="L_POST_SECTION"}> <span class="badge postsection-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PostType') && isset($smarty.session.acl.posttype) }>
+                            <li><a href="#tab-posttypes"><{label key="L_POST_TYPE"}> <span class="badge posttype-badge-count"></span></a></li>
+                        <{/if}>
                                             <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
                             <li><a href="#tab-recyclebins"><{label key="L_RECYCLE_BIN"}> <span class="badge recyclebin-badge-count"></span></a></li>
                         <{/if}>
@@ -297,6 +396,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('ScreenField') && isset($smarty.session.acl.screenfield) }>
                             <li><a href="#tab-screenfields"><{label key="L_SCREEN_FIELD"}> <span class="badge screenfield-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
+                            <li><a href="#tab-templates"><{label key="L_TEMPLATE"}> <span class="badge template-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('User') && isset($smarty.session.acl.user) }>
                             <li><a href="#tab-users"><{label key="L_USER"}> <span class="badge user-badge-count"></span></a></li>
@@ -318,6 +420,12 @@
                         <{/if}>
                                             <{if Framework::hasModule('ValueType') && isset($smarty.session.acl.valuetype) }>
                             <li><a href="#tab-valuetypes"><{label key="L_VALUE_TYPE"}> <span class="badge valuetype-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('WidgetPosition') && isset($smarty.session.acl.widgetposition) }>
+                            <li><a href="#tab-widgetpositions"><{label key="L_WIDGET_POSITION"}> <span class="badge widgetposition-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('WidgetType') && isset($smarty.session.acl.widgettype) }>
+                            <li><a href="#tab-widgettypes"><{label key="L_WIDGET_TYPE"}> <span class="badge widgettype-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Workflow') && isset($smarty.session.acl.workflow) }>
                             <li><a href="#tab-workflows"><{label key="L_WORKFLOW"}> <span class="badge workflow-badge-count"></span></a></li>
@@ -469,6 +577,22 @@
                                                             <{/if}>
                         </div>
                     <{/if}>
+                                    <{if Framework::hasModule('Menu') && isset($smarty.session.acl.menu) }>
+                        <div id="tab-menus">
+                        	<{if true || $tab == 'menus'}>
+                            	<h2 class="print"><{label key="L_MENU"}></h2>
+                                                                    <{ajaxmodule class="WidgetListMenu" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.menu.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
+                        <div id="tab-menuitems">
+                        	<{if true || $tab == 'menuitems'}>
+                            	<h2 class="print"><{label key="L_MENU_ITEM"}></h2>
+                                                                    <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.menuitem.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
                                     <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
                         <div id="tab-objectacls">
                         	<{if true || $tab == 'objectacls'}>
@@ -482,6 +606,54 @@
                         	<{if true || $tab == 'options'}>
                             	<h2 class="print"><{label key="L_OPTION"}></h2>
                                                                     <{ajaxmodule class="WidgetListOption" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.option.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
+                        <div id="tab-pages">
+                        	<{if true || $tab == 'pages'}>
+                            	<h2 class="print"><{label key="L_PAGE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.page.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
+                        <div id="tab-pagegalleries">
+                        	<{if true || $tab == 'pagegalleries'}>
+                            	<h2 class="print"><{label key="L_PAGE_GALLERY"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPageGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.pagegallery.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
+                        <div id="tab-pagelinks">
+                        	<{if true || $tab == 'pagelinks'}>
+                            	<h2 class="print"><{label key="L_PAGE_LINK"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPageLink" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.pagelink.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PageLinkType') && isset($smarty.session.acl.pagelinktype) }>
+                        <div id="tab-pagelinktypes">
+                        	<{if true || $tab == 'pagelinktypes'}>
+                            	<h2 class="print"><{label key="L_PAGE_LINK_TYPE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPageLinkType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.pagelinktype.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
+                        <div id="tab-pagesections">
+                        	<{if true || $tab == 'pagesections'}>
+                            	<h2 class="print"><{label key="L_PAGE_SECTION"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPageSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.pagesection.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
+                        <div id="tab-pagewidgets">
+                        	<{if true || $tab == 'pagewidgets'}>
+                            	<h2 class="print"><{label key="L_PAGE_WIDGET"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPageWidget" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.pagewidget.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>
@@ -509,6 +681,62 @@
                                                             <{/if}>
                         </div>
                     <{/if}>
+                                    <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
+                        <div id="tab-posts">
+                        	<{if true || $tab == 'posts'}>
+                            	<h2 class="print"><{label key="L_POST"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPost" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.post.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
+                        <div id="tab-postcategories">
+                        	<{if true || $tab == 'postcategories'}>
+                            	<h2 class="print"><{label key="L_POST_CATEGORY"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostCategory" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.postcategory.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
+                        <div id="tab-postgalleries">
+                        	<{if true || $tab == 'postgalleries'}>
+                            	<h2 class="print"><{label key="L_POST_GALLERY"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.postgallery.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
+                        <div id="tab-postrelations">
+                        	<{if true || $tab == 'postrelations'}>
+                            	<h2 class="print"><{label key="L_POST_RELATION"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostRelation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.postrelation.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostRelationType') && isset($smarty.session.acl.postrelationtype) }>
+                        <div id="tab-postrelationtypes">
+                        	<{if true || $tab == 'postrelationtypes'}>
+                            	<h2 class="print"><{label key="L_POST_RELATION_TYPE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostRelationType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.postrelationtype.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
+                        <div id="tab-postsections">
+                        	<{if true || $tab == 'postsections'}>
+                            	<h2 class="print"><{label key="L_POST_SECTION"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.postsection.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PostType') && isset($smarty.session.acl.posttype) }>
+                        <div id="tab-posttypes">
+                        	<{if true || $tab == 'posttypes'}>
+                            	<h2 class="print"><{label key="L_POST_TYPE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPostType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.posttype.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
                                     <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
                         <div id="tab-recyclebins">
                         	<{if true || $tab == 'recyclebins'}>
@@ -530,6 +758,14 @@
                         	<{if true || $tab == 'screenfields'}>
                             	<h2 class="print"><{label key="L_SCREEN_FIELD"}></h2>
                                                                     <{ajaxmodule class="WidgetListScreenField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.screenfield.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
+                        <div id="tab-templates">
+                        	<{if true || $tab == 'templates'}>
+                            	<h2 class="print"><{label key="L_TEMPLATE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListTemplate" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.template.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>
@@ -586,6 +822,22 @@
                         	<{if true || $tab == 'valuetypes'}>
                             	<h2 class="print"><{label key="L_VALUE_TYPE"}></h2>
                                                                     <{ajaxmodule class="WidgetListValueType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.valuetype.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('WidgetPosition') && isset($smarty.session.acl.widgetposition) }>
+                        <div id="tab-widgetpositions">
+                        	<{if true || $tab == 'widgetpositions'}>
+                            	<h2 class="print"><{label key="L_WIDGET_POSITION"}></h2>
+                                                                    <{ajaxmodule class="WidgetListWidgetPosition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.widgetposition.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('WidgetType') && isset($smarty.session.acl.widgettype) }>
+                        <div id="tab-widgettypes">
+                        	<{if true || $tab == 'widgettypes'}>
+                            	<h2 class="print"><{label key="L_WIDGET_TYPE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListWidgetType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.widgettype.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

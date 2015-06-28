@@ -18,7 +18,7 @@ class _UserController extends __AppController
     }
 
     private function checkConstraint($model, &$errors, $columns2check) {
-
+        
        if (in_array('EMAIL', $columns2check) && !empty($model->EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
            $errors['email'] = sprintf(L_VALIDATION_EMAIL, L_EMAIL);
            return false;
@@ -168,7 +168,7 @@ class _UserController extends __AppController
         AclController::checkPermission('user', 'list');
 
 		ContextStack::register(APPLICATION_URL.'/user/list/');
-
+        
         $this->setPresetData(null);
 
 		$this->_list();
@@ -410,7 +410,7 @@ class _UserController extends __AppController
 		}
 
         $this->enforceObjectAclCheck('user', $model);
-
+		
 		$model->delete();
 
         foreach ($_models as $_model) {
@@ -461,36 +461,12 @@ class _UserController extends __AppController
             if (!empty($relations)) {
                 foreach ($relations as $module) {
                     switch ($module) {
-                        case 'changelog':
-                            (new ChangeLogController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'fieldacl':
-                            (new FieldAclController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'objectacl':
-                            (new ObjectAclController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'recyclebin':
-                            (new RecycleBinController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'userlog':
-                            (new UserLogController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'usermembership':
+                        case 'usermembership': 
                             (new UserMembershipController())->delete('ID_USER', $_ids);
                             break;
 
-                        case 'userpreference':
+                        case 'userpreference': 
                             (new UserPreferenceController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'workflowlog':
-                            (new WorkflowLogController())->delete('ID_USER', $_ids);
                             break;
 
                         default:
@@ -616,12 +592,12 @@ class _UserController extends __AppController
 	}
 
     protected function onSaveSuccess($model) {
-
+        
         parent::onSaveSuccess($model);
     }
 
     protected function onDeleteSuccess($model) {
-
+        
         parent::onDeleteSuccess($model);
     }
 
@@ -699,7 +675,7 @@ class _UserController extends __AppController
 		return $value;
 	}
 
-    protected function form2model($prefix = null, &$columns2check = null) {
+    private function form2model($prefix = null, &$columns2check = null) {
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('user');
         $customfieldvalues = array();
 
@@ -731,7 +707,7 @@ class _UserController extends __AppController
     		        $customfieldvalues[$key] = $value;
     		    }
 
-
+    		    
             if (is_array($value)) {
                 $model->$key = implode(',', $value);
             } else {
@@ -872,7 +848,7 @@ class _UserController extends __AppController
 
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('user', $model);
-
+            
             $this->bind2refobject($model, $refobject);
             if (preg_match('/^[\*]*$/', $model->PASSWORD)) {
                 $model->PASSWORD = null;
@@ -885,7 +861,7 @@ class _UserController extends __AppController
             PluginManager::do_action('user_before_save', $model);
 
     		if ($model->UUID) {
-
+				
 				$old = new UserModel();
 				$old->UUID = $model->UUID;
 				$old->find();
@@ -935,7 +911,7 @@ class _UserController extends __AppController
     private function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
-
+            
 
         }
     }
@@ -994,8 +970,8 @@ class _UserController extends __AppController
 
                 $handler->saveform($prefix, $model);
             }
-
-
+            
+            
             if ($this->source != 'modal') {
                 if ($addmore) {
                     $this->newAction();
@@ -1029,7 +1005,7 @@ class _UserController extends __AppController
             }
 
     		if ($model->UUID) {
-
+    		    
     		    $model->update();
 
     		    $model->_isnew = false;
@@ -1072,10 +1048,10 @@ class _UserController extends __AppController
         LicenseController::enforceLicenseCheck('user');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
-
+        
         DraftHelper::clearAllDrafts('user');
-
-
+        
+        
 		ContextStack::back($back);
 	}
 
@@ -1085,9 +1061,9 @@ class _UserController extends __AppController
         LicenseController::enforceLicenseCheck('user');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
-
+        
         DraftHelper::clearAllDrafts('user');
-
+        
 		ContextStack::back($back);
 	}
 
@@ -1297,7 +1273,7 @@ class _UserController extends __AppController
         }
 
         $excludedcolumns = AclController::getSystemExcludedColumns('user');
-
+        
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
         $filterdata = $this->getFilterData();
@@ -1307,7 +1283,7 @@ class _UserController extends __AppController
         $page = $this->getPageNumber();
 
         $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
-
+        
 
         $ids = array();
         foreach ($rows as $row) {
@@ -1352,7 +1328,7 @@ class _UserController extends __AppController
 		$smarty->assign('customview', $customview);
 		$smarty->assign('customtemplate', $customtemplate);
 		$smarty->assign('admin_view_options', AdminViewHelper::getAdminViews('user', 'view'));
-
+		
 
         $templatetype = !empty($this->templatetype)? $this->templatetype : 'list';
 	    $this->display($smarty, $templatetype.'.user.tpl');
@@ -1472,7 +1448,7 @@ class _UserController extends __AppController
             $acleditablecolumns[$column] = false;
         }
 
-
+        
 
         if (empty($details)) {
     		$model = new UserModel();
@@ -1501,11 +1477,11 @@ class _UserController extends __AppController
                 $this->onInitialization($model);
                 PluginManager::do_action('user_new', $model);
             }
-
+            
             if ($restoredraft) {
                 DraftHelper::tryRestoreDraft('user', $model->UUID, $model);
             }
-
+            
     		$details = $model;
         }
 
@@ -1515,10 +1491,10 @@ class _UserController extends __AppController
             }
         }
 
-
+        
 
         WorkflowHelper::ensureEditable($details->WFID);
-
+        
         $this->initPlugins();
 
         $this->onBeforeEdit($details);
@@ -1530,7 +1506,7 @@ class _UserController extends __AppController
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
-
+		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('messages', $messages);
@@ -1755,21 +1731,21 @@ class _UserController extends __AppController
         }
     }
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 }

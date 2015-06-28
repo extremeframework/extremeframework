@@ -457,6 +457,10 @@ class _AdminModuleController extends __AppController
                             (new RecycleBinController())->delete('MODULE', $_ids);
                             break;
 
+                        case 'template': 
+                            (new TemplateController())->delete('MODULE', $_ids);
+                            break;
+
                         case 'workflowapplication': 
                             (new WorkflowApplicationController())->delete('MODULE', $_ids);
                             break;

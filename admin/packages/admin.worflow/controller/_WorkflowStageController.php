@@ -459,12 +459,44 @@ class _WorkflowStageController extends __AppController
                             (new FieldAclController())->delete('WFID', $_ids);
                             break;
 
+                        case 'menu': 
+                            (new MenuController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'menuitem': 
+                            (new MenuItemController())->delete('WFID', $_ids);
+                            break;
+
                         case 'objectacl': 
                             (new ObjectAclController())->delete('WFID', $_ids);
                             break;
 
                         case 'option': 
                             (new OptionController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'page': 
+                            (new PageController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'pagegallery': 
+                            (new PageGalleryController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'pagelink': 
+                            (new PageLinkController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'pagelinktype': 
+                            (new PageLinkTypeController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'pagesection': 
+                            (new PageSectionController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'pagewidget': 
+                            (new PageWidgetController())->delete('WFID', $_ids);
                             break;
 
                         case 'parameter': 
@@ -479,6 +511,34 @@ class _WorkflowStageController extends __AppController
                             (new ParameterTypeController())->delete('WFID', $_ids);
                             break;
 
+                        case 'post': 
+                            (new PostController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'postcategory': 
+                            (new PostCategoryController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'postgallery': 
+                            (new PostGalleryController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'postrelation': 
+                            (new PostRelationController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'postrelationtype': 
+                            (new PostRelationTypeController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'postsection': 
+                            (new PostSectionController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'posttype': 
+                            (new PostTypeController())->delete('WFID', $_ids);
+                            break;
+
                         case 'recyclebin': 
                             (new RecycleBinController())->delete('WFID', $_ids);
                             break;
@@ -489,6 +549,10 @@ class _WorkflowStageController extends __AppController
 
                         case 'screenfield': 
                             (new ScreenFieldController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'template': 
+                            (new TemplateController())->delete('WFID', $_ids);
                             break;
 
                         case 'user': 
@@ -517,6 +581,14 @@ class _WorkflowStageController extends __AppController
 
                         case 'valuetype': 
                             (new ValueTypeController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'widgetposition': 
+                            (new WidgetPositionController())->delete('WFID', $_ids);
+                            break;
+
+                        case 'widgettype': 
+                            (new WidgetTypeController())->delete('WFID', $_ids);
                             break;
 
                         case 'workflow': 

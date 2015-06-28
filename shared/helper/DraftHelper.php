@@ -4,6 +4,8 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
+defined('APPLICATION_DIR') OR exit();
+
 class DraftHelper
 {
     static function saveDraft($module, $key, $data) {

@@ -48,33 +48,6 @@ function remove_attachment(element, attachment, spanid)
                             <{assign var='tmp_value' value=''}>
                         <{/if}>
                                                     
-Notice: Undefined variable: codeboxes in D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl on line 14
-
-Call Stack:
-    0.0000     276640   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1132928   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0300    3051704   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2516
-  113.9968    8777328   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:311
-  237.8510    9889456   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:956
-  238.0610   10018552   6. InputTemplateGenerator->generateInputTemplateFile() D:\wamp\www\generator\generate.php:998
-  238.0610   10071056   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl') D:\wamp\www\generator\base\InputTemplateGenerator.php:47
-  238.0710   10201232   8. include('D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl:46
-
-
-Warning: in_array() expects parameter 2 to be array, null given in D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl on line 14
-
-Call Stack:
-    0.0000     276640   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1132928   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0300    3051704   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2516
-  113.9968    8777328   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:311
-  237.8510    9889456   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:956
-  238.0610   10018552   6. InputTemplateGenerator->generateInputTemplateFile() D:\wamp\www\generator\generate.php:998
-  238.0610   10071056   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl') D:\wamp\www\generator\base\InputTemplateGenerator.php:47
-  238.0710   10201232   8. include('D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl:46
-  238.0710   10201520   9. in_array() D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl:14
-
-
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`userpreference_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                                     
@@ -92,33 +65,6 @@ Call Stack:
                             <{assign var='tmp_value' value=''}>
                         <{/if}>
                                                     
-Notice: Undefined variable: codeboxes in D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl on line 14
-
-Call Stack:
-    0.0000     276640   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1132928   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0300    3051704   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2516
-  113.9968    8777328   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:311
-  237.8510    9889456   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:956
-  238.0610   10018552   6. InputTemplateGenerator->generateInputTemplateFile() D:\wamp\www\generator\generate.php:998
-  238.0610   10071056   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl') D:\wamp\www\generator\base\InputTemplateGenerator.php:47
-  238.0810   10201424   8. include('D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl:46
-
-
-Warning: in_array() expects parameter 2 to be array, null given in D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl on line 14
-
-Call Stack:
-    0.0000     276640   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1132928   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0300    3051704   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2516
-  113.9968    8777328   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:311
-  237.8510    9889456   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:956
-  238.0610   10018552   6. InputTemplateGenerator->generateInputTemplateFile() D:\wamp\www\generator\generate.php:998
-  238.0610   10071056   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl') D:\wamp\www\generator\base\InputTemplateGenerator.php:47
-  238.0810   10201424   8. include('D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.input.tpl:46
-  238.0810   10201496   9. in_array() D:\wamp\www\generator\meta\overriding\vendhq\item.input.tpl:14
-
-
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-dashboard" name="`$prefix`userpreference_formdata_ID_DASHBOARD" value=$formdata.ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                                     

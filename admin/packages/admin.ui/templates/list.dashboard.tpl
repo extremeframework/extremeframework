@@ -118,10 +118,10 @@
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usergroup" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -130,10 +130,10 @@
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usergroup" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -142,10 +142,10 @@
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserGroup')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_GROUP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usergroup" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_GROUP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>

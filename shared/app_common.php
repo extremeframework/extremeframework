@@ -78,7 +78,7 @@ function json_extract($json, $property) {
 }
 
 // TODO: use cache
-function get_option($option, $default = null, $context = null) {
+function get_option($option, $default = null, $context = null, $is_required = true) {
     static $options = null;
 
     if ($options == null) {
@@ -99,7 +99,7 @@ function get_option($option, $default = null, $context = null) {
     $value = isset($options[$context][$option])? $options[$context][$option] : '';
 
     if (empty($value)) {
-        if (empty($default)) {
+        if (empty($default) && $is_required) {
             die("<div style=\"color:orange\">[ERROR] Configuration option '$option' ".($context? "of domain '$context' " : '')."is required.</div>");
         }
 
@@ -109,8 +109,8 @@ function get_option($option, $default = null, $context = null) {
  	return $value;
 }
 
-function get_theme_option($option, $default = null) {
-    return get_option($option, $default, THEME_NAME);
+function get_theme_option($option, $default = null, $is_required = true) {
+    return get_option($option, $default, THEME_NAME, $is_required);
 }
 
 function get_request_param($name, $default = '') {

@@ -387,28 +387,12 @@ class _UserGroupController extends __AppController
             if (!empty($relations)) {
                 foreach ($relations as $module) {
                     switch ($module) {
-                        case 'usergroup': 
-                            (new UserGroupController())->delete('PARENT', $_ids);
-                            break;
-
                         case 'accessright': 
                             (new AccessRightController())->delete('ID_USER_GROUP', $_ids);
                             break;
 
-                        case 'fieldacl': 
-                            (new FieldAclController())->delete('ID_USER_GROUP', $_ids);
-                            break;
-
-                        case 'objectacl': 
-                            (new ObjectAclController())->delete('ID_USER_GROUP', $_ids);
-                            break;
-
                         case 'usermembership': 
                             (new UserMembershipController())->delete('ID_USER_GROUP', $_ids);
-                            break;
-
-                        case 'workflowtransition': 
-                            (new WorkflowTransitionController())->delete('ID_USER_GROUP', $_ids);
                             break;
 
                         default:

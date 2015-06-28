@@ -63,8 +63,11 @@ class Framework {
         $smarty->addTemplateDir($directory);
     }
 
-    static function registerClassSearchDir($searchdir) {
-        spl_autoload_register(function($classname) use ($searchdir) {
+    static function registerClassSearchDir($searchdir, $namespace = '') {
+        spl_autoload_register(function($classname) use ($searchdir, $namespace) {
+            if (!empty($namespace)) {
+                $classname = preg_replace('/^'.preg_quote($namespace.'\\').'/i', '', $classname);
+            }
             if (preg_match('/^DataObject_(.*)$/i', $classname, $matches)) {
                 $path = $searchdir."/table/".$matches[1].".php";
             } else if (preg_match('/(Controller)$/i', $classname)) {

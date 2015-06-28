@@ -111,56 +111,24 @@
     <{plugin key="usergroup_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.usergroup) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
             <{if isset($smarty.session.acl.accessright) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
-            <{if isset($smarty.session.acl.fieldacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.objectacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
             <{if isset($smarty.session.acl.usermembership) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowtransition) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
     
             <{if $canaccess2anytab}>
             <div id="usergrouptabs" class="section">
                 <ul>
-                                            <{if Framework::hasModule('UserGroup') && isset($smarty.session.acl.usergroup) }>
-                            <li><a href="#tab-usergroups"><{label key="L_USER_GROUP"}> <span class="badge usergroup-badge-count"></span></a></li>
-                        <{/if}>
                                             <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
                             <li><a href="#tab-accessrights"><{label key="L_ACCESS_RIGHT"}> <span class="badge accessright-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                            <li><a href="#tab-fieldacls"><{label key="L_FIELD_ACL"}> <span class="badge fieldacl-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                            <li><a href="#tab-objectacls"><{label key="L_OBJECT_ACL"}> <span class="badge objectacl-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                             <li><a href="#tab-usermemberships"><{label key="L_USER_MEMBERSHIP"}> <span class="badge usermembership-badge-count"></span></a></li>
                         <{/if}>
-                                            <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{label key="L_WORKFLOW_TRANSITION"}> <span class="badge workflowtransition-badge-count"></span></a></li>
-                        <{/if}>
                                     </ul>
 
-                                    <{if Framework::hasModule('UserGroup') && isset($smarty.session.acl.usergroup) }>
-                        <div id="tab-usergroups">
-                        	<{if true || $tab == 'usergroups'}>
-                            	<h2 class="print"><{label key="L_USER_GROUP"}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserGroup" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->ID`" where=""  template='widgetlist.usergroup.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
                                     <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
                         <div id="tab-accessrights">
                         	<{if true || $tab == 'accessrights'}>
@@ -169,35 +137,11 @@
                                                             <{/if}>
                         </div>
                     <{/if}>
-                                    <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                        <div id="tab-fieldacls">
-                        	<{if true || $tab == 'fieldacls'}>
-                            	<h2 class="print"><{label key="L_FIELD_ACL"}></h2>
-                                                                    <{ajaxmodule class="WidgetListFieldAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.fieldacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                        <div id="tab-objectacls">
-                        	<{if true || $tab == 'objectacls'}>
-                            	<h2 class="print"><{label key="L_OBJECT_ACL"}></h2>
-                                                                    <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
                                     <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                         <div id="tab-usermemberships">
                         	<{if true || $tab == 'usermemberships'}>
                             	<h2 class="print"><{label key="L_USER_MEMBERSHIP"}></h2>
                                                                     <{ajaxmodule class="WidgetListUserMembership" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.usermembership.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                        <div id="tab-workflowtransitions">
-                        	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{label key="L_WORKFLOW_TRANSITION"}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.workflowtransition.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

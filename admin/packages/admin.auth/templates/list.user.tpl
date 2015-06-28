@@ -139,29 +139,11 @@
     <div id="usercopyrelations" style="display:none" title="<{$smarty.const.L_COPY}> <{$smarty.const.L_USER|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{label key="L_COPY_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{label key="L_COPY_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{label key="L_COPY_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{label key="L_COPY_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -169,29 +151,11 @@
     <div id="userapproverelations" style="display:none" title="<{$smarty.const.L_APPROVE}> <{$smarty.const.L_USER|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -199,29 +163,11 @@
     <div id="userdeleterelations" style="display:none" title="<{$smarty.const.L_DELETE}> <{$smarty.const.L_USER|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
-                            <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_CHANGE_LOG" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_FIELD_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{label key="L_DELETE_ALSO"}> <{label key="L_OBJECT_ACL" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{label key="L_DELETE_ALSO"}> <{label key="L_RECYCLE_BIN" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_LOG" format="lower"}></li>
-                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_MEMBERSHIP" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="lower"}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="lower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{label key="L_DELETE_ALSO"}> <{label key="L_USER_PREFERENCE" format="strtolower"}></li>
                 <{/if}>
                     </ul>
     </div>

@@ -147,6 +147,9 @@
             <{if isset($smarty.session.acl.recyclebin) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.template) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.workflowapplication) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -192,6 +195,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
                             <li><a href="#tab-recyclebins"><{label key="L_RECYCLE_BIN"}> <span class="badge recyclebin-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
+                            <li><a href="#tab-templates"><{label key="L_TEMPLATE"}> <span class="badge template-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
                             <li><a href="#tab-workflowapplications"><{label key="L_WORKFLOW_APPLICATION"}> <span class="badge workflowapplication-badge-count"></span></a></li>
@@ -294,6 +300,14 @@
                         	<{if true || $tab == 'recyclebins'}>
                             	<h2 class="print"><{label key="L_RECYCLE_BIN"}></h2>
                                                                     <{ajaxmodule class="WidgetListRecycleBin" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.recyclebin.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
+                        <div id="tab-templates">
+                        	<{if true || $tab == 'templates'}>
+                            	<h2 class="print"><{label key="L_TEMPLATE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListTemplate" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.template.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>
