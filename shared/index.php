@@ -129,8 +129,5 @@ function application_route($url = null) {
     exit(0);
 }
 
-// Apply handshake plugin
-LicenseCheckHelper::apply_handshake_plugin();
-
 // Route application
 application_route();
