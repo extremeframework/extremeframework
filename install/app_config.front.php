@@ -2,6 +2,7 @@
 $scheme = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https:' : 'http:';
 
 define('APPLICATION_NAME' 	                    , '{APPLICATION_NAME}');
+define('APPLICATION_TYPE' 	                    , 'front');
 define('APPLICATION_DIR'						, realpath(dirname(__FILE__)));
 define('APPLICATION_URL'						, $scheme.'{APPLICATION_URL}');
 define('THEME_NAME'						        , '{THEME_NAME}');

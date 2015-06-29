@@ -5,6 +5,9 @@ define('LICENSE_KEY'                            , '{LICENSE_KEY}');
 // Library
 define('LIBRARY_DIR'                            , '{LIBRARY_DIR}');
 
+// Configuration directory
+define('CONFIG_DIR'						        , realpath(dirname(__FILE__).'/../config'));
+
 // Shared directory
 define('SHARED_DIR'						        , realpath(dirname(__FILE__)));
 

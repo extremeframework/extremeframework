@@ -5,7 +5,7 @@ Framework::registerClassSearchDir(dirname(__FILE__));
 
 ///////////////////////////////////////////////////////////
 // Packages
-Framework::loadPackages(dirname(__FILE__));
+Framework::loadPackages(dirname(__FILE__).'/packages');
 
 ///////////////////////////////////////////////////////////
 // Register template directories

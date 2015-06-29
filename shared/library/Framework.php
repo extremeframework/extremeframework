@@ -63,35 +63,76 @@ class Framework {
         $smarty->addTemplateDir($directory);
     }
 
+    static function setCachedClassPath($classname, $cachedpath) {
+        $cache = Cache::context('Framework::classpaths');
+
+        $cache->set($classname, $cachedpath, 86400);
+    }
+
+    static function hasCachedClassPath($classname) {
+        $cache = Cache::context('Framework::classpaths');
+
+        return $cache->has($classname);
+    }
+
+    static function getCachedClassPath($classname) {
+        $cache = Cache::context('Framework::classpaths');
+
+        return $cache->get($classname);
+    }
+
     static function registerClassSearchDir($searchdir, $namespace = '') {
+        static $registered = array();
+
+        if (isset($registered[$searchdir.'-'.$namespace])) {
+            return;
+        }
+
+        $registered[$searchdir.'-'.$namespace] = true;
+
         spl_autoload_register(function($classname) use ($searchdir, $namespace) {
             if (!empty($namespace)) {
                 $classname = preg_replace('/^'.preg_quote($namespace.'\\').'/i', '', $classname);
             }
-            if (preg_match('/^DataObject_(.*)$/i', $classname, $matches)) {
-                $path = $searchdir."/table/".$matches[1].".php";
-            } else if (preg_match('/(Controller)$/i', $classname)) {
-                $path = $searchdir."/controller/$classname.php";
-            } else if (preg_match('/(Helper)$/i', $classname)) {
-                $path = $searchdir."/helper/$classname.php";
-            } else if (preg_match('/Api$/i', $classname)) {
-                $path = $searchdir."/api/$classname.php";
-            } else if (preg_match('/Model$/i', $classname)) {
-                $path = $searchdir."/model/$classname.php";
-            } else if (preg_match('/(^Widget|Module$)/i', $classname)) {
-                $path = $searchdir."/module/$classname.php";
-            } else {
-                $path = $searchdir."/library/$classname.php";
-            }
 
-            if (file_exists($path)) {
-                require_once($path);
+            $cachedpath = '';
+
+            if (self::hasCachedClassPath($classname)) {
+                $cachedpath = self::getCachedClassPath($classname);
             } else {
-                $path = self::getObfuscatedFileName($path);
+                if (preg_match('/^DataObject_(.*)$/i', $classname, $matches)) {
+                    $path = $searchdir."/table/".$matches[1].".php";
+                } else if (preg_match('/(Controller)$/i', $classname)) {
+                    $path = $searchdir."/controller/$classname.php";
+                } else if (preg_match('/(Helper)$/i', $classname)) {
+                    $path = $searchdir."/helper/$classname.php";
+                } else if (preg_match('/Api$/i', $classname)) {
+                    $path = $searchdir."/api/$classname.php";
+                } else if (preg_match('/Model$/i', $classname)) {
+                    $path = $searchdir."/model/$classname.php";
+                } else if (preg_match('/(^Widget|Module$)/i', $classname)) {
+                    $path = $searchdir."/module/$classname.php";
+                } else {
+                    $path = $searchdir."/library/$classname.php";
+                }
 
                 if (file_exists($path)) {
-                    require_once($path);
+                    $cachedpath = $path;
+                } else {
+                    $path = self::getObfuscatedFileName($path);
+
+                    if (file_exists($path)) {
+                        $cachedpath = $path;
+                    }
                 }
+
+                if (!empty($cachedpath)) {
+                    self::setCachedClassPath($classname, $cachedpath);
+                }
+            }
+
+            if (!empty($cachedpath)) {
+                require_once($cachedpath);
             }
         });
     }
@@ -108,9 +149,7 @@ class Framework {
         return $dir.'/'.$newfile.(!empty($extension)? '.'.$extension : '');
     }
 
-    static function loadPackages($appdir) {
-        $packagesdir = $appdir.'/packages';
-
+    static function loadPackages($packagesdir) {
         if (is_dir($packagesdir)) {
             $packages = include ($packagesdir.'/packages.php');
 
@@ -133,7 +172,13 @@ class Framework {
     }
 
     static function hasModule($name) {
-        return class_exists($name.'Model');
+        $cache = Cache::context('Framework::hasModule');
+
+        if (!$cache->has($name)) {
+            $cache->set($name, class_exists($name.'Model'), 86400);
+        }
+
+        return $cache->get($name);
     }
 
 	static public function redirect($url) {

@@ -13,7 +13,7 @@ class FieldHelper {
         $key = 'system.fieldtooltips';
 
         // x. Load ALL custom fields in the system
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
             $model = new FieldModel();
 
             $model->whereAdd("TOOLTIP IS NOT NULL AND TOOLTIP != ''");
@@ -26,10 +26,10 @@ class FieldHelper {
                 $fieldtooltips[$model->MODULE][$model->COLUMN] = $model->TOOLTIP;
             }
 
-            CacheHelper::setCache($key, $fieldtooltips);
+            Cache::set($key, $fieldtooltips);
         }
 
-        $fieldtooltips = CacheHelper::getCache($key);
+        $fieldtooltips = Cache::get($key);
 
         return isset($fieldtooltips[$module])? $fieldtooltips[$module] : array();
     }

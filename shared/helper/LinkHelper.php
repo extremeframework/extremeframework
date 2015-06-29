@@ -68,7 +68,7 @@ class LinkHelper {
     static function loadPages($reload = false) {
         $cachekey = 'front.pages';
 
-        if (!CacheHelper::hasCache($cachekey) || $reload) {
+        if (!Cache::has($cachekey) || $reload) {
             $model = new PageModel();
 
             $model->selectAdd();
@@ -89,16 +89,16 @@ class LinkHelper {
             }
 
             // Cache
-            CacheHelper::setCache($cachekey, $pages);
+            Cache::set($cachekey, $pages);
         }
 
-        return CacheHelper::getCache($cachekey);
+        return Cache::get($cachekey);
     }
 
     static function loadPageSlugs() {
         $cachekey = 'front.page_slugs';
 
-        if (!CacheHelper::hasCache($cachekey)) {
+        if (!Cache::has($cachekey)) {
             // Page
             $pages = self::loadPages();
 
@@ -112,10 +112,10 @@ class LinkHelper {
             }
 
             // Cache
-            CacheHelper::setCache($cachekey, $page_slugs);
+            Cache::set($cachekey, $page_slugs);
         }
 
-        return CacheHelper::getCache($cachekey);
+        return Cache::get($cachekey);
     }
 
     static function getFullPageSlug($pageid) {
@@ -171,7 +171,7 @@ class LinkHelper {
     static function loadCategorySlugs() {
         $cachekey = 'front.category_slugs';
 
-        if (!CacheHelper::hasCache($cachekey)) {
+        if (!Cache::has($cachekey)) {
             // Categories
             $categorys = self::loadCategories();
 
@@ -183,16 +183,16 @@ class LinkHelper {
             }
 
             // Cache
-            CacheHelper::setCache($cachekey, $category_slugs);
+            Cache::set($cachekey, $category_slugs);
         }
 
-        return CacheHelper::getCache($cachekey);
+        return Cache::get($cachekey);
     }
 
     static function loadCategories() {
         $cachekey = 'front.categories';
 
-        if (!CacheHelper::hasCache($cachekey)) {
+        if (!Cache::has($cachekey)) {
             $model = new PostCategoryModel();
             $model->find();
 
@@ -208,9 +208,9 @@ class LinkHelper {
             }
 
             // x. Cache
-            CacheHelper::setCache($cachekey, $categories);
+            Cache::set($cachekey, $categories);
         }
 
-        return CacheHelper::getCache($cachekey);
+        return Cache::get($cachekey);
     }
 }

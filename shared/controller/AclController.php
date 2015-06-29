@@ -227,7 +227,7 @@ class AclController
 
         $key = 'system.aclenabledcolumns.'.$module.'.'.$action;
 
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
     	    $user_id = $_SESSION['user']->ID;
     	    $group_ids = $_SESSION['memberships.groups'];
 
@@ -273,10 +273,10 @@ class AclController
                 }
             }
 
-            CacheHelper::setCache($key, $aclenabledcolumns);
+            Cache::set($key, $aclenabledcolumns);
         }
 
-        $aclenabledcolumns = CacheHelper::getCache($key);
+        $aclenabledcolumns = Cache::get($key);
 
         return $aclenabledcolumns;
     }
@@ -288,7 +288,7 @@ class AclController
 
         $key = 'system.excludedcolumns';
 
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
             $model = new FieldModel();
 
             $model->IS_EXCLUDED = true;
@@ -301,10 +301,10 @@ class AclController
                 $excludedcolumns[$model->MODULE][$model->COLUMN] = true;
             }
 
-            CacheHelper::setCache($key, $excludedcolumns);
+            Cache::set($key, $excludedcolumns);
         }
 
-        $excludedcolumns = CacheHelper::getCache($key);
+        $excludedcolumns = Cache::get($key);
 
         return isset($excludedcolumns[$module])? $excludedcolumns[$module] : array();
     }

@@ -900,7 +900,7 @@ class __AppController {
 
         $key = 'system.accessgranteditems.'.$module;
 
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
     	    $user_id = $_SESSION['user']->ID;
     	    $group_ids = $_SESSION['memberships.groups'];
 
@@ -925,10 +925,10 @@ class __AppController {
                 }
             }
 
-            CacheHelper::setCache($key, array('includes' => $includes, 'excludes' => $excludes, 'all_details' => $all_details));
+            Cache::set($key, array('includes' => $includes, 'excludes' => $excludes, 'all_details' => $all_details));
         }
 
-        $cache = CacheHelper::getCache($key);
+        $cache = Cache::get($key);
 
         $all_details = $cache['all_details'];
         $includes = $cache['includes'];

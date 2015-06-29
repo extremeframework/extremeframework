@@ -77,11 +77,10 @@ function json_extract($json, $property) {
     return is_object($json) && property_exists($json, $property)? $json->$property : array();
 }
 
-// TODO: use cache
 function get_option($option, $default = null, $context = null, $is_required = true) {
-    static $options = null;
+    $cache = Cache::context('get_option');
 
-    if ($options == null) {
+    if (!$cache->has('options')) {
     	$model = new OptionModel();
 
         $model->selectAdd();
@@ -94,8 +93,11 @@ function get_option($option, $default = null, $context = null, $is_required = tr
      	while ($model->fetch()) {
      	    $options[$model->CONTEXT][$model->CODE] = $model->VALUE;
         }
+
+        $cache->set('options', $options, 86400);
     }
 
+    $options = $cache->get('options');
     $value = isset($options[$context][$option])? $options[$context][$option] : '';
 
     if (empty($value)) {

@@ -15,6 +15,7 @@ require_once('DB/DataObject.php');
 require_once('Smarty/libs/SmartyBC.class.php');
 require_once('Framework.php');
 require_once('Route.php');
+require_once('Cache.php');
 
 ///////////////////////////////////////////////////////////
 // DB_DataObject configuration
@@ -44,6 +45,18 @@ ini_set("default_charset","utf8");
 include(THEME_DIR.'/autoload.php');
 include(APPLICATION_DIR.'/autoload.php');
 include(SHARED_DIR.'/autoload.php');
+
+///////////////////////////////////////////////////////////
+// External packages
+Framework::loadPackages(realpath(dirname(__FILE__).'/../packages'));
+
+///////////////////////////////////////////////////////////
+// Start session
+if (defined('APPLICATION_NAME')) {
+	session_name(md5(APPLICATION_NAME));
+}
+
+session_start();
 
 ///////////////////////////////////////////////////////////
 // Include core functions
@@ -76,10 +89,3 @@ PEAR::setErrorHandling(PEAR_ERROR_CALLBACK, function ($error) {
     file_put_contents(APPLICATION_DIR.'/errors.log', $log, FILE_APPEND);
 });
 
-///////////////////////////////////////////////////////////
-// Start session
-if (defined('APPLICATION_NAME')) {
-	session_name(md5(APPLICATION_NAME));
-}
-
-session_start();

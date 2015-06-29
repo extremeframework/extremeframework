@@ -12,7 +12,7 @@ class AdminActionHelper {
 
         $key = 'system.adminactions';
 
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
             $model = new AdminActionModel();
 
     	    $model->find();
@@ -23,10 +23,10 @@ class AdminActionHelper {
                 $actions[$model->MODULE][$model->SCREEN][] = clone $model;
             }
 
-            CacheHelper::setCache($key, $actions);
+            Cache::set($key, $actions);
         }
 
-        $actions = CacheHelper::getCache($key);
+        $actions = Cache::get($key);
 
         return isset($actions[$module][$screen])? $actions[$module][$screen] : array();
     }

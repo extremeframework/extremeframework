@@ -13,7 +13,7 @@ class AdminViewHelper {
         $key = 'system.adminviews';
 
         // x. Load ALL admin views in the system
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
             $model = new AdminViewModel();
 
             $model->find();
@@ -24,10 +24,10 @@ class AdminViewHelper {
                 $adminviews[$model->MODULE][$model->SCREEN][] = clone $model;
             }
 
-            CacheHelper::setCache($key, $adminviews);
+            Cache::set($key, $adminviews);
         }
 
-        $adminviews = CacheHelper::getCache($key);
+        $adminviews = Cache::get($key);
 
         return isset($adminviews[$module][$screen])? $adminviews[$module][$screen] : array();
     }

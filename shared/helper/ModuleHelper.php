@@ -13,7 +13,7 @@ class ModuleHelper {
         $key = 'system.settings.comments';
 
         // x. Load modules in the system
-        if (!CacheHelper::hasCache($key)) {
+        if (!Cache::has($key)) {
             $model = new AdminModuleModel();
 
             $model->find();
@@ -24,10 +24,10 @@ class ModuleHelper {
                 $modules[$model->MODULE] = $model->IS_COMMENT_ENABLED;
             }
 
-            CacheHelper::setCache($key, $modules);
+            Cache::set($key, $modules);
         }
 
-        $modules = CacheHelper::getCache($key);
+        $modules = Cache::get($key);
 
         return isset($modules[$module])? $modules[$module] : false;
     }
