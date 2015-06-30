@@ -12,7 +12,7 @@
 defined('APPLICATION_DIR') OR exit();
 
 class WidgetListAdminFilter extends AdminFilterController {
-    function fetch($params, $smarty) {
+    function fetch($params) {
         if (isset($params['method']) && trim($params['method']) != '') {
             $method = trim($params['method']);
 
@@ -24,8 +24,6 @@ class WidgetListAdminFilter extends AdminFilterController {
         $template = isset($params['template'])? $params['template'] : 'widgetlist.adminfilter.tpl';
         $limit = isset($params['limit'])? $params['limit'] : 10;
         $readonly = isset($params['readonly'])? $params['readonly'] : false;
-
-        $smarty = clone $smarty;
 
         if (AclController::hasPermission('adminfilter')) {
             $vars = array_keys(get_object_vars(new AdminFilterModel()));
@@ -86,6 +84,8 @@ class WidgetListAdminFilter extends AdminFilterController {
 
             $pagination = new Pagination($pagination['total'], ($pagination['page']-1)*$pagination['pagesize'], $pagination['pagesize']);
             $pagination = $pagination->getPageLinks();
+
+            $smarty = $this->getSmarty();
 
     		$smarty->assign('rows', $rows);
     		$smarty->assign('pagination', $pagination);

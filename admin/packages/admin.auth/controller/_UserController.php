@@ -17,6 +17,12 @@ class _UserController extends __AppController
         PluginManager::do_action('user_init');
     }
 
+    protected static function getSmarty() {
+        $packageroot = realpath(dirname(__FILE__).'/../');
+
+        return Framework::getSmarty($packageroot);
+    }
+
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('EMAIL', $columns2check) && !empty($model->EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
@@ -340,7 +346,7 @@ class _UserController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->FIRST_NAME);
 		}
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'user');
@@ -534,7 +540,7 @@ class _UserController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = Framework::getSmarty();
+            $smarty = self::getSmarty();
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -1306,7 +1312,7 @@ class _UserController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1381,7 +1387,7 @@ class _UserController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1502,7 +1508,7 @@ class _UserController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);

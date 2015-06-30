@@ -10,7 +10,6 @@ class AjaxController
 		$class = isset($_REQUEST['class'])? $_REQUEST['class'] : '';
         $handler = new $class();
 
-        $smarty = Framework::getSmarty();
-        echo $handler->fetch($_REQUEST, $smarty);
+        echo $handler->fetch($_REQUEST);
     }
 }

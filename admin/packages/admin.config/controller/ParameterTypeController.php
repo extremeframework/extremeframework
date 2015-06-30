@@ -51,7 +51,7 @@ class ParameterTypeController extends _ParameterTypeController
 				$params = json_decode(html_entity_decode($extra), true);
 				$params['value'] = $selectedvalue;
 
-				$smarty = Framework::getSmarty();
+				$smarty = self::getSmarty();
 				$html = smarty_function_html_ref_select($params, $smarty);
 
 				if (preg_match('/(<option.*)<\/select>/is', $html, $matches)) {

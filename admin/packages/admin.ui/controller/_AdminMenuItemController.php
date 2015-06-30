@@ -17,6 +17,12 @@ class _AdminMenuItemController extends __AppController
         PluginManager::do_action('adminmenuitem_init');
     }
 
+    protected static function getSmarty() {
+        $packageroot = realpath(dirname(__FILE__).'/../');
+
+        return Framework::getSmarty($packageroot);
+    }
+
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
@@ -292,7 +298,7 @@ class _AdminMenuItemController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
 		}
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'adminmenuitem');
@@ -482,7 +488,7 @@ class _AdminMenuItemController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = Framework::getSmarty();
+            $smarty = self::getSmarty();
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -1298,7 +1304,7 @@ class _AdminMenuItemController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1373,7 +1379,7 @@ class _AdminMenuItemController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1496,7 +1502,7 @@ class _AdminMenuItemController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = Framework::getSmarty();
+		$smarty = self::getSmarty();
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
