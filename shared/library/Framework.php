@@ -118,7 +118,7 @@ class Framework {
                         }
 
                         if (!isset($classpaths[$classname])) {
-                             $classpaths[$classname] = $path;
+                             $classpaths[strtolower($classname)] = $path;
                         }
                     }
                 }
@@ -141,6 +141,8 @@ class Framework {
             $registered = true;
 
             spl_autoload_register(function($classname) {
+                $classname = strtolower($classname);
+
                 // Cache context
                 $cache = Cache::context(self::getCacheContextKey());
 
