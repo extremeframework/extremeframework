@@ -1,0 +1,8 @@
+Options All -Indexes
+RewriteEngine On
+
+RewriteRule ^js/(.+)$ public/js/$1 [L]
+RewriteRule ^css/(.+)$ public/css/$1 [L]
+RewriteRule ^fonts/(.+)$ public/fonts/$1 [L]
+RewriteRule ^images/(.+)$ public/images/$1 [L]
+RewriteRule ^uploads/(.+)$ public/uploads/$1 [L]

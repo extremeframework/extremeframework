@@ -1,0 +1,1 @@
+<{include file="template.blog-home.tpl" show_category_description="true"}>
