@@ -25,7 +25,7 @@ class Framework {
         return isset(self::$cache[$key])? self::$cache[$key] : null;
     }
 
-    static function getSmarty() {
+    static function getSmarty($packageroot = '') {
         $smarty = self::get('smarty');
 
         if ($smarty === null) {
@@ -35,8 +35,6 @@ class Framework {
             $smarty->right_delimiter    = RIGHT_DELIMITER;
             $smarty->caching            = false;
             $smarty->cache_lifetime     = 3600;
-            $smarty->setTemplateDir     (TEMPLATE_DIR.'/overriding');
-            $smarty->addTemplateDir     (TEMPLATE_DIR);
             $smarty->compile_dir        = TEMPLATE_C_DIR;
             $smarty->config_dir         = TEMPLATE_DIR;
             $smarty->config_overwrite   = true;
@@ -54,87 +52,107 @@ class Framework {
             self::register('smarty', $smarty);
         }
 
+        $smarty->setTemplateDir(null);
+
+        $templatedirs = self::getTemplateDirs($packageroot);
+
+        foreach ($templatedirs as $templatedir) {
+            $smarty->addTemplateDir($templatedir);
+        }
+
+        $smarty->addTemplateDir(TEMPLATE_DIR.'/overriding');
+        $smarty->addTemplateDir(TEMPLATE_DIR);
+
         return $smarty;
     }
 
-    static function registerTemplateDir($directory) {
-        $smarty = self::getSmarty();
-
-        $smarty->addTemplateDir($directory);
+    private static function getCacheContextKey() {
+        return APPLICATION_NAME.'::Framework';
     }
 
-    static function setCachedClassPath($classname, $cachedpath) {
-        $cache = Cache::context('Framework::classpaths');
+    static function registerTemplateDir($directory, $packageroot = '') {
+        $cache = Cache::context(self::getCacheContextKey());
 
-        $cache->set($classname, $cachedpath, 86400);
-    }
+        $templatedirs = $cache->get('templatedirs');
 
-    static function hasCachedClassPath($classname) {
-        $cache = Cache::context('Framework::classpaths');
+        if (!isset($templatedirs[$packageroot])) {
+            $templatedirs[$packageroot][] = $directory;
 
-        return $cache->has($classname);
-    }
-
-    static function getCachedClassPath($classname) {
-        $cache = Cache::context('Framework::classpaths');
-
-        return $cache->get($classname);
-    }
-
-    static function registerClassSearchDir($searchdir, $namespace = '') {
-        static $registered = array();
-
-        if (isset($registered[$searchdir.'-'.$namespace])) {
-            return;
+            $cache->set('templatedirs', $templatedirs);
         }
+    }
 
-        $registered[$searchdir.'-'.$namespace] = true;
+    private static function getTemplateDirs($packageroot) {
+        $cache = Cache::context(self::getCacheContextKey());
 
-        spl_autoload_register(function($classname) use ($searchdir, $namespace) {
-            if (!empty($namespace)) {
-                $classname = preg_replace('/^'.preg_quote($namespace.'\\').'/i', '', $classname);
-            }
+        $templatedirs = $cache->get('templatedirs');
 
-            $cachedpath = '';
+        return isset($templatedirs[$packageroot])? $templatedirs[$packageroot] : array();
+    }
 
-            if (self::hasCachedClassPath($classname)) {
-                $cachedpath = self::getCachedClassPath($classname);
-            } else {
-                if (preg_match('/^DataObject_(.*)$/i', $classname, $matches)) {
-                    $path = $searchdir."/table/".$matches[1].".php";
-                } else if (preg_match('/(Controller)$/i', $classname)) {
-                    $path = $searchdir."/controller/$classname.php";
-                } else if (preg_match('/(Helper)$/i', $classname)) {
-                    $path = $searchdir."/helper/$classname.php";
-                } else if (preg_match('/Api$/i', $classname)) {
-                    $path = $searchdir."/api/$classname.php";
-                } else if (preg_match('/Model$/i', $classname)) {
-                    $path = $searchdir."/model/$classname.php";
-                } else if (preg_match('/(^Widget|Module$)/i', $classname)) {
-                    $path = $searchdir."/module/$classname.php";
-                } else {
-                    $path = $searchdir."/library/$classname.php";
-                }
+    static function registerClassSearchDir($classdir, $namespace = '') {
+        // Cache context
+        $cache = Cache::context(self::getCacheContextKey());
 
-                if (file_exists($path)) {
-                    $cachedpath = $path;
-                } else {
-                    $path = self::getObfuscatedFileName($path);
+        // Get cache data
+        $registered = $cache->get('registered');
+        $classpaths = $cache->get('classpaths');
 
-                    if (file_exists($path)) {
-                        $cachedpath = $path;
+        // If not registered
+        if (!isset($registered[$classdir])) {
+
+            // Sub-directories to search
+            $subdirs = array('controller', 'table', 'model', 'helper', 'library', 'module', 'api');
+
+            foreach ($subdirs as $subdir) {
+                $searchdir = $classdir.'/'.$subdir;
+
+                if (is_dir($searchdir)) {
+                    $files = glob("$searchdir/*.php");
+
+                    foreach ($files as $path) {
+                        $classname = basename($path, '.php');
+
+                        if ($subdir == 'table') {
+                            $classname = 'DataObject_'.$classname;
+                        }
+
+                        if (!isset($classpaths[$classname])) {
+                             $classpaths[$classname] = $path;
+                        }
                     }
                 }
+            }
 
-                if (!empty($cachedpath)) {
-                    self::setCachedClassPath($classname, $cachedpath);
+            $registered[$classdir] = true;
+
+            $cache->set('registered', $registered);
+            $cache->set('classpaths', $classpaths);
+        }
+
+        // Register autoload function
+        self::registerAutoloadFunction();
+    }
+
+    private static function registerAutoloadFunction() {
+        static $registered = false;
+
+        if (!$registered) {
+            $registered = true;
+
+            spl_autoload_register(function($classname) {
+                // Cache context
+                $cache = Cache::context(self::getCacheContextKey());
+
+                // Get cache data
+                $classpaths = $cache->get('classpaths');
+
+                // Resolve class
+                if (isset($classpaths[$classname])) {
+                    require_once($classpaths[$classname]);
                 }
-            }
-
-            if (!empty($cachedpath)) {
-                require_once($cachedpath);
-            }
-        });
+            });
+        }
     }
 
     private function getObfuscatedFileName($path) {
@@ -172,7 +190,7 @@ class Framework {
     }
 
     static function hasModule($name) {
-        $cache = Cache::context('Framework::hasModule');
+        $cache = Cache::context(self::getCacheContextKey().'::modules');
 
         if (!$cache->has($name)) {
             $cache->set($name, class_exists($name.'Model'), 86400);
