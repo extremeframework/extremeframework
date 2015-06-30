@@ -1,0 +1,287 @@
+<div class="edit-main edit_details">
+    <{if isset($messages.menu) }>
+        <ul class="message">
+            <{foreach from=$messages.menu key=field item=message}>
+                <li data-error-field="<{$field}>"><{$message}></li>
+            <{/foreach}>
+        </ul>
+    <{/if}>
+
+    <form name="menuform" id="menuform" class="form-edit scope-main" action="<{$smarty.const.APPLICATION_URL}>/menu/save/?back=1" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="menu_formdata_UUID" value="<{$details->UUID}>" />
+        <input type="hidden" name="view-type" value="edit" />
+        <{if isset($preset)}><input type="hidden" name="preset" value="<{$preset}>" /><{/if}>
+        <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
+        <{if isset($presetparams)}>
+            <{foreach from=$presetparams key=key item=value}>
+                <input type="hidden" name="preset_<{$key}>" value="<{$value}>" />
+                <input type="hidden" name="menu_formdata_<{$key}>" value="<{$value}>" />
+            <{/foreach}>
+        <{/if}>
+
+        <{plugin key="menu_form_top" args=$details}>
+
+                    <!-- Standard layout rows -->
+            <table class="table table-bordered table-custom-layout equal-split">
+                <tbody>
+                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['NAME'])}>
+    
+        <{if $preset == 'NAME'}>
+            <input type="hidden" class="input-name" name="menu_formdata_NAME" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
+            <input type="hidden" class="input-name" name="menu_formdata_NAME" value="<{$details->NAME}>" />
+        <{else}>
+    		<td class="form-row form-row-name form-row-mandatory">
+                <div class="form-field form-field-label">
+        		    <label><{label key="L_MENU_NAME"}><span class="mandatory">*</span></label>
+                </div>
+            </td>
+            <td class="form-row form-row-name form-row-mandatory" colspan="3">
+                <div class="form-field form-field-value column-name">
+                                            
+
+    <input class="input-name input-type-text" type="text" name="<{$prefix}>menu_formdata_NAME" value="<{$details->NAME|escape}>"  />
+                        <{if $columntooltips.NAME}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['CODE'])}>
+    
+        <{if $preset == 'CODE'}>
+            <input type="hidden" class="input-code" name="menu_formdata_CODE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
+            <input type="hidden" class="input-code" name="menu_formdata_CODE" value="<{$details->CODE}>" />
+        <{else}>
+    		<td class="form-row form-row-code form-row-mandatory">
+                <div class="form-field form-field-label">
+        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+                </div>
+            </td>
+            <td class="form-row form-row-code form-row-mandatory" colspan="3">
+                <div class="form-field form-field-value column-code">
+                                            <{if $details->ID && $details->CODE != ''}>
+                            <input type="hidden" class="input-code" name="menu_formdata_CODE" value="<{$details->CODE}>" />
+                            
+    <{$details->CODE|escape}>
+                        <{else}>
+                            
+
+    <input class="input-code input-type-text" type="text" name="<{$prefix}>menu_formdata_CODE" value="<{$details->CODE|escape}>"  />
+                            <{if $columntooltips.CODE}>
+                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
+                            <{/if}>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['CLASS'])}>
+    
+        <{if $preset == 'CLASS'}>
+            <input type="hidden" class="input-class" name="menu_formdata_CLASS" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['CLASS']) && !$acleditablecolumns['CLASS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CLASS'])}>
+            <input type="hidden" class="input-class" name="menu_formdata_CLASS" value="<{$details->CLASS}>" />
+        <{else}>
+    		<td class="form-row form-row-class">
+                <div class="form-field form-field-label">
+        		    <label><{label key="L_CLASS"}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-class" colspan="3">
+                <div class="form-field form-field-value column-class">
+                                            
+
+    <input class="input-class input-type-text" type="text" name="<{$prefix}>menu_formdata_CLASS" value="<{$details->CLASS|escape}>"  />
+                        <{if $columntooltips.CLASS}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CLASS}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                    </tbody>
+            </table>
+        	<!-- Standard layout rows end -->
+        
+        <{if $customfields}>
+            <div class="layout-block layout-block-section">
+                <div class="layout-section">
+                    <div class="layout-section-header">
+                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <div class="header-arrow"></div>
+                        <div class="clearer"></div>
+                    </div>
+                    <div class="layout-section-content">
+                        <table class="table table-bordered table-custom-layout equal-split">
+                            <tbody>
+                                <{foreach from=$customfields item=item}>
+                                    <tr>
+                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                            <div class="form-field form-field-label">
+                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                            </div>
+                                        </td>
+                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                                            </div>
+                                        </td>
+                            		</tr>
+                            	<{/foreach}>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <{/if}>
+
+        <{plugin key="menu_form_bottom" args=$details}>
+    </form>
+</div>
+
+    <{if $details->UUID == 0}>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                                                            alias_hint('menu_formdata_NAME', 'menu_formdata_CODE');
+                                                });
+        </script>
+    <{/if}>
+
+
+<script type="text/javascript">
+    $(function() {
+        if (document.activeElement == document.body) {
+        	$('#menuform:not(.filter) :input:visible:first').focus();
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    $('#menuform :input').change(function() {
+        $('#menuform').data('changed', true);
+    });
+
+        function saveDraft() {
+        if ($('#menuform').length) {
+            if ($('#menuform').data('changed')) {
+                $.ajax({
+                    type: "post",
+                    url: "<{$smarty.const.APPLICATION_URL}>/menu/savedraft/",
+                    data: $('#menuform').serialize()
+                });
+
+                $('#menuform').data('changed', false);
+            }
+        }
+    }
+
+    $(function() {
+        if (window.saveDraftTimer !== 'undefined' && window.saveDraftTimer != null) {
+            window.clearInterval(window.saveDraftTimer);
+        }
+
+        window.saveDraftTimer = window.setInterval(saveDraft, <{$smarty.const.SAVE_DRAFT_INTERVAL}> * 1000);
+    });
+    </script>
+
+<script type="text/javascript">
+    $(function() {
+        $('.message li').each(function(){
+            var li = $(this);
+            var field = li.data('error-field');
+            var target = $('.input-' + field);
+
+            target.closest('tr').addClass('form-row-with-error');
+
+            li.css('cursor', 'pointer').click(function(){
+                target.focus();
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    ///////////////////////////////////////////////////////////////////////////////
+    // VISIBILITY REFLECTION
+    menu_get_editing_model = function () {
+        var model = {};
+
+        var formdata = $('#menuform').find('[name*=menu_formdata]').serializeArray();
+
+        jQuery.map(formdata, function(x) {
+            x.name = x.name.replace('menu_formdata_', '');
+
+            model[x.name] = x.value;
+
+            return x;
+        });
+
+        return model;
+    }
+
+    menu_get_visibility_settings = function (model) {
+        var settings = {};
+
+        // Rules based on dependency settings
+        <{foreach from=$fielddependencies item=item}>
+            <{foreach from=$item->DEPENDENCY_COLUMNS item=column}>
+                settings['<{$column}>'] = in_array(model['<{$item->SOURCE_COLUMN}>'], ['<{implode("', '", $item->SOURCE_VALUES)}>']);
+            <{/foreach}>
+        <{/foreach}>
+
+        return settings;
+    }
+
+    menu_apply_visibility_settings = function (settings) {
+        $.each(settings, function(key, value) {
+            menu_apply_block_visibility(key, value);
+        });
+    }
+
+    menu_apply_block_visibility = function (key, value) {
+        var block = $('.form-row-' + key.toLowerCase().replace(/_/g, '-'));
+
+        if (value) {
+            block.show();
+        } else {
+            block.hide();
+        }
+    }
+
+    menu_update_visibility_settings = function () {
+        var model = menu_get_editing_model();
+
+        var settings = menu_get_visibility_settings(model);
+
+        menu_apply_visibility_settings(settings);
+    }
+
+    $(function() {
+        $('#menuform :input').change(function() {
+            menu_update_visibility_settings();
+        });
+
+        menu_update_visibility_settings();
+    });
+</script>
