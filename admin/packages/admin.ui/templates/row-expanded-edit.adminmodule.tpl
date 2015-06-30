@@ -6,8 +6,7 @@
 
 <tr class="embedded-view <{$type}>-embedded-view adminmodule-<{$type}>-embedded-view-<{$details->UUID}>" data-id="<{$details->UUID}>">
     <{if $smarty.request.source == 'list'}>
-	    <td colspan="2"></td>
-    	<td colspan="<{$smarty.request.colcount - 1}>">
+    	<td colspan="<{$smarty.request.colcount + 1}>">
             <div class="adminmodule-view view_details">
                 <div class="section">
                     <{include file="edit-main.adminmodule.tpl"}>

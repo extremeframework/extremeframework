@@ -6,8 +6,7 @@
 
 <tr class="embedded-view <{$type}>-embedded-view workflowapplication-<{$type}>-embedded-view-<{$details->UUID}>" data-id="<{$details->UUID}>">
     <{if $smarty.request.source == 'list'}>
-	    <td colspan="2"></td>
-    	<td colspan="<{$smarty.request.colcount - 1}>">
+    	<td colspan="<{$smarty.request.colcount + 1}>">
             <div class="workflowapplication-view view_details">
                 <div class="section">
                     <{include file="view-main.workflowapplication.tpl"}>
