@@ -78,6 +78,10 @@ class Framework {
         if (!isset($templatedirs[$packageroot])) {
             $templatedirs[$packageroot][] = $directory;
 
+            if (is_dir($directory.'/overriding')) {
+                $templatedirs[$packageroot][] = $directory.'/overriding';
+            }
+
             $cache->set('templatedirs', $templatedirs);
         }
     }
