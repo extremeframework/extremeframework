@@ -136,9 +136,7 @@ class __AppController {
             $this->listAction();
 
             return;
-        }
-
-        if ($this->type == 'api') {
+        } else if ($this->type == 'api') {
             $method = $_SERVER['REQUEST_METHOD'];
 
             switch ($method) {
@@ -165,6 +163,8 @@ class __AppController {
                 default:
                     break;
             }
+        } else {
+            $this->pagenotfound();
         }
     }
 
