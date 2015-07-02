@@ -17,12 +17,6 @@ class _PaymentTypeController extends __AppController
         PluginManager::do_action('paymenttype_init');
     }
 
-    protected static function getSmarty() {
-        $packageroot = realpath(dirname(__FILE__).'/../');
-
-        return Framework::getSmarty($packageroot);
-    }
-
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
@@ -302,7 +296,7 @@ class _PaymentTypeController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->CODE, 'title' => $model->NAME);
 		}
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'paymenttype');
@@ -492,7 +486,7 @@ class _PaymentTypeController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = self::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -700,7 +694,7 @@ class _PaymentTypeController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    private function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -708,7 +702,7 @@ class _PaymentTypeController extends __AppController
         if ($formmode == 'multiple') {
             $models = $this->form2models($prefix);
 
-            $result = $this->save($models);
+            $result = $this->save($models, $refobject);
 
             $deleteditems = isset($_REQUEST[$prefix.'paymenttype_multiformdata_deleteditems'])? $_REQUEST[$prefix.'paymenttype_multiformdata_deleteditems'] : '';
             $deleteditems = explode(',', trim($deleteditems, ','));
@@ -744,7 +738,7 @@ class _PaymentTypeController extends __AppController
 
             
 
-            $result = $this->save(array($model));
+            $result = $this->save(array($model), $refobject);
         }
 
         TransactionHelper::end();
@@ -752,7 +746,7 @@ class _PaymentTypeController extends __AppController
         return $result;
     }
 
-    protected function save($models = array()) {
+    protected function save($models = array(), $refobject = null) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -760,7 +754,7 @@ class _PaymentTypeController extends __AppController
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('paymenttype', $model);
             
-            
+            $this->bind2refobject($model, $refobject);
             $this->onBeforeSave($model);
             PluginManager::do_action('paymenttype_before_save', $model);
 
@@ -810,6 +804,14 @@ class _PaymentTypeController extends __AppController
         }
 
         return true;
+    }
+
+    private function bind2refobject(&$model, $refobject = null) {
+        if ($refobject != null) {
+            $refclass = get_class($refobject);
+            
+
+        }
     }
 
     public function saveDraftAction() {
@@ -1522,7 +1524,7 @@ class _PaymentTypeController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1597,7 +1599,7 @@ class _PaymentTypeController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1710,7 +1712,7 @@ class _PaymentTypeController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
@@ -1859,6 +1861,11 @@ class _PaymentTypeController extends __AppController
 
                         break;
 
+                    case 'WFID':
+                        $model->whereAdd(TABLE_PREFIX."PAYMENT_TYPE.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -1927,7 +1934,7 @@ class _PaymentTypeController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('messages', $messages);
@@ -2129,6 +2136,22 @@ class _PaymentTypeController extends __AppController
         if (isset($valuecache[$refcolumn][$reflabel])) {
             $value = $valuecache[$refcolumn][$reflabel];
         } else {
+            switch ($refcolumn) {
+                case 'WFID':
+                    $model = new WorkflowStageModel();
+                    $model->NAME = $reflabel;
+                    if ($model->find(1)) {
+                        $value = $model->CODE;
+                    } else {
+                        $model->insert();
+                        $value = $model->CODE;
+                    }
+                    break;
+
+                default:
+                    $value = $reflabel;
+                    break;
+            }
             $valuecache[$refcolumn][$reflabel] = $value;
         }
 
@@ -2153,6 +2176,18 @@ class _PaymentTypeController extends __AppController
         } else {
             $label = null;
             if (!empty($refvalue)) {
+                switch ($refcolumn) {
+                    case 'WFID':
+                        $model = new WorkflowStageModel();
+                        $model->CODE = $refvalue;
+                        $model->find();
+                        $label = $model->fetch()? $model->NAME : $refvalue;
+                        break;
+
+                    default:
+                        $label = $refvalue;
+                        break;
+                }
             }
             $labelcache[$refcolumn][$refvalue] = $label;
         }

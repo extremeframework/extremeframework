@@ -17,12 +17,6 @@ class _AdminOrderController extends __AppController
         PluginManager::do_action('adminorder_init');
     }
 
-    protected static function getSmarty() {
-        $packageroot = realpath(dirname(__FILE__).'/../');
-
-        return Framework::getSmarty($packageroot);
-    }
-
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('ID_PAYMENT_TYPE', $columns2check) && trim($model->ID_PAYMENT_TYPE) == '') {
@@ -288,7 +282,7 @@ class _AdminOrderController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->CUSTOMER_FIRST_NAME);
 		}
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'adminorder');
@@ -478,7 +472,7 @@ class _AdminOrderController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = self::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -1689,7 +1683,7 @@ class _AdminOrderController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1764,7 +1758,7 @@ class _AdminOrderController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1877,7 +1871,7 @@ class _AdminOrderController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
@@ -2108,6 +2102,11 @@ class _AdminOrderController extends __AppController
 
                         break;
 
+                    case 'WFID':
+                        $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -2206,7 +2205,7 @@ class _AdminOrderController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('messages', $messages);
@@ -2431,6 +2430,17 @@ class _AdminOrderController extends __AppController
                     }
                     break;
 
+                case 'WFID':
+                    $model = new WorkflowStageModel();
+                    $model->NAME = $reflabel;
+                    if ($model->find(1)) {
+                        $value = $model->CODE;
+                    } else {
+                        $model->insert();
+                        $value = $model->CODE;
+                    }
+                    break;
+
                 default:
                     $value = $reflabel;
                     break;
@@ -2469,6 +2479,13 @@ class _AdminOrderController extends __AppController
 
                     case 'ID_ADMIN_ORDER_STATUS':
                         $model = new AdminOrderStatusModel();
+                        $model->CODE = $refvalue;
+                        $model->find();
+                        $label = $model->fetch()? $model->NAME : $refvalue;
+                        break;
+
+                    case 'WFID':
+                        $model = new WorkflowStageModel();
                         $model->CODE = $refvalue;
                         $model->find();
                         $label = $model->fetch()? $model->NAME : $refvalue;

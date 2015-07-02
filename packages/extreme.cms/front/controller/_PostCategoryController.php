@@ -23,7 +23,7 @@ class _PostCategoryController extends __FrontController {
 
         $template = !empty($page)? 'postcategory.'.$page.'.tpl' : 'postcategory.home.tpl';
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('slug', $slug);
 
@@ -31,7 +31,7 @@ class _PostCategoryController extends __FrontController {
     }
 
     function homeAction() {
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $this->display($smarty, 'postcategory.home.tpl');
     }
@@ -51,7 +51,7 @@ class _PostCategoryController extends __FrontController {
 
         $this->onBeforeView($item);
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('slug', $slug);
         $smarty->assign('postcategory', $item);

@@ -4,12 +4,8 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-define('PAYPAL_API_URL', 'https://api-3t.sandbox.paypal.com/nvp');
-define('PAYPAL_WEB_URL', 'https://www.sandbox.paypal.com');
-define('PAYPAL_VERSION', 93);
-define('PAYPAL_USERNAME', '<todo>');
-define('PAYPAL_PASSWORD', '<todo>');
-define('PAYPAL_SIGNATURE', '<todo>');
+if (!defined('APPLICATION_DIR')) die('');
+
 define('PAYPAL_RETURN_URL', APPLICATION_URL.'/payment/paypalConfirm');
 define('PAYPAL_CANCEL_URL', APPLICATION_URL.'/payment/paypalCancel');
 
@@ -19,6 +15,10 @@ class PaymentController {
     function __construct() {
         PluginManager::add_action('order_paid', array($this, 'onOrderPaid'));
         PluginManager::add_action('order_refunded', array($this, 'onOrderRefunded'));
+    }
+
+    function getOption($code) {
+        return get_package_option($code, 'admin.commerce');
     }
 
     function indexAction() {
@@ -147,12 +147,12 @@ class PaymentController {
 
         $params = array();
 
-        $params['USER'] = PAYPAL_USERNAME;
-        $params['PWD'] = PAYPAL_PASSWORD;
-        $params['SIGNATURE'] = PAYPAL_SIGNATURE;
+        $params['USER'] = self::getOption('PAYPAL_USERNAME');
+        $params['PWD'] = self::getOption('PAYPAL_PASSWORD');
+        $params['SIGNATURE'] = self::getOption('PAYPAL_SIGNATURE');
 
         $params['METHOD'] = 'SetExpressCheckout';
-        $params['VERSION'] = PAYPAL_VERSION;
+        $params['VERSION'] = self::getOption('PAYPAL_VERSION');
 
         $total = 0;
         $i = 0;
@@ -177,7 +177,7 @@ class PaymentController {
         $params['CANCELURL'] = PAYPAL_CANCEL_URL;
 
         // x. Request
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             die('We are sorry, an unexpected error occurred processing your request. Please try again.');
@@ -195,7 +195,7 @@ class PaymentController {
         }
 
         // x. Redirect to Paypal
-        $url = PAYPAL_WEB_URL."/cgi-bin/webscr?cmd=_express-checkout&token=$token";
+        $url = self::getOption('PAYPAL_WEB_URL')."/cgi-bin/webscr?cmd=_express-checkout&token=$token";
 
         header('Location: '.$url);
     }
@@ -213,15 +213,15 @@ class PaymentController {
 
         // x. Get checkout details
         $params = array(
-            'USER' => PAYPAL_USERNAME,
-            'PWD' => PAYPAL_PASSWORD,
-            'SIGNATURE' => PAYPAL_SIGNATURE,
+            'USER' => self::getOption('PAYPAL_USERNAME'),
+            'PWD' => self::getOption('PAYPAL_PASSWORD'),
+            'SIGNATURE' => self::getOption('PAYPAL_SIGNATURE'),
             'METHOD' => 'GetExpressCheckoutDetails',
-            'VERSION' => PAYPAL_VERSION,
+            'VERSION' => self::getOption('PAYPAL_VERSION'),
             'TOKEN' => $token
         );
 
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             die('We are sorry, an unexpected error occurred processing your request. Please try again.');
@@ -277,11 +277,11 @@ class PaymentController {
 
         // x. After the user confirm the payment in the order confirmation page
         $params = array(
-            'USER' => PAYPAL_USERNAME,
-            'PWD' => PAYPAL_PASSWORD,
-            'SIGNATURE' => PAYPAL_SIGNATURE,
+            'USER' => self::getOption('PAYPAL_USERNAME'),
+            'PWD' => self::getOption('PAYPAL_PASSWORD'),
+            'SIGNATURE' => self::getOption('PAYPAL_SIGNATURE'),
             'METHOD' => 'DoExpressCheckoutPayment',
-            'VERSION' => PAYPAL_VERSION,
+            'VERSION' => self::getOption('PAYPAL_VERSION'),
             'TOKEN' => $token,
             'PAYERID' => $PayerID,
             'PAYMENTREQUEST_0_PAYMENTACTION' => 'SALE',
@@ -290,7 +290,7 @@ class PaymentController {
         );
 
         // x. Request
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             die('We are sorry, an unexpected error occurred processing your request. Please try again.');
@@ -389,11 +389,11 @@ flush();
         }
 
         $params = array(
-            'USER' => PAYPAL_USERNAME,
-            'PWD' => PAYPAL_PASSWORD,
-            'SIGNATURE' => PAYPAL_SIGNATURE,
+            'USER' => self::getOption('PAYPAL_USERNAME'),
+            'PWD' => self::getOption('PAYPAL_PASSWORD'),
+            'SIGNATURE' => self::getOption('PAYPAL_SIGNATURE'),
             'METHOD' => 'RefundTransaction',
-            'VERSION' => PAYPAL_VERSION,
+            'VERSION' => self::getOption('PAYPAL_VERSION'),
             'TRANSACTIONID' => $transactionid,
             'REFUNDTYPE' => $is_full? 'Full' : 'Partial'
         );
@@ -405,7 +405,7 @@ flush();
         }
 
         // x. Request
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             die('We are sorry, an unexpected error occurred processing your request. Please try again.');
@@ -451,11 +451,11 @@ flush();
         }
 
         $params = array(
-            'USER' => PAYPAL_USERNAME,
-            'PWD' => PAYPAL_PASSWORD,
-            'SIGNATURE' => PAYPAL_SIGNATURE,
+            'USER' => self::getOption('PAYPAL_USERNAME'),
+            'PWD' => self::getOption('PAYPAL_PASSWORD'),
+            'SIGNATURE' => self::getOption('PAYPAL_SIGNATURE'),
             'METHOD' => 'DoDirectPayment',
-            'VERSION' => PAYPAL_VERSION,
+            'VERSION' => self::getOption('PAYPAL_VERSION'),
             'AMT' => $total,
             'CURRENCYCODE' => 'USD',
             'PAYMENTACTION' => 'Sale',
@@ -476,7 +476,7 @@ flush();
         set_time_limit(0);
 
         // x. Request
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             die('We are sorry, an unexpected error occurred processing your request. Please try again.');
@@ -516,11 +516,11 @@ flush();
         }
 
         $params = array(
-            'USER' => PAYPAL_USERNAME,
-            'PWD' => PAYPAL_PASSWORD,
-            'SIGNATURE' => PAYPAL_SIGNATURE,
+            'USER' => self::getOption('PAYPAL_USERNAME'),
+            'PWD' => self::getOption('PAYPAL_PASSWORD'),
+            'SIGNATURE' => self::getOption('PAYPAL_SIGNATURE'),
             'METHOD' => 'DoDirectPayment',
-            'VERSION' => PAYPAL_VERSION,
+            'VERSION' => self::getOption('PAYPAL_VERSION'),
             'AMT' => '0.00',
             'CURRENCYCODE' => 'USD',
             'PAYMENTACTION' => 'Authorization',
@@ -541,7 +541,7 @@ flush();
         set_time_limit(0);
 
         // x. Request
-        $content = pCURL::download(PAYPAL_API_URL, http_build_query($params));
+        $content = pCURL::download(self::getOption('PAYPAL_API_URL'), http_build_query($params));
 
         if (empty($content)) {
             $error = 'Can not verify the card number.';

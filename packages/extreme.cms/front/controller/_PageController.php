@@ -27,7 +27,7 @@ class _PageController extends __FrontController {
 
         $template = !empty($page)? 'page.'.$page.'.tpl' : 'page.home.tpl';
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('slug', $slug);
 
@@ -35,7 +35,7 @@ class _PageController extends __FrontController {
     }
 
     function homeAction() {
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $this->display($smarty, 'page.home.tpl');
     }
@@ -55,7 +55,7 @@ class _PageController extends __FrontController {
 
         $this->onBeforeView($item);
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('slug', $slug);
         $smarty->assign('page', $item);

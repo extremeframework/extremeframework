@@ -25,14 +25,14 @@ class DataObject_ADMIN_ORDER extends DB_DataObject
     public $TOTAL_VALUE;                     // double(10)  
     public $COUPON_CODE;                     // varchar(16)  
     public $COUPON_DISCOUNT;                 // double(10)  
-    public $ID_PAYMENT_TYPE;                 // int(4)  
+    public $ID_PAYMENT_TYPE;                 // varchar(11)  
     public $CREATION_DATE;                   // datetime  
     public $PAYMENT_DATE;                    // datetime  
     public $PAYMENT_REF;                     // varchar(32)  
     public $REFUND_DATE;                     // datetime  
     public $REFUND_REF;                      // varchar(32)  
     public $PROCESSED_DATE;                  // datetime  
-    public $ID_ADMIN_ORDER_STATUS;           // int(4)  
+    public $ID_ADMIN_ORDER_STATUS;           // varchar(11)  
     public $NOTE;                            // varchar(255)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  

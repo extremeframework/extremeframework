@@ -18,7 +18,7 @@ class CartController {
             $_SESSION['checkout.data'] = $data;
         }
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('items', $this->getCartItems());
         $smarty->assign('other_purchases', $this->getOtherPurchases());
@@ -128,7 +128,7 @@ class CartController {
     }
 
     function responseJsonCart() {
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('items', $this->getCartItems());
         $smarty->assign('other_purchases', $this->getOtherPurchases());

@@ -34,7 +34,7 @@ class CheckoutController {
         // x. Order data
         $data = isset($_SESSION['checkout.data'])? $_SESSION['checkout.data'] : new stdClass();
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('cart_items', $items);
         $smarty->assign('data', $data);
@@ -164,7 +164,7 @@ class CheckoutController {
     }
 
     function successAction() {
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->display('checkout.success.tpl');
     }
