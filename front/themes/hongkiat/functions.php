@@ -145,7 +145,7 @@ function get_theme_options_registration() {
 }
 
 function shortcode_product_portfolio($atts, $content = null) {
-    $smarty = \Framework::getSmarty();
+    $smarty = \Framework::getSmarty(__FILE__);
 
     return $smarty->fetch('shortcode.product_portfolio.tpl');
 }
@@ -159,7 +159,7 @@ function shortcode_subsection($atts, $content = null) {
     ), $atts));
 
     if (!empty($content)) {
-        $smarty = \Framework::getSmarty();
+        $smarty = \Framework::getSmarty(__FILE__);
 
         $smarty->assign('class', $class);
         $smarty->assign('title', $title);

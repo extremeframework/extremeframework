@@ -29,7 +29,7 @@ class AuthorController {
 
         $posts = PostHelper::searchPostsByAuthor($root_category_id, $author, 1, $page, $page_count);
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('root_category_id', $root_category_id);
         $smarty->assign('author', $author);

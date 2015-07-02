@@ -29,7 +29,7 @@ class TagController {
 
         $posts = PostHelper::searchPostsByTag($root_category_id, $tag, 10, $page, $page_count);
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('root_category_id', $root_category_id);
         $smarty->assign('tag', $tag);

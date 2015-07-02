@@ -25,7 +25,7 @@ class AjaxController {
 
         $posts = PostHelper::getFeaturedPosts($root_category_id, 3);
 
-        $smarty = self::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('posts', $posts);
 
