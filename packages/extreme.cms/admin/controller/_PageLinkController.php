@@ -1886,11 +1886,6 @@ class _PageLinkController extends __AppController
 
                         break;
 
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."PAGE_LINK.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -2240,17 +2235,6 @@ class _PageLinkController extends __AppController
                     }
                     break;
 
-                case 'WFID':
-                    $model = new WorkflowStageModel();
-                    $model->NAME = $reflabel;
-                    if ($model->find(1)) {
-                        $value = $model->CODE;
-                    } else {
-                        $model->insert();
-                        $value = $model->CODE;
-                    }
-                    break;
-
                 default:
                     $value = $reflabel;
                     break;
@@ -2296,13 +2280,6 @@ class _PageLinkController extends __AppController
 
                     case 'ID_PAGE_LINK_TYPE':
                         $model = new PageLinkTypeModel();
-                        $model->CODE = $refvalue;
-                        $model->find();
-                        $label = $model->fetch()? $model->NAME : $refvalue;
-                        break;
-
-                    case 'WFID':
-                        $model = new WorkflowStageModel();
                         $model->CODE = $refvalue;
                         $model->find();
                         $label = $model->fetch()? $model->NAME : $refvalue;

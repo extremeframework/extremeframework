@@ -696,7 +696,7 @@ class _WorkflowController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    private function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -704,7 +704,7 @@ class _WorkflowController extends __AppController
         if ($formmode == 'multiple') {
             $models = $this->form2models($prefix);
 
-            $result = $this->save($models, $refobject);
+            $result = $this->save($models);
 
             $deleteditems = isset($_REQUEST[$prefix.'workflow_multiformdata_deleteditems'])? $_REQUEST[$prefix.'workflow_multiformdata_deleteditems'] : '';
             $deleteditems = explode(',', trim($deleteditems, ','));
@@ -740,7 +740,7 @@ class _WorkflowController extends __AppController
 
             
 
-            $result = $this->save(array($model), $refobject);
+            $result = $this->save(array($model));
         }
 
         TransactionHelper::end();
@@ -748,7 +748,7 @@ class _WorkflowController extends __AppController
         return $result;
     }
 
-    protected function save($models = array(), $refobject = null) {
+    protected function save($models = array()) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -756,7 +756,7 @@ class _WorkflowController extends __AppController
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('workflow', $model);
             
-            $this->bind2refobject($model, $refobject);
+            
             $this->onBeforeSave($model);
             PluginManager::do_action('workflow_before_save', $model);
 
@@ -806,14 +806,6 @@ class _WorkflowController extends __AppController
         }
 
         return true;
-    }
-
-    private function bind2refobject(&$model, $refobject = null) {
-        if ($refobject != null) {
-            $refclass = get_class($refobject);
-            
-
-        }
     }
 
     public function saveDraftAction() {
@@ -1533,11 +1525,6 @@ class _WorkflowController extends __AppController
 
                     case 'NAME':
                         $model->whereAdd(TABLE_PREFIX."WORKFLOW.NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."WORKFLOW.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

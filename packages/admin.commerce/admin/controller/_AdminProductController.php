@@ -1939,11 +1939,6 @@ class _AdminProductController extends __AppController
 
                         break;
 
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_PRODUCT.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -2243,17 +2238,6 @@ class _AdminProductController extends __AppController
                     }
                     break;
 
-                case 'WFID':
-                    $model = new WorkflowStageModel();
-                    $model->NAME = $reflabel;
-                    if ($model->find(1)) {
-                        $value = $model->CODE;
-                    } else {
-                        $model->insert();
-                        $value = $model->CODE;
-                    }
-                    break;
-
                 default:
                     $value = $reflabel;
                     break;
@@ -2286,13 +2270,6 @@ class _AdminProductController extends __AppController
                     case 'PRODUCT_ID_PAGE':
                         $model = new PageModel();
                         $model->ID = $refvalue;
-                        $model->find();
-                        $label = $model->fetch()? $model->NAME : $refvalue;
-                        break;
-
-                    case 'WFID':
-                        $model = new WorkflowStageModel();
-                        $model->CODE = $refvalue;
                         $model->find();
                         $label = $model->fetch()? $model->NAME : $refvalue;
                         break;

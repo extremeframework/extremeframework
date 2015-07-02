@@ -668,7 +668,7 @@ class _AdminLabelController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    private function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -676,7 +676,7 @@ class _AdminLabelController extends __AppController
         if ($formmode == 'multiple') {
             $models = $this->form2models($prefix);
 
-            $result = $this->save($models, $refobject);
+            $result = $this->save($models);
 
             $deleteditems = isset($_REQUEST[$prefix.'adminlabel_multiformdata_deleteditems'])? $_REQUEST[$prefix.'adminlabel_multiformdata_deleteditems'] : '';
             $deleteditems = explode(',', trim($deleteditems, ','));
@@ -712,7 +712,7 @@ class _AdminLabelController extends __AppController
 
             
 
-            $result = $this->save(array($model), $refobject);
+            $result = $this->save(array($model));
         }
 
         TransactionHelper::end();
@@ -720,7 +720,7 @@ class _AdminLabelController extends __AppController
         return $result;
     }
 
-    protected function save($models = array(), $refobject = null) {
+    protected function save($models = array()) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -728,7 +728,7 @@ class _AdminLabelController extends __AppController
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('adminlabel', $model);
             
-            $this->bind2refobject($model, $refobject);
+            
             $this->onBeforeSave($model);
             PluginManager::do_action('adminlabel_before_save', $model);
 
@@ -778,14 +778,6 @@ class _AdminLabelController extends __AppController
         }
 
         return true;
-    }
-
-    private function bind2refobject(&$model, $refobject = null) {
-        if ($refobject != null) {
-            $refclass = get_class($refobject);
-            
-
-        }
     }
 
     public function saveDraftAction() {
@@ -1503,20 +1495,51 @@ class _AdminLabelController extends __AppController
 
                         break;
 
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_LABEL.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
                         } else {
                             if (property_exists($model, $key)) {
                                 if ($value == '__EMPTY__') {
-                                    $model->whereAdd(TABLE_PREFIX."ADMIN_LABEL.$key IS NULL OR ".TABLE_PREFIX.".ADMIN_LABEL.$key = ''");
+
+Notice: Undefined variable: tablename in D:\wamp\www\generator\base\ControllerGenerator.php on line 1771
+
+Call Stack:
+    0.0010     276832   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0090    1139096   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0490    3532288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2531
+  141.5561   12156152   4. CliGenerator->generateAllControllers() D:\wamp\www\generator\generate.php:287
+  141.9581   12955936   5. CliGenerator->generateController() D:\wamp\www\generator\generate.php:855
+  141.9591   13149296   6. ControllerGenerator->generateControllerFile() D:\wamp\www\generator\generate.php:868
+  142.0181   13369184   7. ControllerGenerator->generate_LIST_SEARCH_BINDING() D:\wamp\www\generator\base\ControllerGenerator.php:113
+
+
+Notice: Undefined variable: tablename in D:\wamp\www\generator\base\ControllerGenerator.php on line 1771
+
+Call Stack:
+    0.0010     276832   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0090    1139096   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0490    3532288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2531
+  141.5561   12156152   4. CliGenerator->generateAllControllers() D:\wamp\www\generator\generate.php:287
+  141.9581   12955936   5. CliGenerator->generateController() D:\wamp\www\generator\generate.php:855
+  141.9591   13149296   6. ControllerGenerator->generateControllerFile() D:\wamp\www\generator\generate.php:868
+  142.0181   13369184   7. ControllerGenerator->generate_LIST_SEARCH_BINDING() D:\wamp\www\generator\base\ControllerGenerator.php:113
+
+                                    $model->whereAdd(TABLE_PREFIX.".$key IS NULL OR ".TABLE_PREFIX."..$key = ''");
                                 } else {
-                                    $model->whereAdd(TABLE_PREFIX."ADMIN_LABEL.$key = '".$model->escape($value)."'");
+
+Notice: Undefined variable: tablename in D:\wamp\www\generator\base\ControllerGenerator.php on line 1773
+
+Call Stack:
+    0.0010     276832   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0090    1139096   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0490    3532288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2531
+  141.5561   12156152   4. CliGenerator->generateAllControllers() D:\wamp\www\generator\generate.php:287
+  141.9581   12955936   5. CliGenerator->generateController() D:\wamp\www\generator\generate.php:855
+  141.9591   13149296   6. ControllerGenerator->generateControllerFile() D:\wamp\www\generator\generate.php:868
+  142.0181   13369184   7. ControllerGenerator->generate_LIST_SEARCH_BINDING() D:\wamp\www\generator\base\ControllerGenerator.php:113
+
+                                    $model->whereAdd(TABLE_PREFIX.".$key = '".$model->escape($value)."'");
                                 }
                             }
                         }

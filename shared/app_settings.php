@@ -23,7 +23,7 @@ global $database_dsn;
 
 $options = &PEAR::getStaticProperty( 'DB_DataObject', 'options' );
 $options = array(
-	'schema_location' 		 => SHARED_DIR.'/schema',
+	'schema_location' 		 => SCHEMA_DIR,
 	'class_prefix'           => 'DataObject_',
 	'quote_identifiers'      => true,
 	'db_driver'			     => 'MDB2'

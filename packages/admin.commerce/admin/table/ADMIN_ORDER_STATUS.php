@@ -10,7 +10,7 @@ class DataObject_ADMIN_ORDER_STATUS extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'ADMIN_ORDER_STATUS';    // table name
-    public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
+    public $_database = 'admin.commerce';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  

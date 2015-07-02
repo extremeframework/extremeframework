@@ -1545,11 +1545,6 @@ class _UserPreferenceController extends __AppController
 
                         break;
 
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."USER_PREFERENCE.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);

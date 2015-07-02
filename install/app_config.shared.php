@@ -8,6 +8,9 @@ define('LIBRARY_DIR'                            , '{LIBRARY_DIR}');
 // Configuration directory
 define('CONFIG_DIR'						        , realpath(dirname(__FILE__).'/../config'));
 
+// Schema directory
+define('SCHEMA_DIR'						        , realpath(dirname(__FILE__).'/../schema'));
+
 // Shared directory
 define('SHARED_DIR'						        , realpath(dirname(__FILE__)));
 

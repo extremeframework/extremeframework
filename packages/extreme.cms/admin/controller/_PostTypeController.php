@@ -662,7 +662,7 @@ class _PostTypeController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    private function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -670,7 +670,7 @@ class _PostTypeController extends __AppController
         if ($formmode == 'multiple') {
             $models = $this->form2models($prefix);
 
-            $result = $this->save($models, $refobject);
+            $result = $this->save($models);
 
             $deleteditems = isset($_REQUEST[$prefix.'posttype_multiformdata_deleteditems'])? $_REQUEST[$prefix.'posttype_multiformdata_deleteditems'] : '';
             $deleteditems = explode(',', trim($deleteditems, ','));
@@ -706,7 +706,7 @@ class _PostTypeController extends __AppController
 
             
 
-            $result = $this->save(array($model), $refobject);
+            $result = $this->save(array($model));
         }
 
         TransactionHelper::end();
@@ -714,7 +714,7 @@ class _PostTypeController extends __AppController
         return $result;
     }
 
-    protected function save($models = array(), $refobject = null) {
+    protected function save($models = array()) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -722,7 +722,7 @@ class _PostTypeController extends __AppController
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('posttype', $model);
             
-            $this->bind2refobject($model, $refobject);
+            
             $this->onBeforeSave($model);
             PluginManager::do_action('posttype_before_save', $model);
 
@@ -772,14 +772,6 @@ class _PostTypeController extends __AppController
         }
 
         return true;
-    }
-
-    private function bind2refobject(&$model, $refobject = null) {
-        if ($refobject != null) {
-            $refclass = get_class($refobject);
-            
-
-        }
     }
 
     public function saveDraftAction() {
@@ -1829,11 +1821,6 @@ class _PostTypeController extends __AppController
 
                         break;
 
-                    case 'WFID':
-                        $model->whereAdd(TABLE_PREFIX."POST_TYPE.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -2102,22 +2089,6 @@ class _PostTypeController extends __AppController
         if (isset($valuecache[$refcolumn][$reflabel])) {
             $value = $valuecache[$refcolumn][$reflabel];
         } else {
-            switch ($refcolumn) {
-                case 'WFID':
-                    $model = new WorkflowStageModel();
-                    $model->NAME = $reflabel;
-                    if ($model->find(1)) {
-                        $value = $model->CODE;
-                    } else {
-                        $model->insert();
-                        $value = $model->CODE;
-                    }
-                    break;
-
-                default:
-                    $value = $reflabel;
-                    break;
-            }
             $valuecache[$refcolumn][$reflabel] = $value;
         }
 
@@ -2142,18 +2113,6 @@ class _PostTypeController extends __AppController
         } else {
             $label = null;
             if (!empty($refvalue)) {
-                switch ($refcolumn) {
-                    case 'WFID':
-                        $model = new WorkflowStageModel();
-                        $model->CODE = $refvalue;
-                        $model->find();
-                        $label = $model->fetch()? $model->NAME : $refvalue;
-                        break;
-
-                    default:
-                        $label = $refvalue;
-                        break;
-                }
             }
             $labelcache[$refcolumn][$refvalue] = $label;
         }

@@ -1,6 +1,6 @@
 [DB_DataObject]
 database_extremeframework-git     = mysql://root:@localhost/extremeframework-git
-schema_location = D:/wamp/www/apps4clouds.com/apps/extremeframework-git/shared/schema
+schema_location = D:/wamp/www/apps4clouds.com/apps/extremeframework-git/schema
 class_location  = D:/wamp/www/apps4clouds.com/apps/extremeframework-git/shared/table
 require_prefix  = DataObject/
 class_prefix    = DataObject_
