@@ -73,7 +73,7 @@ class AuthenticationController extends __AppController
             }
 
             if (!empty($errors)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('controller', Framework::get('controller'));
                 $smarty->assign('errors', $errors);
@@ -89,7 +89,7 @@ class AuthenticationController extends __AppController
                 if ($member->FORCE_PASSWORD_CHANGE) {
                 	$_SESSION['_force_password_change_user'] = $member;
 
-	                $smarty = Framework::getSmarty();
+	                $smarty = Framework::getSmarty(__FILE__);
 
 	                $smarty->assign('errors', $errors);
 
@@ -106,7 +106,7 @@ class AuthenticationController extends __AppController
 				}
             }
         } else {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('controller', Framework::get('controller'));
             $smarty->assign('return', $return);
@@ -315,7 +315,7 @@ class AuthenticationController extends __AppController
             }
 
             if (!empty($errors)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('errors', $errors);
 

@@ -25,7 +25,10 @@ class Framework {
         return isset(self::$cache[$key])? self::$cache[$key] : null;
     }
 
-    static function getSmarty($packageroot = '') {
+    static function getSmarty($__FILE__) {
+
+        print_r(debug_backtrace());die('xxx'.$__FILE__);
+
         $smarty = self::get('smarty');
 
         if ($smarty === null) {
@@ -54,7 +57,7 @@ class Framework {
 
         $smarty->setTemplateDir(null);
 
-        $templatedirs = self::getTemplateDirs($packageroot);
+        $templatedirs = self::getTemplateDirs($__FILE__);
 
         foreach ($templatedirs as $templatedir) {
             $smarty->addTemplateDir($templatedir);
@@ -71,6 +74,10 @@ class Framework {
     }
 
     static function registerTemplateDir($directory, $packageroot = '') {
+        if (!is_dir($directory)) {
+            return;
+        }
+
         $cache = Cache::context(self::getCacheContextKey());
 
         $templatedirs = $cache->get('templatedirs');
@@ -86,12 +93,20 @@ class Framework {
         }
     }
 
-    private static function getTemplateDirs($packageroot) {
+    private static function getTemplateDirs($__FILE__) {
+        $filedir = dirname($__FILE__);
+
         $cache = Cache::context(self::getCacheContextKey());
 
         $templatedirs = $cache->get('templatedirs');
 
-        return isset($templatedirs[$packageroot])? $templatedirs[$packageroot] : array();
+        foreach ($templatedirs as $packageroot => $dirs) {
+            if (stripos($filedir, $packageroot) !== false) {
+                return $dirs;
+            }
+        }
+
+        return array();
     }
 
     static function registerClassSearchDir($classdir, $namespace = '') {

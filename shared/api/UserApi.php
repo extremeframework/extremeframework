@@ -264,7 +264,7 @@ class UserApi extends UserController
                     $activation = APPLICATION_URL.'/user/activate?c='.base64_encode($compound);
 
                     // x. Activation email content
-                    $smarty = Framework::getSmarty();
+                    $smarty = Framework::getSmarty(__FILE__);
                     $smarty->assign('name', $model->NAME);
                     $smarty->assign('email', $model->EMAIL);
                     $smarty->assign('username', $model->LOGIN);

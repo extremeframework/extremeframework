@@ -253,7 +253,7 @@ class __AppController {
                 $messages = array();
             }
 
-    		$smarty = Framework::getSmarty();
+    		$smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('formtitle', $formtitle);
             $smarty->assign('messages', $messages);
@@ -292,7 +292,7 @@ class __AppController {
     protected function simple_page($message, $title) {
         $templatecode = 'simple.tpl';
 
-		$smarty = Framework::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('title', $title);
 		$smarty->assign('message', $message);

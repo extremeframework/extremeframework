@@ -266,7 +266,7 @@ class AuthenticationApi extends AuthenticationController
             }
 
             if (!empty($errors)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('errors', $errors);
 

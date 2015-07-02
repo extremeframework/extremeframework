@@ -102,7 +102,7 @@ function get_option($option, $default = null, $context = null, $is_required = tr
 
     if (empty($value)) {
         if (empty($default) && $is_required) {
-            die("<div style=\"color:orange\">[ERROR] Configuration option '$option' ".($context? "of domain '$context' " : '')."is required.</div>");
+            die("<div style=\"color:orange\">[ERROR] Configuration option '$option' ".($context? "of context '$context' " : '')."is required.</div>");
         }
 
         $value = $default;
@@ -113,6 +113,10 @@ function get_option($option, $default = null, $context = null, $is_required = tr
 
 function get_theme_option($option, $default = null, $is_required = true) {
     return get_option($option, $default, THEME_NAME, $is_required);
+}
+
+function get_package_option($option, $packagename, $default = '', $is_required = true) {
+    return get_option($option, $default, $packagename, $is_required);
 }
 
 function get_request_param($name, $default = '') {

@@ -111,7 +111,7 @@ class UserController
                         $activation = APPLICATION_URL.'/user/activate?c='.base64_encode($compound);
 
                         // x. Activation email content
-                        $smarty = Framework::getSmarty();
+                        $smarty = Framework::getSmarty(__FILE__);
                         $smarty->assign('name', $model->NAME);
                         $smarty->assign('email', $model->EMAIL);
                         $smarty->assign('username', $model->LOGIN);
@@ -137,7 +137,7 @@ class UserController
                     $model->PASSWORD = $password;
                 }
 
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $message);
                 $smarty->assign('details', $model);
@@ -145,12 +145,12 @@ class UserController
 
                 $smarty->display('user.register.tpl');
             } else {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->display('user.activation-sent.tpl');
             }
         } else {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error)));
 
@@ -160,7 +160,7 @@ class UserController
 
     function forgotAction() {
         if (empty($_POST)) {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
             $smarty->display('user.forgot-password.tpl');
         } else {
             // x. Get data
@@ -189,7 +189,7 @@ class UserController
                 $password_reset_link = APPLICATION_URL.'/user/reset?c='.base64_encode($compound);
 
                 // x. Build email
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
                 $smarty->assign('name', $um->NAME);
                 $smarty->assign('password_reset_link', $password_reset_link);
                 $content = $smarty->fetch('.email.forgot-password.tpl');
@@ -206,14 +206,14 @@ class UserController
 
             // x. Display
             if (!empty($error)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $error);
                 $smarty->assign('email', $email);
 
                 $smarty->display('user.forgot-password.tpl');
             } else {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->display('user.forgot-password-sent.tpl');
             }
@@ -222,7 +222,7 @@ class UserController
 
     function resendAction() {
         if (empty($_POST)) {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
             $smarty->display('user.resend-activation.tpl');
         } else {
             // x. Get data
@@ -258,7 +258,7 @@ class UserController
                 $activation = APPLICATION_URL.'/user/activate?c='.base64_encode($compound);
 
                 // x. Activation email content
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
                 $smarty->assign('name', $model->NAME);
                 $smarty->assign('activation', $activation);
                 $content = $smarty->fetch('.email.resend-activation.tpl');
@@ -275,14 +275,14 @@ class UserController
 
             // x. Display
             if (!empty($error)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $error);
                 $smarty->assign('email', $email);
 
                 $smarty->display('user.resend-activation.tpl');
             } else {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->display('user.resend-activation-sent.tpl');
             }
@@ -299,7 +299,7 @@ class UserController
                 @list($id_user, $activation, $referral_user, $referral_id) = explode(',', $compound);
 
                 if ($this->activate($id_user, $activation, $referral_user, $referral_id)) {
-                    $smarty = Framework::getSmarty();
+                    $smarty = Framework::getSmarty(__FILE__);
                     $smarty->display('user.activation-done.tpl');
 
                     return;
@@ -307,7 +307,7 @@ class UserController
             }
         }
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
         $smarty->display('user.activation-failed.tpl');
     }
 
@@ -385,13 +385,13 @@ class UserController
         }
 
         if ($found) {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('compound', $_REQUEST['c']);
 
             $smarty->display('user.reset-password.tpl');
         } else {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
             $smarty->assign('error', 'Invalid request.');
             $smarty->display('error.tpl');
         }
@@ -440,11 +440,11 @@ class UserController
             }
 
             if (empty($error)) {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->display('user.reset-password-done.tpl');
             } else {
-                $smarty = Framework::getSmarty();
+                $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $error);
                 $smarty->assign('compound', $_REQUEST['c']);
@@ -452,7 +452,7 @@ class UserController
                 $smarty->display('user.reset-password.tpl');
             }
         } else {
-            $smarty = Framework::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
             $smarty->assign('error', 'Invalid request.');
             $smarty->display('error.tpl');
         }
