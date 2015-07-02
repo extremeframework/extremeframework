@@ -26,9 +26,6 @@ class Framework {
     }
 
     static function getSmarty($__FILE__) {
-
-        print_r(debug_backtrace());die('xxx'.$__FILE__);
-
         $smarty = self::get('smarty');
 
         if ($smarty === null) {
