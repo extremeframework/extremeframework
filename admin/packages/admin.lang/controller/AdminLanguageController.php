@@ -96,7 +96,7 @@ class AdminLanguageController extends _AdminLanguageController
             $rows[] = clone $model;
         }
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('rows', $rows);
 

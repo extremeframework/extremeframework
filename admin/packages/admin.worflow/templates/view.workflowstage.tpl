@@ -144,6 +144,18 @@
             <{if isset($smarty.session.acl.adminmodule) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.adminorder) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.adminorderitem) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.adminorderstatus) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.adminproduct) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.adminsequence) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -199,6 +211,9 @@
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.parametertype) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.paymenttype) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.post) }>
@@ -310,6 +325,18 @@
                                             <{if Framework::hasModule('AdminModule') && isset($smarty.session.acl.adminmodule) }>
                             <li><a href="#tab-adminmodules"><{label key="L_ADMIN_MODULE"}> <span class="badge adminmodule-badge-count"></span></a></li>
                         <{/if}>
+                                            <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
+                            <li><a href="#tab-adminorders"><{label key="L_ADMIN_ORDER"}> <span class="badge adminorder-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
+                            <li><a href="#tab-adminorderitems"><{label key="L_ADMIN_ORDER_ITEM"}> <span class="badge adminorderitem-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('AdminOrderStatus') && isset($smarty.session.acl.adminorderstatus) }>
+                            <li><a href="#tab-adminorderstatus"><{label key="L_ADMIN_ORDER_STATUS"}> <span class="badge adminorderstatus-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('AdminProduct') && isset($smarty.session.acl.adminproduct) }>
+                            <li><a href="#tab-adminproducts"><{label key="L_ADMIN_PRODUCT"}> <span class="badge adminproduct-badge-count"></span></a></li>
+                        <{/if}>
                                             <{if Framework::hasModule('AdminSequence') && isset($smarty.session.acl.adminsequence) }>
                             <li><a href="#tab-adminsequences"><{label key="L_ADMIN_SEQUENCE"}> <span class="badge adminsequence-badge-count"></span></a></li>
                         <{/if}>
@@ -366,6 +393,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('ParameterType') && isset($smarty.session.acl.parametertype) }>
                             <li><a href="#tab-parametertypes"><{label key="L_PARAMETER_TYPE"}> <span class="badge parametertype-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PaymentType') && isset($smarty.session.acl.paymenttype) }>
+                            <li><a href="#tab-paymenttypes"><{label key="L_PAYMENT_TYPE"}> <span class="badge paymenttype-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
                             <li><a href="#tab-posts"><{label key="L_POST"}> <span class="badge post-badge-count"></span></a></li>
@@ -529,6 +559,38 @@
                                                             <{/if}>
                         </div>
                     <{/if}>
+                                    <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
+                        <div id="tab-adminorders">
+                        	<{if true || $tab == 'adminorders'}>
+                            	<h2 class="print"><{label key="L_ADMIN_ORDER"}></h2>
+                                                                    <{ajaxmodule class="WidgetListAdminOrder" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.adminorder.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
+                        <div id="tab-adminorderitems">
+                        	<{if true || $tab == 'adminorderitems'}>
+                            	<h2 class="print"><{label key="L_ADMIN_ORDER_ITEM"}></h2>
+                                                                    <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.adminorderitem.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('AdminOrderStatus') && isset($smarty.session.acl.adminorderstatus) }>
+                        <div id="tab-adminorderstatus">
+                        	<{if true || $tab == 'adminorderstatus'}>
+                            	<h2 class="print"><{label key="L_ADMIN_ORDER_STATUS"}></h2>
+                                                                    <{ajaxmodule class="WidgetListAdminOrderStatus" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.adminorderstatus.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('AdminProduct') && isset($smarty.session.acl.adminproduct) }>
+                        <div id="tab-adminproducts">
+                        	<{if true || $tab == 'adminproducts'}>
+                            	<h2 class="print"><{label key="L_ADMIN_PRODUCT"}></h2>
+                                                                    <{ajaxmodule class="WidgetListAdminProduct" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.adminproduct.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
                                     <{if Framework::hasModule('AdminSequence') && isset($smarty.session.acl.adminsequence) }>
                         <div id="tab-adminsequences">
                         	<{if true || $tab == 'adminsequences'}>
@@ -678,6 +740,14 @@
                         	<{if true || $tab == 'parametertypes'}>
                             	<h2 class="print"><{label key="L_PARAMETER_TYPE"}></h2>
                                                                     <{ajaxmodule class="WidgetListParameterType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.parametertype.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PaymentType') && isset($smarty.session.acl.paymenttype) }>
+                        <div id="tab-paymenttypes">
+                        	<{if true || $tab == 'paymenttypes'}>
+                            	<h2 class="print"><{label key="L_PAYMENT_TYPE"}></h2>
+                                                                    <{ajaxmodule class="WidgetListPaymentType" method="" readonly=!WorkflowHelper::isEditable($details->WFID) WFID="`$details->CODE`" where=""  template='widgetlist.paymenttype.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

@@ -17,12 +17,6 @@ class _UserRoleController extends __AppController
         PluginManager::do_action('userrole_init');
     }
 
-    protected static function getSmarty() {
-        $packageroot = realpath(dirname(__FILE__).'/../');
-
-        return Framework::getSmarty($packageroot);
-    }
-
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
@@ -272,7 +266,7 @@ class _UserRoleController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
 		}
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'userrole');
@@ -466,7 +460,7 @@ class _UserRoleController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = self::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -1171,7 +1165,7 @@ class _UserRoleController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1246,7 +1240,7 @@ class _UserRoleController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1359,7 +1353,7 @@ class _UserRoleController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);

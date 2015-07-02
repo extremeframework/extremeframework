@@ -17,12 +17,6 @@ class _AdminFilterController extends __AppController
         PluginManager::do_action('adminfilter_init');
     }
 
-    protected static function getSmarty() {
-        $packageroot = realpath(dirname(__FILE__).'/../');
-
-        return Framework::getSmarty($packageroot);
-    }
-
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
@@ -276,7 +270,7 @@ class _AdminFilterController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
 		}
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'adminfilter');
@@ -453,7 +447,7 @@ class _AdminFilterController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = self::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -773,9 +767,6 @@ class _AdminFilterController extends __AppController
             
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
-            }
-            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
-                $model->COLUMNS = $refobject->COLUMN;
             }
 
         }
@@ -1164,7 +1155,7 @@ class _AdminFilterController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1239,7 +1230,7 @@ class _AdminFilterController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1352,7 +1343,7 @@ class _AdminFilterController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
@@ -1508,11 +1499,6 @@ class _AdminFilterController extends __AppController
 
                     case 'WFID':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.WFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'COLUMNS':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

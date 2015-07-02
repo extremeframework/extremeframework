@@ -17,14 +17,8 @@ class _AdminMenuController extends __AppController
         PluginManager::do_action('adminmenu_init');
     }
 
-    protected static function getSmarty() {
-        $packageroot = realpath(dirname(__FILE__).'/../');
-
-        return Framework::getSmarty($packageroot);
-    }
-
     private function checkConstraint($model, &$errors, $columns2check) {
-
+        
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_ADMIN_MENU_NAME);
            return false;
@@ -104,7 +98,7 @@ class _AdminMenuController extends __AppController
         AclController::checkPermission('adminmenu', 'list');
 
 		ContextStack::register(APPLICATION_URL.'/adminmenu/list/');
-
+        
         $this->setPresetData(null);
 
 		$this->_list();
@@ -298,7 +292,7 @@ class _AdminMenuController extends __AppController
      		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
 		}
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
 		$smarty->assign('rows', $rows);
 		$smarty->assign('module', 'adminmenu');
@@ -368,7 +362,7 @@ class _AdminMenuController extends __AppController
 		}
 
         $this->enforceObjectAclCheck('adminmenu', $model);
-
+		
 		$model->delete();
 
         foreach ($_models as $_model) {
@@ -419,11 +413,11 @@ class _AdminMenuController extends __AppController
             if (!empty($relations)) {
                 foreach ($relations as $module) {
                     switch ($module) {
-                        case 'adminmenuitem':
+                        case 'adminmenuitem': 
                             (new AdminMenuItemController())->delete('ID_ADMIN_MENU', $_ids);
                             break;
 
-                        case 'dashboard':
+                        case 'dashboard': 
                             (new DashboardController())->delete('ID_ADMIN_MENU', $_ids);
                             break;
 
@@ -492,7 +486,7 @@ class _AdminMenuController extends __AppController
 
             $template = $adminview->TEMPLATE;
 
-            $smarty = self::getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
             if (!$smarty->template_exists($template)) {
         	    $this->pagenotfound("Template not found ($template)");
@@ -549,15 +543,15 @@ class _AdminMenuController extends __AppController
 		$this->_edit($id);
 	}
 
+    
 
+    
 
+    
 
+	
 
-
-
-
-
-
+    
     static function update_json($id, $property, $value) {
         $model = new AdminMenuModel();
         $model->ID = $id;
@@ -594,12 +588,12 @@ class _AdminMenuController extends __AppController
     }
 
     protected function onSaveSuccess($model) {
-
+        
         parent::onSaveSuccess($model);
     }
 
     protected function onDeleteSuccess($model) {
-
+        
         parent::onDeleteSuccess($model);
     }
 
@@ -709,7 +703,7 @@ class _AdminMenuController extends __AppController
     		        $customfieldvalues[$key] = $value;
     		    }
 
-
+    		    
             if (is_array($value)) {
                 $model->$key = implode(',', $value);
             } else {
@@ -833,7 +827,7 @@ class _AdminMenuController extends __AppController
         } else {
             $model = $this->form2model($prefix);
 
-
+            
 
             $result = $this->save(array($model), $refobject);
         }
@@ -850,13 +844,13 @@ class _AdminMenuController extends __AppController
 
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('adminmenu', $model);
-
+            
             $this->bind2refobject($model, $refobject);
             $this->onBeforeSave($model);
             PluginManager::do_action('adminmenu_before_save', $model);
 
     		if ($model->UUID) {
-
+				
 				$old = new AdminMenuModel();
 				$old->UUID = $model->UUID;
 				$old->find();
@@ -880,7 +874,7 @@ class _AdminMenuController extends __AppController
     		    PluginManager::do_action('adminmenu_updated', $model, $old);
             } else {
                 $model->ID = null;
-
+                
                 $this->onBeforeInsert($model);
                 PluginManager::do_action('adminmenu_before_create', $model);
 
@@ -906,7 +900,7 @@ class _AdminMenuController extends __AppController
     private function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
-
+            
 
         }
     }
@@ -965,9 +959,9 @@ class _AdminMenuController extends __AppController
 
                 $handler->saveform($prefix, $model);
             }
-
+            
             self::clearTempCreateId();
-
+            
 		    ContextStack::replace(APPLICATION_URL.'/adminmenu/view/'.$model->UUID);
 
     		$this->_view($model->UUID);
@@ -981,7 +975,7 @@ class _AdminMenuController extends __AppController
     function _save($datacheck = true) {
 	    $model = $this->form2model();
 
-
+        
         if ($datacheck && !$this->checkConstraints($model, $errors)) {
             $this->setMessages($errors);
 
@@ -990,12 +984,12 @@ class _AdminMenuController extends __AppController
     		return false;
         } else {
     		if ($model->UUID) {
-
+    		    
     		    $model->update();
 
     		    $model->_isnew = false;
             } else {
-
+                
     		    $model->insert();
 
     		    $model->_isnew = true;
@@ -1033,12 +1027,12 @@ class _AdminMenuController extends __AppController
         LicenseController::enforceLicenseCheck('adminmenu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
-
+        
         DraftHelper::clearAllDrafts('adminmenu');
-
-
+        
+        
         self::clearTempCreateItem();
-
+        
 		ContextStack::back($back);
 	}
 
@@ -1048,9 +1042,9 @@ class _AdminMenuController extends __AppController
         LicenseController::enforceLicenseCheck('adminmenu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
-
+        
         DraftHelper::clearAllDrafts('adminmenu');
-
+        
 		ContextStack::back($back);
 	}
 
@@ -1260,7 +1254,7 @@ class _AdminMenuController extends __AppController
         }
 
         $excludedcolumns = AclController::getSystemExcludedColumns('adminmenu');
-
+        
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
         $filterdata = $this->getFilterData();
@@ -1270,7 +1264,7 @@ class _AdminMenuController extends __AppController
         $page = $this->getPageNumber();
 
         $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
-
+        
 
         $ids = array();
         foreach ($rows as $row) {
@@ -1293,7 +1287,7 @@ class _AdminMenuController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
         $smarty->assign('total', $total);
@@ -1315,10 +1309,9 @@ class _AdminMenuController extends __AppController
 		$smarty->assign('customview', $customview);
 		$smarty->assign('customtemplate', $customtemplate);
 		$smarty->assign('admin_view_options', AdminViewHelper::getAdminViews('adminmenu', 'view'));
-
+		
 
         $templatetype = !empty($this->templatetype)? $this->templatetype : 'list';
-
 	    $this->display($smarty, $templatetype.'.adminmenu.tpl');
     }
 
@@ -1369,7 +1362,7 @@ class _AdminMenuController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
@@ -1436,7 +1429,7 @@ class _AdminMenuController extends __AppController
             $acleditablecolumns[$column] = false;
         }
 
-
+        
 
         if (empty($details)) {
     		$model = new AdminMenuModel();
@@ -1453,15 +1446,15 @@ class _AdminMenuController extends __AppController
                 }
             } else {
                 // Set default values here
-
+                
                 $this->onInitialization($model);
                 PluginManager::do_action('adminmenu_new', $model);
             }
-
+            
             if ($restoredraft) {
                 DraftHelper::tryRestoreDraft('adminmenu', $model->UUID, $model);
             }
-
+            
     		$details = $model;
         }
 
@@ -1471,10 +1464,10 @@ class _AdminMenuController extends __AppController
             }
         }
 
-
+        
 
         WorkflowHelper::ensureEditable($details->WFID);
-
+        
         $this->initPlugins();
 
         $this->onBeforeEdit($details);
@@ -1482,11 +1475,11 @@ class _AdminMenuController extends __AppController
 
 		$messages = $this->getMessages();
 
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
-
+		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('messages', $messages);
@@ -1695,21 +1688,21 @@ class _AdminMenuController extends __AppController
         }
     }
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 }

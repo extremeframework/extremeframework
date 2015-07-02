@@ -83,7 +83,7 @@ class DashboardController extends _DashboardController
         }
 
         // x. Display
-		$smarty = self::getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('module', 'index');
         $smarty->assign('dashboard', $dashboard);

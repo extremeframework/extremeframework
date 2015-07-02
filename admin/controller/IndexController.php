@@ -28,7 +28,7 @@ class IndexController extends __AppController {
 
             $handler->_display($iddashboard, false);
         } else {
-    		$smarty = Framework::getSmarty();
+    		$smarty = Framework::getSmarty(__FILE__);
     		$smarty->assign('module', 'index');
     		$smarty->display('index.tpl');
         }

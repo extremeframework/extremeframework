@@ -150,6 +150,18 @@
                             <{if Framework::hasModule('AdminModule')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmodule" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
+                            <{if Framework::hasModule('AdminOrder')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorder" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_ORDER" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorderitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_ORDER_ITEM" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderStatus')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorderstatus" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_ORDER_STATUS" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminProduct')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminproduct" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_PRODUCT" format="strtolower"}></li>
+                <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminsequence" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
@@ -206,6 +218,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parametertype" /> <{label key="L_COPY_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PaymentType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="paymenttype" /> <{label key="L_COPY_ALSO"}> <{label key="L_PAYMENT_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST" format="strtolower"}></li>
@@ -318,6 +333,18 @@
                             <{if Framework::hasModule('AdminModule')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmodule" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
+                            <{if Framework::hasModule('AdminOrder')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorder" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_ORDER" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorderitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_ORDER_ITEM" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderStatus')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorderstatus" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_ORDER_STATUS" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminProduct')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminproduct" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_PRODUCT" format="strtolower"}></li>
+                <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminsequence" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
@@ -374,6 +401,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parametertype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PaymentType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="paymenttype" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_PAYMENT_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST" format="strtolower"}></li>
@@ -486,6 +516,18 @@
                             <{if Framework::hasModule('AdminModule')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmodule" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MODULE" format="strtolower"}></li>
                 <{/if}>
+                            <{if Framework::hasModule('AdminOrder')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorder" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_ORDER" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorderitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_ORDER_ITEM" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminOrderStatus')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorderstatus" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_ORDER_STATUS" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminProduct')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminproduct" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_PRODUCT" format="strtolower"}></li>
+                <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminsequence" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_SEQUENCE" format="strtolower"}></li>
                 <{/if}>
@@ -542,6 +584,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ParameterType')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parametertype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PARAMETER_TYPE" format="strtolower"}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PaymentType')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="paymenttype" /> <{label key="L_DELETE_ALSO"}> <{label key="L_PAYMENT_TYPE" format="strtolower"}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST" format="strtolower"}></li>

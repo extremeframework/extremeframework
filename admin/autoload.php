@@ -9,7 +9,7 @@ Framework::loadPackages(dirname(__FILE__).'/packages');
 
 ///////////////////////////////////////////////////////////
 // Register template directories
-Framework::registerTemplateDir(dirname(__FILE__).'/templates');
+Framework::registerTemplateDir(dirname(__FILE__).'/templates', dirname(__FILE__));
 
 ///////////////////////////////////////////////////////////
 // Routing
