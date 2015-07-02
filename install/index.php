@@ -476,8 +476,6 @@ class Installer
     }
 
     function create_configuration_files() {
-        $application_name = uniqid();
-
         $root_dir = realpath(dirname(__FILE__).'/../');
         $root_url = $this->get_root_url();
 
@@ -486,7 +484,7 @@ class Installer
 
         $content = file_get_contents($filepath);
 
-        $content = str_replace('{APPLICATION_NAME}', $application_name, $content);
+        $content = str_replace('{APPLICATION_NAME}', uniqid(), $content);
         $content = str_replace('{DATABASE_NAME}', $_SESSION['database_name'], $content);
         $content = str_replace('{DATABASE_HOST}', $_SESSION['database_host'], $content);
         $content = str_replace('{DATABASE_USERNAME}', $_SESSION['database_username'], $content);
@@ -504,7 +502,7 @@ class Installer
 
         $content = file_get_contents($filepath);
 
-        $content = str_replace('{APPLICATION_NAME}', $application_name, $content);
+        $content = str_replace('{APPLICATION_NAME}', uniqid(), $content);
         $content = str_replace('{APPLICATION_URL}', $root_url.'/admin', $content);
         $content = str_replace('{THEME_URL}', $root_url.'/admin', $content);
 
@@ -515,7 +513,7 @@ class Installer
 
         $content = file_get_contents($filepath);
 
-        $content = str_replace('{APPLICATION_NAME}', $application_name, $content);
+        $content = str_replace('{APPLICATION_NAME}', uniqid(), $content);
         $content = str_replace('{APPLICATION_URL}', $root_url, $content);
 
         $theme_name = $this->get_default_theme_name(dirname(__FILE__).'/../front');
@@ -528,7 +526,7 @@ class Installer
 
         $content = file_get_contents($filepath);
 
-        $content = str_replace('{APPLICATION_NAME}', $application_name, $content);
+        $content = str_replace('{APPLICATION_NAME}', uniqid(), $content);
         $content = str_replace('{APPLICATION_URL}', $root_url, $content);
 
         $theme_name = $this->get_default_theme_name(dirname(__FILE__).'/../blog');
