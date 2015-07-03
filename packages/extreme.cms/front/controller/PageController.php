@@ -36,7 +36,7 @@ class PageController extends _PageController
             $depth += 1;
         }
 
-		$smarty = $this->getSmarty();
+		$smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('sectiontree', $sectiontree);
 		$smarty->assign('single', $page);

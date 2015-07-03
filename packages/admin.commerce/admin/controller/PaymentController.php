@@ -58,7 +58,7 @@ class PaymentController {
             $this->gotoCartPage();
         }
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('items', $items);
         $smarty->assign('data', $data);
@@ -696,7 +696,7 @@ flush();
             $this->gotoCartPage();
         }
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('order', $order);
         $smarty->assign('payment_type', $payment_type);
@@ -818,7 +818,7 @@ flush();
         $country->find();
         $country->fetch();
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('order', $order);
         $smarty->assign('payment_type', $payment_type);
@@ -841,7 +841,7 @@ flush();
     }
 
     function mailBuildRefundEmailHtml($order) {
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('order', $order);
 

@@ -85,7 +85,7 @@ class WidgetListRecycleBin extends RecycleBinController {
             $pagination = new Pagination($pagination['total'], ($pagination['page']-1)*$pagination['pagesize'], $pagination['pagesize']);
             $pagination = $pagination->getPageLinks();
 
-            $smarty = $this->getSmarty();
+            $smarty = Framework::getSmarty(__FILE__);
 
     		$smarty->assign('rows', $rows);
     		$smarty->assign('pagination', $pagination);
