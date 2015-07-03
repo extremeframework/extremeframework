@@ -71,20 +71,22 @@ class Framework {
     }
 
     static function registerTemplateDir($directory, $packageroot = '') {
-        if (!is_dir($directory)) {
-            return;
-        }
-
         $cache = Cache::context(self::getCacheContextKey());
 
         $templatedirs = $cache->get('templatedirs');
 
         if (!isset($templatedirs[$packageroot])) {
-            $templatedirs[$packageroot][] = $directory;
+            $dirs = array();
 
-            if (is_dir($directory.'/overriding')) {
-                $templatedirs[$packageroot][] = $directory.'/overriding';
+            if (is_dir($directory)) {
+                $dirs[] = $directory;
+
+                if (is_dir($directory.'/overriding')) {
+                    $dirs[] = $directory.'/overriding';
+                }
             }
+
+            $templatedirs[$packageroot] = $dirs;
 
             $cache->set('templatedirs', $templatedirs);
         }
@@ -190,24 +192,44 @@ class Framework {
     }
 
     static function loadPackages($packagesdir) {
-        if (is_dir($packagesdir)) {
-            $packages = include ($packagesdir.'/packages.php');
+        // Cache context
+        $cache = Cache::context(self::getCacheContextKey());
 
-            if (!empty($packages)) {
-                foreach ($packages as $package) {
-                    if (!is_dir($packagesdir.'/'.$package)) {
-                        die("<div style=\"color:orange\">[ERROR] Package '$package' is not found.</div>");
-                    } else {
-                        require ($packagesdir.'/'.$package.'/autoload.php');
+        // Get cache data
+        $autoloadpaths = $cache->get('autoloadpaths');
+
+        if (!isset($autoloadpaths[$packagesdir])) {
+            $autoloads = array();
+
+            if (is_dir($packagesdir)) {
+                $packages = include ($packagesdir.'/packages.php');
+
+                if (!empty($packages)) {
+                    foreach ($packages as $package) {
+                        if (!is_dir($packagesdir.'/'.$package)) {
+                            die("<div style=\"color:orange\">[ERROR] Package '$package' is not found.</div>");
+                        } else {
+                            $autoloads[] = $packagesdir.'/'.$package.'/autoload.php';
+                        }
+                    }
+                } else {
+                    $dirs = glob($packagesdir.'/*', GLOB_ONLYDIR|GLOB_NOSORT);
+
+                    foreach ($dirs as $dir) {
+                        $autoloads[] = $dir.'/autoload.php';
                     }
                 }
-            } else {
-                $dirs = glob($packagesdir.'/*', GLOB_ONLYDIR|GLOB_NOSORT);
-
-                foreach ($dirs as $dir) {
-                    include ($dir.'/autoload.php');
-                }
             }
+
+            $autoloadpaths[$packagesdir] = $autoloads;
+
+            $cache->set('autoloadpaths', $autoloadpaths);
+        }
+
+        $autoloads = $autoloadpaths[$packagesdir];
+
+        foreach ($autoloads as $autoload) {
+            include ($autoload);
         }
     }
 
