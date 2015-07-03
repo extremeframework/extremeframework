@@ -8,9 +8,27 @@ if (!defined('APPLICATION_DIR')) die('');
 
 class SessionCache {
     protected $context = 'cache';
+    protected $tmp = array();
 
     private function __construct($context) {
         $this->context = $context;
+    }
+
+    private function &getStorage() {
+        // Temporarily use an array in case of no session
+        if (session_id() == '') {
+            return $this->tmp;
+        } else {
+            // Copy the temporary array to session and discard it
+            if (!empty($this->tmp)) {
+                foreach ($this->tmp as $key => $value) {
+                    $_SESSION[$key] = $value;
+                }
+                $this->tmp = array();
+            }
+
+            return $_SESSION;
+        }
     }
 
     static function &getInstance($context = '') {
@@ -28,22 +46,32 @@ class SessionCache {
     }
 
     function set($key, $value, $seconds = 0) {
-        $_SESSION[$this->context][$key] = $value;
+        $storage =& $this->getStorage();
+
+        $storage[$this->context][$key] = $value;
     }
 
     function get($key) {
-        return isset($_SESSION[$this->context][$key])? $_SESSION[$this->context][$key] : null;
+        $storage =& $this->getStorage();
+
+        return isset($storage[$this->context][$key])? $storage[$this->context][$key] : null;
     }
 
     function has($key) {
-        return isset($_SESSION[$this->context][$key]);
+        $storage =& $this->getStorage();
+
+        return isset($storage[$this->context][$key]);
     }
 
     function delete($key) {
-        unset($_SESSION[$this->context][$key]);
+        $storage =& $this->getStorage();
+
+        unset($storage[$this->context][$key]);
     }
 
     function clear() {
-        $_SESSION[$this->context] = array();
+        $storage =& $this->getStorage();
+
+        $storage[$this->context] = array();
     }
 }
