@@ -56,6 +56,9 @@ class PackageInstaller extends BaseInstaller {
             if (!empty($error)) {
                 return $error;
             }
+
+            // x. Sync language files
+            AdminLanguageController::sync();
         }
     }
 

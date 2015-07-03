@@ -36,50 +36,51 @@ class AdminLanguageController extends _AdminLanguageController
         ContextStack::back(0);
     }
 
-    static function sync($id) {
+    static function sync($id = '') {
         // Details
 		$model = new AdminLanguageModel();
 
-		$model->ID = $id;
-		$model->find();
-
-     	if (!$model->fetch()) {
-		    $this->pagenotfound();
-     	}
-
-        // Language item lines
-        $alim = new AdminLanguageItemModel();
-
-        $alim->selectAdd();
-        $alim->selectAdd('LABEL, TRANSLATION');
-
-        $alim->joinAdd(new AdminLabelModel());
-        $alim->ID_ADMIN_LANGUAGE = $id;
-
-        $alim->orderBy('LABEL ASC');
-        $alim->find();
-
-	    $lines = array('<?php');
-
-	    $lines[] = 'global $_L;';
-	    $lines[] = '$_L = array();';
-	    $lines[] = '';
-	    $lines[] = '/* Labels */';
-
-        while($alim->fetch()) {
-            $lines[] = "\$_L['{$alim->LABEL}'] = '{$alim->TRANSLATION}';";
+        if (!empty($id)) {
+		    $model->ID = $id;
         }
 
-	    $lines[] = '';
-	    $lines[] = '/* Constants map */';
-	    $lines[] = 'foreach ($_L as $key => $value) {';
-	    $lines[] = '    if (preg_match(\'/^L_[A-Z0-9_]+$/\', $key)) {';
-	    $lines[] = '        define($key, $value);';
-	    $lines[] = '    }';
-	    $lines[] = '}';
+		$model->find();
 
-        // Write to file
-        file_put_contents(SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php', implode("\n", $lines));
+     	while ($model->fetch()) {
+            // Language item lines
+            $alim = new AdminLanguageItemModel();
+
+            $alim->selectAdd();
+            $alim->selectAdd('LABEL, TRANSLATION');
+
+            $alim->joinAdd(new AdminLabelModel());
+            $alim->ID_ADMIN_LANGUAGE = $model->ID;
+
+            $alim->orderBy('LABEL ASC');
+            $alim->find();
+
+    	    $lines = array('<?php');
+
+    	    $lines[] = 'global $_L;';
+    	    $lines[] = '$_L = array();';
+    	    $lines[] = '';
+    	    $lines[] = '/* Labels */';
+
+            while($alim->fetch()) {
+                $lines[] = "\$_L['{$alim->LABEL}'] = '{$alim->TRANSLATION}';";
+            }
+
+    	    $lines[] = '';
+    	    $lines[] = '/* Constants map */';
+    	    $lines[] = 'foreach ($_L as $key => $value) {';
+    	    $lines[] = '    if (preg_match(\'/^L_[A-Z0-9_]+$/\', $key)) {';
+    	    $lines[] = '        define($key, $value);';
+    	    $lines[] = '    }';
+    	    $lines[] = '}';
+
+            // Write to file
+            file_put_contents(SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php', implode("\n", $lines));
+        }
     }
 
     function quickSelectAction() {
