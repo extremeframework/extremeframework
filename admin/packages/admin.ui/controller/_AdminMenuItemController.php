@@ -1693,18 +1693,30 @@ class _AdminMenuItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.NAME, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ID_ADMIN_MENU, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.PARENT, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.MODULE, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.PATH, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_LEFT, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_TOP, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_QUICK, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_ALL, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_SETTINGS, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.OPEN_IN_NEW_WINDOW, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.IS_STARRED, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.WFID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
-            $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
+                $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            }
+            if (Framework::hasModule('AdminMenuItem')) {
+                $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
+                $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
-            $model->joinAdd(array('PARENT',TABLE_PREFIX.'ADMIN_MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            }
+            if (Framework::hasModule('AdminMenuItem')) {
+                $model->joinAdd(array('PARENT',TABLE_PREFIX.'ADMIN_MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
@@ -1713,15 +1725,23 @@ class _AdminMenuItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.NAME, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ID_ADMIN_MENU, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.MODULE, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.PATH, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_LEFT, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_TOP, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_QUICK, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_ALL, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ENABLE_SETTINGS, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.OPEN_IN_NEW_WINDOW, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.IS_STARRED, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ORDERING, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.WFID, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.PARENT, `'.TABLE_PREFIX.'ADMIN_MENU_ITEM`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
+                $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 

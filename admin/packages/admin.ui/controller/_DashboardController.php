@@ -1551,12 +1551,16 @@ class _DashboardController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'DASHBOARD`.NAME, `'.TABLE_PREFIX.'DASHBOARD`.ID_ADMIN_MENU, `'.TABLE_PREFIX.'DASHBOARD`.ID_DASHBOARD_LAYOUT, `'.TABLE_PREFIX.'DASHBOARD`.DASHBOARD_FILE_PATH, `'.TABLE_PREFIX.'DASHBOARD`.ID, `'.TABLE_PREFIX.'DASHBOARD`.JSON, `'.TABLE_PREFIX.'DASHBOARD`.UUID, `'.TABLE_PREFIX.'DASHBOARD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
+                $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            }
         }
     }
 
@@ -1565,12 +1569,16 @@ class _DashboardController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'DASHBOARD`.NAME, `'.TABLE_PREFIX.'DASHBOARD`.ID_ADMIN_MENU, `'.TABLE_PREFIX.'DASHBOARD`.ID_DASHBOARD_LAYOUT, `'.TABLE_PREFIX.'DASHBOARD`.DASHBOARD_FILE_PATH, `'.TABLE_PREFIX.'DASHBOARD`.ID, `'.TABLE_PREFIX.'DASHBOARD`.JSON, `'.TABLE_PREFIX.'DASHBOARD`.UUID, `'.TABLE_PREFIX.'DASHBOARD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
-            $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->selectAdd('reftable_ID_ADMIN_MENU.NAME as reftext_ID_ADMIN_MENU');
+                $model->selectAdd('reftable_ID_ADMIN_MENU.UUID as refuuid_ID_ADMIN_MENU');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            if (Framework::hasModule('AdminMenu')) {
+                $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
+            }
         }
     }
 

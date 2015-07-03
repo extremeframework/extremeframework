@@ -1548,12 +1548,16 @@ class _UserLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_LOG`.ID_USER, `'.TABLE_PREFIX.'USER_LOG`.DATE_TIME, `'.TABLE_PREFIX.'USER_LOG`.IP, `'.TABLE_PREFIX.'USER_LOG`.ID, `'.TABLE_PREFIX.'USER_LOG`.JSON, `'.TABLE_PREFIX.'USER_LOG`.UUID, `'.TABLE_PREFIX.'USER_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 
@@ -1562,12 +1566,16 @@ class _UserLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_LOG`.ID_USER, `'.TABLE_PREFIX.'USER_LOG`.DATE_TIME, `'.TABLE_PREFIX.'USER_LOG`.IP, `'.TABLE_PREFIX.'USER_LOG`.ID, `'.TABLE_PREFIX.'USER_LOG`.JSON, `'.TABLE_PREFIX.'USER_LOG`.UUID, `'.TABLE_PREFIX.'USER_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 

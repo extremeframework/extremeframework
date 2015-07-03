@@ -1554,15 +1554,23 @@ class _ChangeLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'CHANGE_LOG`.ACTION, `'.TABLE_PREFIX.'CHANGE_LOG`.ITEM, `'.TABLE_PREFIX.'CHANGE_LOG`.MODULE, `'.TABLE_PREFIX.'CHANGE_LOG`.DATE_TIME, `'.TABLE_PREFIX.'CHANGE_LOG`.ID_USER, `'.TABLE_PREFIX.'CHANGE_LOG`.DETAILS, `'.TABLE_PREFIX.'CHANGE_LOG`.ID, `'.TABLE_PREFIX.'CHANGE_LOG`.JSON, `'.TABLE_PREFIX.'CHANGE_LOG`.UUID, `'.TABLE_PREFIX.'CHANGE_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 
@@ -1571,15 +1579,23 @@ class _ChangeLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'CHANGE_LOG`.ACTION, `'.TABLE_PREFIX.'CHANGE_LOG`.ITEM, `'.TABLE_PREFIX.'CHANGE_LOG`.MODULE, `'.TABLE_PREFIX.'CHANGE_LOG`.DATE_TIME, `'.TABLE_PREFIX.'CHANGE_LOG`.ID_USER, `'.TABLE_PREFIX.'CHANGE_LOG`.ID, `'.TABLE_PREFIX.'CHANGE_LOG`.JSON, `'.TABLE_PREFIX.'CHANGE_LOG`.UUID, `'.TABLE_PREFIX.'CHANGE_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 

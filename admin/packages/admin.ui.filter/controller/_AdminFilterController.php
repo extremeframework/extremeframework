@@ -768,6 +768,9 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
+            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
+                $model->COLUMNS = $refobject->COLUMN;
+            }
 
         }
     }
@@ -1497,6 +1500,11 @@ class _AdminFilterController extends __AppController
 
                         break;
 
+                    case 'COLUMNS':
+                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -1521,12 +1529,16 @@ class _AdminFilterController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_FILTER`.NAME, `'.TABLE_PREFIX.'ADMIN_FILTER`.MODULE, `'.TABLE_PREFIX.'ADMIN_FILTER`.COLUMNS, `'.TABLE_PREFIX.'ADMIN_FILTER`.IS_DEFAULT, `'.TABLE_PREFIX.'ADMIN_FILTER`.ID, `'.TABLE_PREFIX.'ADMIN_FILTER`.JSON, `'.TABLE_PREFIX.'ADMIN_FILTER`.UUID, `'.TABLE_PREFIX.'ADMIN_FILTER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
@@ -1535,12 +1547,16 @@ class _AdminFilterController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_FILTER`.NAME, `'.TABLE_PREFIX.'ADMIN_FILTER`.MODULE, `'.TABLE_PREFIX.'ADMIN_FILTER`.COLUMNS, `'.TABLE_PREFIX.'ADMIN_FILTER`.IS_DEFAULT, `'.TABLE_PREFIX.'ADMIN_FILTER`.ID, `'.TABLE_PREFIX.'ADMIN_FILTER`.JSON, `'.TABLE_PREFIX.'ADMIN_FILTER`.UUID, `'.TABLE_PREFIX.'ADMIN_FILTER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 

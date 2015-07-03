@@ -1988,18 +1988,30 @@ class _PageWidgetController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_WIDGET`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_WIDGET`.TITLE, `'.TABLE_PREFIX.'PAGE_WIDGET`.CODE, `'.TABLE_PREFIX.'PAGE_WIDGET`.LINK, `'.TABLE_PREFIX.'PAGE_WIDGET`.IMAGE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID_WIDGET_TYPE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID_WIDGET_POSITION, `'.TABLE_PREFIX.'PAGE_WIDGET`.CONTENT, `'.TABLE_PREFIX.'PAGE_WIDGET`.HIDE_TITLE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID, `'.TABLE_PREFIX.'PAGE_WIDGET`.JSON, `'.TABLE_PREFIX.'PAGE_WIDGET`.UUID, `'.TABLE_PREFIX.'PAGE_WIDGET`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_ID_WIDGET_TYPE.NAME as reftext_ID_WIDGET_TYPE');
-            $model->selectAdd('reftable_ID_WIDGET_TYPE.UUID as refuuid_ID_WIDGET_TYPE');
-            $model->selectAdd('reftable_ID_WIDGET_POSITION.NAME as reftext_ID_WIDGET_POSITION');
-            $model->selectAdd('reftable_ID_WIDGET_POSITION.UUID as refuuid_ID_WIDGET_POSITION');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('WidgetType')) {
+                $model->selectAdd('reftable_ID_WIDGET_TYPE.NAME as reftext_ID_WIDGET_TYPE');
+                $model->selectAdd('reftable_ID_WIDGET_TYPE.UUID as refuuid_ID_WIDGET_TYPE');
+            }
+            if (Framework::hasModule('WidgetPosition')) {
+                $model->selectAdd('reftable_ID_WIDGET_POSITION.NAME as reftext_ID_WIDGET_POSITION');
+                $model->selectAdd('reftable_ID_WIDGET_POSITION.UUID as refuuid_ID_WIDGET_POSITION');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('ID_WIDGET_TYPE',TABLE_PREFIX.'WIDGET_TYPE:CODE'), 'LEFT', 'reftable_ID_WIDGET_TYPE');
-            $model->joinAdd(array('ID_WIDGET_POSITION',TABLE_PREFIX.'WIDGET_POSITION:CODE'), 'LEFT', 'reftable_ID_WIDGET_POSITION');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('WidgetType')) {
+                $model->joinAdd(array('ID_WIDGET_TYPE',TABLE_PREFIX.'WIDGET_TYPE:CODE'), 'LEFT', 'reftable_ID_WIDGET_TYPE');
+            }
+            if (Framework::hasModule('WidgetPosition')) {
+                $model->joinAdd(array('ID_WIDGET_POSITION',TABLE_PREFIX.'WIDGET_POSITION:CODE'), 'LEFT', 'reftable_ID_WIDGET_POSITION');
+            }
         }
     }
 
@@ -2008,18 +2020,30 @@ class _PageWidgetController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_WIDGET`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_WIDGET`.TITLE, `'.TABLE_PREFIX.'PAGE_WIDGET`.CODE, `'.TABLE_PREFIX.'PAGE_WIDGET`.IMAGE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID_WIDGET_TYPE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID_WIDGET_POSITION, `'.TABLE_PREFIX.'PAGE_WIDGET`.HIDE_TITLE, `'.TABLE_PREFIX.'PAGE_WIDGET`.ORDERING, `'.TABLE_PREFIX.'PAGE_WIDGET`.ID, `'.TABLE_PREFIX.'PAGE_WIDGET`.JSON, `'.TABLE_PREFIX.'PAGE_WIDGET`.UUID, `'.TABLE_PREFIX.'PAGE_WIDGET`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_ID_WIDGET_TYPE.NAME as reftext_ID_WIDGET_TYPE');
-            $model->selectAdd('reftable_ID_WIDGET_TYPE.UUID as refuuid_ID_WIDGET_TYPE');
-            $model->selectAdd('reftable_ID_WIDGET_POSITION.NAME as reftext_ID_WIDGET_POSITION');
-            $model->selectAdd('reftable_ID_WIDGET_POSITION.UUID as refuuid_ID_WIDGET_POSITION');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('WidgetType')) {
+                $model->selectAdd('reftable_ID_WIDGET_TYPE.NAME as reftext_ID_WIDGET_TYPE');
+                $model->selectAdd('reftable_ID_WIDGET_TYPE.UUID as refuuid_ID_WIDGET_TYPE');
+            }
+            if (Framework::hasModule('WidgetPosition')) {
+                $model->selectAdd('reftable_ID_WIDGET_POSITION.NAME as reftext_ID_WIDGET_POSITION');
+                $model->selectAdd('reftable_ID_WIDGET_POSITION.UUID as refuuid_ID_WIDGET_POSITION');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('ID_WIDGET_TYPE',TABLE_PREFIX.'WIDGET_TYPE:CODE'), 'LEFT', 'reftable_ID_WIDGET_TYPE');
-            $model->joinAdd(array('ID_WIDGET_POSITION',TABLE_PREFIX.'WIDGET_POSITION:CODE'), 'LEFT', 'reftable_ID_WIDGET_POSITION');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('WidgetType')) {
+                $model->joinAdd(array('ID_WIDGET_TYPE',TABLE_PREFIX.'WIDGET_TYPE:CODE'), 'LEFT', 'reftable_ID_WIDGET_TYPE');
+            }
+            if (Framework::hasModule('WidgetPosition')) {
+                $model->joinAdd(array('ID_WIDGET_POSITION',TABLE_PREFIX.'WIDGET_POSITION:CODE'), 'LEFT', 'reftable_ID_WIDGET_POSITION');
+            }
         }
     }
 

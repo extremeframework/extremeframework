@@ -1544,12 +1544,16 @@ class _WorkflowStageController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_STAGE`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.NAME, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.CODE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_DEFAULT, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_BINDING_OBJECT_EDITABLE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_BINDING_OBJECT_DELETABLE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.ID, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.JSON, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.UUID, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
         }
     }
 
@@ -1558,12 +1562,16 @@ class _WorkflowStageController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_STAGE`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.NAME, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.CODE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_DEFAULT, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_BINDING_OBJECT_EDITABLE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.IS_BINDING_OBJECT_DELETABLE, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.ID, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.JSON, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.UUID, `'.TABLE_PREFIX.'WORKFLOW_STAGE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
         }
     }
 

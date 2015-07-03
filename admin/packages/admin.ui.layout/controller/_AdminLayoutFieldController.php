@@ -1571,15 +1571,23 @@ class _AdminLayoutFieldController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.MODULE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.ID_ADMIN_LAYOUT_SECTION, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.COLUMN, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.POSITION, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.ID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.JSON, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.UUID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.NAME as reftext_ID_ADMIN_LAYOUT_SECTION');
-            $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.UUID as refuuid_ID_ADMIN_LAYOUT_SECTION');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('AdminLayoutSection')) {
+                $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.NAME as reftext_ID_ADMIN_LAYOUT_SECTION');
+                $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.UUID as refuuid_ID_ADMIN_LAYOUT_SECTION');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_ADMIN_LAYOUT_SECTION',TABLE_PREFIX.'ADMIN_LAYOUT_SECTION:ID'), 'LEFT', 'reftable_ID_ADMIN_LAYOUT_SECTION');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('AdminLayoutSection')) {
+                $model->joinAdd(array('ID_ADMIN_LAYOUT_SECTION',TABLE_PREFIX.'ADMIN_LAYOUT_SECTION:ID'), 'LEFT', 'reftable_ID_ADMIN_LAYOUT_SECTION');
+            }
         }
     }
 
@@ -1588,12 +1596,16 @@ class _AdminLayoutFieldController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.MODULE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.ID_ADMIN_LAYOUT_SECTION, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.COLUMN, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.POSITION, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.ORDERING, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.ID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.JSON, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.UUID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_FIELD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.NAME as reftext_ID_ADMIN_LAYOUT_SECTION');
-            $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.UUID as refuuid_ID_ADMIN_LAYOUT_SECTION');
+            if (Framework::hasModule('AdminLayoutSection')) {
+                $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.NAME as reftext_ID_ADMIN_LAYOUT_SECTION');
+                $model->selectAdd('reftable_ID_ADMIN_LAYOUT_SECTION.UUID as refuuid_ID_ADMIN_LAYOUT_SECTION');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_LAYOUT_SECTION',TABLE_PREFIX.'ADMIN_LAYOUT_SECTION:ID'), 'LEFT', 'reftable_ID_ADMIN_LAYOUT_SECTION');
+            if (Framework::hasModule('AdminLayoutSection')) {
+                $model->joinAdd(array('ID_ADMIN_LAYOUT_SECTION',TABLE_PREFIX.'ADMIN_LAYOUT_SECTION:ID'), 'LEFT', 'reftable_ID_ADMIN_LAYOUT_SECTION');
+            }
         }
     }
 

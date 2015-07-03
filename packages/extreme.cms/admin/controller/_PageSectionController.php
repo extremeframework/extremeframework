@@ -2080,18 +2080,30 @@ class _PageSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_SECTION`.TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.CODE, `'.TABLE_PREFIX.'PAGE_SECTION`.PARENT, `'.TABLE_PREFIX.'PAGE_SECTION`.TAG_LINE, `'.TABLE_PREFIX.'PAGE_SECTION`.IMAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'PAGE_SECTION`.BACKGROUND_IMAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.BACKGROUND_COLOR, `'.TABLE_PREFIX.'PAGE_SECTION`.VIDEO, `'.TABLE_PREFIX.'PAGE_SECTION`.CONTENT, `'.TABLE_PREFIX.'PAGE_SECTION`.TAGS, `'.TABLE_PREFIX.'PAGE_SECTION`.VIEW_MORE_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.VIEW_MORE_ID_PAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.VIEW_MORE_LINK, `'.TABLE_PREFIX.'PAGE_SECTION`.HIDE_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.IS_TAB_ANCHOR_SECTION, `'.TABLE_PREFIX.'PAGE_SECTION`.TAB_ANCHOR_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.ID, `'.TABLE_PREFIX.'PAGE_SECTION`.JSON, `'.TABLE_PREFIX.'PAGE_SECTION`.UUID, `'.TABLE_PREFIX.'PAGE_SECTION`.WFID, `'.TABLE_PREFIX.'PAGE_SECTION`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_PARENT.TITLE as reftext_PARENT');
-            $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
-            $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.NAME as reftext_VIEW_MORE_ID_PAGE');
-            $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.UUID as refuuid_VIEW_MORE_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('PageSection')) {
+                $model->selectAdd('reftable_PARENT.TITLE as reftext_PARENT');
+                $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.NAME as reftext_VIEW_MORE_ID_PAGE');
+                $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.UUID as refuuid_VIEW_MORE_ID_PAGE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('PARENT',TABLE_PREFIX.'PAGE_SECTION:CODE'), 'LEFT', 'reftable_PARENT');
-            $model->joinAdd(array('VIEW_MORE_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_VIEW_MORE_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('PageSection')) {
+                $model->joinAdd(array('PARENT',TABLE_PREFIX.'PAGE_SECTION:CODE'), 'LEFT', 'reftable_PARENT');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('VIEW_MORE_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_VIEW_MORE_ID_PAGE');
+            }
         }
     }
 
@@ -2100,15 +2112,23 @@ class _PageSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_SECTION`.TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.CODE, `'.TABLE_PREFIX.'PAGE_SECTION`.IMAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'PAGE_SECTION`.BACKGROUND_IMAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.BACKGROUND_COLOR, `'.TABLE_PREFIX.'PAGE_SECTION`.VIDEO, `'.TABLE_PREFIX.'PAGE_SECTION`.VIEW_MORE_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.VIEW_MORE_ID_PAGE, `'.TABLE_PREFIX.'PAGE_SECTION`.HIDE_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.IS_TAB_ANCHOR_SECTION, `'.TABLE_PREFIX.'PAGE_SECTION`.TAB_ANCHOR_TITLE, `'.TABLE_PREFIX.'PAGE_SECTION`.ORDERING, `'.TABLE_PREFIX.'PAGE_SECTION`.ID, `'.TABLE_PREFIX.'PAGE_SECTION`.JSON, `'.TABLE_PREFIX.'PAGE_SECTION`.UUID, `'.TABLE_PREFIX.'PAGE_SECTION`.WFID, `'.TABLE_PREFIX.'PAGE_SECTION`.PARENT, `'.TABLE_PREFIX.'PAGE_SECTION`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.NAME as reftext_VIEW_MORE_ID_PAGE');
-            $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.UUID as refuuid_VIEW_MORE_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.NAME as reftext_VIEW_MORE_ID_PAGE');
+                $model->selectAdd('reftable_VIEW_MORE_ID_PAGE.UUID as refuuid_VIEW_MORE_ID_PAGE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('VIEW_MORE_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_VIEW_MORE_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('VIEW_MORE_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_VIEW_MORE_ID_PAGE');
+            }
         }
     }
 

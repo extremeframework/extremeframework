@@ -2126,15 +2126,23 @@ class _AdminOrderController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_ID_COUNTRY, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_FIRST_NAME, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_LAST_NAME, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_ADDRESS, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_CITY, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_STATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_ZIP_CODE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_EMAIL, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_PHONE, `'.TABLE_PREFIX.'ADMIN_ORDER`.TOTAL_VALUE, `'.TABLE_PREFIX.'ADMIN_ORDER`.COUPON_CODE, `'.TABLE_PREFIX.'ADMIN_ORDER`.COUPON_DISCOUNT, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID_PAYMENT_TYPE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CREATION_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.PAYMENT_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.PAYMENT_REF, `'.TABLE_PREFIX.'ADMIN_ORDER`.REFUND_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.REFUND_REF, `'.TABLE_PREFIX.'ADMIN_ORDER`.PROCESSED_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID_ADMIN_ORDER_STATUS, `'.TABLE_PREFIX.'ADMIN_ORDER`.NOTE, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID, `'.TABLE_PREFIX.'ADMIN_ORDER`.JSON, `'.TABLE_PREFIX.'ADMIN_ORDER`.UUID, `'.TABLE_PREFIX.'ADMIN_ORDER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAYMENT_TYPE.NAME as reftext_ID_PAYMENT_TYPE');
-            $model->selectAdd('reftable_ID_PAYMENT_TYPE.UUID as refuuid_ID_PAYMENT_TYPE');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.NAME as reftext_ID_ADMIN_ORDER_STATUS');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.UUID as refuuid_ID_ADMIN_ORDER_STATUS');
+            if (Framework::hasModule('PaymentType')) {
+                $model->selectAdd('reftable_ID_PAYMENT_TYPE.NAME as reftext_ID_PAYMENT_TYPE');
+                $model->selectAdd('reftable_ID_PAYMENT_TYPE.UUID as refuuid_ID_PAYMENT_TYPE');
+            }
+            if (Framework::hasModule('AdminOrderStatus')) {
+                $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.NAME as reftext_ID_ADMIN_ORDER_STATUS');
+                $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.UUID as refuuid_ID_ADMIN_ORDER_STATUS');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAYMENT_TYPE',TABLE_PREFIX.'PAYMENT_TYPE:CODE'), 'LEFT', 'reftable_ID_PAYMENT_TYPE');
-            $model->joinAdd(array('ID_ADMIN_ORDER_STATUS',TABLE_PREFIX.'ADMIN_ORDER_STATUS:CODE'), 'LEFT', 'reftable_ID_ADMIN_ORDER_STATUS');
+            if (Framework::hasModule('PaymentType')) {
+                $model->joinAdd(array('ID_PAYMENT_TYPE',TABLE_PREFIX.'PAYMENT_TYPE:CODE'), 'LEFT', 'reftable_ID_PAYMENT_TYPE');
+            }
+            if (Framework::hasModule('AdminOrderStatus')) {
+                $model->joinAdd(array('ID_ADMIN_ORDER_STATUS',TABLE_PREFIX.'ADMIN_ORDER_STATUS:CODE'), 'LEFT', 'reftable_ID_ADMIN_ORDER_STATUS');
+            }
         }
     }
 
@@ -2143,15 +2151,23 @@ class _AdminOrderController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_ID_COUNTRY, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_FIRST_NAME, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_LAST_NAME, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_CITY, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_STATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_ZIP_CODE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_EMAIL, `'.TABLE_PREFIX.'ADMIN_ORDER`.CUSTOMER_PHONE, `'.TABLE_PREFIX.'ADMIN_ORDER`.TOTAL_VALUE, `'.TABLE_PREFIX.'ADMIN_ORDER`.COUPON_CODE, `'.TABLE_PREFIX.'ADMIN_ORDER`.COUPON_DISCOUNT, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID_PAYMENT_TYPE, `'.TABLE_PREFIX.'ADMIN_ORDER`.CREATION_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.PAYMENT_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.PAYMENT_REF, `'.TABLE_PREFIX.'ADMIN_ORDER`.REFUND_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.REFUND_REF, `'.TABLE_PREFIX.'ADMIN_ORDER`.PROCESSED_DATE, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID_ADMIN_ORDER_STATUS, `'.TABLE_PREFIX.'ADMIN_ORDER`.ID, `'.TABLE_PREFIX.'ADMIN_ORDER`.JSON, `'.TABLE_PREFIX.'ADMIN_ORDER`.UUID, `'.TABLE_PREFIX.'ADMIN_ORDER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAYMENT_TYPE.NAME as reftext_ID_PAYMENT_TYPE');
-            $model->selectAdd('reftable_ID_PAYMENT_TYPE.UUID as refuuid_ID_PAYMENT_TYPE');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.NAME as reftext_ID_ADMIN_ORDER_STATUS');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.UUID as refuuid_ID_ADMIN_ORDER_STATUS');
+            if (Framework::hasModule('PaymentType')) {
+                $model->selectAdd('reftable_ID_PAYMENT_TYPE.NAME as reftext_ID_PAYMENT_TYPE');
+                $model->selectAdd('reftable_ID_PAYMENT_TYPE.UUID as refuuid_ID_PAYMENT_TYPE');
+            }
+            if (Framework::hasModule('AdminOrderStatus')) {
+                $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.NAME as reftext_ID_ADMIN_ORDER_STATUS');
+                $model->selectAdd('reftable_ID_ADMIN_ORDER_STATUS.UUID as refuuid_ID_ADMIN_ORDER_STATUS');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAYMENT_TYPE',TABLE_PREFIX.'PAYMENT_TYPE:CODE'), 'LEFT', 'reftable_ID_PAYMENT_TYPE');
-            $model->joinAdd(array('ID_ADMIN_ORDER_STATUS',TABLE_PREFIX.'ADMIN_ORDER_STATUS:CODE'), 'LEFT', 'reftable_ID_ADMIN_ORDER_STATUS');
+            if (Framework::hasModule('PaymentType')) {
+                $model->joinAdd(array('ID_PAYMENT_TYPE',TABLE_PREFIX.'PAYMENT_TYPE:CODE'), 'LEFT', 'reftable_ID_PAYMENT_TYPE');
+            }
+            if (Framework::hasModule('AdminOrderStatus')) {
+                $model->joinAdd(array('ID_ADMIN_ORDER_STATUS',TABLE_PREFIX.'ADMIN_ORDER_STATUS:CODE'), 'LEFT', 'reftable_ID_ADMIN_ORDER_STATUS');
+            }
         }
     }
 

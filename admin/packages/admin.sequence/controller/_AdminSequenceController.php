@@ -1528,12 +1528,16 @@ class _AdminSequenceController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_SEQUENCE`.MODULE, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.SEQUENCE_FORMAT, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.CURRENT_VALUE, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.SEQUENCE_STEP, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.ID, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.JSON, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.UUID, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 

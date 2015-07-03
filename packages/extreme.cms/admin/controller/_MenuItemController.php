@@ -2064,27 +2064,51 @@ class _MenuItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'MENU_ITEM`.TITLE, `'.TABLE_PREFIX.'MENU_ITEM`.CLASS, `'.TABLE_PREFIX.'MENU_ITEM`.TAG_LINE, `'.TABLE_PREFIX.'MENU_ITEM`.ID_MENU, `'.TABLE_PREFIX.'MENU_ITEM`.PARENT, `'.TABLE_PREFIX.'MENU_ITEM`.ID_PAGE, `'.TABLE_PREFIX.'MENU_ITEM`.ID_POST, `'.TABLE_PREFIX.'MENU_ITEM`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'MENU_ITEM`.PATH, `'.TABLE_PREFIX.'MENU_ITEM`.CUSTOM_CONTENT, `'.TABLE_PREFIX.'MENU_ITEM`.HAS_BREAK_AFTER, `'.TABLE_PREFIX.'MENU_ITEM`.ACL_ID_USER_GROUP, `'.TABLE_PREFIX.'MENU_ITEM`.ID, `'.TABLE_PREFIX.'MENU_ITEM`.JSON, `'.TABLE_PREFIX.'MENU_ITEM`.UUID, `'.TABLE_PREFIX.'MENU_ITEM`.WFID, `'.TABLE_PREFIX.'MENU_ITEM`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_MENU.NAME as reftext_ID_MENU');
-            $model->selectAdd('reftable_ID_MENU.UUID as refuuid_ID_MENU');
-            $model->selectAdd('reftable_PARENT.TITLE as reftext_PARENT');
-            $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ACL_ID_USER_GROUP.NAME as reftext_ACL_ID_USER_GROUP');
-            $model->selectAdd('reftable_ACL_ID_USER_GROUP.UUID as refuuid_ACL_ID_USER_GROUP');
+            if (Framework::hasModule('Menu')) {
+                $model->selectAdd('reftable_ID_MENU.NAME as reftext_ID_MENU');
+                $model->selectAdd('reftable_ID_MENU.UUID as refuuid_ID_MENU');
+            }
+            if (Framework::hasModule('MenuItem')) {
+                $model->selectAdd('reftable_PARENT.TITLE as reftext_PARENT');
+                $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
+                $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ACL_ID_USER_GROUP.NAME as reftext_ACL_ID_USER_GROUP');
+                $model->selectAdd('reftable_ACL_ID_USER_GROUP.UUID as refuuid_ACL_ID_USER_GROUP');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_MENU',TABLE_PREFIX.'MENU:CODE'), 'LEFT', 'reftable_ID_MENU');
-            $model->joinAdd(array('PARENT',TABLE_PREFIX.'MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
-            $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
-            $model->joinAdd(array('ACL_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ACL_ID_USER_GROUP');
+            if (Framework::hasModule('Menu')) {
+                $model->joinAdd(array('ID_MENU',TABLE_PREFIX.'MENU:CODE'), 'LEFT', 'reftable_ID_MENU');
+            }
+            if (Framework::hasModule('MenuItem')) {
+                $model->joinAdd(array('PARENT',TABLE_PREFIX.'MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ACL_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ACL_ID_USER_GROUP');
+            }
         }
     }
 
@@ -2093,24 +2117,44 @@ class _MenuItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'MENU_ITEM`.TITLE, `'.TABLE_PREFIX.'MENU_ITEM`.CLASS, `'.TABLE_PREFIX.'MENU_ITEM`.ID_MENU, `'.TABLE_PREFIX.'MENU_ITEM`.ID_PAGE, `'.TABLE_PREFIX.'MENU_ITEM`.ID_POST, `'.TABLE_PREFIX.'MENU_ITEM`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'MENU_ITEM`.PATH, `'.TABLE_PREFIX.'MENU_ITEM`.HAS_BREAK_AFTER, `'.TABLE_PREFIX.'MENU_ITEM`.ORDERING, `'.TABLE_PREFIX.'MENU_ITEM`.ACL_ID_USER_GROUP, `'.TABLE_PREFIX.'MENU_ITEM`.ID, `'.TABLE_PREFIX.'MENU_ITEM`.JSON, `'.TABLE_PREFIX.'MENU_ITEM`.UUID, `'.TABLE_PREFIX.'MENU_ITEM`.WFID, `'.TABLE_PREFIX.'MENU_ITEM`.PARENT, `'.TABLE_PREFIX.'MENU_ITEM`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_MENU.NAME as reftext_ID_MENU');
-            $model->selectAdd('reftable_ID_MENU.UUID as refuuid_ID_MENU');
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ACL_ID_USER_GROUP.NAME as reftext_ACL_ID_USER_GROUP');
-            $model->selectAdd('reftable_ACL_ID_USER_GROUP.UUID as refuuid_ACL_ID_USER_GROUP');
+            if (Framework::hasModule('Menu')) {
+                $model->selectAdd('reftable_ID_MENU.NAME as reftext_ID_MENU');
+                $model->selectAdd('reftable_ID_MENU.UUID as refuuid_ID_MENU');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
+                $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ACL_ID_USER_GROUP.NAME as reftext_ACL_ID_USER_GROUP');
+                $model->selectAdd('reftable_ACL_ID_USER_GROUP.UUID as refuuid_ACL_ID_USER_GROUP');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_MENU',TABLE_PREFIX.'MENU:CODE'), 'LEFT', 'reftable_ID_MENU');
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
-            $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
-            $model->joinAdd(array('ACL_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ACL_ID_USER_GROUP');
+            if (Framework::hasModule('Menu')) {
+                $model->joinAdd(array('ID_MENU',TABLE_PREFIX.'MENU:CODE'), 'LEFT', 'reftable_ID_MENU');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ACL_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ACL_ID_USER_GROUP');
+            }
         }
     }
 

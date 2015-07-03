@@ -1606,18 +1606,30 @@ class _UserMembershipController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER_GROUP, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER_ROLE, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.VALID_FROM, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.VALID_UNTIL, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.JSON, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.UUID, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
-            $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            }
         }
     }
 
@@ -1626,18 +1638,30 @@ class _UserMembershipController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER_GROUP, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID_USER_ROLE, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.VALID_FROM, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.VALID_UNTIL, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.ID, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.JSON, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.UUID, `'.TABLE_PREFIX.'USER_MEMBERSHIP`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
-            $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            }
         }
     }
 

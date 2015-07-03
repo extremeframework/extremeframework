@@ -1571,15 +1571,23 @@ class _AdminLanguageItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID_ADMIN_LANGUAGE, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID_ADMIN_LABEL, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.TRANSLATION, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.NAME as reftext_ID_ADMIN_LANGUAGE');
-            $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.UUID as refuuid_ID_ADMIN_LANGUAGE');
-            $model->selectAdd('reftable_ID_ADMIN_LABEL.LABEL as reftext_ID_ADMIN_LABEL');
-            $model->selectAdd('reftable_ID_ADMIN_LABEL.UUID as refuuid_ID_ADMIN_LABEL');
+            if (Framework::hasModule('AdminLanguage')) {
+                $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.NAME as reftext_ID_ADMIN_LANGUAGE');
+                $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.UUID as refuuid_ID_ADMIN_LANGUAGE');
+            }
+            if (Framework::hasModule('AdminLabel')) {
+                $model->selectAdd('reftable_ID_ADMIN_LABEL.LABEL as reftext_ID_ADMIN_LABEL');
+                $model->selectAdd('reftable_ID_ADMIN_LABEL.UUID as refuuid_ID_ADMIN_LABEL');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_LANGUAGE',TABLE_PREFIX.'ADMIN_LANGUAGE:ID'), 'LEFT', 'reftable_ID_ADMIN_LANGUAGE');
-            $model->joinAdd(array('ID_ADMIN_LABEL',TABLE_PREFIX.'ADMIN_LABEL:ID'), 'LEFT', 'reftable_ID_ADMIN_LABEL');
+            if (Framework::hasModule('AdminLanguage')) {
+                $model->joinAdd(array('ID_ADMIN_LANGUAGE',TABLE_PREFIX.'ADMIN_LANGUAGE:ID'), 'LEFT', 'reftable_ID_ADMIN_LANGUAGE');
+            }
+            if (Framework::hasModule('AdminLabel')) {
+                $model->joinAdd(array('ID_ADMIN_LABEL',TABLE_PREFIX.'ADMIN_LABEL:ID'), 'LEFT', 'reftable_ID_ADMIN_LABEL');
+            }
         }
     }
 
@@ -1588,15 +1596,23 @@ class _AdminLanguageItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID_ADMIN_LANGUAGE, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID_ADMIN_LABEL, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE_ITEM`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.NAME as reftext_ID_ADMIN_LANGUAGE');
-            $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.UUID as refuuid_ID_ADMIN_LANGUAGE');
-            $model->selectAdd('reftable_ID_ADMIN_LABEL.LABEL as reftext_ID_ADMIN_LABEL');
-            $model->selectAdd('reftable_ID_ADMIN_LABEL.UUID as refuuid_ID_ADMIN_LABEL');
+            if (Framework::hasModule('AdminLanguage')) {
+                $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.NAME as reftext_ID_ADMIN_LANGUAGE');
+                $model->selectAdd('reftable_ID_ADMIN_LANGUAGE.UUID as refuuid_ID_ADMIN_LANGUAGE');
+            }
+            if (Framework::hasModule('AdminLabel')) {
+                $model->selectAdd('reftable_ID_ADMIN_LABEL.LABEL as reftext_ID_ADMIN_LABEL');
+                $model->selectAdd('reftable_ID_ADMIN_LABEL.UUID as refuuid_ID_ADMIN_LABEL');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_LANGUAGE',TABLE_PREFIX.'ADMIN_LANGUAGE:ID'), 'LEFT', 'reftable_ID_ADMIN_LANGUAGE');
-            $model->joinAdd(array('ID_ADMIN_LABEL',TABLE_PREFIX.'ADMIN_LABEL:ID'), 'LEFT', 'reftable_ID_ADMIN_LABEL');
+            if (Framework::hasModule('AdminLanguage')) {
+                $model->joinAdd(array('ID_ADMIN_LANGUAGE',TABLE_PREFIX.'ADMIN_LANGUAGE:ID'), 'LEFT', 'reftable_ID_ADMIN_LANGUAGE');
+            }
+            if (Framework::hasModule('AdminLabel')) {
+                $model->joinAdd(array('ID_ADMIN_LABEL',TABLE_PREFIX.'ADMIN_LABEL:ID'), 'LEFT', 'reftable_ID_ADMIN_LABEL');
+            }
         }
     }
 

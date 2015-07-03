@@ -1907,15 +1907,23 @@ class _AdminOrderItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID_ADMIN_ORDER, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID_ADMIN_PRODUCT, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.QUANTITY, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.PRICE, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_ORDER.CUSTOMER_FIRST_NAME as reftext_ID_ADMIN_ORDER');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER.UUID as refuuid_ID_ADMIN_ORDER');
-            $model->selectAdd('reftable_ID_ADMIN_PRODUCT.TITLE as reftext_ID_ADMIN_PRODUCT');
-            $model->selectAdd('reftable_ID_ADMIN_PRODUCT.UUID as refuuid_ID_ADMIN_PRODUCT');
+            if (Framework::hasModule('AdminOrder')) {
+                $model->selectAdd('reftable_ID_ADMIN_ORDER.CUSTOMER_FIRST_NAME as reftext_ID_ADMIN_ORDER');
+                $model->selectAdd('reftable_ID_ADMIN_ORDER.UUID as refuuid_ID_ADMIN_ORDER');
+            }
+            if (Framework::hasModule('AdminProduct')) {
+                $model->selectAdd('reftable_ID_ADMIN_PRODUCT.TITLE as reftext_ID_ADMIN_PRODUCT');
+                $model->selectAdd('reftable_ID_ADMIN_PRODUCT.UUID as refuuid_ID_ADMIN_PRODUCT');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_ORDER',TABLE_PREFIX.'ADMIN_ORDER:ID'), 'LEFT', 'reftable_ID_ADMIN_ORDER');
-            $model->joinAdd(array('ID_ADMIN_PRODUCT',TABLE_PREFIX.'ADMIN_PRODUCT:ID'), 'LEFT', 'reftable_ID_ADMIN_PRODUCT');
+            if (Framework::hasModule('AdminOrder')) {
+                $model->joinAdd(array('ID_ADMIN_ORDER',TABLE_PREFIX.'ADMIN_ORDER:ID'), 'LEFT', 'reftable_ID_ADMIN_ORDER');
+            }
+            if (Framework::hasModule('AdminProduct')) {
+                $model->joinAdd(array('ID_ADMIN_PRODUCT',TABLE_PREFIX.'ADMIN_PRODUCT:ID'), 'LEFT', 'reftable_ID_ADMIN_PRODUCT');
+            }
         }
     }
 
@@ -1924,15 +1932,23 @@ class _AdminOrderItemController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID_ADMIN_ORDER, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID_ADMIN_PRODUCT, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.QUANTITY, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.PRICE, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.ID, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.JSON, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.UUID, `'.TABLE_PREFIX.'ADMIN_ORDER_ITEM`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_ADMIN_ORDER.CUSTOMER_FIRST_NAME as reftext_ID_ADMIN_ORDER');
-            $model->selectAdd('reftable_ID_ADMIN_ORDER.UUID as refuuid_ID_ADMIN_ORDER');
-            $model->selectAdd('reftable_ID_ADMIN_PRODUCT.TITLE as reftext_ID_ADMIN_PRODUCT');
-            $model->selectAdd('reftable_ID_ADMIN_PRODUCT.UUID as refuuid_ID_ADMIN_PRODUCT');
+            if (Framework::hasModule('AdminOrder')) {
+                $model->selectAdd('reftable_ID_ADMIN_ORDER.CUSTOMER_FIRST_NAME as reftext_ID_ADMIN_ORDER');
+                $model->selectAdd('reftable_ID_ADMIN_ORDER.UUID as refuuid_ID_ADMIN_ORDER');
+            }
+            if (Framework::hasModule('AdminProduct')) {
+                $model->selectAdd('reftable_ID_ADMIN_PRODUCT.TITLE as reftext_ID_ADMIN_PRODUCT');
+                $model->selectAdd('reftable_ID_ADMIN_PRODUCT.UUID as refuuid_ID_ADMIN_PRODUCT');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_ADMIN_ORDER',TABLE_PREFIX.'ADMIN_ORDER:ID'), 'LEFT', 'reftable_ID_ADMIN_ORDER');
-            $model->joinAdd(array('ID_ADMIN_PRODUCT',TABLE_PREFIX.'ADMIN_PRODUCT:ID'), 'LEFT', 'reftable_ID_ADMIN_PRODUCT');
+            if (Framework::hasModule('AdminOrder')) {
+                $model->joinAdd(array('ID_ADMIN_ORDER',TABLE_PREFIX.'ADMIN_ORDER:ID'), 'LEFT', 'reftable_ID_ADMIN_ORDER');
+            }
+            if (Framework::hasModule('AdminProduct')) {
+                $model->joinAdd(array('ID_ADMIN_PRODUCT',TABLE_PREFIX.'ADMIN_PRODUCT:ID'), 'LEFT', 'reftable_ID_ADMIN_PRODUCT');
+            }
         }
     }
 

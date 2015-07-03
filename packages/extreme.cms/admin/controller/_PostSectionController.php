@@ -1952,12 +1952,16 @@ class _PostSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_SECTION`.TITLE, `'.TABLE_PREFIX.'POST_SECTION`.ID_POST, `'.TABLE_PREFIX.'POST_SECTION`.TAG_LINE, `'.TABLE_PREFIX.'POST_SECTION`.IMAGE, `'.TABLE_PREFIX.'POST_SECTION`.BACKGROUND_IMAGE, `'.TABLE_PREFIX.'POST_SECTION`.BACKGROUND_COLOR, `'.TABLE_PREFIX.'POST_SECTION`.VIDEO, `'.TABLE_PREFIX.'POST_SECTION`.CONTENT, `'.TABLE_PREFIX.'POST_SECTION`.LINK_PATH, `'.TABLE_PREFIX.'POST_SECTION`.ID, `'.TABLE_PREFIX.'POST_SECTION`.JSON, `'.TABLE_PREFIX.'POST_SECTION`.UUID, `'.TABLE_PREFIX.'POST_SECTION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
         }
     }
 
@@ -1966,12 +1970,16 @@ class _PostSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_SECTION`.TITLE, `'.TABLE_PREFIX.'POST_SECTION`.ID_POST, `'.TABLE_PREFIX.'POST_SECTION`.IMAGE, `'.TABLE_PREFIX.'POST_SECTION`.BACKGROUND_IMAGE, `'.TABLE_PREFIX.'POST_SECTION`.BACKGROUND_COLOR, `'.TABLE_PREFIX.'POST_SECTION`.VIDEO, `'.TABLE_PREFIX.'POST_SECTION`.LINK_PATH, `'.TABLE_PREFIX.'POST_SECTION`.ORDERING, `'.TABLE_PREFIX.'POST_SECTION`.ID, `'.TABLE_PREFIX.'POST_SECTION`.JSON, `'.TABLE_PREFIX.'POST_SECTION`.UUID, `'.TABLE_PREFIX.'POST_SECTION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
         }
     }
 

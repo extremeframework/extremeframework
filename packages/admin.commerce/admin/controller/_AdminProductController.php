@@ -1963,12 +1963,16 @@ class _AdminProductController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PRODUCT`.TITLE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.TAG_LINE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.LIST_PRICE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.PRICE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.DESCRIPTION, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.PRODUCT_ID_PAGE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.ID, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.JSON, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.UUID, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_PRODUCT_ID_PAGE.NAME as reftext_PRODUCT_ID_PAGE');
-            $model->selectAdd('reftable_PRODUCT_ID_PAGE.UUID as refuuid_PRODUCT_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_PRODUCT_ID_PAGE.NAME as reftext_PRODUCT_ID_PAGE');
+                $model->selectAdd('reftable_PRODUCT_ID_PAGE.UUID as refuuid_PRODUCT_ID_PAGE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('PRODUCT_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_PRODUCT_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('PRODUCT_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_PRODUCT_ID_PAGE');
+            }
         }
     }
 
@@ -1977,12 +1981,16 @@ class _AdminProductController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PRODUCT`.TITLE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.LIST_PRICE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.PRICE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.PRODUCT_ID_PAGE, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.ID, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.JSON, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.UUID, `'.TABLE_PREFIX.'ADMIN_PRODUCT`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_PRODUCT_ID_PAGE.NAME as reftext_PRODUCT_ID_PAGE');
-            $model->selectAdd('reftable_PRODUCT_ID_PAGE.UUID as refuuid_PRODUCT_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_PRODUCT_ID_PAGE.NAME as reftext_PRODUCT_ID_PAGE');
+                $model->selectAdd('reftable_PRODUCT_ID_PAGE.UUID as refuuid_PRODUCT_ID_PAGE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('PRODUCT_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_PRODUCT_ID_PAGE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('PRODUCT_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_PRODUCT_ID_PAGE');
+            }
         }
     }
 

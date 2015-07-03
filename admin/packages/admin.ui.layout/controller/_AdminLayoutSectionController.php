@@ -1562,12 +1562,16 @@ class _AdminLayoutSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.NAME, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.MODULE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.SHOW_TITLE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.ID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.JSON, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.UUID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
@@ -1576,12 +1580,16 @@ class _AdminLayoutSectionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.NAME, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.MODULE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.SHOW_TITLE, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.ORDERING, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.ID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.JSON, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.UUID, `'.TABLE_PREFIX.'ADMIN_LAYOUT_SECTION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 

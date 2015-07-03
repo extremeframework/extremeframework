@@ -1556,12 +1556,16 @@ class _ScreenController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'SCREEN`.TITLE, `'.TABLE_PREFIX.'SCREEN`.ID_WORKFLOW, `'.TABLE_PREFIX.'SCREEN`.CODE, `'.TABLE_PREFIX.'SCREEN`.ID, `'.TABLE_PREFIX.'SCREEN`.JSON, `'.TABLE_PREFIX.'SCREEN`.UUID, `'.TABLE_PREFIX.'SCREEN`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
         }
     }
 
@@ -1570,12 +1574,16 @@ class _ScreenController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'SCREEN`.TITLE, `'.TABLE_PREFIX.'SCREEN`.ID_WORKFLOW, `'.TABLE_PREFIX.'SCREEN`.CODE, `'.TABLE_PREFIX.'SCREEN`.ID, `'.TABLE_PREFIX.'SCREEN`.JSON, `'.TABLE_PREFIX.'SCREEN`.UUID, `'.TABLE_PREFIX.'SCREEN`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
         }
     }
 

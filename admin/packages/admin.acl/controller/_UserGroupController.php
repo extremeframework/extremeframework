@@ -1637,15 +1637,23 @@ class _UserGroupController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_GROUP`.NAME, `'.TABLE_PREFIX.'USER_GROUP`.DEFAULT_ID_DASHBOARD, `'.TABLE_PREFIX.'USER_GROUP`.PARENT, `'.TABLE_PREFIX.'USER_GROUP`.ID, `'.TABLE_PREFIX.'USER_GROUP`.JSON, `'.TABLE_PREFIX.'USER_GROUP`.UUID, `'.TABLE_PREFIX.'USER_GROUP`.WFID, `'.TABLE_PREFIX.'USER_GROUP`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.NAME as reftext_DEFAULT_ID_DASHBOARD');
-            $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.UUID as refuuid_DEFAULT_ID_DASHBOARD');
-            $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
-            $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            if (Framework::hasModule('Dashboard')) {
+                $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.NAME as reftext_DEFAULT_ID_DASHBOARD');
+                $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.UUID as refuuid_DEFAULT_ID_DASHBOARD');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
+                $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('DEFAULT_ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_DEFAULT_ID_DASHBOARD');
-            $model->joinAdd(array('PARENT',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_PARENT');
+            if (Framework::hasModule('Dashboard')) {
+                $model->joinAdd(array('DEFAULT_ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_DEFAULT_ID_DASHBOARD');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('PARENT',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_PARENT');
+            }
         }
     }
 
@@ -1654,12 +1662,16 @@ class _UserGroupController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_GROUP`.NAME, `'.TABLE_PREFIX.'USER_GROUP`.DEFAULT_ID_DASHBOARD, `'.TABLE_PREFIX.'USER_GROUP`.ID, `'.TABLE_PREFIX.'USER_GROUP`.JSON, `'.TABLE_PREFIX.'USER_GROUP`.UUID, `'.TABLE_PREFIX.'USER_GROUP`.WFID, `'.TABLE_PREFIX.'USER_GROUP`.PARENT, `'.TABLE_PREFIX.'USER_GROUP`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.NAME as reftext_DEFAULT_ID_DASHBOARD');
-            $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.UUID as refuuid_DEFAULT_ID_DASHBOARD');
+            if (Framework::hasModule('Dashboard')) {
+                $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.NAME as reftext_DEFAULT_ID_DASHBOARD');
+                $model->selectAdd('reftable_DEFAULT_ID_DASHBOARD.UUID as refuuid_DEFAULT_ID_DASHBOARD');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('DEFAULT_ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_DEFAULT_ID_DASHBOARD');
+            if (Framework::hasModule('Dashboard')) {
+                $model->joinAdd(array('DEFAULT_ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_DEFAULT_ID_DASHBOARD');
+            }
         }
     }
 

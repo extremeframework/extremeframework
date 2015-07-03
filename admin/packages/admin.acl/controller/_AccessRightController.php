@@ -1542,15 +1542,23 @@ class _AccessRightController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
@@ -1559,12 +1567,16 @@ class _AccessRightController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
         }
     }
 

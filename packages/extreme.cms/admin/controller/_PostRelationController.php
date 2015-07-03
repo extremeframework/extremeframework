@@ -1873,18 +1873,30 @@ class _PostRelationController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_RELATION`.ID_POST, `'.TABLE_PREFIX.'POST_RELATION`.PEER_ID_POST, `'.TABLE_PREFIX.'POST_RELATION`.ID_POST_RELATION_TYPE, `'.TABLE_PREFIX.'POST_RELATION`.ID, `'.TABLE_PREFIX.'POST_RELATION`.JSON, `'.TABLE_PREFIX.'POST_RELATION`.UUID, `'.TABLE_PREFIX.'POST_RELATION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
-            $model->selectAdd('reftable_PEER_ID_POST.TITLE as reftext_PEER_ID_POST');
-            $model->selectAdd('reftable_PEER_ID_POST.UUID as refuuid_PEER_ID_POST');
-            $model->selectAdd('reftable_ID_POST_RELATION_TYPE.NAME as reftext_ID_POST_RELATION_TYPE');
-            $model->selectAdd('reftable_ID_POST_RELATION_TYPE.UUID as refuuid_ID_POST_RELATION_TYPE');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_PEER_ID_POST.TITLE as reftext_PEER_ID_POST');
+                $model->selectAdd('reftable_PEER_ID_POST.UUID as refuuid_PEER_ID_POST');
+            }
+            if (Framework::hasModule('PostRelationType')) {
+                $model->selectAdd('reftable_ID_POST_RELATION_TYPE.NAME as reftext_ID_POST_RELATION_TYPE');
+                $model->selectAdd('reftable_ID_POST_RELATION_TYPE.UUID as refuuid_ID_POST_RELATION_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
-            $model->joinAdd(array('PEER_ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_PEER_ID_POST');
-            $model->joinAdd(array('ID_POST_RELATION_TYPE',TABLE_PREFIX.'POST_RELATION_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_RELATION_TYPE');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('PEER_ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_PEER_ID_POST');
+            }
+            if (Framework::hasModule('PostRelationType')) {
+                $model->joinAdd(array('ID_POST_RELATION_TYPE',TABLE_PREFIX.'POST_RELATION_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_RELATION_TYPE');
+            }
         }
     }
 
@@ -1893,18 +1905,30 @@ class _PostRelationController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_RELATION`.ID_POST, `'.TABLE_PREFIX.'POST_RELATION`.PEER_ID_POST, `'.TABLE_PREFIX.'POST_RELATION`.ID_POST_RELATION_TYPE, `'.TABLE_PREFIX.'POST_RELATION`.ID, `'.TABLE_PREFIX.'POST_RELATION`.JSON, `'.TABLE_PREFIX.'POST_RELATION`.UUID, `'.TABLE_PREFIX.'POST_RELATION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
-            $model->selectAdd('reftable_PEER_ID_POST.TITLE as reftext_PEER_ID_POST');
-            $model->selectAdd('reftable_PEER_ID_POST.UUID as refuuid_PEER_ID_POST');
-            $model->selectAdd('reftable_ID_POST_RELATION_TYPE.NAME as reftext_ID_POST_RELATION_TYPE');
-            $model->selectAdd('reftable_ID_POST_RELATION_TYPE.UUID as refuuid_ID_POST_RELATION_TYPE');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_PEER_ID_POST.TITLE as reftext_PEER_ID_POST');
+                $model->selectAdd('reftable_PEER_ID_POST.UUID as refuuid_PEER_ID_POST');
+            }
+            if (Framework::hasModule('PostRelationType')) {
+                $model->selectAdd('reftable_ID_POST_RELATION_TYPE.NAME as reftext_ID_POST_RELATION_TYPE');
+                $model->selectAdd('reftable_ID_POST_RELATION_TYPE.UUID as refuuid_ID_POST_RELATION_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
-            $model->joinAdd(array('PEER_ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_PEER_ID_POST');
-            $model->joinAdd(array('ID_POST_RELATION_TYPE',TABLE_PREFIX.'POST_RELATION_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_RELATION_TYPE');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('PEER_ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_PEER_ID_POST');
+            }
+            if (Framework::hasModule('PostRelationType')) {
+                $model->joinAdd(array('ID_POST_RELATION_TYPE',TABLE_PREFIX.'POST_RELATION_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_RELATION_TYPE');
+            }
         }
     }
 

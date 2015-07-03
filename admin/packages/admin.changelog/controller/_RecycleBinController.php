@@ -1554,15 +1554,23 @@ class _RecycleBinController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'RECYCLE_BIN`.ITEM, `'.TABLE_PREFIX.'RECYCLE_BIN`.MODULE, `'.TABLE_PREFIX.'RECYCLE_BIN`.DATE_TIME, `'.TABLE_PREFIX.'RECYCLE_BIN`.ID_USER, `'.TABLE_PREFIX.'RECYCLE_BIN`.ID, `'.TABLE_PREFIX.'RECYCLE_BIN`.JSON, `'.TABLE_PREFIX.'RECYCLE_BIN`.UUID, `'.TABLE_PREFIX.'RECYCLE_BIN`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 
@@ -1571,15 +1579,23 @@ class _RecycleBinController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'RECYCLE_BIN`.ITEM, `'.TABLE_PREFIX.'RECYCLE_BIN`.MODULE, `'.TABLE_PREFIX.'RECYCLE_BIN`.DATE_TIME, `'.TABLE_PREFIX.'RECYCLE_BIN`.ID_USER, `'.TABLE_PREFIX.'RECYCLE_BIN`.ID, `'.TABLE_PREFIX.'RECYCLE_BIN`.JSON, `'.TABLE_PREFIX.'RECYCLE_BIN`.UUID, `'.TABLE_PREFIX.'RECYCLE_BIN`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 

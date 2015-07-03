@@ -1585,27 +1585,51 @@ class _ObjectAclController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'OBJECT_ACL`.MODULE, `'.TABLE_PREFIX.'OBJECT_ACL`.OBJECT_ID, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_USER_GROUP, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_USER, `'.TABLE_PREFIX.'OBJECT_ACL`.ARG_ID_USER_GROUP, `'.TABLE_PREFIX.'OBJECT_ACL`.ARG_ID_USER, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_ACL_TYPE, `'.TABLE_PREFIX.'OBJECT_ACL`.ID, `'.TABLE_PREFIX.'OBJECT_ACL`.JSON, `'.TABLE_PREFIX.'OBJECT_ACL`.UUID, `'.TABLE_PREFIX.'OBJECT_ACL`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ARG_ID_USER_GROUP.NAME as reftext_ARG_ID_USER_GROUP');
-            $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
-            $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
-            $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
-            $model->selectAdd('reftable_ID_ACL_TYPE.NAME as reftext_ID_ACL_TYPE');
-            $model->selectAdd('reftable_ID_ACL_TYPE.UUID as refuuid_ID_ACL_TYPE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ARG_ID_USER_GROUP.NAME as reftext_ARG_ID_USER_GROUP');
+                $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
+                $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
+            }
+            if (Framework::hasModule('AclType')) {
+                $model->selectAdd('reftable_ID_ACL_TYPE.NAME as reftext_ID_ACL_TYPE');
+                $model->selectAdd('reftable_ID_ACL_TYPE.UUID as refuuid_ID_ACL_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ARG_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ARG_ID_USER_GROUP');
-            $model->joinAdd(array('ARG_ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ARG_ID_USER');
-            $model->joinAdd(array('ID_ACL_TYPE',TABLE_PREFIX.'ACL_TYPE:ID'), 'LEFT', 'reftable_ID_ACL_TYPE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ARG_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ARG_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ARG_ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ARG_ID_USER');
+            }
+            if (Framework::hasModule('AclType')) {
+                $model->joinAdd(array('ID_ACL_TYPE',TABLE_PREFIX.'ACL_TYPE:ID'), 'LEFT', 'reftable_ID_ACL_TYPE');
+            }
         }
     }
 
@@ -1614,24 +1638,44 @@ class _ObjectAclController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'OBJECT_ACL`.MODULE, `'.TABLE_PREFIX.'OBJECT_ACL`.OBJECT_ID, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_USER_GROUP, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_USER, `'.TABLE_PREFIX.'OBJECT_ACL`.ARG_ID_USER_GROUP, `'.TABLE_PREFIX.'OBJECT_ACL`.ARG_ID_USER, `'.TABLE_PREFIX.'OBJECT_ACL`.ID_ACL_TYPE, `'.TABLE_PREFIX.'OBJECT_ACL`.ID, `'.TABLE_PREFIX.'OBJECT_ACL`.JSON, `'.TABLE_PREFIX.'OBJECT_ACL`.UUID, `'.TABLE_PREFIX.'OBJECT_ACL`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ARG_ID_USER_GROUP.NAME as reftext_ARG_ID_USER_GROUP');
-            $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
-            $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
-            $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
-            $model->selectAdd('reftable_ID_ACL_TYPE.NAME as reftext_ID_ACL_TYPE');
-            $model->selectAdd('reftable_ID_ACL_TYPE.UUID as refuuid_ID_ACL_TYPE');
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ARG_ID_USER_GROUP.NAME as reftext_ARG_ID_USER_GROUP');
+                $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
+                $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
+            }
+            if (Framework::hasModule('AclType')) {
+                $model->selectAdd('reftable_ID_ACL_TYPE.NAME as reftext_ID_ACL_TYPE');
+                $model->selectAdd('reftable_ID_ACL_TYPE.UUID as refuuid_ID_ACL_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ARG_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ARG_ID_USER_GROUP');
-            $model->joinAdd(array('ARG_ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ARG_ID_USER');
-            $model->joinAdd(array('ID_ACL_TYPE',TABLE_PREFIX.'ACL_TYPE:ID'), 'LEFT', 'reftable_ID_ACL_TYPE');
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ARG_ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ARG_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ARG_ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ARG_ID_USER');
+            }
+            if (Framework::hasModule('AclType')) {
+                $model->joinAdd(array('ID_ACL_TYPE',TABLE_PREFIX.'ACL_TYPE:ID'), 'LEFT', 'reftable_ID_ACL_TYPE');
+            }
         }
     }
 

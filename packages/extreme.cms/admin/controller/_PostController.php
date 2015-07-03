@@ -2133,18 +2133,30 @@ class _PostController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST`.TITLE, `'.TABLE_PREFIX.'POST`.SLUG, `'.TABLE_PREFIX.'POST`.ID_POST_TYPE, `'.TABLE_PREFIX.'POST`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'POST`.IMAGE, `'.TABLE_PREFIX.'POST`.META_KEYWORDS, `'.TABLE_PREFIX.'POST`.META_DESCRIPTION, `'.TABLE_PREFIX.'POST`.EXCERPT, `'.TABLE_PREFIX.'POST`.CONTENT, `'.TABLE_PREFIX.'POST`.TAGS, `'.TABLE_PREFIX.'POST`.AUTHOR, `'.TABLE_PREFIX.'POST`.EXTERNAL_LINK, `'.TABLE_PREFIX.'POST`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST`.CREATION_DATE, `'.TABLE_PREFIX.'POST`.LATEST_UPDATE, `'.TABLE_PREFIX.'POST`.IS_FEATURED, `'.TABLE_PREFIX.'POST`.NBR_VIEWS, `'.TABLE_PREFIX.'POST`.ID, `'.TABLE_PREFIX.'POST`.JSON, `'.TABLE_PREFIX.'POST`.UUID, `'.TABLE_PREFIX.'POST`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
-            $model->selectAdd('reftable_ID_POST_TYPE.UUID as refuuid_ID_POST_TYPE');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
-            $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            if (Framework::hasModule('PostType')) {
+                $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
+                $model->selectAdd('reftable_ID_POST_TYPE.UUID as refuuid_ID_POST_TYPE');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
+                $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
+                $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
-            $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
-            $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            if (Framework::hasModule('PostType')) {
+                $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            }
         }
     }
 
@@ -2153,18 +2165,30 @@ class _PostController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST`.TITLE, `'.TABLE_PREFIX.'POST`.ID_POST_TYPE, `'.TABLE_PREFIX.'POST`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'POST`.IMAGE, `'.TABLE_PREFIX.'POST`.META_KEYWORDS, `'.TABLE_PREFIX.'POST`.AUTHOR, `'.TABLE_PREFIX.'POST`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST`.CREATION_DATE, `'.TABLE_PREFIX.'POST`.LATEST_UPDATE, `'.TABLE_PREFIX.'POST`.IS_FEATURED, `'.TABLE_PREFIX.'POST`.NBR_VIEWS, `'.TABLE_PREFIX.'POST`.ID, `'.TABLE_PREFIX.'POST`.JSON, `'.TABLE_PREFIX.'POST`.UUID, `'.TABLE_PREFIX.'POST`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
-            $model->selectAdd('reftable_ID_POST_TYPE.UUID as refuuid_ID_POST_TYPE');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
-            $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
-            $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            if (Framework::hasModule('PostType')) {
+                $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
+                $model->selectAdd('reftable_ID_POST_TYPE.UUID as refuuid_ID_POST_TYPE');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->selectAdd('reftable_ID_POST_CATEGORY.NAME as reftext_ID_POST_CATEGORY');
+                $model->selectAdd('reftable_ID_POST_CATEGORY.UUID as refuuid_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
+                $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
-            $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
-            $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            if (Framework::hasModule('PostType')) {
+                $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
+            }
+            if (Framework::hasModule('PostCategory')) {
+                $model->joinAdd(array('ID_POST_CATEGORY',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_ID_POST_CATEGORY');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            }
         }
     }
 

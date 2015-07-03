@@ -1956,12 +1956,16 @@ class _PostGalleryController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_GALLERY`.TITLE, `'.TABLE_PREFIX.'POST_GALLERY`.ID_POST, `'.TABLE_PREFIX.'POST_GALLERY`.IMAGE, `'.TABLE_PREFIX.'POST_GALLERY`.DESCRIPTION, `'.TABLE_PREFIX.'POST_GALLERY`.ID, `'.TABLE_PREFIX.'POST_GALLERY`.JSON, `'.TABLE_PREFIX.'POST_GALLERY`.UUID, `'.TABLE_PREFIX.'POST_GALLERY`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
         }
     }
 
@@ -1970,12 +1974,16 @@ class _PostGalleryController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_GALLERY`.TITLE, `'.TABLE_PREFIX.'POST_GALLERY`.ID_POST, `'.TABLE_PREFIX.'POST_GALLERY`.IMAGE, `'.TABLE_PREFIX.'POST_GALLERY`.ORDERING, `'.TABLE_PREFIX.'POST_GALLERY`.ID, `'.TABLE_PREFIX.'POST_GALLERY`.JSON, `'.TABLE_PREFIX.'POST_GALLERY`.UUID, `'.TABLE_PREFIX.'POST_GALLERY`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
-            $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->selectAdd('reftable_ID_POST.TITLE as reftext_ID_POST');
+                $model->selectAdd('reftable_ID_POST.UUID as refuuid_ID_POST');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            if (Framework::hasModule('Post')) {
+                $model->joinAdd(array('ID_POST',TABLE_PREFIX.'POST:ID'), 'LEFT', 'reftable_ID_POST');
+            }
         }
     }
 

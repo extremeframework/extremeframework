@@ -1910,18 +1910,30 @@ class _PageLinkController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_LINK`.TITLE, `'.TABLE_PREFIX.'PAGE_LINK`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_LINK`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'PAGE_LINK`.LINK_ID_PAGE, `'.TABLE_PREFIX.'PAGE_LINK`.LINK_PATH, `'.TABLE_PREFIX.'PAGE_LINK`.ID_PAGE_LINK_TYPE, `'.TABLE_PREFIX.'PAGE_LINK`.ID, `'.TABLE_PREFIX.'PAGE_LINK`.JSON, `'.TABLE_PREFIX.'PAGE_LINK`.UUID, `'.TABLE_PREFIX.'PAGE_LINK`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_LINK_ID_PAGE.NAME as reftext_LINK_ID_PAGE');
-            $model->selectAdd('reftable_LINK_ID_PAGE.UUID as refuuid_LINK_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.NAME as reftext_ID_PAGE_LINK_TYPE');
-            $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.UUID as refuuid_ID_PAGE_LINK_TYPE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_LINK_ID_PAGE.NAME as reftext_LINK_ID_PAGE');
+                $model->selectAdd('reftable_LINK_ID_PAGE.UUID as refuuid_LINK_ID_PAGE');
+            }
+            if (Framework::hasModule('PageLinkType')) {
+                $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.NAME as reftext_ID_PAGE_LINK_TYPE');
+                $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.UUID as refuuid_ID_PAGE_LINK_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('LINK_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_LINK_ID_PAGE');
-            $model->joinAdd(array('ID_PAGE_LINK_TYPE',TABLE_PREFIX.'PAGE_LINK_TYPE:CODE'), 'LEFT', 'reftable_ID_PAGE_LINK_TYPE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('LINK_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_LINK_ID_PAGE');
+            }
+            if (Framework::hasModule('PageLinkType')) {
+                $model->joinAdd(array('ID_PAGE_LINK_TYPE',TABLE_PREFIX.'PAGE_LINK_TYPE:CODE'), 'LEFT', 'reftable_ID_PAGE_LINK_TYPE');
+            }
         }
     }
 
@@ -1930,18 +1942,30 @@ class _PageLinkController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_LINK`.TITLE, `'.TABLE_PREFIX.'PAGE_LINK`.ID_PAGE, `'.TABLE_PREFIX.'PAGE_LINK`.FONT_AWESOME_ICON, `'.TABLE_PREFIX.'PAGE_LINK`.LINK_ID_PAGE, `'.TABLE_PREFIX.'PAGE_LINK`.LINK_PATH, `'.TABLE_PREFIX.'PAGE_LINK`.ID_PAGE_LINK_TYPE, `'.TABLE_PREFIX.'PAGE_LINK`.ORDERING, `'.TABLE_PREFIX.'PAGE_LINK`.ID, `'.TABLE_PREFIX.'PAGE_LINK`.JSON, `'.TABLE_PREFIX.'PAGE_LINK`.UUID, `'.TABLE_PREFIX.'PAGE_LINK`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
-            $model->selectAdd('reftable_LINK_ID_PAGE.NAME as reftext_LINK_ID_PAGE');
-            $model->selectAdd('reftable_LINK_ID_PAGE.UUID as refuuid_LINK_ID_PAGE');
-            $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.NAME as reftext_ID_PAGE_LINK_TYPE');
-            $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.UUID as refuuid_ID_PAGE_LINK_TYPE');
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_ID_PAGE.NAME as reftext_ID_PAGE');
+                $model->selectAdd('reftable_ID_PAGE.UUID as refuuid_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->selectAdd('reftable_LINK_ID_PAGE.NAME as reftext_LINK_ID_PAGE');
+                $model->selectAdd('reftable_LINK_ID_PAGE.UUID as refuuid_LINK_ID_PAGE');
+            }
+            if (Framework::hasModule('PageLinkType')) {
+                $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.NAME as reftext_ID_PAGE_LINK_TYPE');
+                $model->selectAdd('reftable_ID_PAGE_LINK_TYPE.UUID as refuuid_ID_PAGE_LINK_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
-            $model->joinAdd(array('LINK_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_LINK_ID_PAGE');
-            $model->joinAdd(array('ID_PAGE_LINK_TYPE',TABLE_PREFIX.'PAGE_LINK_TYPE:CODE'), 'LEFT', 'reftable_ID_PAGE_LINK_TYPE');
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
+            }
+            if (Framework::hasModule('Page')) {
+                $model->joinAdd(array('LINK_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_LINK_ID_PAGE');
+            }
+            if (Framework::hasModule('PageLinkType')) {
+                $model->joinAdd(array('ID_PAGE_LINK_TYPE',TABLE_PREFIX.'PAGE_LINK_TYPE:CODE'), 'LEFT', 'reftable_ID_PAGE_LINK_TYPE');
+            }
         }
     }
 

@@ -2000,15 +2000,23 @@ class _PostCategoryController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_CATEGORY`.NAME, `'.TABLE_PREFIX.'POST_CATEGORY`.SLUG, `'.TABLE_PREFIX.'POST_CATEGORY`.PARENT, `'.TABLE_PREFIX.'POST_CATEGORY`.DESCRIPTION, `'.TABLE_PREFIX.'POST_CATEGORY`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST_CATEGORY`.ID, `'.TABLE_PREFIX.'POST_CATEGORY`.JSON, `'.TABLE_PREFIX.'POST_CATEGORY`.UUID, `'.TABLE_PREFIX.'POST_CATEGORY`.WFID, `'.TABLE_PREFIX.'POST_CATEGORY`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
-            $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
-            $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
-            $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            if (Framework::hasModule('PostCategory')) {
+                $model->selectAdd('reftable_PARENT.NAME as reftext_PARENT');
+                $model->selectAdd('reftable_PARENT.UUID as refuuid_PARENT');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
+                $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('PARENT',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_PARENT');
-            $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            if (Framework::hasModule('PostCategory')) {
+                $model->joinAdd(array('PARENT',TABLE_PREFIX.'POST_CATEGORY:ID'), 'LEFT', 'reftable_PARENT');
+            }
+            if (Framework::hasModule('Template')) {
+                $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            }
         }
     }
 
@@ -2017,12 +2025,16 @@ class _PostCategoryController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_CATEGORY`.NAME, `'.TABLE_PREFIX.'POST_CATEGORY`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST_CATEGORY`.ORDERING, `'.TABLE_PREFIX.'POST_CATEGORY`.ID, `'.TABLE_PREFIX.'POST_CATEGORY`.JSON, `'.TABLE_PREFIX.'POST_CATEGORY`.UUID, `'.TABLE_PREFIX.'POST_CATEGORY`.WFID, `'.TABLE_PREFIX.'POST_CATEGORY`.PARENT, `'.TABLE_PREFIX.'POST_CATEGORY`.HIERACHY');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
-            $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            if (Framework::hasModule('Template')) {
+                $model->selectAdd('reftable_ID_TEMPLATE.NAME as reftext_ID_TEMPLATE');
+                $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            if (Framework::hasModule('Template')) {
+                $model->joinAdd(array('ID_TEMPLATE',TABLE_PREFIX.'TEMPLATE:CODE'), 'LEFT', 'reftable_ID_TEMPLATE');
+            }
         }
     }
 

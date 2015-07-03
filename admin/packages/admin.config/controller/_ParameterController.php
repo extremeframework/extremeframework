@@ -1563,15 +1563,23 @@ class _ParameterController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PARAMETER`.NAME, `'.TABLE_PREFIX.'PARAMETER`.CODE, `'.TABLE_PREFIX.'PARAMETER`.ID_PARAMETER_GROUP, `'.TABLE_PREFIX.'PARAMETER`.ID_PARAMETER_TYPE, `'.TABLE_PREFIX.'PARAMETER`.VALUE, `'.TABLE_PREFIX.'PARAMETER`.DESCRIPTION, `'.TABLE_PREFIX.'PARAMETER`.ID, `'.TABLE_PREFIX.'PARAMETER`.JSON, `'.TABLE_PREFIX.'PARAMETER`.UUID, `'.TABLE_PREFIX.'PARAMETER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PARAMETER_GROUP.NAME as reftext_ID_PARAMETER_GROUP');
-            $model->selectAdd('reftable_ID_PARAMETER_GROUP.UUID as refuuid_ID_PARAMETER_GROUP');
-            $model->selectAdd('reftable_ID_PARAMETER_TYPE.NAME as reftext_ID_PARAMETER_TYPE');
-            $model->selectAdd('reftable_ID_PARAMETER_TYPE.UUID as refuuid_ID_PARAMETER_TYPE');
+            if (Framework::hasModule('ParameterGroup')) {
+                $model->selectAdd('reftable_ID_PARAMETER_GROUP.NAME as reftext_ID_PARAMETER_GROUP');
+                $model->selectAdd('reftable_ID_PARAMETER_GROUP.UUID as refuuid_ID_PARAMETER_GROUP');
+            }
+            if (Framework::hasModule('ParameterType')) {
+                $model->selectAdd('reftable_ID_PARAMETER_TYPE.NAME as reftext_ID_PARAMETER_TYPE');
+                $model->selectAdd('reftable_ID_PARAMETER_TYPE.UUID as refuuid_ID_PARAMETER_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PARAMETER_GROUP',TABLE_PREFIX.'PARAMETER_GROUP:ID'), 'LEFT', 'reftable_ID_PARAMETER_GROUP');
-            $model->joinAdd(array('ID_PARAMETER_TYPE',TABLE_PREFIX.'PARAMETER_TYPE:ID'), 'LEFT', 'reftable_ID_PARAMETER_TYPE');
+            if (Framework::hasModule('ParameterGroup')) {
+                $model->joinAdd(array('ID_PARAMETER_GROUP',TABLE_PREFIX.'PARAMETER_GROUP:ID'), 'LEFT', 'reftable_ID_PARAMETER_GROUP');
+            }
+            if (Framework::hasModule('ParameterType')) {
+                $model->joinAdd(array('ID_PARAMETER_TYPE',TABLE_PREFIX.'PARAMETER_TYPE:ID'), 'LEFT', 'reftable_ID_PARAMETER_TYPE');
+            }
         }
     }
 
@@ -1580,15 +1588,23 @@ class _ParameterController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PARAMETER`.NAME, `'.TABLE_PREFIX.'PARAMETER`.CODE, `'.TABLE_PREFIX.'PARAMETER`.ID_PARAMETER_GROUP, `'.TABLE_PREFIX.'PARAMETER`.ID_PARAMETER_TYPE, `'.TABLE_PREFIX.'PARAMETER`.VALUE, `'.TABLE_PREFIX.'PARAMETER`.ID, `'.TABLE_PREFIX.'PARAMETER`.JSON, `'.TABLE_PREFIX.'PARAMETER`.UUID, `'.TABLE_PREFIX.'PARAMETER`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_PARAMETER_GROUP.NAME as reftext_ID_PARAMETER_GROUP');
-            $model->selectAdd('reftable_ID_PARAMETER_GROUP.UUID as refuuid_ID_PARAMETER_GROUP');
-            $model->selectAdd('reftable_ID_PARAMETER_TYPE.NAME as reftext_ID_PARAMETER_TYPE');
-            $model->selectAdd('reftable_ID_PARAMETER_TYPE.UUID as refuuid_ID_PARAMETER_TYPE');
+            if (Framework::hasModule('ParameterGroup')) {
+                $model->selectAdd('reftable_ID_PARAMETER_GROUP.NAME as reftext_ID_PARAMETER_GROUP');
+                $model->selectAdd('reftable_ID_PARAMETER_GROUP.UUID as refuuid_ID_PARAMETER_GROUP');
+            }
+            if (Framework::hasModule('ParameterType')) {
+                $model->selectAdd('reftable_ID_PARAMETER_TYPE.NAME as reftext_ID_PARAMETER_TYPE');
+                $model->selectAdd('reftable_ID_PARAMETER_TYPE.UUID as refuuid_ID_PARAMETER_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_PARAMETER_GROUP',TABLE_PREFIX.'PARAMETER_GROUP:ID'), 'LEFT', 'reftable_ID_PARAMETER_GROUP');
-            $model->joinAdd(array('ID_PARAMETER_TYPE',TABLE_PREFIX.'PARAMETER_TYPE:ID'), 'LEFT', 'reftable_ID_PARAMETER_TYPE');
+            if (Framework::hasModule('ParameterGroup')) {
+                $model->joinAdd(array('ID_PARAMETER_GROUP',TABLE_PREFIX.'PARAMETER_GROUP:ID'), 'LEFT', 'reftable_ID_PARAMETER_GROUP');
+            }
+            if (Framework::hasModule('ParameterType')) {
+                $model->joinAdd(array('ID_PARAMETER_TYPE',TABLE_PREFIX.'PARAMETER_TYPE:ID'), 'LEFT', 'reftable_ID_PARAMETER_TYPE');
+            }
         }
     }
 

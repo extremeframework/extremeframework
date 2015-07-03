@@ -97,9 +97,11 @@ class Framework {
 
         $templatedirs = $cache->get('templatedirs');
 
-        foreach ($templatedirs as $packageroot => $dirs) {
-            if (stripos($filedir, $packageroot) !== false) {
-                return $dirs;
+        if ($templatedirs) {
+            foreach ($templatedirs as $packageroot => $dirs) {
+                if (stripos($filedir, $packageroot) !== false) {
+                    return $dirs;
+                }
             }
         }
 

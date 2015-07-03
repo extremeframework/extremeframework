@@ -1569,21 +1569,37 @@ class _WorkflowLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_WORKFLOW_TRANSITION, `'.TABLE_PREFIX.'WORKFLOW_LOG`.MODULE, `'.TABLE_PREFIX.'WORKFLOW_LOG`.OBJECT_ID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.DATE, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_USER, `'.TABLE_PREFIX.'WORKFLOW_LOG`.DETAILS, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.JSON, `'.TABLE_PREFIX.'WORKFLOW_LOG`.UUID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.NAME as reftext_ID_WORKFLOW_TRANSITION');
-            $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.UUID as refuuid_ID_WORKFLOW_TRANSITION');
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowTransition')) {
+                $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.NAME as reftext_ID_WORKFLOW_TRANSITION');
+                $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.UUID as refuuid_ID_WORKFLOW_TRANSITION');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
-            $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowTransition')) {
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+            }
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 
@@ -1592,18 +1608,30 @@ class _WorkflowLogController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_WORKFLOW_TRANSITION, `'.TABLE_PREFIX.'WORKFLOW_LOG`.MODULE, `'.TABLE_PREFIX.'WORKFLOW_LOG`.OBJECT_ID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.DATE, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID_USER, `'.TABLE_PREFIX.'WORKFLOW_LOG`.ID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.JSON, `'.TABLE_PREFIX.'WORKFLOW_LOG`.UUID, `'.TABLE_PREFIX.'WORKFLOW_LOG`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.NAME as reftext_ID_WORKFLOW_TRANSITION');
-            $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.UUID as refuuid_ID_WORKFLOW_TRANSITION');
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowTransition')) {
+                $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.NAME as reftext_ID_WORKFLOW_TRANSITION');
+                $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.UUID as refuuid_ID_WORKFLOW_TRANSITION');
+            }
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
-            $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowTransition')) {
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+            }
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
         }
     }
 

@@ -1600,27 +1600,51 @@ class _WorkflowTransitionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
-            $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.NAME as reftext_START_ID_WORKFLOW_STAGE');
-            $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.UUID as refuuid_START_ID_WORKFLOW_STAGE');
-            $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.NAME as reftext_END_ID_WORKFLOW_STAGE');
-            $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.UUID as refuuid_END_ID_WORKFLOW_STAGE');
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
-            $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
-            $model->selectAdd('reftable_TRANSITION_ID_SCREEN.TITLE as reftext_TRANSITION_ID_SCREEN');
-            $model->selectAdd('reftable_TRANSITION_ID_SCREEN.UUID as refuuid_TRANSITION_ID_SCREEN');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.NAME as reftext_START_ID_WORKFLOW_STAGE');
+                $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.UUID as refuuid_START_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.NAME as reftext_END_ID_WORKFLOW_STAGE');
+                $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.UUID as refuuid_END_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            }
+            if (Framework::hasModule('Screen')) {
+                $model->selectAdd('reftable_TRANSITION_ID_SCREEN.TITLE as reftext_TRANSITION_ID_SCREEN');
+                $model->selectAdd('reftable_TRANSITION_ID_SCREEN.UUID as refuuid_TRANSITION_ID_SCREEN');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
-            $model->joinAdd(array('START_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
-            $model->joinAdd(array('END_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
-            $model->joinAdd(array('TRANSITION_ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_TRANSITION_ID_SCREEN');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->joinAdd(array('START_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->joinAdd(array('END_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            }
+            if (Framework::hasModule('Screen')) {
+                $model->joinAdd(array('TRANSITION_ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_TRANSITION_ID_SCREEN');
+            }
         }
     }
 
@@ -1629,21 +1653,37 @@ class _WorkflowTransitionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
-            $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
-            $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
-            $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
-            $model->selectAdd('reftable_TRANSITION_ID_SCREEN.TITLE as reftext_TRANSITION_ID_SCREEN');
-            $model->selectAdd('reftable_TRANSITION_ID_SCREEN.UUID as refuuid_TRANSITION_ID_SCREEN');
+            if (Framework::hasModule('Workflow')) {
+                $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
+                $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
+                $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            }
+            if (Framework::hasModule('Screen')) {
+                $model->selectAdd('reftable_TRANSITION_ID_SCREEN.TITLE as reftext_TRANSITION_ID_SCREEN');
+                $model->selectAdd('reftable_TRANSITION_ID_SCREEN.UUID as refuuid_TRANSITION_ID_SCREEN');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
-            $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
-            $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
-            $model->joinAdd(array('TRANSITION_ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_TRANSITION_ID_SCREEN');
+            if (Framework::hasModule('Workflow')) {
+                $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('UserGroup')) {
+                $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            }
+            if (Framework::hasModule('Screen')) {
+                $model->joinAdd(array('TRANSITION_ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_TRANSITION_ID_SCREEN');
+            }
         }
     }
 

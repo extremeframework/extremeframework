@@ -1569,15 +1569,23 @@ class _UserPreferenceController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_PREFERENCE`.ID_USER, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_DASHBOARD, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_WALLPAPER, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_ADMIN_STYLE, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID, `'.TABLE_PREFIX.'USER_PREFERENCE`.JSON, `'.TABLE_PREFIX.'USER_PREFERENCE`.UUID, `'.TABLE_PREFIX.'USER_PREFERENCE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ID_DASHBOARD.NAME as reftext_ID_DASHBOARD');
-            $model->selectAdd('reftable_ID_DASHBOARD.UUID as refuuid_ID_DASHBOARD');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('Dashboard')) {
+                $model->selectAdd('reftable_ID_DASHBOARD.NAME as reftext_ID_DASHBOARD');
+                $model->selectAdd('reftable_ID_DASHBOARD.UUID as refuuid_ID_DASHBOARD');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_ID_DASHBOARD');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('Dashboard')) {
+                $model->joinAdd(array('ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_ID_DASHBOARD');
+            }
         }
     }
 
@@ -1586,15 +1594,23 @@ class _UserPreferenceController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_PREFERENCE`.ID_USER, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_DASHBOARD, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_WALLPAPER, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID_ADMIN_STYLE, `'.TABLE_PREFIX.'USER_PREFERENCE`.ID, `'.TABLE_PREFIX.'USER_PREFERENCE`.JSON, `'.TABLE_PREFIX.'USER_PREFERENCE`.UUID, `'.TABLE_PREFIX.'USER_PREFERENCE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
-            $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
-            $model->selectAdd('reftable_ID_DASHBOARD.NAME as reftext_ID_DASHBOARD');
-            $model->selectAdd('reftable_ID_DASHBOARD.UUID as refuuid_ID_DASHBOARD');
+            if (Framework::hasModule('User')) {
+                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
+            }
+            if (Framework::hasModule('Dashboard')) {
+                $model->selectAdd('reftable_ID_DASHBOARD.NAME as reftext_ID_DASHBOARD');
+                $model->selectAdd('reftable_ID_DASHBOARD.UUID as refuuid_ID_DASHBOARD');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
-            $model->joinAdd(array('ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_ID_DASHBOARD');
+            if (Framework::hasModule('User')) {
+                $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
+            }
+            if (Framework::hasModule('Dashboard')) {
+                $model->joinAdd(array('ID_DASHBOARD',TABLE_PREFIX.'DASHBOARD:ID'), 'LEFT', 'reftable_ID_DASHBOARD');
+            }
         }
     }
 

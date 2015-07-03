@@ -1571,15 +1571,23 @@ class _ScreenFieldController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'SCREEN_FIELD`.ID_SCREEN, `'.TABLE_PREFIX.'SCREEN_FIELD`.TITLE, `'.TABLE_PREFIX.'SCREEN_FIELD`.CODE, `'.TABLE_PREFIX.'SCREEN_FIELD`.ID_VALUE_TYPE, `'.TABLE_PREFIX.'SCREEN_FIELD`.DATASOURCE, `'.TABLE_PREFIX.'SCREEN_FIELD`.CONDITION, `'.TABLE_PREFIX.'SCREEN_FIELD`.VALUECOL, `'.TABLE_PREFIX.'SCREEN_FIELD`.TEXTCOL, `'.TABLE_PREFIX.'SCREEN_FIELD`.IS_MANDATORY, `'.TABLE_PREFIX.'SCREEN_FIELD`.ID, `'.TABLE_PREFIX.'SCREEN_FIELD`.JSON, `'.TABLE_PREFIX.'SCREEN_FIELD`.UUID, `'.TABLE_PREFIX.'SCREEN_FIELD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_SCREEN.TITLE as reftext_ID_SCREEN');
-            $model->selectAdd('reftable_ID_SCREEN.UUID as refuuid_ID_SCREEN');
-            $model->selectAdd('reftable_ID_VALUE_TYPE.NAME as reftext_ID_VALUE_TYPE');
-            $model->selectAdd('reftable_ID_VALUE_TYPE.UUID as refuuid_ID_VALUE_TYPE');
+            if (Framework::hasModule('Screen')) {
+                $model->selectAdd('reftable_ID_SCREEN.TITLE as reftext_ID_SCREEN');
+                $model->selectAdd('reftable_ID_SCREEN.UUID as refuuid_ID_SCREEN');
+            }
+            if (Framework::hasModule('ValueType')) {
+                $model->selectAdd('reftable_ID_VALUE_TYPE.NAME as reftext_ID_VALUE_TYPE');
+                $model->selectAdd('reftable_ID_VALUE_TYPE.UUID as refuuid_ID_VALUE_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_ID_SCREEN');
-            $model->joinAdd(array('ID_VALUE_TYPE',TABLE_PREFIX.'VALUE_TYPE:CODE'), 'LEFT', 'reftable_ID_VALUE_TYPE');
+            if (Framework::hasModule('Screen')) {
+                $model->joinAdd(array('ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_ID_SCREEN');
+            }
+            if (Framework::hasModule('ValueType')) {
+                $model->joinAdd(array('ID_VALUE_TYPE',TABLE_PREFIX.'VALUE_TYPE:CODE'), 'LEFT', 'reftable_ID_VALUE_TYPE');
+            }
         }
     }
 
@@ -1588,15 +1596,23 @@ class _ScreenFieldController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'SCREEN_FIELD`.ID_SCREEN, `'.TABLE_PREFIX.'SCREEN_FIELD`.TITLE, `'.TABLE_PREFIX.'SCREEN_FIELD`.CODE, `'.TABLE_PREFIX.'SCREEN_FIELD`.ID_VALUE_TYPE, `'.TABLE_PREFIX.'SCREEN_FIELD`.DATASOURCE, `'.TABLE_PREFIX.'SCREEN_FIELD`.CONDITION, `'.TABLE_PREFIX.'SCREEN_FIELD`.VALUECOL, `'.TABLE_PREFIX.'SCREEN_FIELD`.TEXTCOL, `'.TABLE_PREFIX.'SCREEN_FIELD`.IS_MANDATORY, `'.TABLE_PREFIX.'SCREEN_FIELD`.ORDERING, `'.TABLE_PREFIX.'SCREEN_FIELD`.ID, `'.TABLE_PREFIX.'SCREEN_FIELD`.JSON, `'.TABLE_PREFIX.'SCREEN_FIELD`.UUID, `'.TABLE_PREFIX.'SCREEN_FIELD`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_ID_SCREEN.TITLE as reftext_ID_SCREEN');
-            $model->selectAdd('reftable_ID_SCREEN.UUID as refuuid_ID_SCREEN');
-            $model->selectAdd('reftable_ID_VALUE_TYPE.NAME as reftext_ID_VALUE_TYPE');
-            $model->selectAdd('reftable_ID_VALUE_TYPE.UUID as refuuid_ID_VALUE_TYPE');
+            if (Framework::hasModule('Screen')) {
+                $model->selectAdd('reftable_ID_SCREEN.TITLE as reftext_ID_SCREEN');
+                $model->selectAdd('reftable_ID_SCREEN.UUID as refuuid_ID_SCREEN');
+            }
+            if (Framework::hasModule('ValueType')) {
+                $model->selectAdd('reftable_ID_VALUE_TYPE.NAME as reftext_ID_VALUE_TYPE');
+                $model->selectAdd('reftable_ID_VALUE_TYPE.UUID as refuuid_ID_VALUE_TYPE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_ID_SCREEN');
-            $model->joinAdd(array('ID_VALUE_TYPE',TABLE_PREFIX.'VALUE_TYPE:CODE'), 'LEFT', 'reftable_ID_VALUE_TYPE');
+            if (Framework::hasModule('Screen')) {
+                $model->joinAdd(array('ID_SCREEN',TABLE_PREFIX.'SCREEN:CODE'), 'LEFT', 'reftable_ID_SCREEN');
+            }
+            if (Framework::hasModule('ValueType')) {
+                $model->joinAdd(array('ID_VALUE_TYPE',TABLE_PREFIX.'VALUE_TYPE:CODE'), 'LEFT', 'reftable_ID_VALUE_TYPE');
+            }
         }
     }
 

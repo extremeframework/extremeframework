@@ -1873,12 +1873,16 @@ class _TemplateController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'TEMPLATE`.NAME, `'.TABLE_PREFIX.'TEMPLATE`.CODE, `'.TABLE_PREFIX.'TEMPLATE`.MODULE, `'.TABLE_PREFIX.'TEMPLATE`.ID, `'.TABLE_PREFIX.'TEMPLATE`.JSON, `'.TABLE_PREFIX.'TEMPLATE`.UUID, `'.TABLE_PREFIX.'TEMPLATE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
@@ -1887,12 +1891,16 @@ class _TemplateController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'TEMPLATE`.NAME, `'.TABLE_PREFIX.'TEMPLATE`.CODE, `'.TABLE_PREFIX.'TEMPLATE`.MODULE, `'.TABLE_PREFIX.'TEMPLATE`.ID, `'.TABLE_PREFIX.'TEMPLATE`.JSON, `'.TABLE_PREFIX.'TEMPLATE`.UUID, `'.TABLE_PREFIX.'TEMPLATE`.WFID');
     
         if ($join) {
-            $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
-            $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
+                $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
+            }
         }
     
         if ($join) {
-            $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            if (Framework::hasModule('AdminModule')) {
+                $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
+            }
         }
     }
 
