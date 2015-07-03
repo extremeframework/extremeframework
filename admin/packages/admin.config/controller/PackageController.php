@@ -11,8 +11,6 @@ class PackageController extends __AppController
     public function settingsAction() {
         AuthenticationController::authenticate();
 
-        $a = get_theme_option('PAYPAL_API_URL');
-
         $packagecode = get_request_param('package');
         $app = get_request_param('app');
 
