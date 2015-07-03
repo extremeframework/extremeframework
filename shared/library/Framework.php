@@ -133,8 +133,10 @@ class Framework {
                             $classname = 'DataObject_'.$classname;
                         }
 
+                        $classname = strtolower($classname);
+
                         if (!isset($classpaths[$classname])) {
-                             $classpaths[strtolower($classname)] = $path;
+                             $classpaths[$classname] = $path;
                         }
                     }
                 }
