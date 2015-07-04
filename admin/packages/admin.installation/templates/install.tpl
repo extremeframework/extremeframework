@@ -9,10 +9,16 @@
 
 <h1 class="heading"><span class="h"><{$title}></span></h1>
 
-<ul>
-    <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/package">Install a package</a></li>
-    <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/theme">Install a theme</a></li>
-    <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/plugin">Install a plugin</a></li>
-</ul>
+<div class="btn button-general" style="margin:5px 0;clear:both;width:120px;">
+    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/package"><span class="button-face">Install a package</span></a>
+</div>
+
+<div class="btn button-general" style="margin:5px 0;clear:both;width:120px;">
+    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/theme"><span class="button-face">Install a theme</span></a>
+</div>
+
+<div class="btn button-general" style="margin:5px 0;clear:both;width:120px;">
+    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/plugin"><span class="button-face">Install a plugin</span></a>
+</div>
 
 <{include file="footer.tpl"}>

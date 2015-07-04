@@ -59,7 +59,7 @@ class InstallationController extends __AppController
 	                $this->setMessages(array($error));
 	        		$this->indexAction($type);
 	            } else {
-	                $this->setMessages(array("Installation complete"));
+	                $this->setMessages(array("Installation completed"));
 	        		$this->indexAction($type);
 	            }
             }
