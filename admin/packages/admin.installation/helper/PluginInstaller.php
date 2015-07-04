@@ -5,7 +5,7 @@
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
 class PluginInstaller extends BaseInstaller {
-    function check_package_content($package_root) {
+    function check_package_content($package_root, &$packagename) {
         // x. The plugin root should contain only one directory
         $files = array_diff(scandir($package_root), array('.', '..'));
 
@@ -18,7 +18,7 @@ class PluginInstaller extends BaseInstaller {
         $dir = $package_root.'/'.$plugin_name;
 
         if (!is_dir($dir)) {
-            return 'Invalid plugin structure: all plugin content should be put in a single plugin directory';
+            return 'Invalid plugin structure: all plugin content should be put in a single directory';
         }
 
         // x. Should have a plugin entry file
@@ -34,10 +34,10 @@ class PluginInstaller extends BaseInstaller {
         }
     }
 
-    function install_package_content($package_root) {
-        $plugindir = realpath(APPLICATION_DIR.'/plugins');
+    function install_package_content($package_root, $packagename) {
+        $dir = realpath(APPLICATION_DIR.'/plugins');
 
-        self::recursive_copy($package_root, $plugindir, true);
+        self::recursive_copy($package_root, $dir, true);
     }
 
     function parse_plugin_info($file) {

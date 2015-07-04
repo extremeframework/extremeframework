@@ -5,7 +5,7 @@
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
 class ThemeInstaller extends BaseInstaller {
-    function check_package_content($package_root) {
+    function check_package_content($package_root, &$packagename) {
         // x. The theme root should contain only one directory
         $files = array_diff(scandir($package_root), array('.', '..'));
 
@@ -29,18 +29,35 @@ class ThemeInstaller extends BaseInstaller {
             return "Invalid theme structure :: it should contain a file 'functions.php'";
         }
 
+        // x. Should have a autoload file
+        if (!file_exists($dir.'/autoload.php')) {
+            return "Invalid theme structure :: it should contain an autoload file 'autoload.php'";
+        }
+
         // x. Parse theme info
         $info = $this->parse_theme_info($dir.'/functions.php');
 
-        if (empty($info['name'])) {
-            return "Invalid theme structure :: theme information not found (expected to be in functions.php)";
-        }
+//        if (empty($info['name'])) {
+//            return "Invalid theme structure :: theme information not found (expected to be in functions.php)";
+//        }
     }
 
-    function install_package_content($package_root) {
-        $themedir = realpath(APPLICATION_DIR.'/../front/themes');
+    function install_package_content($package_root, $packagename) {
+        $dir = realpath(APPLICATION_DIR.'/../front/themes');
 
-        self::recursive_copy($package_root, $themedir, true);
+        // x. Copy package files
+        self::recursive_copy($package_root, $dir, true);
+
+        $packagedir = $dir.'/'.$packagename;
+
+        // x. Execute db script files
+        if (file_exists($packagedir.'/install/database.sql')) {
+            $error = $this->install_db_script($packagedir.'/install/database.sql');
+
+            if (!empty($error)) {
+                return $error;
+            }
+        }
     }
 
     function parse_theme_info($file) {
