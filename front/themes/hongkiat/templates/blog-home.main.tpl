@@ -1,7 +1,7 @@
 <{$root_category_id = get_theme_option('blog-root-category-id')}>
 <{$is_root_category = ($single->ID == $root_category_id)}>
 
-<{$posts = PostHelper::getFeaturedPosts($single->ID, 3)}>
+<{$posts = PostHelper::getFeaturedPosts($single->ID, 4)}>
 
 <{if $smarty.request.page}>
     <{$page = $smarty.request.page}>
@@ -9,7 +9,7 @@
     <{$page = 1}>
 <{/if}>
 
-<{$latest_posts = PostHelper::getLatestPosts($single->ID, 3, $page, $page_count)}>
+<{$latest_posts = PostHelper::getLatestPosts($single->ID, 10, $page, $page_count)}>
 
 <{if $posts}>
     <{$latest_posts = PostHelper::excludePosts($latest_posts, $posts)}>

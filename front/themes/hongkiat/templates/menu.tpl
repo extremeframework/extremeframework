@@ -17,9 +17,9 @@
                                     <div class="sub-menu">
                                         <h3><{$menuitem->TITLE}></h3>
                                         <ul class="submenu-list clearfix">
-                                            <{foreach from=$menus.$depth2.$parent2 item=menuitem}>
-                                                <li class="menu-item <{$menuitem->CLASS}>">
-                                                    <a href="<{$menuitem->SLUG}>"><{$menuitem->TITLE}></a>
+                                            <{foreach from=$menus.$depth2.$parent2 item=submenuitem}>
+                                                <li class="menu-item <{$submenuitem->CLASS}>">
+                                                    <a href="<{$submenuitem->SLUG}>"><{$submenuitem->TITLE}></a>
                                                 </li>
                                             <{/foreach}>
                                         </ul>

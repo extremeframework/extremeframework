@@ -209,7 +209,21 @@ class PostHelper {
     }
 
     static function getRelatedPosts($post) {
-        return PostHelper::getPosts(null, 'article', '', "POST.ID IN (SELECT PEER_ID_POST FROM POST_RELATION WHERE ID_POST = '{$post->ID}') OR POST.ID IN (SELECT ID_POST FROM POST_RELATION WHERE PEER_ID_POST = '{$post->ID}')");
+        $tags = PostHelper::getPostTags($post);
+
+        $by_tags_query = '';
+
+        if (!empty($tags)) {
+            $parts = array();
+
+            foreach ($tags as $tag) {
+                $parts[] = "POST.TAGS LIKE '%$tag%'";
+            }
+
+            $by_tags_query = implode(' OR ',  $parts);
+        }
+
+        return PostHelper::getPosts(null, 'article', '', "POST.ID != '{$post->ID}' AND (POST.ID IN (SELECT PEER_ID_POST FROM POST_RELATION WHERE ID_POST = '{$post->ID}') OR POST.ID IN (SELECT ID_POST FROM POST_RELATION WHERE PEER_ID_POST = '{$post->ID}')".(!empty($by_tags_query)? ' OR '.$by_tags_query : '').")");
     }
 
     static function getPostTags($post) {
