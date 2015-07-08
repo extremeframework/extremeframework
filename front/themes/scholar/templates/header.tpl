@@ -154,7 +154,7 @@
                             <{$menus = MenuHelper::getMenuItems(PageHelper::getMainMenuCode($single), 2)}>
 
                             <{if !$menu && in_array($context, ["main-site", "search", "news-single", "news-category", "news-home"])}>
-                                <{$menus = MenuHelper::getMenuItems(get_theme_option('main-menu'), 1)}>
+                                <{$menus = MenuHelper::getMenuItems(get_theme_option('main-menu'), 2)}>
                             <{/if}>
 
                             <{foreach from=$menus.0.0 key=key item=menuitem}>
