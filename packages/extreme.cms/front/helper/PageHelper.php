@@ -223,13 +223,15 @@ class PageHelper {
             return $v > 0;
         });
 
-        if (!empty($parents)) {
-            $cache = PageHelper::cacheGetSiteEntryPages();
+        if (empty($parents)) {
+            return true;
+        }
 
-            foreach ($parents as $id) {
-                if (isset($cache[$id]) && $cache[$id]['ID_TEMPLATE'] == 'main-site') {
-                    return true;
-                }
+        $cache = PageHelper::cacheGetSiteEntryPages();
+
+        foreach ($parents as $id) {
+            if (isset($cache[$id]) && $cache[$id]['ID_TEMPLATE'] == 'main-site') {
+                return true;
             }
         }
 

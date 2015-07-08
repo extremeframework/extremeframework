@@ -23,7 +23,7 @@ class SearchController {
 
         $page = isset($_REQUEST['page'])? $_REQUEST['page'] : 1;
 
-        $root_category_id = get_option('news-root-category-id');
+        $root_category_id = get_theme_option('news-root-category-id');
 
         $pages = PageHelper::searchPages($keyword, 10, $page, $page_count_1);
         $posts = PostHelper::searchPosts($root_category_id, $keyword, 10, $page, $page_count_2);
