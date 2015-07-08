@@ -30,7 +30,7 @@ class SearchController {
 
         $page_count = max($page_count_1, $page_count_2);
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('root_category_id', $root_category_id);
         $smarty->assign('keyword', $keyword);

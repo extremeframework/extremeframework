@@ -22,7 +22,7 @@ class JsonController extends PageController
 
         $posts = PostHelper::getLatestPosts($category, $limit, $page, $page_count);
 
-        $smarty = Framework::getSmarty();
+        $smarty = Framework::getSmarty(__FILE__);
 
         $smarty->assign('posts', $posts);
 
