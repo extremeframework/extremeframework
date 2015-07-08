@@ -49,7 +49,6 @@
 
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/lib/tiny_mce/tiny_mce.js"></script>
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/lib/tiny_mce/tiny_mce_my.js"></script>
-
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/lib/jquery-ace/ace/ace.js"></script>
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/lib/jquery-ace/ace/theme-textmate.js"></script>
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/lib/jquery-ace/ace/mode-css.js"></script>

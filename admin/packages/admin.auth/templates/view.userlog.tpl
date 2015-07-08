@@ -32,6 +32,10 @@
             	    $('#userlogview .button-edit').focus();
                 });
             </script>
+
+            <{if isset($smarty.session.acl.userlog.new) }>
+                &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/userlog/new"><i class="fa fa-plus"></i></a>
+            <{/if}>
         </span>
     </h1>
 

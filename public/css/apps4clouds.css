@@ -2243,7 +2243,8 @@ div.button-save-more:hover {
 .heading a.button-view-refresh,
 .heading a.button-view-next,
 .heading a.button-view-prev,
-.heading a.button-edit-refresh {
+.heading a.button-edit-refresh,
+.heading a.button-view-new {
     position: relative;
     bottom: 5px;
 }
