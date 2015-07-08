@@ -159,7 +159,7 @@ class PageHelper {
 
             $model->selectAdd();
             $model->selectAdd('ID, CUSTOM_TOP_ID_MENU');
-            $model->whereAdd("CUSTOM_TOP_ID_MENU IS NOT NULL OR CUSTOM_TOP_ID_MENU <> ''");
+            $model->whereAdd("CUSTOM_TOP_ID_MENU IS NOT NULL AND CUSTOM_TOP_ID_MENU <> ''");
 
             $model->find();
 

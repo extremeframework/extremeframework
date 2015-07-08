@@ -140,7 +140,7 @@
                                 <{if $key}><span class="divider">|</span><{/if}>
                                 <a href="<{$item->SLUG}>"><{$item->TITLE}></a>
                             <{/foreach}>
-                        <{elseif in_array($context, ["main-site", "search", "news-single", "news-category", "news-home"])}>
+                        <{elseif in_array($context, ["main-site", "site-section", "search", "news-single", "news-category", "news-home"])}>
                             <{$menus = MenuHelper::getMenuItems(get_theme_option('main-top-links'), 1)}>
 
                             <{foreach from=$menus.0.0 key=key item=menuitem}>
