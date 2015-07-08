@@ -62,7 +62,7 @@ class PageHelper {
         });
 
         uasort($items, function ($a, $b) {
-            return $a->ORDERING < $b->ORDERING;
+            return $a->ORDERING > $b->ORDERING;
         });
 
         return $items;
