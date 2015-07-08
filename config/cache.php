@@ -3,7 +3,7 @@ return array(
     /**
      * Default cache store
      */
-    'defaultstore' => 'session',
+    'defaultstore' => 'apc',
 
     /**
      * Available cache stores (supported drivers: 'apc', 'array', 'session', 'memcache')

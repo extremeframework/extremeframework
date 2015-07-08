@@ -147,7 +147,7 @@ class PageHelper {
         }
 
         // x. Site menu
-        return get_option('main-menu-code');
+        return get_theme_option('main-menu');
     }
 
     // TODO: apply cache
