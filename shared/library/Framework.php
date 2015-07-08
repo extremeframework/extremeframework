@@ -79,11 +79,11 @@ class Framework {
             $dirs = array();
 
             if (is_dir($directory)) {
-                $dirs[] = $directory;
-
                 if (is_dir($directory.'/overriding')) {
                     $dirs[] = $directory.'/overriding';
                 }
+
+                $dirs[] = $directory;
             }
 
             $templatedirs[$packageroot] = $dirs;
