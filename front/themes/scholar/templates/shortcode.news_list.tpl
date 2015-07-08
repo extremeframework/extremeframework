@@ -3,7 +3,9 @@
         <{include file="part.news_list.tpl"}>
     </div>
 
-    <div class="more-btn">
-        <a href="#" id="more">More Stories</a>
-    </div>
+    <{if $posts}>
+        <div class="more-btn">
+            <a href="#" id="more">More Stories</a>
+        </div>
+    <{/if}>
 </div>
