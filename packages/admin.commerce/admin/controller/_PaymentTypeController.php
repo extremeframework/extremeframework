@@ -20,15 +20,15 @@ class _PaymentTypeController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_PAYMENT_TYPE_NAME);
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PAYMENT_TYPE_NAME'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(L_VALIDATION_NOT_EMPTY, L_CODE);
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
            return false;
        }
        if (in_array('ORDERING', $columns2check) && !empty($model->ORDERING) && !is_numeric($model->ORDERING)) {
-           $errors['ordering'] = sprintf(L_VALIDATION_NUMBER, L_ORDERING);
+           $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_ORDERING'));
            return false;
        }
 

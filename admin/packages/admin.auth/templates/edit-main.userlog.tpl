@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_USER"}></label>
+        		    <label><{_t('L_USER')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-date-time">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_DATE_TIME"}></label>
+        		    <label><{_t('L_DATE_TIME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-date-time" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-ip">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IP"}></label>
+        		    <label><{_t('L_IP')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ip" colspan="3">
@@ -128,7 +128,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -139,7 +139,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

@@ -15,13 +15,13 @@
 <{elseif $type == 'checkbox'}>
     <span class="input-type-radio"><input class="input-<{$columncode}>" type="checkbox" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}> /><{$name}></span>
 <{elseif $type == 'yesno'}>
-    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
 <{elseif $type == 'truefalse'}>
-    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{label key="L_TRUE"}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{label key="L_FALSE"}></span>
+    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{_t('L_TRUE')}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{_t('L_FALSE')}></span>
 <{elseif $type == 'enabledisable'}>
-    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{label key="L_ENABLED"}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{label key="L_DISABLED"}></span>
+    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{_t('L_ENABLED')}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{_t('L_DISABLED')}></span>
 <{elseif $type == 'gender'}>
-    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{label key="L_MALE"}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{label key="L_FEMALE"}></span>
+    <span class="input-type-radio"><input class="input-<{$columncode}>" type="radio" name="<{$module}>_formdata_<{$column}>" value="1" <{if $value}>checked="checked"<{/if}>><{_t('L_MALE')}> <input type="radio" name="<{$module}>_formdata_<{$column}>" value="0" <{if !$value}>checked="checked"<{/if}> /><{_t('L_FEMALE')}></span>
 <{elseif $type == 'date' || $type == 'datetime'}>
     <input class="input-<{$columncode}> input-type-date field-date" type="text" id="<{$module}>_formdata_<{$column}>" name="<{$module}>_formdata_<{$column}>" value="<{$value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
 <{elseif $type == 'image' || $type == 'video'}>

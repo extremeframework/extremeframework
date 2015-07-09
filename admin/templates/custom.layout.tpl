@@ -2,7 +2,7 @@
 <link href="<{$smarty.const.APPLICATION_URL}>/css/layout.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=$smarty.const.L_LAYOUT}>
+<{assign var='title' value=_t('L_LAYOUT')}>
 <{include file="top.tpl"}>
 
 <h1 class="heading"><span class="h"><{$title}></span></h1>

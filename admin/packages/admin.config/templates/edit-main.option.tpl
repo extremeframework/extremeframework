@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_OPTION_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_OPTION_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-value">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VALUE"}></label>
+        		    <label><{_t('L_VALUE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-value" colspan="3">
@@ -136,7 +136,7 @@
         <{else}>
     		<td class="form-row form-row-context">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CONTEXT"}></label>
+        		    <label><{_t('L_CONTEXT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-context" colspan="3">
@@ -158,7 +158,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -169,7 +169,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

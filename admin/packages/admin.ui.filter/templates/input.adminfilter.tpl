@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_FILTER_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_FILTER_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'COLUMNS' }>
                 	<div class="form-row <{if in_array('COLUMNS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_COLUMNS"}><{if in_array('COLUMNS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_COLUMNS')}><{if in_array('COLUMNS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-columns">
 
                                                     <{if isset($formdata.COLUMNS) }>
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IS_DEFAULT' }>
                 	<div class="form-row <{if in_array('IS_DEFAULT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IS_DEFAULT"}><{if in_array('IS_DEFAULT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IS_DEFAULT')}><{if in_array('IS_DEFAULT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-is-default">
 
                                                     <{if isset($formdata.IS_DEFAULT) }>
@@ -98,11 +98,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-default" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" >
-                                    <option value="1" <{if $formdata.IS_DEFAULT}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_DEFAULT}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_DEFAULT}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_DEFAULT}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $formdata.IS_DEFAULT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$formdata.IS_DEFAULT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $formdata.IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$formdata.IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -116,7 +116,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminfilterform').attr('action', '<{$actionurl}>');$('#adminfilterform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

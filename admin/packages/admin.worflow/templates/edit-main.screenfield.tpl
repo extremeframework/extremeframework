@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-screen">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_SCREEN"}></label>
+        		    <label><{_t('L_SCREEN')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-screen" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TITLE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-id-value-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VALUE_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_VALUE_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-value-type form-row-mandatory" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-datasource">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_DATASOURCE"}></label>
+        		    <label><{_t('L_DATASOURCE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-datasource" colspan="3">
@@ -210,7 +210,7 @@
         <{else}>
     		<td class="form-row form-row-condition">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CONDITION"}></label>
+        		    <label><{_t('L_CONDITION')}></label>
                 </div>
             </td>
             <td class="form-row form-row-condition" colspan="3">
@@ -240,7 +240,7 @@
         <{else}>
     		<td class="form-row form-row-valuecol">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VALUECOL"}></label>
+        		    <label><{_t('L_VALUECOL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-valuecol" colspan="3">
@@ -270,7 +270,7 @@
         <{else}>
     		<td class="form-row form-row-textcol">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TEXTCOL"}></label>
+        		    <label><{_t('L_TEXTCOL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-textcol" colspan="3">
@@ -300,14 +300,14 @@
         <{else}>
     		<td class="form-row form-row-is-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_MANDATORY"}></label>
+        		    <label><{_t('L_IS_MANDATORY')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-mandatory" colspan="3">
                 <div class="form-field form-field-value column-is-mandatory">
                                             
 
-    <span class="input-type-radio"><input class="input-is-mandatory" type="radio" name="<{$prefix}>screenfield_formdata_IS_MANDATORY" value="1" <{if $details->IS_MANDATORY}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>screenfield_formdata_IS_MANDATORY" value="0" <{if !$details->IS_MANDATORY}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-mandatory" type="radio" name="<{$prefix}>screenfield_formdata_IS_MANDATORY" value="1" <{if $details->IS_MANDATORY}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>screenfield_formdata_IS_MANDATORY" value="0" <{if !$details->IS_MANDATORY}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_MANDATORY}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_MANDATORY}>"></i>
                         <{/if}>
@@ -330,7 +330,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ORDERING"}></label>
+        		    <label><{_t('L_ORDERING')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -351,7 +351,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -362,7 +362,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_ADMIN_LANGUAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_LANGUAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) && $aclviewablecolumns['ID_ADMIN_LANGUAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) || $aclviewablecolumns['ID_ADMIN_LANGUAGE']))) }>
     	            <th class="column-id-admin-language">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/sort/id_admin_language"><{label key="L_ADMIN_LANGUAGE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/sort/id_admin_language"><{_t('L_ADMIN_LANGUAGE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_ADMIN_LABEL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_LABEL']) && ((isset($aclviewablecolumns['ID_ADMIN_LABEL']) && $aclviewablecolumns['ID_ADMIN_LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LABEL']) || $aclviewablecolumns['ID_ADMIN_LABEL']))) }>
     	            <th class="column-id-admin-label">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/sort/id_admin_label"><{label key="L_ADMIN_LABEL"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/sort/id_admin_label"><{_t('L_ADMIN_LABEL')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -49,8 +49,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_ADMIN_LANGUAGE_ITEM|strtolower}>s on this page are selected. <a onclick="adminlanguageitem_selectall()">Select all <{$total}> <{$smarty.const.L_ADMIN_LANGUAGE_ITEM|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_ADMIN_LANGUAGE_ITEM|strtolower}>s in the list are selected. <a onclick="adminlanguageitem_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_LANGUAGE_ITEM')|strtolower}>s on this page are selected. <a onclick="adminlanguageitem_selectall()">Select all <{$total}> <{_t('L_ADMIN_LANGUAGE_ITEM')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_LANGUAGE_ITEM')|strtolower}>s in the list are selected. <a onclick="adminlanguageitem_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -63,10 +63,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminlanguageitem-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminlanguageitem-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="adminlanguageitem-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminlanguageitem-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel adminlanguageitem-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save adminlanguageitem-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel adminlanguageitem-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="adminlanguageitem-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

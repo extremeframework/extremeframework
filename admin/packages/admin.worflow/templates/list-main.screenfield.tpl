@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_SCREEN', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_SCREEN']) && ((isset($aclviewablecolumns['ID_SCREEN']) && $aclviewablecolumns['ID_SCREEN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_SCREEN']) || $aclviewablecolumns['ID_SCREEN']))) }>
     	            <th class="column-id-screen">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/id_screen"><{label key="L_SCREEN"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/id_screen"><{_t('L_SCREEN')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/title"><{label key="L_TITLE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/title"><{_t('L_TITLE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/code"><{label key="L_CODE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/code"><{_t('L_CODE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ID_VALUE_TYPE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_VALUE_TYPE']) && ((isset($aclviewablecolumns['ID_VALUE_TYPE']) && $aclviewablecolumns['ID_VALUE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_VALUE_TYPE']) || $aclviewablecolumns['ID_VALUE_TYPE']))) }>
     	            <th class="column-id-value-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/id_value_type"><{label key="L_VALUE_TYPE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/id_value_type"><{_t('L_VALUE_TYPE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('DATASOURCE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DATASOURCE']) && ((isset($aclviewablecolumns['DATASOURCE']) && $aclviewablecolumns['DATASOURCE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATASOURCE']) || $aclviewablecolumns['DATASOURCE']))) }>
     	            <th class="column-datasource">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/datasource"><{label key="L_DATASOURCE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/datasource"><{_t('L_DATASOURCE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('CONDITION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CONDITION']) && ((isset($aclviewablecolumns['CONDITION']) && $aclviewablecolumns['CONDITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONDITION']) || $aclviewablecolumns['CONDITION']))) }>
     	            <th class="column-condition">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/condition"><{label key="L_CONDITION"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/condition"><{_t('L_CONDITION')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('VALUECOL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VALUECOL']) && ((isset($aclviewablecolumns['VALUECOL']) && $aclviewablecolumns['VALUECOL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUECOL']) || $aclviewablecolumns['VALUECOL']))) }>
     	            <th class="column-valuecol">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/valuecol"><{label key="L_VALUECOL"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/valuecol"><{_t('L_VALUECOL')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('TEXTCOL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TEXTCOL']) && ((isset($aclviewablecolumns['TEXTCOL']) && $aclviewablecolumns['TEXTCOL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TEXTCOL']) || $aclviewablecolumns['TEXTCOL']))) }>
     	            <th class="column-textcol">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/textcol"><{label key="L_TEXTCOL"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/textcol"><{_t('L_TEXTCOL')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -89,7 +89,7 @@
 		                        <{if (in_array('IS_MANDATORY', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_MANDATORY']) && ((isset($aclviewablecolumns['IS_MANDATORY']) && $aclviewablecolumns['IS_MANDATORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_MANDATORY']) || $aclviewablecolumns['IS_MANDATORY']))) }>
     	            <th class="column-is-mandatory">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/is_mandatory"><{label key="L_IS_MANDATORY"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/is_mandatory"><{_t('L_IS_MANDATORY')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -98,7 +98,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/ordering"><{label key="L_ORDERING"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screenfield/sort/ordering"><{_t('L_ORDERING')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -121,8 +121,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_SCREEN_FIELD|strtolower}>s on this page are selected. <a onclick="screenfield_selectall()">Select all <{$total}> <{$smarty.const.L_SCREEN_FIELD|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_SCREEN_FIELD|strtolower}>s in the list are selected. <a onclick="screenfield_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_SCREEN_FIELD')|strtolower}>s on this page are selected. <a onclick="screenfield_selectall()">Select all <{$total}> <{_t('L_SCREEN_FIELD')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_SCREEN_FIELD')|strtolower}>s in the list are selected. <a onclick="screenfield_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -135,10 +135,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="screenfield-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="screenfield-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="screenfield-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save screenfield-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel screenfield-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save screenfield-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel screenfield-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="screenfield-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

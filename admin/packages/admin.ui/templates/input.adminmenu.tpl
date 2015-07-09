@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_MENU_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_MENU_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ORDERING' }>
                 	<div class="form-row <{if in_array('ORDERING', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ORDERING"}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ORDERING')}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-ordering">
 
                                                     <{if isset($formdata.ORDERING) }>
@@ -71,7 +71,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IS_ENABLED' }>
                 	<div class="form-row <{if in_array('IS_ENABLED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IS_ENABLED"}><{if in_array('IS_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IS_ENABLED')}><{if in_array('IS_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-is-enabled">
 
                                                     <{if isset($formdata.IS_ENABLED) }>
@@ -81,11 +81,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-enabled" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" >
-                                    <option value="1" <{if $formdata.IS_ENABLED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_ENABLED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="1" <{if $formdata.IS_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="0" <{if !$formdata.IS_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="1" <{if $formdata.IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="0" <{if !$formdata.IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -99,7 +99,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminmenuform').attr('action', '<{$actionurl}>');$('#adminmenuform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

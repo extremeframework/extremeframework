@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'OBJECT_ID' }>
                 	<div class="form-row <{if in_array('OBJECT_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_OBJECT"}><{if in_array('OBJECT_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_OBJECT')}><{if in_array('OBJECT_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-object-id">
 
                                                     <{if isset($formdata.OBJECT_ID) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP"}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-group">
 
                                                     <{if isset($formdata.ID_USER_GROUP) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER' }>
                 	<div class="form-row <{if in_array('ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER"}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user">
 
                                                     <{if isset($formdata.ID_USER) }>
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ARG_ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ARG_ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ARG_USER_GROUP"}><{if in_array('ARG_ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ARG_USER_GROUP')}><{if in_array('ARG_ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-arg-id-user-group">
 
                                                     <{if isset($formdata.ARG_ID_USER_GROUP) }>
@@ -123,7 +123,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ARG_ID_USER' }>
                 	<div class="form-row <{if in_array('ARG_ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ARG_USER"}><{if in_array('ARG_ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ARG_USER')}><{if in_array('ARG_ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-arg-id-user">
 
                                                     <{if isset($formdata.ARG_ID_USER) }>
@@ -140,7 +140,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ACL_TYPE' }>
                 	<div class="form-row <{if in_array('ID_ACL_TYPE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ACL_TYPE"}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ACL_TYPE')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-acl-type">
 
                                                     <{if isset($formdata.ID_ACL_TYPE) }>
@@ -163,7 +163,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#objectaclform').attr('action', '<{$actionurl}>');$('#objectaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

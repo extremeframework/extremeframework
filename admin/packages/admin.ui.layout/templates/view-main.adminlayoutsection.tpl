@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{label key="L_ADMIN_LAYOUT_SECTION_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_ADMIN_LAYOUT_SECTION_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_MODULE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['SHOW_TITLE']) && ((isset($aclviewablecolumns['SHOW_TITLE']) && $aclviewablecolumns['SHOW_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SHOW_TITLE']) || $aclviewablecolumns['SHOW_TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('SHOW_TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-show-title">
-	            		        <label class="attribute-name"><{label key="L_SHOW_TITLE"}></label>
+	            		        <label class="attribute-name"><{_t('L_SHOW_TITLE')}></label>
             </td>
             <td class="form-field form-field-value column-show-title" colspan="3">
             	<div class="attribute-line column-show-title type-yesno">
@@ -114,18 +114,18 @@
             		                		        <{if (isset($acleditablecolumns['SHOW_TITLE']) && $acleditablecolumns['SHOW_TITLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['SHOW_TITLE']) || $acleditablecolumns['SHOW_TITLE'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->SHOW_TITLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->SHOW_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-show-title" type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="1" <{if $details->SHOW_TITLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="0" <{if !$details->SHOW_TITLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-show-title" type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="1" <{if $details->SHOW_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="0" <{if !$details->SHOW_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->SHOW_TITLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->SHOW_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -140,7 +140,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -150,7 +150,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

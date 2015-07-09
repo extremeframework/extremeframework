@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{label key="L_TITLE"}></label>
+	            		        <label class="attribute-name"><{_t('L_TITLE')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['CLASS']) && ((isset($aclviewablecolumns['CLASS']) && $aclviewablecolumns['CLASS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CLASS']) || $aclviewablecolumns['CLASS']))) }>
         <{if !isset($columns2hide) || !in_array('CLASS', $columns2hide) }>
     		<td class="form-field form-field-label column-class">
-	            		        <label class="attribute-name"><{label key="L_CLASS"}></label>
+	            		        <label class="attribute-name"><{_t('L_CLASS')}></label>
             </td>
             <td class="form-field form-field-value column-class" colspan="3">
             	<div class="attribute-line column-class type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['TAG_LINE']) && ((isset($aclviewablecolumns['TAG_LINE']) && $aclviewablecolumns['TAG_LINE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TAG_LINE']) || $aclviewablecolumns['TAG_LINE']))) }>
         <{if !isset($columns2hide) || !in_array('TAG_LINE', $columns2hide) }>
     		<td class="form-field form-field-label column-tag-line">
-	            		        <label class="attribute-name"><{label key="L_TAG_LINE"}></label>
+	            		        <label class="attribute-name"><{_t('L_TAG_LINE')}></label>
             </td>
             <td class="form-field form-field-value column-tag-line" colspan="3">
             	<div class="attribute-line column-tag-line type-text">
@@ -114,7 +114,7 @@
             <{if !isset($excludedcolumns['ID_MENU']) && ((isset($aclviewablecolumns['ID_MENU']) && $aclviewablecolumns['ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_MENU']) || $aclviewablecolumns['ID_MENU']))) }>
         <{if !isset($columns2hide) || !in_array('ID_MENU', $columns2hide) }>
     		<td class="form-field form-field-label column-id-menu">
-	                    		                    		        <label class="attribute-name"><{label key="L_MENU"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_MENU')}></label>
             </td>
             <td class="form-field form-field-value column-id-menu" colspan="3">
             	<div class="attribute-line column-id-menu type-reftext">
@@ -174,7 +174,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="menuitem" data-id="<{$details->refuuid_PARENT}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PARENT"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PARENT')}></label>
             </td>
             <td class="form-field form-field-value column-parent" colspan="3">
             	<div class="attribute-line column-parent type-reftext">
@@ -234,7 +234,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="page" data-id="<{$details->refuuid_ID_PAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PAGE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PAGE')}></label>
             </td>
             <td class="form-field form-field-value column-id-page" colspan="3">
             	<div class="attribute-line column-id-page type-reftext">
@@ -294,7 +294,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="post" data-id="<{$details->refuuid_ID_POST}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_POST"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_POST')}></label>
             </td>
             <td class="form-field form-field-value column-id-post" colspan="3">
             	<div class="attribute-line column-id-post type-reftext">
@@ -354,7 +354,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="postcategory" data-id="<{$details->refuuid_ID_POST_CATEGORY}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_POST_CATEGORY"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_POST_CATEGORY')}></label>
             </td>
             <td class="form-field form-field-value column-id-post-category" colspan="3">
             	<div class="attribute-line column-id-post-category type-reftext">
@@ -409,7 +409,7 @@
             <{if !isset($excludedcolumns['PATH']) && ((isset($aclviewablecolumns['PATH']) && $aclviewablecolumns['PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PATH']) || $aclviewablecolumns['PATH']))) }>
         <{if !isset($columns2hide) || !in_array('PATH', $columns2hide) }>
     		<td class="form-field form-field-label column-path">
-	            		        <label class="attribute-name"><{label key="L_PATH"}></label>
+	            		        <label class="attribute-name"><{_t('L_PATH')}></label>
             </td>
             <td class="form-field form-field-value column-path" colspan="3">
             	<div class="attribute-line column-path type-text">
@@ -443,7 +443,7 @@
             <{if !isset($excludedcolumns['CUSTOM_CONTENT']) && ((isset($aclviewablecolumns['CUSTOM_CONTENT']) && $aclviewablecolumns['CUSTOM_CONTENT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_CONTENT']) || $aclviewablecolumns['CUSTOM_CONTENT']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOM_CONTENT', $columns2hide) }>
     		<td class="form-field form-field-label column-custom-content">
-	            		        <label class="attribute-name"><{label key="L_CUSTOM_CONTENT"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOM_CONTENT')}></label>
             </td>
             <td class="form-field form-field-value column-custom-content" colspan="3">
             	<div class="attribute-line column-custom-content type-textarea">
@@ -478,7 +478,7 @@
             <{if !isset($excludedcolumns['HAS_BREAK_AFTER']) && ((isset($aclviewablecolumns['HAS_BREAK_AFTER']) && $aclviewablecolumns['HAS_BREAK_AFTER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HAS_BREAK_AFTER']) || $aclviewablecolumns['HAS_BREAK_AFTER']))) }>
         <{if !isset($columns2hide) || !in_array('HAS_BREAK_AFTER', $columns2hide) }>
     		<td class="form-field form-field-label column-has-break-after">
-	            		        <label class="attribute-name"><{label key="L_HAS_BREAK_AFTER"}></label>
+	            		        <label class="attribute-name"><{_t('L_HAS_BREAK_AFTER')}></label>
             </td>
             <td class="form-field form-field-value column-has-break-after" colspan="3">
             	<div class="attribute-line column-has-break-after type-yesno">
@@ -486,18 +486,18 @@
             		                		        <{if (isset($acleditablecolumns['HAS_BREAK_AFTER']) && $acleditablecolumns['HAS_BREAK_AFTER']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['HAS_BREAK_AFTER']) || $acleditablecolumns['HAS_BREAK_AFTER'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->HAS_BREAK_AFTER}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->HAS_BREAK_AFTER}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-has-break-after" type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="1" <{if $details->HAS_BREAK_AFTER}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="0" <{if !$details->HAS_BREAK_AFTER}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-has-break-after" type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="1" <{if $details->HAS_BREAK_AFTER}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="0" <{if !$details->HAS_BREAK_AFTER}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->HAS_BREAK_AFTER}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->HAS_BREAK_AFTER}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -512,7 +512,7 @@
             <{if !isset($excludedcolumns['ACL_ID_USER_GROUP']) && ((isset($aclviewablecolumns['ACL_ID_USER_GROUP']) && $aclviewablecolumns['ACL_ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACL_ID_USER_GROUP']) || $aclviewablecolumns['ACL_ID_USER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ACL_ID_USER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-acl-id-user-group">
-	                    		                    		        <label class="attribute-name"><{label key="L_ACL_USER_GROUP"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_ACL_USER_GROUP')}></label>
             </td>
             <td class="form-field form-field-value column-acl-id-user-group" colspan="3">
             	<div class="attribute-line column-acl-id-user-group type-reftext">
@@ -567,7 +567,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -577,7 +577,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

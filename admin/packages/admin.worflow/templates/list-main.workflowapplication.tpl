@@ -17,7 +17,7 @@
         	                            <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/sort/module"><{label key="L_MODULE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/sort/module"><{_t('L_MODULE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_WORKFLOW', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
     	            <th class="column-id-workflow">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/sort/id_workflow"><{label key="L_WORKFLOW"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/sort/id_workflow"><{_t('L_WORKFLOW')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -49,8 +49,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_WORKFLOW_APPLICATION|strtolower}>s on this page are selected. <a onclick="workflowapplication_selectall()">Select all <{$total}> <{$smarty.const.L_WORKFLOW_APPLICATION|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_WORKFLOW_APPLICATION|strtolower}>s in the list are selected. <a onclick="workflowapplication_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}>s on this page are selected. <a onclick="workflowapplication_selectall()">Select all <{$total}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}>s in the list are selected. <a onclick="workflowapplication_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -63,10 +63,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowapplication-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowapplication-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="workflowapplication-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save workflowapplication-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel workflowapplication-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save workflowapplication-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel workflowapplication-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="workflowapplication-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

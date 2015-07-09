@@ -2,15 +2,15 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=$smarty.const.L_ADMIN_MENU}>
+<{assign var='title' value=_t('L_ADMIN_MENU')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminmenuquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminmenu/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="adminmenu_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{$smarty.const.L_SEARCH}>" />
+            <input type="text" name="adminmenu_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
 	        <a class="button-quick-search" onclick="$('#adminmenuquicksearch').submit(); return false;">
-	            <span><{label key="L_SEARCH"}></span>
+	            <span><{_t('L_SEARCH')}></span>
             </a>
         </form>
     </div>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminmenu.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{$smarty.const.L_NEW}> <{$smarty.const.L_ADMIN_MENU|strtolower}>"/><{label key="L_NEW"}> <{$smarty.const.L_ADMIN_MENU|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_ADMIN_MENU')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_MENU')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -85,16 +85,16 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.adminmenu.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="adminmenu_delete()"><span class="button-face"><{$smarty.const.L_DELETE}></span></a>
+                            <a href="#" onclick="adminmenu_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
             	    <div class="btn button-general dropdown" style="padding: 3px 6px 6px 5px;">
-            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{label text="More" insidequote=true}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
+            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
             	        <ul class="dropdown-menu pull-right">
                             <{foreach from=$admin_list_actions item=item}>
                                 <{if empty($item->ACL) || isset($smarty.session.acl.adminmenu[$item->ACL])}>
-                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="adminmenu_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{label text=$item->TITLE}></span></a></li>
+                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="adminmenu_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{_t($item->TITLE)}></span></a></li>
                                 <{/if}>
                             <{/foreach}>
                         </ul>
@@ -114,38 +114,38 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_ADMIN_MENU), strtolower(L_ADMIN_MENU)));
     <{/php}>
 
-    <div id="adminmenucopyrelations" style="display:none" title="<{$smarty.const.L_COPY}> <{$smarty.const.L_ADMIN_MENU|strtolower}>">
+    <div id="adminmenucopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_ADMIN_MENU')|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{label key="L_COPY_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{_t('L_COPY_ALSO')}> <{_t('L_DASHBOARD')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenuapproverelations" style="display:none" title="<{$smarty.const.L_APPROVE}> <{$smarty.const.L_ADMIN_MENU|strtolower}>">
+    <div id="adminmenuapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_ADMIN_MENU')|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_DASHBOARD')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenudeleterelations" style="display:none" title="<{$smarty.const.L_DELETE}> <{$smarty.const.L_ADMIN_MENU|strtolower}>">
+    <div id="adminmenudeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_ADMIN_MENU')|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_ADMIN_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{label key="L_DELETE_ALSO"}> <{label key="L_DASHBOARD" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{_t('L_DELETE_ALSO')}> <{_t('L_DASHBOARD')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -177,12 +177,12 @@ function adminmenu_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_DELETE}>": function() {
+			"<{_t('L_DELETE')}>": function() {
             	$('#adminmenulistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenu/delete/');
             	$('#adminmenulistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -197,12 +197,12 @@ function adminmenu_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_COPY}>": function() {
+			"<{_t('L_COPY')}>": function() {
             	$('#adminmenulistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenu/copy/');
             	$('#adminmenulistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -217,12 +217,12 @@ function adminmenu_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_APPROVE}>": function() {
+			"<{_t('L_APPROVE')}>": function() {
             	$('#adminmenulistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenu/approve/');
             	$('#adminmenulistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -350,7 +350,7 @@ function adminmenu_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="adminmenu-list-count list-count"><{$total}></span> <{label key="L_RECORDS"}>
+		<span class="adminmenu-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

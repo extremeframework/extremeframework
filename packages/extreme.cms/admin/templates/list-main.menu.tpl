@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/name"><{label key="L_MENU_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/name"><{_t('L_MENU_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/code"><{label key="L_CODE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/code"><{_t('L_CODE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CLASS', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CLASS']) && ((isset($aclviewablecolumns['CLASS']) && $aclviewablecolumns['CLASS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CLASS']) || $aclviewablecolumns['CLASS']))) }>
     	            <th class="column-class">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/class"><{label key="L_CLASS"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/menu/sort/class"><{_t('L_CLASS')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_MENU|strtolower}>s on this page are selected. <a onclick="menu_selectall()">Select all <{$total}> <{$smarty.const.L_MENU|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_MENU|strtolower}>s in the list are selected. <a onclick="menu_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_MENU')|strtolower}>s on this page are selected. <a onclick="menu_selectall()">Select all <{$total}> <{_t('L_MENU')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_MENU')|strtolower}>s in the list are selected. <a onclick="menu_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -72,10 +72,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="menu-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="menu-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="menu-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save menu-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel menu-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save menu-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel menu-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="menu-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

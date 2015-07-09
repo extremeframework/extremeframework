@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-order">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_ORDER"}></label>
+        		    <label><{_t('L_ADMIN_ORDER')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-order" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-product">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_PRODUCT"}></label>
+        		    <label><{_t('L_ADMIN_PRODUCT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-product" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-quantity">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_QUANTITY"}></label>
+        		    <label><{_t('L_QUANTITY')}></label>
                 </div>
             </td>
             <td class="form-row form-row-quantity" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-price">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PRICE"}></label>
+        		    <label><{_t('L_PRICE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-price" colspan="3">
@@ -164,7 +164,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -175,7 +175,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

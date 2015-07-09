@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP"}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-group">
 
                                                     <{if isset($formdata.ID_USER_GROUP) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ACTIONS' }>
                 	<div class="form-row <{if in_array('ACTIONS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ACTIONS"}><{if in_array('ACTIONS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ACTIONS')}><{if in_array('ACTIONS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-actions">
 
                                                     <{if isset($formdata.ACTIONS) }>
@@ -95,7 +95,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#accessrightform').attr('action', '<{$actionurl}>');$('#accessrightform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/accessright/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/accessright/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

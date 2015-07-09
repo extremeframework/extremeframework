@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{label key="L_PARAMETER_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_PARAMETER_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{label key="L_CODE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['ID_PARAMETER_GROUP']) && ((isset($aclviewablecolumns['ID_PARAMETER_GROUP']) && $aclviewablecolumns['ID_PARAMETER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PARAMETER_GROUP']) || $aclviewablecolumns['ID_PARAMETER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ID_PARAMETER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-id-parameter-group">
-	                    		                    		        <label class="attribute-name"><{label key="L_PARAMETER_GROUP"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_PARAMETER_GROUP')}></label>
             </td>
             <td class="form-field form-field-value column-id-parameter-group" colspan="3">
             	<div class="attribute-line column-id-parameter-group type-reftext">
@@ -140,7 +140,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="parametertype" data-id="<{$details->refuuid_ID_PARAMETER_TYPE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PARAMETER_TYPE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PARAMETER_TYPE')}></label>
             </td>
             <td class="form-field form-field-value column-id-parameter-type" colspan="3">
             	<div class="attribute-line column-id-parameter-type type-reftext">
@@ -195,7 +195,7 @@
             <{if !isset($excludedcolumns['VALUE']) && ((isset($aclviewablecolumns['VALUE']) && $aclviewablecolumns['VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUE']) || $aclviewablecolumns['VALUE']))) }>
         <{if !isset($columns2hide) || !in_array('VALUE', $columns2hide) }>
     		<td class="form-field form-field-label column-value">
-	            		        <label class="attribute-name"><{label key="L_VALUE"}></label>
+	            		        <label class="attribute-name"><{_t('L_VALUE')}></label>
             </td>
             <td class="form-field form-field-value column-value" colspan="3">
             	<div class="attribute-line column-value type-text">
@@ -229,7 +229,7 @@
             <{if !isset($excludedcolumns['DESCRIPTION']) && ((isset($aclviewablecolumns['DESCRIPTION']) && $aclviewablecolumns['DESCRIPTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DESCRIPTION']) || $aclviewablecolumns['DESCRIPTION']))) }>
         <{if !isset($columns2hide) || !in_array('DESCRIPTION', $columns2hide) }>
     		<td class="form-field form-field-label column-description">
-	            		        <label class="attribute-name"><{label key="L_DESCRIPTION"}></label>
+	            		        <label class="attribute-name"><{_t('L_DESCRIPTION')}></label>
             </td>
             <td class="form-field form-field-value column-description" colspan="3">
             	<div class="attribute-line column-description type-textarea">
@@ -264,7 +264,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -274,7 +274,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

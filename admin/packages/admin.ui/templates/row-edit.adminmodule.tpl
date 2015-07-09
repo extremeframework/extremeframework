@@ -100,14 +100,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-comment-enabled" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" >
-                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_COMMENT_ENABLED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_COMMENT_ENABLED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>

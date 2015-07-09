@@ -93,14 +93,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-default" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" >
-                                    <option value="1" <{if $formdata.IS_DEFAULT}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_DEFAULT}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_DEFAULT}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_DEFAULT}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $formdata.IS_DEFAULT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$formdata.IS_DEFAULT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $formdata.IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$formdata.IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_DEFAULT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -117,14 +117,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-binding-object-editable" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" >
-                                    <option value="1" <{if $formdata.IS_BINDING_OBJECT_EDITABLE}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_BINDING_OBJECT_EDITABLE}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_BINDING_OBJECT_EDITABLE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_BINDING_OBJECT_EDITABLE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $formdata.IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$formdata.IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $formdata.IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$formdata.IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_BINDING_OBJECT_EDITABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_BINDING_OBJECT_EDITABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -141,14 +141,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-binding-object-deletable" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" >
-                                    <option value="1" <{if $formdata.IS_BINDING_OBJECT_DELETABLE}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_BINDING_OBJECT_DELETABLE}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_BINDING_OBJECT_DELETABLE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_BINDING_OBJECT_DELETABLE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $formdata.IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$formdata.IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $formdata.IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$formdata.IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_BINDING_OBJECT_DELETABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_BINDING_OBJECT_DELETABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>

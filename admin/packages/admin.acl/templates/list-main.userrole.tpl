@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userrole/sort/name"><{label key="L_USER_ROLE_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userrole/sort/name"><{_t('L_USER_ROLE_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -40,8 +40,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_USER_ROLE|strtolower}>s on this page are selected. <a onclick="userrole_selectall()">Select all <{$total}> <{$smarty.const.L_USER_ROLE|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_USER_ROLE|strtolower}>s in the list are selected. <a onclick="userrole_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER_ROLE')|strtolower}>s on this page are selected. <a onclick="userrole_selectall()">Select all <{$total}> <{_t('L_USER_ROLE')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_USER_ROLE')|strtolower}>s in the list are selected. <a onclick="userrole_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -54,10 +54,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="userrole-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="userrole-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="userrole-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save userrole-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel userrole-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save userrole-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel userrole-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="userrole-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_POST' }>
                 	<div class="form-row <{if in_array('ID_POST', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_POST"}><{if in_array('ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_POST')}><{if in_array('ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-post">
 
                                                     <{if isset($formdata.ID_POST) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PEER_ID_POST' }>
                 	<div class="form-row <{if in_array('PEER_ID_POST', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PEER_POST"}><{if in_array('PEER_ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PEER_POST')}><{if in_array('PEER_ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-peer-id-post">
 
                                                     <{if isset($formdata.PEER_ID_POST) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_POST_RELATION_TYPE' }>
                 	<div class="form-row <{if in_array('ID_POST_RELATION_TYPE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_POST_RELATION_TYPE"}><{if in_array('ID_POST_RELATION_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_POST_RELATION_TYPE')}><{if in_array('ID_POST_RELATION_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-post-relation-type">
 
                                                     <{if isset($formdata.ID_POST_RELATION_TYPE) }>
@@ -96,7 +96,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#postrelationform').attr('action', '<{$actionurl}>');$('#postrelationform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

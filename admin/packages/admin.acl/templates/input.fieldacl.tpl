@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ACTION' }>
                 	<div class="form-row <{if in_array('ACTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ACTION"}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ACTION')}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-action">
 
                                                     <{if isset($formdata.ACTION) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP"}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-group">
 
                                                     <{if isset($formdata.ID_USER_GROUP) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER' }>
                 	<div class="form-row <{if in_array('ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER"}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user">
 
                                                     <{if isset($formdata.ID_USER) }>
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'FIELDS' }>
                 	<div class="form-row <{if in_array('FIELDS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_FIELDS"}><{if in_array('FIELDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_FIELDS')}><{if in_array('FIELDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-fields">
 
                                                     <{if isset($formdata.FIELDS) }>
@@ -122,7 +122,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ACL_TYPE' }>
                 	<div class="form-row <{if in_array('ID_ACL_TYPE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ACL_TYPE"}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ACL_TYPE')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-acl-type">
 
                                                     <{if isset($formdata.ID_ACL_TYPE) }>
@@ -145,7 +145,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#fieldaclform').attr('action', '<{$actionurl}>');$('#fieldaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -17,7 +17,7 @@
         	                            <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/module"><{label key="L_MODULE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/module"><{_t('L_MODULE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('SEQUENCE_FORMAT', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['SEQUENCE_FORMAT']) && ((isset($aclviewablecolumns['SEQUENCE_FORMAT']) && $aclviewablecolumns['SEQUENCE_FORMAT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_FORMAT']) || $aclviewablecolumns['SEQUENCE_FORMAT']))) }>
     	            <th class="column-sequence-format">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/sequence_format"><{label key="L_SEQUENCE_FORMAT"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/sequence_format"><{_t('L_SEQUENCE_FORMAT')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CURRENT_VALUE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CURRENT_VALUE']) && ((isset($aclviewablecolumns['CURRENT_VALUE']) && $aclviewablecolumns['CURRENT_VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENT_VALUE']) || $aclviewablecolumns['CURRENT_VALUE']))) }>
     	            <th class="column-current-value">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/current_value"><{label key="L_CURRENT_VALUE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/current_value"><{_t('L_CURRENT_VALUE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('SEQUENCE_STEP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['SEQUENCE_STEP']) && ((isset($aclviewablecolumns['SEQUENCE_STEP']) && $aclviewablecolumns['SEQUENCE_STEP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_STEP']) || $aclviewablecolumns['SEQUENCE_STEP']))) }>
     	            <th class="column-sequence-step">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/sequence_step"><{label key="L_SEQUENCE_STEP"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/sort/sequence_step"><{_t('L_SEQUENCE_STEP')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_ADMIN_SEQUENCE|strtolower}>s on this page are selected. <a onclick="adminsequence_selectall()">Select all <{$total}> <{$smarty.const.L_ADMIN_SEQUENCE|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_ADMIN_SEQUENCE|strtolower}>s in the list are selected. <a onclick="adminsequence_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_SEQUENCE')|strtolower}>s on this page are selected. <a onclick="adminsequence_selectall()">Select all <{$total}> <{_t('L_ADMIN_SEQUENCE')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_SEQUENCE')|strtolower}>s in the list are selected. <a onclick="adminsequence_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminsequence-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminsequence-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="adminsequence-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminsequence-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel adminsequence-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save adminsequence-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel adminsequence-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="adminsequence-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

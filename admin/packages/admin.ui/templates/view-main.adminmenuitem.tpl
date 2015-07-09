@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{label key="L_ADMIN_MENU_ITEM_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_ADMIN_MENU_ITEM_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_MENU']) && ((isset($aclviewablecolumns['ID_ADMIN_MENU']) && $aclviewablecolumns['ID_ADMIN_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_MENU']) || $aclviewablecolumns['ID_ADMIN_MENU']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_MENU', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-menu">
-	                    		                    		        <label class="attribute-name"><{label key="L_ADMIN_MENU"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_ADMIN_MENU')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-menu" colspan="3">
             	<div class="attribute-line column-id-admin-menu type-reftext">
@@ -106,7 +106,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmenuitem" data-id="<{$details->refuuid_PARENT}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PARENT"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PARENT')}></label>
             </td>
             <td class="form-field form-field-value column-parent" colspan="3">
             	<div class="attribute-line column-parent type-reftext">
@@ -166,7 +166,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_MODULE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -221,7 +221,7 @@
             <{if !isset($excludedcolumns['PATH']) && ((isset($aclviewablecolumns['PATH']) && $aclviewablecolumns['PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PATH']) || $aclviewablecolumns['PATH']))) }>
         <{if !isset($columns2hide) || !in_array('PATH', $columns2hide) }>
     		<td class="form-field form-field-label column-path">
-	            		        <label class="attribute-name"><{label key="L_PATH"}></label>
+	            		        <label class="attribute-name"><{_t('L_PATH')}></label>
             </td>
             <td class="form-field form-field-value column-path" colspan="3">
             	<div class="attribute-line column-path type-text">
@@ -255,7 +255,7 @@
             <{if !isset($excludedcolumns['FONT_AWESOME_ICON']) && ((isset($aclviewablecolumns['FONT_AWESOME_ICON']) && $aclviewablecolumns['FONT_AWESOME_ICON']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FONT_AWESOME_ICON']) || $aclviewablecolumns['FONT_AWESOME_ICON']))) }>
         <{if !isset($columns2hide) || !in_array('FONT_AWESOME_ICON', $columns2hide) }>
     		<td class="form-field form-field-label column-font-awesome-icon">
-	            		        <label class="attribute-name"><{label key="L_FONT_AWESOME_ICON"}></label>
+	            		        <label class="attribute-name"><{_t('L_FONT_AWESOME_ICON')}></label>
             </td>
             <td class="form-field form-field-value column-font-awesome-icon" colspan="3">
             	<div class="attribute-line column-font-awesome-icon type-text">
@@ -289,7 +289,7 @@
             <{if !isset($excludedcolumns['ENABLE_LEFT']) && ((isset($aclviewablecolumns['ENABLE_LEFT']) && $aclviewablecolumns['ENABLE_LEFT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_LEFT']) || $aclviewablecolumns['ENABLE_LEFT']))) }>
         <{if !isset($columns2hide) || !in_array('ENABLE_LEFT', $columns2hide) }>
     		<td class="form-field form-field-label column-enable-left">
-	            		        <label class="attribute-name"><{label key="L_ENABLE_LEFT"}></label>
+	            		        <label class="attribute-name"><{_t('L_ENABLE_LEFT')}></label>
             </td>
             <td class="form-field form-field-value column-enable-left" colspan="3">
             	<div class="attribute-line column-enable-left type-yesno">
@@ -297,18 +297,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_LEFT']) && $acleditablecolumns['ENABLE_LEFT']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_LEFT']) || $acleditablecolumns['ENABLE_LEFT'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_LEFT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_LEFT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -323,7 +323,7 @@
             <{if !isset($excludedcolumns['ENABLE_TOP']) && ((isset($aclviewablecolumns['ENABLE_TOP']) && $aclviewablecolumns['ENABLE_TOP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_TOP']) || $aclviewablecolumns['ENABLE_TOP']))) }>
         <{if !isset($columns2hide) || !in_array('ENABLE_TOP', $columns2hide) }>
     		<td class="form-field form-field-label column-enable-top">
-	            		        <label class="attribute-name"><{label key="L_ENABLE_TOP"}></label>
+	            		        <label class="attribute-name"><{_t('L_ENABLE_TOP')}></label>
             </td>
             <td class="form-field form-field-value column-enable-top" colspan="3">
             	<div class="attribute-line column-enable-top type-yesno">
@@ -331,18 +331,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_TOP']) && $acleditablecolumns['ENABLE_TOP']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_TOP']) || $acleditablecolumns['ENABLE_TOP'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_TOP}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_TOP}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -357,7 +357,7 @@
             <{if !isset($excludedcolumns['ENABLE_QUICK']) && ((isset($aclviewablecolumns['ENABLE_QUICK']) && $aclviewablecolumns['ENABLE_QUICK']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_QUICK']) || $aclviewablecolumns['ENABLE_QUICK']))) }>
         <{if !isset($columns2hide) || !in_array('ENABLE_QUICK', $columns2hide) }>
     		<td class="form-field form-field-label column-enable-quick">
-	            		        <label class="attribute-name"><{label key="L_ENABLE_QUICK"}></label>
+	            		        <label class="attribute-name"><{_t('L_ENABLE_QUICK')}></label>
             </td>
             <td class="form-field form-field-value column-enable-quick" colspan="3">
             	<div class="attribute-line column-enable-quick type-yesno">
@@ -365,18 +365,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_QUICK']) && $acleditablecolumns['ENABLE_QUICK']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_QUICK']) || $acleditablecolumns['ENABLE_QUICK'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_QUICK}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_QUICK}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -391,7 +391,7 @@
             <{if !isset($excludedcolumns['ENABLE_ALL']) && ((isset($aclviewablecolumns['ENABLE_ALL']) && $aclviewablecolumns['ENABLE_ALL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_ALL']) || $aclviewablecolumns['ENABLE_ALL']))) }>
         <{if !isset($columns2hide) || !in_array('ENABLE_ALL', $columns2hide) }>
     		<td class="form-field form-field-label column-enable-all">
-	            		        <label class="attribute-name"><{label key="L_ENABLE_ALL"}></label>
+	            		        <label class="attribute-name"><{_t('L_ENABLE_ALL')}></label>
             </td>
             <td class="form-field form-field-value column-enable-all" colspan="3">
             	<div class="attribute-line column-enable-all type-yesno">
@@ -399,18 +399,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_ALL']) && $acleditablecolumns['ENABLE_ALL']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_ALL']) || $acleditablecolumns['ENABLE_ALL'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_ALL}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_ALL}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -425,7 +425,7 @@
             <{if !isset($excludedcolumns['ENABLE_SETTINGS']) && ((isset($aclviewablecolumns['ENABLE_SETTINGS']) && $aclviewablecolumns['ENABLE_SETTINGS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_SETTINGS']) || $aclviewablecolumns['ENABLE_SETTINGS']))) }>
         <{if !isset($columns2hide) || !in_array('ENABLE_SETTINGS', $columns2hide) }>
     		<td class="form-field form-field-label column-enable-settings">
-	            		        <label class="attribute-name"><{label key="L_ENABLE_SETTINGS"}></label>
+	            		        <label class="attribute-name"><{_t('L_ENABLE_SETTINGS')}></label>
             </td>
             <td class="form-field form-field-value column-enable-settings" colspan="3">
             	<div class="attribute-line column-enable-settings type-yesno">
@@ -433,18 +433,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_SETTINGS']) && $acleditablecolumns['ENABLE_SETTINGS']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_SETTINGS']) || $acleditablecolumns['ENABLE_SETTINGS'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_SETTINGS}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_SETTINGS}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -459,7 +459,7 @@
             <{if !isset($excludedcolumns['OPEN_IN_NEW_WINDOW']) && ((isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) && $aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || $aclviewablecolumns['OPEN_IN_NEW_WINDOW']))) }>
         <{if !isset($columns2hide) || !in_array('OPEN_IN_NEW_WINDOW', $columns2hide) }>
     		<td class="form-field form-field-label column-open-in-new-window">
-	            		        <label class="attribute-name"><{label key="L_OPEN_IN_NEW_WINDOW"}></label>
+	            		        <label class="attribute-name"><{_t('L_OPEN_IN_NEW_WINDOW')}></label>
             </td>
             <td class="form-field form-field-value column-open-in-new-window" colspan="3">
             	<div class="attribute-line column-open-in-new-window type-yesno">
@@ -467,18 +467,18 @@
             		                		        <{if (isset($acleditablecolumns['OPEN_IN_NEW_WINDOW']) && $acleditablecolumns['OPEN_IN_NEW_WINDOW']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['OPEN_IN_NEW_WINDOW']) || $acleditablecolumns['OPEN_IN_NEW_WINDOW'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->OPEN_IN_NEW_WINDOW}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->OPEN_IN_NEW_WINDOW}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -493,7 +493,7 @@
             <{if !isset($excludedcolumns['IS_STARRED']) && ((isset($aclviewablecolumns['IS_STARRED']) && $aclviewablecolumns['IS_STARRED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_STARRED']) || $aclviewablecolumns['IS_STARRED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_STARRED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-starred">
-	            		        <label class="attribute-name"><{label key="L_IS_STARRED"}></label>
+	            		        <label class="attribute-name"><{_t('L_IS_STARRED')}></label>
             </td>
             <td class="form-field form-field-value column-is-starred" colspan="3">
             	<div class="attribute-line column-is-starred type-yesno">
@@ -501,18 +501,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_STARRED']) && $acleditablecolumns['IS_STARRED']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_STARRED']) || $acleditablecolumns['IS_STARRED'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_STARRED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_STARRED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -527,7 +527,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -537,7 +537,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

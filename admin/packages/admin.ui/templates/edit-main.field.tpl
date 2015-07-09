@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FIELD_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_FIELD_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-column form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_COLUMN"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_COLUMN')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-column form-row-mandatory" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-tooltip">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TOOLTIP"}></label>
+        		    <label><{_t('L_TOOLTIP')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tooltip" colspan="3">
@@ -167,14 +167,14 @@
         <{else}>
     		<td class="form-row form-row-is-excluded">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_EXCLUDED"}></label>
+        		    <label><{_t('L_IS_EXCLUDED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-excluded" colspan="3">
                 <div class="form-field form-field-value column-is-excluded">
                                             
 
-    <span class="input-type-radio"><input class="input-is-excluded" type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="1" <{if $details->IS_EXCLUDED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="0" <{if !$details->IS_EXCLUDED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-excluded" type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="1" <{if $details->IS_EXCLUDED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="0" <{if !$details->IS_EXCLUDED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_EXCLUDED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_EXCLUDED}>"></i>
                         <{/if}>
@@ -189,7 +189,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -200,7 +200,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_FIELD_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_FIELD_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'COLUMN' }>
                 	<div class="form-row <{if in_array('COLUMN', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_COLUMN"}><{if in_array('COLUMN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_COLUMN')}><{if in_array('COLUMN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-column">
 
                                                     <{if isset($formdata.COLUMN) }>
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'TOOLTIP' }>
                 	<div class="form-row <{if in_array('TOOLTIP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_TOOLTIP"}><{if in_array('TOOLTIP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_TOOLTIP')}><{if in_array('TOOLTIP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-tooltip">
 
                                                     <{if isset($formdata.TOOLTIP) }>
@@ -104,7 +104,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IS_EXCLUDED' }>
                 	<div class="form-row <{if in_array('IS_EXCLUDED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IS_EXCLUDED"}><{if in_array('IS_EXCLUDED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IS_EXCLUDED')}><{if in_array('IS_EXCLUDED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-is-excluded">
 
                                                     <{if isset($formdata.IS_EXCLUDED) }>
@@ -114,11 +114,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-excluded" name="<{$prefix}>field_formdata_IS_EXCLUDED" >
-                                    <option value="1" <{if $formdata.IS_EXCLUDED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_EXCLUDED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_EXCLUDED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_EXCLUDED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-excluded" type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="1" <{if $formdata.IS_EXCLUDED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="0" <{if !$formdata.IS_EXCLUDED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-excluded" type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="1" <{if $formdata.IS_EXCLUDED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>field_formdata_IS_EXCLUDED" value="0" <{if !$formdata.IS_EXCLUDED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -132,7 +132,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#fieldform').attr('action', '<{$actionurl}>');$('#fieldform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

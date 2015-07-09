@@ -13,9 +13,9 @@
                             <i class="fa fa-book"></i>
                         <{/if}>
                         <{if $depth == 0}>
-                            <span><{label text=$menuitem->NAME}></span>
+                            <span><{_t($menuitem->NAME)}></span>
                         <{else}>
-                            <{label text=$menuitem->NAME}>
+                            <{_t($menuitem->NAME)}>
                         <{/if}>
                     </a>
                     <{include file="menu.adminex.items.tpl" parent=$parent2 depth=$depth2}>

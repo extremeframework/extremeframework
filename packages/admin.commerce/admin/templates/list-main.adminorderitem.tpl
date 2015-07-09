@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_ADMIN_ORDER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_ORDER']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER']) && $aclviewablecolumns['ID_ADMIN_ORDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER']) || $aclviewablecolumns['ID_ADMIN_ORDER']))) }>
     	            <th class="column-id-admin-order">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/id_admin_order"><{label key="L_ADMIN_ORDER"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/id_admin_order"><{_t('L_ADMIN_ORDER')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_ADMIN_PRODUCT', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_PRODUCT']) && ((isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) && $aclviewablecolumns['ID_ADMIN_PRODUCT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) || $aclviewablecolumns['ID_ADMIN_PRODUCT']))) }>
     	            <th class="column-id-admin-product">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/id_admin_product"><{label key="L_ADMIN_PRODUCT"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/id_admin_product"><{_t('L_ADMIN_PRODUCT')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('QUANTITY', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['QUANTITY']) && ((isset($aclviewablecolumns['QUANTITY']) && $aclviewablecolumns['QUANTITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['QUANTITY']) || $aclviewablecolumns['QUANTITY']))) }>
     	            <th class="column-quantity">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/quantity"><{label key="L_QUANTITY"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/quantity"><{_t('L_QUANTITY')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('PRICE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
     	            <th class="column-price">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/price"><{label key="L_PRICE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/sort/price"><{_t('L_PRICE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_ADMIN_ORDER_ITEM|strtolower}>s on this page are selected. <a onclick="adminorderitem_selectall()">Select all <{$total}> <{$smarty.const.L_ADMIN_ORDER_ITEM|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_ADMIN_ORDER_ITEM|strtolower}>s in the list are selected. <a onclick="adminorderitem_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_ORDER_ITEM')|strtolower}>s on this page are selected. <a onclick="adminorderitem_selectall()">Select all <{$total}> <{_t('L_ADMIN_ORDER_ITEM')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_ORDER_ITEM')|strtolower}>s in the list are selected. <a onclick="adminorderitem_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminorderitem-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminorderitem-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="adminorderitem-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminorderitem-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel adminorderitem-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save adminorderitem-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel adminorderitem-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="adminorderitem-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
@@ -93,7 +93,7 @@
         
                     <{if $rows}>
             	<tr style="background-color:#F4FAE1;">
-            		<th colspan="2"><{label key="L_TOTAL"}></th>
+            		<th colspan="2"><{_t('L_TOTAL')}></th>
             	                	        <{if (in_array('ID_ADMIN_ORDER', $filtercolumns)) }>
                             <{if !isset($excludedcolumns['ID_ADMIN_ORDER']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER']) && $aclviewablecolumns['ID_ADMIN_ORDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER']) || $aclviewablecolumns['ID_ADMIN_ORDER']))) }>
                     	                                            <th></th>

@@ -32,12 +32,12 @@
     <ul>
         <{foreach from=$steps key=key item=item}>
             <{if $key == $current}>
-                <li><i class="fa fa-hand-o-right"></i> &nbsp;(<{$current + 1}>/<{count($steps)}>) <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminwizard/restartStep"><{label text=$item->NAME}></a><p><{$item->INSTRUCTION}></p></li>
+                <li><i class="fa fa-hand-o-right"></i> &nbsp;(<{$current + 1}>/<{count($steps)}>) <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminwizard/restartStep"><{_t($item->NAME)}></a><p><{$item->INSTRUCTION}></p></li>
             <{/if}>
         <{/foreach}>
     </ul>
     <div class="button-general button-save btn btn-success">
-        <a class="button-save scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminwizard/next"><span class="button-face"><{if !$is_last_step}><{label text="Mark as Completed"}><{else}><{label text="Finish"}><{/if}></span></a>
+        <a class="button-save scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminwizard/next"><span class="button-face"><{if !$is_last_step}><{_t('Mark as Completed')}><{else}><{_t('Finish')}><{/if}></span></a>
     </div>
     <a class="close scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminwizard/end"><i class="fa fa-times"></i></a>
 </div>

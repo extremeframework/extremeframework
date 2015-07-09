@@ -17,7 +17,7 @@
         	                            <{if (in_array('ACTION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
     	            <th class="column-action">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/action"><{label key="L_ACTION"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/action"><{_t('L_ACTION')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ITEM', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ITEM']) && ((isset($aclviewablecolumns['ITEM']) && $aclviewablecolumns['ITEM']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ITEM']) || $aclviewablecolumns['ITEM']))) }>
     	            <th class="column-item">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/item"><{label key="L_ITEM"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/item"><{_t('L_ITEM')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/module"><{label key="L_MODULE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/module"><{_t('L_MODULE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('DATE_TIME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DATE_TIME']) && ((isset($aclviewablecolumns['DATE_TIME']) && $aclviewablecolumns['DATE_TIME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_TIME']) || $aclviewablecolumns['DATE_TIME']))) }>
     	            <th class="column-date-time">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/date_time"><{label key="L_DATE_TIME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/date_time"><{_t('L_DATE_TIME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/id_user"><{label key="L_USER"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/changelog/sort/id_user"><{_t('L_USER')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -76,8 +76,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_CHANGE_LOG|strtolower}>s on this page are selected. <a onclick="changelog_selectall()">Select all <{$total}> <{$smarty.const.L_CHANGE_LOG|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_CHANGE_LOG|strtolower}>s in the list are selected. <a onclick="changelog_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_CHANGE_LOG')|strtolower}>s on this page are selected. <a onclick="changelog_selectall()">Select all <{$total}> <{_t('L_CHANGE_LOG')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_CHANGE_LOG')|strtolower}>s in the list are selected. <a onclick="changelog_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -90,10 +90,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="changelog-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="changelog-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="changelog-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save changelog-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel changelog-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save changelog-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel changelog-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="changelog-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

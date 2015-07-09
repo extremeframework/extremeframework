@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-action">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ACTION"}></label>
+        		    <label><{_t('L_ACTION')}></label>
                 </div>
             </td>
             <td class="form-row form-row-action" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_USER_GROUP"}></label>
+        		    <label><{_t('L_USER_GROUP')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-group" colspan="3">
@@ -144,7 +144,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_USER"}></label>
+        		    <label><{_t('L_USER')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -181,7 +181,7 @@
         <{else}>
     		<td class="form-row form-row-fields">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FIELDS"}></label>
+        		    <label><{_t('L_FIELDS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-fields" colspan="3">
@@ -212,7 +212,7 @@
         <{else}>
     		<td class="form-row form-row-id-acl-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ACL_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_ACL_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-acl-type form-row-mandatory" colspan="3">
@@ -241,7 +241,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -252,7 +252,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-workflow">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_WORKFLOW"}></label>
+        		    <label><{_t('L_WORKFLOW')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-workflow" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_WORKFLOW_STAGE_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_WORKFLOW_STAGE_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,14 +143,14 @@
         <{else}>
     		<td class="form-row form-row-is-default">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_DEFAULT"}></label>
+        		    <label><{_t('L_IS_DEFAULT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-default" colspan="3">
                 <div class="form-field form-field-value column-is-default">
                                             
 
-    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_DEFAULT}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_DEFAULT}>"></i>
                         <{/if}>
@@ -173,14 +173,14 @@
         <{else}>
     		<td class="form-row form-row-is-binding-object-editable">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_BINDING_OBJECT_EDITABLE"}></label>
+        		    <label><{_t('L_IS_BINDING_OBJECT_EDITABLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-binding-object-editable" colspan="3">
                 <div class="form-field form-field-value column-is-binding-object-editable">
                                             
 
-    <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_BINDING_OBJECT_EDITABLE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_BINDING_OBJECT_EDITABLE}>"></i>
                         <{/if}>
@@ -203,14 +203,14 @@
         <{else}>
     		<td class="form-row form-row-is-binding-object-deletable">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_BINDING_OBJECT_DELETABLE"}></label>
+        		    <label><{_t('L_IS_BINDING_OBJECT_DELETABLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-binding-object-deletable" colspan="3">
                 <div class="form-field form-field-value column-is-binding-object-deletable">
                                             
 
-    <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_BINDING_OBJECT_DELETABLE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_BINDING_OBJECT_DELETABLE}>"></i>
                         <{/if}>
@@ -225,7 +225,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -236,7 +236,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

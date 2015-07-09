@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_MENU_ITEM_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_MENU_ITEM_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_MENU' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_MENU', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_MENU"}><{if in_array('ID_ADMIN_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_MENU')}><{if in_array('ID_ADMIN_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-menu">
 
                                                     <{if isset($formdata.ID_ADMIN_MENU) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PARENT' }>
                 	<div class="form-row <{if in_array('PARENT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PARENT"}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PARENT')}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-parent">
 
                                                     <{if isset($formdata.PARENT) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PATH' }>
                 	<div class="form-row <{if in_array('PATH', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PATH"}><{if in_array('PATH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PATH')}><{if in_array('PATH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-path">
 
                                                     <{if isset($formdata.PATH) }>
@@ -122,7 +122,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'FONT_AWESOME_ICON' }>
                 	<div class="form-row <{if in_array('FONT_AWESOME_ICON', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_FONT_AWESOME_ICON"}><{if in_array('FONT_AWESOME_ICON', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_FONT_AWESOME_ICON')}><{if in_array('FONT_AWESOME_ICON', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-font-awesome-icon">
 
                                                     <{if isset($formdata.FONT_AWESOME_ICON) }>
@@ -138,7 +138,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ENABLE_LEFT' }>
                 	<div class="form-row <{if in_array('ENABLE_LEFT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ENABLE_LEFT"}><{if in_array('ENABLE_LEFT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ENABLE_LEFT')}><{if in_array('ENABLE_LEFT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-enable-left">
 
                                                     <{if isset($formdata.ENABLE_LEFT) }>
@@ -148,11 +148,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-left" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" >
-                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -160,7 +160,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ENABLE_TOP' }>
                 	<div class="form-row <{if in_array('ENABLE_TOP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ENABLE_TOP"}><{if in_array('ENABLE_TOP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ENABLE_TOP')}><{if in_array('ENABLE_TOP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-enable-top">
 
                                                     <{if isset($formdata.ENABLE_TOP) }>
@@ -170,11 +170,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-top" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" >
-                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -182,7 +182,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ENABLE_QUICK' }>
                 	<div class="form-row <{if in_array('ENABLE_QUICK', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ENABLE_QUICK"}><{if in_array('ENABLE_QUICK', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ENABLE_QUICK')}><{if in_array('ENABLE_QUICK', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-enable-quick">
 
                                                     <{if isset($formdata.ENABLE_QUICK) }>
@@ -192,11 +192,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-quick" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" >
-                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -204,7 +204,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ENABLE_ALL' }>
                 	<div class="form-row <{if in_array('ENABLE_ALL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ENABLE_ALL"}><{if in_array('ENABLE_ALL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ENABLE_ALL')}><{if in_array('ENABLE_ALL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-enable-all">
 
                                                     <{if isset($formdata.ENABLE_ALL) }>
@@ -214,11 +214,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-all" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" >
-                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -226,7 +226,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ENABLE_SETTINGS' }>
                 	<div class="form-row <{if in_array('ENABLE_SETTINGS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ENABLE_SETTINGS"}><{if in_array('ENABLE_SETTINGS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ENABLE_SETTINGS')}><{if in_array('ENABLE_SETTINGS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-enable-settings">
 
                                                     <{if isset($formdata.ENABLE_SETTINGS) }>
@@ -236,11 +236,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-settings" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" >
-                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -248,7 +248,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'OPEN_IN_NEW_WINDOW' }>
                 	<div class="form-row <{if in_array('OPEN_IN_NEW_WINDOW', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_OPEN_IN_NEW_WINDOW"}><{if in_array('OPEN_IN_NEW_WINDOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_OPEN_IN_NEW_WINDOW')}><{if in_array('OPEN_IN_NEW_WINDOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-open-in-new-window">
 
                                                     <{if isset($formdata.OPEN_IN_NEW_WINDOW) }>
@@ -258,11 +258,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-open-in-new-window" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" >
-                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -270,7 +270,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IS_STARRED' }>
                 	<div class="form-row <{if in_array('IS_STARRED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IS_STARRED"}><{if in_array('IS_STARRED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IS_STARRED')}><{if in_array('IS_STARRED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-is-starred">
 
                                                     <{if isset($formdata.IS_STARRED) }>
@@ -280,11 +280,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-starred" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" >
-                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -292,7 +292,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ORDERING' }>
                 	<div class="form-row <{if in_array('ORDERING', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ORDERING"}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ORDERING')}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-ordering">
 
                                                     <{if isset($formdata.ORDERING) }>
@@ -314,7 +314,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminmenuitemform').attr('action', '<{$actionurl}>');$('#adminmenuitemform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

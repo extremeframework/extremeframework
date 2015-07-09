@@ -2,15 +2,15 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=$smarty.const.L_WORKFLOW_TRANSITION}>
+<{assign var='title' value=_t('L_WORKFLOW_TRANSITION')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="workflowtransitionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowtransition/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="workflowtransition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{$smarty.const.L_SEARCH}>" />
+            <input type="text" name="workflowtransition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
 	        <a class="button-quick-search" onclick="$('#workflowtransitionquicksearch').submit(); return false;">
-	            <span><{label key="L_SEARCH"}></span>
+	            <span><{_t('L_SEARCH')}></span>
             </a>
         </form>
     </div>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflowtransition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{$smarty.const.L_NEW}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>"/><{label key="L_NEW"}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -85,16 +85,16 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.workflowtransition.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="workflowtransition_delete()"><span class="button-face"><{$smarty.const.L_DELETE}></span></a>
+                            <a href="#" onclick="workflowtransition_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
             	    <div class="btn button-general dropdown" style="padding: 3px 6px 6px 5px;">
-            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{label text="More" insidequote=true}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
+            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
             	        <ul class="dropdown-menu pull-right">
                             <{foreach from=$admin_list_actions item=item}>
                                 <{if empty($item->ACL) || isset($smarty.session.acl.workflowtransition[$item->ACL])}>
-                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="workflowtransition_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{label text=$item->TITLE}></span></a></li>
+                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="workflowtransition_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{_t($item->TITLE)}></span></a></li>
                                 <{/if}>
                             <{/foreach}>
                         </ul>
@@ -114,29 +114,29 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_WORKFLOW_TRANSITION), strtolower(L_WORKFLOW_TRANSITION)));
     <{/php}>
 
-    <div id="workflowtransitioncopyrelations" style="display:none" title="<{$smarty.const.L_COPY}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>">
+    <div id="workflowtransitioncopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{label key="L_COPY_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('L_COPY_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowtransitionapproverelations" style="display:none" title="<{$smarty.const.L_APPROVE}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>">
+    <div id="workflowtransitionapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowtransitiondeleterelations" style="display:none" title="<{$smarty.const.L_DELETE}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>">
+    <div id="workflowtransitiondeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{label key="L_DELETE_ALSO"}> <{label key="L_WORKFLOW_LOG" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('L_DELETE_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -168,12 +168,12 @@ function workflowtransition_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_DELETE}>": function() {
+			"<{_t('L_DELETE')}>": function() {
             	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/delete/');
             	$('#workflowtransitionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -188,12 +188,12 @@ function workflowtransition_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_COPY}>": function() {
+			"<{_t('L_COPY')}>": function() {
             	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/copy/');
             	$('#workflowtransitionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -208,12 +208,12 @@ function workflowtransition_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_APPROVE}>": function() {
+			"<{_t('L_APPROVE')}>": function() {
             	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/approve/');
             	$('#workflowtransitionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -341,7 +341,7 @@ function workflowtransition_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="workflowtransition-list-count list-count"><{$total}></span> <{label key="L_RECORDS"}>
+		<span class="workflowtransition-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

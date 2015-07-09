@@ -3,11 +3,13 @@
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
     <{if $details->UUID > 0}>
-        <{$tmp = strtolower($smarty.const.L_ADMIN_MENU)}>
-        <{$title = "`$smarty.const.L_EDIT` $tmp"}>
+        <{$tmp1 = _t('L_EDIT')}>
+        <{$tmp2 = strtolower(_t('L_ADMIN_MENU'))}>
+        <{$title = "`$tmp1` `$tmp2`"}>
     <{else}>
-        <{$tmp = strtolower($smarty.const.L_ADMIN_MENU)}>
-        <{$title = "`$smarty.const.L_NEW` $tmp"}>
+        <{$tmp1 = _t('L_NEW')}>
+        <{$tmp2 = strtolower(_t('L_ADMIN_MENU'))}>
+        <{$title = "`$tmp1` `$tmp2`"}>
     <{/if}>
 <{include file="top.tpl"}>
 
@@ -40,7 +42,7 @@ function saveclone()
 
         <{if $details->UUID}>
             <!-- Live search -->
-            <span id="adminmenu-live-search" class="live-search edit-live-search"><input type="text" onfocus="if (this.value == '<{label text="Quick search" insidequote=true}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{label text="Quick search" insidequote=true}>...';}" value="<{label text="Quick search" insidequote=true}>..." autocomplete="off"></span>
+            <span id="adminmenu-live-search" class="live-search edit-live-search"><input type="text" onfocus="if (this.value == '<{_t('Quick search', true)}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{_t('Quick search', true)}>...';}" value="<{_t('Quick search', true)}>..." autocomplete="off"></span>
             <script type="text/javascript">
                 $(document).ready(function(){
                 	$('#adminmenu-live-search input').liveSearch({url: '<{$smarty.const.APPLICATION_URL}>/adminmenu/liveSearch?mode=edit&term='});
@@ -65,18 +67,18 @@ function saveclone()
             <!-- Control buttons -->
         <div class="edit-buttons edit-buttons-top hidden-print">
             <div class="button-general button-save btn btn-success">
-                <a class="button-save" onclick="$('#adminmenuform').submit();return false;"><span class="button-face"><{label key="L_SAVE"}></span></a>
+                <a class="button-save" onclick="$('#adminmenuform').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
             </div>
 
                             <{if !$details->ID}>
                     <div class="button-general button-save button-save-more btn btn-success">
-                        <a class="button-save-more" onclick="saveaddnew();return false;"><span class="button-face"><{label text="Add More"}></span></a>
+                        <a class="button-save-more" onclick="saveaddnew();return false;"><span class="button-face"><{_t('Add More')}></span></a>
                     </div>
                 <{/if}>
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/"><{label key="L_CANCEL"}></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/"><{_t('L_CANCEL')}></a>
             <div class="clearer"></div>
         </div>
     
@@ -99,17 +101,17 @@ function saveclone()
         <div id="adminmenutabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminmenuitem) }>
-                    <li><a href="#tab-adminmenuitems"><{label key="L_ADMIN_MENU_ITEM"}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminmenuitems"><{_t('L_ADMIN_MENU_ITEM')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
                 <{/if}>
                                 <{if isset($smarty.session.acl.dashboard) }>
-                    <li><a href="#tab-dashboards"><{label key="L_DASHBOARD"}> <span class="badge dashboard-badge-count"></span></a></li>
+                    <li><a href="#tab-dashboards"><{_t('L_DASHBOARD')}> <span class="badge dashboard-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminmenuitem) }>
                     <div id="tab-adminmenuitems">
                     	<{if true || $tab == 'adminmenuitems'}>
-                        	<h2 class="print"><{label key="L_ADMIN_MENU_ITEM"}></h2>
+                        	<h2 class="print"><{_t('L_ADMIN_MENU_ITEM')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
                                                     <{/if}>
                     </div>
@@ -117,7 +119,7 @@ function saveclone()
                             <{if isset($smarty.session.acl.dashboard) }>
                     <div id="tab-dashboards">
                     	<{if true || $tab == 'dashboards'}>
-                        	<h2 class="print"><{label key="L_DASHBOARD"}></h2>
+                        	<h2 class="print"><{_t('L_DASHBOARD')}></h2>
                                                             <{ajaxmodule class="WidgetListDashboard" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.dashboard.tpl'}>
                                                     <{/if}>
                     </div>
@@ -139,18 +141,18 @@ function saveclone()
             <!-- Control buttons -->
         <div class="edit-buttons edit-buttons-bottom hidden-print">
             <div class="button-general button-save btn btn-success">
-                <a class="button-save" onclick="$('#adminmenuform').submit();return false;"><span class="button-face"><{label key="L_SAVE"}></span></a>
+                <a class="button-save" onclick="$('#adminmenuform').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
             </div>
 
                             <{if !$details->ID}>
                     <div class="button-general button-save button-save-more btn btn-success">
-                        <a class="button-save-more" onclick="saveaddnew();return false;"><span class="button-face"><{label text="Add More"}></span></a>
+                        <a class="button-save-more" onclick="saveaddnew();return false;"><span class="button-face"><{_t('Add More')}></span></a>
                     </div>
                 <{/if}>
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/"><{label key="L_CANCEL"}></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/cancel/"><{_t('L_CANCEL')}></a>
             <div class="clearer"></div>
         </div>
     

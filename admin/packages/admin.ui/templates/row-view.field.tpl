@@ -49,7 +49,7 @@
 	        <{if (in_array('IS_EXCLUDED', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_EXCLUDED']) && ((isset($aclviewablecolumns['IS_EXCLUDED']) && $aclviewablecolumns['IS_EXCLUDED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_EXCLUDED']) || $aclviewablecolumns['IS_EXCLUDED']))) }>
                 <td class="column column-is-excluded yesno " data-value="<{$row->IS_EXCLUDED}>" data-column="IS_EXCLUDED" data-module="field">
-                                        	<span>	<{if $row->IS_EXCLUDED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->IS_EXCLUDED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -62,14 +62,14 @@
 	<{plugin key="field_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.field.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{$smarty.const.L_EDIT}>"></i></a>
+            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT')}>"></i></a>
         <{/if}>
 
         
         <{foreach from=$admin_listitem_actions item=item}>
             <{if empty($item->ACL) || isset($smarty.session.acl.field[$item->ACL])}>
                 <{if empty($item->CONSTRING) || condstring_match($item->CONSTRING, $row)}>
-	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/field/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{label text=$item->TITLE insidequote=true}>"></i><{else}><{label text=$item->TITLE}><{/if}></a>
+	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/field/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{_t($item->TITLE, true)}>"></i><{else}><{_t($item->TITLE)}><{/if}></a>
                 <{/if}>
             <{/if}>
         <{/foreach}>

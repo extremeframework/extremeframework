@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{label key="L_POST_CATEGORY_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_POST_CATEGORY_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['SLUG']) && ((isset($aclviewablecolumns['SLUG']) && $aclviewablecolumns['SLUG']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SLUG']) || $aclviewablecolumns['SLUG']))) }>
         <{if !isset($columns2hide) || !in_array('SLUG', $columns2hide) }>
     		<td class="form-field form-field-label column-slug">
-	            		        <label class="attribute-name"><{label key="L_SLUG"}></label>
+	            		        <label class="attribute-name"><{_t('L_SLUG')}></label>
             </td>
             <td class="form-field form-field-value column-slug" colspan="3">
             	<div class="attribute-line column-slug type-text">
@@ -85,7 +85,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="postcategory" data-id="<{$details->refuuid_PARENT}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PARENT"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PARENT')}></label>
             </td>
             <td class="form-field form-field-value column-parent" colspan="3">
             	<div class="attribute-line column-parent type-reftext">
@@ -140,7 +140,7 @@
             <{if !isset($excludedcolumns['DESCRIPTION']) && ((isset($aclviewablecolumns['DESCRIPTION']) && $aclviewablecolumns['DESCRIPTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DESCRIPTION']) || $aclviewablecolumns['DESCRIPTION']))) }>
         <{if !isset($columns2hide) || !in_array('DESCRIPTION', $columns2hide) }>
     		<td class="form-field form-field-label column-description">
-	            		        <label class="attribute-name"><{label key="L_DESCRIPTION"}></label>
+	            		        <label class="attribute-name"><{_t('L_DESCRIPTION')}></label>
             </td>
             <td class="form-field form-field-value column-description" colspan="3">
             	<div class="attribute-line column-description type-textarea">
@@ -175,7 +175,7 @@
             <{if !isset($excludedcolumns['ID_TEMPLATE']) && ((isset($aclviewablecolumns['ID_TEMPLATE']) && $aclviewablecolumns['ID_TEMPLATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_TEMPLATE']) || $aclviewablecolumns['ID_TEMPLATE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_TEMPLATE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-template">
-	                    		                    		        <label class="attribute-name"><{label key="L_TEMPLATE"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_TEMPLATE')}></label>
             </td>
             <td class="form-field form-field-value column-id-template" colspan="3">
             	<div class="attribute-line column-id-template type-reftext">
@@ -230,7 +230,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -240,7 +240,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

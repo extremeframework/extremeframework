@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'LABEL' }>
                 	<div class="form-row <{if in_array('LABEL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_LABEL"}><{if in_array('LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_LABEL')}><{if in_array('LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-label">
 
                                                     <{if isset($formdata.LABEL) }>
@@ -61,7 +61,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminlabelform').attr('action', '<{$actionurl}>');$('#adminlabelform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

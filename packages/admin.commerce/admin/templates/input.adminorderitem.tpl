@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_ADMIN_ORDER' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_ORDER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_ORDER"}><{if in_array('ID_ADMIN_ORDER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_ORDER')}><{if in_array('ID_ADMIN_ORDER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-order">
 
                                                     <{if isset($formdata.ID_ADMIN_ORDER) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_PRODUCT' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_PRODUCT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_PRODUCT"}><{if in_array('ID_ADMIN_PRODUCT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_PRODUCT')}><{if in_array('ID_ADMIN_PRODUCT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-product">
 
                                                     <{if isset($formdata.ID_ADMIN_PRODUCT) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'QUANTITY' }>
                 	<div class="form-row <{if in_array('QUANTITY', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_QUANTITY"}><{if in_array('QUANTITY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_QUANTITY')}><{if in_array('QUANTITY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-quantity">
 
                                                     <{if isset($formdata.QUANTITY) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PRICE' }>
                 	<div class="form-row <{if in_array('PRICE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PRICE"}><{if in_array('PRICE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PRICE')}><{if in_array('PRICE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-price">
 
                                                     <{if isset($formdata.PRICE) }>
@@ -111,7 +111,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminorderitemform').attr('action', '<{$actionurl}>');$('#adminorderitemform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

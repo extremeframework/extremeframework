@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_MENU_ITEM_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_ADMIN_MENU_ITEM_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-menu">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_MENU"}></label>
+        		    <label><{_t('L_ADMIN_MENU')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-menu" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PARENT"}></label>
+        		    <label><{_t('L_PARENT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -144,7 +144,7 @@
         <{else}>
     		<td class="form-row form-row-module">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}></label>
+        		    <label><{_t('L_MODULE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-module" colspan="3">
@@ -181,7 +181,7 @@
         <{else}>
     		<td class="form-row form-row-path">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PATH"}></label>
+        		    <label><{_t('L_PATH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-path" colspan="3">
@@ -211,7 +211,7 @@
         <{else}>
     		<td class="form-row form-row-font-awesome-icon">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FONT_AWESOME_ICON"}></label>
+        		    <label><{_t('L_FONT_AWESOME_ICON')}></label>
                 </div>
             </td>
             <td class="form-row form-row-font-awesome-icon" colspan="3">
@@ -241,14 +241,14 @@
         <{else}>
     		<td class="form-row form-row-enable-left">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ENABLE_LEFT"}></label>
+        		    <label><{_t('L_ENABLE_LEFT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-left" colspan="3">
                 <div class="form-field form-field-value column-enable-left">
                                             
 
-    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.ENABLE_LEFT}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_LEFT}>"></i>
                         <{/if}>
@@ -271,14 +271,14 @@
         <{else}>
     		<td class="form-row form-row-enable-top">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ENABLE_TOP"}></label>
+        		    <label><{_t('L_ENABLE_TOP')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-top" colspan="3">
                 <div class="form-field form-field-value column-enable-top">
                                             
 
-    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.ENABLE_TOP}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_TOP}>"></i>
                         <{/if}>
@@ -301,14 +301,14 @@
         <{else}>
     		<td class="form-row form-row-enable-quick">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ENABLE_QUICK"}></label>
+        		    <label><{_t('L_ENABLE_QUICK')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-quick" colspan="3">
                 <div class="form-field form-field-value column-enable-quick">
                                             
 
-    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.ENABLE_QUICK}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_QUICK}>"></i>
                         <{/if}>
@@ -331,14 +331,14 @@
         <{else}>
     		<td class="form-row form-row-enable-all">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ENABLE_ALL"}></label>
+        		    <label><{_t('L_ENABLE_ALL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-all" colspan="3">
                 <div class="form-field form-field-value column-enable-all">
                                             
 
-    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.ENABLE_ALL}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_ALL}>"></i>
                         <{/if}>
@@ -361,14 +361,14 @@
         <{else}>
     		<td class="form-row form-row-enable-settings">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ENABLE_SETTINGS"}></label>
+        		    <label><{_t('L_ENABLE_SETTINGS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-settings" colspan="3">
                 <div class="form-field form-field-value column-enable-settings">
                                             
 
-    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.ENABLE_SETTINGS}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_SETTINGS}>"></i>
                         <{/if}>
@@ -391,14 +391,14 @@
         <{else}>
     		<td class="form-row form-row-open-in-new-window">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_OPEN_IN_NEW_WINDOW"}></label>
+        		    <label><{_t('L_OPEN_IN_NEW_WINDOW')}></label>
                 </div>
             </td>
             <td class="form-row form-row-open-in-new-window" colspan="3">
                 <div class="form-field form-field-value column-open-in-new-window">
                                             
 
-    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.OPEN_IN_NEW_WINDOW}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.OPEN_IN_NEW_WINDOW}>"></i>
                         <{/if}>
@@ -421,14 +421,14 @@
         <{else}>
     		<td class="form-row form-row-is-starred">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_STARRED"}></label>
+        		    <label><{_t('L_IS_STARRED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-starred" colspan="3">
                 <div class="form-field form-field-value column-is-starred">
                                             
 
-    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_STARRED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_STARRED}>"></i>
                         <{/if}>
@@ -451,7 +451,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ORDERING"}></label>
+        		    <label><{_t('L_ORDERING')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -472,7 +472,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -483,7 +483,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

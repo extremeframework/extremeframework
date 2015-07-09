@@ -20,15 +20,15 @@ class _AdminProductController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
-           $errors['title'] = sprintf(L_VALIDATION_NOT_EMPTY, L_TITLE);
+           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TITLE'));
            return false;
        }
        if (in_array('LIST_PRICE', $columns2check) && !empty($model->LIST_PRICE) && !is_numeric($model->LIST_PRICE)) {
-           $errors['list-price'] = sprintf(L_VALIDATION_NUMBER, L_LIST_PRICE);
+           $errors['list-price'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_LIST_PRICE'));
            return false;
        }
        if (in_array('PRICE', $columns2check) && !empty($model->PRICE) && !is_numeric($model->PRICE)) {
-           $errors['price'] = sprintf(L_VALIDATION_NUMBER, L_PRICE);
+           $errors['price'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_PRICE'));
            return false;
        }
 

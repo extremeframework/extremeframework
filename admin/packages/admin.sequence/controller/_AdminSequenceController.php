@@ -20,11 +20,11 @@ class _AdminSequenceController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(L_VALIDATION_NOT_EMPTY, L_MODULE);
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
            return false;
        }
        if (in_array('SEQUENCE_STEP', $columns2check) && !empty($model->SEQUENCE_STEP) && !is_numeric($model->SEQUENCE_STEP)) {
-           $errors['sequence-step'] = sprintf(L_VALIDATION_NUMBER, L_SEQUENCE_STEP);
+           $errors['sequence-step'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_SEQUENCE_STEP'));
            return false;
        }
 

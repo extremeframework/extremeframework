@@ -80,7 +80,7 @@
                     <ul>
                         <{foreach from=$items item=menuitem}>
                             <li class="menu-<{$menuitem->MODULE}><{if isset($module) && $menuitem->MODULE == $module || $menuitem->ID == $parentmenu}> current<{/if}>">
-                                <a class="menulink menulink-<{$menuitem->MODULE}> <{if !$menuitem->OPEN_IN_NEW_WINDOW}>scope-main<{/if}>" href="<{$menuitem->LINK}>?context=<{$smarty.request.context}>" <{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}>><{label text=$menuitem->NAME}></a>
+                                <a class="menulink menulink-<{$menuitem->MODULE}> <{if !$menuitem->OPEN_IN_NEW_WINDOW}>scope-main<{/if}>" href="<{$menuitem->LINK}>?context=<{$smarty.request.context}>" <{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}>><{_t($menuitem->NAME)}></a>
                             </li>
                         <{/foreach}>
                     </ul>

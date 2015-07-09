@@ -17,7 +17,7 @@
         	                            <{if (in_array('LABEL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LABEL']) && ((isset($aclviewablecolumns['LABEL']) && $aclviewablecolumns['LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LABEL']) || $aclviewablecolumns['LABEL']))) }>
     	            <th class="column-label">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/sort/label"><{label key="L_LABEL"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/sort/label"><{_t('L_LABEL')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -40,8 +40,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_ADMIN_LABEL|strtolower}>s on this page are selected. <a onclick="adminlabel_selectall()">Select all <{$total}> <{$smarty.const.L_ADMIN_LABEL|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_ADMIN_LABEL|strtolower}>s in the list are selected. <a onclick="adminlabel_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_LABEL')|strtolower}>s on this page are selected. <a onclick="adminlabel_selectall()">Select all <{$total}> <{_t('L_ADMIN_LABEL')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_LABEL')|strtolower}>s in the list are selected. <a onclick="adminlabel_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -54,10 +54,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminlabel-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminlabel-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="adminlabel-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminlabel-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel adminlabel-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save adminlabel-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel adminlabel-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="adminlabel-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

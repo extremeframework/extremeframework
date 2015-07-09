@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'SEQUENCE_FORMAT' }>
                 	<div class="form-row <{if in_array('SEQUENCE_FORMAT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_SEQUENCE_FORMAT"}><{if in_array('SEQUENCE_FORMAT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_SEQUENCE_FORMAT')}><{if in_array('SEQUENCE_FORMAT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-sequence-format">
 
                                                     <{if isset($formdata.SEQUENCE_FORMAT) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CURRENT_VALUE' }>
                 	<div class="form-row <{if in_array('CURRENT_VALUE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CURRENT_VALUE"}><{if in_array('CURRENT_VALUE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CURRENT_VALUE')}><{if in_array('CURRENT_VALUE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-current-value">
 
                                                     <{if isset($formdata.CURRENT_VALUE) }>
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'SEQUENCE_STEP' }>
                 	<div class="form-row <{if in_array('SEQUENCE_STEP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_SEQUENCE_STEP"}><{if in_array('SEQUENCE_STEP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_SEQUENCE_STEP')}><{if in_array('SEQUENCE_STEP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-sequence-step">
 
                                                     <{if isset($formdata.SEQUENCE_STEP) }>
@@ -110,7 +110,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminsequenceform').attr('action', '<{$actionurl}>');$('#adminsequenceform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

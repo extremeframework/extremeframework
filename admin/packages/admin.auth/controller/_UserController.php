@@ -20,15 +20,15 @@ class _UserController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('EMAIL', $columns2check) && !empty($model->EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
-           $errors['email'] = sprintf(L_VALIDATION_EMAIL, L_EMAIL);
+           $errors['email'] = sprintf(_t('L_VALIDATION_EMAIL'), _t('L_EMAIL'));
            return false;
        }
        if (in_array('LOGIN', $columns2check) && !empty($model->LOGIN) && !preg_match('/^[a-z0-9@_\-\.\/#$]+$/i', $model->LOGIN)) {
-           $errors['login'] = sprintf(L_VALIDATION_CODE, L_LOGIN);
+           $errors['login'] = sprintf(_t('L_VALIDATION_CODE'), _t('L_LOGIN'));
            return false;
        }
        if (in_array('PHONE', $columns2check) && !empty($model->PHONE) && !preg_match('/^[0-9 +-\.\(\)]*$/i', $model->PHONE)) {
-           $errors['phone'] = sprintf(L_VALIDATION_PHONE, L_PHONE);
+           $errors['phone'] = sprintf(_t('L_VALIDATION_PHONE'), _t('L_PHONE'));
            return false;
        }
 

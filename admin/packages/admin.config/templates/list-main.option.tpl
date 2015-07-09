@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/name"><{label key="L_OPTION_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/name"><{_t('L_OPTION_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/code"><{label key="L_CODE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/code"><{_t('L_CODE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('VALUE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VALUE']) && ((isset($aclviewablecolumns['VALUE']) && $aclviewablecolumns['VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUE']) || $aclviewablecolumns['VALUE']))) }>
     	            <th class="column-value">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/value"><{label key="L_VALUE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/value"><{_t('L_VALUE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('CONTEXT', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CONTEXT']) && ((isset($aclviewablecolumns['CONTEXT']) && $aclviewablecolumns['CONTEXT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONTEXT']) || $aclviewablecolumns['CONTEXT']))) }>
     	            <th class="column-context">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/context"><{label key="L_CONTEXT"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/option/sort/context"><{_t('L_CONTEXT')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_OPTION|strtolower}>s on this page are selected. <a onclick="option_selectall()">Select all <{$total}> <{$smarty.const.L_OPTION|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_OPTION|strtolower}>s in the list are selected. <a onclick="option_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_OPTION')|strtolower}>s on this page are selected. <a onclick="option_selectall()">Select all <{$total}> <{_t('L_OPTION')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_OPTION')|strtolower}>s in the list are selected. <a onclick="option_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="option-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="option-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="option-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save option-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel option-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save option-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel option-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="option-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

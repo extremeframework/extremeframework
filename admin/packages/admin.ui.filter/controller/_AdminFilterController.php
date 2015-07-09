@@ -20,11 +20,11 @@ class _AdminFilterController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_ADMIN_FILTER_NAME);
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_FILTER_NAME'));
            return false;
        }
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(L_VALIDATION_NOT_EMPTY, L_MODULE);
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
            return false;
        }
 
@@ -768,9 +768,6 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
-            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
-                $model->COLUMNS = $refobject->COLUMN;
-            }
 
         }
     }
@@ -1497,11 +1494,6 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'COLUMNS':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

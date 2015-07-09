@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_MODULE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -72,7 +72,7 @@
             <{if !isset($excludedcolumns['SEQUENCE_FORMAT']) && ((isset($aclviewablecolumns['SEQUENCE_FORMAT']) && $aclviewablecolumns['SEQUENCE_FORMAT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_FORMAT']) || $aclviewablecolumns['SEQUENCE_FORMAT']))) }>
         <{if !isset($columns2hide) || !in_array('SEQUENCE_FORMAT', $columns2hide) }>
     		<td class="form-field form-field-label column-sequence-format">
-	            		        <label class="attribute-name"><{label key="L_SEQUENCE_FORMAT"}></label>
+	            		        <label class="attribute-name"><{_t('L_SEQUENCE_FORMAT')}></label>
             </td>
             <td class="form-field form-field-value column-sequence-format" colspan="3">
             	<div class="attribute-line column-sequence-format type-text">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['CURRENT_VALUE']) && ((isset($aclviewablecolumns['CURRENT_VALUE']) && $aclviewablecolumns['CURRENT_VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENT_VALUE']) || $aclviewablecolumns['CURRENT_VALUE']))) }>
         <{if !isset($columns2hide) || !in_array('CURRENT_VALUE', $columns2hide) }>
     		<td class="form-field form-field-label column-current-value">
-	            		        <label class="attribute-name"><{label key="L_CURRENT_VALUE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CURRENT_VALUE')}></label>
             </td>
             <td class="form-field form-field-value column-current-value" colspan="3">
             	<div class="attribute-line column-current-value type-text">
@@ -140,7 +140,7 @@
             <{if !isset($excludedcolumns['SEQUENCE_STEP']) && ((isset($aclviewablecolumns['SEQUENCE_STEP']) && $aclviewablecolumns['SEQUENCE_STEP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_STEP']) || $aclviewablecolumns['SEQUENCE_STEP']))) }>
         <{if !isset($columns2hide) || !in_array('SEQUENCE_STEP', $columns2hide) }>
     		<td class="form-field form-field-label column-sequence-step">
-	            		        <label class="attribute-name"><{label key="L_SEQUENCE_STEP"}></label>
+	            		        <label class="attribute-name"><{_t('L_SEQUENCE_STEP')}></label>
             </td>
             <td class="form-field form-field-value column-sequence-step" colspan="3">
             	<div class="attribute-line column-sequence-step type-number">
@@ -173,7 +173,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -183,7 +183,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_WORKFLOW', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
     	            <th class="column-id-workflow">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_workflow"><{label key="L_WORKFLOW"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_workflow"><{_t('L_WORKFLOW')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/name"><{label key="L_WORKFLOW_TRANSITION_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/name"><{_t('L_WORKFLOW_TRANSITION_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ACTION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
     	            <th class="column-action">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/action"><{label key="L_ACTION"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/action"><{_t('L_ACTION')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
     	            <th class="column-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_group"><{label key="L_USER_GROUP"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_group"><{_t('L_USER_GROUP')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
     	            <th class="column-id-user-role">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_role"><{label key="L_USER_ROLE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_role"><{_t('L_USER_ROLE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('TRANSITION_ID_SCREEN', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TRANSITION_ID_SCREEN']) && ((isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) && $aclviewablecolumns['TRANSITION_ID_SCREEN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) || $aclviewablecolumns['TRANSITION_ID_SCREEN']))) }>
     	            <th class="column-transition-id-screen">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/transition_id_screen"><{label key="L_TRANSITION_SCREEN"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/transition_id_screen"><{_t('L_TRANSITION_SCREEN')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -85,8 +85,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>s on this page are selected. <a onclick="workflowtransition_selectall()">Select all <{$total}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_WORKFLOW_TRANSITION|strtolower}>s in the list are selected. <a onclick="workflowtransition_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s on this page are selected. <a onclick="workflowtransition_selectall()">Select all <{$total}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s in the list are selected. <a onclick="workflowtransition_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -99,10 +99,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowtransition-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowtransition-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="workflowtransition-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save workflowtransition-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel workflowtransition-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save workflowtransition-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel workflowtransition-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="workflowtransition-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

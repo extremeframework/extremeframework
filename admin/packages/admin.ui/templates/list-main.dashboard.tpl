@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/name"><{label key="L_DASHBOARD_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/name"><{_t('L_DASHBOARD_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_ADMIN_MENU', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_MENU']) && ((isset($aclviewablecolumns['ID_ADMIN_MENU']) && $aclviewablecolumns['ID_ADMIN_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_MENU']) || $aclviewablecolumns['ID_ADMIN_MENU']))) }>
     	            <th class="column-id-admin-menu">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/id_admin_menu"><{label key="L_ADMIN_MENU"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/id_admin_menu"><{_t('L_ADMIN_MENU')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_DASHBOARD_LAYOUT', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_DASHBOARD_LAYOUT']) && ((isset($aclviewablecolumns['ID_DASHBOARD_LAYOUT']) && $aclviewablecolumns['ID_DASHBOARD_LAYOUT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_DASHBOARD_LAYOUT']) || $aclviewablecolumns['ID_DASHBOARD_LAYOUT']))) }>
     	            <th class="column-id-dashboard-layout">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/id_dashboard_layout"><{label key="L_DASHBOARD_LAYOUT"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/id_dashboard_layout"><{_t('L_DASHBOARD_LAYOUT')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('DASHBOARD_FILE_PATH', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DASHBOARD_FILE_PATH']) && ((isset($aclviewablecolumns['DASHBOARD_FILE_PATH']) && $aclviewablecolumns['DASHBOARD_FILE_PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DASHBOARD_FILE_PATH']) || $aclviewablecolumns['DASHBOARD_FILE_PATH']))) }>
     	            <th class="column-dashboard-file-path">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/dashboard_file_path"><{label key="L_DASHBOARD_FILE_PATH"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/dashboard/sort/dashboard_file_path"><{_t('L_DASHBOARD_FILE_PATH')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_DASHBOARD|strtolower}>s on this page are selected. <a onclick="dashboard_selectall()">Select all <{$total}> <{$smarty.const.L_DASHBOARD|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_DASHBOARD|strtolower}>s in the list are selected. <a onclick="dashboard_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_DASHBOARD')|strtolower}>s on this page are selected. <a onclick="dashboard_selectall()">Select all <{$total}> <{_t('L_DASHBOARD')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_DASHBOARD')|strtolower}>s in the list are selected. <a onclick="dashboard_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="dashboard-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="dashboard-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="dashboard-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save dashboard-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel dashboard-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save dashboard-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel dashboard-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="dashboard-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

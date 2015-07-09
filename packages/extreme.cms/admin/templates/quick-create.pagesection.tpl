@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_QUICK_CREATE" format="ucwords"}> <{$smarty.const.L_PAGE_SECTION|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_PAGE_SECTION')|ucwords}></h3>
 </div>
 
 
@@ -46,9 +46,9 @@
         <div class="layout-block layout-block-tabs layout-block-tabs-bottom">
             <div id="pagesection-view-layout-tabs-general-image-misc" class="layout-tabs view-layout-tabs pagesection-view-layout-tabs" style="clear:both">
                 <ul>
-                                            <li><a href="#tab-general"><{label key="L_GENERAL"}></a></li>
-                                            <li><a href="#tab-image"><{label key="L_IMAGE"}></a></li>
-                                            <li><a href="#tab-misc"><{label key="L_MISC"}></a></li>
+                                            <li><a href="#tab-general"><{_t('L_GENERAL')}></a></li>
+                                            <li><a href="#tab-image"><{_t('L_IMAGE')}></a></li>
+                                            <li><a href="#tab-misc"><{_t('L_MISC')}></a></li>
                                     </ul>
 
                                     <div id="tab-general">
@@ -74,7 +74,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TITLE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -178,7 +178,7 @@
         <{else}>
     		<td class="form-row form-row-background-image">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_BACKGROUND_IMAGE"}></label>
+        		    <label><{_t('L_BACKGROUND_IMAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-image" colspan="3">
@@ -217,7 +217,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IMAGE"}></label>
+        		    <label><{_t('L_IMAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -271,7 +271,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VIEW_MORE_TITLE"}></label>
+        		    <label><{_t('L_VIEW_MORE_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-title" colspan="3">
@@ -307,14 +307,14 @@
         <{else}>
     		<td class="form-row form-row-hide-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_HIDE_TITLE"}></label>
+        		    <label><{_t('L_HIDE_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-hide-title" colspan="3">
                 <div class="form-field form-field-value column-hide-title">
                                             
 
-    <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $details->HIDE_TITLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$details->HIDE_TITLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $details->HIDE_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$details->HIDE_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.HIDE_TITLE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.HIDE_TITLE}>"></i>
                         <{/if}>
@@ -340,7 +340,7 @@
         <{else}>
     		<td class="form-row form-row-tab-anchor-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TAB_ANCHOR_TITLE"}></label>
+        		    <label><{_t('L_TAB_ANCHOR_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tab-anchor-title" colspan="3">
@@ -383,7 +383,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -394,7 +394,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -545,12 +545,12 @@
     
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                             <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/new">
-                    <strong><{label key="L_GO_TO_FULL_FORM"}></strong>
+                    <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
     </div>

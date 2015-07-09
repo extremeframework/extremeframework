@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WORKFLOW', $columns2hide) }>
     		<td class="form-field form-field-label column-id-workflow">
-	                    		                    		        <label class="attribute-name"><{label key="L_WORKFLOW"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_WORKFLOW')}></label>
             </td>
             <td class="form-field form-field-value column-id-workflow" colspan="3">
             	<div class="attribute-line column-id-workflow type-reftext">
@@ -67,7 +67,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{label key="L_WORKFLOW_STAGE_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_WORKFLOW_STAGE_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -101,7 +101,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{label key="L_CODE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">
@@ -135,7 +135,7 @@
             <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
         <{if !isset($columns2hide) || !in_array('IS_DEFAULT', $columns2hide) }>
     		<td class="form-field form-field-label column-is-default">
-	            		        <label class="attribute-name"><{label key="L_IS_DEFAULT"}></label>
+	            		        <label class="attribute-name"><{_t('L_IS_DEFAULT')}></label>
             </td>
             <td class="form-field form-field-value column-is-default" colspan="3">
             	<div class="attribute-line column-is-default type-yesno">
@@ -143,18 +143,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_DEFAULT']) && $acleditablecolumns['IS_DEFAULT']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_DEFAULT']) || $acleditablecolumns['IS_DEFAULT'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_DEFAULT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_DEFAULT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -169,7 +169,7 @@
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_EDITABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']))) }>
         <{if !isset($columns2hide) || !in_array('IS_BINDING_OBJECT_EDITABLE', $columns2hide) }>
     		<td class="form-field form-field-label column-is-binding-object-editable">
-	            		        <label class="attribute-name"><{label key="L_IS_BINDING_OBJECT_EDITABLE"}></label>
+	            		        <label class="attribute-name"><{_t('L_IS_BINDING_OBJECT_EDITABLE')}></label>
             </td>
             <td class="form-field form-field-value column-is-binding-object-editable" colspan="3">
             	<div class="attribute-line column-is-binding-object-editable type-yesno">
@@ -177,18 +177,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_BINDING_OBJECT_EDITABLE']) && $acleditablecolumns['IS_BINDING_OBJECT_EDITABLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_BINDING_OBJECT_EDITABLE']) || $acleditablecolumns['IS_BINDING_OBJECT_EDITABLE'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_BINDING_OBJECT_EDITABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_BINDING_OBJECT_EDITABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-binding-object-editable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="1" <{if $details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_EDITABLE" value="0" <{if !$details->IS_BINDING_OBJECT_EDITABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_BINDING_OBJECT_EDITABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_BINDING_OBJECT_EDITABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -203,7 +203,7 @@
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_DELETABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']))) }>
         <{if !isset($columns2hide) || !in_array('IS_BINDING_OBJECT_DELETABLE', $columns2hide) }>
     		<td class="form-field form-field-label column-is-binding-object-deletable">
-	            		        <label class="attribute-name"><{label key="L_IS_BINDING_OBJECT_DELETABLE"}></label>
+	            		        <label class="attribute-name"><{_t('L_IS_BINDING_OBJECT_DELETABLE')}></label>
             </td>
             <td class="form-field form-field-value column-is-binding-object-deletable" colspan="3">
             	<div class="attribute-line column-is-binding-object-deletable type-yesno">
@@ -211,18 +211,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_BINDING_OBJECT_DELETABLE']) && $acleditablecolumns['IS_BINDING_OBJECT_DELETABLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_BINDING_OBJECT_DELETABLE']) || $acleditablecolumns['IS_BINDING_OBJECT_DELETABLE'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_BINDING_OBJECT_DELETABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_BINDING_OBJECT_DELETABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-binding-object-deletable" type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="1" <{if $details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>workflowstage_formdata_IS_BINDING_OBJECT_DELETABLE" value="0" <{if !$details->IS_BINDING_OBJECT_DELETABLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_BINDING_OBJECT_DELETABLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+    <{if $details->IS_BINDING_OBJECT_DELETABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -237,7 +237,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -247,7 +247,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_ID_COUNTRY']) && ((isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) && $aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || $aclviewablecolumns['CUSTOMER_ID_COUNTRY']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_ID_COUNTRY', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-id-country">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_COUNTRY"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_COUNTRY')}></label>
             </td>
             <td class="form-field form-field-value column-customer-id-country" colspan="3">
             	<div class="attribute-line column-customer-id-country type-key">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_FIRST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) && $aclviewablecolumns['CUSTOMER_FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) || $aclviewablecolumns['CUSTOMER_FIRST_NAME']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_FIRST_NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-first-name">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_FIRST_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_FIRST_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-customer-first-name" colspan="3">
             	<div class="attribute-line column-customer-first-name type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_LAST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) && $aclviewablecolumns['CUSTOMER_LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) || $aclviewablecolumns['CUSTOMER_LAST_NAME']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_LAST_NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-last-name">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_LAST_NAME"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_LAST_NAME')}></label>
             </td>
             <td class="form-field form-field-value column-customer-last-name" colspan="3">
             	<div class="attribute-line column-customer-last-name type-text">
@@ -114,7 +114,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_ADDRESS']) && ((isset($aclviewablecolumns['CUSTOMER_ADDRESS']) && $aclviewablecolumns['CUSTOMER_ADDRESS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ADDRESS']) || $aclviewablecolumns['CUSTOMER_ADDRESS']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_ADDRESS', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-address">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_ADDRESS"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_ADDRESS')}></label>
             </td>
             <td class="form-field form-field-value column-customer-address" colspan="3">
             	<div class="attribute-line column-customer-address type-text">
@@ -148,7 +148,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_CITY']) && ((isset($aclviewablecolumns['CUSTOMER_CITY']) && $aclviewablecolumns['CUSTOMER_CITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_CITY']) || $aclviewablecolumns['CUSTOMER_CITY']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_CITY', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-city">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_CITY"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_CITY')}></label>
             </td>
             <td class="form-field form-field-value column-customer-city" colspan="3">
             	<div class="attribute-line column-customer-city type-text">
@@ -182,7 +182,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_STATE']) && ((isset($aclviewablecolumns['CUSTOMER_STATE']) && $aclviewablecolumns['CUSTOMER_STATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_STATE']) || $aclviewablecolumns['CUSTOMER_STATE']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_STATE', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-state">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_STATE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_STATE')}></label>
             </td>
             <td class="form-field form-field-value column-customer-state" colspan="3">
             	<div class="attribute-line column-customer-state type-text">
@@ -216,7 +216,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_ZIP_CODE']) && ((isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) && $aclviewablecolumns['CUSTOMER_ZIP_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) || $aclviewablecolumns['CUSTOMER_ZIP_CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_ZIP_CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-zip-code">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_ZIP_CODE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_ZIP_CODE')}></label>
             </td>
             <td class="form-field form-field-value column-customer-zip-code" colspan="3">
             	<div class="attribute-line column-customer-zip-code type-text">
@@ -250,7 +250,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_EMAIL']) && ((isset($aclviewablecolumns['CUSTOMER_EMAIL']) && $aclviewablecolumns['CUSTOMER_EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_EMAIL']) || $aclviewablecolumns['CUSTOMER_EMAIL']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_EMAIL', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-email">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_EMAIL"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_EMAIL')}></label>
             </td>
             <td class="form-field form-field-value column-customer-email" colspan="3">
             	<div class="attribute-line column-customer-email type-email">
@@ -284,7 +284,7 @@
             <{if !isset($excludedcolumns['CUSTOMER_PHONE']) && ((isset($aclviewablecolumns['CUSTOMER_PHONE']) && $aclviewablecolumns['CUSTOMER_PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_PHONE']) || $aclviewablecolumns['CUSTOMER_PHONE']))) }>
         <{if !isset($columns2hide) || !in_array('CUSTOMER_PHONE', $columns2hide) }>
     		<td class="form-field form-field-label column-customer-phone">
-	            		        <label class="attribute-name"><{label key="L_CUSTOMER_PHONE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CUSTOMER_PHONE')}></label>
             </td>
             <td class="form-field form-field-value column-customer-phone" colspan="3">
             	<div class="attribute-line column-customer-phone type-phone">
@@ -318,7 +318,7 @@
             <{if !isset($excludedcolumns['TOTAL_VALUE']) && ((isset($aclviewablecolumns['TOTAL_VALUE']) && $aclviewablecolumns['TOTAL_VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TOTAL_VALUE']) || $aclviewablecolumns['TOTAL_VALUE']))) }>
         <{if !isset($columns2hide) || !in_array('TOTAL_VALUE', $columns2hide) }>
     		<td class="form-field form-field-label column-total-value">
-	            		        <label class="attribute-name"><{label key="L_TOTAL_VALUE"}></label>
+	            		        <label class="attribute-name"><{_t('L_TOTAL_VALUE')}></label>
             </td>
             <td class="form-field form-field-value column-total-value" colspan="3">
             	<div class="attribute-line column-total-value type-number">
@@ -351,7 +351,7 @@
             <{if !isset($excludedcolumns['COUPON_CODE']) && ((isset($aclviewablecolumns['COUPON_CODE']) && $aclviewablecolumns['COUPON_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COUPON_CODE']) || $aclviewablecolumns['COUPON_CODE']))) }>
         <{if !isset($columns2hide) || !in_array('COUPON_CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-coupon-code">
-	            		        <label class="attribute-name"><{label key="L_COUPON_CODE"}></label>
+	            		        <label class="attribute-name"><{_t('L_COUPON_CODE')}></label>
             </td>
             <td class="form-field form-field-value column-coupon-code" colspan="3">
             	<div class="attribute-line column-coupon-code type-text">
@@ -385,7 +385,7 @@
             <{if !isset($excludedcolumns['COUPON_DISCOUNT']) && ((isset($aclviewablecolumns['COUPON_DISCOUNT']) && $aclviewablecolumns['COUPON_DISCOUNT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COUPON_DISCOUNT']) || $aclviewablecolumns['COUPON_DISCOUNT']))) }>
         <{if !isset($columns2hide) || !in_array('COUPON_DISCOUNT', $columns2hide) }>
     		<td class="form-field form-field-label column-coupon-discount">
-	            		        <label class="attribute-name"><{label key="L_COUPON_DISCOUNT"}></label>
+	            		        <label class="attribute-name"><{_t('L_COUPON_DISCOUNT')}></label>
             </td>
             <td class="form-field form-field-value column-coupon-discount" colspan="3">
             	<div class="attribute-line column-coupon-discount type-number">
@@ -423,7 +423,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="paymenttype" data-id="<{$details->refuuid_ID_PAYMENT_TYPE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_PAYMENT_TYPE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_PAYMENT_TYPE')}></label>
             </td>
             <td class="form-field form-field-value column-id-payment-type" colspan="3">
             	<div class="attribute-line column-id-payment-type type-reftext">
@@ -478,7 +478,7 @@
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('CREATION_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-creation-date">
-	            		        <label class="attribute-name"><{label key="L_CREATION_DATE"}></label>
+	            		        <label class="attribute-name"><{_t('L_CREATION_DATE')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
             	<div class="attribute-line column-creation-date type-datetime">
@@ -511,7 +511,7 @@
             <{if !isset($excludedcolumns['PAYMENT_DATE']) && ((isset($aclviewablecolumns['PAYMENT_DATE']) && $aclviewablecolumns['PAYMENT_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PAYMENT_DATE']) || $aclviewablecolumns['PAYMENT_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('PAYMENT_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-payment-date">
-	            		        <label class="attribute-name"><{label key="L_PAYMENT_DATE"}></label>
+	            		        <label class="attribute-name"><{_t('L_PAYMENT_DATE')}></label>
             </td>
             <td class="form-field form-field-value column-payment-date" colspan="3">
             	<div class="attribute-line column-payment-date type-datetime">
@@ -544,7 +544,7 @@
             <{if !isset($excludedcolumns['PAYMENT_REF']) && ((isset($aclviewablecolumns['PAYMENT_REF']) && $aclviewablecolumns['PAYMENT_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PAYMENT_REF']) || $aclviewablecolumns['PAYMENT_REF']))) }>
         <{if !isset($columns2hide) || !in_array('PAYMENT_REF', $columns2hide) }>
     		<td class="form-field form-field-label column-payment-ref">
-	            		        <label class="attribute-name"><{label key="L_PAYMENT_REF"}></label>
+	            		        <label class="attribute-name"><{_t('L_PAYMENT_REF')}></label>
             </td>
             <td class="form-field form-field-value column-payment-ref" colspan="3">
             	<div class="attribute-line column-payment-ref type-text">
@@ -578,7 +578,7 @@
             <{if !isset($excludedcolumns['REFUND_DATE']) && ((isset($aclviewablecolumns['REFUND_DATE']) && $aclviewablecolumns['REFUND_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['REFUND_DATE']) || $aclviewablecolumns['REFUND_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('REFUND_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-refund-date">
-	            		        <label class="attribute-name"><{label key="L_REFUND_DATE"}></label>
+	            		        <label class="attribute-name"><{_t('L_REFUND_DATE')}></label>
             </td>
             <td class="form-field form-field-value column-refund-date" colspan="3">
             	<div class="attribute-line column-refund-date type-datetime">
@@ -611,7 +611,7 @@
             <{if !isset($excludedcolumns['REFUND_REF']) && ((isset($aclviewablecolumns['REFUND_REF']) && $aclviewablecolumns['REFUND_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['REFUND_REF']) || $aclviewablecolumns['REFUND_REF']))) }>
         <{if !isset($columns2hide) || !in_array('REFUND_REF', $columns2hide) }>
     		<td class="form-field form-field-label column-refund-ref">
-	            		        <label class="attribute-name"><{label key="L_REFUND_REF"}></label>
+	            		        <label class="attribute-name"><{_t('L_REFUND_REF')}></label>
             </td>
             <td class="form-field form-field-value column-refund-ref" colspan="3">
             	<div class="attribute-line column-refund-ref type-text">
@@ -645,7 +645,7 @@
             <{if !isset($excludedcolumns['PROCESSED_DATE']) && ((isset($aclviewablecolumns['PROCESSED_DATE']) && $aclviewablecolumns['PROCESSED_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PROCESSED_DATE']) || $aclviewablecolumns['PROCESSED_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('PROCESSED_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-processed-date">
-	            		        <label class="attribute-name"><{label key="L_PROCESSED_DATE"}></label>
+	            		        <label class="attribute-name"><{_t('L_PROCESSED_DATE')}></label>
             </td>
             <td class="form-field form-field-value column-processed-date" colspan="3">
             	<div class="attribute-line column-processed-date type-datetime">
@@ -678,7 +678,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_ORDER_STATUS']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) && $aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) || $aclviewablecolumns['ID_ADMIN_ORDER_STATUS']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_ORDER_STATUS', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-order-status">
-	                    		                    		        <label class="attribute-name"><{label key="L_ADMIN_ORDER_STATUS"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_ADMIN_ORDER_STATUS')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-order-status" colspan="3">
             	<div class="attribute-line column-id-admin-order-status type-reftext">
@@ -733,7 +733,7 @@
             <{if !isset($excludedcolumns['NOTE']) && ((isset($aclviewablecolumns['NOTE']) && $aclviewablecolumns['NOTE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NOTE']) || $aclviewablecolumns['NOTE']))) }>
         <{if !isset($columns2hide) || !in_array('NOTE', $columns2hide) }>
     		<td class="form-field form-field-label column-note">
-	            		        <label class="attribute-name"><{label key="L_NOTE"}></label>
+	            		        <label class="attribute-name"><{_t('L_NOTE')}></label>
             </td>
             <td class="form-field form-field-value column-note" colspan="3">
             	<div class="attribute-line column-note type-textarea">
@@ -768,7 +768,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -778,7 +778,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_FILTER_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_ADMIN_FILTER_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-columns">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_COLUMNS"}></label>
+        		    <label><{_t('L_COLUMNS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-columns" colspan="3">
@@ -137,14 +137,14 @@
         <{else}>
     		<td class="form-row form-row-is-default">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_DEFAULT"}></label>
+        		    <label><{_t('L_IS_DEFAULT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-default" colspan="3">
                 <div class="form-field form-field-value column-is-default">
                                             
 
-    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_DEFAULT}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_DEFAULT}>"></i>
                         <{/if}>
@@ -159,7 +159,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -170,7 +170,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

@@ -4,8 +4,9 @@
 
     <body class="module module-<{$module}>" id="<{$module}>">
 
-            <{$tmp = strtolower($smarty.const.L_PAGE_SECTION)}>
-        <{$title = "`$smarty.const.L_VIEW` $tmp"}>
+            <{$tmp1 = _t('L_VIEW')}>
+        <{$tmp2 = strtolower(_t('L_PAGE_SECTION'))}>
+        <{$title = "`$tmp1` `$tmp2`"}>
     
     <{include file="top.tpl"}>
 
@@ -15,15 +16,15 @@
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <{if $previd}>
-                <a style="text-decoration: none" class="button-view-prev scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$previd}>"><{label key="L_PREV"}></a>&nbsp;
+                <a style="text-decoration: none" class="button-view-prev scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
             <{/if}>
             <{if $nextid}>
-                <a style="text-decoration: none" class="button-view-next scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$nextid}>"><{label key="L_NEXT"}></a>
+                <a style="text-decoration: none" class="button-view-next scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$nextid}>"><{_t('L_NEXT')}></a>
             <{/if}>
             &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
 
             <!-- Live search -->
-            <span id="pagesection-live-search" class="live-search view-live-search"><input type="text" onfocus="if (this.value == '<{label text="Quick search" insidequote=true}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{label text="Quick search" insidequote=true}>...';}" value="<{label text="Quick search" insidequote=true}>..." autocomplete="off"></span>
+            <span id="pagesection-live-search" class="live-search view-live-search"><input type="text" onfocus="if (this.value == '<{_t('Quick search', true)}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{_t('Quick search', true)}>...';}" value="<{_t('Quick search', true)}>..." autocomplete="off"></span>
             <script type="text/javascript">
                 $(document).ready(function(){
                 	$('#pagesection-live-search input').liveSearch({url: '<{$smarty.const.APPLICATION_URL}>/pagesection/liveSearch?term='});
@@ -48,7 +49,7 @@
     	<{if $details->UUID}>
     		    			<{if isset($smarty.session.acl.pagesection.edit) && WorkflowHelper::isEditable($details->WFID)}>
         		    <div class="button-general">
-        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{$smarty.const.L_EDIT}>"><i class="fa fa-pencil"></i></a>
+        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT')}>"><i class="fa fa-pencil"></i></a>
         		    </div>
     		    <{/if}>
     		    	    <{foreach from=$additional_view_buttons item=button}>
@@ -59,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.pagesection.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/delete/<{$details->UUID}>" title="<{$smarty.const.L_DELETE}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/delete/<{$details->UUID}>" title="<{_t('L_DELETE')}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -67,11 +68,11 @@
 
     	            <{if $admin_view_actions || $admin_view_options}>
         	    <div class="button-general dropdown">
-        	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{label text="More" insidequote=true}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
+        	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
         	        <ul class="dropdown-menu pull-right">
                         <{foreach from=$admin_view_actions item=item}>
                             <{if empty($item->ACL) || isset($smarty.session.acl.pagesection[$item->ACL])}>
-                                <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> href="<{framework_report_link format=$item->LINK data=$details}>"><span class="button-face"><{label text=$item->TITLE}></span></a></li>
+                                <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> href="<{framework_report_link format=$item->LINK data=$details}>"><span class="button-face"><{_t($item->TITLE)}></span></a></li>
                             <{/if}>
                         <{/foreach}>
         	            <{foreach from=$admin_view_options item=item}>
@@ -81,7 +82,7 @@
         	    </div>
             <{/if}>
             <div class="button-general">
-                <a class="button-close scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/close/"><span class="button-face"><{label key="L_CLOSE"}></span></a>
+                <a class="button-close scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/close/"><span class="button-face"><{_t('L_CLOSE')}></span></a>
             </div>
     	        <div class="clearer"></div>
     </div>
@@ -123,14 +124,14 @@
             <div id="pagesectiontabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                            <li><a href="#tab-pagesections"><{label key="L_PAGE_SECTION"}> <span class="badge pagesection-badge-count"></span></a></li>
+                            <li><a href="#tab-pagesections"><{_t('L_PAGE_SECTION')}> <span class="badge pagesection-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
                         <div id="tab-pagesections">
                         	<{if true || $tab == 'pagesections'}>
-                            	<h2 class="print"><{label key="L_PAGE_SECTION"}></h2>
+                            	<h2 class="print"><{_t('L_PAGE_SECTION')}></h2>
                                                                     <{ajaxmodule class="WidgetListPageSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->CODE`" where=""  template='widgetlist.pagesection.tpl'}>
                                                             <{/if}>
                         </div>

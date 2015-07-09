@@ -200,14 +200,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-hide-title" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" >
-                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->HIDE_TITLE}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->HIDE_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -224,14 +224,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-tab-anchor-section" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" >
-                                    <option value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>

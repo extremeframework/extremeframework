@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_LAYOUT_SECTION' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_LAYOUT_SECTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_LAYOUT_SECTION"}><{if in_array('ID_ADMIN_LAYOUT_SECTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_LAYOUT_SECTION')}><{if in_array('ID_ADMIN_LAYOUT_SECTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-layout-section">
 
                                                     <{if isset($formdata.ID_ADMIN_LAYOUT_SECTION) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'COLUMN' }>
                 	<div class="form-row <{if in_array('COLUMN', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_COLUMN"}><{if in_array('COLUMN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_COLUMN')}><{if in_array('COLUMN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-column">
 
                                                     <{if isset($formdata.COLUMN) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'POSITION' }>
                 	<div class="form-row <{if in_array('POSITION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_POSITION"}><{if in_array('POSITION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_POSITION')}><{if in_array('POSITION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-position">
 
                                                     <{if isset($formdata.POSITION) }>
@@ -105,7 +105,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ORDERING' }>
                 	<div class="form-row <{if in_array('ORDERING', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ORDERING"}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ORDERING')}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-ordering">
 
                                                     <{if isset($formdata.ORDERING) }>
@@ -127,7 +127,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminlayoutfieldform').attr('action', '<{$actionurl}>');$('#adminlayoutfieldform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_DASHBOARD_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_DASHBOARD_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_MENU' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_MENU', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_MENU"}><{if in_array('ID_ADMIN_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_MENU')}><{if in_array('ID_ADMIN_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-menu">
 
                                                     <{if isset($formdata.ID_ADMIN_MENU) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_DASHBOARD_LAYOUT' }>
                 	<div class="form-row <{if in_array('ID_DASHBOARD_LAYOUT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_DASHBOARD_LAYOUT"}><{if in_array('ID_DASHBOARD_LAYOUT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_DASHBOARD_LAYOUT')}><{if in_array('ID_DASHBOARD_LAYOUT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-dashboard-layout">
 
                                                     <{if isset($formdata.ID_DASHBOARD_LAYOUT) }>
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'DASHBOARD_FILE_PATH' }>
                 	<div class="form-row <{if in_array('DASHBOARD_FILE_PATH', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_DASHBOARD_FILE_PATH"}><{if in_array('DASHBOARD_FILE_PATH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_DASHBOARD_FILE_PATH')}><{if in_array('DASHBOARD_FILE_PATH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-dashboard-file-path">
 
                                                     <{if isset($formdata.DASHBOARD_FILE_PATH) }>
@@ -110,7 +110,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#dashboardform').attr('action', '<{$actionurl}>');$('#dashboardform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

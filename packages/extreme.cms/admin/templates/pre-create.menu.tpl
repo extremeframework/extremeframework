@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_NEW" format="ucwords"}> <{$smarty.const.L_MENU|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_NEW')|ucwords}> <{_t('L_MENU')|ucwords}></h3>
 </div>
 
 
@@ -59,7 +59,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -70,7 +70,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -227,14 +227,14 @@
         <div id="menutabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.menuitem) }>
-                    <li><a href="#tab-menuitems"><{label key="L_MENU_ITEM"}> <span class="badge menuitem-badge-count"></span></a></li>
+                    <li><a href="#tab-menuitems"><{_t('L_MENU_ITEM')}> <span class="badge menuitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.menuitem) }>
                     <div id="tab-menuitems">
                     	<{if true || $tab == 'menuitems'}>
-                        	<h2 class="print"><{label key="L_MENU_ITEM"}></h2>
+                        	<h2 class="print"><{_t('L_MENU_ITEM')}></h2>
                                                             <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_MENU="`$details->CODE`" where=""  template='widgetlist.menuitem.tpl'}>
                                                     <{/if}>
                     </div>
@@ -255,9 +255,9 @@
 
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                     </div>
     </div>

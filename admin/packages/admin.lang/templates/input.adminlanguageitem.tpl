@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_ADMIN_LANGUAGE' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_LANGUAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_LANGUAGE"}><{if in_array('ID_ADMIN_LANGUAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_LANGUAGE')}><{if in_array('ID_ADMIN_LANGUAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-language">
 
                                                     <{if isset($formdata.ID_ADMIN_LANGUAGE) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_LABEL' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_LABEL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_LABEL"}><{if in_array('ID_ADMIN_LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_LABEL')}><{if in_array('ID_ADMIN_LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-label">
 
                                                     <{if isset($formdata.ID_ADMIN_LABEL) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'TRANSLATION' }>
                 	<div class="form-row <{if in_array('TRANSLATION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_TRANSLATION"}><{if in_array('TRANSLATION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_TRANSLATION')}><{if in_array('TRANSLATION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-translation">
 
                                                     <{if isset($formdata.TRANSLATION) }>
@@ -95,7 +95,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminlanguageitemform').attr('action', '<{$actionurl}>');$('#adminlanguageitemform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

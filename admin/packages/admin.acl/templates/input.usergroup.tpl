@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'DEFAULT_ID_DASHBOARD' }>
                 	<div class="form-row <{if in_array('DEFAULT_ID_DASHBOARD', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_DEFAULT_DASHBOARD"}><{if in_array('DEFAULT_ID_DASHBOARD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_DEFAULT_DASHBOARD')}><{if in_array('DEFAULT_ID_DASHBOARD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-default-id-dashboard">
 
                                                     <{if isset($formdata.DEFAULT_ID_DASHBOARD) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PARENT' }>
                 	<div class="form-row <{if in_array('PARENT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PARENT"}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PARENT')}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-parent">
 
                                                     <{if isset($formdata.PARENT) }>
@@ -95,7 +95,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#usergroupform').attr('action', '<{$actionurl}>');$('#usergroupform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

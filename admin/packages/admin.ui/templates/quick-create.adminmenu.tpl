@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_QUICK_CREATE" format="ucwords"}> <{$smarty.const.L_ADMIN_MENU|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_ADMIN_MENU')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_MENU_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_ADMIN_MENU_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ORDERING"}></label>
+        		    <label><{_t('L_ORDERING')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -117,14 +117,14 @@
         <{else}>
     		<td class="form-row form-row-is-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_ENABLED"}></label>
+        		    <label><{_t('L_IS_ENABLED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-enabled" colspan="3">
                 <div class="form-field form-field-value column-is-enabled">
                                             
 
-    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenu_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_ENABLED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_ENABLED}>"></i>
                         <{/if}>
@@ -139,7 +139,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -150,7 +150,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -303,17 +303,17 @@
         <div id="adminmenutabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminmenuitem) }>
-                    <li><a href="#tab-adminmenuitems"><{label key="L_ADMIN_MENU_ITEM"}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminmenuitems"><{_t('L_ADMIN_MENU_ITEM')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
                 <{/if}>
                                 <{if isset($smarty.session.acl.dashboard) }>
-                    <li><a href="#tab-dashboards"><{label key="L_DASHBOARD"}> <span class="badge dashboard-badge-count"></span></a></li>
+                    <li><a href="#tab-dashboards"><{_t('L_DASHBOARD')}> <span class="badge dashboard-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminmenuitem) }>
                     <div id="tab-adminmenuitems">
                     	<{if true || $tab == 'adminmenuitems'}>
-                        	<h2 class="print"><{label key="L_ADMIN_MENU_ITEM"}></h2>
+                        	<h2 class="print"><{_t('L_ADMIN_MENU_ITEM')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
                                                     <{/if}>
                     </div>
@@ -321,7 +321,7 @@
                             <{if isset($smarty.session.acl.dashboard) }>
                     <div id="tab-dashboards">
                     	<{if true || $tab == 'dashboards'}>
-                        	<h2 class="print"><{label key="L_DASHBOARD"}></h2>
+                        	<h2 class="print"><{_t('L_DASHBOARD')}></h2>
                                                             <{ajaxmodule class="WidgetListDashboard" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.dashboard.tpl'}>
                                                     <{/if}>
                     </div>
@@ -342,9 +342,9 @@
 
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                     </div>
     </div>

@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_USER' }>
                 	<div class="form-row <{if in_array('ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER"}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user">
 
                                                     <{if isset($formdata.ID_USER) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP"}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-group">
 
                                                     <{if isset($formdata.ID_USER_GROUP) }>
@@ -73,7 +73,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_ROLE' }>
                 	<div class="form-row <{if in_array('ID_USER_ROLE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_ROLE"}><{if in_array('ID_USER_ROLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_ROLE')}><{if in_array('ID_USER_ROLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-role">
 
                                                     <{if isset($formdata.ID_USER_ROLE) }>
@@ -90,7 +90,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'VALID_FROM' }>
                 	<div class="form-row <{if in_array('VALID_FROM', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_VALID_FROM"}><{if in_array('VALID_FROM', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_VALID_FROM')}><{if in_array('VALID_FROM', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-valid-from">
 
                                                     <{if isset($formdata.VALID_FROM) }>
@@ -105,7 +105,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'VALID_UNTIL' }>
                 	<div class="form-row <{if in_array('VALID_UNTIL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_VALID_UNTIL"}><{if in_array('VALID_UNTIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_VALID_UNTIL')}><{if in_array('VALID_UNTIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-valid-until">
 
                                                     <{if isset($formdata.VALID_UNTIL) }>
@@ -126,7 +126,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#usermembershipform').attr('action', '<{$actionurl}>');$('#usermembershipform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/usermembership/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/usermembership/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -31,14 +31,14 @@
 	<{plugin key="postrelationtype_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.postrelationtype.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{$smarty.const.L_EDIT}>"></i></a>
+            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT')}>"></i></a>
         <{/if}>
 
         
         <{foreach from=$admin_listitem_actions item=item}>
             <{if empty($item->ACL) || isset($smarty.session.acl.postrelationtype[$item->ACL])}>
                 <{if empty($item->CONSTRING) || condstring_match($item->CONSTRING, $row)}>
-	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/postrelationtype/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{label text=$item->TITLE insidequote=true}>"></i><{else}><{label text=$item->TITLE}><{/if}></a>
+	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/postrelationtype/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{_t($item->TITLE, true)}>"></i><{else}><{_t($item->TITLE)}><{/if}></a>
                 <{/if}>
             <{/if}>
         <{/foreach}>

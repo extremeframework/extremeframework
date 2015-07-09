@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_USER' }>
                 	<div class="form-row <{if in_array('ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER"}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user">
 
                                                     <{if isset($formdata.ID_USER) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'DATE_TIME' }>
                 	<div class="form-row <{if in_array('DATE_TIME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_DATE_TIME"}><{if in_array('DATE_TIME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_DATE_TIME')}><{if in_array('DATE_TIME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-date-time">
 
                                                     <{if isset($formdata.DATE_TIME) }>
@@ -71,7 +71,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IP' }>
                 	<div class="form-row <{if in_array('IP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IP"}><{if in_array('IP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IP')}><{if in_array('IP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-ip">
 
                                                     <{if isset($formdata.IP) }>
@@ -93,7 +93,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#userlogform').attr('action', '<{$actionurl}>');$('#userlogform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/userlog/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/userlog/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FIRST_NAME"}></label>
+        		    <label><{_t('L_FIRST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-first-name" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LAST_NAME"}></label>
+        		    <label><{_t('L_LAST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-last-name" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-photo">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PHOTO"}></label>
+        		    <label><{_t('L_PHOTO')}></label>
                 </div>
             </td>
             <td class="form-row form-row-photo" colspan="3">
@@ -133,7 +133,7 @@
         <{else}>
     		<td class="form-row form-row-email">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_EMAIL"}></label>
+        		    <label><{_t('L_EMAIL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-email" colspan="3">
@@ -163,7 +163,7 @@
         <{else}>
     		<td class="form-row form-row-login">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LOGIN"}></label>
+        		    <label><{_t('L_LOGIN')}></label>
                 </div>
             </td>
             <td class="form-row form-row-login" colspan="3">
@@ -193,7 +193,7 @@
         <{else}>
     		<td class="form-row form-row-password">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PASSWORD"}></label>
+        		    <label><{_t('L_PASSWORD')}></label>
                 </div>
             </td>
             <td class="form-row form-row-password" colspan="3">
@@ -223,7 +223,7 @@
         <{else}>
     		<td class="form-row form-row-phone">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PHONE"}></label>
+        		    <label><{_t('L_PHONE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-phone" colspan="3">
@@ -253,14 +253,14 @@
         <{else}>
     		<td class="form-row form-row-gender">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_GENDER"}></label>
+        		    <label><{_t('L_GENDER')}></label>
                 </div>
             </td>
             <td class="form-row form-row-gender" colspan="3">
                 <div class="form-field form-field-value column-gender">
                                             
 
-    <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $details->GENDER}>checked="checked"<{/if}>><{label key="L_MALE"}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$details->GENDER}>checked="checked"<{/if}> /><{label key="L_FEMALE"}></span>
+    <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $details->GENDER}>checked="checked"<{/if}>><{_t('L_MALE')}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$details->GENDER}>checked="checked"<{/if}> /><{_t('L_FEMALE')}></span>
                         <{if $columntooltips.GENDER}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.GENDER}>"></i>
                         <{/if}>
@@ -283,7 +283,7 @@
         <{else}>
     		<td class="form-row form-row-date-of-birth">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_DATE_OF_BIRTH"}></label>
+        		    <label><{_t('L_DATE_OF_BIRTH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-date-of-birth" colspan="3">
@@ -312,14 +312,14 @@
         <{else}>
     		<td class="form-row form-row-force-password-change">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FORCE_PASSWORD_CHANGE"}></label>
+        		    <label><{_t('L_FORCE_PASSWORD_CHANGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-force-password-change" colspan="3">
                 <div class="form-field form-field-value column-force-password-change">
                                             
 
-    <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.FORCE_PASSWORD_CHANGE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.FORCE_PASSWORD_CHANGE}>"></i>
                         <{/if}>
@@ -342,14 +342,14 @@
         <{else}>
     		<td class="form-row form-row-is-email-verified">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_EMAIL_VERIFIED"}></label>
+        		    <label><{_t('L_IS_EMAIL_VERIFIED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-email-verified" colspan="3">
                 <div class="form-field form-field-value column-is-email-verified">
                                             
 
-    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_EMAIL_VERIFIED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_EMAIL_VERIFIED}>"></i>
                         <{/if}>
@@ -372,7 +372,7 @@
         <{else}>
     		<td class="form-row form-row-facebook-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FACEBOOK"}></label>
+        		    <label><{_t('L_FACEBOOK')}></label>
                 </div>
             </td>
             <td class="form-row form-row-facebook-id" colspan="3">
@@ -402,7 +402,7 @@
         <{else}>
     		<td class="form-row form-row-facebook-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FACEBOOK_OAUTH"}></label>
+        		    <label><{_t('L_FACEBOOK_OAUTH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-facebook-oauth-id" colspan="3">
@@ -432,7 +432,7 @@
         <{else}>
     		<td class="form-row form-row-google-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_GOOGLE"}></label>
+        		    <label><{_t('L_GOOGLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-google-id" colspan="3">
@@ -462,7 +462,7 @@
         <{else}>
     		<td class="form-row form-row-google-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_GOOGLE_OAUTH"}></label>
+        		    <label><{_t('L_GOOGLE_OAUTH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-google-oauth-id" colspan="3">
@@ -492,7 +492,7 @@
         <{else}>
     		<td class="form-row form-row-yahoo-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_YAHOO"}></label>
+        		    <label><{_t('L_YAHOO')}></label>
                 </div>
             </td>
             <td class="form-row form-row-yahoo-id" colspan="3">
@@ -522,7 +522,7 @@
         <{else}>
     		<td class="form-row form-row-yahoo-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_YAHOO_OAUTH"}></label>
+        		    <label><{_t('L_YAHOO_OAUTH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-yahoo-oauth-id" colspan="3">
@@ -552,14 +552,14 @@
         <{else}>
     		<td class="form-row form-row-is-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_ENABLED"}></label>
+        		    <label><{_t('L_IS_ENABLED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-enabled" colspan="3">
                 <div class="form-field form-field-value column-is-enabled">
                                             
 
-    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_ENABLED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_ENABLED}>"></i>
                         <{/if}>
@@ -587,7 +587,7 @@
         <{else}>
     		<td class="form-row form-row-latest-login">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LATEST_LOGIN"}></label>
+        		    <label><{_t('L_LATEST_LOGIN')}></label>
                 </div>
             </td>
             <td class="form-row form-row-latest-login" colspan="3">
@@ -608,7 +608,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -619,7 +619,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

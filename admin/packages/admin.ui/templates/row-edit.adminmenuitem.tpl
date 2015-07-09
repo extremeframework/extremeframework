@@ -140,14 +140,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-left" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" >
-                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_LEFT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -164,14 +164,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-top" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" >
-                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_TOP}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -188,14 +188,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-quick" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" >
-                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_QUICK}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -212,14 +212,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-all" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" >
-                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_ALL}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -236,14 +236,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-settings" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" >
-                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_SETTINGS}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -260,14 +260,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-open-in-new-window" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" >
-                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->OPEN_IN_NEW_WINDOW}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -284,14 +284,14 @@
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-starred" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" >
-                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_STARRED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                            <span>	<{if $row->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
                         <{/if}>
                             		</td>

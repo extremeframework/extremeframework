@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/name"><{label key="L_PARAMETER_TYPE_NAME"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/name"><{_t('L_PARAMETER_TYPE_NAME')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('BASE_TYPE_CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['BASE_TYPE_CODE']) && ((isset($aclviewablecolumns['BASE_TYPE_CODE']) && $aclviewablecolumns['BASE_TYPE_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BASE_TYPE_CODE']) || $aclviewablecolumns['BASE_TYPE_CODE']))) }>
     	            <th class="column-base-type-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/base_type_code"><{label key="L_BASE_TYPE_CODE"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/base_type_code"><{_t('L_BASE_TYPE_CODE')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('EXTRA', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['EXTRA']) && ((isset($aclviewablecolumns['EXTRA']) && $aclviewablecolumns['EXTRA']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EXTRA']) || $aclviewablecolumns['EXTRA']))) }>
     	            <th class="column-extra">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/extra"><{label key="L_EXTRA"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/extra"><{_t('L_EXTRA')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/ordering"><{label key="L_ORDERING"}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/parametertype/sort/ordering"><{_t('L_ORDERING')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{$smarty.const.L_PARAMETER_TYPE|strtolower}>s on this page are selected. <a onclick="parametertype_selectall()">Select all <{$total}> <{$smarty.const.L_PARAMETER_TYPE|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{$smarty.const.L_PARAMETER_TYPE|strtolower}>s in the list are selected. <a onclick="parametertype_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('L_PARAMETER_TYPE')|strtolower}>s on this page are selected. <a onclick="parametertype_selectall()">Select all <{$total}> <{_t('L_PARAMETER_TYPE')|strtolower}>s in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('L_PARAMETER_TYPE')|strtolower}>s in the list are selected. <a onclick="parametertype_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="parametertype-rowedit-add"><{label key="L_ADD_ITEM"}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="parametertype-rowedit-add"><{_t('L_ADD_ITEM')}></span>
                 	    <span class="parametertype-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save parametertype-rowedit-save btn btn-success"><{label key="L_SAVE"}></div>
-                    	    <a class="rowedit-cancel parametertype-rowedit-cancel button-cancel"><{label key="L_CANCEL"}></a>
+                    	    <div class="rowedit-save parametertype-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
+                    	    <a class="rowedit-cancel parametertype-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
                         </span>
                         <span class="parametertype-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

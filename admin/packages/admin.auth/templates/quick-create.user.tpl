@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_QUICK_CREATE" format="ucwords"}> <{$smarty.const.L_USER|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_USER')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FIRST_NAME"}></label>
+        		    <label><{_t('L_FIRST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-first-name" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LAST_NAME"}></label>
+        		    <label><{_t('L_LAST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-last-name" colspan="3">
@@ -118,7 +118,7 @@
         <{else}>
     		<td class="form-row form-row-email">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_EMAIL"}></label>
+        		    <label><{_t('L_EMAIL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-email" colspan="3">
@@ -148,7 +148,7 @@
         <{else}>
     		<td class="form-row form-row-phone">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PHONE"}></label>
+        		    <label><{_t('L_PHONE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-phone" colspan="3">
@@ -178,14 +178,14 @@
         <{else}>
     		<td class="form-row form-row-is-email-verified">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_EMAIL_VERIFIED"}></label>
+        		    <label><{_t('L_IS_EMAIL_VERIFIED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-email-verified" colspan="3">
                 <div class="form-field form-field-value column-is-email-verified">
                                             
 
-    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_EMAIL_VERIFIED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_EMAIL_VERIFIED}>"></i>
                         <{/if}>
@@ -208,14 +208,14 @@
         <{else}>
     		<td class="form-row form-row-is-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_ENABLED"}></label>
+        		    <label><{_t('L_IS_ENABLED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-enabled" colspan="3">
                 <div class="form-field form-field-value column-is-enabled">
                                             
 
-    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_ENABLED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_ENABLED}>"></i>
                         <{/if}>
@@ -230,7 +230,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -241,7 +241,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -385,12 +385,12 @@
     
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                             <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/new">
-                    <strong><{label key="L_GO_TO_FULL_FORM"}></strong>
+                    <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
     </div>

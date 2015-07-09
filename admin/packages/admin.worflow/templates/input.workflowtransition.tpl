@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'ID_WORKFLOW' }>
                 	<div class="form-row <{if in_array('ID_WORKFLOW', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_WORKFLOW"}><{if in_array('ID_WORKFLOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_WORKFLOW')}><{if in_array('ID_WORKFLOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-workflow">
 
                                                     <{if isset($formdata.ID_WORKFLOW) }>
@@ -56,7 +56,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_WORKFLOW_TRANSITION_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_WORKFLOW_TRANSITION_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -72,7 +72,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'START_ID_WORKFLOW_STAGE' }>
                 	<div class="form-row <{if in_array('START_ID_WORKFLOW_STAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_START_WORKFLOW_STAGE"}><{if in_array('START_ID_WORKFLOW_STAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_START_WORKFLOW_STAGE')}><{if in_array('START_ID_WORKFLOW_STAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-start-id-workflow-stage">
 
                                                     <{if isset($formdata.START_ID_WORKFLOW_STAGE) }>
@@ -89,7 +89,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'END_ID_WORKFLOW_STAGE' }>
                 	<div class="form-row <{if in_array('END_ID_WORKFLOW_STAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_END_WORKFLOW_STAGE"}><{if in_array('END_ID_WORKFLOW_STAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_END_WORKFLOW_STAGE')}><{if in_array('END_ID_WORKFLOW_STAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-end-id-workflow-stage">
 
                                                     <{if isset($formdata.END_ID_WORKFLOW_STAGE) }>
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ACTION' }>
                 	<div class="form-row <{if in_array('ACTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ACTION"}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ACTION')}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-action">
 
                                                     <{if isset($formdata.ACTION) }>
@@ -122,7 +122,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_GROUP' }>
                 	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_GROUP"}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-group">
 
                                                     <{if isset($formdata.ID_USER_GROUP) }>
@@ -139,7 +139,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_USER_ROLE' }>
                 	<div class="form-row <{if in_array('ID_USER_ROLE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_USER_ROLE"}><{if in_array('ID_USER_ROLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_USER_ROLE')}><{if in_array('ID_USER_ROLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-user-role">
 
                                                     <{if isset($formdata.ID_USER_ROLE) }>
@@ -156,7 +156,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'TRANSITION_ID_SCREEN' }>
                 	<div class="form-row <{if in_array('TRANSITION_ID_SCREEN', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_TRANSITION_SCREEN"}><{if in_array('TRANSITION_ID_SCREEN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_TRANSITION_SCREEN')}><{if in_array('TRANSITION_ID_SCREEN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-transition-id-screen">
 
                                                     <{if isset($formdata.TRANSITION_ID_SCREEN) }>
@@ -179,7 +179,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#workflowtransitionform').attr('action', '<{$actionurl}>');$('#workflowtransitionform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

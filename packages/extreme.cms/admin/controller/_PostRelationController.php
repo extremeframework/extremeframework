@@ -20,7 +20,7 @@ class _PostRelationController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('ID_POST_RELATION_TYPE', $columns2check) && trim($model->ID_POST_RELATION_TYPE) == '') {
-           $errors['id-post-relation-type'] = sprintf(L_VALIDATION_NOT_EMPTY, L_POST_RELATION_TYPE);
+           $errors['id-post-relation-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_POST_RELATION_TYPE'));
            return false;
        }
 

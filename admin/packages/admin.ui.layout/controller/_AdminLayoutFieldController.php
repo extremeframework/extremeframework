@@ -20,15 +20,15 @@ class _AdminLayoutFieldController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(L_VALIDATION_NOT_EMPTY, L_MODULE);
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
            return false;
        }
        if (in_array('COLUMN', $columns2check) && trim($model->COLUMN) == '') {
-           $errors['column'] = sprintf(L_VALIDATION_NOT_EMPTY, L_COLUMN);
+           $errors['column'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_COLUMN'));
            return false;
        }
        if (in_array('ORDERING', $columns2check) && !empty($model->ORDERING) && !is_numeric($model->ORDERING)) {
-           $errors['ordering'] = sprintf(L_VALIDATION_NUMBER, L_ORDERING);
+           $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_ORDERING'));
            return false;
        }
        if (in_array('MODULE', $columns2check) || in_array('COLUMN', $columns2check)) {

@@ -20,15 +20,15 @@ class _ParameterController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_PARAMETER_NAME);
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PARAMETER_NAME'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(L_VALIDATION_NOT_EMPTY, L_CODE);
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
            return false;
        }
        if (in_array('ID_PARAMETER_TYPE', $columns2check) && trim($model->ID_PARAMETER_TYPE) == '') {
-           $errors['id-parameter-type'] = sprintf(L_VALIDATION_NOT_EMPTY, L_PARAMETER_TYPE);
+           $errors['id-parameter-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PARAMETER_TYPE'));
            return false;
        }
        if (in_array('CODE', $columns2check)) {

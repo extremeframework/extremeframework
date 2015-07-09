@@ -109,7 +109,7 @@
     		    <input type="hidden" name="admincomment_formdata_ID_USER" value="<{$smarty.session.user->ID}>" />
     		    <input type="hidden" name="admincomment_formdata_MODULE" value="<{$module}>" />
     		    <input type="hidden" name="admincomment_formdata_OBJECT_ID" value="<{$object_id}>" />
-    			<textarea name="admincomment_formdata_COMMENT" placeholder="<{label text="Contribute to discussion" insidequote=true}>"></textarea>
+    			<textarea name="admincomment_formdata_COMMENT" placeholder="<{_t('Contribute to discussion', true)}>"></textarea>
     			<button class="btn btn-info">Submit</button>
     		</form>
     	</div>

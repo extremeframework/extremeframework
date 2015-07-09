@@ -2,15 +2,15 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=$smarty.const.L_ADMIN_SEQUENCE}>
+<{assign var='title' value=_t('L_ADMIN_SEQUENCE')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminsequencequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminsequence/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="adminsequence_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{$smarty.const.L_SEARCH}>" />
+            <input type="text" name="adminsequence_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
 	        <a class="button-quick-search" onclick="$('#adminsequencequicksearch').submit(); return false;">
-	            <span><{label key="L_SEARCH"}></span>
+	            <span><{_t('L_SEARCH')}></span>
             </a>
         </form>
     </div>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminsequence.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{$smarty.const.L_NEW}> <{$smarty.const.L_ADMIN_SEQUENCE|strtolower}>"/><{label key="L_NEW"}> <{$smarty.const.L_ADMIN_SEQUENCE|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -85,16 +85,16 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.adminsequence.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="adminsequence_delete()"><span class="button-face"><{$smarty.const.L_DELETE}></span></a>
+                            <a href="#" onclick="adminsequence_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
             	    <div class="btn button-general dropdown" style="padding: 3px 6px 6px 5px;">
-            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{label text="More" insidequote=true}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
+            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
             	        <ul class="dropdown-menu pull-right">
                             <{foreach from=$admin_list_actions item=item}>
                                 <{if empty($item->ACL) || isset($smarty.session.acl.adminsequence[$item->ACL])}>
-                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="adminsequence_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{label text=$item->TITLE}></span></a></li>
+                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="adminsequence_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{_t($item->TITLE)}></span></a></li>
                                 <{/if}>
                             <{/foreach}>
                         </ul>
@@ -264,7 +264,7 @@ function adminsequence_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="adminsequence-list-count list-count"><{$total}></span> <{label key="L_RECORDS"}>
+		<span class="adminsequence-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

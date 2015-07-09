@@ -28,9 +28,9 @@
         <div class="layout-block layout-block-tabs layout-block-tabs-bottom">
             <div id="pagesection-view-layout-tabs-general-image-misc" class="layout-tabs view-layout-tabs pagesection-view-layout-tabs" style="clear:both">
                 <ul>
-                                            <li><a href="#tab-general"><{label key="L_GENERAL"}></a></li>
-                                            <li><a href="#tab-image"><{label key="L_IMAGE"}></a></li>
-                                            <li><a href="#tab-misc"><{label key="L_MISC"}></a></li>
+                                            <li><a href="#tab-general"><{_t('L_GENERAL')}></a></li>
+                                            <li><a href="#tab-image"><{_t('L_IMAGE')}></a></li>
+                                            <li><a href="#tab-misc"><{_t('L_MISC')}></a></li>
                                     </ul>
 
                                     <div id="tab-general">
@@ -56,7 +56,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TITLE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -86,7 +86,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PARENT"}></label>
+        		    <label><{_t('L_PARENT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -123,7 +123,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CODE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -159,7 +159,7 @@
         <{else}>
     		<td class="form-row form-row-tag-line">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TAG_LINE"}></label>
+        		    <label><{_t('L_TAG_LINE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tag-line" colspan="3">
@@ -195,7 +195,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CONTENT"}></label>
+        		    <label><{_t('L_CONTENT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -226,7 +226,7 @@
         <{else}>
     		<td class="form-row form-row-tags">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TAGS"}></label>
+        		    <label><{_t('L_TAGS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tags" colspan="3">
@@ -276,7 +276,7 @@
         <{else}>
     		<td class="form-row form-row-background-image">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_BACKGROUND_IMAGE"}></label>
+        		    <label><{_t('L_BACKGROUND_IMAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-image" colspan="3">
@@ -309,7 +309,7 @@
         <{else}>
     		<td class="form-row form-row-background-color">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_BACKGROUND_COLOR"}></label>
+        		    <label><{_t('L_BACKGROUND_COLOR')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-color" colspan="3">
@@ -339,7 +339,7 @@
         <{else}>
     		<td class="form-row form-row-font-awesome-icon">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FONT_AWESOME_ICON"}></label>
+        		    <label><{_t('L_FONT_AWESOME_ICON')}></label>
                 </div>
             </td>
             <td class="form-row form-row-font-awesome-icon" colspan="3">
@@ -369,7 +369,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IMAGE"}></label>
+        		    <label><{_t('L_IMAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -402,7 +402,7 @@
         <{else}>
     		<td class="form-row form-row-video">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VIDEO"}></label>
+        		    <label><{_t('L_VIDEO')}></label>
                 </div>
             </td>
             <td class="form-row form-row-video" colspan="3">
@@ -453,7 +453,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VIEW_MORE_TITLE"}></label>
+        		    <label><{_t('L_VIEW_MORE_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-title" colspan="3">
@@ -483,7 +483,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VIEW_MORE_PAGE"}></label>
+        		    <label><{_t('L_VIEW_MORE_PAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-id-page" colspan="3">
@@ -520,7 +520,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-link">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_VIEW_MORE_LINK"}></label>
+        		    <label><{_t('L_VIEW_MORE_LINK')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-link" colspan="3">
@@ -550,14 +550,14 @@
         <{else}>
     		<td class="form-row form-row-hide-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_HIDE_TITLE"}></label>
+        		    <label><{_t('L_HIDE_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-hide-title" colspan="3">
                 <div class="form-field form-field-value column-hide-title">
                                             
 
-    <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $details->HIDE_TITLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$details->HIDE_TITLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $details->HIDE_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$details->HIDE_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.HIDE_TITLE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.HIDE_TITLE}>"></i>
                         <{/if}>
@@ -580,14 +580,14 @@
         <{else}>
     		<td class="form-row form-row-is-tab-anchor-section">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_TAB_ANCHOR_SECTION"}></label>
+        		    <label><{_t('L_IS_TAB_ANCHOR_SECTION')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-tab-anchor-section" colspan="3">
                 <div class="form-field form-field-value column-is-tab-anchor-section">
                                             
 
-    <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $details->IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$details->IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $details->IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$details->IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_TAB_ANCHOR_SECTION}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_TAB_ANCHOR_SECTION}>"></i>
                         <{/if}>
@@ -610,7 +610,7 @@
         <{else}>
     		<td class="form-row form-row-tab-anchor-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TAB_ANCHOR_TITLE"}></label>
+        		    <label><{_t('L_TAB_ANCHOR_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tab-anchor-title" colspan="3">
@@ -653,7 +653,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -664,7 +664,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

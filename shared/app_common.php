@@ -1,4 +1,10 @@
 <?php
+function _t($key, $insidequote = false) {
+    global $_L;
+
+    return isset($_L[$key])? $_L[$key] : $key;
+}
+
 function array_select($items, $field, $value) {
     $selection = array();
 

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-workflow">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_WORKFLOW"}></label>
+        		    <label><{_t('L_WORKFLOW')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-workflow" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-id-workflow-transition">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_WORKFLOW_TRANSITION"}></label>
+        		    <label><{_t('L_WORKFLOW_TRANSITION')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-workflow-transition" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -151,7 +151,7 @@
         <{else}>
     		<td class="form-row form-row-object-id">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_OBJECT"}></label>
+        		    <label><{_t('L_OBJECT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-object-id" colspan="3">
@@ -181,7 +181,7 @@
         <{else}>
     		<td class="form-row form-row-date">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_DATE"}></label>
+        		    <label><{_t('L_DATE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-date" colspan="3">
@@ -210,7 +210,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_USER"}></label>
+        		    <label><{_t('L_USER')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -247,7 +247,7 @@
         <{else}>
     		<td class="form-row form-row-details">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_DETAILS"}></label>
+        		    <label><{_t('L_DETAILS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-details" colspan="3">
@@ -269,7 +269,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -280,7 +280,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

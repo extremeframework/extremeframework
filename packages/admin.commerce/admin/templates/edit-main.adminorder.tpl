@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-customer-id-country">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_COUNTRY"}></label>
+        		    <label><{_t('L_CUSTOMER_COUNTRY')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-id-country" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-customer-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_FIRST_NAME"}></label>
+        		    <label><{_t('L_CUSTOMER_FIRST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-first-name" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-customer-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_LAST_NAME"}></label>
+        		    <label><{_t('L_CUSTOMER_LAST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-last-name" colspan="3">
@@ -130,7 +130,7 @@
         <{else}>
     		<td class="form-row form-row-customer-address">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_ADDRESS"}></label>
+        		    <label><{_t('L_CUSTOMER_ADDRESS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-address" colspan="3">
@@ -160,7 +160,7 @@
         <{else}>
     		<td class="form-row form-row-customer-city">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_CITY"}></label>
+        		    <label><{_t('L_CUSTOMER_CITY')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-city" colspan="3">
@@ -190,7 +190,7 @@
         <{else}>
     		<td class="form-row form-row-customer-state">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_STATE"}></label>
+        		    <label><{_t('L_CUSTOMER_STATE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-state" colspan="3">
@@ -220,7 +220,7 @@
         <{else}>
     		<td class="form-row form-row-customer-zip-code">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_ZIP_CODE"}></label>
+        		    <label><{_t('L_CUSTOMER_ZIP_CODE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-zip-code" colspan="3">
@@ -250,7 +250,7 @@
         <{else}>
     		<td class="form-row form-row-customer-email">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_EMAIL"}></label>
+        		    <label><{_t('L_CUSTOMER_EMAIL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-email" colspan="3">
@@ -280,7 +280,7 @@
         <{else}>
     		<td class="form-row form-row-customer-phone">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_PHONE"}></label>
+        		    <label><{_t('L_CUSTOMER_PHONE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-phone" colspan="3">
@@ -310,7 +310,7 @@
         <{else}>
     		<td class="form-row form-row-total-value">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TOTAL_VALUE"}></label>
+        		    <label><{_t('L_TOTAL_VALUE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-total-value" colspan="3">
@@ -339,7 +339,7 @@
         <{else}>
     		<td class="form-row form-row-coupon-code">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_COUPON_CODE"}></label>
+        		    <label><{_t('L_COUPON_CODE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-coupon-code" colspan="3">
@@ -369,7 +369,7 @@
         <{else}>
     		<td class="form-row form-row-coupon-discount">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_COUPON_DISCOUNT"}></label>
+        		    <label><{_t('L_COUPON_DISCOUNT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-coupon-discount" colspan="3">
@@ -398,7 +398,7 @@
         <{else}>
     		<td class="form-row form-row-id-payment-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAYMENT_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_PAYMENT_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-payment-type form-row-mandatory" colspan="3">
@@ -440,7 +440,7 @@
         <{else}>
     		<td class="form-row form-row-payment-date">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAYMENT_DATE"}></label>
+        		    <label><{_t('L_PAYMENT_DATE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-payment-date" colspan="3">
@@ -469,7 +469,7 @@
         <{else}>
     		<td class="form-row form-row-payment-ref">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAYMENT_REF"}></label>
+        		    <label><{_t('L_PAYMENT_REF')}></label>
                 </div>
             </td>
             <td class="form-row form-row-payment-ref" colspan="3">
@@ -499,7 +499,7 @@
         <{else}>
     		<td class="form-row form-row-refund-date">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_REFUND_DATE"}></label>
+        		    <label><{_t('L_REFUND_DATE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-refund-date" colspan="3">
@@ -528,7 +528,7 @@
         <{else}>
     		<td class="form-row form-row-refund-ref">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_REFUND_REF"}></label>
+        		    <label><{_t('L_REFUND_REF')}></label>
                 </div>
             </td>
             <td class="form-row form-row-refund-ref" colspan="3">
@@ -558,7 +558,7 @@
         <{else}>
     		<td class="form-row form-row-processed-date">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PROCESSED_DATE"}></label>
+        		    <label><{_t('L_PROCESSED_DATE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-processed-date" colspan="3">
@@ -587,7 +587,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-order-status">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_ORDER_STATUS"}></label>
+        		    <label><{_t('L_ADMIN_ORDER_STATUS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-order-status" colspan="3">
@@ -624,7 +624,7 @@
         <{else}>
     		<td class="form-row form-row-note">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_NOTE"}></label>
+        		    <label><{_t('L_NOTE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-note" colspan="3">
@@ -647,7 +647,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -658,7 +658,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

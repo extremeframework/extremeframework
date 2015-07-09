@@ -15,7 +15,7 @@
     	</td>
     	<td style="vertical-align: top;">
     	    <{if isset($smarty.session.acl.screen.edit) && WorkflowHelper::isEditable($details->WFID) && !$readonly}>
-    	        <div class="row-embedded-view-edit btn btn-success"><{label key="L_EDIT"}></div><br/>
+    	        <div class="row-embedded-view-edit btn btn-success"><{_t('L_EDIT')}></div><br/>
             <{/if}>
         </td>
 	<{else}>

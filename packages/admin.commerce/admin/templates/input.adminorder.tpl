@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'CUSTOMER_ID_COUNTRY' }>
                 	<div class="form-row <{if in_array('CUSTOMER_ID_COUNTRY', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_COUNTRY"}><{if in_array('CUSTOMER_ID_COUNTRY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_COUNTRY')}><{if in_array('CUSTOMER_ID_COUNTRY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-id-country">
 
                                                     <{if isset($formdata.CUSTOMER_ID_COUNTRY) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_FIRST_NAME' }>
                 	<div class="form-row <{if in_array('CUSTOMER_FIRST_NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_FIRST_NAME"}><{if in_array('CUSTOMER_FIRST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_FIRST_NAME')}><{if in_array('CUSTOMER_FIRST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-first-name">
 
                                                     <{if isset($formdata.CUSTOMER_FIRST_NAME) }>
@@ -71,7 +71,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_LAST_NAME' }>
                 	<div class="form-row <{if in_array('CUSTOMER_LAST_NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_LAST_NAME"}><{if in_array('CUSTOMER_LAST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_LAST_NAME')}><{if in_array('CUSTOMER_LAST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-last-name">
 
                                                     <{if isset($formdata.CUSTOMER_LAST_NAME) }>
@@ -87,7 +87,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_ADDRESS' }>
                 	<div class="form-row <{if in_array('CUSTOMER_ADDRESS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_ADDRESS"}><{if in_array('CUSTOMER_ADDRESS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_ADDRESS')}><{if in_array('CUSTOMER_ADDRESS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-address">
 
                                                     <{if isset($formdata.CUSTOMER_ADDRESS) }>
@@ -103,7 +103,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_CITY' }>
                 	<div class="form-row <{if in_array('CUSTOMER_CITY', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_CITY"}><{if in_array('CUSTOMER_CITY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_CITY')}><{if in_array('CUSTOMER_CITY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-city">
 
                                                     <{if isset($formdata.CUSTOMER_CITY) }>
@@ -119,7 +119,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_STATE' }>
                 	<div class="form-row <{if in_array('CUSTOMER_STATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_STATE"}><{if in_array('CUSTOMER_STATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_STATE')}><{if in_array('CUSTOMER_STATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-state">
 
                                                     <{if isset($formdata.CUSTOMER_STATE) }>
@@ -135,7 +135,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_ZIP_CODE' }>
                 	<div class="form-row <{if in_array('CUSTOMER_ZIP_CODE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_ZIP_CODE"}><{if in_array('CUSTOMER_ZIP_CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_ZIP_CODE')}><{if in_array('CUSTOMER_ZIP_CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-zip-code">
 
                                                     <{if isset($formdata.CUSTOMER_ZIP_CODE) }>
@@ -151,7 +151,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_EMAIL' }>
                 	<div class="form-row <{if in_array('CUSTOMER_EMAIL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_EMAIL"}><{if in_array('CUSTOMER_EMAIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_EMAIL')}><{if in_array('CUSTOMER_EMAIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-email">
 
                                                     <{if isset($formdata.CUSTOMER_EMAIL) }>
@@ -167,7 +167,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CUSTOMER_PHONE' }>
                 	<div class="form-row <{if in_array('CUSTOMER_PHONE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CUSTOMER_PHONE"}><{if in_array('CUSTOMER_PHONE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CUSTOMER_PHONE')}><{if in_array('CUSTOMER_PHONE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-customer-phone">
 
                                                     <{if isset($formdata.CUSTOMER_PHONE) }>
@@ -183,7 +183,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'TOTAL_VALUE' }>
                 	<div class="form-row <{if in_array('TOTAL_VALUE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_TOTAL_VALUE"}><{if in_array('TOTAL_VALUE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_TOTAL_VALUE')}><{if in_array('TOTAL_VALUE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-total-value">
 
                                                     <{if isset($formdata.TOTAL_VALUE) }>
@@ -199,7 +199,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'COUPON_CODE' }>
                 	<div class="form-row <{if in_array('COUPON_CODE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_COUPON_CODE"}><{if in_array('COUPON_CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_COUPON_CODE')}><{if in_array('COUPON_CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-coupon-code">
 
                                                     <{if isset($formdata.COUPON_CODE) }>
@@ -215,7 +215,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'COUPON_DISCOUNT' }>
                 	<div class="form-row <{if in_array('COUPON_DISCOUNT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_COUPON_DISCOUNT"}><{if in_array('COUPON_DISCOUNT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_COUPON_DISCOUNT')}><{if in_array('COUPON_DISCOUNT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-coupon-discount">
 
                                                     <{if isset($formdata.COUPON_DISCOUNT) }>
@@ -231,7 +231,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_PAYMENT_TYPE' }>
                 	<div class="form-row <{if in_array('ID_PAYMENT_TYPE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PAYMENT_TYPE"}><{if in_array('ID_PAYMENT_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PAYMENT_TYPE')}><{if in_array('ID_PAYMENT_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-payment-type">
 
                                                     <{if isset($formdata.ID_PAYMENT_TYPE) }>
@@ -248,7 +248,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'CREATION_DATE' }>
                 	<div class="form-row <{if in_array('CREATION_DATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_CREATION_DATE"}><{if in_array('CREATION_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_CREATION_DATE')}><{if in_array('CREATION_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-creation-date">
 
                                                     <{if isset($formdata.CREATION_DATE) }>
@@ -264,7 +264,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PAYMENT_DATE' }>
                 	<div class="form-row <{if in_array('PAYMENT_DATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PAYMENT_DATE"}><{if in_array('PAYMENT_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PAYMENT_DATE')}><{if in_array('PAYMENT_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-payment-date">
 
                                                     <{if isset($formdata.PAYMENT_DATE) }>
@@ -279,7 +279,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PAYMENT_REF' }>
                 	<div class="form-row <{if in_array('PAYMENT_REF', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PAYMENT_REF"}><{if in_array('PAYMENT_REF', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PAYMENT_REF')}><{if in_array('PAYMENT_REF', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-payment-ref">
 
                                                     <{if isset($formdata.PAYMENT_REF) }>
@@ -295,7 +295,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'REFUND_DATE' }>
                 	<div class="form-row <{if in_array('REFUND_DATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_REFUND_DATE"}><{if in_array('REFUND_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_REFUND_DATE')}><{if in_array('REFUND_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-refund-date">
 
                                                     <{if isset($formdata.REFUND_DATE) }>
@@ -310,7 +310,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'REFUND_REF' }>
                 	<div class="form-row <{if in_array('REFUND_REF', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_REFUND_REF"}><{if in_array('REFUND_REF', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_REFUND_REF')}><{if in_array('REFUND_REF', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-refund-ref">
 
                                                     <{if isset($formdata.REFUND_REF) }>
@@ -326,7 +326,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PROCESSED_DATE' }>
                 	<div class="form-row <{if in_array('PROCESSED_DATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PROCESSED_DATE"}><{if in_array('PROCESSED_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PROCESSED_DATE')}><{if in_array('PROCESSED_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-processed-date">
 
                                                     <{if isset($formdata.PROCESSED_DATE) }>
@@ -341,7 +341,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'ID_ADMIN_ORDER_STATUS' }>
                 	<div class="form-row <{if in_array('ID_ADMIN_ORDER_STATUS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_ORDER_STATUS"}><{if in_array('ID_ADMIN_ORDER_STATUS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_ORDER_STATUS')}><{if in_array('ID_ADMIN_ORDER_STATUS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-id-admin-order-status">
 
                                                     <{if isset($formdata.ID_ADMIN_ORDER_STATUS) }>
@@ -358,7 +358,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'NOTE' }>
                 	<div class="form-row <{if in_array('NOTE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_NOTE"}><{if in_array('NOTE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_NOTE')}><{if in_array('NOTE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-note">
 
                                                     <{if isset($formdata.NOTE) }>
@@ -380,7 +380,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminorderform').attr('action', '<{$actionurl}>');$('#adminorderform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_LANGUAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) && $aclviewablecolumns['ID_ADMIN_LANGUAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) || $aclviewablecolumns['ID_ADMIN_LANGUAGE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_LANGUAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-language">
-	                    		                    		        <label class="attribute-name"><{label key="L_ADMIN_LANGUAGE"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_ADMIN_LANGUAGE')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-language" colspan="3">
             	<div class="attribute-line column-id-admin-language type-reftext">
@@ -67,7 +67,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_LABEL']) && ((isset($aclviewablecolumns['ID_ADMIN_LABEL']) && $aclviewablecolumns['ID_ADMIN_LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LABEL']) || $aclviewablecolumns['ID_ADMIN_LABEL']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_LABEL', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-label">
-	                    		                    		        <label class="attribute-name"><{label key="L_ADMIN_LABEL"}></label>
+	                    		                    		        <label class="attribute-name"><{_t('L_ADMIN_LABEL')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-label" colspan="3">
             	<div class="attribute-line column-id-admin-label type-reftext">
@@ -122,7 +122,7 @@
             <{if !isset($excludedcolumns['TRANSLATION']) && ((isset($aclviewablecolumns['TRANSLATION']) && $aclviewablecolumns['TRANSLATION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TRANSLATION']) || $aclviewablecolumns['TRANSLATION']))) }>
         <{if !isset($columns2hide) || !in_array('TRANSLATION', $columns2hide) }>
     		<td class="form-field form-field-label column-translation">
-	            		        <label class="attribute-name"><{label key="L_TRANSLATION"}></label>
+	            		        <label class="attribute-name"><{_t('L_TRANSLATION')}></label>
             </td>
             <td class="form-field form-field-value column-translation" colspan="3">
             	<div class="attribute-line column-translation type-textarea">
@@ -157,7 +157,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -167,7 +167,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

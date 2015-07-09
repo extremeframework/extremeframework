@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_NEW" format="ucwords"}> <{$smarty.const.L_ADMIN_LANGUAGE|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_NEW')|ucwords}> <{_t('L_ADMIN_LANGUAGE')|ucwords}></h3>
 </div>
 
 
@@ -56,7 +56,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -67,7 +67,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -224,14 +224,14 @@
         <div id="adminlanguagetabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <li><a href="#tab-adminlanguageitems"><{label key="L_ADMIN_LANGUAGE_ITEM"}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminlanguageitems"><{_t('L_ADMIN_LANGUAGE_ITEM')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminlanguageitem) }>
                     <div id="tab-adminlanguageitems">
                     	<{if true || $tab == 'adminlanguageitems'}>
-                        	<h2 class="print"><{label key="L_ADMIN_LANGUAGE_ITEM"}></h2>
+                        	<h2 class="print"><{_t('L_ADMIN_LANGUAGE_ITEM')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LANGUAGE="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
                                                     <{/if}>
                     </div>
@@ -252,9 +252,9 @@
 
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                     </div>
     </div>

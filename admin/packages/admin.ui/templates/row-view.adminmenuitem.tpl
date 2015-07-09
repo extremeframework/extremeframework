@@ -64,7 +64,7 @@
 	        <{if (in_array('ENABLE_LEFT', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ENABLE_LEFT']) && ((isset($aclviewablecolumns['ENABLE_LEFT']) && $aclviewablecolumns['ENABLE_LEFT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_LEFT']) || $aclviewablecolumns['ENABLE_LEFT']))) }>
                 <td class="column column-enable-left yesno " data-value="<{$row->ENABLE_LEFT}>" data-column="ENABLE_LEFT" data-module="adminmenuitem">
-                                        	<span>	<{if $row->ENABLE_LEFT}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -72,7 +72,7 @@
 	        <{if (in_array('ENABLE_TOP', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ENABLE_TOP']) && ((isset($aclviewablecolumns['ENABLE_TOP']) && $aclviewablecolumns['ENABLE_TOP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_TOP']) || $aclviewablecolumns['ENABLE_TOP']))) }>
                 <td class="column column-enable-top yesno " data-value="<{$row->ENABLE_TOP}>" data-column="ENABLE_TOP" data-module="adminmenuitem">
-                                        	<span>	<{if $row->ENABLE_TOP}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -80,7 +80,7 @@
 	        <{if (in_array('ENABLE_QUICK', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ENABLE_QUICK']) && ((isset($aclviewablecolumns['ENABLE_QUICK']) && $aclviewablecolumns['ENABLE_QUICK']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_QUICK']) || $aclviewablecolumns['ENABLE_QUICK']))) }>
                 <td class="column column-enable-quick yesno " data-value="<{$row->ENABLE_QUICK}>" data-column="ENABLE_QUICK" data-module="adminmenuitem">
-                                        	<span>	<{if $row->ENABLE_QUICK}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -88,7 +88,7 @@
 	        <{if (in_array('ENABLE_ALL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ENABLE_ALL']) && ((isset($aclviewablecolumns['ENABLE_ALL']) && $aclviewablecolumns['ENABLE_ALL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_ALL']) || $aclviewablecolumns['ENABLE_ALL']))) }>
                 <td class="column column-enable-all yesno " data-value="<{$row->ENABLE_ALL}>" data-column="ENABLE_ALL" data-module="adminmenuitem">
-                                        	<span>	<{if $row->ENABLE_ALL}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -96,7 +96,7 @@
 	        <{if (in_array('ENABLE_SETTINGS', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ENABLE_SETTINGS']) && ((isset($aclviewablecolumns['ENABLE_SETTINGS']) && $aclviewablecolumns['ENABLE_SETTINGS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_SETTINGS']) || $aclviewablecolumns['ENABLE_SETTINGS']))) }>
                 <td class="column column-enable-settings yesno " data-value="<{$row->ENABLE_SETTINGS}>" data-column="ENABLE_SETTINGS" data-module="adminmenuitem">
-                                        	<span>	<{if $row->ENABLE_SETTINGS}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -104,7 +104,7 @@
 	        <{if (in_array('OPEN_IN_NEW_WINDOW', $filtercolumns)) }>
             <{if !isset($excludedcolumns['OPEN_IN_NEW_WINDOW']) && ((isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) && $aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || $aclviewablecolumns['OPEN_IN_NEW_WINDOW']))) }>
                 <td class="column column-open-in-new-window yesno " data-value="<{$row->OPEN_IN_NEW_WINDOW}>" data-column="OPEN_IN_NEW_WINDOW" data-module="adminmenuitem">
-                                        	<span>	<{if $row->OPEN_IN_NEW_WINDOW}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -112,7 +112,7 @@
 	        <{if (in_array('IS_STARRED', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_STARRED']) && ((isset($aclviewablecolumns['IS_STARRED']) && $aclviewablecolumns['IS_STARRED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_STARRED']) || $aclviewablecolumns['IS_STARRED']))) }>
                 <td class="column column-is-starred yesno " data-value="<{$row->IS_STARRED}>" data-column="IS_STARRED" data-module="adminmenuitem">
-                                        	<span>	<{if $row->IS_STARRED}><{label key="L_YES"}><{else}><{label key="L_NO"}><{/if}>
+                                        	<span>	<{if $row->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -135,14 +135,14 @@
 	<{plugin key="adminmenuitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminmenuitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{$smarty.const.L_EDIT}>"></i></a>
+            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT')}>"></i></a>
         <{/if}>
 
         
         <{foreach from=$admin_listitem_actions item=item}>
             <{if empty($item->ACL) || isset($smarty.session.acl.adminmenuitem[$item->ACL])}>
                 <{if empty($item->CONSTRING) || condstring_match($item->CONSTRING, $row)}>
-	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/adminmenuitem/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{label text=$item->TITLE insidequote=true}>"></i><{else}><{label text=$item->TITLE}><{/if}></a>
+	                <a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-main"<{/if}> href="<{if $item->LINK}><{framework_report_link format=$item->LINK data=$row}><{elseif $item->ACTION}><{$smarty.const.APPLICATION_URL}>/adminmenuitem/<{$item->ACTION}>/<{$row->UUID}><{/if}>"><{if $item->FONT_AWESOME_ICON}><i class="fa <{$item->FONT_AWESOME_ICON}>" title="<{_t($item->TITLE, true)}>"></i><{else}><{_t($item->TITLE)}><{/if}></a>
                 <{/if}>
             <{/if}>
         <{/foreach}>

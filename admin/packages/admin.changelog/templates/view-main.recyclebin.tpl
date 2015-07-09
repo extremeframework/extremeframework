@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ITEM']) && ((isset($aclviewablecolumns['ITEM']) && $aclviewablecolumns['ITEM']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ITEM']) || $aclviewablecolumns['ITEM']))) }>
         <{if !isset($columns2hide) || !in_array('ITEM', $columns2hide) }>
     		<td class="form-field form-field-label column-item">
-	            		        <label class="attribute-name"><{label key="L_ITEM"}></label>
+	            		        <label class="attribute-name"><{_t('L_ITEM')}></label>
             </td>
             <td class="form-field form-field-value column-item" colspan="3">
             	<div class="attribute-line column-item type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_MODULE"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['DATE_TIME']) && ((isset($aclviewablecolumns['DATE_TIME']) && $aclviewablecolumns['DATE_TIME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_TIME']) || $aclviewablecolumns['DATE_TIME']))) }>
         <{if !isset($columns2hide) || !in_array('DATE_TIME', $columns2hide) }>
     		<td class="form-field form-field-label column-date-time">
-	            		        <label class="attribute-name"><{label key="L_DATE_TIME"}></label>
+	            		        <label class="attribute-name"><{_t('L_DATE_TIME')}></label>
             </td>
             <td class="form-field form-field-value column-date-time" colspan="3">
             	<div class="attribute-line column-date-time type-datetime">
@@ -144,7 +144,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="user" data-id="<{$details->refuuid_ID_USER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{label key="L_USER"}></label>
+    	                            		        <label class="attribute-name"><{_t('L_USER')}></label>
             </td>
             <td class="form-field form-field-value column-id-user" colspan="3">
             	<div class="attribute-line column-id-user type-reftext">
@@ -199,7 +199,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -209,7 +209,7 @@
                             <{foreach from=$customfields item=item}>
                                 <tr>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{label text=$item->NAME}></label>
+                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                     	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>

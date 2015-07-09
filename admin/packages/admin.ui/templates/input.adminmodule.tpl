@@ -39,7 +39,7 @@ function remove_attachment(element, attachment, spanid)
             
                 <{elseif $column == 'NAME' }>
                 	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_ADMIN_MODULE_NAME"}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_ADMIN_MODULE_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-name">
 
                                                     <{if isset($formdata.NAME) }>
@@ -55,7 +55,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'MODULE' }>
                 	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_MODULE"}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-module">
 
                                                     <{if isset($formdata.MODULE) }>
@@ -71,7 +71,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'PREFIX' }>
                 	<div class="form-row <{if in_array('PREFIX', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_PREFIX"}><{if in_array('PREFIX', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_PREFIX')}><{if in_array('PREFIX', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-prefix">
 
                                                     <{if isset($formdata.PREFIX) }>
@@ -87,7 +87,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'AVAILABLE_ACTIONS' }>
                 	<div class="form-row <{if in_array('AVAILABLE_ACTIONS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_AVAILABLE_ACTIONS"}><{if in_array('AVAILABLE_ACTIONS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_AVAILABLE_ACTIONS')}><{if in_array('AVAILABLE_ACTIONS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-available-actions">
 
                                                     <{if isset($formdata.AVAILABLE_ACTIONS) }>
@@ -103,7 +103,7 @@ function remove_attachment(element, attachment, spanid)
         	
                 <{elseif $column == 'IS_COMMENT_ENABLED' }>
                 	<div class="form-row <{if in_array('IS_COMMENT_ENABLED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{label key="L_IS_COMMENT_ENABLED"}><{if in_array('IS_COMMENT_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<label><{_t('L_IS_COMMENT_ENABLED')}><{if in_array('IS_COMMENT_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                 		<div class="form-field column-is-comment-enabled">
 
                                                     <{if isset($formdata.IS_COMMENT_ENABLED) }>
@@ -113,11 +113,11 @@ function remove_attachment(element, attachment, spanid)
                         <{/if}>
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-comment-enabled" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" >
-                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{label key="L_YES"}></option>
-                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{label key="L_NO"}></option>
+                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
+                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                             <{/if}>
                         
                 		</div>
@@ -131,7 +131,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#adminmoduleform').attr('action', '<{$actionurl}>');$('#adminmoduleform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/cancel/?back=0"><span class="button-face"><{label key="L_CANCEL"}></span></a>
+            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

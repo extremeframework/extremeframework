@@ -15,30 +15,30 @@
         </div>
         <ul id="user-controls">
             <{if isset($smarty.session.user) }>
-                <li class="status"><{label key="L_HELLO"}> <a href="/account"><{$smarty.session.user->FIRST_NAME}> <{$smarty.session.user->LAST_NAME}></a></li>
-                <li class="res-text"><a href="<{$smarty.const.APPLICATION_URL}>/authentication/logout/"><{label key="L_SIGN_OUT"}></a></li>
+                <li class="status"><{_t('L_HELLO')}> <a href="/account"><{$smarty.session.user->FIRST_NAME}> <{$smarty.session.user->LAST_NAME}></a></li>
+                <li class="res-text"><a href="<{$smarty.const.APPLICATION_URL}>/authentication/logout/"><{_t('L_SIGN_OUT')}></a></li>
             <{else}>
-                <li class="status"><{label key="L_YOU_ARE_NOT_CURRENTLY_SIGNED_IN"}></li>
-                <li class="res-text"><a href="<{$smarty.const.APPLICATION_URL}>/authentication/login/"><{label key="L_SIGN_IN"}></a></li>
+                <li class="status"><{_t('L_YOU_ARE_NOT_CURRENTLY_SIGNED_IN')}></li>
+                <li class="res-text"><a href="<{$smarty.const.APPLICATION_URL}>/authentication/login/"><{_t('L_SIGN_IN')}></a></li>
             <{/if}>
             <{if isset($smarty.session.user) }>
                 <{if Framework::hasModule('Wallpaper')}>
-                    <li><a href="#" id="wallpaper-selector" title="<{$smarty.const.L_CHANGE_BACKGROUND_WALLPAPER}>"><i class="fa fa-desktop"></i></a></li>
+                    <li><a href="#" id="wallpaper-selector" title="<{_t('L_CHANGE_BACKGROUND_WALLPAPER')}>"><i class="fa fa-desktop"></i></a></li>
                 <{/if}>
                 <{if Framework::hasModule('AdminStyle')}>
-                    <li><a href="#" id="style-selector" title="<{$smarty.const.L_CHANGE_STYLE}>"><i class="fa fa-adjust"></i></a></li>
+                    <li><a href="#" id="style-selector" title="<{_t('L_CHANGE_STYLE')}>"><i class="fa fa-adjust"></i></a></li>
                 <{/if}>
                 <li>
                     <span class="dropdown" style="margin-left:15px">
                         <i class="fa fa-gear dropdown-toggle" data-toggle="dropdown"></i>
                         <ul class="dropdown-menu pull-right">
                             <{if Framework::hasModule('AdminMenu')}>
-                                <li><a href="<{$smarty.const.APPLICATION_URL}>/?context=settings"><{label key="L_SETTINGS"}></a></li>
+                                <li><a href="<{$smarty.const.APPLICATION_URL}>/?context=settings"><{_t('L_SETTINGS')}></a></li>
                             <{/if}>
                             <{if Framework::hasModule('AdminLanguage')}>
-                                <li><a class="show-modal" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/quickSelect"><{label key="L_CHANGE_DISPLAY_LANGUAGE"}></a></li>
+                                <li><a class="show-modal" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/quickSelect"><{_t('L_CHANGE_DISPLAY_LANGUAGE')}></a></li>
                             <{/if}>
-                            <li><a href="<{$smarty.const.APPLICATION_URL}>/authentication/refresh"><{label key="L_REFRESH"}></a></li>
+                            <li><a href="<{$smarty.const.APPLICATION_URL}>/authentication/refresh"><{_t('L_REFRESH')}></a></li>
                         </ul>
                     </span>
                 </li>
@@ -107,16 +107,16 @@
             <{if $has_quick}>
                 <ul id="quick-create-menu">
                     <li class="btn-group" style="margin: 0 15px 0 15px">
-                        <i class="fa fa-plus" title="<{$smarty.const.L_QUICK_CREATE}>" data-toggle="dropdown" style="cursor:pointer;padding: 3px;border-radius: 10px;width: 19px;height: 18px;text-align: center;"></i>
+                        <i class="fa fa-plus" title="<{_t('L_QUICK_CREATE')}>" data-toggle="dropdown" style="cursor:pointer;padding: 3px;border-radius: 10px;width: 19px;height: 18px;text-align: center;"></i>
                         <ul class="dropdown-menu quick-create-menu" style="margin:0px">
                             <li style="width:100%">
-                                <span class="title"><{label key="L_QUICK_CREATE"}></span>
+                                <span class="title"><{_t('L_QUICK_CREATE')}></span>
                                 <hr/>
                                 <ul style="width:100%;margin: 0px;padding: 0px;">
                                     <{foreach from=$smarty.session.flatmenu item=menuitem}>
                                         <{if $menuitem->ENABLE_QUICK}>
                                             <li>
-                                                <a class="show-modal" href="<{$menuitem->LINK}>/quickCreate"><{label text=$menuitem->NAME}></a>
+                                                <a class="show-modal" href="<{$menuitem->LINK}>/quickCreate"><{_t($menuitem->NAME)}></a>
                                             </li>
                                         <{/if}>
                                     <{/foreach}>
@@ -146,13 +146,13 @@
                         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" style="cursor:pointer"><b class="caret"></b></a>
                             <ul class="dropdown-menu quick-create-menu" style="margin:0px">
                                 <li style="width:100%">
-                                    <span class="title"><{label text="All"}></span>
+                                    <span class="title"><{_t('All')}></span>
                                     <hr/>
                                     <ul style="width:100%;margin: 0px;padding: 0px;">
                                         <{foreach from=$smarty.session.flatmenu item=menuitem}>
                                             <{if $menuitem->ENABLE_ALL}>
                                                 <li>
-                                                    <a class="scope-page" href="<{$menuitem->LINK}>"><{label text=$menuitem->NAME}></a>
+                                                    <a class="scope-page" href="<{$menuitem->LINK}>"><{_t($menuitem->NAME)}></a>
                                                 </li>
                                             <{/if}>
                                         <{/foreach}>

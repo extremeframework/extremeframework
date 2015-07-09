@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TITLE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAGE"}></label>
+        		    <label><{_t('L_PAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-page" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-font-awesome-icon">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_FONT_AWESOME_ICON"}></label>
+        		    <label><{_t('L_FONT_AWESOME_ICON')}></label>
                 </div>
             </td>
             <td class="form-row form-row-font-awesome-icon" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-link-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LINK_PAGE"}></label>
+        		    <label><{_t('L_LINK_PAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link-id-page" colspan="3">
@@ -174,7 +174,7 @@
         <{else}>
     		<td class="form-row form-row-link-path">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_LINK_PATH"}></label>
+        		    <label><{_t('L_LINK_PATH')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link-path" colspan="3">
@@ -204,7 +204,7 @@
         <{else}>
     		<td class="form-row form-row-id-page-link-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAGE_LINK_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_PAGE_LINK_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-page-link-type form-row-mandatory" colspan="3">
@@ -241,7 +241,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ORDERING"}></label>
+        		    <label><{_t('L_ORDERING')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -262,7 +262,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -273,7 +273,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

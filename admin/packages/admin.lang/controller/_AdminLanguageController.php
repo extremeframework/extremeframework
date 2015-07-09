@@ -20,11 +20,11 @@ class _AdminLanguageController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_ADMIN_LANGUAGE_NAME);
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_LANGUAGE_NAME'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(L_VALIDATION_NOT_EMPTY, L_CODE);
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
            return false;
        }
        if (in_array('CODE', $columns2check)) {

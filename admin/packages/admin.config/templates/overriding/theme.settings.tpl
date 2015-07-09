@@ -69,7 +69,7 @@
     <!-- Control buttons -->
     <div class="edit-buttons edit-buttons-top">
         <div class="button-general button-save btn btn-success">
-            <a class="button-save" onclick="$('#theme-configuration-form').submit();return false;"><span class="button-face"><{label key="L_SAVE"}></span></a>
+            <a class="button-save" onclick="$('#theme-configuration-form').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
         </div>
         <div class="clearer"></div>
     </div>
@@ -140,7 +140,7 @@
     <!-- Control buttons -->
     <div class="edit-buttons edit-buttons-bottom">
         <div class="button-general button-save btn btn-success">
-            <a class="button-save" onclick="$('#theme-configuration-form').submit();return false;"><span class="button-face"><{label key="L_SAVE"}></span></a>
+            <a class="button-save" onclick="$('#theme-configuration-form').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
         </div>
         <div class="clearer"></div>
     </div>

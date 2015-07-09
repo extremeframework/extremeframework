@@ -2,15 +2,15 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=$smarty.const.L_POST}>
+<{assign var='title' value=_t('L_POST')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="postquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/post/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="post_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{$smarty.const.L_SEARCH}>" />
+            <input type="text" name="post_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
 	        <a class="button-quick-search" onclick="$('#postquicksearch').submit(); return false;">
-	            <span><{label key="L_SEARCH"}></span>
+	            <span><{_t('L_SEARCH')}></span>
             </a>
         </form>
     </div>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.post.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{$smarty.const.L_NEW}> <{$smarty.const.L_POST|strtolower}>"/><{label key="L_NEW"}> <{$smarty.const.L_POST|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_POST')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -85,17 +85,17 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.post.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="post_delete()"><span class="button-face"><{$smarty.const.L_DELETE}></span></a>
+                            <a href="#" onclick="post_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{$smarty.const.L_IMPORT}>" /><{$smarty.const.L_IMPORT}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT')}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{$smarty.const.L_EXPORT}>" /><{$smarty.const.L_EXPORT}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT')}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>
@@ -105,7 +105,7 @@
                                 <span class="custom-filter-footer post-custom-filter-footer hide">
                                     <hr>
                                     <ul>
-                                    	<li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/post"><i class="fa fa-plus-circle"></i> <{label key="L_CREATE_NEW_FILTER"}></a></li>
+                                    	<li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/post"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
                                     </ul>
                                 </span>
                                 <span class="custom-filter-icons post-custom-filter-icons pull-right" style="display:none">
@@ -122,11 +122,11 @@
                     <{/if}>
                                                 <{if $admin_list_actions}>
             	    <div class="btn button-general dropdown" style="padding: 3px 6px 6px 5px;">
-            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{label text="More" insidequote=true}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
+            	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
             	        <ul class="dropdown-menu pull-right">
                             <{foreach from=$admin_list_actions item=item}>
                                 <{if empty($item->ACL) || isset($smarty.session.acl.post[$item->ACL])}>
-                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="post_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{label text=$item->TITLE}></span></a></li>
+                                    <li><a <{if $item->IS_OPEN_IN_NEW_WINDOW}>target="_blank"<{/if}> <{if $item->LINK}>href="<{framework_report_link format=$item->LINK}>"<{/if}> <{if $item->ACTION}>onclick="post_<{$item->ACTION}>(); return false;"<{/if}>><span class="button-face"><{_t($item->TITLE)}></span></a></li>
                                 <{/if}>
                             <{/foreach}>
                         </ul>
@@ -146,56 +146,56 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_POST), strtolower(L_POST)));
     <{/php}>
 
-    <div id="postcopyrelations" style="display:none" title="<{$smarty.const.L_COPY}> <{$smarty.const.L_POST|strtolower}>">
+    <div id="postcopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_POST')|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{label key="L_COPY_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('L_COPY_ALSO')}> <{_t('L_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{label key="L_COPY_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST_SECTION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postapproverelations" style="display:none" title="<{$smarty.const.L_APPROVE}> <{$smarty.const.L_POST|strtolower}>">
+    <div id="postapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_POST')|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{label key="L_APPROVE_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST_SECTION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postdeleterelations" style="display:none" title="<{$smarty.const.L_DELETE}> <{$smarty.const.L_POST|strtolower}>">
+    <div id="postdeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_POST')|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{label key="L_DELETE_ALSO"}> <{label key="L_MENU_ITEM" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('L_DELETE_ALSO')}> <{_t('L_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_GALLERY" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_RELATION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{label key="L_DELETE_ALSO"}> <{label key="L_POST_SECTION" format="strtolower"}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST_SECTION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -227,12 +227,12 @@ function post_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_DELETE}>": function() {
+			"<{_t('L_DELETE')}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/delete/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -247,12 +247,12 @@ function post_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_COPY}>": function() {
+			"<{_t('L_COPY')}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/copy/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -267,12 +267,12 @@ function post_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{$smarty.const.L_APPROVE}>": function() {
+			"<{_t('L_APPROVE')}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/approve/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{$smarty.const.L_CANCEL}>": function() {
+			"<{_t('L_CANCEL')}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -400,7 +400,7 @@ function post_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="post-list-count list-count"><{$total}></span> <{label key="L_RECORDS"}>
+		<span class="post-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

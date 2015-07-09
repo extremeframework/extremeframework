@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{$smarty.const.L_CLOSE}>">x</button>
-    <h3><{label key="L_QUICK_CREATE" format="ucwords"}> <{$smarty.const.L_ADMIN_ORDER|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_ADMIN_ORDER')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-customer-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_FIRST_NAME"}></label>
+        		    <label><{_t('L_CUSTOMER_FIRST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-first-name" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-customer-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_LAST_NAME"}></label>
+        		    <label><{_t('L_CUSTOMER_LAST_NAME')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-last-name" colspan="3">
@@ -118,7 +118,7 @@
         <{else}>
     		<td class="form-row form-row-customer-zip-code">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_ZIP_CODE"}></label>
+        		    <label><{_t('L_CUSTOMER_ZIP_CODE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-zip-code" colspan="3">
@@ -148,7 +148,7 @@
         <{else}>
     		<td class="form-row form-row-customer-email">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_EMAIL"}></label>
+        		    <label><{_t('L_CUSTOMER_EMAIL')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-email" colspan="3">
@@ -178,7 +178,7 @@
         <{else}>
     		<td class="form-row form-row-customer-phone">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CUSTOMER_PHONE"}></label>
+        		    <label><{_t('L_CUSTOMER_PHONE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-customer-phone" colspan="3">
@@ -208,7 +208,7 @@
         <{else}>
     		<td class="form-row form-row-coupon-code">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_COUPON_CODE"}></label>
+        		    <label><{_t('L_COUPON_CODE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-coupon-code" colspan="3">
@@ -238,7 +238,7 @@
         <{else}>
     		<td class="form-row form-row-id-payment-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_PAYMENT_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_PAYMENT_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-payment-type form-row-mandatory" colspan="3">
@@ -275,7 +275,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-order-status">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_ORDER_STATUS"}></label>
+        		    <label><{_t('L_ADMIN_ORDER_STATUS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-order-status" colspan="3">
@@ -312,7 +312,7 @@
         <{else}>
     		<td class="form-row form-row-note">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_NOTE"}></label>
+        		    <label><{_t('L_NOTE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-note" colspan="3">
@@ -335,7 +335,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -346,7 +346,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
@@ -496,14 +496,14 @@
         <div id="adminordertabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminorderitem) }>
-                    <li><a href="#tab-adminorderitems"><{label key="L_ADMIN_ORDER_ITEM"}> <span class="badge adminorderitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminorderitems"><{_t('L_ADMIN_ORDER_ITEM')}> <span class="badge adminorderitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminorderitem) }>
                     <div id="tab-adminorderitems">
                     	<{if true || $tab == 'adminorderitems'}>
-                        	<h2 class="print"><{label key="L_ADMIN_ORDER_ITEM"}></h2>
+                        	<h2 class="print"><{_t('L_ADMIN_ORDER_ITEM')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_ORDER="`$details->ID`" where=""  template='widgetlist.adminorderitem.tpl'}>
                                                     <{/if}>
                     </div>
@@ -524,12 +524,12 @@
 
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{label key="L_CANCEL"}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{label key="L_SAVE"}></strong>
+                <strong><{_t('L_SAVE')}></strong>
             </button>
                             <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new">
-                    <strong><{label key="L_GO_TO_FULL_FORM"}></strong>
+                    <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
     </div>

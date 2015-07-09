@@ -7,7 +7,7 @@
 
                 <li>
                     <a <{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-page"<{/if}> href="<{$menuitem->LINK}>">
-                        <{label text=$menuitem->NAME}>
+                        <{_t($menuitem->NAME)}>
                     </a>
                     <{include file="menu.horizontal.items.tpl" parent=$parent2 depth=$depth2}>
                 </li>

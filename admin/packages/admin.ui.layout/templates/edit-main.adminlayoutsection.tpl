@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ADMIN_LAYOUT_SECTION_NAME"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_ADMIN_LAYOUT_SECTION_NAME')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_MODULE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -107,14 +107,14 @@
         <{else}>
     		<td class="form-row form-row-show-title">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_SHOW_TITLE"}></label>
+        		    <label><{_t('L_SHOW_TITLE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-show-title" colspan="3">
                 <div class="form-field form-field-value column-show-title">
                                             
 
-    <span class="input-type-radio"><input class="input-show-title" type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="1" <{if $details->SHOW_TITLE}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="0" <{if !$details->SHOW_TITLE}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-show-title" type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="1" <{if $details->SHOW_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminlayoutsection_formdata_SHOW_TITLE" value="0" <{if !$details->SHOW_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.SHOW_TITLE}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.SHOW_TITLE}>"></i>
                         <{/if}>
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_ORDERING"}></label>
+        		    <label><{_t('L_ORDERING')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -158,7 +158,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -169,7 +169,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">

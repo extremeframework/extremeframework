@@ -20,15 +20,15 @@ class _AdminModuleController extends __AppController
     private function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(L_VALIDATION_NOT_EMPTY, L_ADMIN_MODULE_NAME);
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_MODULE_NAME'));
            return false;
        }
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(L_VALIDATION_NOT_EMPTY, L_MODULE);
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
            return false;
        }
        if (in_array('PREFIX', $columns2check) && trim($model->PREFIX) == '') {
-           $errors['prefix'] = sprintf(L_VALIDATION_NOT_EMPTY, L_PREFIX);
+           $errors['prefix'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PREFIX'));
            return false;
        }
        if (in_array('MODULE', $columns2check)) {
