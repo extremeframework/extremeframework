@@ -8,6 +8,8 @@ if (!defined('APPLICATION_DIR')) die('');
 
 class Framework {
     static $cache = null;
+    static $classmap = null;
+    static $templatemap = null;
 
     static function register($key, $value) {
         if (self::$cache === null) {
@@ -71,11 +73,9 @@ class Framework {
     }
 
     static function registerTemplateDir($directory, $packageroot = '') {
-        $cache = Cache::context(self::getCacheContextKey());
+        $templatemap = self::getTemplateMap();
 
-        $templatedirs = $cache->get('templatedirs');
-
-        if (!isset($templatedirs[$packageroot])) {
+        if (!isset($templatemap[$packageroot])) {
             $dirs = array();
 
             if (is_dir($directory)) {
@@ -86,40 +86,53 @@ class Framework {
                 $dirs[] = $directory;
             }
 
-            $templatedirs[$packageroot] = $dirs;
+            $templatemap[$packageroot] = $dirs;
 
-            $cache->set('templatedirs', $templatedirs);
+            self::updateTemplateMap($templatemap);
         }
     }
 
     private static function getTemplateDirs($__FILE__) {
         $filedir = dirname($__FILE__);
 
-        $cache = Cache::context(self::getCacheContextKey());
+        $templatemap = self::getTemplateMap();
 
-        $templatedirs = $cache->get('templatedirs');
-
-        if ($templatedirs) {
-            foreach ($templatedirs as $packageroot => $dirs) {
-                if (stripos($filedir, $packageroot) !== false) {
-                    return $dirs;
-                }
+        foreach ($templatemap as $packageroot => $dirs) {
+            if (stripos($filedir, $packageroot) !== false) {
+                return $dirs;
             }
         }
 
         return array();
     }
 
-    static function registerClassSearchDir($classdir, $namespace = '') {
-        // Cache context
-        $cache = Cache::context(self::getCacheContextKey());
+    private static function getTemplateMap() {
+        if (self::$templatemap === null) {
+            $file = APPLICATION_DIR.'/cache/templatemap.ser';
 
-        // Get cache data
-        $registered = $cache->get('registered');
-        $classpaths = $cache->get('classpaths');
+            if (file_exists($file)) {
+                self::$templatemap = unserialize(file_get_contents($file));
+            } else {
+                self::$templatemap = array();
+            }
+        }
+
+        return self::$templatemap;
+    }
+
+    private static function updateTemplateMap($templatemap) {
+        self::$templatemap = $templatemap;
+
+        $file = APPLICATION_DIR.'/cache/templatemap.ser';
+
+        file_put_contents($file, serialize($templatemap));
+    }
+
+    static function registerClassSearchDir($classdir, $namespace = '') {
+        $classmap = self::getClassMap();
 
         // If not registered
-        if (!isset($registered[$classdir])) {
+        if (!isset($classmap['registered'][$classdir])) {
 
             // Sub-directories to search
             $subdirs = array('controller', 'table', 'model', 'helper', 'library', 'module', 'api');
@@ -139,17 +152,17 @@ class Framework {
 
                         $classname = strtolower($classname);
 
-                        if (!isset($classpaths[$classname])) {
-                             $classpaths[$classname] = $path;
+                        if (!isset($classmap['classpaths'][$classname])) {
+                             $classmap['classpaths'][$classname] = $path;
                         }
                     }
                 }
             }
 
-            $registered[$classdir] = true;
+            $classmap['registered'][$classdir] = true;
 
-            $cache->set('registered', $registered);
-            $cache->set('classpaths', $classpaths);
+            // Sync classmap
+            self::updateClassMap($classmap);
         }
 
         // Register autoload function
@@ -163,20 +176,43 @@ class Framework {
             $registered = true;
 
             spl_autoload_register(function($classname) {
-                $classname = strtolower($classname);
+                $classpath = self::getClassPath($classname);
 
-                // Cache context
-                $cache = Cache::context(self::getCacheContextKey());
-
-                // Get cache data
-                $classpaths = $cache->get('classpaths');
-
-                // Resolve class
-                if (isset($classpaths[$classname])) {
-                    require_once($classpaths[$classname]);
+                if (!empty($classpath)) {
+                    require_once($classpath);
                 }
             });
         }
+    }
+
+    private static function getClassMap() {
+        if (self::$classmap === null) {
+            $file = APPLICATION_DIR.'/cache/classmap.ser';
+
+            if (file_exists($file)) {
+                self::$classmap = unserialize(file_get_contents($file));
+            } else {
+                self::$classmap = array();
+            }
+        }
+
+        return self::$classmap;
+    }
+
+    private static function updateClassMap($classmap) {
+        self::$classmap = $classmap;
+
+        $file = APPLICATION_DIR.'/cache/classmap.ser';
+
+        file_put_contents($file, serialize($classmap));
+    }
+
+    private static function getClassPath($classname) {
+        $classmap = self::getClassMap();
+
+        $classname = strtolower($classname);
+
+        return isset($classmap['classpaths'][$classname])? $classmap['classpaths'][$classname] : '';
     }
 
     private function getObfuscatedFileName($path) {
