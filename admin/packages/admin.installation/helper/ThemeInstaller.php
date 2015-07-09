@@ -13,7 +13,9 @@ class ThemeInstaller extends BaseInstaller {
             return 'Invalid theme structure';
         }
 
-        $dir = $package_root.'/'.array_shift($files);
+        $packagename = array_shift($files);
+
+        $dir = $package_root.'/'.$packagename;
 
         if (!is_dir($dir)) {
             return 'Invalid theme structure';
@@ -57,6 +59,20 @@ class ThemeInstaller extends BaseInstaller {
             if (!empty($error)) {
                 return $error;
             }
+        }
+
+        // x. Install sample database
+        if (file_exists($packagedir.'/install/sample/sample.sql')) {
+            $error = $this->install_db_script($packagedir.'/install/sample/sample.sql');
+
+            if (!empty($error)) {
+                return $error;
+            }
+        }
+
+        // x. Install sample resources
+        if (is_dir($packagedir.'/install/sample/uploads')) {
+            self::recursive_copy($packagedir.'/install/sample/uploads', UPLOAD_DIR, true);
         }
     }
 

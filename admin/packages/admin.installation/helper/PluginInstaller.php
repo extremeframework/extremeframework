@@ -5,7 +5,7 @@
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
 class PluginInstaller extends BaseInstaller {
-    function check_package_content($package_root, &$packagename) {
+    function check_package_content($package_root, &$plugin_name) {
         // x. The plugin root should contain only one directory
         $files = array_diff(scandir($package_root), array('.', '..'));
 

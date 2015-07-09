@@ -7,7 +7,7 @@
 class LinkHelper {
     static function friendly_link($module, $slug, $id) {
         $module = str_replace('-', '', $module);
-        $suffix = get_option('url-rewrite-suffix');
+        $suffix = get_option('url-rewrite-suffix', '', null, false);
 
         if ($module == 'page') {
             $full = self::getFullPageSlug($id);

@@ -116,6 +116,8 @@ class BaseInstaller {
                 }
             }
         }
+
+        TransactionHelper::end();
     }
 
     function download($url, $dest) {
