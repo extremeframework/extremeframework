@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TITLE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_SLUG"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_POST_TYPE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_POST_TYPE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-type form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-category">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_POST_CATEGORY"}></label>
+        		    <label><{_t('L_POST_CATEGORY')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-category" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IMAGE"}></label>
+        		    <label><{_t('L_IMAGE')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -213,7 +213,7 @@
         <{else}>
     		<td class="form-row form-row-meta-keywords">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_META_KEYWORDS"}></label>
+        		    <label><{_t('L_META_KEYWORDS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-keywords" colspan="3">
@@ -243,7 +243,7 @@
         <{else}>
     		<td class="form-row form-row-meta-description">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_META_DESCRIPTION"}></label>
+        		    <label><{_t('L_META_DESCRIPTION')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-description" colspan="3">
@@ -274,7 +274,7 @@
         <{else}>
     		<td class="form-row form-row-excerpt">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_EXCERPT"}></label>
+        		    <label><{_t('L_EXCERPT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-excerpt" colspan="3">
@@ -305,7 +305,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_CONTENT"}></label>
+        		    <label><{_t('L_CONTENT')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -336,7 +336,7 @@
         <{else}>
     		<td class="form-row form-row-tags">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TAGS"}></label>
+        		    <label><{_t('L_TAGS')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tags" colspan="3">
@@ -366,7 +366,7 @@
         <{else}>
     		<td class="form-row form-row-author">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_AUTHOR"}></label>
+        		    <label><{_t('L_AUTHOR')}></label>
                 </div>
             </td>
             <td class="form-row form-row-author" colspan="3">
@@ -396,7 +396,7 @@
         <{else}>
     		<td class="form-row form-row-external-link">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_EXTERNAL_LINK"}></label>
+        		    <label><{_t('L_EXTERNAL_LINK')}></label>
                 </div>
             </td>
             <td class="form-row form-row-external-link" colspan="3">
@@ -426,7 +426,7 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_TEMPLATE"}><span class="mandatory">*</span></label>
+        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
@@ -473,14 +473,14 @@
         <{else}>
     		<td class="form-row form-row-is-featured">
                 <div class="form-field form-field-label">
-        		    <label><{label key="L_IS_FEATURED"}></label>
+        		    <label><{_t('L_IS_FEATURED')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-featured" colspan="3">
                 <div class="form-field form-field-value column-is-featured">
 
 
-    <span class="input-type-radio"><input class="input-is-featured" type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="1" <{if $details->IS_FEATURED}>checked="checked"<{/if}>><{label key="L_YES"}> <input type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="0" <{if !$details->IS_FEATURED}>checked="checked"<{/if}> /><{label key="L_NO"}></span>
+    <span class="input-type-radio"><input class="input-is-featured" type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="1" <{if $details->IS_FEATURED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="0" <{if !$details->IS_FEATURED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
                         <{if $columntooltips.IS_FEATURED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_FEATURED}>"></i>
                         <{/if}>
@@ -495,7 +495,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{label text="L_ADDITIONAL_INFORMATION"}></span>
+                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -506,7 +506,7 @@
                                     <tr>
                                 		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
                                             <div class="form-field form-field-label">
-                                    		    <label><{label text=$item->NAME}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
                                         <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
