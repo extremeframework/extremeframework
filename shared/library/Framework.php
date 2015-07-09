@@ -10,6 +10,7 @@ class Framework {
     static $cache = null;
     static $classmap = null;
     static $templatemap = null;
+    static $autoloadmap = null;
 
     static function register($key, $value) {
         if (self::$cache === null) {
@@ -179,7 +180,7 @@ class Framework {
                 $classpath = self::getClassPath($classname);
 
                 if (!empty($classpath)) {
-                    require_once($classpath);
+                    require ($classpath);
                 }
             });
         }
@@ -228,13 +229,9 @@ class Framework {
     }
 
     static function loadPackages($packagesdir) {
-        // Cache context
-        $cache = Cache::context(self::getCacheContextKey());
+        $autoloadmap = self::getAutoloadMap();
 
-        // Get cache data
-        $autoloadpaths = $cache->get('autoloadpaths');
-
-        if (!isset($autoloadpaths[$packagesdir])) {
+        if (!isset($autoloadmap[$packagesdir])) {
             $autoloads = array();
 
             if (is_dir($packagesdir)) {
@@ -257,16 +254,38 @@ class Framework {
                 }
             }
 
-            $autoloadpaths[$packagesdir] = $autoloads;
+            $autoloadmap[$packagesdir] = $autoloads;
 
-            $cache->set('autoloadpaths', $autoloadpaths);
+            self::updateAutoloadMap($autoloadmap);
         }
 
-        $autoloads = $autoloadpaths[$packagesdir];
+        $autoloads = $autoloadmap[$packagesdir];
 
         foreach ($autoloads as $autoload) {
             include ($autoload);
         }
+    }
+
+    private static function getAutoloadMap() {
+        if (self::$autoloadmap === null) {
+            $file = APPLICATION_DIR.'/cache/autoloadmap.ser';
+
+            if (file_exists($file)) {
+                self::$autoloadmap = unserialize(file_get_contents($file));
+            } else {
+                self::$autoloadmap = array();
+            }
+        }
+
+        return self::$autoloadmap;
+    }
+
+    private static function updateAutoloadMap($autoloadmap) {
+        self::$autoloadmap = $autoloadmap;
+
+        $file = APPLICATION_DIR.'/cache/autoloadmap.ser';
+
+        file_put_contents($file, serialize($autoloadmap));
     }
 
     static function hasModule($name) {
