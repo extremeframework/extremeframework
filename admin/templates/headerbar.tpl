@@ -23,10 +23,10 @@
             <{/if}>
             <{if isset($smarty.session.user) }>
                 <{if Framework::hasModule('Wallpaper')}>
-                    <li><a href="#" id="wallpaper-selector" title="<{_t('L_CHANGE_BACKGROUND_WALLPAPER')}>"><i class="fa fa-desktop"></i></a></li>
+                    <li><a href="#" id="wallpaper-selector" title="<{_t('L_CHANGE_BACKGROUND_WALLPAPER', true)}>"><i class="fa fa-desktop"></i></a></li>
                 <{/if}>
                 <{if Framework::hasModule('AdminStyle')}>
-                    <li><a href="#" id="style-selector" title="<{_t('L_CHANGE_STYLE')}>"><i class="fa fa-adjust"></i></a></li>
+                    <li><a href="#" id="style-selector" title="<{_t('L_CHANGE_STYLE', true)}>"><i class="fa fa-adjust"></i></a></li>
                 <{/if}>
                 <li>
                     <span class="dropdown" style="margin-left:15px">
@@ -107,7 +107,7 @@
             <{if $has_quick}>
                 <ul id="quick-create-menu">
                     <li class="btn-group" style="margin: 0 15px 0 15px">
-                        <i class="fa fa-plus" title="<{_t('L_QUICK_CREATE')}>" data-toggle="dropdown" style="cursor:pointer;padding: 3px;border-radius: 10px;width: 19px;height: 18px;text-align: center;"></i>
+                        <i class="fa fa-plus" title="<{_t('L_QUICK_CREATE', true)}>" data-toggle="dropdown" style="cursor:pointer;padding: 3px;border-radius: 10px;width: 19px;height: 18px;text-align: center;"></i>
                         <ul class="dropdown-menu quick-create-menu" style="margin:0px">
                             <li style="width:100%">
                                 <span class="title"><{_t('L_QUICK_CREATE')}></span>

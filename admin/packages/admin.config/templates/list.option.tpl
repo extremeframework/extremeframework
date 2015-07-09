@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="optionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/option/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="option_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="option_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#optionquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.option.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/option/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_OPTION')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_OPTION')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/option/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_OPTION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_OPTION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>

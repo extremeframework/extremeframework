@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="userlogquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/userlog/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="userlog_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="userlog_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#userlogquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.userlog.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/userlog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_USER_LOG')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_LOG')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/userlog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER_LOG', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_LOG')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>

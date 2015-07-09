@@ -3,7 +3,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="pagegalleryquicksearch" class="form-quicksearch scope-main" action="<{$smarty.const.APPLICATION_URL}>/pagegallery/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="pagegallery_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="pagegallery_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#pagegalleryquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -68,7 +68,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.pagegallery.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_PAGE_GALLERY')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_PAGE_GALLERY')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_PAGE_GALLERY', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_PAGE_GALLERY')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>

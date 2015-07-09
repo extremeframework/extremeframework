@@ -16,7 +16,7 @@
 
 <{if isset($smarty.session.user) }>
     <div id="navigation" class="hidden-print">
-        <input class="navigation-quick-search" placeholder="<{_t('L_MENU_QUICK_SEARCH')}>..."/>
+        <input class="navigation-quick-search" placeholder="<{_t('L_MENU_QUICK_SEARCH', true)}>..."/>
         <div id="navigation-tree">
             <{include file="menu.easytree.items.tpl"}>
         </div>

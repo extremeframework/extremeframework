@@ -1,8 +1,100 @@
 <?php
+function __t($text, $key = '', $insidequote = false) {
+    static $flag = false;
+
+    if (isset($_REQUEST['_configlabel'])) {
+        $_SESSION['_configlabel'] = $_REQUEST['_configlabel'];
+    }
+
+    $config = isset($_SESSION['_configlabel']) && $_SESSION['_configlabel'];
+
+    if ($config && !$insidequote) {
+        $html = '<span class="config-label" data-label-text="'.$text.'" data-label-key="'.$key.'">'.$text.'</span>';
+
+        if (!$flag) {
+            $flag = true;
+
+            $html .= '
+                <div id="config-label-panel">
+                    <div class="header">Translation</div>
+                    <div class="content">
+                        <input type="text" class="translation"/><br/>
+                    </div>
+                    <div class="footer">Key = <span class="key"></span></div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function() {
+                        $(".config-label").live("mouseover", function(e){
+                            var label = $(this);
+
+                            var panel = $("#config-label-panel");
+                            var input = panel.find("input");
+
+                            panel.show();
+                            panel.css({top: e.clientY + 10, left: e.clientX + 10});
+
+                            input.val(label.data("label-text"));
+                            input.focus();
+
+                            panel.find(".key").text(label.data("label-key"));
+
+                            input.off("keydown").on("keydown", function(e) {
+                                if (e.keyCode == 13) {
+                                    $.ajax({
+                                		type: "post",
+                                		url: APPLICATION_URL + "/adminlanguageitem/updateTranslation",
+                                		data: {key: label.data("label-key"), text: input.val()}
+                                	});
+
+                                    label.text(input.val());
+                                    panel.hide();
+                                }
+                            });
+                        });
+                    });
+                </script>
+            ';
+        }
+
+        return $html;
+    } else {
+        return $text;
+    }
+}
+
 function _t($key, $insidequote = false) {
     global $_L;
 
-    return isset($_L[$key])? $_L[$key] : $key;
+    if (isset($_L[$key])) {
+        $text = __t($_L[$key], $key, $insidequote);
+    } else {
+        $text = $key;
+
+        $is_english = !preg_match('/[^a-z0-9\s\-\?\.:,;]/i', $text);
+
+        if ($is_english) {
+            if (Framework::hasModule('AdminLabel')) {
+                $model = new AdminLabelModel();
+                $model->LABEL = $text;
+                $model->find();
+                $model->fetch();
+
+                if (!$model->ID) {
+                    $model->insert(false);
+
+                    $item = new AdminLanguageItemModel();
+                    $item->ID_ADMIN_LANGUAGE = 1;
+                    $item->ID_ADMIN_LABEL = $model->ID;
+                    $item->TRANSLATION = $text;
+
+                    $item->insert(false);
+                }
+            }
+        }
+    }
+
+    return $text;
 }
 
 function array_select($items, $field, $value) {

@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE', true)}>">x</button>
     <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_MENU_ITEM')|ucwords}></h3>
 </div>
 

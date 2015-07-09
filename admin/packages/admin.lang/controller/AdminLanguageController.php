@@ -70,14 +70,6 @@ class AdminLanguageController extends _AdminLanguageController
                 $lines[] = "\$_L['{$alim->LABEL}'] = '{$alim->TRANSLATION}';";
             }
 
-    	    $lines[] = '';
-    	    $lines[] = '/* Constants map */';
-    	    $lines[] = 'foreach ($_L as $key => $value) {';
-    	    $lines[] = '    if (preg_match(\'/^L_[A-Z0-9_]+$/\', $key)) {';
-    	    $lines[] = '        define($key, $value);';
-    	    $lines[] = '    }';
-    	    $lines[] = '}';
-
             // Write to file
             file_put_contents(SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php', implode("\n", $lines));
         }

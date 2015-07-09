@@ -45,7 +45,7 @@
 	<{plugin key="adminlanguageitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminlanguageitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT')}>"></i></a>
+            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         

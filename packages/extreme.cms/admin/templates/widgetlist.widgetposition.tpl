@@ -3,7 +3,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="widgetpositionquicksearch" class="form-quicksearch scope-main" action="<{$smarty.const.APPLICATION_URL}>/widgetposition/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="widgetposition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="widgetposition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#widgetpositionquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -68,7 +68,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.widgetposition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>

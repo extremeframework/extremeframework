@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="valuetypequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/valuetype/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="valuetype_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="valuetype_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#valuetypequicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.valuetype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_VALUE_TYPE')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_VALUE_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_VALUE_TYPE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -114,7 +114,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_VALUE_TYPE), strtolower(L_VALUE_TYPE)));
     <{/php}>
 
-    <div id="valuetypecopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_VALUE_TYPE')|strtolower}>">
+    <div id="valuetypecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
@@ -123,7 +123,7 @@
                     </ul>
     </div>
 
-    <div id="valuetypeapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_VALUE_TYPE')|strtolower}>">
+    <div id="valuetypeapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
@@ -132,7 +132,7 @@
                     </ul>
     </div>
 
-    <div id="valuetypedeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_VALUE_TYPE')|strtolower}>">
+    <div id="valuetypedeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
@@ -168,12 +168,12 @@ function valuetype_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/delete/');
             	$('#valuetypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -188,12 +188,12 @@ function valuetype_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/copy/');
             	$('#valuetypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -208,12 +208,12 @@ function valuetype_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/approve/');
             	$('#valuetypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

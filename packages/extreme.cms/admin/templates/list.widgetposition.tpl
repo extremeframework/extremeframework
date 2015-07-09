@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="widgetpositionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/widgetposition/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="widgetposition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="widgetposition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#widgetpositionquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.widgetposition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WIDGET_POSITION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -90,12 +90,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.widgetposition.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT')}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.widgetposition.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT')}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -124,7 +124,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_WIDGET_POSITION), strtolower(L_WIDGET_POSITION)));
     <{/php}>
 
-    <div id="widgetpositioncopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_WIDGET_POSITION')|strtolower}>">
+    <div id="widgetpositioncopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
@@ -133,7 +133,7 @@
                     </ul>
     </div>
 
-    <div id="widgetpositionapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_WIDGET_POSITION')|strtolower}>">
+    <div id="widgetpositionapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
@@ -142,7 +142,7 @@
                     </ul>
     </div>
 
-    <div id="widgetpositiondeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_WIDGET_POSITION')|strtolower}>">
+    <div id="widgetpositiondeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
@@ -178,12 +178,12 @@ function widgetposition_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#widgetpositionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgetposition/delete/');
             	$('#widgetpositionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -198,12 +198,12 @@ function widgetposition_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#widgetpositionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgetposition/copy/');
             	$('#widgetpositionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -218,12 +218,12 @@ function widgetposition_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#widgetpositionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgetposition/approve/');
             	$('#widgetpositionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

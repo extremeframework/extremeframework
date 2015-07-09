@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="usergroupquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/usergroup/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="usergroup_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="usergroup_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#usergroupquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.usergroup.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_USER_GROUP')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_GROUP')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER_GROUP', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_GROUP')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -114,7 +114,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_USER_GROUP), strtolower(L_USER_GROUP)));
     <{/php}>
 
-    <div id="usergroupcopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_USER_GROUP')|strtolower}>">
+    <div id="usergroupcopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
@@ -126,7 +126,7 @@
                     </ul>
     </div>
 
-    <div id="usergroupapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_USER_GROUP')|strtolower}>">
+    <div id="usergroupapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
@@ -138,7 +138,7 @@
                     </ul>
     </div>
 
-    <div id="usergroupdeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_USER_GROUP')|strtolower}>">
+    <div id="usergroupdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
@@ -177,12 +177,12 @@ function usergroup_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/delete/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -197,12 +197,12 @@ function usergroup_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/copy/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -217,12 +217,12 @@ function usergroup_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/approve/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

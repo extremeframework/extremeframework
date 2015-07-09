@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="postquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/post/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="post_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="post_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#postquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.post.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_POST')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -90,12 +90,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT')}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT')}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>
@@ -146,7 +146,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_POST), strtolower(L_POST)));
     <{/php}>
 
-    <div id="postcopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_POST')|strtolower}>">
+    <div id="postcopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_POST', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
@@ -164,7 +164,7 @@
                     </ul>
     </div>
 
-    <div id="postapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_POST')|strtolower}>">
+    <div id="postapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_POST', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
@@ -182,7 +182,7 @@
                     </ul>
     </div>
 
-    <div id="postdeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_POST')|strtolower}>">
+    <div id="postdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_POST', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
@@ -227,12 +227,12 @@ function post_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/delete/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -247,12 +247,12 @@ function post_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/copy/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -267,12 +267,12 @@ function post_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/approve/');
             	$('#postlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

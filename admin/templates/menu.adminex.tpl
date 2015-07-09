@@ -17,7 +17,7 @@
 <{if isset($smarty.session.user) }>
     <div class="left-side sticky-left-side" tabindex="5000" style="overflow: hidden; outline: none;">
         <div class="left-side-inner">
-            <input class="navigation-quick-search" placeholder="<{_t('L_MENU_QUICK_SEARCH')}>..."/>
+            <input class="navigation-quick-search" placeholder="<{_t('L_MENU_QUICK_SEARCH', true)}>..."/>
             <{include file="menu.adminex.items.tpl" menus=$smarty.session.menu parent=0 depth=0}>
         </div>
     </div>

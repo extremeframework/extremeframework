@@ -49,7 +49,7 @@
     	<{if $details->UUID}>
     		    			<{if isset($smarty.session.acl.widgettype.edit) && WorkflowHelper::isEditable($details->WFID)}>
         		    <div class="button-general">
-        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT')}>"><i class="fa fa-pencil"></i></a>
+        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
         		    </div>
     		    <{/if}>
     		    	    <{foreach from=$additional_view_buttons item=button}>
@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.widgettype.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/delete/<{$details->UUID}>" title="<{_t('L_DELETE')}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>

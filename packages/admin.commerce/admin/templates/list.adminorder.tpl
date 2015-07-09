@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminorderquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminorder/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="adminorder_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="adminorder_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminorderquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminorder.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_ADMIN_ORDER')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_ORDER')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_ORDER', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_ORDER')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -90,12 +90,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.adminorder.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT')}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.adminorder.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/adminorder/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT')}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/adminorder/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>
@@ -146,7 +146,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_ADMIN_ORDER), strtolower(L_ADMIN_ORDER)));
     <{/php}>
 
-    <div id="adminordercopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_ADMIN_ORDER')|strtolower}>">
+    <div id="adminordercopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_ADMIN_ORDER', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrderItem')}>
@@ -155,7 +155,7 @@
                     </ul>
     </div>
 
-    <div id="adminorderapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_ADMIN_ORDER')|strtolower}>">
+    <div id="adminorderapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_ADMIN_ORDER', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrderItem')}>
@@ -164,7 +164,7 @@
                     </ul>
     </div>
 
-    <div id="adminorderdeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_ADMIN_ORDER')|strtolower}>">
+    <div id="adminorderdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_ADMIN_ORDER', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrderItem')}>
@@ -200,12 +200,12 @@ function adminorder_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#adminorderlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminorder/delete/');
             	$('#adminorderlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -220,12 +220,12 @@ function adminorder_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#adminorderlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminorder/copy/');
             	$('#adminorderlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -240,12 +240,12 @@ function adminorder_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#adminorderlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminorder/approve/');
             	$('#adminorderlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

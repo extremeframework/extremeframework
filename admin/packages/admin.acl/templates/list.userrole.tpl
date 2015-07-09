@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="userrolequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/userrole/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="userrole_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="userrole_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#userrolequicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.userrole.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_USER_ROLE')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_ROLE')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER_ROLE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_ROLE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -114,7 +114,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_USER_ROLE), strtolower(L_USER_ROLE)));
     <{/php}>
 
-    <div id="userrolecopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_USER_ROLE')|strtolower}>">
+    <div id="userrolecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
@@ -126,7 +126,7 @@
                     </ul>
     </div>
 
-    <div id="userroleapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_USER_ROLE')|strtolower}>">
+    <div id="userroleapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
@@ -138,7 +138,7 @@
                     </ul>
     </div>
 
-    <div id="userroledeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_USER_ROLE')|strtolower}>">
+    <div id="userroledeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
@@ -177,12 +177,12 @@ function userrole_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/delete/');
             	$('#userrolelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -197,12 +197,12 @@ function userrole_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/copy/');
             	$('#userrolelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -217,12 +217,12 @@ function userrole_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/approve/');
             	$('#userrolelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}

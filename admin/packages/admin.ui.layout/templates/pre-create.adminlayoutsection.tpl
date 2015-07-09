@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE')}>">x</button>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE', true)}>">x</button>
     <h3><{_t('L_NEW')|ucwords}> <{_t('L_ADMIN_LAYOUT_SECTION')|ucwords}></h3>
 </div>
 

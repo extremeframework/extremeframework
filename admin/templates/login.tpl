@@ -38,7 +38,7 @@
         <div class="form-row">
     		<label for="signin_password"><{_t('L_PASSWORD')}></label>
     		<div class="form-field">
-    		    <input name="password" id="signin_password" type="password" autocorrect="off" placeholder="<{_t('L_PASSWORD')}>" autocapitalize="off" />
+    		    <input name="password" id="signin_password" type="password" autocorrect="off" placeholder="<{_t('L_PASSWORD', true)}>" autocapitalize="off" />
     		</div>
     	</div>
 

@@ -1319,14 +1319,14 @@ class Pagination extends Object
 		// Initialize variables
 		$data = new stdClass();
 
-		$data->all	= new PaginationObject(_t('L_PAGING_VIEW_ALL'));
+		$data->all	= new PaginationObject(_t('L_PAGING_VIEW_ALL', true));
 		if (!$this->_viewall) {
 			$data->all->base	= '0';
 		}
 
 		// Set the start and previous data objects
-		$data->start	= new PaginationObject(_t('L_PAGING_START'));
-		$data->previous	= new PaginationObject(_t('L_PAGING_PREV'), null, null, 'pagination-prev');
+		$data->start	= new PaginationObject(_t('L_PAGING_START', true));
+		$data->previous	= new PaginationObject(_t('L_PAGING_PREV', true), null, null, 'pagination-prev');
 
 		if ($this->get('pages.current') > 1)
 		{
@@ -1337,8 +1337,8 @@ class Pagination extends Object
 		}
 
 		// Set the next and end data objects
-		$data->next	= new PaginationObject(_t('L_PAGING_NEXT'), null, null, 'pagination-next');
-		$data->end	= new PaginationObject(_t('L_PAGING_END'));
+		$data->next	= new PaginationObject(_t('L_PAGING_NEXT', true), null, null, 'pagination-next');
+		$data->end	= new PaginationObject(_t('L_PAGING_END', true));
 
 		if ($this->get('pages.current') < $this->get('pages.total'))
 		{

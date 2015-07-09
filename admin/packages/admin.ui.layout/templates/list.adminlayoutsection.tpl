@@ -8,7 +8,7 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminlayoutsectionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/search" method="post" enctype="multipart/form-data">
-            <input type="text" name="adminlayoutsection_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH')}>" />
+            <input type="text" name="adminlayoutsection_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminlayoutsectionquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
             </a>
@@ -73,7 +73,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminlayoutsection.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></span></a>
+            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_LAYOUT_SECTION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -114,7 +114,7 @@
     	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_ADMIN_LAYOUT_SECTION), strtolower(L_ADMIN_LAYOUT_SECTION)));
     <{/php}>
 
-    <div id="adminlayoutsectioncopyrelations" style="display:none" title="<{_t('L_COPY')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}>">
+    <div id="adminlayoutsectioncopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_ADMIN_LAYOUT_SECTION', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminLayoutField')}>
@@ -123,7 +123,7 @@
                     </ul>
     </div>
 
-    <div id="adminlayoutsectionapproverelations" style="display:none" title="<{_t('L_APPROVE')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}>">
+    <div id="adminlayoutsectionapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_ADMIN_LAYOUT_SECTION', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminLayoutField')}>
@@ -132,7 +132,7 @@
                     </ul>
     </div>
 
-    <div id="adminlayoutsectiondeleterelations" style="display:none" title="<{_t('L_DELETE')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}>">
+    <div id="adminlayoutsectiondeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_ADMIN_LAYOUT_SECTION', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminLayoutField')}>
@@ -168,12 +168,12 @@ function adminlayoutsection_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE')}>": function() {
+			"<{_t('L_DELETE', true)}>": function() {
             	$('#adminlayoutsectionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/delete/');
             	$('#adminlayoutsectionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -188,12 +188,12 @@ function adminlayoutsection_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY')}>": function() {
+			"<{_t('L_COPY', true)}>": function() {
             	$('#adminlayoutsectionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/copy/');
             	$('#adminlayoutsectionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -208,12 +208,12 @@ function adminlayoutsection_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE')}>": function() {
+			"<{_t('L_APPROVE', true)}>": function() {
             	$('#adminlayoutsectionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/approve/');
             	$('#adminlayoutsectionlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL')}>": function() {
+			"<{_t('L_CANCEL', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
