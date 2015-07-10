@@ -49,15 +49,10 @@
     min-height: 29px;
     color: #444;
     font-weight: bold;
-    font-family: Arial;
 }
 
 .edit-main .form-field-label label {
     color: #333;
-}
-
-body.module .main-content {
-    background-color: #F1F1F1;
 }
 
 .view_details .form-field-label,

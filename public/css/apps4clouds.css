@@ -230,7 +230,6 @@ div#heading .inner {
 
 /* Paragraphs */
 p {
-    font-size: 15px;
     font-weight:normal;
     line-height: 24px;
     text-align: justify;
@@ -279,7 +278,7 @@ div.section {
 }
 /* Search form */
 .searchform {
-    background-color: #78A5E9;
+    background-color: #F0F0F0;
     margin-top: 10px;
     margin-bottom: 5px;
     padding: 3px 5px;
@@ -287,20 +286,19 @@ div.section {
 .searchform .blocker {
     margin-right: 5px;
 }
-.searchform label {
-    font-weight: normal;
+.searchform .form-row label {
+    font-weight: bold;
     margin: 5px 10px 5px 0!important;
     padding-left: 5px!important;
-    color: white;
 }
 .searchform .buttons span {
     height: 20px;
-    border-radius: 10px;
     margin: 3px;
     padding: 3px 5px 3px 5px;
+    border: 1px solid rgb(216, 216, 216);
 }
 .searchform .buttons a {
-    color: white;
+    color: #333;
     text-decoration: none;
 }
 .searchform .ui-datepicker-append {
@@ -381,7 +379,7 @@ table.item_list th,table.item_list td {
 	padding: 6px 8px;
 	line-height: 25px;
     vertical-align: middle;
-    border-right: 1px solid #CCC;
+    xborder-right: 1px solid #CCC;
 }
 table.item_list th:first-child,table.item_list td:first-child {
     border-right: 0;
@@ -1051,8 +1049,12 @@ table.live-report th,table.live-report td {
 }
 
 body.module .main-content {
-    background-color: #F1F1F1;
+    background-color: #f1f1f1;
     overflow: hidden;
+}
+
+body[data-type="list"] .main-content {
+    background-color: #ffffff;
 }
 
 div#heading{
@@ -1172,10 +1174,6 @@ body#signin #heading h1 {
 }
 
 /* Buttons */
-.btn {
-    font-size: 14px;
-}
-
 .button-general {
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	background-color: white;
@@ -1246,7 +1244,6 @@ table.item_list thead tr {
     color: #444444;
     font-weight: normal;
     text-shadow: none;
-    background-color: #f5f5f5;
     border-color: #f3f3f4 #f3f3f4 #cbcbcf;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     border-bottom: 1px solid #dddddd;
@@ -1257,10 +1254,6 @@ table.item_list thead tr {
     color: #666;
 }
 
-table.item_list tr td:nth-child(3) {
-    white-space: nowrap;
-}
-
 table.item_list tr td:nth-child(3) a {
     text-decoration: none;
 }
@@ -1268,6 +1261,13 @@ table.item_list tr td:nth-child(3) a {
 .row-expander {
     width: 15px;
     cursor: pointer;
+}
+
+.view-main .row-expander {
+    width: 0px;
+    position: relative;
+    left: -10px;
+    color: #aaa;
 }
 
 table.item_list .embedded-view {
@@ -1546,6 +1546,10 @@ table.item_list .embedded-view .table tr {
     overflow: visible !important;
 }
 
+.left-side-collapsed .nicescroll-rails {
+    display: none!important;
+}
+
 /* LEFT SIDE FULL */
 .left-side-full .left-side {
     width: 220px;
@@ -1576,7 +1580,6 @@ table.item_list .embedded-view .table tr {
     height: 100%;
 }
 #navigation a {
-    font-size: 15px;
     font-weight:normal;
     color:#000;
     white-space: nowrap;
@@ -1773,9 +1776,6 @@ del {
 }
 
 /* Main body */
-.main-content {
-    font-size: 15px;
-}
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected {
     padding-bottom: 0px;
 }
@@ -2264,7 +2264,6 @@ div.button-save-more:hover {
     width: 680px;
     height: 380px;
     font-family: "Courier New", Courier, monospace;
-    font-size: 14px;
     color: #000;
     overflow: scroll;
 }
@@ -2637,7 +2636,7 @@ div.button-save-more:hover {
 
 /* ACE editor */
 .ace_editor {
-    font-size: 14px!important;
+    font-size: 13px!important;
 }
 
 /* Standard block */
@@ -2687,7 +2686,6 @@ div.button-save-more:hover {
 
 .select2-results .select2-result-label {
     padding: 0 0 0 5px;
-    font-size: 15px;
 }
 
 /* Corner ribbon */

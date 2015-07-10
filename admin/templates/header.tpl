@@ -16,8 +16,8 @@ var DATE_FORMAT = "<{$smarty.const.DATE_FORMAT}>";
 var DEFAULT_CURRENCY_SYMBOL = "<{$smarty.const.DEFAULT_CURRENCY_SYMBOL}>";
 </script>
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic&subset=latin,vietnamese" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" media="all" href="<{$smarty.const.APPLICATION_URL}>/css/apps4clouds.header.css" />
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:light,italic,bold"/>
+<link rel="stylesheet" type="text/css" href="<{$smarty.const.APPLICATION_URL}>/css/apps4clouds.header.css" media="all"/>
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/js/apps4clouds.header.js"></script>
 
 <{plugin key="generic_head" args=""}>

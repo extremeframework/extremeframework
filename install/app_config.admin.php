@@ -5,6 +5,7 @@ define('APPLICATION_NAME' 	                    , '{APPLICATION_NAME}');
 define('APPLICATION_TYPE' 	                    , 'admin');
 define('APPLICATION_DIR'						, dirname(__FILE__));
 define('APPLICATION_URL'						, $scheme.'{APPLICATION_URL}');
+define('THEME_NAME'						        , 'admin');
 define('THEME_URL'						        , APPLICATION_URL);
 define('THEME_DIR'						        , APPLICATION_DIR);
 define('TEMPLATE_DIR'							, dirname(__FILE__).'/templates');

@@ -6,7 +6,9 @@
  */
 defined('APPLICATION_DIR') OR exit();
 
-include(dirname(__FILE__).'/shared/autoload.php');
+if (is_dir(dirname(__FILE__).'/shared')) {
+    include(dirname(__FILE__).'/shared/autoload.php');
+}
 
 if (is_dir(dirname(__FILE__).'/'.APPLICATION_TYPE)) {
     include(dirname(__FILE__).'/'.APPLICATION_TYPE.'/autoload.php');

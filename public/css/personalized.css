@@ -46,26 +46,26 @@
 }
 #issuelist td.indicators {
     background: url(../images/icon-email.png) no-repeat;
-    width: 15px;
-    background-position-y: center;
+    width: 38px;
+    background-position: 18px center;
 }
 
 #issuelist .priority-high td.indicators {
     background: url(../images/high-priority.png) no-repeat;
-    width: 19px;
-    background-position-y: center;
+    width: 43px;
+    background-position: 18px center;
 }
 
 #issuelist .priority-low td.indicators {
     background: url(../images/icon-attachment.png) no-repeat;
-    width: 15px;
-    background-position-y: center;
+    width: 38px;
+    background-position: 18px center;
 }
 
 #issuelist .status-inprogress td.indicators {
     background: url(../images/icon-hourglass.png) no-repeat;
-    width: 15px;
-    background-position-y: center;
+    width: 38px;
+    background-position: 18px center;
 }
 
 .ui-widget-header .ui-state-default {
@@ -281,7 +281,6 @@ span.easytree-icon {
     list-style: none;
     margin: 0;
     padding: 0;
-    font-size: 15px;
     width: 350px;
     max-height: 300px;
     overflow-y: auto;
