@@ -698,10 +698,6 @@ div.col h3 a {
 .attribute-value p {
 	line-height: 1.8em;
 }
-.type-textarea .attribute-value {
-    clear: both;
-    padding: 10px 5px;
-}
 
 /* View - inline edit message */
 .attribute-value .edit-mode .message span {
@@ -886,7 +882,8 @@ div.col h3 a {
 .form-field input,.form-field select {
 	height:30px;
 }
-.form-field textarea {
+.form-field textarea,
+.type-textarea .attribute-value {
 	overflow: hidden;
 	padding: 5px;
     font-family: tahoma,verdana,arial,sans-serif;
