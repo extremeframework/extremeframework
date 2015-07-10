@@ -99,7 +99,7 @@ class Framework {
         $templatemap = self::getTemplateMap();
 
         foreach ($templatemap as $packageroot => $dirs) {
-            if (stripos($filedir, $packageroot) !== false) {
+            if (preg_match('/^'.preg_quote($packageroot).'[\/\\\]{1}/i', $filedir)) {
                 return $dirs;
             }
         }
