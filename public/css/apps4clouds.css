@@ -2,7 +2,7 @@ body {
 	font-family: 'Roboto', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: subpixel-antialiased;
 
-    color: #666;
+    color: #000;
     padding: 0;
 }
 
@@ -889,6 +889,8 @@ div.col h3 a {
 .form-field textarea {
 	overflow: hidden;
 	padding: 5px;
+    font-family: tahoma,verdana,arial,sans-serif;
+    font-size: 13px;
 	line-height: 1.8em;
 }
 .message {
@@ -1259,12 +1261,11 @@ table.item_list tr td:nth-child(3) a {
 }
 
 .row-expander {
-    width: 15px;
+    width: 0px;
     cursor: pointer;
 }
 
 .view-main .row-expander {
-    width: 0px;
     position: relative;
     left: -10px;
     color: #aaa;
@@ -2256,9 +2257,11 @@ div.button-save-more:hover {
 }
 
 /* Input sizes by types */
-.input-type-text,
-.form-field textarea {
+.input-type-text {
     width: 310px;
+}
+.form-field textarea {
+    width: 680px;
 }
 .form-field textarea.enable-html {
     width: 680px;

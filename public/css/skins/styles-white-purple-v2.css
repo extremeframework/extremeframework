@@ -85,12 +85,6 @@ table.item_list td.onflyedit textarea {
     border: 1px solid #1BC2A2!important;
 }
 
-.edit_details .form-field .select2-container {
-    border: 1px solid #1BC2A2;
-    border-radius: 3px;
-    border-color: rgb(81, 81, 81);
-}
-
 .edit_details span.input-type-radio {
     background-color: white;
     padding: 6px 10px 2px 7px;

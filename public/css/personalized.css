@@ -2,10 +2,6 @@
     background: transparent!important;
 }
 
-#issuelist th.column-title {
-    width: 400px;
-}
-
 #issuelist .column-id-issue-status span {
     border-radius: 14px;
     display: inline-block;
