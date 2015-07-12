@@ -44,11 +44,6 @@ Extreme Framework is so lightweight and intuitive. There is almost no namespace,
     <{/foreach}>
 ```
 
-##Setup Instructions
-
-1. [Fork and clone the repo.](https://help.github.com/articles/fork-a-repo)
-2. ...
-
 ## Resources
 * Official site: http://extremeframework.com/
 * Documentation: http://extremeframework.com/start/
@@ -59,7 +54,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 
 ## Contributing
 
-Anyone and everyone is welcome to contribute. We follow the "fork-and-pull" Git workflow below for submitting patches and additions.
+Anyone and everyone is welcome to contribute
 
  1. Fork the repo on GitHub
  2. Commit changes to a branch in your fork
@@ -67,32 +62,3 @@ Anyone and everyone is welcome to contribute. We follow the "fork-and-pull" Git 
  4. Merge changes in to "upstream" repo
 
 NOTE: Be sure to merge the latest from "upstream" before making a pull request!
-
-### Contributing code written by others
-
-Please do not contribute code you did not write yourself, unless you are certain you have the legal ability to do so. Also ensure all code contributed can be licensed under the MIT License.
-
-## Licensing
-The MIT License (MIT)
-
-Copyright (c) 2011-2015 VIETMAI Solutions Corporation
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-A copy of the license is available in the repository's [LICENSE](LICENSE) file.
