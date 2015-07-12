@@ -14,36 +14,6 @@ Extreme Framework has a full built-in system with core authentication, access ri
 ### Lightweight and Intuitive
 Extreme Framework is so lightweight and intuitive. There is almost no namespace, convention, constraints or configuration to learn about. Anyone with basic PHP knowledge can start with Extreme Framework very quickly.
 
-## Sample snippet
-```php
-    <?php
-    class GreetingController 
-    { 
-        function helloAction() { 
-            $model = new UserModel();
-    
-            $model->find();
-            
-            $users = array();
-    
-            while ($model->fetch()) {
-                $users[] = clone $model;
-            }
-    
-            $smarty = Framework::load('smarty');
-    
-            $smarty->assign('users', $users);
-    
-            $smarty->display('users.tpl');
-        } 
-    } 
-    
-    // with users.tpl:
-    <{foreach from=$users item=user}>
-        Hello <{$user->NAME}><br/>
-    <{/foreach}>
-```
-
 ## Resources
 * Official site: http://extremeframework.com/
 * Documentation: http://extremeframework.com/start/
