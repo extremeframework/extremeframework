@@ -639,7 +639,7 @@ class _PageWidgetController extends __AppController
 		return $value;
 	}
 
-    private function form2model($prefix = null, &$columns2check = null) {
+    protected function form2model($prefix = null, &$columns2check = null) {
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('pagewidget');
         $customfieldvalues = array();
 
