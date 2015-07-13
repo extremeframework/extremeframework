@@ -14,36 +14,21 @@ Extreme Framework has a full built-in system with core authentication, access ri
 ### Lightweight and Intuitive
 Extreme Framework is so lightweight and intuitive. There is almost no namespace, convention, constraints or configuration to learn about. Anyone with basic PHP knowledge can start with Extreme Framework very quickly.
 
-## Sample snippet
-```php
-    <?php
-    class GreetingController 
-    { 
-        function helloAction() { 
-            $model = new UserModel();
-    
-            $model->find();
-            
-            $users = array();
-    
-            while ($model->fetch()) {
-                $users[] = clone $model;
-            }
-    
-            $smarty = Framework::load('smarty');
-    
-            $smarty->assign('users', $users);
-    
-            $smarty->display('users.tpl');
-        } 
-    } 
-    
-    // with users.tpl:
-    <{foreach from=$users item=user}>
-        Hello <{$user->NAME}><br/>
-    <{/foreach}>
-```
-
-## References
+## Resources
 * Official site: http://extremeframework.com/
 * Documentation: http://extremeframework.com/start/
+
+## Issues
+
+Find a bug or want to request a new feature?  Please let us know by submitting an [issue](https://github.com/extremeframework/extremeframework/issues?state=open).
+
+## Contributing
+
+Anyone and everyone is welcome to contribute
+
+ 1. Fork the repo on GitHub
+ 2. Commit changes to a branch in your fork
+ 3. Pull request "upstream" with your changes
+ 4. Merge changes in to "upstream" repo
+
+NOTE: Be sure to merge the latest from "upstream" before making a pull request!
