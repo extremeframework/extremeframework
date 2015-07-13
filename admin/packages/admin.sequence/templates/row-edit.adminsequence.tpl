@@ -29,7 +29,7 @@
                         
                             <input class="input-module" type="text" name="<{$prefix}>adminsequence_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/view/<{$row->UUID}>"><{/if}>	<{$row->MODULE|escape}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/view/<{$row->UUID}>"><{/if}>	<{$row->MODULE|escape}>
 <{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
@@ -47,7 +47,7 @@
                         
                             <input class="input-sequence-format" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_FORMAT" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/view/<{$row->UUID}>"><{/if}>	<{$row->SEQUENCE_FORMAT|escape}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminsequence/view/<{$row->UUID}>"><{/if}>	<{$row->SEQUENCE_FORMAT|escape}>
 <{if isset($smarty.session.acl.adminsequence.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>

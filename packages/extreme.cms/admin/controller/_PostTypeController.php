@@ -347,6 +347,8 @@ class _PostTypeController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('posttype_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('posttype', 'delete');
     }
 
     public function deleteAction() {
@@ -700,6 +702,8 @@ class _PostTypeController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('posttype_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('posttype', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -749,6 +753,7 @@ class _PostTypeController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('posttype_updated', $model, $old);
+                NotificationHelper::notifyChange('posttype', 'update');
             } else {
                 $model->ID = null;
                 
@@ -760,6 +765,7 @@ class _PostTypeController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('posttype_created', $model);
+    		    NotificationHelper::notifyChange('posttype', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1226,11 +1232,12 @@ class _PostTypeController extends __AppController
         LicenseController::enforceLicenseCheck('posttype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('posttype');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1239,10 +1246,11 @@ class _PostTypeController extends __AppController
         LicenseController::enforceLicenseCheck('posttype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('posttype');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -1986,6 +1994,7 @@ class _PostTypeController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('posttype_imported', $model);
+            NotificationHelper::notifyChange('posttype', 'insert');
 		}
 
         return true;

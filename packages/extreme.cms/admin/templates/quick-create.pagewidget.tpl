@@ -167,7 +167,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-type" class="input-id-widget-type" name="`$prefix`pagewidget_formdata_ID_WIDGET_TYPE" value=$details->ID_WIDGET_TYPE text=$details->reftext_ID_WIDGET_TYPE datasource="WIDGET_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-widget-type input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_TYPE" value="<{$details->ID_WIDGET_TYPE|escape}>"  />
@@ -382,7 +382,7 @@
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
                 <strong><{_t('L_SAVE')}></strong>
             </button>
-                            <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/new">
+                            <a class="btn btn-full-form scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/new">
                     <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
@@ -396,10 +396,12 @@
     	bind_hotkey('#pagewidgetform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#pagewidgetform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

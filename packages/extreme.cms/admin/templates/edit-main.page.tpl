@@ -126,7 +126,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>page_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
@@ -290,7 +290,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
                 </span>
                     <{else}>
             <input class="input-id-template input-type-text" type="text" name="<{$prefix}>page_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE|escape}>"  />
@@ -626,7 +626,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-custom-top-id-menu" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$details->CUSTOM_TOP_ID_MENU text=$details->reftext_CUSTOM_TOP_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
                 </span>
                     <{else}>
             <input class="input-custom-top-id-menu input-type-text" type="text" name="<{$prefix}>page_formdata_CUSTOM_TOP_ID_MENU" value="<{$details->CUSTOM_TOP_ID_MENU|escape}>"  />
@@ -663,7 +663,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-custom-side-id-menu" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$details->CUSTOM_SIDE_ID_MENU text=$details->reftext_CUSTOM_SIDE_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
                 </span>
                     <{else}>
             <input class="input-custom-side-id-menu input-type-text" type="text" name="<{$prefix}>page_formdata_CUSTOM_SIDE_ID_MENU" value="<{$details->CUSTOM_SIDE_ID_MENU|escape}>"  />
@@ -730,7 +730,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-view-more-id-page input-type-text" type="text" name="<{$prefix}>page_formdata_VIEW_MORE_ID_PAGE" value="<{$details->VIEW_MORE_ID_PAGE|escape}>"  />

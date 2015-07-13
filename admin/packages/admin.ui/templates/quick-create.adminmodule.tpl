@@ -370,10 +370,12 @@
     	bind_hotkey('#adminmoduleform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#adminmoduleform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

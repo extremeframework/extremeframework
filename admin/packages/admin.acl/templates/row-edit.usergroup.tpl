@@ -29,7 +29,7 @@
                         
                             <input class="input-name" type="text" name="<{$prefix}>usergroup_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
 <{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
@@ -48,12 +48,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$formdata.DEFAULT_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_DEFAULT_ID_DASHBOARD}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_DEFAULT_ID_DASHBOARD}>
         <{if $alreadyhaslink && isset($smarty.session.acl.dashboard.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/view/<{$row->refuuid_DEFAULT_ID_DASHBOARD}>"><{$row->reftext_DEFAULT_ID_DASHBOARD|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/view/<{$row->refuuid_DEFAULT_ID_DASHBOARD}>"><{$row->reftext_DEFAULT_ID_DASHBOARD|escape}></a>
         <{else}>
             <{$row->reftext_DEFAULT_ID_DASHBOARD|escape}>        <{/if}>
     <{else}>

@@ -81,7 +81,7 @@
     <span class="h">Install a <{ucfirst(_t($title))}></span>
     <a href="#" class="use-upload btn-heading">Upload</a>
     <a href="#" class="use-browse btn-heading">Browse</a>
-    <a class="scope-main btn-heading" style="background:none;" href="<{$smarty.const.APPLICATION_URL}>/installation/">Back</a>
+    <a class="scope-main cachable btn-heading" style="background:none;" href="<{$smarty.const.APPLICATION_URL}>/installation/">Back</a>
 </h1>
 
 <{if $messages.installation}>

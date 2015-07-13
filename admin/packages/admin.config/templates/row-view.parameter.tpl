@@ -10,7 +10,7 @@
             <{if (in_array('NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
 <{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
@@ -18,7 +18,7 @@
 	        <{if (in_array('CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
 <{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
@@ -26,9 +26,9 @@
 	        <{if (in_array('ID_PARAMETER_GROUP', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_PARAMETER_GROUP']) && ((isset($aclviewablecolumns['ID_PARAMETER_GROUP']) && $aclviewablecolumns['ID_PARAMETER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PARAMETER_GROUP']) || $aclviewablecolumns['ID_PARAMETER_GROUP']))) }>
                 <td class="column column-id-parameter-group reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PARAMETER_GROUP}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PARAMETER_GROUP}>
         <{if $alreadyhaslink && isset($smarty.session.acl.parametergroup.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$row->refuuid_ID_PARAMETER_GROUP}>"><{$row->reftext_ID_PARAMETER_GROUP|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$row->refuuid_ID_PARAMETER_GROUP}>"><{$row->reftext_ID_PARAMETER_GROUP|escape}></a>
         <{else}>
             <{$row->reftext_ID_PARAMETER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -41,9 +41,9 @@
 	        <{if (in_array('ID_PARAMETER_TYPE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_PARAMETER_TYPE']) && ((isset($aclviewablecolumns['ID_PARAMETER_TYPE']) && $aclviewablecolumns['ID_PARAMETER_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PARAMETER_TYPE']) || $aclviewablecolumns['ID_PARAMETER_TYPE']))) }>
                 <td class="column column-id-parameter-type reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PARAMETER_TYPE}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parameter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PARAMETER_TYPE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.parametertype.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->refuuid_ID_PARAMETER_TYPE}>"><{$row->reftext_ID_PARAMETER_TYPE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->refuuid_ID_PARAMETER_TYPE}>"><{$row->reftext_ID_PARAMETER_TYPE|escape}></a>
         <{else}>
             <{$row->reftext_ID_PARAMETER_TYPE|escape}>        <{/if}>
     <{else}>
@@ -69,7 +69,7 @@
 	<{plugin key="parameter_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.parameter.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/parameter/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parameter/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         
@@ -87,7 +87,7 @@
 
     	        <ul class="dropdown-menu pull-right">
     	            <{foreach from=$admin_view_options item=view}>
-                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/booking/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
+                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/parameter/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
                     <{/foreach}>
                 </ul>
     	    </span>

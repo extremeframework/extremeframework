@@ -134,7 +134,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-value-type" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$details->ID_VALUE_TYPE text=$details->reftext_ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new" title="Create a New Value Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new" title="Create a New Value Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-value-type input-type-text" type="text" name="<{$prefix}>screenfield_formdata_ID_VALUE_TYPE" value="<{$details->ID_VALUE_TYPE|escape}>"  />
@@ -319,7 +319,7 @@
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
                 <strong><{_t('L_SAVE')}></strong>
             </button>
-                            <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/screenfield/new">
+                            <a class="btn btn-full-form scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/new">
                     <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
@@ -333,10 +333,12 @@
     	bind_hotkey('#screenfieldform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#screenfieldform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

@@ -435,6 +435,8 @@ class _PostSectionController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('postsection_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('postsection', 'delete');
     }
 
     public function deleteAction() {
@@ -781,6 +783,8 @@ class _PostSectionController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('postsection_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('postsection', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -830,6 +834,7 @@ class _PostSectionController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('postsection_updated', $model, $old);
+                NotificationHelper::notifyChange('postsection', 'update');
             } else {
                 $model->ID = null;
                 
@@ -841,6 +846,7 @@ class _PostSectionController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('postsection_created', $model);
+    		    NotificationHelper::notifyChange('postsection', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1318,11 +1324,12 @@ class _PostSectionController extends __AppController
         LicenseController::enforceLicenseCheck('postsection');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('postsection');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1331,10 +1338,11 @@ class _PostSectionController extends __AppController
         LicenseController::enforceLicenseCheck('postsection');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('postsection');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2137,6 +2145,7 @@ class _PostSectionController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('postsection_imported', $model);
+            NotificationHelper::notifyChange('postsection', 'insert');
 		}
 
         return true;

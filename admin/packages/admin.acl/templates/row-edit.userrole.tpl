@@ -29,7 +29,7 @@
                         
                             <input class="input-name" type="text" name="<{$prefix}>userrole_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="500"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.userrole.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.userrole.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
 <{if isset($smarty.session.acl.userrole.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>

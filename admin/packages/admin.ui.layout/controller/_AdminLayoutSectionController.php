@@ -373,6 +373,8 @@ class _AdminLayoutSectionController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminlayoutsection_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminlayoutsection', 'delete');
     }
 
     public function deleteAction() {
@@ -728,6 +730,8 @@ class _AdminLayoutSectionController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminlayoutsection_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminlayoutsection', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -777,6 +781,7 @@ class _AdminLayoutSectionController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminlayoutsection_updated', $model, $old);
+                NotificationHelper::notifyChange('adminlayoutsection', 'update');
             } else {
                 $model->ID = null;
                 
@@ -788,6 +793,7 @@ class _AdminLayoutSectionController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminlayoutsection_created', $model);
+    		    NotificationHelper::notifyChange('adminlayoutsection', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -938,11 +944,12 @@ class _AdminLayoutSectionController extends __AppController
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlayoutsection');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -951,10 +958,11 @@ class _AdminLayoutSectionController extends __AppController
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlayoutsection');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

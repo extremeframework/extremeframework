@@ -16,12 +16,12 @@
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <{if $previd}>
-                <a style="text-decoration: none" class="button-view-prev scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
+                <a style="text-decoration: none" class="button-view-prev scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
             <{/if}>
             <{if $nextid}>
-                <a style="text-decoration: none" class="button-view-next scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$nextid}>"><{_t('L_NEXT')}></a>
+                <a style="text-decoration: none" class="button-view-next scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$nextid}>"><{_t('L_NEXT')}></a>
             <{/if}>
-            &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
+            &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
 
             <!-- Live search -->
             <span id="field-live-search" class="live-search view-live-search"><input type="text" onfocus="if (this.value == '<{_t('Quick search', true)}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{_t('Quick search', true)}>...';}" value="<{_t('Quick search', true)}>..." autocomplete="off"></span>
@@ -35,7 +35,7 @@
             </script>
 
             <{if isset($smarty.session.acl.field.new) }>
-                &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/new"><i class="fa fa-plus"></i></a>
+                &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/new"><i class="fa fa-plus"></i></a>
             <{/if}>
         </span>
     </h1>
@@ -49,7 +49,7 @@
     	<{if $details->UUID}>
     		    			<{if isset($smarty.session.acl.field.edit) && WorkflowHelper::isEditable($details->WFID)}>
         		    <div class="button-general">
-        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
+        		        <a class="button-edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
         		    </div>
     		    <{/if}>
     		    	    <{foreach from=$additional_view_buttons item=button}>
@@ -82,7 +82,7 @@
         	    </div>
             <{/if}>
             <div class="button-general">
-                <a class="button-close scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/close/"><span class="button-face"><{_t('L_CLOSE')}></span></a>
+                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/close/?return=<{ContextStack::getRecentContext()}>"><span class="button-face"><{_t('L_CLOSE')}></span></a>
             </div>
     	        <div class="clearer"></div>
     </div>
@@ -116,7 +116,78 @@
     <{plugin key="field_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
+            <{if isset($smarty.session.acl.adminfiltercondition) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
     
+            <{if $canaccess2anytab}>
+            <div id="fieldtabs" class="section">
+                <ul>
+                                            <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
+                            <li><a href="#tab-adminfilterconditions"><{_t('L_ADMIN_FILTER_CONDITION')}> <span class="badge adminfiltercondition-badge-count"></span></a></li>
+                        <{/if}>
+                                    </ul>
+
+                                    <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
+                        <div id="tab-adminfilterconditions">
+                        	<{if true || $tab == 'adminfilterconditions'}>
+                            	<h2 class="print"><{_t('L_ADMIN_FILTER_CONDITION')}></h2>
+                                                                    <{ajaxmodule class="WidgetListAdminFilterCondition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_FIELD="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.adminfiltercondition.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                
+                <script type="text/javascript">
+                $(document).ready(function(){
+                	$("#fieldtabs").tabs({
+//                        activate: function( event, ui ) {
+//                            $.cookie("field_active_tab", $("#fieldtabs").tabs("option", "active"));
+//                        },
+//                        active: $("#fieldtabs").tabs({ active: $.cookie("field_active_tab") })
+                    });
+                	$("#fieldtabs").tabs("paging", {cycle: false, follow: true});
+                });
+                </script>
+
+                <script type="text/javascript">
+                $(document).ready(function(){
+                    $('#fieldtabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
+                    var handler = $('#fieldtabs .expand-collapse');
+
+                	var details = $('#fieldview .view-main');
+
+                    if ($.cookie('fieldexpandcollapse') == 'collapsed') {
+                        details.hide();
+
+                	    handler.addClass('collapsed');
+                    } else {
+                        details.show();
+
+                	    handler.addClass('expanded');
+                    }
+
+                	handler.click(function () {
+                        if (handler.hasClass('expanded')) {
+                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
+
+                            handler.removeClass('expanded');
+                            handler.addClass('collapsed');
+
+                            $.cookie('fieldexpandcollapse', 'collapsed');
+                        } else {
+                            details.animate({ height: 'show' }, 'slow');
+
+                            handler.removeClass('collapsed');
+                            handler.addClass('expanded');
+
+                            $.cookie('fieldexpandcollapse', 'expanded');
+                        }
+                	});
+                });
+                </script>
+
+            </div>
+        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->
@@ -145,6 +216,10 @@
     	bind_hotkey('#fieldview', 'esc', '.button-close');
     	bind_hotkey('#fieldview', 'left', '.button-view-prev');
     	bind_hotkey('#fieldview', 'right', '.button-view-next');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'view');
     });
 
     $(function() {

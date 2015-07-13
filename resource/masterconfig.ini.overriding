@@ -65,5 +65,12 @@ listcolumns = TITLE,KEY,ID_PRIORITY,ASSIGNED_ID_USER,ID_ISSUE_STATUS
 editcolumns = TITLE,ID_PROJECT,ID_ISSUE_TYPE,DUE_DATE,ID_PROJECT_COMPONENT,ID_PROJECT_VERSION,ASSIGNED_ID_USER,DESCRIPTION,ESTIMATE,ID_PRIORITY
 widgetcolumns = TITLE,KEY,ID_PRIORITY,ASSIGNED_ID_USER,ID_ISSUE_STATUS
 searchformcolumns = ID_PROJECT,ID_PROJECT_VERSION,ASSIGNED_ID_USER,ID_ISSUE_STATUS
-features = order,sort,quicksearch,ajaxorder,json,hasref,import,export,saveaddnew,search
 list_statistics_column = ID_ISSUE_STATUS
+enablehtmlcolumns =
+features = order,sort,quicksearch,ajaxorder,json,hasref,import,export,saveaddnew,search
+
+[project]
+enablehtmlcolumns =
+
+[document]
+enablehtmlcolumns =

@@ -23,6 +23,10 @@ class _WorkflowTransitionController extends __AppController
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_WORKFLOW_TRANSITION_NAME'));
            return false;
        }
+       if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           return false;
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('workflowtransition', $model, $errors)) {
@@ -214,13 +218,13 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        $columns2return = array('ID' => 'id', 'NAME' => 'name');
+        $columns2return = array('CODE' => 'id', 'NAME' => 'name');
 
         $term = isset($_REQUEST['term'])? $_REQUEST['term'] : '';
 
 		$model = new WorkflowTransitionModel();
 		if (!empty($term)) {
-            $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
+            $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
 		}
 		$model->find();
 
@@ -255,7 +259,7 @@ class _WorkflowTransitionController extends __AppController
         }
 
 		$model = new WorkflowTransitionModel();
-        $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
+        $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
 
 		$model->orderBy('NAME');
 		$model->limit(0, 10);
@@ -263,7 +267,7 @@ class _WorkflowTransitionController extends __AppController
 
 		$rows = array();
      	while ($model->fetch()) {
-     		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
+     		$rows[] = array('id' => $model->UUID, 'eid' => $model->CODE, 'title' => $model->NAME);
 		}
 
 		$smarty = Framework::getSmarty(__FILE__);
@@ -320,7 +324,7 @@ class _WorkflowTransitionController extends __AppController
         while ($_model->fetch()) {
             $_models[] = clone $_model;
 
-            $_ids[] = $_model->ID;
+            $_ids[] = $_model->CODE;
         }
 
         foreach ($_models as $_model) {
@@ -343,6 +347,8 @@ class _WorkflowTransitionController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('workflowtransition_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('workflowtransition', 'delete');
     }
 
     public function deleteAction() {
@@ -548,7 +554,7 @@ class _WorkflowTransitionController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('workflowtransition');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new WorkflowTransitionModel();
@@ -597,7 +603,7 @@ class _WorkflowTransitionController extends __AppController
     }
 
     private function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('workflowtransition'));
 
         $rows = array();
@@ -696,6 +702,8 @@ class _WorkflowTransitionController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('workflowtransition_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('workflowtransition', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -745,6 +753,7 @@ class _WorkflowTransitionController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('workflowtransition_updated', $model, $old);
+                NotificationHelper::notifyChange('workflowtransition', 'update');
             } else {
                 $model->ID = null;
                 
@@ -756,6 +765,7 @@ class _WorkflowTransitionController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('workflowtransition_created', $model);
+    		    NotificationHelper::notifyChange('workflowtransition', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -921,11 +931,12 @@ class _WorkflowTransitionController extends __AppController
         LicenseController::enforceLicenseCheck('workflowtransition');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflowtransition');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -934,10 +945,11 @@ class _WorkflowTransitionController extends __AppController
         LicenseController::enforceLicenseCheck('workflowtransition');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflowtransition');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -1093,7 +1105,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('ID_WORKFLOW', 'NAME', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+            return array('ID_WORKFLOW', 'NAME', 'CODE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1298,7 +1310,7 @@ class _WorkflowTransitionController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('workflowtransition');
 
-        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'CODE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1395,7 +1407,7 @@ class _WorkflowTransitionController extends __AppController
 	}
 
     private function getLayoutColumns() {
-        return array('ID_WORKFLOW', 'NAME', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        return array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1597,7 +1609,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
             if (Framework::hasModule('Workflow')) {
@@ -1650,7 +1662,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
             if (Framework::hasModule('Workflow')) {
@@ -1727,6 +1739,7 @@ class _WorkflowTransitionController extends __AppController
 
             $conds[] = TABLE_PREFIX."WORKFLOW_TRANSITION.REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."WORKFLOW_TRANSITION.NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
+            $conds[] = TABLE_PREFIX."WORKFLOW_TRANSITION.CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."WORKFLOW_TRANSITION.ACTION LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."WORKFLOW_TRANSITION.JSON LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
 

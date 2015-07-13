@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="adminlayoutfieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/search" method="post" enctype="multipart/form-data">
+        <form id="adminlayoutfieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/search" method="get">
             <input type="text" name="adminlayoutfield_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminlayoutfieldquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="adminlayoutfieldlist" id="adminlayoutfieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/" method="post">
-
-<input type="hidden" name="adminlayoutfieldlist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminlayoutfield.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_LAYOUT_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_LAYOUT_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -112,6 +108,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="adminlayoutfieldlist" id="adminlayoutfieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/" method="post">
+<input type="hidden" name="adminlayoutfieldlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -121,8 +120,7 @@ function adminlayoutfield_reset() {
 }
 
 function adminlayoutfield_search() {
-	$('#adminlayoutfieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/search/');
-	$('#adminlayoutfieldlistform').submit();
+	$('#adminlayoutfield-search').submit();
 }
 
 function adminlayoutfield_save() {
@@ -277,6 +275,10 @@ function adminlayoutfield_clearselection() {
 
     $(function() {
     	bind_hotkey('#adminlayoutfieldlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

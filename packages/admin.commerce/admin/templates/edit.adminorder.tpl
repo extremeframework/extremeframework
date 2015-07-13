@@ -38,7 +38,7 @@ function saveclone()
     <span class="h"><{$title}></span>
 
     <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-        <a style="text-decoration: none" class="button-edit-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/<{if $details->UUID}>edit/<{$details->UUID}><{else}>new<{/if}>"><i class="fa fa-refresh"></i></a>
+        <a style="text-decoration: none" class="button-edit-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/<{if $details->UUID}>edit/<{$details->UUID}><{else}>new<{/if}>"><i class="fa fa-refresh"></i></a>
 
         <{if $details->UUID}>
             <!-- Live search -->
@@ -78,7 +78,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/"><{_t('L_CANCEL')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('L_CANCEL')}></a>
             <div class="clearer"></div>
         </div>
     
@@ -138,7 +138,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/"><{_t('L_CANCEL')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('L_CANCEL')}></a>
             <div class="clearer"></div>
         </div>
     
@@ -152,11 +152,13 @@ function saveclone()
     	bind_hotkey('#adminorderform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#adminorderform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>
 <script type="text/javascript">

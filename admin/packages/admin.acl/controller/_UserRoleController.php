@@ -343,6 +343,8 @@ class _UserRoleController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('userrole_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('userrole', 'delete');
     }
 
     public function deleteAction() {
@@ -700,6 +702,8 @@ class _UserRoleController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('userrole_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('userrole', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -749,6 +753,7 @@ class _UserRoleController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('userrole_updated', $model, $old);
+                NotificationHelper::notifyChange('userrole', 'update');
             } else {
                 $model->ID = null;
                 
@@ -760,6 +765,7 @@ class _UserRoleController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('userrole_created', $model);
+    		    NotificationHelper::notifyChange('userrole', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -899,11 +905,12 @@ class _UserRoleController extends __AppController
         LicenseController::enforceLicenseCheck('userrole');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('userrole');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -912,10 +919,11 @@ class _UserRoleController extends __AppController
         LicenseController::enforceLicenseCheck('userrole');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('userrole');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

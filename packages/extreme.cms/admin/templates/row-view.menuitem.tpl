@@ -10,7 +10,7 @@
             <{if (in_array('TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
 <{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
@@ -18,7 +18,7 @@
 	        <{if (in_array('CLASS', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CLASS']) && ((isset($aclviewablecolumns['CLASS']) && $aclviewablecolumns['CLASS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CLASS']) || $aclviewablecolumns['CLASS']))) }>
                 <td class="column column-class text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>	<{$row->CLASS|escape}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>	<{$row->CLASS|escape}>
 <{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
@@ -26,9 +26,9 @@
 	        <{if (in_array('ID_MENU', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_MENU']) && ((isset($aclviewablecolumns['ID_MENU']) && $aclviewablecolumns['ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_MENU']) || $aclviewablecolumns['ID_MENU']))) }>
                 <td class="column column-id-menu reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_MENU}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_MENU}>
         <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_ID_MENU}>"><{$row->reftext_ID_MENU|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_ID_MENU}>"><{$row->reftext_ID_MENU|escape}></a>
         <{else}>
             <{$row->reftext_ID_MENU|escape}>        <{/if}>
     <{else}>
@@ -41,9 +41,9 @@
 	        <{if (in_array('ID_PAGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_PAGE']) && ((isset($aclviewablecolumns['ID_PAGE']) && $aclviewablecolumns['ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAGE']) || $aclviewablecolumns['ID_PAGE']))) }>
                 <td class="column column-id-page reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PAGE}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PAGE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.page.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->refuuid_ID_PAGE}>"><{$row->reftext_ID_PAGE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->refuuid_ID_PAGE}>"><{$row->reftext_ID_PAGE|escape}></a>
         <{else}>
             <{$row->reftext_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -56,9 +56,9 @@
 	        <{if (in_array('ID_POST', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_POST']) && ((isset($aclviewablecolumns['ID_POST']) && $aclviewablecolumns['ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST']) || $aclviewablecolumns['ID_POST']))) }>
                 <td class="column column-id-post reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST|escape}>        <{/if}>
     <{else}>
@@ -71,9 +71,9 @@
 	        <{if (in_array('ID_POST_CATEGORY', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_POST_CATEGORY']) && ((isset($aclviewablecolumns['ID_POST_CATEGORY']) && $aclviewablecolumns['ID_POST_CATEGORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_CATEGORY']) || $aclviewablecolumns['ID_POST_CATEGORY']))) }>
                 <td class="column column-id-post-category reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_CATEGORY}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_CATEGORY}>
         <{if $alreadyhaslink && isset($smarty.session.acl.postcategory.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/view/<{$row->refuuid_ID_POST_CATEGORY}>"><{$row->reftext_ID_POST_CATEGORY|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/view/<{$row->refuuid_ID_POST_CATEGORY}>"><{$row->reftext_ID_POST_CATEGORY|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST_CATEGORY|escape}>        <{/if}>
     <{else}>
@@ -112,9 +112,9 @@
 	        <{if (in_array('ACL_ID_USER_GROUP', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ACL_ID_USER_GROUP']) && ((isset($aclviewablecolumns['ACL_ID_USER_GROUP']) && $aclviewablecolumns['ACL_ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACL_ID_USER_GROUP']) || $aclviewablecolumns['ACL_ID_USER_GROUP']))) }>
                 <td class="column column-acl-id-user-group reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ACL_ID_USER_GROUP}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ACL_ID_USER_GROUP}>
         <{if $alreadyhaslink && isset($smarty.session.acl.usergroup.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->refuuid_ACL_ID_USER_GROUP}>"><{$row->reftext_ACL_ID_USER_GROUP|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->refuuid_ACL_ID_USER_GROUP}>"><{$row->reftext_ACL_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$row->reftext_ACL_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -132,7 +132,7 @@
 	<{plugin key="menuitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.menuitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         
@@ -150,7 +150,7 @@
 
     	        <ul class="dropdown-menu pull-right">
     	            <{foreach from=$admin_view_options item=view}>
-                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/booking/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
+                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
                     <{/foreach}>
                 </ul>
     	    </span>

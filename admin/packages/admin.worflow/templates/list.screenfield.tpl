@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="screenfieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/screenfield/search" method="post" enctype="multipart/form-data">
+        <form id="screenfieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/screenfield/search" method="get">
             <input type="text" name="screenfield_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#screenfieldquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/screenfield"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="screenfieldlist" id="screenfieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/screenfield/" method="post">
-
-<input type="hidden" name="screenfieldlist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.screenfield.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/screenfield/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_SCREEN_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_SCREEN_FIELD')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_SCREEN_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_SCREEN_FIELD')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -112,6 +108,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="screenfieldlist" id="screenfieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/screenfield/" method="post">
+<input type="hidden" name="screenfieldlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -121,8 +120,7 @@ function screenfield_reset() {
 }
 
 function screenfield_search() {
-	$('#screenfieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screenfield/search/');
-	$('#screenfieldlistform').submit();
+	$('#screenfield-search').submit();
 }
 
 function screenfield_save() {
@@ -277,6 +275,10 @@ function screenfield_clearselection() {
 
     $(function() {
     	bind_hotkey('#screenfieldlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

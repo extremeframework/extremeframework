@@ -429,6 +429,8 @@ class _PageController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('page_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('page', 'delete');
     }
 
     public function deleteAction() {
@@ -1008,6 +1010,8 @@ class _PageController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('page_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('page', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -1057,6 +1061,7 @@ class _PageController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('page_updated', $model, $old);
+                NotificationHelper::notifyChange('page', 'update');
             } else {
                 $model->ID = null;
                 
@@ -1068,6 +1073,7 @@ class _PageController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('page_created', $model);
+    		    NotificationHelper::notifyChange('page', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1557,11 +1563,12 @@ class _PageController extends __AppController
         LicenseController::enforceLicenseCheck('page');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('page');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1570,10 +1577,11 @@ class _PageController extends __AppController
         LicenseController::enforceLicenseCheck('page');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('page');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2458,6 +2466,7 @@ class _PageController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('page_imported', $model);
+            NotificationHelper::notifyChange('page', 'insert');
 		}
 
         return true;

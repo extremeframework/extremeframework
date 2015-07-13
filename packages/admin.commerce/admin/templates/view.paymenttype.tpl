@@ -16,12 +16,12 @@
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <{if $previd}>
-                <a style="text-decoration: none" class="button-view-prev scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
+                <a style="text-decoration: none" class="button-view-prev scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
             <{/if}>
             <{if $nextid}>
-                <a style="text-decoration: none" class="button-view-next scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$nextid}>"><{_t('L_NEXT')}></a>
+                <a style="text-decoration: none" class="button-view-next scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$nextid}>"><{_t('L_NEXT')}></a>
             <{/if}>
-            &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
+            &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
 
             <!-- Live search -->
             <span id="paymenttype-live-search" class="live-search view-live-search"><input type="text" onfocus="if (this.value == '<{_t('Quick search', true)}>...') {this.value = '';}" onblur="if (this.value == '')  {this.value = '<{_t('Quick search', true)}>...';}" value="<{_t('Quick search', true)}>..." autocomplete="off"></span>
@@ -35,7 +35,7 @@
             </script>
 
             <{if isset($smarty.session.acl.paymenttype.new) }>
-                &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/new"><i class="fa fa-plus"></i></a>
+                &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/new"><i class="fa fa-plus"></i></a>
             <{/if}>
         </span>
     </h1>
@@ -49,7 +49,7 @@
     	<{if $details->UUID}>
     		    			<{if isset($smarty.session.acl.paymenttype.edit) && WorkflowHelper::isEditable($details->WFID)}>
         		    <div class="button-general">
-        		        <a class="button-edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
+        		        <a class="button-edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
         		    </div>
     		    <{/if}>
     		    	    <{foreach from=$additional_view_buttons item=button}>
@@ -82,7 +82,7 @@
         	    </div>
             <{/if}>
             <div class="button-general">
-                <a class="button-close scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/close/"><span class="button-face"><{_t('L_CLOSE')}></span></a>
+                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/close/?return=<{ContextStack::getRecentContext()}>"><span class="button-face"><{_t('L_CLOSE')}></span></a>
             </div>
     	        <div class="clearer"></div>
     </div>
@@ -216,6 +216,10 @@
     	bind_hotkey('#paymenttypeview', 'esc', '.button-close');
     	bind_hotkey('#paymenttypeview', 'left', '.button-view-prev');
     	bind_hotkey('#paymenttypeview', 'right', '.button-view-next');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'view');
     });
 
     $(function() {

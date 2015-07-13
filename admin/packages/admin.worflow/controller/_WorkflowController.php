@@ -361,6 +361,8 @@ class _WorkflowController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('workflow_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('workflow', 'delete');
     }
 
     public function deleteAction() {
@@ -734,6 +736,8 @@ class _WorkflowController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('workflow_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('workflow', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -783,6 +787,7 @@ class _WorkflowController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('workflow_updated', $model, $old);
+                NotificationHelper::notifyChange('workflow', 'update');
             } else {
                 $model->ID = null;
                 
@@ -794,6 +799,7 @@ class _WorkflowController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('workflow_created', $model);
+    		    NotificationHelper::notifyChange('workflow', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -933,11 +939,12 @@ class _WorkflowController extends __AppController
         LicenseController::enforceLicenseCheck('workflow');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflow');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -946,10 +953,11 @@ class _WorkflowController extends __AppController
         LicenseController::enforceLicenseCheck('workflow');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflow');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

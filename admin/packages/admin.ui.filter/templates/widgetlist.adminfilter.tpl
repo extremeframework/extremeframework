@@ -2,7 +2,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="adminfilterquicksearch" class="form-quicksearch scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminfilter/search" method="post" enctype="multipart/form-data">
+        <form id="adminfilterquicksearch" class="form-quicksearch scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminfilter/search" method="get">
             <input type="text" name="adminfilter_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminfilterquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -39,7 +39,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -54,10 +54,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="adminfilterlist" id="adminfilterlistform" class="form-list scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminfilter/" method="post">
-
-<input type="hidden" name="adminfilterlist_selection_selectall" value="0" />
-
 <!-- Filters -->
 
 <!-- Control buttons -->
@@ -68,7 +64,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminfilter.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_FILTER')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_FILTER')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,6 +103,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="adminfilterlist" id="adminfilterlistform" class="form-list scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminfilter/" method="post">
+<input type="hidden" name="adminfilterlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -116,8 +115,7 @@ function adminfilter_reset() {
 }
 
 function adminfilter_search() {
-	$('#adminfilterlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminfilter/search/');
-	$('#adminfilterlistform').submit();
+	$('#adminfilter-search').submit();
 }
 
 function adminfilter_save() {
@@ -278,6 +276,10 @@ function adminfilter_clearselection() {
 
     $(function() {
     	bind_hotkey('#adminfilterlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

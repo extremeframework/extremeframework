@@ -98,7 +98,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-default-id-dashboard" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$details->DEFAULT_ID_DASHBOARD text=$details->reftext_DEFAULT_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
                 </span>
                     <{else}>
             <input class="input-default-id-dashboard input-type-text" type="text" name="<{$prefix}>usergroup_formdata_DEFAULT_ID_DASHBOARD" value="<{$details->DEFAULT_ID_DASHBOARD|escape}>"  />
@@ -135,7 +135,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`usergroup_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
                 </span>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>usergroup_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
@@ -324,10 +324,12 @@
     	bind_hotkey('#usergroupform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#usergroupform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

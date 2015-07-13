@@ -140,7 +140,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-menu" class="input-id-menu" name="`$prefix`menuitem_formdata_ID_MENU" value=$details->ID_MENU text=$details->reftext_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
                 </span>
                     <{else}>
             <input class="input-id-menu input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ID_MENU" value="<{$details->ID_MENU|escape}>"  />
@@ -177,7 +177,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`menuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="MENU_ITEM" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/new" title="Create a New Menu Item">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/new" title="Create a New Menu Item">+</a>
                 </span>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>menuitem_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
@@ -214,7 +214,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`menuitem_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-id-page input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ID_PAGE" value="<{$details->ID_PAGE|escape}>"  />
@@ -251,7 +251,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`menuitem_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
                 </span>
                     <{else}>
             <input class="input-id-post input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ID_POST" value="<{$details->ID_POST|escape}>"  />
@@ -288,7 +288,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`menuitem_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
                 </span>
                     <{else}>
             <input class="input-id-post-category input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY|escape}>"  />
@@ -445,7 +445,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-acl-id-user-group" class="input-acl-id-user-group" name="`$prefix`menuitem_formdata_ACL_ID_USER_GROUP" value=$details->ACL_ID_USER_GROUP text=$details->reftext_ACL_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
                 </span>
                     <{else}>
             <input class="input-acl-id-user-group input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ACL_ID_USER_GROUP" value="<{$details->ACL_ID_USER_GROUP|escape}>"  />

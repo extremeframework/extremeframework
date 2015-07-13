@@ -439,6 +439,8 @@ class _PageGalleryController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('pagegallery_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('pagegallery', 'delete');
     }
 
     public function deleteAction() {
@@ -785,6 +787,8 @@ class _PageGalleryController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('pagegallery_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('pagegallery', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -834,6 +838,7 @@ class _PageGalleryController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('pagegallery_updated', $model, $old);
+                NotificationHelper::notifyChange('pagegallery', 'update');
             } else {
                 $model->ID = null;
                 
@@ -845,6 +850,7 @@ class _PageGalleryController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('pagegallery_created', $model);
+    		    NotificationHelper::notifyChange('pagegallery', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1325,11 +1331,12 @@ class _PageGalleryController extends __AppController
         LicenseController::enforceLicenseCheck('pagegallery');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('pagegallery');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1338,10 +1345,11 @@ class _PageGalleryController extends __AppController
         LicenseController::enforceLicenseCheck('pagegallery');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('pagegallery');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2166,6 +2174,7 @@ class _PageGalleryController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('pagegallery_imported', $model);
+            NotificationHelper::notifyChange('pagegallery', 'insert');
 		}
 
         return true;

@@ -56,7 +56,7 @@ class WorkflowTransitionModel extends DataObject_WORKFLOW_TRANSITION {
     }
 
 	function id() {
-	    return $this->ID;
+	    return $this->CODE;
 	}
 
 	function name() {

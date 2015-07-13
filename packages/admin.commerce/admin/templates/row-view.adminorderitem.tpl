@@ -10,9 +10,9 @@
             <{if (in_array('ID_ADMIN_ORDER', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_ORDER']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER']) && $aclviewablecolumns['ID_ADMIN_ORDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER']) || $aclviewablecolumns['ID_ADMIN_ORDER']))) }>
                 <td class="column column-id-admin-order reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_ORDER}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_ORDER}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminorder.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->refuuid_ID_ADMIN_ORDER}>"><{$row->reftext_ID_ADMIN_ORDER|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->refuuid_ID_ADMIN_ORDER}>"><{$row->reftext_ID_ADMIN_ORDER|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_ORDER|escape}>        <{/if}>
     <{else}>
@@ -25,9 +25,9 @@
 	        <{if (in_array('ID_ADMIN_PRODUCT', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_PRODUCT']) && ((isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) && $aclviewablecolumns['ID_ADMIN_PRODUCT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) || $aclviewablecolumns['ID_ADMIN_PRODUCT']))) }>
                 <td class="column column-id-admin-product reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PRODUCT}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PRODUCT}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminproduct.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/view/<{$row->refuuid_ID_ADMIN_PRODUCT}>"><{$row->reftext_ID_ADMIN_PRODUCT|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/view/<{$row->refuuid_ID_ADMIN_PRODUCT}>"><{$row->reftext_ID_ADMIN_PRODUCT|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_PRODUCT|escape}>        <{/if}>
     <{else}>
@@ -40,7 +40,7 @@
 	        <{if (in_array('QUANTITY', $filtercolumns)) }>
             <{if !isset($excludedcolumns['QUANTITY']) && ((isset($aclviewablecolumns['QUANTITY']) && $aclviewablecolumns['QUANTITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['QUANTITY']) || $aclviewablecolumns['QUANTITY']))) }>
                 <td class="column column-quantity number " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
             <span class="number number-format"><{if $row->QUANTITY != 0}><{$row->QUANTITY}><{/if}></span>
     
     <{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
@@ -50,7 +50,7 @@
 	        <{if (in_array('PRICE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
                 <td class="column column-price number " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
             <span class="currency currency-format"><{if $row->PRICE != 0}><{$row->PRICE}><{/if}></span>
     
             <{$summable.PRICE = $summable.PRICE + $row->PRICE scope=parent}>
@@ -66,7 +66,7 @@
 	<{plugin key="adminorderitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminorderitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         
@@ -84,7 +84,7 @@
 
     	        <ul class="dropdown-menu pull-right">
     	            <{foreach from=$admin_view_options item=view}>
-                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/booking/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
+                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
                     <{/foreach}>
                 </ul>
     	    </span>

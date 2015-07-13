@@ -417,6 +417,8 @@ class _AdminProductController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminproduct_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminproduct', 'delete');
     }
 
     public function deleteAction() {
@@ -778,6 +780,8 @@ class _AdminProductController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminproduct_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminproduct', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -827,6 +831,7 @@ class _AdminProductController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminproduct_updated', $model, $old);
+                NotificationHelper::notifyChange('adminproduct', 'update');
             } else {
                 $model->ID = null;
                 
@@ -838,6 +843,7 @@ class _AdminProductController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminproduct_created', $model);
+    		    NotificationHelper::notifyChange('adminproduct', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1315,11 +1321,12 @@ class _AdminProductController extends __AppController
         LicenseController::enforceLicenseCheck('adminproduct');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminproduct');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1328,10 +1335,11 @@ class _AdminProductController extends __AppController
         LicenseController::enforceLicenseCheck('adminproduct');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminproduct');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2131,6 +2139,7 @@ class _AdminProductController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('adminproduct_imported', $model);
+            NotificationHelper::notifyChange('adminproduct', 'insert');
 		}
 
         return true;

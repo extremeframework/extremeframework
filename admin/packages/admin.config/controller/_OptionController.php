@@ -372,6 +372,8 @@ class _OptionController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('option_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('option', 'delete');
     }
 
     public function deleteAction() {
@@ -712,6 +714,8 @@ class _OptionController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('option_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('option', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -761,6 +765,7 @@ class _OptionController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('option_updated', $model, $old);
+                NotificationHelper::notifyChange('option', 'update');
             } else {
                 $model->ID = null;
                 
@@ -774,6 +779,7 @@ class _OptionController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('option_created', $model);
+    		    NotificationHelper::notifyChange('option', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -913,11 +919,12 @@ class _OptionController extends __AppController
         LicenseController::enforceLicenseCheck('option');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('option');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -926,10 +933,11 @@ class _OptionController extends __AppController
         LicenseController::enforceLicenseCheck('option');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('option');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

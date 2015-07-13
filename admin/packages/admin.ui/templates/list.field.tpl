@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="fieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/field/search" method="post" enctype="multipart/form-data">
+        <form id="fieldquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/field/search" method="get">
             <input type="text" name="field_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#fieldquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/field"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="fieldlist" id="fieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/field/" method="post">
-
-<input type="hidden" name="fieldlist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.field.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/field/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_FIELD')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/field/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_FIELD', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_FIELD')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -108,10 +104,45 @@
 <{/if}>
 
 <!-- Relations -->
+    <{php}>
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_FIELD'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_FIELD'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_FIELD')), strtolower(_t('L_FIELD'))));
+    <{/php}>
+
+    <div id="fieldcopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_FIELD', true)|strtolower}>">
+        <p><{$copyguidelines}></p>
+        <ul>
+                            <{if Framework::hasModule('AdminFilterCondition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfiltercondition" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                <{/if}>
+                    </ul>
+    </div>
+
+    <div id="fieldapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_FIELD', true)|strtolower}>">
+        <p><{$approveguidelines}></p>
+        <ul>
+                            <{if Framework::hasModule('AdminFilterCondition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfiltercondition" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                <{/if}>
+                    </ul>
+    </div>
+
+    <div id="fielddeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_FIELD', true)|strtolower}>">
+        <p><{$deleteguidelines}></p>
+        <ul>
+                            <{if Framework::hasModule('AdminFilterCondition')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfiltercondition" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                <{/if}>
+                    </ul>
+    </div>
 
 <!-- Search form -->
 
 <!-- List -->
+<form name="fieldlist" id="fieldlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/field/" method="post">
+<input type="hidden" name="fieldlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -121,8 +152,7 @@ function field_reset() {
 }
 
 function field_search() {
-	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/search/');
-	$('#fieldlistform').submit();
+	$('#field-search').submit();
 }
 
 function field_save() {
@@ -131,18 +161,63 @@ function field_save() {
 }
 
 function field_delete() {
-	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/delete/');
-	$('#fieldlistform').submit();
+	var dialog = $( "#fielddeleterelations" ).dialog({
+		resizable: true,
+		width: 500,
+		modal: false,
+		buttons: {
+			"<{_t('L_DELETE', true)}>": function() {
+            	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/delete/');
+            	$('#fieldlistform').submit();
+				$( this ).dialog( "close" );
+			},
+			"<{_t('L_CANCEL', true)}>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	dialog.parent().appendTo($('#fieldlistform'));
 }
 
 function field_copy() {
-	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/copy/');
-	$('#fieldlistform').submit();
+	var dialog = $( "#fieldcopyrelations" ).dialog({
+		resizable: true,
+		width: 500,
+		modal: false,
+		buttons: {
+			"<{_t('L_COPY', true)}>": function() {
+            	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/copy/');
+            	$('#fieldlistform').submit();
+				$( this ).dialog( "close" );
+			},
+			"<{_t('L_CANCEL', true)}>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	dialog.parent().appendTo($('#fieldlistform'));
 }
 
 function field_approve() {
-	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/approve/');
-	$('#fieldlistform').submit();
+	var dialog = $( "#fieldapproverelations" ).dialog({
+		resizable: true,
+		width: 500,
+		modal: false,
+		buttons: {
+			"<{_t('L_APPROVE', true)}>": function() {
+            	$('#fieldlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/field/approve/');
+            	$('#fieldlistform').submit();
+				$( this ).dialog( "close" );
+			},
+			"<{_t('L_CANCEL', true)}>": function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	});
+
+	dialog.parent().appendTo($('#fieldlistform'));
 }
 
 function field_batchedit() {
@@ -277,6 +352,10 @@ function field_clearselection() {
 
     $(function() {
     	bind_hotkey('#fieldlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

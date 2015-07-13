@@ -22,7 +22,7 @@
                                     
     <{if $details->reftext_ID_WORKFLOW}>
         <{if isset($smarty.session.acl.workflow.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/view/<{$details->refuuid_ID_WORKFLOW}>"><{$details->reftext_ID_WORKFLOW|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/view/<{$details->refuuid_ID_WORKFLOW}>"><{$details->reftext_ID_WORKFLOW|escape}></a>
         <{else}>
             <{$details->reftext_ID_WORKFLOW|escape}>        <{/if}>
     <{else}>
@@ -36,7 +36,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`workflowtransition_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
                 </span>
                     <{else}>
             <input class="input-id-workflow input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_WORKFLOW" value="<{$details->ID_WORKFLOW|escape}>"  />
@@ -47,7 +47,7 @@
                                 
     <{if $details->reftext_ID_WORKFLOW}>
         <{if isset($smarty.session.acl.workflow.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/view/<{$details->refuuid_ID_WORKFLOW}>"><{$details->reftext_ID_WORKFLOW|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/view/<{$details->refuuid_ID_WORKFLOW}>"><{$details->reftext_ID_WORKFLOW|escape}></a>
         <{else}>
             <{$details->reftext_ID_WORKFLOW|escape}>        <{/if}>
     <{else}>
@@ -98,6 +98,40 @@
             
         
         
+            <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
+        <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
+    		<td class="form-field form-field-label column-code">
+	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+            </td>
+            <td class="form-field form-field-value column-code" colspan="3">
+            	<div class="attribute-line column-code type-text">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['CODE']) && $acleditablecolumns['CODE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CODE']) || $acleditablecolumns['CODE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{$details->CODE|escape}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+
+    <input class="input-code input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_CODE" value="<{$details->CODE|escape}>"  />
+                                </span>
+                                -->
+                            <{else}>
+                                
+    <{$details->CODE|escape}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['START_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['START_ID_WORKFLOW_STAGE']))) }>
         <{if !isset($columns2hide) || !in_array('START_ID_WORKFLOW_STAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-start-id-workflow-stage">
@@ -116,7 +150,7 @@
                                     
     <{if $details->reftext_START_ID_WORKFLOW_STAGE}>
         <{if isset($smarty.session.acl.workflowstage.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_START_ID_WORKFLOW_STAGE}>"><{$details->reftext_START_ID_WORKFLOW_STAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_START_ID_WORKFLOW_STAGE}>"><{$details->reftext_START_ID_WORKFLOW_STAGE|escape}></a>
         <{else}>
             <{$details->reftext_START_ID_WORKFLOW_STAGE|escape}>        <{/if}>
     <{else}>
@@ -130,7 +164,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-start-id-workflow-stage" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$details->START_ID_WORKFLOW_STAGE text=$details->reftext_START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
                 </span>
                     <{else}>
             <input class="input-start-id-workflow-stage input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value="<{$details->START_ID_WORKFLOW_STAGE|escape}>"  />
@@ -141,7 +175,7 @@
                                 
     <{if $details->reftext_START_ID_WORKFLOW_STAGE}>
         <{if isset($smarty.session.acl.workflowstage.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_START_ID_WORKFLOW_STAGE}>"><{$details->reftext_START_ID_WORKFLOW_STAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_START_ID_WORKFLOW_STAGE}>"><{$details->reftext_START_ID_WORKFLOW_STAGE|escape}></a>
         <{else}>
             <{$details->reftext_START_ID_WORKFLOW_STAGE|escape}>        <{/if}>
     <{else}>
@@ -176,7 +210,7 @@
                                     
     <{if $details->reftext_END_ID_WORKFLOW_STAGE}>
         <{if isset($smarty.session.acl.workflowstage.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_END_ID_WORKFLOW_STAGE}>"><{$details->reftext_END_ID_WORKFLOW_STAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_END_ID_WORKFLOW_STAGE}>"><{$details->reftext_END_ID_WORKFLOW_STAGE|escape}></a>
         <{else}>
             <{$details->reftext_END_ID_WORKFLOW_STAGE|escape}>        <{/if}>
     <{else}>
@@ -190,7 +224,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-end-id-workflow-stage" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$details->END_ID_WORKFLOW_STAGE text=$details->reftext_END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
                 </span>
                     <{else}>
             <input class="input-end-id-workflow-stage input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value="<{$details->END_ID_WORKFLOW_STAGE|escape}>"  />
@@ -201,7 +235,7 @@
                                 
     <{if $details->reftext_END_ID_WORKFLOW_STAGE}>
         <{if isset($smarty.session.acl.workflowstage.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_END_ID_WORKFLOW_STAGE}>"><{$details->reftext_END_ID_WORKFLOW_STAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$details->refuuid_END_ID_WORKFLOW_STAGE}>"><{$details->reftext_END_ID_WORKFLOW_STAGE|escape}></a>
         <{else}>
             <{$details->reftext_END_ID_WORKFLOW_STAGE|escape}>        <{/if}>
     <{else}>
@@ -265,7 +299,7 @@
                                     
     <{if $details->reftext_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -279,7 +313,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
@@ -290,7 +324,7 @@
                                 
     <{if $details->reftext_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -320,7 +354,7 @@
                                     
     <{if $details->reftext_ID_USER_ROLE}>
         <{if isset($smarty.session.acl.userrole.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_ROLE|escape}>        <{/if}>
     <{else}>
@@ -334,7 +368,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`workflowtransition_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user-role input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE|escape}>"  />
@@ -345,7 +379,7 @@
                                 
     <{if $details->reftext_ID_USER_ROLE}>
         <{if isset($smarty.session.acl.userrole.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_ROLE|escape}>        <{/if}>
     <{else}>
@@ -375,7 +409,7 @@
                                     
     <{if $details->reftext_TRANSITION_ID_SCREEN}>
         <{if isset($smarty.session.acl.screen.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/screen/view/<{$details->refuuid_TRANSITION_ID_SCREEN}>"><{$details->reftext_TRANSITION_ID_SCREEN|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/view/<{$details->refuuid_TRANSITION_ID_SCREEN}>"><{$details->reftext_TRANSITION_ID_SCREEN|escape}></a>
         <{else}>
             <{$details->reftext_TRANSITION_ID_SCREEN|escape}>        <{/if}>
     <{else}>
@@ -389,7 +423,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-transition-id-screen" class="input-transition-id-screen" name="`$prefix`workflowtransition_formdata_TRANSITION_ID_SCREEN" value=$details->TRANSITION_ID_SCREEN text=$details->reftext_TRANSITION_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/screen/new" title="Create a New Screen">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/new" title="Create a New Screen">+</a>
                 </span>
                     <{else}>
             <input class="input-transition-id-screen input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_TRANSITION_ID_SCREEN" value="<{$details->TRANSITION_ID_SCREEN|escape}>"  />
@@ -400,7 +434,7 @@
                                 
     <{if $details->reftext_TRANSITION_ID_SCREEN}>
         <{if isset($smarty.session.acl.screen.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/screen/view/<{$details->refuuid_TRANSITION_ID_SCREEN}>"><{$details->reftext_TRANSITION_ID_SCREEN|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/view/<{$details->refuuid_TRANSITION_ID_SCREEN}>"><{$details->reftext_TRANSITION_ID_SCREEN|escape}></a>
         <{else}>
             <{$details->reftext_TRANSITION_ID_SCREEN|escape}>        <{/if}>
     <{else}>

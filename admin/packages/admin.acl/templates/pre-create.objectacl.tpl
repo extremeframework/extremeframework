@@ -229,10 +229,12 @@
     	bind_hotkey('#objectaclform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#objectaclform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

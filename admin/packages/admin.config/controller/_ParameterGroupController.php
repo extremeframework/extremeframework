@@ -369,6 +369,8 @@ class _ParameterGroupController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('parametergroup_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('parametergroup', 'delete');
     }
 
     public function deleteAction() {
@@ -724,6 +726,8 @@ class _ParameterGroupController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('parametergroup_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('parametergroup', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -773,6 +777,7 @@ class _ParameterGroupController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('parametergroup_updated', $model, $old);
+                NotificationHelper::notifyChange('parametergroup', 'update');
             } else {
                 $model->ID = null;
                 
@@ -784,6 +789,7 @@ class _ParameterGroupController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('parametergroup_created', $model);
+    		    NotificationHelper::notifyChange('parametergroup', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -923,11 +929,12 @@ class _ParameterGroupController extends __AppController
         LicenseController::enforceLicenseCheck('parametergroup');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('parametergroup');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -936,10 +943,11 @@ class _ParameterGroupController extends __AppController
         LicenseController::enforceLicenseCheck('parametergroup');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('parametergroup');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

@@ -388,6 +388,8 @@ class _AdminLayoutFieldController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminlayoutfield_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminlayoutfield', 'delete');
     }
 
     public function deleteAction() {
@@ -730,6 +732,8 @@ class _AdminLayoutFieldController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminlayoutfield_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminlayoutfield', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -779,6 +783,7 @@ class _AdminLayoutFieldController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminlayoutfield_updated', $model, $old);
+                NotificationHelper::notifyChange('adminlayoutfield', 'update');
             } else {
                 $model->ID = null;
                 
@@ -790,6 +795,7 @@ class _AdminLayoutFieldController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminlayoutfield_created', $model);
+    		    NotificationHelper::notifyChange('adminlayoutfield', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -943,11 +949,12 @@ class _AdminLayoutFieldController extends __AppController
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlayoutfield');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -956,10 +963,11 @@ class _AdminLayoutFieldController extends __AppController
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlayoutfield');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

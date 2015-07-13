@@ -343,6 +343,8 @@ class _DashboardController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('dashboard_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('dashboard', 'delete');
     }
 
     public function deleteAction() {
@@ -700,6 +702,8 @@ class _DashboardController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('dashboard_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('dashboard', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -749,6 +753,7 @@ class _DashboardController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('dashboard_updated', $model, $old);
+                NotificationHelper::notifyChange('dashboard', 'update');
             } else {
                 $model->ID = null;
                 
@@ -760,6 +765,7 @@ class _DashboardController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('dashboard_created', $model);
+    		    NotificationHelper::notifyChange('dashboard', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -910,11 +916,12 @@ class _DashboardController extends __AppController
         LicenseController::enforceLicenseCheck('dashboard');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('dashboard');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -923,10 +930,11 @@ class _DashboardController extends __AppController
         LicenseController::enforceLicenseCheck('dashboard');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('dashboard');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

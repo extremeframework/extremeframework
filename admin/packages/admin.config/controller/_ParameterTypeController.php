@@ -369,6 +369,8 @@ class _ParameterTypeController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('parametertype_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('parametertype', 'delete');
     }
 
     public function deleteAction() {
@@ -724,6 +726,8 @@ class _ParameterTypeController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('parametertype_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('parametertype', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -773,6 +777,7 @@ class _ParameterTypeController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('parametertype_updated', $model, $old);
+                NotificationHelper::notifyChange('parametertype', 'update');
             } else {
                 $model->ID = null;
                 
@@ -784,6 +789,7 @@ class _ParameterTypeController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('parametertype_created', $model);
+    		    NotificationHelper::notifyChange('parametertype', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -923,11 +929,12 @@ class _ParameterTypeController extends __AppController
         LicenseController::enforceLicenseCheck('parametertype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('parametertype');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -936,10 +943,11 @@ class _ParameterTypeController extends __AppController
         LicenseController::enforceLicenseCheck('parametertype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('parametertype');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

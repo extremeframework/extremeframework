@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="workflowstagequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowstage/search" method="post" enctype="multipart/form-data">
+        <form id="workflowstagequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowstage/search" method="get">
             <input type="text" name="workflowstage_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#workflowstagequicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="workflowstagelist" id="workflowstagelistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowstage/" method="post">
-
-<input type="hidden" name="workflowstagelist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflowstage.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WORKFLOW_STAGE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WORKFLOW_STAGE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WORKFLOW_STAGE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WORKFLOW_STAGE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -109,9 +105,9 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(L_GUIDELINES_COPY_RELS, strtolower(L_WORKFLOW_STAGE)));
-    	$template->assign('approveguidelines', sprintf(L_GUIDELINES_APPROVE_RELS, strtolower(L_WORKFLOW_STAGE)));
-    	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_WORKFLOW_STAGE), strtolower(L_WORKFLOW_STAGE)));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_WORKFLOW_STAGE'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_WORKFLOW_STAGE'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_WORKFLOW_STAGE')), strtolower(_t('L_WORKFLOW_STAGE'))));
     <{/php}>
 
     <div id="workflowstagecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_WORKFLOW_STAGE', true)|strtolower}>">
@@ -144,6 +140,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="workflowstagelist" id="workflowstagelistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowstage/" method="post">
+<input type="hidden" name="workflowstagelist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -153,8 +152,7 @@ function workflowstage_reset() {
 }
 
 function workflowstage_search() {
-	$('#workflowstagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowstage/search/');
-	$('#workflowstagelistform').submit();
+	$('#workflowstage-search').submit();
 }
 
 function workflowstage_save() {
@@ -354,6 +352,10 @@ function workflowstage_clearselection() {
 
     $(function() {
     	bind_hotkey('#workflowstagelistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

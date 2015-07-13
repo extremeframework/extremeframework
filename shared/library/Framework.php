@@ -109,7 +109,7 @@ class Framework {
 
     private static function getTemplateMap() {
         if (self::$templatemap === null) {
-            $file = APPLICATION_DIR.'/cache/templatemap-'.THEME_NAME.'.ser';
+            $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.templatemap';
 
             if (file_exists($file)) {
                 self::$templatemap = unserialize(file_get_contents($file));
@@ -124,7 +124,7 @@ class Framework {
     private static function updateTemplateMap($templatemap) {
         self::$templatemap = $templatemap;
 
-        $file = APPLICATION_DIR.'/cache/templatemap-'.THEME_NAME.'.ser';
+        $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.templatemap';
 
         file_put_contents($file, serialize($templatemap));
     }
@@ -188,7 +188,7 @@ class Framework {
 
     private static function getClassMap() {
         if (self::$classmap === null) {
-            $file = APPLICATION_DIR.'/cache/classmap-'.THEME_NAME.'.ser';
+            $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.classmap';
 
             if (file_exists($file)) {
                 self::$classmap = unserialize(file_get_contents($file));
@@ -203,7 +203,7 @@ class Framework {
     private static function updateClassMap($classmap) {
         self::$classmap = $classmap;
 
-        $file = APPLICATION_DIR.'/cache/classmap-'.THEME_NAME.'.ser';
+        $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.classmap';
 
         file_put_contents($file, serialize($classmap));
     }
@@ -268,7 +268,7 @@ class Framework {
 
     private static function getAutoloadMap() {
         if (self::$autoloadmap === null) {
-            $file = APPLICATION_DIR.'/cache/autoloadmap-'.THEME_NAME.'.ser';
+            $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.autoloadmap';
 
             if (file_exists($file)) {
                 self::$autoloadmap = unserialize(file_get_contents($file));
@@ -283,7 +283,7 @@ class Framework {
     private static function updateAutoloadMap($autoloadmap) {
         self::$autoloadmap = $autoloadmap;
 
-        $file = APPLICATION_DIR.'/cache/autoloadmap-'.THEME_NAME.'.ser';
+        $file = APPLICATION_DIR.'/cache/data/theme.'.THEME_NAME.'.autoloadmap';
 
         file_put_contents($file, serialize($autoloadmap));
     }

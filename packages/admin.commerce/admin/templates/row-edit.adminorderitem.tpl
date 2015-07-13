@@ -30,12 +30,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$formdata.ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new" title="Create a New Admin Order">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new" title="Create a New Admin Order">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_ORDER}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_ORDER}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminorder.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->refuuid_ID_ADMIN_ORDER}>"><{$row->reftext_ID_ADMIN_ORDER|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->refuuid_ID_ADMIN_ORDER}>"><{$row->reftext_ID_ADMIN_ORDER|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_ORDER|escape}>        <{/if}>
     <{else}>
@@ -59,12 +59,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$formdata.ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/new" title="Create a New Admin Product">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/new" title="Create a New Admin Product">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PRODUCT}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PRODUCT}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminproduct.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/view/<{$row->refuuid_ID_ADMIN_PRODUCT}>"><{$row->reftext_ID_ADMIN_PRODUCT|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/view/<{$row->refuuid_ID_ADMIN_PRODUCT}>"><{$row->reftext_ID_ADMIN_PRODUCT|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_PRODUCT|escape}>        <{/if}>
     <{else}>
@@ -87,7 +87,7 @@
                                                     
                             <input class="input-quantity number-format" type="text" name="<{$prefix}>adminorderitem_formdata_QUANTITY" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
             <span class="number number-format"><{if $row->QUANTITY != 0}><{$row->QUANTITY}><{/if}></span>
     
     <{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
@@ -107,7 +107,7 @@
                                                     
                             <input class="input-price currency-format" type="text" name="<{$prefix}>adminorderitem_formdata_PRICE" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>
             <span class="currency currency-format"><{if $row->PRICE != 0}><{$row->PRICE}><{/if}></span>
     
             <{$summable.PRICE = $summable.PRICE + $row->PRICE scope=parent}>

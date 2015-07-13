@@ -27,7 +27,7 @@
                                     
     <{if $details->reftext_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -41,7 +41,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`pagewidget_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-id-page input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_PAGE" value="<{$details->ID_PAGE|escape}>"  />
@@ -52,7 +52,7 @@
                                 
     <{if $details->reftext_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -221,7 +221,7 @@
                                     
     <{if $details->reftext_ID_WIDGET_TYPE}>
         <{if isset($smarty.session.acl.widgettype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/view/<{$details->refuuid_ID_WIDGET_TYPE}>"><{$details->reftext_ID_WIDGET_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/view/<{$details->refuuid_ID_WIDGET_TYPE}>"><{$details->reftext_ID_WIDGET_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_WIDGET_TYPE|escape}>        <{/if}>
     <{else}>
@@ -235,7 +235,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-type" class="input-id-widget-type" name="`$prefix`pagewidget_formdata_ID_WIDGET_TYPE" value=$details->ID_WIDGET_TYPE text=$details->reftext_ID_WIDGET_TYPE datasource="WIDGET_TYPE" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-widget-type input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_TYPE" value="<{$details->ID_WIDGET_TYPE|escape}>"  />
@@ -246,7 +246,7 @@
                                 
     <{if $details->reftext_ID_WIDGET_TYPE}>
         <{if isset($smarty.session.acl.widgettype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgettype/view/<{$details->refuuid_ID_WIDGET_TYPE}>"><{$details->reftext_ID_WIDGET_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/view/<{$details->refuuid_ID_WIDGET_TYPE}>"><{$details->reftext_ID_WIDGET_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_WIDGET_TYPE|escape}>        <{/if}>
     <{else}>
@@ -276,7 +276,7 @@
                                     
     <{if $details->reftext_ID_WIDGET_POSITION}>
         <{if isset($smarty.session.acl.widgetposition.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/view/<{$details->refuuid_ID_WIDGET_POSITION}>"><{$details->reftext_ID_WIDGET_POSITION|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/view/<{$details->refuuid_ID_WIDGET_POSITION}>"><{$details->reftext_ID_WIDGET_POSITION|escape}></a>
         <{else}>
             <{$details->reftext_ID_WIDGET_POSITION|escape}>        <{/if}>
     <{else}>
@@ -290,7 +290,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-position" class="input-id-widget-position" name="`$prefix`pagewidget_formdata_ID_WIDGET_POSITION" value=$details->ID_WIDGET_POSITION text=$details->reftext_ID_WIDGET_POSITION datasource="WIDGET_POSITION" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new" title="Create a New Widget Position">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new" title="Create a New Widget Position">+</a>
                 </span>
                     <{else}>
             <input class="input-id-widget-position input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_POSITION" value="<{$details->ID_WIDGET_POSITION|escape}>"  />
@@ -301,7 +301,7 @@
                                 
     <{if $details->reftext_ID_WIDGET_POSITION}>
         <{if isset($smarty.session.acl.widgetposition.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/view/<{$details->refuuid_ID_WIDGET_POSITION}>"><{$details->reftext_ID_WIDGET_POSITION|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/view/<{$details->refuuid_ID_WIDGET_POSITION}>"><{$details->reftext_ID_WIDGET_POSITION|escape}></a>
         <{else}>
             <{$details->reftext_ID_WIDGET_POSITION|escape}>        <{/if}>
     <{else}>

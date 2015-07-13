@@ -6,6 +6,8 @@ Options All -Indexes
     </FilesMatch>
 </IfModule>
 
+AddType text/cache-manifest .manifest
+
 RewriteEngine On
 
 RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
@@ -22,5 +24,6 @@ RewriteRule ^fonts/(.+)$ ../public/fonts/$1 [L]
 RewriteRule ^lib/(.+)$ ../public/lib/$1 [L]
 RewriteRule ^uploads/(.+)$ ../public/uploads/$1 [L]
 RewriteRule ^themes/(.+)$ ../public/themes/$1 [L]
+RewriteRule ^cache.manifest$ cache.manifest [L]
 
 RewriteRule ^(.+)$ index.php?p=$1 [QSA,L]

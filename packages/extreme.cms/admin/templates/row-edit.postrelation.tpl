@@ -30,12 +30,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$formdata.ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST|escape}>        <{/if}>
     <{else}>
@@ -59,12 +59,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$formdata.PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_PEER_ID_POST}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_PEER_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_PEER_ID_POST}>"><{$row->reftext_PEER_ID_POST|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_PEER_ID_POST}>"><{$row->reftext_PEER_ID_POST|escape}></a>
         <{else}>
             <{$row->reftext_PEER_ID_POST|escape}>        <{/if}>
     <{else}>
@@ -88,12 +88,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$formdata.ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/new" title="Create a New Post Relation Type">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/new" title="Create a New Post Relation Type">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_RELATION_TYPE}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_RELATION_TYPE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.postrelationtype.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/view/<{$row->refuuid_ID_POST_RELATION_TYPE}>"><{$row->reftext_ID_POST_RELATION_TYPE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/view/<{$row->refuuid_ID_POST_RELATION_TYPE}>"><{$row->reftext_ID_POST_RELATION_TYPE|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST_RELATION_TYPE|escape}>        <{/if}>
     <{else}>

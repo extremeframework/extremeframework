@@ -353,6 +353,8 @@ class _UserPreferenceController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('userpreference_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('userpreference', 'delete');
     }
 
     public function deleteAction() {
@@ -693,6 +695,8 @@ class _UserPreferenceController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('userpreference_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('userpreference', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -742,6 +746,7 @@ class _UserPreferenceController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('userpreference_updated', $model, $old);
+                NotificationHelper::notifyChange('userpreference', 'update');
             } else {
                 $model->ID = null;
                 
@@ -753,6 +758,7 @@ class _UserPreferenceController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('userpreference_created', $model);
+    		    NotificationHelper::notifyChange('userpreference', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -906,11 +912,12 @@ class _UserPreferenceController extends __AppController
         LicenseController::enforceLicenseCheck('userpreference');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('userpreference');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -919,10 +926,11 @@ class _UserPreferenceController extends __AppController
         LicenseController::enforceLicenseCheck('userpreference');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('userpreference');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

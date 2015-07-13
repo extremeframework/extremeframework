@@ -417,6 +417,8 @@ class _UserController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('user_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('user', 'delete');
     }
 
     public function deleteAction() {
@@ -827,6 +829,8 @@ class _UserController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('user_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('user', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -883,6 +887,7 @@ class _UserController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('user_updated', $model, $old);
+                NotificationHelper::notifyChange('user', 'update');
             } else {
                 $model->ID = null;
                 $model->CREATION_DATE = date('Y-m-d H:i:s');
@@ -894,6 +899,7 @@ class _UserController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('user_created', $model);
+    		    NotificationHelper::notifyChange('user', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1040,11 +1046,12 @@ class _UserController extends __AppController
         LicenseController::enforceLicenseCheck('user');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('user');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1053,10 +1060,11 @@ class _UserController extends __AppController
         LicenseController::enforceLicenseCheck('user');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('user');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

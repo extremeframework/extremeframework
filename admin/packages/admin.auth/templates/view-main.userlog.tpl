@@ -27,7 +27,7 @@
                                     
     <{if $details->reftext_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER|escape}>        <{/if}>
     <{else}>
@@ -41,7 +41,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`userlog_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>userlog_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
@@ -52,7 +52,7 @@
                                 
     <{if $details->reftext_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER|escape}>        <{/if}>
     <{else}>

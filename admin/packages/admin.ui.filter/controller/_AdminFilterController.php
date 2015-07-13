@@ -347,6 +347,8 @@ class _AdminFilterController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminfilter_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminfilter', 'delete');
     }
 
     public function deleteAction() {
@@ -387,6 +389,19 @@ class _AdminFilterController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
+
+            if (!empty($relations)) {
+                foreach ($relations as $module) {
+                    switch ($module) {
+                        case 'adminfiltercondition': 
+                            (new AdminFilterConditionController())->delete('ID_ADMIN_FILTER', $_ids);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         TransactionHelper::end();
@@ -687,6 +702,8 @@ class _AdminFilterController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminfilter_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminfilter', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -736,6 +753,7 @@ class _AdminFilterController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminfilter_updated', $model, $old);
+                NotificationHelper::notifyChange('adminfilter', 'update');
             } else {
                 $model->ID = null;
                 
@@ -747,6 +765,7 @@ class _AdminFilterController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminfilter_created', $model);
+    		    NotificationHelper::notifyChange('adminfilter', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -767,9 +786,6 @@ class _AdminFilterController extends __AppController
             
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
-            }
-            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
-                $model->COLUMNS = $refobject->COLUMN;
             }
 
         }
@@ -900,11 +916,12 @@ class _AdminFilterController extends __AppController
         LicenseController::enforceLicenseCheck('adminfilter');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminfilter');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -913,10 +930,11 @@ class _AdminFilterController extends __AppController
         LicenseController::enforceLicenseCheck('adminfilter');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminfilter');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -1497,11 +1515,6 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'COLUMNS':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

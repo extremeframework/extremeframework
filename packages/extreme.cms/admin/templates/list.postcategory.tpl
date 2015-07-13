@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="postcategoryquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/postcategory/search" method="post" enctype="multipart/form-data">
+        <form id="postcategoryquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/postcategory/search" method="get">
             <input type="text" name="postcategory_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#postcategoryquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="postcategorylist" id="postcategorylistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/postcategory/" method="post">
-
-<input type="hidden" name="postcategorylist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.postcategory.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST_CATEGORY')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST_CATEGORY')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -119,9 +115,9 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(L_GUIDELINES_COPY_RELS, strtolower(L_POST_CATEGORY)));
-    	$template->assign('approveguidelines', sprintf(L_GUIDELINES_APPROVE_RELS, strtolower(L_POST_CATEGORY)));
-    	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_POST_CATEGORY), strtolower(L_POST_CATEGORY)));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_POST_CATEGORY'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_POST_CATEGORY'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_POST_CATEGORY')), strtolower(_t('L_POST_CATEGORY'))));
     <{/php}>
 
     <div id="postcategorycopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>">
@@ -163,6 +159,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="postcategorylist" id="postcategorylistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/postcategory/" method="post">
+<input type="hidden" name="postcategorylist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -172,8 +171,7 @@ function postcategory_reset() {
 }
 
 function postcategory_search() {
-	$('#postcategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postcategory/search/');
-	$('#postcategorylistform').submit();
+	$('#postcategory-search').submit();
 }
 
 function postcategory_save() {
@@ -373,6 +371,10 @@ function postcategory_clearselection() {
 
     $(function() {
     	bind_hotkey('#postcategorylistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

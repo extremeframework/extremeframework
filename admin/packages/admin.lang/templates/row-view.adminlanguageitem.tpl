@@ -10,9 +10,9 @@
             <{if (in_array('ID_ADMIN_LANGUAGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_LANGUAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) && $aclviewablecolumns['ID_ADMIN_LANGUAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LANGUAGE']) || $aclviewablecolumns['ID_ADMIN_LANGUAGE']))) }>
                 <td class="column column-id-admin-language reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LANGUAGE}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LANGUAGE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminlanguage.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/view/<{$row->refuuid_ID_ADMIN_LANGUAGE}>"><{$row->reftext_ID_ADMIN_LANGUAGE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/view/<{$row->refuuid_ID_ADMIN_LANGUAGE}>"><{$row->reftext_ID_ADMIN_LANGUAGE|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_LANGUAGE|escape}>        <{/if}>
     <{else}>
@@ -25,9 +25,9 @@
 	        <{if (in_array('ID_ADMIN_LABEL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_LABEL']) && ((isset($aclviewablecolumns['ID_ADMIN_LABEL']) && $aclviewablecolumns['ID_ADMIN_LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_LABEL']) || $aclviewablecolumns['ID_ADMIN_LABEL']))) }>
                 <td class="column column-id-admin-label reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LABEL}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LABEL}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminlabel.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->refuuid_ID_ADMIN_LABEL}>"><{$row->reftext_ID_ADMIN_LABEL|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->refuuid_ID_ADMIN_LABEL}>"><{$row->reftext_ID_ADMIN_LABEL|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_LABEL|escape}>        <{/if}>
     <{else}>
@@ -45,7 +45,7 @@
 	<{plugin key="adminlanguageitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminlanguageitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         
@@ -63,7 +63,7 @@
 
     	        <ul class="dropdown-menu pull-right">
     	            <{foreach from=$admin_view_options item=view}>
-                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/booking/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
+                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
                     <{/foreach}>
                 </ul>
     	    </span>

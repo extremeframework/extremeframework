@@ -369,6 +369,8 @@ class _AclTypeController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('acltype_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('acltype', 'delete');
     }
 
     public function deleteAction() {
@@ -728,6 +730,8 @@ class _AclTypeController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('acltype_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('acltype', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -777,6 +781,7 @@ class _AclTypeController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('acltype_updated', $model, $old);
+                NotificationHelper::notifyChange('acltype', 'update');
             } else {
                 $model->ID = null;
                 
@@ -788,6 +793,7 @@ class _AclTypeController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('acltype_created', $model);
+    		    NotificationHelper::notifyChange('acltype', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -927,11 +933,12 @@ class _AclTypeController extends __AppController
         LicenseController::enforceLicenseCheck('acltype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('acltype');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -940,10 +947,11 @@ class _AclTypeController extends __AppController
         LicenseController::enforceLicenseCheck('acltype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('acltype');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

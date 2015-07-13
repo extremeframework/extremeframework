@@ -30,12 +30,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$formdata.ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/new" title="Create a New Admin Language">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/new" title="Create a New Admin Language">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LANGUAGE}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LANGUAGE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminlanguage.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/view/<{$row->refuuid_ID_ADMIN_LANGUAGE}>"><{$row->reftext_ID_ADMIN_LANGUAGE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/view/<{$row->refuuid_ID_ADMIN_LANGUAGE}>"><{$row->reftext_ID_ADMIN_LANGUAGE|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_LANGUAGE|escape}>        <{/if}>
     <{else}>
@@ -59,12 +59,12 @@
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$formdata.ID_ADMIN_LABEL datasource="ADMIN_LABEL" valuecol="ID" textcol="LABEL" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <span class="onflycreation">
-                                        <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/new" title="Create a New Admin Label">+</a>
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/new" title="Create a New Admin Label">+</a>
                                     </span>
                                                                                                             <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LABEL}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlanguageitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LABEL}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminlabel.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->refuuid_ID_ADMIN_LABEL}>"><{$row->reftext_ID_ADMIN_LABEL|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->refuuid_ID_ADMIN_LABEL}>"><{$row->reftext_ID_ADMIN_LABEL|escape}></a>
         <{else}>
             <{$row->reftext_ID_ADMIN_LABEL|escape}>        <{/if}>
     <{else}>

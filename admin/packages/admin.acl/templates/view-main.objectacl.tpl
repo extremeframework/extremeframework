@@ -27,7 +27,7 @@
                                     
     <{if $details->reftext_MODULE}>
         <{if isset($smarty.session.acl.adminmodule.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/view/<{$details->refuuid_MODULE}>"><{$details->reftext_MODULE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/view/<{$details->refuuid_MODULE}>"><{$details->reftext_MODULE|escape}></a>
         <{else}>
             <{$details->reftext_MODULE|escape}>        <{/if}>
     <{else}>
@@ -41,7 +41,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`objectacl_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
                 </span>
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>objectacl_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
@@ -52,7 +52,7 @@
                                 
     <{if $details->reftext_MODULE}>
         <{if isset($smarty.session.acl.adminmodule.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/view/<{$details->refuuid_MODULE}>"><{$details->reftext_MODULE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/view/<{$details->refuuid_MODULE}>"><{$details->reftext_MODULE|escape}></a>
         <{else}>
             <{$details->reftext_MODULE|escape}>        <{/if}>
     <{else}>
@@ -116,7 +116,7 @@
                                     
     <{if $details->reftext_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -130,7 +130,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`objectacl_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>objectacl_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
@@ -141,7 +141,7 @@
                                 
     <{if $details->reftext_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ID_USER_GROUP}>"><{$details->reftext_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -176,7 +176,7 @@
                                     
     <{if $details->reftext_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER|escape}>        <{/if}>
     <{else}>
@@ -190,7 +190,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`objectacl_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>objectacl_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
@@ -201,7 +201,7 @@
                                 
     <{if $details->reftext_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ID_USER}>"><{$details->reftext_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ID_USER|escape}>        <{/if}>
     <{else}>
@@ -231,7 +231,7 @@
                                     
     <{if $details->reftext_ARG_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ARG_ID_USER_GROUP}>"><{$details->reftext_ARG_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ARG_ID_USER_GROUP}>"><{$details->reftext_ARG_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ARG_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -245,7 +245,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-arg-id-user-group" class="input-arg-id-user-group" name="`$prefix`objectacl_formdata_ARG_ID_USER_GROUP" value=$details->ARG_ID_USER_GROUP text=$details->reftext_ARG_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
                 </span>
                     <{else}>
             <input class="input-arg-id-user-group input-type-text" type="text" name="<{$prefix}>objectacl_formdata_ARG_ID_USER_GROUP" value="<{$details->ARG_ID_USER_GROUP|escape}>"  />
@@ -256,7 +256,7 @@
                                 
     <{if $details->reftext_ARG_ID_USER_GROUP}>
         <{if isset($smarty.session.acl.usergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ARG_ID_USER_GROUP}>"><{$details->reftext_ARG_ID_USER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$details->refuuid_ARG_ID_USER_GROUP}>"><{$details->reftext_ARG_ID_USER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ARG_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -291,7 +291,7 @@
                                     
     <{if $details->reftext_ARG_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ARG_ID_USER}>"><{$details->reftext_ARG_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ARG_ID_USER}>"><{$details->reftext_ARG_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ARG_ID_USER|escape}>        <{/if}>
     <{else}>
@@ -305,7 +305,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-arg-id-user" class="input-arg-id-user" name="`$prefix`objectacl_formdata_ARG_ID_USER" value=$details->ARG_ID_USER text=$details->reftext_ARG_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
                 </span>
                     <{else}>
             <input class="input-arg-id-user input-type-text" type="text" name="<{$prefix}>objectacl_formdata_ARG_ID_USER" value="<{$details->ARG_ID_USER|escape}>"  />
@@ -316,7 +316,7 @@
                                 
     <{if $details->reftext_ARG_ID_USER}>
         <{if isset($smarty.session.acl.user.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ARG_ID_USER}>"><{$details->reftext_ARG_ID_USER|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$details->refuuid_ARG_ID_USER}>"><{$details->reftext_ARG_ID_USER|escape}></a>
         <{else}>
             <{$details->reftext_ARG_ID_USER|escape}>        <{/if}>
     <{else}>
@@ -346,7 +346,7 @@
                                     
     <{if $details->reftext_ID_ACL_TYPE}>
         <{if isset($smarty.session.acl.acltype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/acltype/view/<{$details->refuuid_ID_ACL_TYPE}>"><{$details->reftext_ID_ACL_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/acltype/view/<{$details->refuuid_ID_ACL_TYPE}>"><{$details->reftext_ID_ACL_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_ACL_TYPE|escape}>        <{/if}>
     <{else}>
@@ -360,7 +360,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-acl-type" class="input-id-acl-type" name="`$prefix`objectacl_formdata_ID_ACL_TYPE" value=$details->ID_ACL_TYPE text=$details->reftext_ID_ACL_TYPE datasource="ACL_TYPE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/acltype/new" title="Create a New Acl Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/acltype/new" title="Create a New Acl Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-acl-type input-type-text" type="text" name="<{$prefix}>objectacl_formdata_ID_ACL_TYPE" value="<{$details->ID_ACL_TYPE|escape}>"  />
@@ -371,7 +371,7 @@
                                 
     <{if $details->reftext_ID_ACL_TYPE}>
         <{if isset($smarty.session.acl.acltype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/acltype/view/<{$details->refuuid_ID_ACL_TYPE}>"><{$details->reftext_ID_ACL_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/acltype/view/<{$details->refuuid_ID_ACL_TYPE}>"><{$details->reftext_ID_ACL_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_ACL_TYPE|escape}>        <{/if}>
     <{else}>

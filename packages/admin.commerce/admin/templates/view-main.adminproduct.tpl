@@ -233,7 +233,7 @@
                                     
     <{if $details->reftext_PRODUCT_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_PRODUCT_ID_PAGE}>"><{$details->reftext_PRODUCT_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_PRODUCT_ID_PAGE}>"><{$details->reftext_PRODUCT_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_PRODUCT_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -247,7 +247,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-product-id-page" class="input-product-id-page" name="`$prefix`adminproduct_formdata_PRODUCT_ID_PAGE" value=$details->PRODUCT_ID_PAGE text=$details->reftext_PRODUCT_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-product-id-page input-type-text" type="text" name="<{$prefix}>adminproduct_formdata_PRODUCT_ID_PAGE" value="<{$details->PRODUCT_ID_PAGE|escape}>"  />
@@ -258,7 +258,7 @@
                                 
     <{if $details->reftext_PRODUCT_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_PRODUCT_ID_PAGE}>"><{$details->reftext_PRODUCT_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_PRODUCT_ID_PAGE}>"><{$details->reftext_PRODUCT_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_PRODUCT_ID_PAGE|escape}>        <{/if}>
     <{else}>

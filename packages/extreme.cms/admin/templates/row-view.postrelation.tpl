@@ -10,9 +10,9 @@
             <{if (in_array('ID_POST', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_POST']) && ((isset($aclviewablecolumns['ID_POST']) && $aclviewablecolumns['ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST']) || $aclviewablecolumns['ID_POST']))) }>
                 <td class="column column-id-post reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_ID_POST}>"><{$row->reftext_ID_POST|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST|escape}>        <{/if}>
     <{else}>
@@ -25,9 +25,9 @@
 	        <{if (in_array('PEER_ID_POST', $filtercolumns)) }>
             <{if !isset($excludedcolumns['PEER_ID_POST']) && ((isset($aclviewablecolumns['PEER_ID_POST']) && $aclviewablecolumns['PEER_ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PEER_ID_POST']) || $aclviewablecolumns['PEER_ID_POST']))) }>
                 <td class="column column-peer-id-post reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_PEER_ID_POST}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_PEER_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_PEER_ID_POST}>"><{$row->reftext_PEER_ID_POST|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->refuuid_PEER_ID_POST}>"><{$row->reftext_PEER_ID_POST|escape}></a>
         <{else}>
             <{$row->reftext_PEER_ID_POST|escape}>        <{/if}>
     <{else}>
@@ -40,9 +40,9 @@
 	        <{if (in_array('ID_POST_RELATION_TYPE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_POST_RELATION_TYPE']) && ((isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) && $aclviewablecolumns['ID_POST_RELATION_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) || $aclviewablecolumns['ID_POST_RELATION_TYPE']))) }>
                 <td class="column column-id-post-relation-type reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_RELATION_TYPE}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postrelation.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_RELATION_TYPE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.postrelationtype.view)}>
-            <a class="refview scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/view/<{$row->refuuid_ID_POST_RELATION_TYPE}>"><{$row->reftext_ID_POST_RELATION_TYPE|escape}></a>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/view/<{$row->refuuid_ID_POST_RELATION_TYPE}>"><{$row->reftext_ID_POST_RELATION_TYPE|escape}></a>
         <{else}>
             <{$row->reftext_ID_POST_RELATION_TYPE|escape}>        <{/if}>
     <{else}>
@@ -60,7 +60,7 @@
 	<{plugin key="postrelation_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.postrelation.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
         <{/if}>
 
         
@@ -78,7 +78,7 @@
 
     	        <ul class="dropdown-menu pull-right">
     	            <{foreach from=$admin_view_options item=view}>
-                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/booking/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
+                        <li><a <{if $view->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/postrelation/view/<{$row->UUID}>/<{$view->CODE}>"><{$view->TITLE}></a></li>
                     <{/foreach}>
                 </ul>
     	    </span>

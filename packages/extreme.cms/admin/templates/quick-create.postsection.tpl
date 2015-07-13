@@ -305,7 +305,7 @@
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
                 <strong><{_t('L_SAVE')}></strong>
             </button>
-                            <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/postsection/new">
+                            <a class="btn btn-full-form scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postsection/new">
                     <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
@@ -319,10 +319,12 @@
     	bind_hotkey('#postsectionform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#postsectionform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

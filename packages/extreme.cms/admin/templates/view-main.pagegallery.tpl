@@ -61,7 +61,7 @@
                                     
     <{if $details->reftext_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -75,7 +75,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`pagegallery_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-id-page input-type-text" type="text" name="<{$prefix}>pagegallery_formdata_ID_PAGE" value="<{$details->ID_PAGE|escape}>"  />
@@ -86,7 +86,7 @@
                                 
     <{if $details->reftext_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_ID_PAGE}>"><{$details->reftext_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -158,7 +158,7 @@
                                     
     <{if $details->reftext_LINK_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_LINK_ID_PAGE}>"><{$details->reftext_LINK_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_LINK_ID_PAGE}>"><{$details->reftext_LINK_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_LINK_ID_PAGE|escape}>        <{/if}>
     <{else}>
@@ -172,7 +172,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-link-id-page" class="input-link-id-page" name="`$prefix`pagegallery_formdata_LINK_ID_PAGE" value=$details->LINK_ID_PAGE text=$details->reftext_LINK_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
                 </span>
                     <{else}>
             <input class="input-link-id-page input-type-text" type="text" name="<{$prefix}>pagegallery_formdata_LINK_ID_PAGE" value="<{$details->LINK_ID_PAGE|escape}>"  />
@@ -183,7 +183,7 @@
                                 
     <{if $details->reftext_LINK_ID_PAGE}>
         <{if isset($smarty.session.acl.page.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_LINK_ID_PAGE}>"><{$details->reftext_LINK_ID_PAGE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$details->refuuid_LINK_ID_PAGE}>"><{$details->reftext_LINK_ID_PAGE|escape}></a>
         <{else}>
             <{$details->reftext_LINK_ID_PAGE|escape}>        <{/if}>
     <{else}>

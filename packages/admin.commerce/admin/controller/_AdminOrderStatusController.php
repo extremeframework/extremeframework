@@ -387,6 +387,8 @@ class _AdminOrderStatusController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminorderstatus_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminorderstatus', 'delete');
     }
 
     public function deleteAction() {
@@ -742,6 +744,8 @@ class _AdminOrderStatusController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminorderstatus_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminorderstatus', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -791,6 +795,7 @@ class _AdminOrderStatusController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminorderstatus_updated', $model, $old);
+                NotificationHelper::notifyChange('adminorderstatus', 'update');
             } else {
                 $model->ID = null;
                 
@@ -802,6 +807,7 @@ class _AdminOrderStatusController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminorderstatus_created', $model);
+    		    NotificationHelper::notifyChange('adminorderstatus', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1268,11 +1274,12 @@ class _AdminOrderStatusController extends __AppController
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminorderstatus');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1281,10 +1288,11 @@ class _AdminOrderStatusController extends __AppController
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminorderstatus');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2028,6 +2036,7 @@ class _AdminOrderStatusController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('adminorderstatus_imported', $model);
+            NotificationHelper::notifyChange('adminorderstatus', 'insert');
 		}
 
         return true;

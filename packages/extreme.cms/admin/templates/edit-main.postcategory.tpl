@@ -116,7 +116,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`postcategory_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
                 </span>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>postcategory_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
@@ -184,7 +184,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`postcategory_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
                 </span>
                     <{else}>
             <input class="input-id-template input-type-text" type="text" name="<{$prefix}>postcategory_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE|escape}>"  />

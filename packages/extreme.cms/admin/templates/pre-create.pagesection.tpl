@@ -359,10 +359,12 @@
     	bind_hotkey('#pagesectionform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#pagesectionform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

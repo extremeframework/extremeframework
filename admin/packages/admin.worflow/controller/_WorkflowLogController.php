@@ -343,6 +343,8 @@ class _WorkflowLogController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('workflowlog_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('workflowlog', 'delete');
     }
 
     public function deleteAction() {
@@ -527,7 +529,7 @@ class _WorkflowLogController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-		if ($column == 'DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
+		if ($column == 'DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -538,7 +540,11 @@ class _WorkflowLogController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $value = "$year-$month-$day";
+                $hour = substr('00'.$info['hour'], -2);
+                $minute = substr('00'.$info['minute'], -2);
+                $second = substr('00'.$info['second'], -2);
+
+                $value = "$year-$month-$day $hour:$minute:$second";
             } else {
                 $value = '';
             }
@@ -698,6 +704,8 @@ class _WorkflowLogController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('workflowlog_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('workflowlog', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -747,6 +755,7 @@ class _WorkflowLogController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('workflowlog_updated', $model, $old);
+                NotificationHelper::notifyChange('workflowlog', 'update');
             } else {
                 $model->ID = null;
                 
@@ -758,6 +767,7 @@ class _WorkflowLogController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('workflowlog_created', $model);
+    		    NotificationHelper::notifyChange('workflowlog', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -780,7 +790,7 @@ class _WorkflowLogController extends __AppController
                 $model->ID_WORKFLOW = $refobject->CODE;
             }
             if ($refclass == 'WorkflowTransitionModel' && empty($model->ID_WORKFLOW_TRANSITION)) {
-                $model->ID_WORKFLOW_TRANSITION = $refobject->ID;
+                $model->ID_WORKFLOW_TRANSITION = $refobject->CODE;
             }
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
@@ -917,11 +927,12 @@ class _WorkflowLogController extends __AppController
         LicenseController::enforceLicenseCheck('workflowlog');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflowlog');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -930,10 +941,11 @@ class _WorkflowLogController extends __AppController
         LicenseController::enforceLicenseCheck('workflowlog');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('workflowlog');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -1531,6 +1543,16 @@ class _WorkflowLogController extends __AppController
 
                         break;
 
+                    case 'DATE__FROM':
+                        $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.DATE >= '".$this->field_sanitize('DATE', $value)."'");
+
+                        break;
+
+                    case 'DATE__TO':
+                        $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.DATE IS NULL OR ".TABLE_PREFIX."WORKFLOW_LOG.DATE <= '".$this->field_sanitize('DATE', $value)."')");
+
+                        break;
+
                     case 'ID_USER':
                         if ($value == '__NULL__') {
                             $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.ID_USER IS NULL");
@@ -1592,7 +1614,7 @@ class _WorkflowLogController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowTransition')) {
-                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
             }
             if (Framework::hasModule('AdminModule')) {
                 $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
@@ -1627,7 +1649,7 @@ class _WorkflowLogController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowTransition')) {
-                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:ID'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
             }
             if (Framework::hasModule('User')) {
                 $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');

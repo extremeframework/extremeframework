@@ -29,7 +29,7 @@
                         
                             <input class="input-label" type="text" name="<{$prefix}>adminlabel_formdata_LABEL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="500"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlabel.view) && !$alreadyhaslink }><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->UUID}>"><{/if}>	<{$row->LABEL|escape}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlabel.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/view/<{$row->UUID}>"><{/if}>	<{$row->LABEL|escape}>
 <{if isset($smarty.session.acl.adminlabel.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>

@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="valuetypequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/valuetype/search" method="post" enctype="multipart/form-data">
+        <form id="valuetypequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/valuetype/search" method="get">
             <input type="text" name="valuetype_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#valuetypequicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/valuetype"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="valuetypelist" id="valuetypelistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/valuetype/" method="post">
-
-<input type="hidden" name="valuetypelist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.valuetype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_VALUE_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_VALUE_TYPE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -109,9 +105,9 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(L_GUIDELINES_COPY_RELS, strtolower(L_VALUE_TYPE)));
-    	$template->assign('approveguidelines', sprintf(L_GUIDELINES_APPROVE_RELS, strtolower(L_VALUE_TYPE)));
-    	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_VALUE_TYPE), strtolower(L_VALUE_TYPE)));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_VALUE_TYPE'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_VALUE_TYPE'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_VALUE_TYPE')), strtolower(_t('L_VALUE_TYPE'))));
     <{/php}>
 
     <div id="valuetypecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
@@ -144,6 +140,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="valuetypelist" id="valuetypelistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/valuetype/" method="post">
+<input type="hidden" name="valuetypelist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -153,8 +152,7 @@ function valuetype_reset() {
 }
 
 function valuetype_search() {
-	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/search/');
-	$('#valuetypelistform').submit();
+	$('#valuetype-search').submit();
 }
 
 function valuetype_save() {
@@ -354,6 +352,10 @@ function valuetype_clearselection() {
 
     $(function() {
     	bind_hotkey('#valuetypelistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

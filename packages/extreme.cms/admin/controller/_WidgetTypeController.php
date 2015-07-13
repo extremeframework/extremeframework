@@ -361,6 +361,8 @@ class _WidgetTypeController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('widgettype_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('widgettype', 'delete');
     }
 
     public function deleteAction() {
@@ -714,6 +716,8 @@ class _WidgetTypeController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('widgettype_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('widgettype', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -763,6 +767,7 @@ class _WidgetTypeController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('widgettype_updated', $model, $old);
+                NotificationHelper::notifyChange('widgettype', 'update');
             } else {
                 $model->ID = null;
                 
@@ -774,6 +779,7 @@ class _WidgetTypeController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('widgettype_created', $model);
+    		    NotificationHelper::notifyChange('widgettype', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1240,11 +1246,12 @@ class _WidgetTypeController extends __AppController
         LicenseController::enforceLicenseCheck('widgettype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('widgettype');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1253,10 +1260,11 @@ class _WidgetTypeController extends __AppController
         LicenseController::enforceLicenseCheck('widgettype');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('widgettype');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2000,6 +2008,7 @@ class _WidgetTypeController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('widgettype_imported', $model);
+            NotificationHelper::notifyChange('widgettype', 'insert');
 		}
 
         return true;

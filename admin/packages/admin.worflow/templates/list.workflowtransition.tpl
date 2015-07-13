@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="workflowtransitionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowtransition/search" method="post" enctype="multipart/form-data">
+        <form id="workflowtransitionquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowtransition/search" method="get">
             <input type="text" name="workflowtransition_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#workflowtransitionquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="workflowtransitionlist" id="workflowtransitionlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowtransition/" method="post">
-
-<input type="hidden" name="workflowtransitionlist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflowtransition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -109,9 +105,9 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(L_GUIDELINES_COPY_RELS, strtolower(L_WORKFLOW_TRANSITION)));
-    	$template->assign('approveguidelines', sprintf(L_GUIDELINES_APPROVE_RELS, strtolower(L_WORKFLOW_TRANSITION)));
-    	$template->assign('deleteguidelines', sprintf(L_GUIDELINES_DELETE_RELS, strtolower(L_WORKFLOW_TRANSITION), strtolower(L_WORKFLOW_TRANSITION)));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION')), strtolower(_t('L_WORKFLOW_TRANSITION'))));
     <{/php}>
 
     <div id="workflowtransitioncopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>">
@@ -144,6 +140,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="workflowtransitionlist" id="workflowtransitionlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/workflowtransition/" method="post">
+<input type="hidden" name="workflowtransitionlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -153,8 +152,7 @@ function workflowtransition_reset() {
 }
 
 function workflowtransition_search() {
-	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/search/');
-	$('#workflowtransitionlistform').submit();
+	$('#workflowtransition-search').submit();
 }
 
 function workflowtransition_save() {
@@ -354,6 +352,10 @@ function workflowtransition_clearselection() {
 
     $(function() {
     	bind_hotkey('#workflowtransitionlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

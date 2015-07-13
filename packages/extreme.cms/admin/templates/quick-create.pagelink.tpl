@@ -98,7 +98,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page-link-type" class="input-id-page-link-type" name="`$prefix`pagelink_formdata_ID_PAGE_LINK_TYPE" value=$details->ID_PAGE_LINK_TYPE text=$details->reftext_ID_PAGE_LINK_TYPE datasource="PAGE_LINK_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new" title="Create a New Page Link Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new" title="Create a New Page Link Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-page-link-type input-type-text" type="text" name="<{$prefix}>pagelink_formdata_ID_PAGE_LINK_TYPE" value="<{$details->ID_PAGE_LINK_TYPE|escape}>"  />
@@ -276,7 +276,7 @@
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
                 <strong><{_t('L_SAVE')}></strong>
             </button>
-                            <a class="btn btn-full-form scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagelink/new">
+                            <a class="btn btn-full-form scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelink/new">
                     <strong><{_t('L_GO_TO_FULL_FORM')}></strong>
                 </a>
                     </div>
@@ -290,10 +290,12 @@
     	bind_hotkey('#pagelinkform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#pagelinkform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

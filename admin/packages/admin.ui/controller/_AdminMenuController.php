@@ -369,6 +369,8 @@ class _AdminMenuController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminmenu_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminmenu', 'delete');
     }
 
     public function deleteAction() {
@@ -823,6 +825,8 @@ class _AdminMenuController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminmenu_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminmenu', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -872,6 +876,7 @@ class _AdminMenuController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminmenu_updated', $model, $old);
+                NotificationHelper::notifyChange('adminmenu', 'update');
             } else {
                 $model->ID = null;
                 
@@ -883,6 +888,7 @@ class _AdminMenuController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminmenu_created', $model);
+    		    NotificationHelper::notifyChange('adminmenu', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1019,13 +1025,14 @@ class _AdminMenuController extends __AppController
         LicenseController::enforceLicenseCheck('adminmenu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminmenu');
         
         
         self::clearTempCreateItem();
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1034,10 +1041,11 @@ class _AdminMenuController extends __AppController
         LicenseController::enforceLicenseCheck('adminmenu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminmenu');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

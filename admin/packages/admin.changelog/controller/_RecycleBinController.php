@@ -343,6 +343,8 @@ class _RecycleBinController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('recyclebin_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('recyclebin', 'delete');
     }
 
     public function deleteAction() {
@@ -702,6 +704,8 @@ class _RecycleBinController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('recyclebin_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('recyclebin', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -751,6 +755,7 @@ class _RecycleBinController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('recyclebin_updated', $model, $old);
+                NotificationHelper::notifyChange('recyclebin', 'update');
             } else {
                 $model->ID = null;
                 
@@ -762,6 +767,7 @@ class _RecycleBinController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('recyclebin_created', $model);
+    		    NotificationHelper::notifyChange('recyclebin', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -915,11 +921,12 @@ class _RecycleBinController extends __AppController
         LicenseController::enforceLicenseCheck('recyclebin');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('recyclebin');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -928,10 +935,11 @@ class _RecycleBinController extends __AppController
         LicenseController::enforceLicenseCheck('recyclebin');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('recyclebin');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

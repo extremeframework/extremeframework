@@ -50,7 +50,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`workflowlog_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
                 </span>
                     <{else}>
             <input class="input-id-workflow input-type-text" type="text" name="<{$prefix}>workflowlog_formdata_ID_WORKFLOW" value="<{$details->ID_WORKFLOW|escape}>"  />
@@ -84,10 +84,10 @@
                 <div class="form-field form-field-value column-id-workflow-transition">
                                             
             <{if Framework::hasModule('WorkflowTransition')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow-transition" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$details->ID_WORKFLOW_TRANSITION text=$details->reftext_ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow-transition" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$details->ID_WORKFLOW_TRANSITION text=$details->reftext_ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new" title="Create a New Workflow Transition">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new" title="Create a New Workflow Transition">+</a>
                 </span>
                     <{else}>
             <input class="input-id-workflow-transition input-type-text" type="text" name="<{$prefix}>workflowlog_formdata_ID_WORKFLOW_TRANSITION" value="<{$details->ID_WORKFLOW_TRANSITION|escape}>"  />
@@ -124,7 +124,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`workflowlog_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
                 </span>
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>workflowlog_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
@@ -220,7 +220,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`workflowlog_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
                 </span>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>workflowlog_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />

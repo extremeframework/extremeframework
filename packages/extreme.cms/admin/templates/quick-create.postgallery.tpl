@@ -98,7 +98,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postgallery_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
                 </span>
                     <{else}>
             <input class="input-id-post input-type-text" type="text" name="<{$prefix}>postgallery_formdata_ID_POST" value="<{$details->ID_POST|escape}>"  />
@@ -380,10 +380,12 @@
     	bind_hotkey('#postgalleryform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#postgalleryform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

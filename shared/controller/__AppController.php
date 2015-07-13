@@ -119,7 +119,7 @@ class __AppController {
         header('Access-Control-Allow-Origin: *');
 
     	echo json_encode($data);
-		exit;
+		application_exit(0);
 	}
 
 	public static function json_error($errorcode, $errormessage) {
@@ -128,7 +128,7 @@ class __AppController {
         header('Access-Control-Allow-Origin: *');
 
     	echo json_encode(array('code' => $errorcode, 'message' => $errormessage));
-		exit;
+		application_exit(0);
 	}
 
     public function indexAction() {
@@ -279,7 +279,7 @@ class __AppController {
     		    $smarty->display($template);
             }
 
-            exit(1);
+            application_exit(1);
         }
     }
 
@@ -1145,18 +1145,46 @@ class ContextStack {
 	    return $module;
     }
 
-	static function back($step) {
+    static function getCurrentContext() {
+		$stack = & ContextStack::getInstance();
+
+        $pos = count($stack->general_stacks) - 1;
+
+		return $pos >= 0? $stack->general_stacks[$pos] : '';
+    }
+
+    static function getRecentContext() {
+		$stack = & ContextStack::getInstance();
+
+        $pos = count($stack->general_stacks) - 2;
+
+		return $pos >= 0? $stack->general_stacks[$pos] : '';
+    }
+
+	static function back($step, $returnurl = '') {
         ContextStack::getCurrentScreenContext($module, $action);
 
 		$stack = & ContextStack::getInstance();
+        $context = '';
 
-		while($step > 0) {
-			array_pop($stack->general_stacks);
-			array_pop($stack->module_stacks[$module]);
-			$step--;
-		}
+        if (!empty($returnurl)) {
+            if (in_array($returnurl, $stack->general_stacks)) {
+                do {
+            		$context = array_pop($stack->general_stacks);
+        			array_pop($stack->module_stacks[$module]);
+                } while ($context != $returnurl);
+            } else {
+                $context = $returnurl;
+            }
+        }
 
-		$context = array_pop($stack->general_stacks);
+        if (empty($context)) {
+    		while ($step >= 0) {
+    			$context = array_pop($stack->general_stacks);
+    			array_pop($stack->module_stacks[$module]);
+    			$step--;
+    		}
+        }
 
 		if (empty($context)) {
 		    $context = APPLICATION_URL.'/'.$module;
@@ -1171,7 +1199,7 @@ class ContextStack {
         }
 
 		application_route($context);
-		exit(0);
+		application_exit(0);
 	}
 
 	static function replace($context) {
@@ -1225,7 +1253,7 @@ class ContextStack {
                         }
 
                 		application_route($context);
-                		exit(0);
+                		application_exit(0);
                     }
                 }
             }

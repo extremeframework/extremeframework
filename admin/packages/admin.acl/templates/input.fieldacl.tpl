@@ -145,7 +145,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#fieldaclform').attr('action', '<{$actionurl}>');$('#fieldaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

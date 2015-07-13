@@ -1,0 +1,66 @@
+CACHE MANIFEST
+# version 1
+
+FALLBACK:
+/ index.php
+
+NETWORK:
+*
+authentication
+
+CACHE:
+# Remote resources
+http://fonts.googleapis.com/css?family=Roboto:light,italic,bold
+
+# CSS
+css/apps4clouds.header.css
+
+# Fonts
+fonts/fontawesome-webfont.eot
+fonts/fontawesome-webfont.svg
+fonts/fontawesome-webfont.ttf
+fonts/fontawesome-webfont.woff
+fonts/FontAwesome.otf
+fonts/Open-Sans.woff
+fonts/Open-Sans.woff2
+
+# JS
+js/apps4clouds.header.js
+js/apps4clouds.footer.js
+js/apps4clouds.footer.js
+lib/tiny_mce/tiny_mce.js
+lib/tiny_mce/tiny_mce_my.js
+lib/jquery-ace/ace/ace.js
+lib/jquery-ace/ace/theme-textmate.js
+lib/jquery-ace/ace/mode-css.js
+lib/jquery-ace/ace/mode-php.js
+lib/jquery-ace/jquery-ace.min.js
+
+# Images
+images/ajax-indicator.gif
+images/collapse.png
+images/down_arrow.png
+images/expand.png
+images/high-priority.png
+images/icon-attachment.PNG
+images/icon-email.png
+images/icon-hourglass.png
+images/icon-star-hover.png
+images/icon-star-selected.png
+images/icon-star.png
+images/icon-urgent-selected.png
+images/indicator.gif
+images/loader.gif
+images/loading.gif
+images/plus-white.png
+images/plus.png
+
+css/images/ui-bg_glass_55_fcf0ba_1x400.png
+css/images/ui-bg_gloss-wave_100_ece8da_500x100.png
+css/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png
+css/images/ui-bg_highlight-hard_100_fafaf4_1x100.png
+css/images/ui-bg_highlight-hard_15_459e00_1x100.png
+css/images/ui-bg_highlight-hard_95_cccccc_1x100.png
+css/images/ui-bg_highlight-soft_25_67b021_1x100.png
+css/images/ui-bg_highlight-soft_95_ffedad_1x100.png
+css/images/ui-bg_inset-soft_15_2b2922_1x100.png

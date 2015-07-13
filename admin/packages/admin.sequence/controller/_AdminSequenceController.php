@@ -347,6 +347,8 @@ class _AdminSequenceController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminsequence_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminsequence', 'delete');
     }
 
     public function deleteAction() {
@@ -689,6 +691,8 @@ class _AdminSequenceController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminsequence_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminsequence', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -738,6 +742,7 @@ class _AdminSequenceController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminsequence_updated', $model, $old);
+                NotificationHelper::notifyChange('adminsequence', 'update');
             } else {
                 $model->ID = null;
                 
@@ -749,6 +754,7 @@ class _AdminSequenceController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminsequence_created', $model);
+    		    NotificationHelper::notifyChange('adminsequence', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -899,11 +905,12 @@ class _AdminSequenceController extends __AppController
         LicenseController::enforceLicenseCheck('adminsequence');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminsequence');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -912,10 +919,11 @@ class _AdminSequenceController extends __AppController
         LicenseController::enforceLicenseCheck('adminsequence');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminsequence');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

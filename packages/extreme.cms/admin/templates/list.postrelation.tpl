@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="postrelationquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/postrelation/search" method="post" enctype="multipart/form-data">
+        <form id="postrelationquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/postrelation/search" method="get">
             <input type="text" name="postrelation_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#postrelationquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="postrelationlist" id="postrelationlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/postrelation/" method="post">
-
-<input type="hidden" name="postrelationlist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.postrelation.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelation/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST_RELATION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST_RELATION')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST_RELATION', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST_RELATION')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -122,6 +118,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="postrelationlist" id="postrelationlistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/postrelation/" method="post">
+<input type="hidden" name="postrelationlist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -131,8 +130,7 @@ function postrelation_reset() {
 }
 
 function postrelation_search() {
-	$('#postrelationlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelation/search/');
-	$('#postrelationlistform').submit();
+	$('#postrelation-search').submit();
 }
 
 function postrelation_save() {
@@ -287,6 +285,10 @@ function postrelation_clearselection() {
 
     $(function() {
     	bind_hotkey('#postrelationlistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

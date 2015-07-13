@@ -343,6 +343,8 @@ class _ChangeLogController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('changelog_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('changelog', 'delete');
     }
 
     public function deleteAction() {
@@ -702,6 +704,8 @@ class _ChangeLogController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('changelog_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('changelog', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -751,6 +755,7 @@ class _ChangeLogController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('changelog_updated', $model, $old);
+                NotificationHelper::notifyChange('changelog', 'update');
             } else {
                 $model->ID = null;
                 
@@ -762,6 +767,7 @@ class _ChangeLogController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('changelog_created', $model);
+    		    NotificationHelper::notifyChange('changelog', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -915,11 +921,12 @@ class _ChangeLogController extends __AppController
         LicenseController::enforceLicenseCheck('changelog');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('changelog');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -928,10 +935,11 @@ class _ChangeLogController extends __AppController
         LicenseController::enforceLicenseCheck('changelog');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('changelog');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

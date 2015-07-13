@@ -347,6 +347,8 @@ class _MenuController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('menu_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('menu', 'delete');
     }
 
     public function deleteAction() {
@@ -794,6 +796,8 @@ class _MenuController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('menu_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('menu', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -843,6 +847,7 @@ class _MenuController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('menu_updated', $model, $old);
+                NotificationHelper::notifyChange('menu', 'update');
             } else {
                 $model->ID = null;
                 
@@ -854,6 +859,7 @@ class _MenuController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('menu_created', $model);
+    		    NotificationHelper::notifyChange('menu', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1317,13 +1323,14 @@ class _MenuController extends __AppController
         LicenseController::enforceLicenseCheck('menu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('menu');
         
         
         self::clearTempCreateItem();
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1332,10 +1339,11 @@ class _MenuController extends __AppController
         LicenseController::enforceLicenseCheck('menu');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('menu');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2080,6 +2088,7 @@ class _MenuController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('menu_imported', $model);
+            NotificationHelper::notifyChange('menu', 'insert');
 		}
 
         return true;

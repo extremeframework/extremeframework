@@ -361,6 +361,8 @@ class _AdminLanguageController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminlanguage_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminlanguage', 'delete');
     }
 
     public function deleteAction() {
@@ -808,6 +810,8 @@ class _AdminLanguageController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminlanguage_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminlanguage', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -857,6 +861,7 @@ class _AdminLanguageController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminlanguage_updated', $model, $old);
+                NotificationHelper::notifyChange('adminlanguage', 'update');
             } else {
                 $model->ID = null;
                 
@@ -868,6 +873,7 @@ class _AdminLanguageController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminlanguage_created', $model);
+    		    NotificationHelper::notifyChange('adminlanguage', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1004,13 +1010,14 @@ class _AdminLanguageController extends __AppController
         LicenseController::enforceLicenseCheck('adminlanguage');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlanguage');
         
         
         self::clearTempCreateItem();
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1019,10 +1026,11 @@ class _AdminLanguageController extends __AppController
         LicenseController::enforceLicenseCheck('adminlanguage');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlanguage');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

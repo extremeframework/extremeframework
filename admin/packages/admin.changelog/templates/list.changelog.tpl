@@ -7,7 +7,7 @@
 
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
-        <form id="changelogquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/changelog/search" method="post" enctype="multipart/form-data">
+        <form id="changelogquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/changelog/search" method="get">
             <input type="text" name="changelog_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
 	        <a class="button-quick-search" onclick="$('#changelogquicksearch').submit(); return false;">
 	            <span><{_t('L_SEARCH')}></span>
@@ -44,7 +44,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main" href="<{$smarty.const.APPLICATION_URL}>/changelog"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>
@@ -59,10 +59,6 @@
     <{assign var='prefix' value=''}>
 <{/if}>
 
-<form name="changeloglist" id="changeloglistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/changelog/" method="post">
-
-<input type="hidden" name="changeloglist_selection_selectall" value="0" />
-
 <!-- Filters -->
     
 <!-- Control buttons -->
@@ -73,7 +69,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.changelog.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main" href="<{$smarty.const.APPLICATION_URL}>/changelog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_CHANGE_LOG', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_CHANGE_LOG')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_CHANGE_LOG', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_CHANGE_LOG')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -95,7 +91,7 @@
                                 <span class="custom-filter-footer changelog-custom-filter-footer hide">
                                     <hr>
                                     <ul>
-                                    	<li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/changelog"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
+                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/changelog"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
                                     </ul>
                                 </span>
                                 <span class="custom-filter-icons changelog-custom-filter-icons pull-right" style="display:none">
@@ -134,6 +130,9 @@
 <!-- Search form -->
 
 <!-- List -->
+<form name="changeloglist" id="changeloglistform" class="form-list scope-list" action="<{$smarty.const.APPLICATION_URL}>/changelog/" method="post">
+<input type="hidden" name="changeloglist_selection_selectall" value="0" />
+
 <div class="ajaxablelist">
 <!--:listbodybegin:-->
 
@@ -143,8 +142,7 @@ function changelog_reset() {
 }
 
 function changelog_search() {
-	$('#changeloglistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/changelog/search/');
-	$('#changeloglistform').submit();
+	$('#changelog-search').submit();
 }
 
 function changelog_save() {
@@ -299,6 +297,10 @@ function changelog_clearselection() {
 
     $(function() {
     	bind_hotkey('#changeloglistform', 'f2', '.button-new');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'list');
     });
 
     $(function() {

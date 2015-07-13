@@ -343,6 +343,8 @@ class _PostRelationController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('postrelation_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('postrelation', 'delete');
     }
 
     public function deleteAction() {
@@ -683,6 +685,8 @@ class _PostRelationController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('postrelation_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('postrelation', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -732,6 +736,7 @@ class _PostRelationController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('postrelation_updated', $model, $old);
+                NotificationHelper::notifyChange('postrelation', 'update');
             } else {
                 $model->ID = null;
                 
@@ -743,6 +748,7 @@ class _PostRelationController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('postrelation_created', $model);
+    		    NotificationHelper::notifyChange('postrelation', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1226,11 +1232,12 @@ class _PostRelationController extends __AppController
         LicenseController::enforceLicenseCheck('postrelation');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('postrelation');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1239,10 +1246,11 @@ class _PostRelationController extends __AppController
         LicenseController::enforceLicenseCheck('postrelation');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('postrelation');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
@@ -2082,6 +2090,7 @@ class _PostRelationController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('postrelation_imported', $model);
+            NotificationHelper::notifyChange('postrelation', 'insert');
 		}
 
         return true;

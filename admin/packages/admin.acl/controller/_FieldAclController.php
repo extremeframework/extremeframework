@@ -347,6 +347,8 @@ class _FieldAclController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('fieldacl_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('fieldacl', 'delete');
     }
 
     public function deleteAction() {
@@ -691,6 +693,8 @@ class _FieldAclController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('fieldacl_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('fieldacl', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -740,6 +744,7 @@ class _FieldAclController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('fieldacl_updated', $model, $old);
+                NotificationHelper::notifyChange('fieldacl', 'update');
             } else {
                 $model->ID = null;
                 
@@ -751,6 +756,7 @@ class _FieldAclController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('fieldacl_created', $model);
+    		    NotificationHelper::notifyChange('fieldacl', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -910,11 +916,12 @@ class _FieldAclController extends __AppController
         LicenseController::enforceLicenseCheck('fieldacl');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('fieldacl');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -923,10 +930,11 @@ class _FieldAclController extends __AppController
         LicenseController::enforceLicenseCheck('fieldacl');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('fieldacl');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

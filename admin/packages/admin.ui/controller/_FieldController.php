@@ -366,6 +366,8 @@ class _FieldController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('field_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('field', 'delete');
     }
 
     public function deleteAction() {
@@ -406,6 +408,19 @@ class _FieldController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
+
+            if (!empty($relations)) {
+                foreach ($relations as $module) {
+                    switch ($module) {
+                        case 'adminfiltercondition': 
+                            (new AdminFilterConditionController())->delete('ID_FIELD', $_ids);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
         }
 
         TransactionHelper::end();
@@ -706,6 +721,8 @@ class _FieldController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('field_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('field', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -755,6 +772,7 @@ class _FieldController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('field_updated', $model, $old);
+                NotificationHelper::notifyChange('field', 'update');
             } else {
                 $model->ID = null;
                 
@@ -766,6 +784,7 @@ class _FieldController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('field_created', $model);
+    		    NotificationHelper::notifyChange('field', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -916,11 +935,12 @@ class _FieldController extends __AppController
         LicenseController::enforceLicenseCheck('field');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('field');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -929,10 +949,11 @@ class _FieldController extends __AppController
         LicenseController::enforceLicenseCheck('field');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('field');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

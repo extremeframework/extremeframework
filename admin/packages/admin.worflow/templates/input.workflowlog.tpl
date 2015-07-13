@@ -65,7 +65,7 @@ function remove_attachment(element, attachment, spanid)
                             <{assign var='tmp_value' value=''}>
                         <{/if}>
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$formdata.ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$formdata.ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                                     
                 		</div>
@@ -160,7 +160,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#workflowlogform').attr('action', '<{$actionurl}>');$('#workflowlogform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowlog/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowlog/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

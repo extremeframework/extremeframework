@@ -70,6 +70,22 @@ function remove_attachment(element, attachment, spanid)
                 		</div>
                 	</div>
         	
+                <{elseif $column == 'CODE' }>
+                	<div class="form-row <{if in_array('CODE', $mandatories) }>form-row-mandatory<{/if}>">
+                		<label><{_t('L_CODE')}><{if in_array('CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                		<div class="form-field column-code">
+
+                                                    <{if isset($formdata.CODE) }>
+                            <{assign var='tmp_value' value=$formdata.CODE}>
+                        <{else}>
+                            <{assign var='tmp_value' value=''}>
+                        <{/if}>
+                        
+                            <input class="input-code" type="text" name="<{$prefix}>workflowtransition_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                        
+                		</div>
+                	</div>
+        	
                 <{elseif $column == 'START_ID_WORKFLOW_STAGE' }>
                 	<div class="form-row <{if in_array('START_ID_WORKFLOW_STAGE', $mandatories) }>form-row-mandatory<{/if}>">
                 		<label><{_t('L_START_WORKFLOW_STAGE')}><{if in_array('START_ID_WORKFLOW_STAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
@@ -179,7 +195,7 @@ function remove_attachment(element, attachment, spanid)
                     <a onclick="$('#workflowtransitionform').attr('action', '<{$actionurl}>');$('#workflowtransitionform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
                 </div>
             <{/foreach}>
-            <a class="button-cancel scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/cancel/?back=0"><span class="button-face"><{_t('L_CANCEL')}></span></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
             <div class="clearer"></div>
         </div>
 	</div>

@@ -45,6 +45,9 @@
                                                                                                                                                 <tr>
     
             
+                    </tr>                                                                                            <tr>
+    
+            
                     </tr>                                                                                                                                                                                                                                                        <tr>
     
             
@@ -88,6 +91,13 @@
     </form>
 </div>
 
+    <{if $details->UUID == 0}>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                                                            alias_hint('workflowtransition_formdata_NAME', 'workflowtransition_formdata_CODE');
+                                                });
+        </script>
+    <{/if}>
 
 
 <script type="text/javascript">
@@ -226,10 +236,12 @@
     	bind_hotkey('#workflowtransitionform', 'ctrl+m', 'a.button-save-more');
     	bind_hotkey('#workflowtransitionform', 'esc', 'a.button-cancel');
     });
-</script>
 
-<script type="text/javascript">
     $(function() {
         $('meta[name=description]').attr('content', '<{$meta_description|escape}>');
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>

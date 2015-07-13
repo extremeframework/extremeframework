@@ -90,7 +90,7 @@
                                     
     <{if $details->reftext_ID_PARAMETER_GROUP}>
         <{if isset($smarty.session.acl.parametergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$details->refuuid_ID_PARAMETER_GROUP}>"><{$details->reftext_ID_PARAMETER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$details->refuuid_ID_PARAMETER_GROUP}>"><{$details->reftext_ID_PARAMETER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_PARAMETER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -104,7 +104,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-parameter-group" class="input-id-parameter-group" name="`$prefix`parameter_formdata_ID_PARAMETER_GROUP" value=$details->ID_PARAMETER_GROUP text=$details->reftext_ID_PARAMETER_GROUP datasource="PARAMETER_GROUP" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/new" title="Create a New Parameter Group">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/new" title="Create a New Parameter Group">+</a>
                 </span>
                     <{else}>
             <input class="input-id-parameter-group input-type-text" type="text" name="<{$prefix}>parameter_formdata_ID_PARAMETER_GROUP" value="<{$details->ID_PARAMETER_GROUP|escape}>"  />
@@ -115,7 +115,7 @@
                                 
     <{if $details->reftext_ID_PARAMETER_GROUP}>
         <{if isset($smarty.session.acl.parametergroup.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$details->refuuid_ID_PARAMETER_GROUP}>"><{$details->reftext_ID_PARAMETER_GROUP|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/view/<{$details->refuuid_ID_PARAMETER_GROUP}>"><{$details->reftext_ID_PARAMETER_GROUP|escape}></a>
         <{else}>
             <{$details->reftext_ID_PARAMETER_GROUP|escape}>        <{/if}>
     <{else}>
@@ -150,7 +150,7 @@
                                     
     <{if $details->reftext_ID_PARAMETER_TYPE}>
         <{if isset($smarty.session.acl.parametertype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$details->refuuid_ID_PARAMETER_TYPE}>"><{$details->reftext_ID_PARAMETER_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$details->refuuid_ID_PARAMETER_TYPE}>"><{$details->reftext_ID_PARAMETER_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PARAMETER_TYPE|escape}>        <{/if}>
     <{else}>
@@ -164,7 +164,7 @@
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-parameter-type" class="input-id-parameter-type" name="`$prefix`parameter_formdata_ID_PARAMETER_TYPE" value=$details->ID_PARAMETER_TYPE text=$details->reftext_ID_PARAMETER_TYPE datasource="PARAMETER_TYPE" valuecol="ID" textcol="NAME" sortcol=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametertype/new" title="Create a New Parameter Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/new" title="Create a New Parameter Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-parameter-type input-type-text" type="text" name="<{$prefix}>parameter_formdata_ID_PARAMETER_TYPE" value="<{$details->ID_PARAMETER_TYPE|escape}>"  />
@@ -175,7 +175,7 @@
                                 
     <{if $details->reftext_ID_PARAMETER_TYPE}>
         <{if isset($smarty.session.acl.parametertype.view)}>
-            <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$details->refuuid_ID_PARAMETER_TYPE}>"><{$details->reftext_ID_PARAMETER_TYPE|escape}></a>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$details->refuuid_ID_PARAMETER_TYPE}>"><{$details->reftext_ID_PARAMETER_TYPE|escape}></a>
         <{else}>
             <{$details->reftext_ID_PARAMETER_TYPE|escape}>        <{/if}>
     <{else}>

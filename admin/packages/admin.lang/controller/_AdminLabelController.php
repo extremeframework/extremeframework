@@ -353,6 +353,8 @@ class _AdminLabelController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminlabel_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('adminlabel', 'delete');
     }
 
     public function deleteAction() {
@@ -706,6 +708,8 @@ class _AdminLabelController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminlabel_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('adminlabel', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -755,6 +759,7 @@ class _AdminLabelController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminlabel_updated', $model, $old);
+                NotificationHelper::notifyChange('adminlabel', 'update');
             } else {
                 $model->ID = null;
                 
@@ -766,6 +771,7 @@ class _AdminLabelController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminlabel_created', $model);
+    		    NotificationHelper::notifyChange('adminlabel', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -905,11 +911,12 @@ class _AdminLabelController extends __AppController
         LicenseController::enforceLicenseCheck('adminlabel');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlabel');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -918,10 +925,11 @@ class _AdminLabelController extends __AppController
         LicenseController::enforceLicenseCheck('adminlabel');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('adminlabel');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

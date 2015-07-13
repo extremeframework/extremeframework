@@ -361,6 +361,8 @@ class _ScreenController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('screen_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('screen', 'delete');
     }
 
     public function deleteAction() {
@@ -718,6 +720,8 @@ class _ScreenController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('screen_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('screen', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -767,6 +771,7 @@ class _ScreenController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('screen_updated', $model, $old);
+                NotificationHelper::notifyChange('screen', 'update');
             } else {
                 $model->ID = null;
                 
@@ -778,6 +783,7 @@ class _ScreenController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('screen_created', $model);
+    		    NotificationHelper::notifyChange('screen', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -928,11 +934,12 @@ class _ScreenController extends __AppController
         LicenseController::enforceLicenseCheck('screen');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('screen');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -941,10 +948,11 @@ class _ScreenController extends __AppController
         LicenseController::enforceLicenseCheck('screen');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('screen');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {

@@ -11,6 +11,9 @@ define('CONFIG_DIR'						        , realpath(dirname(__FILE__).'/../config'));
 // Schema directory
 define('SCHEMA_DIR'						        , realpath(dirname(__FILE__).'/../schema'));
 
+// Cache directory
+define('CACHE_DIR'						        , APPLICATION_DIR.'/cache');
+
 // Shared directory
 define('SHARED_DIR'						        , realpath(dirname(__FILE__)));
 
@@ -24,7 +27,7 @@ define('THUMBS_WIDTH'                           , 80);
 define('THUMBS_HEIGHT'                          , 80);
 
 // Smarty config
-define('TEMPLATE_C_DIR'							, APPLICATION_DIR.'/cache');
+define('TEMPLATE_C_DIR'							, APPLICATION_DIR.'/cache/templates');
 define('LEFT_DELIMITER'					        , '<{');
 define('RIGHT_DELIMITER'					    , '}>');
 

@@ -343,6 +343,8 @@ class _UserGroupController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('usergroup_deleted', $_model);
         }
+
+        NotificationHelper::notifyChange('usergroup', 'delete');
     }
 
     public function deleteAction() {
@@ -782,6 +784,8 @@ class _UserGroupController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('usergroup_deleted', $_model);
                 }
+
+                NotificationHelper::notifyChange('usergroup', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -831,6 +835,7 @@ class _UserGroupController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('usergroup_updated', $model, $old);
+                NotificationHelper::notifyChange('usergroup', 'update');
             } else {
                 $model->ID = null;
                 
@@ -842,6 +847,7 @@ class _UserGroupController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('usergroup_created', $model);
+    		    NotificationHelper::notifyChange('usergroup', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -995,11 +1001,12 @@ class _UserGroupController extends __AppController
         LicenseController::enforceLicenseCheck('usergroup');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('usergroup');
         
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function closeAction() {
@@ -1008,10 +1015,11 @@ class _UserGroupController extends __AppController
         LicenseController::enforceLicenseCheck('usergroup');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
+        $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
         
         DraftHelper::clearAllDrafts('usergroup');
         
-		ContextStack::back($back);
+		ContextStack::back($back, $returnurl);
 	}
 
     public function quickCreateAction() {
