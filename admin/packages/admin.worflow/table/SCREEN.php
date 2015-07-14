@@ -14,8 +14,8 @@ class DataObject_SCREEN extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $TITLE;                           // varchar(128)  
-    public $ID_WORKFLOW;                     // varchar(11)  
-    public $CODE;                            // varchar(11)  unique_key
+    public $ID_WORKFLOW;                     // varchar(24)  
+    public $CODE;                            // varchar(24)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(11)  

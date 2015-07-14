@@ -13,7 +13,7 @@ class DataObject_SCREEN_FIELD extends DB_DataObject
     public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
-    public $ID_SCREEN;                       // varchar(11)  
+    public $ID_SCREEN;                       // varchar(24)  
     public $TITLE;                           // varchar(128)  
     public $CODE;                            // varchar(11)  
     public $ID_VALUE_TYPE;                   // varchar(11)  

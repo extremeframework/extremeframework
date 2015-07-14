@@ -14,10 +14,10 @@ class DataObject_WORKFLOW extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
-    public $CODE;                            // varchar(11)  unique_key
+    public $CODE;                            // varchar(24)  unique_key
     public $DESCRIPTION;                     // text  
     public $GUID;                            // int(4)  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  

@@ -945,7 +945,7 @@ class _PostController extends __AppController
             PluginManager::do_action('post_before_save', $model);
 
     		if ($model->UUID) {
-				
+				$model->LATEST_UPDATE = date('Y-m-d H:i:s');
 				$old = new PostModel();
 				$old->UUID = $model->UUID;
 				$old->find();
@@ -970,7 +970,8 @@ class _PostController extends __AppController
                 NotificationHelper::notifyChange('post', 'update');
             } else {
                 $model->ID = null;
-                
+                $model->CREATION_DATE = date('Y-m-d H:i:s');
+                $model->LATEST_UPDATE = date('Y-m-d H:i:s');
                 $this->onBeforeInsert($model);
                 PluginManager::do_action('post_before_create', $model);
 
@@ -1420,12 +1421,13 @@ class _PostController extends __AppController
     		return false;
         } else {
     		if ($model->UUID) {
-    		    
+    		    $model->LATEST_UPDATE = date('Y-m-d H:i:s');
     		    $model->update();
 
     		    $model->_isnew = false;
             } else {
-                
+                $model->CREATION_DATE = date('Y-m-d H:i:s');
+                $model->LATEST_UPDATE = date('Y-m-d H:i:s');
     		    $model->insert();
 
     		    $model->_isnew = true;

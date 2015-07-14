@@ -14,10 +14,10 @@ class DataObject_WORKFLOW_APPLICATION extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $MODULE;                          // varchar(32)  
-    public $ID_WORKFLOW;                     // varchar(11)  
+    public $ID_WORKFLOW;                     // varchar(24)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // int(4)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

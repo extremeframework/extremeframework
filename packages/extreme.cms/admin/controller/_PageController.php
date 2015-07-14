@@ -1039,7 +1039,7 @@ class _PageController extends __AppController
             PluginManager::do_action('page_before_save', $model);
 
     		if ($model->UUID) {
-				
+				$model->LATEST_UPDATE = date('Y-m-d H:i:s');
 				$old = new PageModel();
 				$old->UUID = $model->UUID;
 				$old->find();
@@ -1064,7 +1064,7 @@ class _PageController extends __AppController
                 NotificationHelper::notifyChange('page', 'update');
             } else {
                 $model->ID = null;
-                
+                $model->LATEST_UPDATE = date('Y-m-d H:i:s');
                 $this->onBeforeInsert($model);
                 PluginManager::do_action('page_before_create', $model);
 
@@ -1520,12 +1520,12 @@ class _PageController extends __AppController
     		return false;
         } else {
     		if ($model->UUID) {
-    		    
+    		    $model->LATEST_UPDATE = date('Y-m-d H:i:s');
     		    $model->update();
 
     		    $model->_isnew = false;
             } else {
-                
+                $model->LATEST_UPDATE = date('Y-m-d H:i:s');
     		    $model->insert();
 
     		    $model->_isnew = true;
