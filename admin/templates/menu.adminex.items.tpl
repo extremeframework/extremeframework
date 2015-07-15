@@ -6,7 +6,7 @@
                 <{$depth2 = $depth+1}>
 
                 <li class="<{if $menus.$depth2.$parent2}>menu-list<{/if}> <{if isset($module) && $menuitem->MODULE == $module || $menuitem->ID == $parentmenu}><{if $menus.$depth2.$parent2}>nav-active<{else}>active<{/if}><{/if}>">
-                    <a <{if !$menus.$depth2.$parent2 }><{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-page"<{/if}><{/if}> href="<{$menuitem->LINK}>">
+                    <a <{if !$menus.$depth2.$parent2 }><{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-page cachable"<{/if}><{/if}> href="<{$menuitem->LINK}>">
                         <{if $menuitem->FONT_AWESOME_ICON}>
                             <i class="fa <{$menuitem->FONT_AWESOME_ICON}>"></i>
                         <{else}>

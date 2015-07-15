@@ -6,7 +6,7 @@
                 <{$depth2 = $depth+1}>
 
                 <li>
-                    <a <{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-page"<{/if}> href="<{$menuitem->LINK}>">
+                    <a <{if $menuitem->OPEN_IN_NEW_WINDOW}>target="_blank"<{else}>class="scope-page cachable"<{/if}> href="<{$menuitem->LINK}>">
                         <{_t($menuitem->NAME)}>
                     </a>
                     <{include file="menu.horizontal.items.tpl" parent=$parent2 depth=$depth2}>

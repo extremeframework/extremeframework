@@ -72,7 +72,7 @@
                 stateChanged: stateChanged
             });
 
-            $('#navigation-tree a').ajaxableLink('#container', 'pagebody'); // Correction to enforce ajaxable scope-page
+            $('#navigation-tree a').ajaxableLink('#container', 'pagebody'); // Correction to enforce ajaxable scope-page cachable
 
             $('.navigation-quick-search').keyup(function(){
                 var input = $(this);

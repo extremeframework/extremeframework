@@ -152,7 +152,7 @@
                                         <{foreach from=$smarty.session.flatmenu item=menuitem}>
                                             <{if $menuitem->ENABLE_ALL}>
                                                 <li>
-                                                    <a class="scope-page" href="<{$menuitem->LINK}>"><{_t($menuitem->NAME)}></a>
+                                                    <a class="scope-page cachable" href="<{$menuitem->LINK}>"><{_t($menuitem->NAME)}></a>
                                                 </li>
                                             <{/if}>
                                         <{/foreach}>
