@@ -11,18 +11,24 @@ class NotificationHelper {
      * @changetype insert|update|delete
      */
     static function notifyChange($module, $changetype) {
-        // x. Clear html cache
-        $modules = array_merge(array($module), self::getReferringModules($module));
+        static $notifiedmodules = array();
 
-        foreach ($modules as $module) {
-            self::cleanHtmlCaches($module);
+        if (!isset($notifiedmodules[$module])) {
+            // x. Clear html cache
+            $modules = array_merge(array($module), self::getReferringModules($module));
+
+            foreach ($modules as $m) {
+                self::cleanHtmlCaches($m);
+            }
+
+            // x. Update database change log
+            self::updateDatabaseChangeLog($modules);
+
+            $notifiedmodules[$module] = true;
         }
 
         // x. Update cache manifest file
         self::updateCacheManifestFile();
-
-        // x. Update database change log
-        self::updateDatabaseChangeLog($modules);
     }
 
     static function cleanHtmlCaches($module) {
@@ -42,14 +48,20 @@ class NotificationHelper {
     }
 
     static function updateCacheManifestFile() {
-        $manifestfile = APPLICATION_DIR.'/cache.manifest';
+        static $updated = false;
 
-        if (is_file($manifestfile)) {
-            $content = file_get_contents($manifestfile);
+        if (!$updated) {
+            $manifestfile = APPLICATION_DIR.'/cache.manifest';
 
-            $content = preg_replace('/# version [0-9]*/is', '# version '.time(), $content);
+            if (is_file($manifestfile)) {
+                $content = file_get_contents($manifestfile);
 
-            file_put_contents($manifestfile, $content);
+                $content = preg_replace('/# version [0-9]*/is', '# version '.time(), $content);
+
+                file_put_contents($manifestfile, $content);
+            }
+
+            $updated = true;
         }
     }
 

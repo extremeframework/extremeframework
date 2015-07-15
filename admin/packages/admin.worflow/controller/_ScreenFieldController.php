@@ -377,8 +377,6 @@ class _ScreenFieldController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('screenfield_deleted', $_model);
         }
-
-        NotificationHelper::notifyChange('screenfield', 'delete');
     }
 
     public function deleteAction() {
@@ -721,8 +719,6 @@ class _ScreenFieldController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('screenfield_deleted', $_model);
                 }
-
-                NotificationHelper::notifyChange('screenfield', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -772,7 +768,6 @@ class _ScreenFieldController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('screenfield_updated', $model, $old);
-                NotificationHelper::notifyChange('screenfield', 'update');
             } else {
                 $model->ID = null;
                 
@@ -784,7 +779,6 @@ class _ScreenFieldController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('screenfield_created', $model);
-    		    NotificationHelper::notifyChange('screenfield', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1196,8 +1190,6 @@ class _ScreenFieldController extends __AppController
 
         $this->initCustomView($customview, $customtemplate);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
@@ -1205,7 +1197,7 @@ class _ScreenFieldController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'screenfield');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1271,14 +1263,12 @@ class _ScreenFieldController extends __AppController
         $this->onBeforeView($details);
         PluginManager::do_action('screenfield_before_view', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'screenfield');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1390,8 +1380,6 @@ class _ScreenFieldController extends __AppController
         $this->onBeforeEdit($details);
         PluginManager::do_action('screenfield_before_edit', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
@@ -1399,7 +1387,7 @@ class _ScreenFieldController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'screenfield');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);

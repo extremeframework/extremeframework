@@ -342,28 +342,6 @@ class __AppController {
         return $content;
     }
 
-	protected function setMessages($messages, $module = null) {
-        if (empty($module)) {
-            $module = $this->module;
-        }
-
-		$_SESSION['messages'][$module] = $messages;
-	}
-
-	protected function getMessages() {
-		$key = 'messages';
-
-		if (isset($_SESSION[$key])) {
-			$messages = $_SESSION[$key];
-
-			$_SESSION[$key] = array();
-
-			return $messages;
-		}
-
-		return array();
-	}
-
     protected function updateOrderBy($orderby, $module = null) {
         if (empty($module)) {
             $module = $this->module;

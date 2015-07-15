@@ -15,9 +15,13 @@ function remove_attachment(element, attachment, spanid)
 
 <h2 class="heading"><{$formtitle}></h2>
 
-<{foreach from=$messages key=ignored item=message}>
-    <li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=field item=message}>
+            <li data-error-field="<{$field}>"><{$message}></li>
+        <{/foreach}>
+    </ul>
+<{/if}>
 
 <{if !isset($prefix) }>
     <{assign var='prefix' value=''}>
@@ -26,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
 <form name="menuitemform" id="menuitemform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
 
 <!-- Details -->
-<div class="section">
+<div class="section" style="padding: 10px 0;">
     <div>
         <{foreach from=$columns item=column }>
                 <{if $columnsettings.$column }>

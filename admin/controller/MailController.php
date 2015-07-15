@@ -43,43 +43,58 @@ class MailController
     function mail($to, $subject, $body, $headers = '') {
         global $GLOBAL_MailController_Debug;
 
-        // Transport
-        if (MAILER_USE_SMTP) {
-            $transport = Swift_SmtpTransport::newInstance(MAILER_SMTP_HOST, MAILER_SMTP_PORT, MAILER_SMTP_ENCRYPTION);
-            $transport->setUsername(MAILER_SMTP_USERNAME);
-            $transport->setPassword(MAILER_SMTP_PASSWORD);
-        } else {
-            $transport = Swift_MailTransport::newInstance();
+        // Checking
+        if (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', SUPPORT_EMAIL)) {
+            die("{ERROR] The system parameter 'SUPPORT_EMAIL' should be a valid email address.");
         }
 
-        if ($GLOBAL_MailController_Debug) {
-            // To use the ArrayLogger
-            $logger = new Swift_Plugins_Loggers_ArrayLogger();
-            $transport->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
-
-            // Or to use the Echo Logger
-            $logger = new Swift_Plugins_Loggers_EchoLogger();
-            $transport->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+        if (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $to)) {
+            die("{ERROR] Invalid email recipient: $to");
         }
 
-        // Message
-        $message = Swift_Message::newInstance();
-        $message->setTo($to);
-        $message->setSubject($subject);
-        $message->setBody($body, 'text/html');
+        try {
+            // Transport
+            if (MAILER_USE_SMTP) {
+                $transport = Swift_SmtpTransport::newInstance(MAILER_SMTP_HOST, MAILER_SMTP_PORT, MAILER_SMTP_ENCRYPTION);
+                $transport->setUsername(MAILER_SMTP_USERNAME);
+                $transport->setPassword(MAILER_SMTP_PASSWORD);
+            } else {
+                $transport = Swift_MailTransport::newInstance();
+            }
 
-        if (preg_match('/From:\s+([^<]*)<([^>]+)>?/ism', $headers, $match)) {
-            $from_name = $match[1];
-            $from_email = $match[2];
+            if ($GLOBAL_MailController_Debug) {
+                // To use the ArrayLogger
+                $logger = new Swift_Plugins_Loggers_ArrayLogger();
+                $transport->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
 
-            $message->setFrom($from_email, $from_name);
-        } else {
-            $message->setFrom(SUPPORT_EMAIL, SUPPORT_NAME);
+                // Or to use the Echo Logger
+                $logger = new Swift_Plugins_Loggers_EchoLogger();
+                $transport->registerPlugin(new Swift_Plugins_LoggerPlugin($logger));
+            }
+
+            // Message
+            $message = Swift_Message::newInstance();
+            $message->setTo($to);
+            $message->setSubject($subject);
+            $message->setBody($body, 'text/html');
+
+            if (preg_match('/From:\s+([^<]*)<([^>]+)>?/ism', $headers, $match)) {
+                $from_name = $match[1];
+                $from_email = $match[2];
+
+                $message->setFrom($from_email, $from_name);
+            } else {
+                $message->setFrom(SUPPORT_EMAIL, SUPPORT_NAME);
+            }
+
+            // Send
+            $mailer = Swift_Mailer::newInstance($transport);
+            $result = $mailer->send($message, $failed_recipients);
+        } catch (Swift_TransportException $e) {
+            MessageHelper::setMessage($e->getMessage());
+
+            return false;
         }
-
-        // Send
-        $mailer = Swift_Mailer::newInstance($transport);
-        $result = $mailer->send($message, $failed_recipients);
 
         return $result;
     }

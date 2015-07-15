@@ -369,8 +369,6 @@ class _AdminMenuController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminmenu_deleted', $_model);
         }
-
-        NotificationHelper::notifyChange('adminmenu', 'delete');
     }
 
     public function deleteAction() {
@@ -825,8 +823,6 @@ class _AdminMenuController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminmenu_deleted', $_model);
                 }
-
-                NotificationHelper::notifyChange('adminmenu', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -876,7 +872,6 @@ class _AdminMenuController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminmenu_updated', $model, $old);
-                NotificationHelper::notifyChange('adminmenu', 'update');
             } else {
                 $model->ID = null;
                 
@@ -888,7 +883,6 @@ class _AdminMenuController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminmenu_created', $model);
-    		    NotificationHelper::notifyChange('adminmenu', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1285,8 +1279,6 @@ class _AdminMenuController extends __AppController
 
         $this->initCustomView($customview, $customtemplate);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
@@ -1294,7 +1286,7 @@ class _AdminMenuController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminmenu');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1360,14 +1352,12 @@ class _AdminMenuController extends __AppController
         $this->onBeforeView($details);
         PluginManager::do_action('adminmenu_before_view', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminmenu');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1473,8 +1463,6 @@ class _AdminMenuController extends __AppController
         $this->onBeforeEdit($details);
         PluginManager::do_action('adminmenu_before_edit', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
@@ -1482,7 +1470,7 @@ class _AdminMenuController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminmenu');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);

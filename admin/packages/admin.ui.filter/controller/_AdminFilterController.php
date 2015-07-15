@@ -347,8 +347,6 @@ class _AdminFilterController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('adminfilter_deleted', $_model);
         }
-
-        NotificationHelper::notifyChange('adminfilter', 'delete');
     }
 
     public function deleteAction() {
@@ -702,8 +700,6 @@ class _AdminFilterController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('adminfilter_deleted', $_model);
                 }
-
-                NotificationHelper::notifyChange('adminfilter', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -753,7 +749,6 @@ class _AdminFilterController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('adminfilter_updated', $model, $old);
-                NotificationHelper::notifyChange('adminfilter', 'update');
             } else {
                 $model->ID = null;
                 
@@ -765,7 +760,6 @@ class _AdminFilterController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('adminfilter_created', $model);
-    		    NotificationHelper::notifyChange('adminfilter', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -786,6 +780,9 @@ class _AdminFilterController extends __AppController
             
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
+            }
+            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
+                $model->COLUMNS = $refobject->COLUMN;
             }
 
         }
@@ -1174,8 +1171,6 @@ class _AdminFilterController extends __AppController
 
         $this->initCustomView($customview, $customtemplate);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
@@ -1183,7 +1178,7 @@ class _AdminFilterController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1249,14 +1244,12 @@ class _AdminFilterController extends __AppController
         $this->onBeforeView($details);
         PluginManager::do_action('adminfilter_before_view', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1362,8 +1355,6 @@ class _AdminFilterController extends __AppController
         $this->onBeforeEdit($details);
         PluginManager::do_action('adminfilter_before_edit', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
@@ -1371,7 +1362,7 @@ class _AdminFilterController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1515,6 +1506,11 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
+                    case 'COLUMNS':
+                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

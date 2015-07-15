@@ -17,7 +17,7 @@ class UserGroupModel extends DataObject_USER_GROUP {
 		return parent::find($n);
 	}
 
-    function insert($check = true) {
+    function insert($check = true, $notify = true) {
         AclController::ensureCreationQuota($this->_module);
 
         $this->REFID = SequenceHelper::nextRefid($this->_module);
@@ -35,17 +35,25 @@ class UserGroupModel extends DataObject_USER_GROUP {
 
             (new __AppController())->pagenotfound("[{$this->_module}] There is a record with an empty key");
         }
+
+        if ($notify) {
+            NotificationHelper::notifyChange($this->_module, 'insert');
+        }
     }
 
-    function update($dataObject = false) {
+    function update($dataObject = false, $notify = true) {
         if (empty($this->WFID)) {
             $this->WFID = WorkflowHelper::getDefaultWorkflowStage($this->_module);
         }
 
         parent::update($dataObject);
+
+        if ($notify) {
+            NotificationHelper::notifyChange($this->_module, 'update');
+        }
     }
 
-    function delete() {
+    function delete($notify = true) {
 		if (isset($_SESSION['user'])) {
 		    $this->whereAdd(TABLE_PREFIX.$this->__table.".UDID = '".$_SESSION['user']->UDID."'".($_SESSION['user']->ID == 1? " OR ".TABLE_PREFIX.$this->__table.".UDID = 0" : ''));
         }
@@ -53,6 +61,10 @@ class UserGroupModel extends DataObject_USER_GROUP {
         $this->whereAdd(TABLE_PREFIX.$this->__table.".WFID IS NULL OR ".TABLE_PREFIX.$this->__table.".WFID = '".implode("' OR ".TABLE_PREFIX.$this->__table.".WFID = '", WorkflowHelper::getDeletableStages($this->_module))."'");
 
         parent::delete(true);
+
+        if ($notify) {
+            NotificationHelper::notifyChange($this->_module, 'delete');
+        }
     }
 
 	function id() {

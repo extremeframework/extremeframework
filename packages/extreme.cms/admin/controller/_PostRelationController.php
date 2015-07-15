@@ -343,8 +343,6 @@ class _PostRelationController extends __AppController
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('postrelation_deleted', $_model);
         }
-
-        NotificationHelper::notifyChange('postrelation', 'delete');
     }
 
     public function deleteAction() {
@@ -685,8 +683,6 @@ class _PostRelationController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('postrelation_deleted', $_model);
                 }
-
-                NotificationHelper::notifyChange('postrelation', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
@@ -736,7 +732,6 @@ class _PostRelationController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('postrelation_updated', $model, $old);
-                NotificationHelper::notifyChange('postrelation', 'update');
             } else {
                 $model->ID = null;
                 
@@ -748,7 +743,6 @@ class _PostRelationController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('postrelation_created', $model);
-    		    NotificationHelper::notifyChange('postrelation', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -1490,8 +1484,6 @@ class _PostRelationController extends __AppController
 
         $this->initCustomView($customview, $customtemplate);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
@@ -1499,7 +1491,7 @@ class _PostRelationController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'postrelation');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1565,14 +1557,12 @@ class _PostRelationController extends __AppController
         $this->onBeforeView($details);
         PluginManager::do_action('postrelation_before_view', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'postrelation');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1684,8 +1674,6 @@ class _PostRelationController extends __AppController
         $this->onBeforeEdit($details);
         PluginManager::do_action('postrelation_before_edit', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
@@ -1693,7 +1681,7 @@ class _PostRelationController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'postrelation');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1989,12 +1977,10 @@ class _PostRelationController extends __AppController
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : RequestHelper::get('preset');
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : RequestHelper::get('presetvalue');
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'postrelation');
 
 	    $this->display($smarty, $templatecode);
@@ -2090,7 +2076,6 @@ class _PostRelationController extends __AppController
 
             $this->onImportSuccess($model);
             PluginManager::do_action('postrelation_imported', $model);
-            NotificationHelper::notifyChange('postrelation', 'insert');
 		}
 
         return true;

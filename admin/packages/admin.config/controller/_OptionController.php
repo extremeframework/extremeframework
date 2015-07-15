@@ -18,7 +18,7 @@ class _OptionController extends __AppController
     }
 
     private function checkConstraint($model, &$errors, $columns2check) {
-
+        
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_OPTION_NAME'));
            return false;
@@ -113,7 +113,7 @@ class _OptionController extends __AppController
         AclController::checkPermission('option', 'list');
 
 		ContextStack::register(APPLICATION_URL.'/option/list/');
-
+        
         if (isset($_REQUEST['domain'])) {
             $this->setSystemSeparationData(array('DOMAIN' => !empty($_REQUEST['domain'])? $_REQUEST['domain'] : '__EMPTY__'));
         } else {
@@ -123,7 +123,7 @@ class _OptionController extends __AppController
                 $this->setSystemSeparationData(array('DOMAIN' => '__EMPTY__'));
             }
         }
-
+        
         $this->setPresetData(null);
 
 		$this->_list();
@@ -365,15 +365,13 @@ class _OptionController extends __AppController
 		}
 
         $this->enforceObjectAclCheck('option', $model);
-
+		
 		$model->delete();
 
         foreach ($_models as $_model) {
             $this->onDeleteSuccess($_model);
             PluginManager::do_action('option_deleted', $_model);
         }
-
-        NotificationHelper::notifyChange('option', 'delete');
     }
 
     public function deleteAction() {
@@ -532,12 +530,12 @@ class _OptionController extends __AppController
 	}
 
     protected function onSaveSuccess($model) {
-
+        
         parent::onSaveSuccess($model);
     }
 
     protected function onDeleteSuccess($model) {
-
+        
         parent::onDeleteSuccess($model);
     }
 
@@ -558,7 +556,7 @@ class _OptionController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-
+		
 		return $value;
 	}
 
@@ -594,7 +592,7 @@ class _OptionController extends __AppController
     		        $customfieldvalues[$key] = $value;
     		    }
 
-
+    		    
             if (is_array($value)) {
                 $model->$key = implode(',', $value);
             } else {
@@ -714,13 +712,11 @@ class _OptionController extends __AppController
                     $this->onDeleteSuccess($_model);
                     PluginManager::do_action('option_deleted', $_model);
                 }
-
-                NotificationHelper::notifyChange('option', 'delete');
             }
         } else {
             $model = $this->form2model($prefix);
 
-
+            
 
             $result = $this->save(array($model));
         }
@@ -737,13 +733,13 @@ class _OptionController extends __AppController
 
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('option', $model);
-
-
+            
+            
             $this->onBeforeSave($model);
             PluginManager::do_action('option_before_save', $model);
 
     		if ($model->UUID) {
-
+				
 				$old = new OptionModel();
 				$old->UUID = $model->UUID;
 				$old->find();
@@ -765,12 +761,11 @@ class _OptionController extends __AppController
     		    $model->_isnew = false;
     		    $this->onUpdateSuccess($model, $old);
     		    PluginManager::do_action('option_updated', $model, $old);
-                NotificationHelper::notifyChange('option', 'update');
             } else {
                 $model->ID = null;
-
+                
                 ModelHelper::assignValues($model, $this->getSystemSeparationData());
-
+                
                 $this->onBeforeInsert($model);
                 PluginManager::do_action('option_before_create', $model);
 
@@ -779,7 +774,6 @@ class _OptionController extends __AppController
 
     		    $this->onInsertSuccess($model);
     		    PluginManager::do_action('option_created', $model);
-    		    NotificationHelper::notifyChange('option', 'insert');
             }
 
             $this->onSaveSuccess($model);
@@ -848,8 +842,8 @@ class _OptionController extends __AppController
 
                 $handler->saveform($prefix, $model);
             }
-
-
+            
+            
             if ($this->source != 'modal') {
                 if ($addmore) {
                     $this->newAction();
@@ -867,7 +861,7 @@ class _OptionController extends __AppController
     function _save($datacheck = true) {
 	    $model = $this->form2model();
 
-
+        
         if ($datacheck && !$this->checkConstraints($model, $errors)) {
             $this->setMessages($errors);
 
@@ -876,12 +870,12 @@ class _OptionController extends __AppController
     		return false;
         } else {
     		if ($model->UUID) {
-
+    		    
     		    $model->update();
 
     		    $model->_isnew = false;
             } else {
-
+                
     		    $model->insert();
 
     		    $model->_isnew = true;
@@ -920,10 +914,10 @@ class _OptionController extends __AppController
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
         $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
-
+        
         DraftHelper::clearAllDrafts('option');
-
-
+        
+        
 		ContextStack::back($back, $returnurl);
 	}
 
@@ -934,9 +928,9 @@ class _OptionController extends __AppController
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
         $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
-
+        
         DraftHelper::clearAllDrafts('option');
-
+        
 		ContextStack::back($back, $returnurl);
 	}
 
@@ -1146,7 +1140,7 @@ class _OptionController extends __AppController
         }
 
         $excludedcolumns = AclController::getSystemExcludedColumns('option');
-
+        
         $separationdata = $this->getSystemSeparationData();
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
@@ -1157,7 +1151,7 @@ class _OptionController extends __AppController
         $page = $this->getPageNumber();
 
         $rows = $this->getList(true, $separationdata + $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
-
+        
 
         $ids = array();
         foreach ($rows as $row) {
@@ -1178,8 +1172,6 @@ class _OptionController extends __AppController
 
         $this->initCustomView($customview, $customtemplate);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
 		$smarty->assign('pagination', $pagination);
@@ -1187,7 +1179,7 @@ class _OptionController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'option');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1202,7 +1194,7 @@ class _OptionController extends __AppController
 		$smarty->assign('customview', $customview);
 		$smarty->assign('customtemplate', $customtemplate);
 		$smarty->assign('admin_view_options', AdminViewHelper::getAdminViews('option', 'view'));
-
+		
 
         $templatetype = !empty($this->templatetype)? $this->templatetype : 'list';
 	    $this->display($smarty, $templatetype.'.option.tpl');
@@ -1253,14 +1245,12 @@ class _OptionController extends __AppController
         $this->onBeforeView($details);
         PluginManager::do_action('option_before_view', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'option');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1322,7 +1312,7 @@ class _OptionController extends __AppController
             $acleditablecolumns[$column] = false;
         }
 
-
+        
 
         if (empty($details)) {
     		$model = new OptionModel();
@@ -1339,15 +1329,15 @@ class _OptionController extends __AppController
                 }
             } else {
                 // Set default values here
-
+                
                 $this->onInitialization($model);
                 PluginManager::do_action('option_new', $model);
             }
-
+            
             if ($restoredraft) {
                 DraftHelper::tryRestoreDraft('option', $model->UUID, $model);
             }
-
+            
     		$details = $model;
         }
 
@@ -1357,25 +1347,23 @@ class _OptionController extends __AppController
             }
         }
 
-
+        
 
         WorkflowHelper::ensureEditable($details->WFID);
-
+        
         $this->initPlugins();
 
         $this->onBeforeEdit($details);
         PluginManager::do_action('option_before_edit', $details);
 
-		$messages = $this->getMessages();
-
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
-
+		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', $messages);
+		$smarty->assign('messages', MessageHelper::getMessages());
 		$smarty->assign('module', 'option');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1579,21 +1567,21 @@ class _OptionController extends __AppController
         }
     }
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+	
 
+    
 
-
-
-
-
-
-
-
-
-
+    
 }
