@@ -781,9 +781,6 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
-            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
-                $model->COLUMNS = $refobject->COLUMN;
-            }
 
         }
     }
@@ -1178,7 +1175,7 @@ class _AdminFilterController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1249,7 +1246,7 @@ class _AdminFilterController extends __AppController
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1362,7 +1359,7 @@ class _AdminFilterController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'adminfilter');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1506,11 +1503,6 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'COLUMNS':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

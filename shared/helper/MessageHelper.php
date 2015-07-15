@@ -5,15 +5,19 @@
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
 class MessageHelper {
-	static function setMessage($message, $context = '') {
-		$_SESSION['messages'][$context][] = $messages;
+	static function setAppMessage($message) {
+		$_SESSION['appmessage'] = $message;
 	}
 
-	static function getMessages($context = '') {
-        $messages = isset($_SESSION['messages'][$context])? $_SESSION['messages'][$context] : array();
+	static function getAppMessage() {
+	    $message = '';
 
-        $_SESSION['messages'][$context] = array();
+	    if (isset($_SESSION['appmessage'])) {
+	        $message = $_SESSION['appmessage'];
 
-        return $messages;
+	        $_SESSION['appmessage'] = '';
+	    }
+
+	    return $message;
 	}
 }

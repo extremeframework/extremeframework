@@ -45,11 +45,15 @@ class MailController
 
         // Checking
         if (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', SUPPORT_EMAIL)) {
-            die("{ERROR] The system parameter 'SUPPORT_EMAIL' should be a valid email address.");
+            MessageHelper::setAppMessage("Please check your system configuration. The parameter 'SUPPORT_EMAIL' should be a valid email address.");
+
+            return false;
         }
 
         if (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $to)) {
-            die("{ERROR] Invalid email recipient: $to");
+            MessageHelper::setAppMessage("Invalid email recipient: $to");
+
+            return false;
         }
 
         try {
@@ -91,7 +95,7 @@ class MailController
             $mailer = Swift_Mailer::newInstance($transport);
             $result = $mailer->send($message, $failed_recipients);
         } catch (Swift_TransportException $e) {
-            MessageHelper::setMessage($e->getMessage());
+            MessageHelper::setAppMessage($e->getMessage());
 
             return false;
         }

@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="screenview" class="screen-view view_details mainview">
-
-<{if isset($messages.screen) }>
-<{foreach from=$messages.screen key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="screenview" class="screen-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

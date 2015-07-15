@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="paymenttypeview" class="paymenttype-view view_details mainview">
-
-<{if isset($messages.paymenttype) }>
-<{foreach from=$messages.paymenttype key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="paymenttypeview" class="paymenttype-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

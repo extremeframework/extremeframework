@@ -49,10 +49,12 @@
     </h1>
 <{/if}>
 
-<{if isset($messages.field) }>
-<{foreach from=$messages.field key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
 
 <{if !isset($prefix) }>

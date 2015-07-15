@@ -1198,7 +1198,7 @@ class _UserMembershipController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'usermembership');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1269,7 +1269,7 @@ class _UserMembershipController extends __AppController
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'usermembership');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1394,7 +1394,7 @@ class _UserMembershipController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'usermembership');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);

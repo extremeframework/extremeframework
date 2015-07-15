@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="parametertypeview" class="parametertype-view view_details mainview">
-
-<{if isset($messages.parametertype) }>
-<{foreach from=$messages.parametertype key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="parametertypeview" class="parametertype-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

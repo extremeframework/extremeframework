@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="workflowlogview" class="workflowlog-view view_details mainview">
-
-<{if isset($messages.workflowlog) }>
-<{foreach from=$messages.workflowlog key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="workflowlogview" class="workflowlog-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

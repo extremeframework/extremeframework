@@ -1523,7 +1523,7 @@ class _PageLinkController extends __AppController
 		$smarty->assign('limit', $limit);
 		$smarty->assign('limit_from', $limit_from);
 		$smarty->assign('limit_to', $limit_to);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'pagelink');
 		$smarty->assign('filter', $filter);
 		$smarty->assign('filtercolumns', $filtercolumns);
@@ -1594,7 +1594,7 @@ class _PageLinkController extends __AppController
 		$smarty->assign('row', $details);
 		$smarty->assign('previd', $previd);
 		$smarty->assign('nextid', $nextid);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'pagelink');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -1713,7 +1713,7 @@ class _PageLinkController extends __AppController
 		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'pagelink');
 		$smarty->assign('filtercolumns', $filtercolumns);
 		$smarty->assign('aclviewablecolumns', $aclviewablecolumns);
@@ -2020,7 +2020,7 @@ class _PageLinkController extends __AppController
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
-		$smarty->assign('messages', MessageHelper::getMessages());
+		$smarty->assign('messages', $this->getMessages());
 		$smarty->assign('module', 'pagelink');
 
 	    $this->display($smarty, $templatecode);

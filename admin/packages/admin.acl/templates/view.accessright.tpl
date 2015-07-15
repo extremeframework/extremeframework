@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="accessrightview" class="accessright-view view_details mainview">
-
-<{if isset($messages.accessright) }>
-<{foreach from=$messages.accessright key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="accessrightview" class="accessright-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="widgettypeview" class="widgettype-view view_details mainview">
-
-<{if isset($messages.widgettype) }>
-<{foreach from=$messages.widgettype key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="widgettypeview" class="widgettype-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

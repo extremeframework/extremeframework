@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="posttypeview" class="posttype-view view_details mainview">
-
-<{if isset($messages.posttype) }>
-<{foreach from=$messages.posttype key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="posttypeview" class="posttype-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

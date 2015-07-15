@@ -890,13 +890,31 @@ div.col h3 a {
     font-size: 13px;
 	line-height: 1.8em;
 }
+.form-field .ui-datepicker-append {
+    margin-left: 5px;
+}
+
+/* Messages */
 .message {
     color: rgb(255, 131, 0);
     list-style: none;
     padding: 10px 0 0 0;
 }
-.form-field .ui-datepicker-append {
-    margin-left: 5px;
+
+body[data-type="list"] .content-inner .message {
+    color: #000;
+    background-color: yellow;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+body[data-type="view"] .content-inner .message {
+    color: #000;
+    background-color: yellow;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 /* Reports */

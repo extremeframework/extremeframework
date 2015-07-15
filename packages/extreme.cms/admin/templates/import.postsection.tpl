@@ -7,8 +7,8 @@
 
 <h1 class="heading"><span class="h"><{$title}></span></h1>
 
-<{if isset($messages.postsection) }>
-<{foreach from=$messages.postsection key=ignored item=message}>
+<{if $messages}>
+<{foreach from=$messages key=ignored item=message}>
 <li><{$message}></li>
 <{/foreach}>
 <{/if}>

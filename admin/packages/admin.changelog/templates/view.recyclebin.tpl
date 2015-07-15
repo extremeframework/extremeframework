@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="recyclebinview" class="recyclebin-view view_details mainview">
-
-<{if isset($messages.recyclebin) }>
-<{foreach from=$messages.recyclebin key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="recyclebinview" class="recyclebin-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

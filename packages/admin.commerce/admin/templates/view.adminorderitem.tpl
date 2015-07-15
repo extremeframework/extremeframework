@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="adminorderitemview" class="adminorderitem-view view_details mainview">
-
-<{if isset($messages.adminorderitem) }>
-<{foreach from=$messages.adminorderitem key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="adminorderitemview" class="adminorderitem-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

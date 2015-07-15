@@ -44,10 +44,12 @@
     </h1>
 <{/if}>
 
-<{if isset($messages.adminsequence) }>
-<{foreach from=$messages.adminsequence key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
 
 <{if !isset($prefix) }>

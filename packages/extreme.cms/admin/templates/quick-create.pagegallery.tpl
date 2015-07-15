@@ -17,9 +17,9 @@
     <div class="section">
         <div>
                             <div class="edit-main edit_details">
-    <{if isset($messages.pagegallery) }>
+    <{if $messages}>
         <ul class="message">
-            <{foreach from=$messages.pagegallery key=field item=message}>
+            <{foreach from=$messages key=field item=message}>
                 <li data-error-field="<{$field}>"><{$message}></li>
             <{/foreach}>
         </ul>

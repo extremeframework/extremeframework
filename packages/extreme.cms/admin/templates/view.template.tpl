@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="templateview" class="template-view view_details mainview">
-
-<{if isset($messages.template) }>
-<{foreach from=$messages.template key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="templateview" class="template-view view_details mainview">
 
 <!-- Details -->
 <div class="section">

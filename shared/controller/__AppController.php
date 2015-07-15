@@ -342,6 +342,35 @@ class __AppController {
         return $content;
     }
 
+    protected function setMessages($messages, $module = null) {
+        if (empty($module)) {
+            $module = $this->module;
+        }
+		$_SESSION['messages'][$module] = $messages;
+	}
+
+	protected function getMessages($module = null) {
+        if (empty($module)) {
+            $module = $this->module;
+        }
+
+        $messages = array();
+
+		if (isset($_SESSION['messages'][$module])) {
+			$messages = $_SESSION['messages'][$module];
+
+			$_SESSION['messages'][$module] = array();
+		}
+
+        $appmessage = MessageHelper::getAppMessage();
+
+		if (!empty($appmessage)) {
+			$messages[] = $appmessage;
+		}
+
+		return $messages;
+	}
+
     protected function updateOrderBy($orderby, $module = null) {
         if (empty($module)) {
             $module = $this->module;

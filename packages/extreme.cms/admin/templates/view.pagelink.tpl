@@ -88,13 +88,15 @@
     </div>
 </div>
 
-<div id="pagelinkview" class="pagelink-view view_details mainview">
-
-<{if isset($messages.pagelink) }>
-<{foreach from=$messages.pagelink key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
 <{/if}>
+
+<div id="pagelinkview" class="pagelink-view view_details mainview">
 
 <!-- Details -->
 <div class="section">
