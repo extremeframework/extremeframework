@@ -22,7 +22,7 @@ class DataObject_WORKFLOW_LOG extends DB_DataObject
     public $DETAILS;                         // varchar(128)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // int(4)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

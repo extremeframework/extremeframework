@@ -18,7 +18,7 @@ class DataObject_SCREEN extends DB_DataObject
     public $CODE;                            // varchar(24)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

@@ -25,7 +25,7 @@ class DataObject_SCREEN_FIELD extends DB_DataObject
     public $ORDERING;                        // smallint(2)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

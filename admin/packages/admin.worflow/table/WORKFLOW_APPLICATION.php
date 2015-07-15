@@ -17,7 +17,7 @@ class DataObject_WORKFLOW_APPLICATION extends DB_DataObject
     public $ID_WORKFLOW;                     // varchar(24)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // int(4)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

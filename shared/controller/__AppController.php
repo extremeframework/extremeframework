@@ -208,6 +208,7 @@ class __AppController {
     //////////////////////////////////////////////////////////////////
     // EXAMPLE:
     //    $this->ensure_additional_data(
+    //        Framework::getSmarty(__FILE__),
     //        'Resolve Issue',
     //        'ID_ISSUE_RESOLUTION, COMMENT',
     //        'ID_ISSUE_RESOLUTION, COMMENT',
@@ -221,7 +222,7 @@ class __AppController {
     //        )
     //    );
     //////////////////////////////////////////////////////////////////
-    protected function ensure_additional_data($formtitle, $columns, $mandatories, $formactions, &$formdata, $columnsettings = array(), $options = array()) {
+    protected function ensure_additional_data($smarty, $formtitle, $columns, $mandatories, $formactions, &$formdata, $columnsettings = array(), $options = array()) {
         $template = isset($options['template'])? $options['template'] : "input.{$this->module}.tpl";
 
         if (!is_array($columns)) {
@@ -252,8 +253,6 @@ class __AppController {
             } else {
                 $messages = array();
             }
-
-    		$smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('formtitle', $formtitle);
             $smarty->assign('messages', $messages);

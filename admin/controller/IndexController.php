@@ -12,11 +12,11 @@ class IndexController extends __AppController {
     }
 
 	function indexAction() {
-	    if (!ContextStack::isEmpty() && count($_REQUEST) == 1) {
+	    if (!ContextStack::isEmpty() && count($_GET) == 1) {
 	        ContextStack::back(0);
         }
 
-		if (empty($_REQUEST['p'])) {
+		if (empty($_GET['p'])) {
 		    ContextStack::reset();
 	        ContextStack::register(APPLICATION_URL);
 		}

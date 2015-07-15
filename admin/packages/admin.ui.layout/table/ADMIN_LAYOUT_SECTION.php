@@ -19,7 +19,7 @@ class DataObject_ADMIN_LAYOUT_SECTION extends DB_DataObject
     public $ORDERING;                        // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

@@ -21,7 +21,7 @@ class DataObject_WORKFLOW_STAGE extends DB_DataObject
     public $IS_BINDING_OBJECT_DELETABLE;     // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
-    public $WFID;                            // int(4)  
+    public $WFID;                            // varchar(24)  
     public $UDID;                            // int(4)  
     public $UUID;                            // char(36)  
 

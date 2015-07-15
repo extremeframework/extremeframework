@@ -30,7 +30,7 @@ class DataObject_MENU_ITEM extends DB_DataObject
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // varchar(24)  
     public $UUID;                            // char(36)  
 
     /* the code above is auto generated do not remove the tag below */

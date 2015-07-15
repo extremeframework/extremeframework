@@ -112,6 +112,9 @@ class UserController extends _UserController
                 $model->FORCE_PASSWORD_CHANGE = false;
                 $model->IS_ENABLED = false;
                 $model->CREATION_DATE = date('Y-m-d H:i:s');
+                $model->REFID = $uc->nextRefid();
+                $model->UUID = $uc->uuid();
+                $model->WFID = $uc->getDefaultWorkflowStage('user');
 
         		if (!$model->insert()) {
                     $message = 'Account registration error';
