@@ -67,6 +67,7 @@ widgetcolumns = TITLE,KEY,ID_PRIORITY,ASSIGNED_ID_USER,ID_ISSUE_STATUS
 searchformcolumns = ID_PROJECT,ID_PROJECT_VERSION,ASSIGNED_ID_USER,ID_ISSUE_STATUS
 list_statistics_column = ID_ISSUE_STATUS
 enablehtmlcolumns =
+reflection = ID_PROJECT:ID_PROJECT_COMPONENT:ID_PROJECT_VERSION
 features = order,sort,quicksearch,ajaxorder,json,hasref,import,export,saveaddnew,search
 
 [project]

@@ -182,7 +182,7 @@ class __AppController {
 	    $template = isset($_REQUEST['template'])? $_REQUEST['template'] : '<option value="{ID}">{NAME}</option>';
 	    $sort = isset($_REQUEST['sort'])? $_REQUEST['sort'] : 'ID DESC';
 
-	    $items = $this->getList($_REQUEST, array(), $sort);
+	    $items = $this->getList(false, $_REQUEST, array(), $sort);
 
         foreach ($items as $item) {
             echo $this->fill_template($template, $item);

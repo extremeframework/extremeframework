@@ -59,7 +59,7 @@ class UserApi extends UserController
         $limit = $this->getPageSize();
         $page = $this->getPageNumber();
 
-        $items = $this->getList($_REQUEST, array(), $orderby, $limit, $page, $pagination);
+        $items = $this->getList(true, $_REQUEST, array(), $orderby, $limit, $page, $pagination);
 
 	    $result = array(
 	        'success' => true,
