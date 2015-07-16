@@ -16,6 +16,7 @@ class PostController extends _PostController
         }
 
         $this->ensure_additional_data(
+            Framework::getSmarty(__FILE__),
             'Add to Menu',
             'ID_MENU',
             'ID_MENU',

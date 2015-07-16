@@ -82,6 +82,64 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('START_ID_WORKFLOW_STAGE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['START_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['START_ID_WORKFLOW_STAGE']))) }>
+                <td class="column column-start-id-workflow-stage reftext" >
+                                            <{if (in_array('START_ID_WORKFLOW_STAGE', $roweditablecolumns)) }>
+                    	                            <{if isset($formdata.START_ID_WORKFLOW_STAGE) }>
+                            <{assign var='tmp_value' value=$formdata.START_ID_WORKFLOW_STAGE}>
+                        <{else}>
+                            <{assign var='tmp_value' value=''}>
+                        <{/if}>
+                                                    
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$formdata.START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+
+                                                                    <span class="onflycreation">
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                                    </span>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.workflowtransition.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_START_ID_WORKFLOW_STAGE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.workflowstage.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$row->refuuid_START_ID_WORKFLOW_STAGE}>"><{$row->reftext_START_ID_WORKFLOW_STAGE|escape}></a>
+        <{else}>
+            <{$row->reftext_START_ID_WORKFLOW_STAGE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->START_ID_WORKFLOW_STAGE}><{$row->START_ID_WORKFLOW_STAGE|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.workflowtransition.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
+	        <{if (in_array('END_ID_WORKFLOW_STAGE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['END_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['END_ID_WORKFLOW_STAGE']))) }>
+                <td class="column column-end-id-workflow-stage reftext" >
+                                            <{if (in_array('END_ID_WORKFLOW_STAGE', $roweditablecolumns)) }>
+                    	                            <{if isset($formdata.END_ID_WORKFLOW_STAGE) }>
+                            <{assign var='tmp_value' value=$formdata.END_ID_WORKFLOW_STAGE}>
+                        <{else}>
+                            <{assign var='tmp_value' value=''}>
+                        <{/if}>
+                                                    
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$formdata.END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+
+                                                                    <span class="onflycreation">
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                                    </span>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.workflowtransition.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_END_ID_WORKFLOW_STAGE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.workflowstage.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/view/<{$row->refuuid_END_ID_WORKFLOW_STAGE}>"><{$row->reftext_END_ID_WORKFLOW_STAGE|escape}></a>
+        <{else}>
+            <{$row->reftext_END_ID_WORKFLOW_STAGE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->END_ID_WORKFLOW_STAGE}><{$row->END_ID_WORKFLOW_STAGE|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.workflowtransition.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('ACTION', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
                 <td class="column column-action text" >

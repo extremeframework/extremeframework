@@ -41,25 +41,15 @@ class ScreenController extends _ScreenController
         $sfm->selectAdd('SCREEN_FIELD.*, VALUE_TYPE.CODE AS VALUE_TYPE_CODE');
         $sfm->joinAdd(new ValueTypeModel());
 
-        $sfm->ID_SCREEN = $sm->ID;
+        $sfm->ID_SCREEN = $sm->id();
+        $sfm->orderBy('ORDERING ASC');
+
         $sfm->find();
 
         $screenfields = array();
 
         while ($sfm->fetch()) {
             $screenfields[] = clone $sfm;
-        }
-
-        // x. Screen actions
-        $sam = new ScreenActionModel();
-
-        $sam->ID_SCREEN = $sm->ID;
-        $sam->find();
-
-        $screenactions = array();
-
-        while ($sam->fetch()) {
-            $screenactions[$sam->ACTION_TITLE] = $sam->ACTION_URL;
         }
 
         $fields = array();
@@ -87,10 +77,13 @@ class ScreenController extends _ScreenController
         }
 
         $this->ensure_additional_data(
+            Framework::getSmarty(__FILE__),
             $sm->TITLE,
             $fields,
             $mandatories,
-            $screenactions,
+            array(
+                'Action' => ''
+            ),
             $formdata,
             $fieldinfos,
             array('template' => 'live.screen.tpl')

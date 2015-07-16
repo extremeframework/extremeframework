@@ -41,6 +41,24 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('START_ID_WORKFLOW_STAGE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['START_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['START_ID_WORKFLOW_STAGE']))) }>
+    	            <th class="column-start-id-workflow-stage">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/start_id_workflow_stage"><{_t('L_START_WORKFLOW_STAGE')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
+		                        <{if (in_array('END_ID_WORKFLOW_STAGE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['END_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['END_ID_WORKFLOW_STAGE']))) }>
+    	            <th class="column-end-id-workflow-stage">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/end_id_workflow_stage"><{_t('L_END_WORKFLOW_STAGE')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('ACTION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
     	            <th class="column-action">

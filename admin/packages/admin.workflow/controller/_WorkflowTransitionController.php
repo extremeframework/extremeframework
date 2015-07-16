@@ -1099,7 +1099,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('ID_WORKFLOW', 'NAME', 'CODE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+            return array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1300,7 +1300,7 @@ class _WorkflowTransitionController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('workflowtransition');
 
-        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'CODE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1650,12 +1650,20 @@ class _WorkflowTransitionController extends __AppController
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
             if (Framework::hasModule('Workflow')) {
                 $model->selectAdd('reftable_ID_WORKFLOW.NAME as reftext_ID_WORKFLOW');
                 $model->selectAdd('reftable_ID_WORKFLOW.UUID as refuuid_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.NAME as reftext_START_ID_WORKFLOW_STAGE');
+                $model->selectAdd('reftable_START_ID_WORKFLOW_STAGE.UUID as refuuid_START_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.NAME as reftext_END_ID_WORKFLOW_STAGE');
+                $model->selectAdd('reftable_END_ID_WORKFLOW_STAGE.UUID as refuuid_END_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('UserGroup')) {
                 $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
@@ -1674,6 +1682,12 @@ class _WorkflowTransitionController extends __AppController
         if ($join) {
             if (Framework::hasModule('Workflow')) {
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->joinAdd(array('START_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
+            }
+            if (Framework::hasModule('WorkflowStage')) {
+                $model->joinAdd(array('END_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('UserGroup')) {
                 $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');

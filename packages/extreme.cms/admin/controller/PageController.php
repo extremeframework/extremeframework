@@ -16,6 +16,7 @@ class PageController extends _PageController
         }
 
         $this->ensure_additional_data(
+            Framework::getSmarty(__FILE__),
             'Add to Menu',
             'ID_MENU',
             'ID_MENU',

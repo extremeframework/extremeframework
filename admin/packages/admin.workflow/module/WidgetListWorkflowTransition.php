@@ -74,7 +74,7 @@ class WidgetListWorkflowTransition extends WorkflowTransitionController {
             $page = $this->getPageNumber();
 
             $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination, true, $wheres);
-            
+
 
             $total = $pagination['total'];
             $page = $pagination['page'];
@@ -101,10 +101,10 @@ class WidgetListWorkflowTransition extends WorkflowTransitionController {
             $smarty->assign('filtercolumns', $filtercolumns);
             $smarty->assign('aclviewablecolumns', $aclviewablecolumns);
     		$smarty->assign('customfields', CustomFieldHelper::getListCustomFields('workflowtransition', $preset, $presetvalue));
-    		
+
     		$smarty->assign('admin_list_actions', AdminActionHelper::getAdminActions('workflowtransition', 'list'));
     		$smarty->assign('admin_listitem_actions', AdminActionHelper::getAdminActions('workflowtransition', 'listitem'));
-    		
+
         }
 
 		return $smarty->fetch($template);
