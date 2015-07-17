@@ -32,8 +32,13 @@ CREATE TABLE IF NOT EXISTS `MENU` (
   `UDID` int(11) DEFAULT NULL,
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,9 +74,19 @@ CREATE TABLE IF NOT EXISTS `MENU_ITEM` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_MENU` (`ID_MENU`),
+  KEY `IDX_PARENT` (`PARENT`),
+  KEY `IDX_ID_PAGE` (`ID_PAGE`),
+  KEY `IDX_ID_POST` (`ID_POST`),
+  KEY `IDX_ID_POST_CATEGORY` (`ID_POST_CATEGORY`),
+  KEY `IDX_ACL_ID_USER_GROUP` (`ACL_ID_USER_GROUP`)
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -117,10 +132,19 @@ CREATE TABLE IF NOT EXISTS `PAGE` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
   `HIERACHY` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_PARENT` (`PARENT`),
+  KEY `IDX_ID_TEMPLATE` (`ID_TEMPLATE`),
+  KEY `IDX_CUSTOM_TOP_ID_MENU` (`CUSTOM_TOP_ID_MENU`),
+  KEY `IDX_CUSTOM_SIDE_ID_MENU` (`CUSTOM_SIDE_ID_MENU`),
+  KEY `IDX_VIEW_MORE_ID_PAGE` (`VIEW_MORE_ID_PAGE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -150,9 +174,15 @@ CREATE TABLE IF NOT EXISTS `PAGE_GALLERY` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_PAGE` (`ID_PAGE`),
+  KEY `IDX_LINK_ID_PAGE` (`LINK_ID_PAGE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -182,9 +212,16 @@ CREATE TABLE IF NOT EXISTS `PAGE_LINK` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_PAGE` (`ID_PAGE`),
+  KEY `IDX_LINK_ID_PAGE` (`LINK_ID_PAGE`),
+  KEY `IDX_ID_PAGE_LINK_TYPE` (`ID_PAGE_LINK_TYPE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -212,7 +249,12 @@ CREATE TABLE IF NOT EXISTS `PAGE_LINK_TYPE` (
   `UDID` int(11) DEFAULT NULL,
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -255,9 +297,17 @@ CREATE TABLE IF NOT EXISTS `PAGE_SECTION` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`),
+  KEY `IDX_ID_PAGE` (`ID_PAGE`),
+  KEY `IDX_PARENT` (`PARENT`),
+  KEY `IDX_VIEW_MORE_ID_PAGE` (`VIEW_MORE_ID_PAGE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -290,9 +340,17 @@ CREATE TABLE IF NOT EXISTS `PAGE_WIDGET` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`),
+  KEY `IDX_ID_PAGE` (`ID_PAGE`),
+  KEY `IDX_ID_WIDGET_TYPE` (`ID_WIDGET_TYPE`),
+  KEY `IDX_ID_WIDGET_POSITION` (`ID_WIDGET_POSITION`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -320,7 +378,12 @@ CREATE TABLE IF NOT EXISTS `WIDGET_TYPE` (
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `uniquekey` (`CODE`)
+  UNIQUE KEY `uniquekey` (`CODE`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -355,7 +418,12 @@ CREATE TABLE IF NOT EXISTS `WIDGET_POSITION` (
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `uniquekey` (`CODE`)
+  UNIQUE KEY `uniquekey` (`CODE`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -399,9 +467,16 @@ CREATE TABLE IF NOT EXISTS `POST` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_POST_TYPE` (`ID_POST_TYPE`),
+  KEY `IDX_ID_POST_CATEGORY` (`ID_POST_CATEGORY`),
+  KEY `IDX_ID_TEMPLATE` (`ID_TEMPLATE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -428,7 +503,12 @@ CREATE TABLE IF NOT EXISTS `POST_TYPE` (
   `UDID` int(11) DEFAULT NULL,
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -461,9 +541,15 @@ CREATE TABLE IF NOT EXISTS `POST_CATEGORY` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_PARENT` (`PARENT`),
+  KEY `IDX_ID_TEMPLATE` (`ID_TEMPLATE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -491,9 +577,14 @@ CREATE TABLE IF NOT EXISTS `POST_GALLERY` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_POST` (`ID_POST`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -519,9 +610,16 @@ CREATE TABLE IF NOT EXISTS `POST_RELATION` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_POST` (`ID_POST`),
+  KEY `IDX_PEER_ID_POST` (`PEER_ID_POST`),
+  KEY `IDX_ID_POST_RELATION_TYPE` (`ID_POST_RELATION_TYPE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -548,7 +646,12 @@ CREATE TABLE IF NOT EXISTS `POST_RELATION_TYPE` (
   `UDID` int(11) DEFAULT NULL,
   `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -582,9 +685,14 @@ CREATE TABLE IF NOT EXISTS `POST_SECTION` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_ID_POST` (`ID_POST`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -610,9 +718,15 @@ CREATE TABLE IF NOT EXISTS `TEMPLATE` (
   `GUID` int(11) DEFAULT NULL,
   `JSON` text COLLATE utf8_unicode_ci,
   `UDID` int(11) DEFAULT NULL,
-  `WFID` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `WFID` varchar(24) COLLATE utf8_unicode_ci DEFAULT NULL,
   `UUID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`ID`),
+  KEY `IDX_GUID` (`GUID`),
+  KEY `IDX_UUID` (`UUID`),
+  KEY `IDX_UDID` (`UDID`),
+  KEY `IDX_WFID` (`WFID`),
+  KEY `IDX_CODE` (`CODE`),
+  KEY `IDX_MODULE` (`MODULE`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -651,24 +765,24 @@ INSERT IGNORE INTO `ACCESS_RIGHT` (`REFID`, `ID_USER_GROUP`, `MODULE`, `ACTIONS`
 INSERT IGNORE INTO `ACCESS_RIGHT` (`REFID`, `ID_USER_GROUP`, `MODULE`, `ACTIONS`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ACR0000000053', '1', 'postrelation', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '1', '', '0', '', 'a80a4d4d-1bbc-11e5-ac15-cc52af77857f');
 INSERT IGNORE INTO `ACCESS_RIGHT` (`REFID`, `ID_USER_GROUP`, `MODULE`, `ACTIONS`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ACR0000000054', '1', 'pagelinktype', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '1', '', '0', '', 'a80a6efc-1bbc-11e5-ac15-cc52af77857f');
 INSERT IGNORE INTO `ACCESS_RIGHT` (`REFID`, `ID_USER_GROUP`, `MODULE`, `ACTIONS`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ACR0000000055', '1', 'postrelationtype', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '1', '', '0', '', 'a80a99a4-1bbc-11e5-ac15-cc52af77857f');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002484', 'All', 'page', 'NAME,ID_TEMPLATE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002485', 'All', 'post', 'TITLE,IMAGE,ID_POST_CATEGORY,ID_TEMPLATE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002486', 'All', 'menu', 'NAME,CODE,CLASS', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002490', 'All', 'template', 'NAME,CODE,MODULE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002494', 'All', 'pagelink', 'TITLE,ID_PAGE,ID_PAGE_LINK_TYPE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002498', 'All', 'menuitem', 'TITLE,ID_MENU,ID_PAGE,ID_POST,ID_POST_CATEGORY,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002499', 'All', 'posttype', 'NAME,CODE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002507', 'All', 'widgettype', 'NAME,CODE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002509', 'All', 'pagewidget', 'TITLE,ID_PAGE,IMAGE,ID_WIDGET_TYPE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002513', 'All', 'postgallery', 'TITLE,ID_POST,IMAGE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002515', 'All', 'postsection', 'TITLE,ID_POST,IMAGE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002517', 'All', 'pagesection', 'TITLE,ID_PAGE,IMAGE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002518', 'All', 'pagegallery', 'TITLE,ID_PAGE,IMAGE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002523', 'All', 'postrelation', 'ID_POST,PEER_ID_POST,ID_POST_RELATION_TYPE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002524', 'All', 'postcategory', 'NAME,ID_TEMPLATE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002528', 'All', 'pagelinktype', 'NAME,CODE,ORDERING', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002530', 'All', 'widgetposition', 'NAME,CODE', '1', '1', '', '', '0', '');
-INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000002537', 'All', 'postrelationtype', 'NAME,CODE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006100', 'All', 'menu', 'NAME,CODE,CLASS', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006101', 'All', 'post', 'TITLE,IMAGE,ID_POST_CATEGORY,ID_TEMPLATE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006102', 'All', 'page', 'NAME,ID_TEMPLATE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006108', 'All', 'template', 'NAME,CODE,MODULE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006115', 'All', 'posttype', 'NAME,CODE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006116', 'All', 'menuitem', 'TITLE,ID_MENU,ID_PAGE,ID_POST,ID_POST_CATEGORY,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006119', 'All', 'pagelink', 'TITLE,ID_PAGE,ID_PAGE_LINK_TYPE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006129', 'All', 'pagewidget', 'TITLE,ID_PAGE,IMAGE,ID_WIDGET_TYPE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006130', 'All', 'widgettype', 'NAME,CODE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006133', 'All', 'pagesection', 'TITLE,ID_PAGE,IMAGE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006137', 'All', 'postgallery', 'TITLE,ID_POST,IMAGE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006138', 'All', 'postsection', 'TITLE,ID_POST,IMAGE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006140', 'All', 'pagegallery', 'TITLE,ID_PAGE,IMAGE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006145', 'All', 'postrelation', 'ID_POST,PEER_ID_POST,ID_POST_RELATION_TYPE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006148', 'All', 'postcategory', 'NAME,ID_TEMPLATE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006151', 'All', 'pagelinktype', 'NAME,CODE,ORDERING', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006158', 'All', 'widgetposition', 'NAME,CODE', '1', '1', '', '', '0', '');
+INSERT IGNORE INTO `ADMIN_FILTER` (`REFID`, `NAME`, `MODULE`, `COLUMNS`, `IS_DEFAULT`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES ('ADF0000006168', 'All', 'postrelationtype', 'NAME,CODE', '1', '1', '', '', '0', '');
 INSERT IGNORE INTO `ADMIN_LABEL` (`LABEL`, `GUID`, `UDID`, `UUID`) VALUES ('L_ACL_USER_GROUP', 1, 0, UUID());
 INSERT IGNORE INTO `ADMIN_LABEL` (`LABEL`, `GUID`, `UDID`, `UUID`) VALUES ('L_ADDITIONAL_CSS', 1, 0, UUID());
 INSERT IGNORE INTO `ADMIN_LABEL` (`LABEL`, `GUID`, `UDID`, `UUID`) VALUES ('L_AUTHOR', 1, 0, UUID());
@@ -928,7 +1042,7 @@ INSERT IGNORE INTO `ADMIN_LANGUAGE_ITEM` (`ID_ADMIN_LANGUAGE`, `ID_ADMIN_LABEL`,
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000004', 'Template', '1', '2', 'template', '', 'fa-paypal', '1', '', '', '', '', '', '', '14', '1', '', '0', '', '0880fe9d-1a1a-11e5-b2f8-cc52af77857f', '-0-2-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000042', 'Pages', '1', '0', 'page', '', 'fa-file-audio-o', '1', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a0cd46-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000043', 'Menus', '1', '0', 'menu', '', 'fa-plus-square', '1', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a0f3d6-1baa-11e5-a175-cc52af77857f', '-0-');
-INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000044', 'Posts', '1', '0', 'post', '', 'fa-cube', '1', '1', '1', '1', '0', '', '', '99', '1', '', '0', '', '01a1144d-1baa-11e5-a175-cc52af77857f', '-0-');
+INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000044', 'Posts', '1', '0', 'post', '', 'fa-cube', '1', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a1144d-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000045', 'Menu Items', '1', '0', 'menuitem', '', 'fa-taxi', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a1f547-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000046', 'Post Types', '1', '0', 'posttype', '', 'fa-file-code-o', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a26a5a-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000047', 'Page Links', '1', '0', 'pagelink', '', 'fa-wifi', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a29940-1baa-11e5-a175-cc52af77857f', '-0-');
@@ -937,7 +1051,7 @@ INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000050', 'Page Galleries', '1', '0', 'pagegallery', '', 'fa-trash', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a9a611-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000051', 'Post Sections', '1', '0', 'postsection', '', 'fa-users', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01a9d298-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000052', 'Page Sections', '1', '0', 'pagesection', '', 'fa-plus-square-o', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01aa3215-1baa-11e5-a175-cc52af77857f', '-0-');
-INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000053', 'Post Categories', '1', '0', 'postcategory', '', 'fa-sitemap', '1', '0', '1', '1', '0', '', '', '99', '1', '', '0', '', '01aa857d-1baa-11e5-a175-cc52af77857f', '-0-');
+INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000053', 'Post Categories', '1', '0', 'postcategory', '', 'fa-sitemap', '1', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01aa857d-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000054', 'Widget Positions', '1', '0', 'widgetposition', '', 'fa-chevron-left', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '01ab7dac-1baa-11e5-a175-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000055', 'Post Galleries', '1', '0', 'postgallery', '', 'fa-inr', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '93436fad-1bbc-11e5-ac15-cc52af77857f', '-0-');
 INSERT IGNORE INTO `ADMIN_MENU_ITEM` (`REFID`, `NAME`, `ID_ADMIN_MENU`, `PARENT`, `MODULE`, `PATH`, `FONT_AWESOME_ICON`, `ENABLE_LEFT`, `ENABLE_TOP`, `ENABLE_QUICK`, `ENABLE_ALL`, `ENABLE_SETTINGS`, `OPEN_IN_NEW_WINDOW`, `IS_STARRED`, `ORDERING`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`, `HIERACHY`) VALUES ('AMI0000000056', 'Post Relations', '1', '0', 'postrelation', '', 'fa-outdent', '0', '0', '0', '0', '0', '', '', '99', '1', '', '0', '', '9343c2da-1bbc-11e5-ac15-cc52af77857f', '-0-');
@@ -961,8 +1075,8 @@ INSERT IGNORE INTO `ADMIN_MODULE` (`REFID`, `NAME`, `MODULE`, `PREFIX`, `AVAILAB
 INSERT IGNORE INTO `ADMIN_MODULE` (`REFID`, `NAME`, `MODULE`, `PREFIX`, `AVAILABLE_ACTIONS`, `IS_COMMENT_ENABLED`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADD0000000053', 'Post Relation', 'postrelation', 'PSR', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '', '1', '', '0', '', 'a804855a-1bbc-11e5-ac15-cc52af77857f');
 INSERT IGNORE INTO `ADMIN_MODULE` (`REFID`, `NAME`, `MODULE`, `PREFIX`, `AVAILABLE_ACTIONS`, `IS_COMMENT_ENABLED`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADD0000000054', 'Page Link Type', 'pagelinktype', 'PLT', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '', '1', '', '0', '', 'a804f970-1bbc-11e5-ac15-cc52af77857f');
 INSERT IGNORE INTO `ADMIN_MODULE` (`REFID`, `NAME`, `MODULE`, `PREFIX`, `AVAILABLE_ACTIONS`, `IS_COMMENT_ENABLED`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADD0000000055', 'Post Relation Type', 'postrelationtype', 'PRP', 'menu list view new edit copy delete search import export report validate viewpeer editpeer deletepeer', '', '1', '', '0', '', 'a806223f-1bbc-11e5-ac15-cc52af77857f');
-INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000038', 'page', 'PGExxxxxxxxxx', 'PGE0000000022', '1', '1', '', '0', '', '1258bdb7-1baa-11e5-a175-cc52af77857f');
-INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000039', 'menu', 'MNUxxxxxxxxxx', 'MNU0000000007', '1', '1', '', '0', '', '1258e8d2-1baa-11e5-a175-cc52af77857f');
+INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000038', 'page', 'PGExxxxxxxxxx', 'PGE0000000025', '1', '1', '', '0', '', '1258bdb7-1baa-11e5-a175-cc52af77857f');
+INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000039', 'menu', 'MNUxxxxxxxxxx', 'MNU0000000009', '1', '1', '', '0', '', '1258e8d2-1baa-11e5-a175-cc52af77857f');
 INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000040', 'post', 'PSTxxxxxxxxxx', 'PST0000000011', '1', '1', '', '0', '', '12591648-1baa-11e5-a175-cc52af77857f');
 INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000041', 'template', 'TMPxxxxxxxxxx', 'TMP0000000014', '1', '1', '', '0', '', '125a0ff4-1baa-11e5-a175-cc52af77857f');
 INSERT IGNORE INTO `ADMIN_SEQUENCE` (`REFID`, `MODULE`, `SEQUENCE_FORMAT`, `CURRENT_VALUE`, `SEQUENCE_STEP`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES ('ADS0000000042', 'menuitem', 'MNIxxxxxxxxxx', 'MNI0000000068', '1', '1', '', '0', '', '125ab156-1baa-11e5-a175-cc52af77857f');
