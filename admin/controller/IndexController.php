@@ -12,13 +12,13 @@ class IndexController extends __AppController {
     }
 
 	function indexAction() {
-	    if (!ContextStack::isEmpty() && count($_GET) == 1) {
-	        ContextStack::back(0);
-        }
-
 		if (empty($_GET['p'])) {
-		    ContextStack::reset();
-	        ContextStack::register(APPLICATION_URL);
+		    if (!ContextStack::isEmpty()) {
+		        ContextStack::back(0);
+		    } else {
+    		    ContextStack::reset();
+    	        ContextStack::register(APPLICATION_URL);
+            }
 		}
 
         $iddashboard = isset($_SESSION['user']->preferences->ID_DASHBOARD)? $_SESSION['user']->preferences->ID_DASHBOARD : '';

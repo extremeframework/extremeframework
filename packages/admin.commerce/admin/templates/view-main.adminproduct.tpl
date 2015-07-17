@@ -304,28 +304,24 @@
         </div>
     <{/if}>
 
-    <div class="layout-block layout-block-section">
-        <div class="layout-section">
-            <div class="layout-section-content">
-                <table class="table table-bordered table-custom-layout equal-split">
-                    <tbody>
-                        <{foreach from=$additional_view_fields item=item}>
-                            <tr class="attribute-line">
-                        		<td class="form-field form-field-label">
-                    		        <label class="attribute-name"><{$item.label}></label>
-                                </td>
-                                <td class="form-field form-field-value">
-                            		<div class="attribute-value">
-                                        <{$item.value}>
-                            		</div>
-                                </td>
-                    		</tr>
-                    	<{/foreach}>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+    <{if $additional_view_fields}>
+        <table class="table table-bordered table-custom-layout equal-split">
+            <tbody>
+                <{foreach from=$additional_view_fields item=item}>
+                    <tr class="attribute-line">
+                		<td class="form-field form-field-label">
+            		        <label class="attribute-name"><{$item.label}></label>
+                        </td>
+                        <td class="form-field form-field-value">
+                    		<div class="attribute-value">
+                                <{$item.value}>
+                    		</div>
+                        </td>
+            		</tr>
+            	<{/foreach}>
+            </tbody>
+        </table>
+    <{/if}>
 
     <{plugin key="adminproduct_view_bottom" args=$details}>
 
