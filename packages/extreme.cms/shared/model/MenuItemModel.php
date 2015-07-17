@@ -71,6 +71,10 @@ class MenuItemModel extends DataObject_MENU_ITEM {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

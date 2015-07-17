@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_POST']) && ((isset($aclviewablecolumns['ID_POST']) && $aclviewablecolumns['ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST']) || $aclviewablecolumns['ID_POST']))) }>
                 <td class="column column-id-post reftext" >
                                             <{if (in_array('ID_POST', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_POST) }>
-                            <{assign var='tmp_value' value=$formdata.ID_POST}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_POST}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$formdata.ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['PEER_ID_POST']) && ((isset($aclviewablecolumns['PEER_ID_POST']) && $aclviewablecolumns['PEER_ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PEER_ID_POST']) || $aclviewablecolumns['PEER_ID_POST']))) }>
                 <td class="column column-peer-id-post reftext" >
                                             <{if (in_array('PEER_ID_POST', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PEER_ID_POST) }>
-                            <{assign var='tmp_value' value=$formdata.PEER_ID_POST}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPEER_ID_POST}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$formdata.PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
@@ -79,11 +73,8 @@
             <{if !isset($excludedcolumns['ID_POST_RELATION_TYPE']) && ((isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) && $aclviewablecolumns['ID_POST_RELATION_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) || $aclviewablecolumns['ID_POST_RELATION_TYPE']))) }>
                 <td class="column column-id-post-relation-type reftext" >
                                             <{if (in_array('ID_POST_RELATION_TYPE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_POST_RELATION_TYPE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_POST_RELATION_TYPE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_POST_RELATION_TYPE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$formdata.ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 

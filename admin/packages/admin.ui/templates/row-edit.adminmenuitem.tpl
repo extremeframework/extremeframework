@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>adminmenuitem_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['ID_ADMIN_MENU']) && ((isset($aclviewablecolumns['ID_ADMIN_MENU']) && $aclviewablecolumns['ID_ADMIN_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_MENU']) || $aclviewablecolumns['ID_ADMIN_MENU']))) }>
                 <td class="column column-id-admin-menu reftext" >
                                             <{if (in_array('ID_ADMIN_MENU', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_ADMIN_MENU) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ADMIN_MENU}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_ADMIN_MENU}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-menu" name="`$prefix`adminmenuitem_formdata_ID_ADMIN_MENU" value=$formdata.ID_ADMIN_MENU datasource="ADMIN_MENU" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -68,11 +62,8 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module reftext" >
                                             <{if (in_array('MODULE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMODULE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`adminmenuitem_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -97,11 +88,8 @@
             <{if !isset($excludedcolumns['PATH']) && ((isset($aclviewablecolumns['PATH']) && $aclviewablecolumns['PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PATH']) || $aclviewablecolumns['PATH']))) }>
                 <td class="column column-path text" >
                                             <{if (in_array('PATH', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PATH) }>
-                            <{assign var='tmp_value' value=$formdata.PATH}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPATH}>
+
                         
                             <input class="input-path" type="text" name="<{$prefix}>adminmenuitem_formdata_PATH" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -115,11 +103,8 @@
             <{if !isset($excludedcolumns['FONT_AWESOME_ICON']) && ((isset($aclviewablecolumns['FONT_AWESOME_ICON']) && $aclviewablecolumns['FONT_AWESOME_ICON']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FONT_AWESOME_ICON']) || $aclviewablecolumns['FONT_AWESOME_ICON']))) }>
                 <td class="column column-font-awesome-icon text" >
                                             <{if (in_array('FONT_AWESOME_ICON', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.FONT_AWESOME_ICON) }>
-                            <{assign var='tmp_value' value=$formdata.FONT_AWESOME_ICON}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataFONT_AWESOME_ICON}>
+
                         
                             <input class="input-font-awesome-icon" type="text" name="<{$prefix}>adminmenuitem_formdata_FONT_AWESOME_ICON" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -133,21 +118,18 @@
             <{if !isset($excludedcolumns['ENABLE_LEFT']) && ((isset($aclviewablecolumns['ENABLE_LEFT']) && $aclviewablecolumns['ENABLE_LEFT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_LEFT']) || $aclviewablecolumns['ENABLE_LEFT']))) }>
                 <td class="column column-enable-left yesno" data-value="<{$row->ENABLE_LEFT}>" data-column="ENABLE_LEFT" data-module="adminmenuitem">
                                             <{if (in_array('ENABLE_LEFT', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ENABLE_LEFT) }>
-                            <{assign var='tmp_value' value=$formdata.ENABLE_LEFT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataENABLE_LEFT}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-left" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" >
-                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_LEFT}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $formdata.ENABLE_LEFT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$formdata.ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->ENABLE_LEFT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -157,21 +139,18 @@
             <{if !isset($excludedcolumns['ENABLE_TOP']) && ((isset($aclviewablecolumns['ENABLE_TOP']) && $aclviewablecolumns['ENABLE_TOP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_TOP']) || $aclviewablecolumns['ENABLE_TOP']))) }>
                 <td class="column column-enable-top yesno" data-value="<{$row->ENABLE_TOP}>" data-column="ENABLE_TOP" data-module="adminmenuitem">
                                             <{if (in_array('ENABLE_TOP', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ENABLE_TOP) }>
-                            <{assign var='tmp_value' value=$formdata.ENABLE_TOP}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataENABLE_TOP}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-top" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" >
-                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_TOP}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $formdata.ENABLE_TOP}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$formdata.ENABLE_TOP}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->ENABLE_TOP}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -181,21 +160,18 @@
             <{if !isset($excludedcolumns['ENABLE_QUICK']) && ((isset($aclviewablecolumns['ENABLE_QUICK']) && $aclviewablecolumns['ENABLE_QUICK']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_QUICK']) || $aclviewablecolumns['ENABLE_QUICK']))) }>
                 <td class="column column-enable-quick yesno" data-value="<{$row->ENABLE_QUICK}>" data-column="ENABLE_QUICK" data-module="adminmenuitem">
                                             <{if (in_array('ENABLE_QUICK', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ENABLE_QUICK) }>
-                            <{assign var='tmp_value' value=$formdata.ENABLE_QUICK}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataENABLE_QUICK}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-quick" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" >
-                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_QUICK}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $formdata.ENABLE_QUICK}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$formdata.ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->ENABLE_QUICK}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -205,21 +181,18 @@
             <{if !isset($excludedcolumns['ENABLE_ALL']) && ((isset($aclviewablecolumns['ENABLE_ALL']) && $aclviewablecolumns['ENABLE_ALL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_ALL']) || $aclviewablecolumns['ENABLE_ALL']))) }>
                 <td class="column column-enable-all yesno" data-value="<{$row->ENABLE_ALL}>" data-column="ENABLE_ALL" data-module="adminmenuitem">
                                             <{if (in_array('ENABLE_ALL', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ENABLE_ALL) }>
-                            <{assign var='tmp_value' value=$formdata.ENABLE_ALL}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataENABLE_ALL}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-all" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" >
-                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_ALL}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $formdata.ENABLE_ALL}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$formdata.ENABLE_ALL}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->ENABLE_ALL}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -229,21 +202,18 @@
             <{if !isset($excludedcolumns['ENABLE_SETTINGS']) && ((isset($aclviewablecolumns['ENABLE_SETTINGS']) && $aclviewablecolumns['ENABLE_SETTINGS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ENABLE_SETTINGS']) || $aclviewablecolumns['ENABLE_SETTINGS']))) }>
                 <td class="column column-enable-settings yesno" data-value="<{$row->ENABLE_SETTINGS}>" data-column="ENABLE_SETTINGS" data-module="adminmenuitem">
                                             <{if (in_array('ENABLE_SETTINGS', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ENABLE_SETTINGS) }>
-                            <{assign var='tmp_value' value=$formdata.ENABLE_SETTINGS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataENABLE_SETTINGS}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-enable-settings" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" >
-                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.ENABLE_SETTINGS}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $formdata.ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$formdata.ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->ENABLE_SETTINGS}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -253,21 +223,18 @@
             <{if !isset($excludedcolumns['OPEN_IN_NEW_WINDOW']) && ((isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) && $aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OPEN_IN_NEW_WINDOW']) || $aclviewablecolumns['OPEN_IN_NEW_WINDOW']))) }>
                 <td class="column column-open-in-new-window yesno" data-value="<{$row->OPEN_IN_NEW_WINDOW}>" data-column="OPEN_IN_NEW_WINDOW" data-module="adminmenuitem">
                                             <{if (in_array('OPEN_IN_NEW_WINDOW', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.OPEN_IN_NEW_WINDOW) }>
-                            <{assign var='tmp_value' value=$formdata.OPEN_IN_NEW_WINDOW}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataOPEN_IN_NEW_WINDOW}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-open-in-new-window" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" >
-                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$formdata.OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->OPEN_IN_NEW_WINDOW}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -277,21 +244,18 @@
             <{if !isset($excludedcolumns['IS_STARRED']) && ((isset($aclviewablecolumns['IS_STARRED']) && $aclviewablecolumns['IS_STARRED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_STARRED']) || $aclviewablecolumns['IS_STARRED']))) }>
                 <td class="column column-is-starred yesno" data-value="<{$row->IS_STARRED}>" data-column="IS_STARRED" data-module="adminmenuitem">
                                             <{if (in_array('IS_STARRED', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.IS_STARRED) }>
-                            <{assign var='tmp_value' value=$formdata.IS_STARRED}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataIS_STARRED}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-starred" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" >
-                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_STARRED}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $formdata.IS_STARRED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$formdata.IS_STARRED}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->IS_STARRED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -301,11 +265,8 @@
             <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
                 <td class="column column-ordering number" >
                                             <{if (in_array('ORDERING', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ORDERING) }>
-                            <{assign var='tmp_value' value=$formdata.ORDERING}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataORDERING}>
+
                                                     
                             <input class="input-ordering number-format" type="text" name="<{$prefix}>adminmenuitem_formdata_ORDERING" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

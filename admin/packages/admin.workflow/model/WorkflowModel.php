@@ -71,6 +71,10 @@ class WorkflowModel extends DataObject_WORKFLOW {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

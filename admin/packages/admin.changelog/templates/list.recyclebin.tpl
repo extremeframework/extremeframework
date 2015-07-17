@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="recyclebinquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/recyclebin/search" method="get">
-            <input type="text" name="recyclebin_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="recyclebin_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#recyclebinquicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.recyclebin.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_RECYCLE_BIN', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_RECYCLE_BIN')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_RECYCLE_BIN', true)|strtolower}>"/><{_t('New')}> <{_t('L_RECYCLE_BIN')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -93,7 +93,7 @@
                                 <span class="custom-filter-footer recyclebin-custom-filter-footer hide">
                                     <hr>
                                     <ul>
-                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/recyclebin"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
+                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/recyclebin"><i class="fa fa-plus-circle"></i> <{_t('Create new filter')}></a></li>
                                     </ul>
                                 </span>
                                 <span class="custom-filter-icons recyclebin-custom-filter-icons pull-right" style="display:none">
@@ -286,7 +286,7 @@ function recyclebin_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="recyclebin-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="recyclebin-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminorderitem-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminorderitem-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="adminorderitem-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminorderitem-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel adminorderitem-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save adminorderitem-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel adminorderitem-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="adminorderitem-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
@@ -93,7 +93,7 @@
         
                     <{if $rows}>
             	<tr style="background-color:#F4FAE1;">
-            		<th colspan="2"><{_t('L_TOTAL')}></th>
+            		<th colspan="2"><{_t('Total')}></th>
             	                	        <{if (in_array('ID_ADMIN_ORDER', $filtercolumns)) }>
                             <{if !isset($excludedcolumns['ID_ADMIN_ORDER']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER']) && $aclviewablecolumns['ID_ADMIN_ORDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER']) || $aclviewablecolumns['ID_ADMIN_ORDER']))) }>
                     	                                            <th></th>

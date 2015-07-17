@@ -10,6 +10,7 @@ class _AdminLabelController extends __AppController
 {
     var $module = 'adminlabel';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminLabelController extends __AppController
         PluginManager::do_action('adminlabel_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('LABEL', $columns2check)) {
            $_model = new AdminLabelModel();
@@ -42,7 +43,7 @@ class _AdminLabelController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -70,7 +71,7 @@ class _AdminLabelController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -82,7 +83,7 @@ class _AdminLabelController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -533,7 +534,7 @@ class _AdminLabelController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -606,7 +607,7 @@ class _AdminLabelController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'LABEL');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminlabel'));
 
@@ -652,7 +653,7 @@ class _AdminLabelController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -668,7 +669,7 @@ class _AdminLabelController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1099,7 +1100,7 @@ class _AdminLabelController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1122,7 +1123,7 @@ class _AdminLabelController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminlabel', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlabel', 'view');
@@ -1191,7 +1192,7 @@ class _AdminLabelController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminlabel.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminlabel.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminlabel.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminlabel');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlabel', 'view');
@@ -1261,7 +1262,7 @@ class _AdminLabelController extends __AppController
         PluginManager::do_action('adminlabel_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminlabel.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminlabel.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminlabel');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlabel', 'view');
@@ -1368,7 +1369,7 @@ class _AdminLabelController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('LABEL');
     }
 
@@ -1480,7 +1481,7 @@ class _AdminLabelController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1520,7 +1521,7 @@ class _AdminLabelController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LABEL`.LABEL, `'.TABLE_PREFIX.'ADMIN_LABEL`.ID, `'.TABLE_PREFIX.'ADMIN_LABEL`.JSON, `'.TABLE_PREFIX.'ADMIN_LABEL`.UUID, `'.TABLE_PREFIX.'ADMIN_LABEL`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminLabelModel();
 
         $this->enforceObjectAclCheck('adminlabel', $model);

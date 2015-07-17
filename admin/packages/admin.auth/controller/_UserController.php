@@ -10,6 +10,7 @@ class _UserController extends __AppController
 {
     var $module = 'user';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _UserController extends __AppController
         PluginManager::do_action('user_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('EMAIL', $columns2check) && !empty($model->EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
            $errors['email'] = sprintf(_t('L_VALIDATION_EMAIL'), _t('L_EMAIL'));
@@ -40,7 +41,7 @@ class _UserController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -54,7 +55,7 @@ class _UserController extends __AppController
         return true;
     }
 
-    private function handleFileUploads(&$model) {
+    protected function handleFileUploads(&$model) {
 	    if (isset($_FILES) && !empty($_FILES)) {
             foreach ($_FILES as $column => $file) {
                 if (preg_match('/^user_formdata_(.*)/', $column, $matches)) {
@@ -134,7 +135,7 @@ class _UserController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -146,7 +147,7 @@ class _UserController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -601,7 +602,7 @@ class _UserController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -727,7 +728,7 @@ class _UserController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('user'));
 
@@ -773,7 +774,7 @@ class _UserController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -789,7 +790,7 @@ class _UserController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1234,7 +1235,7 @@ class _UserController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1257,7 +1258,7 @@ class _UserController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('user', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('user', 'view');
@@ -1326,7 +1327,7 @@ class _UserController extends __AppController
 	    $this->display($smarty, $templatetype.'.user.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.user.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.user.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('user');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('user', 'view');
@@ -1396,7 +1397,7 @@ class _UserController extends __AppController
         PluginManager::do_action('user_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.user.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.user.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('user');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('user', 'view');
@@ -1511,7 +1512,7 @@ class _UserController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
     }
 
@@ -1623,7 +1624,7 @@ class _UserController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1683,7 +1684,7 @@ class _UserController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER`.FIRST_NAME, `'.TABLE_PREFIX.'USER`.LAST_NAME, `'.TABLE_PREFIX.'USER`.PHOTO, `'.TABLE_PREFIX.'USER`.EMAIL, `'.TABLE_PREFIX.'USER`.LOGIN, `'.TABLE_PREFIX.'USER`.PHONE, `'.TABLE_PREFIX.'USER`.GENDER, `'.TABLE_PREFIX.'USER`.DATE_OF_BIRTH, `'.TABLE_PREFIX.'USER`.FORCE_PASSWORD_CHANGE, `'.TABLE_PREFIX.'USER`.IS_EMAIL_VERIFIED, `'.TABLE_PREFIX.'USER`.FACEBOOK_ID, `'.TABLE_PREFIX.'USER`.FACEBOOK_OAUTH_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_OAUTH_ID, `'.TABLE_PREFIX.'USER`.YAHOO_ID, `'.TABLE_PREFIX.'USER`.YAHOO_OAUTH_ID, `'.TABLE_PREFIX.'USER`.IS_ENABLED, `'.TABLE_PREFIX.'USER`.CREATION_DATE, `'.TABLE_PREFIX.'USER`.LATEST_LOGIN, `'.TABLE_PREFIX.'USER`.ID, `'.TABLE_PREFIX.'USER`.JSON, `'.TABLE_PREFIX.'USER`.UUID, `'.TABLE_PREFIX.'USER`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new UserModel();
 
         $this->enforceObjectAclCheck('user', $model);

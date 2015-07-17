@@ -71,6 +71,10 @@ class RecycleBinModel extends DataObject_RECYCLE_BIN {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->ITEM;
 	}

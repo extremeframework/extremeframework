@@ -4,7 +4,7 @@
 
 <body id="signin">
 
-<{assign var='title' value=_t('L_SIGN_IN')}>
+<{assign var='title' value=_t('Sign in')}>
 <{include file="top.tpl"}>
 
 <div class="account-signin">
@@ -36,9 +36,9 @@
     	<div class="clearer"></div>
 
         <div class="form-row">
-    		<label for="signin_password"><{_t('L_PASSWORD')}></label>
+    		<label for="signin_password"><{_t('Password')}></label>
     		<div class="form-field">
-    		    <input name="password" id="signin_password" type="password" autocorrect="off" placeholder="<{_t('L_PASSWORD', true)}>" autocapitalize="off" />
+    		    <input name="password" id="signin_password" type="password" autocorrect="off" placeholder="<{_t('Password', true)}>" autocapitalize="off" />
     		</div>
     	</div>
 
@@ -46,12 +46,12 @@
 
         <div class="buttons">
             <span class="button-general ">
-                <button value="1" class="button large" type="submit"><span class="button-face"><{_t('L_SIGN_IN')}></span></button>
+                <button value="1" class="button large" type="submit"><span class="button-face"><{_t('Sign in')}></span></button>
             </span>
 
             <div class="form-row">
                 <input type="checkbox" name="remember" value="1" id="sigin_remember" />
-                <label for="sigin_remember"> <{_t('L_KEEP_ME_SIGNED_IN')}></label>
+                <label for="sigin_remember"> <{_t('Keep me signed in')}></label>
             </div>
         </div>
     </form>
@@ -59,9 +59,9 @@
 
     <div id="signin-footer">
         <span style="float:right">
-            <a href="<{$smarty.const.APPLICATION_URL}>/user/forgot"><{_t('L_FORGOT_PASSWORD')}></a>
+            <a href="<{$smarty.const.APPLICATION_URL}>/user/forgot"><{_t('Forgot password')}></a>
         </span>
-        <a href="<{$smarty.const.APPLICATION_URL}>/user/register"><{_t('L_CREATE_AN_ACCOUNT_NOW')}></a>
+        <a href="<{$smarty.const.APPLICATION_URL}>/user/register"><{_t('Create an account now')}></a>
     </div>
 </div>
 

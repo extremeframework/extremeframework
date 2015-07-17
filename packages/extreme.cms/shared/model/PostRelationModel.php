@@ -71,6 +71,10 @@ class PostRelationModel extends DataObject_POST_RELATION {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->JSON;
 	}

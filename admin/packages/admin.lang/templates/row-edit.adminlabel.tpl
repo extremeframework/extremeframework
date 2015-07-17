@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['LABEL']) && ((isset($aclviewablecolumns['LABEL']) && $aclviewablecolumns['LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LABEL']) || $aclviewablecolumns['LABEL']))) }>
                 <td class="column column-label text" >
                                             <{if (in_array('LABEL', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.LABEL) }>
-                            <{assign var='tmp_value' value=$formdata.LABEL}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataLABEL}>
+
                         
                             <input class="input-label" type="text" name="<{$prefix}>adminlabel_formdata_LABEL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="500"<{/if}> />
                                                 <{else}>

@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text" >
                                             <{if (in_array('TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTITLE}>
+
                         
                             <input class="input-title" type="text" name="<{$prefix}>pagesection_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['ID_PAGE']) && ((isset($aclviewablecolumns['ID_PAGE']) && $aclviewablecolumns['ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAGE']) || $aclviewablecolumns['ID_PAGE']))) }>
                 <td class="column column-id-page reftext" >
                                             <{if (in_array('ID_PAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-page" name="`$prefix`pagesection_formdata_ID_PAGE" value=$formdata.ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -68,11 +62,8 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text" >
                                             <{if (in_array('CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CODE) }>
-                            <{assign var='tmp_value' value=$formdata.CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCODE}>
+
                         
                             <input class="input-code" type="text" name="<{$prefix}>pagesection_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -94,11 +85,8 @@
             <{if !isset($excludedcolumns['FONT_AWESOME_ICON']) && ((isset($aclviewablecolumns['FONT_AWESOME_ICON']) && $aclviewablecolumns['FONT_AWESOME_ICON']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FONT_AWESOME_ICON']) || $aclviewablecolumns['FONT_AWESOME_ICON']))) }>
                 <td class="column column-font-awesome-icon text" >
                                             <{if (in_array('FONT_AWESOME_ICON', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.FONT_AWESOME_ICON) }>
-                            <{assign var='tmp_value' value=$formdata.FONT_AWESOME_ICON}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataFONT_AWESOME_ICON}>
+
                         
                             <input class="input-font-awesome-icon" type="text" name="<{$prefix}>pagesection_formdata_FONT_AWESOME_ICON" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -120,11 +108,8 @@
             <{if !isset($excludedcolumns['BACKGROUND_COLOR']) && ((isset($aclviewablecolumns['BACKGROUND_COLOR']) && $aclviewablecolumns['BACKGROUND_COLOR']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BACKGROUND_COLOR']) || $aclviewablecolumns['BACKGROUND_COLOR']))) }>
                 <td class="column column-background-color color" >
                                             <{if (in_array('BACKGROUND_COLOR', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.BACKGROUND_COLOR) }>
-                            <{assign var='tmp_value' value=$formdata.BACKGROUND_COLOR}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataBACKGROUND_COLOR}>
+
                         
                             <input class="input-background-color" type="text" name="<{$prefix}>pagesection_formdata_BACKGROUND_COLOR" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -146,11 +131,8 @@
             <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
                 <td class="column column-view-more-title text" >
                                             <{if (in_array('VIEW_MORE_TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VIEW_MORE_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVIEW_MORE_TITLE}>
+
                         
                             <input class="input-view-more-title" type="text" name="<{$prefix}>pagesection_formdata_VIEW_MORE_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -164,11 +146,8 @@
             <{if !isset($excludedcolumns['VIEW_MORE_ID_PAGE']) && ((isset($aclviewablecolumns['VIEW_MORE_ID_PAGE']) && $aclviewablecolumns['VIEW_MORE_ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_ID_PAGE']) || $aclviewablecolumns['VIEW_MORE_ID_PAGE']))) }>
                 <td class="column column-view-more-id-page reftext" >
                                             <{if (in_array('VIEW_MORE_ID_PAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VIEW_MORE_ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVIEW_MORE_ID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-view-more-id-page" name="`$prefix`pagesection_formdata_VIEW_MORE_ID_PAGE" value=$formdata.VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -193,21 +172,18 @@
             <{if !isset($excludedcolumns['HIDE_TITLE']) && ((isset($aclviewablecolumns['HIDE_TITLE']) && $aclviewablecolumns['HIDE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HIDE_TITLE']) || $aclviewablecolumns['HIDE_TITLE']))) }>
                 <td class="column column-hide-title yesno" data-value="<{$row->HIDE_TITLE}>" data-column="HIDE_TITLE" data-module="pagesection">
                                             <{if (in_array('HIDE_TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.HIDE_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.HIDE_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataHIDE_TITLE}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-hide-title" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" >
-                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->HIDE_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->HIDE_TITLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -217,21 +193,18 @@
             <{if !isset($excludedcolumns['IS_TAB_ANCHOR_SECTION']) && ((isset($aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) && $aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) || $aclviewablecolumns['IS_TAB_ANCHOR_SECTION']))) }>
                 <td class="column column-is-tab-anchor-section yesno" data-value="<{$row->IS_TAB_ANCHOR_SECTION}>" data-column="IS_TAB_ANCHOR_SECTION" data-module="pagesection">
                                             <{if (in_array('IS_TAB_ANCHOR_SECTION', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.IS_TAB_ANCHOR_SECTION) }>
-                            <{assign var='tmp_value' value=$formdata.IS_TAB_ANCHOR_SECTION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataIS_TAB_ANCHOR_SECTION}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-tab-anchor-section" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" >
-                                    <option value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-is-tab-anchor-section" type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="1" <{if $formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>pagesection_formdata_IS_TAB_ANCHOR_SECTION" value="0" <{if !$formdata.IS_TAB_ANCHOR_SECTION}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -241,11 +214,8 @@
             <{if !isset($excludedcolumns['TAB_ANCHOR_TITLE']) && ((isset($aclviewablecolumns['TAB_ANCHOR_TITLE']) && $aclviewablecolumns['TAB_ANCHOR_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TAB_ANCHOR_TITLE']) || $aclviewablecolumns['TAB_ANCHOR_TITLE']))) }>
                 <td class="column column-tab-anchor-title text" >
                                             <{if (in_array('TAB_ANCHOR_TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TAB_ANCHOR_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TAB_ANCHOR_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTAB_ANCHOR_TITLE}>
+
                         
                             <input class="input-tab-anchor-title" type="text" name="<{$prefix}>pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -259,11 +229,8 @@
             <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
                 <td class="column column-ordering number" >
                                             <{if (in_array('ORDERING', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ORDERING) }>
-                            <{assign var='tmp_value' value=$formdata.ORDERING}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataORDERING}>
+
                                                     
                             <input class="input-ordering number-format" type="text" name="<{$prefix}>pagesection_formdata_ORDERING" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

@@ -33,7 +33,7 @@
 	        <{if (in_array('SHOW_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['SHOW_TITLE']) && ((isset($aclviewablecolumns['SHOW_TITLE']) && $aclviewablecolumns['SHOW_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SHOW_TITLE']) || $aclviewablecolumns['SHOW_TITLE']))) }>
                 <td class="column column-show-title yesno " data-value="<{$row->SHOW_TITLE}>" data-column="SHOW_TITLE" data-module="adminlayoutsection">
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutsection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/view/<{$row->UUID}>"><{/if}>	<{if $row->SHOW_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutsection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/view/<{$row->UUID}>"><{/if}>	<{if $row->SHOW_TITLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 <{if isset($smarty.session.acl.adminlayoutsection.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
@@ -56,7 +56,7 @@
 	<{plugin key="adminlayoutsection_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminlayoutsection.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

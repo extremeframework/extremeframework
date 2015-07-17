@@ -3,9 +3,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="objectaclquicksearch" class="form-quicksearch scope-main" action="<{$smarty.const.APPLICATION_URL}>/objectacl/search" method="get">
-            <input type="text" name="objectacl_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="objectacl_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#objectaclquicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -66,7 +66,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.objectacl.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_OBJECT_ACL', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_OBJECT_ACL')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/new/<{if isset($preset) && isset($presetvalue)}>preset/<{$preset}>/presetvalue/<{$presetvalue}><{/if}><{if isset($presetstring)}>?<{$presetstring}><{/if}>"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_OBJECT_ACL', true)|strtolower}>"/><{_t('New')}> <{_t('L_OBJECT_ACL')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -265,7 +265,7 @@ function objectacl_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="objectacl-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="objectacl-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

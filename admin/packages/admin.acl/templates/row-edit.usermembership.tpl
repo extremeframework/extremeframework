@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
                 <td class="column column-id-user reftext" >
                                             <{if (in_array('ID_USER', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`usermembership_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
                 <td class="column column-id-user-group reftext" >
                                             <{if (in_array('ID_USER_GROUP', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER_GROUP) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER_GROUP}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER_GROUP}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-group" name="`$prefix`usermembership_formdata_ID_USER_GROUP" value=$formdata.ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -79,11 +73,8 @@
             <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
                 <td class="column column-id-user-role reftext" >
                                             <{if (in_array('ID_USER_ROLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER_ROLE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER_ROLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER_ROLE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-role" name="`$prefix`usermembership_formdata_ID_USER_ROLE" value=$formdata.ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -108,11 +99,8 @@
             <{if !isset($excludedcolumns['VALID_FROM']) && ((isset($aclviewablecolumns['VALID_FROM']) && $aclviewablecolumns['VALID_FROM']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALID_FROM']) || $aclviewablecolumns['VALID_FROM']))) }>
                 <td class="column column-valid-from datetime" >
                                             <{if (in_array('VALID_FROM', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VALID_FROM) }>
-                            <{assign var='tmp_value' value=$formdata.VALID_FROM}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVALID_FROM}>
+
                                                     <input class="input-valid-from field-date" type="text" id="<{$prefix}>usermembership_formdata_VALID_FROM" name="<{$prefix}>usermembership_formdata_VALID_FROM" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usermembership.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usermembership/view/<{$row->UUID}>"><{/if}>
@@ -126,11 +114,8 @@
             <{if !isset($excludedcolumns['VALID_UNTIL']) && ((isset($aclviewablecolumns['VALID_UNTIL']) && $aclviewablecolumns['VALID_UNTIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALID_UNTIL']) || $aclviewablecolumns['VALID_UNTIL']))) }>
                 <td class="column column-valid-until datetime" >
                                             <{if (in_array('VALID_UNTIL', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VALID_UNTIL) }>
-                            <{assign var='tmp_value' value=$formdata.VALID_UNTIL}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVALID_UNTIL}>
+
                                                     <input class="input-valid-until field-date" type="text" id="<{$prefix}>usermembership_formdata_VALID_UNTIL" name="<{$prefix}>usermembership_formdata_VALID_UNTIL" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usermembership.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usermembership/view/<{$row->UUID}>"><{/if}>

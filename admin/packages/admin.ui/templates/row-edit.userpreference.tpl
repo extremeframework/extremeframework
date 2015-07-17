@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
                 <td class="column column-id-user reftext" >
                                             <{if (in_array('ID_USER', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`userpreference_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['ID_DASHBOARD']) && ((isset($aclviewablecolumns['ID_DASHBOARD']) && $aclviewablecolumns['ID_DASHBOARD']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_DASHBOARD']) || $aclviewablecolumns['ID_DASHBOARD']))) }>
                 <td class="column column-id-dashboard reftext" >
                                             <{if (in_array('ID_DASHBOARD', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_DASHBOARD) }>
-                            <{assign var='tmp_value' value=$formdata.ID_DASHBOARD}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_DASHBOARD}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-dashboard" name="`$prefix`userpreference_formdata_ID_DASHBOARD" value=$formdata.ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -79,11 +73,8 @@
             <{if !isset($excludedcolumns['ID_WALLPAPER']) && ((isset($aclviewablecolumns['ID_WALLPAPER']) && $aclviewablecolumns['ID_WALLPAPER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WALLPAPER']) || $aclviewablecolumns['ID_WALLPAPER']))) }>
                 <td class="column column-id-wallpaper key" >
                                             <{if (in_array('ID_WALLPAPER', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WALLPAPER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WALLPAPER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WALLPAPER}>
+
                         
                             <input class="input-id-wallpaper" type="text" name="<{$prefix}>userpreference_formdata_ID_WALLPAPER" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -97,11 +88,8 @@
             <{if !isset($excludedcolumns['ID_ADMIN_STYLE']) && ((isset($aclviewablecolumns['ID_ADMIN_STYLE']) && $aclviewablecolumns['ID_ADMIN_STYLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_STYLE']) || $aclviewablecolumns['ID_ADMIN_STYLE']))) }>
                 <td class="column column-id-admin-style key" >
                                             <{if (in_array('ID_ADMIN_STYLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_ADMIN_STYLE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ADMIN_STYLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_ADMIN_STYLE}>
+
                         
                             <input class="input-id-admin-style" type="text" name="<{$prefix}>userpreference_formdata_ID_ADMIN_STYLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>

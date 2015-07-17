@@ -10,6 +10,7 @@ class _AdminModuleController extends __AppController
 {
     var $module = 'adminmodule';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminModuleController extends __AppController
         PluginManager::do_action('adminmodule_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_MODULE_NAME'));
@@ -54,7 +55,7 @@ class _AdminModuleController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -82,7 +83,7 @@ class _AdminModuleController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -94,7 +95,7 @@ class _AdminModuleController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -601,7 +602,7 @@ class _AdminModuleController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -674,7 +675,7 @@ class _AdminModuleController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminmodule'));
 
@@ -720,7 +721,7 @@ class _AdminModuleController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -736,7 +737,7 @@ class _AdminModuleController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1167,7 +1168,7 @@ class _AdminModuleController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1190,7 +1191,7 @@ class _AdminModuleController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminmodule', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmodule', 'view');
@@ -1259,7 +1260,7 @@ class _AdminModuleController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminmodule.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminmodule.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminmodule.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminmodule');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmodule', 'view');
@@ -1329,7 +1330,7 @@ class _AdminModuleController extends __AppController
         PluginManager::do_action('adminmodule_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminmodule.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminmodule.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminmodule');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmodule', 'view');
@@ -1436,7 +1437,7 @@ class _AdminModuleController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
     }
 
@@ -1548,7 +1549,7 @@ class _AdminModuleController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1593,7 +1594,7 @@ class _AdminModuleController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminModuleModel();
 
         $this->enforceObjectAclCheck('adminmodule', $model);

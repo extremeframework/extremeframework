@@ -104,7 +104,7 @@
 	        <{if (in_array('HIDE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['HIDE_TITLE']) && ((isset($aclviewablecolumns['HIDE_TITLE']) && $aclviewablecolumns['HIDE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HIDE_TITLE']) || $aclviewablecolumns['HIDE_TITLE']))) }>
                 <td class="column column-hide-title yesno " data-value="<{$row->HIDE_TITLE}>" data-column="HIDE_TITLE" data-module="pagesection">
-                                        	<span>	<{if $row->HIDE_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->HIDE_TITLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -112,7 +112,7 @@
 	        <{if (in_array('IS_TAB_ANCHOR_SECTION', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_TAB_ANCHOR_SECTION']) && ((isset($aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) && $aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_TAB_ANCHOR_SECTION']) || $aclviewablecolumns['IS_TAB_ANCHOR_SECTION']))) }>
                 <td class="column column-is-tab-anchor-section yesno " data-value="<{$row->IS_TAB_ANCHOR_SECTION}>" data-column="IS_TAB_ANCHOR_SECTION" data-module="pagesection">
-                                        	<span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_TAB_ANCHOR_SECTION}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -143,7 +143,7 @@
 	<{plugin key="pagesection_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.pagesection.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

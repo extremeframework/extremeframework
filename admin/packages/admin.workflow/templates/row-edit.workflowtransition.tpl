@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
                 <td class="column column-id-workflow reftext" >
                                             <{if (in_array('ID_WORKFLOW', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WORKFLOW) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WORKFLOW}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WORKFLOW}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow" name="`$prefix`workflowtransition_formdata_ID_WORKFLOW" value=$formdata.ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>workflowtransition_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -68,11 +62,8 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text" >
                                             <{if (in_array('CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CODE) }>
-                            <{assign var='tmp_value' value=$formdata.CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCODE}>
+
                         
                             <input class="input-code" type="text" name="<{$prefix}>workflowtransition_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -86,11 +77,8 @@
             <{if !isset($excludedcolumns['START_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['START_ID_WORKFLOW_STAGE']))) }>
                 <td class="column column-start-id-workflow-stage reftext" >
                                             <{if (in_array('START_ID_WORKFLOW_STAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.START_ID_WORKFLOW_STAGE) }>
-                            <{assign var='tmp_value' value=$formdata.START_ID_WORKFLOW_STAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataSTART_ID_WORKFLOW_STAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$formdata.START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -115,11 +103,8 @@
             <{if !isset($excludedcolumns['END_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['END_ID_WORKFLOW_STAGE']))) }>
                 <td class="column column-end-id-workflow-stage reftext" >
                                             <{if (in_array('END_ID_WORKFLOW_STAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.END_ID_WORKFLOW_STAGE) }>
-                            <{assign var='tmp_value' value=$formdata.END_ID_WORKFLOW_STAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataEND_ID_WORKFLOW_STAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$formdata.END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -144,11 +129,8 @@
             <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
                 <td class="column column-action text" >
                                             <{if (in_array('ACTION', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ACTION) }>
-                            <{assign var='tmp_value' value=$formdata.ACTION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataACTION}>
+
                         
                             <input class="input-action" type="text" name="<{$prefix}>workflowtransition_formdata_ACTION" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -162,11 +144,8 @@
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
                 <td class="column column-id-user-group reftext" >
                                             <{if (in_array('ID_USER_GROUP', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER_GROUP) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER_GROUP}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER_GROUP}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$formdata.ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -191,11 +170,8 @@
             <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
                 <td class="column column-id-user-role reftext" >
                                             <{if (in_array('ID_USER_ROLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER_ROLE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER_ROLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER_ROLE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-role" name="`$prefix`workflowtransition_formdata_ID_USER_ROLE" value=$formdata.ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -220,11 +196,8 @@
             <{if !isset($excludedcolumns['TRANSITION_ID_SCREEN']) && ((isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) && $aclviewablecolumns['TRANSITION_ID_SCREEN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) || $aclviewablecolumns['TRANSITION_ID_SCREEN']))) }>
                 <td class="column column-transition-id-screen reftext" >
                                             <{if (in_array('TRANSITION_ID_SCREEN', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TRANSITION_ID_SCREEN) }>
-                            <{assign var='tmp_value' value=$formdata.TRANSITION_ID_SCREEN}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTRANSITION_ID_SCREEN}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-transition-id-screen" name="`$prefix`workflowtransition_formdata_TRANSITION_ID_SCREEN" value=$formdata.TRANSITION_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
@@ -241,6 +214,23 @@
     	<{if $row->TRANSITION_ID_SCREEN}><{$row->TRANSITION_ID_SCREEN|escape}><{/if}>
     <{/if}>
 <{if isset($smarty.session.acl.workflowtransition.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
+	        <{if (in_array('ORDERING', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
+                <td class="column column-ordering number" >
+                                            <{if (in_array('ORDERING', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataORDERING}>
+
+                                                    
+                            <input class="input-ordering number-format" type="text" name="<{$prefix}>workflowtransition_formdata_ORDERING" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
+                                                <{else}>
+                            <span>
+            <span class="number number-format"><{if $row->ORDERING != 0}><{$row->ORDERING}><{/if}></span>
+    
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

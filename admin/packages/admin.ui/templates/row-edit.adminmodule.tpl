@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>adminmodule_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module text" >
                                             <{if (in_array('MODULE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMODULE}>
+
                         
                             <input class="input-module" type="text" name="<{$prefix}>adminmodule_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -57,11 +51,8 @@
             <{if !isset($excludedcolumns['PREFIX']) && ((isset($aclviewablecolumns['PREFIX']) && $aclviewablecolumns['PREFIX']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PREFIX']) || $aclviewablecolumns['PREFIX']))) }>
                 <td class="column column-prefix text" >
                                             <{if (in_array('PREFIX', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PREFIX) }>
-                            <{assign var='tmp_value' value=$formdata.PREFIX}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPREFIX}>
+
                         
                             <input class="input-prefix" type="text" name="<{$prefix}>adminmodule_formdata_PREFIX" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -75,11 +66,8 @@
             <{if !isset($excludedcolumns['AVAILABLE_ACTIONS']) && ((isset($aclviewablecolumns['AVAILABLE_ACTIONS']) && $aclviewablecolumns['AVAILABLE_ACTIONS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['AVAILABLE_ACTIONS']) || $aclviewablecolumns['AVAILABLE_ACTIONS']))) }>
                 <td class="column column-available-actions text" >
                                             <{if (in_array('AVAILABLE_ACTIONS', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.AVAILABLE_ACTIONS) }>
-                            <{assign var='tmp_value' value=$formdata.AVAILABLE_ACTIONS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataAVAILABLE_ACTIONS}>
+
                         
                             <input class="input-available-actions" type="text" name="<{$prefix}>adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -93,21 +81,18 @@
             <{if !isset($excludedcolumns['IS_COMMENT_ENABLED']) && ((isset($aclviewablecolumns['IS_COMMENT_ENABLED']) && $aclviewablecolumns['IS_COMMENT_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_COMMENT_ENABLED']) || $aclviewablecolumns['IS_COMMENT_ENABLED']))) }>
                 <td class="column column-is-comment-enabled yesno" data-value="<{$row->IS_COMMENT_ENABLED}>" data-column="IS_COMMENT_ENABLED" data-module="adminmodule">
                                             <{if (in_array('IS_COMMENT_ENABLED', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.IS_COMMENT_ENABLED) }>
-                            <{assign var='tmp_value' value=$formdata.IS_COMMENT_ENABLED}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataIS_COMMENT_ENABLED}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-comment-enabled" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" >
-                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_COMMENT_ENABLED}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$formdata.IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->IS_COMMENT_ENABLED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->IS_COMMENT_ENABLED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>

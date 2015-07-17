@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module text" >
                                             <{if (in_array('MODULE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMODULE}>
+
                         
                             <input class="input-module" type="text" name="<{$prefix}>workflowapplication_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
                 <td class="column column-id-workflow reftext" >
                                             <{if (in_array('ID_WORKFLOW', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WORKFLOW) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WORKFLOW}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WORKFLOW}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow" name="`$prefix`workflowapplication_formdata_ID_WORKFLOW" value=$formdata.ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 

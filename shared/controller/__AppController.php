@@ -60,7 +60,7 @@ class __AppController {
     }
 
     public static function model_sanitize($model) {
-        ModelHelper::sanitize($model);
+        ModelHelper::sanitize(clone $model);
 
         return $model;
     }
@@ -626,11 +626,11 @@ class __AppController {
         return isset($_SESSION['system.modules'][$module])? $_SESSION['system.modules'][$module] : '';
     }
 
-    protected function onBeforeWorkflowTransition($transition_code, $model, $formdata) {
+    protected function onBeforeWorkflowTransition($transition, $model, $formdata) {
         // To be overrided if necessary
     }
 
-    protected function onWorkflowTransitionSuccess($transition_code, $model, $formdata) {
+    protected function onWorkflowTransitionSuccess($transition, $model, $formdata) {
         // To be overrided if necessary
     }
 
@@ -651,6 +651,11 @@ class __AppController {
 //        return $fields;
     }
 
+    protected function ensureApplicableWorkflowTransition($transition, $model) {
+		// To be overrided if necessary
+		return true;
+    }
+
     protected function setupAdditionalViewButtons($model) {
 		// To be overrided if necessary
         $buttons = array();
@@ -668,11 +673,13 @@ class __AppController {
         $transitions = WorkflowHelper::getWorkflowTransitions($this->module, $model->WFID);
 
         foreach ($transitions as $transition) {
-            $buttons[] = array(
-                'code' => $transition->CODE,
-                'title' => $transition->NAME,
-                'link' => APPLICATION_URL.'/workflowtransition/perform/'.$transition->UUID.'/'.$this->module.'/'.$model->UUID
-            );
+            if ($this->ensureApplicableWorkflowTransition($transition, $model)) {
+                $buttons[] = array(
+                    'code' => $transition->CODE,
+                    'title' => _t($transition->NAME),
+                    'link' => APPLICATION_URL.'/workflowtransition/perform/'.$transition->UUID.'/'.$this->module.'/'.$model->UUID
+                );
+            }
         }
 
         return $buttons;

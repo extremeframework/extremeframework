@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE', true)}>">x</button>
-    <h3><{_t('L_NEW')|ucwords}> <{_t('L_OPTION')|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
+    <h3><{_t('New')|ucwords}> <{_t('L_OPTION')|ucwords}></h3>
 </div>
 
 
@@ -62,7 +62,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                        <span><{_t('Additional information')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -70,13 +70,13 @@
                         <table class="table table-bordered table-custom-layout equal-split">
                             <tbody>
                                 <{foreach from=$customfields item=item}>
-                                    <tr>
-                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                		<td>
                                             <div class="form-field form-field-label">
                                     		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
-                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                        <td colspan="3">
                                             <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                                 <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
                                             </div>
@@ -224,9 +224,9 @@
     
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{_t('L_SAVE')}></strong>
+                <strong><{_t('Save')}></strong>
             </button>
                     </div>
     </div>

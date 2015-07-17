@@ -13,76 +13,105 @@ function remove_attachment(element, attachment, spanid)
 }
 </script>
 
-<h2 class="heading"><{$formtitle}></h2>
+<h1 class="heading">
+    <span class="h"><{$formtitle}></span>
+</h1>
 
-<{if $messages}>
-    <ul class="message">
-        <{foreach from=$messages key=field item=message}>
-            <li data-error-field="<{$field}>"><{$message}></li>
+<div class="edit_details">
+
+    <{if !isset($prefix) }>
+        <{assign var='prefix' value=''}>
+    <{/if}>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-top hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#userform').attr('action', '<{$actionurl}>');$('#userform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
         <{/foreach}>
-    </ul>
-<{/if}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
 
-<{if !isset($prefix) }>
-    <{assign var='prefix' value=''}>
-<{/if}>
+    <!-- Details -->
+    <div class="section" style="padding: 10px 0;">
+        <div>
+            <div class="edit-main edit_details">
+                <{if $messages}>
+                    <ul class="message">
+                        <{foreach from=$messages key=field item=message}>
+                            <li data-error-field="<{$field}>"><{$message}></li>
+                        <{/foreach}>
+                    </ul>
+                <{/if}>
 
-<form name="userform" id="userform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                <form name="userform" id="userform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split">
+                        <tbody>
+                            <{foreach from=$columns item=column }>
+                                <{if $columnsettings.$column }>
+                                    <tr class="form-row form-row-<{$columnsettings.$column->code}> <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t($columnsettings.$column->text)}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-<{$columnsettings.$column->code}>">
+                                                <{include file="input-item.tpl"}>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-<!-- Details -->
-<div class="section" style="padding: 10px 0;">
-    <div>
-        <{foreach from=$columns item=column }>
-                <{if $columnsettings.$column }>
-                	<div class="form-row <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{$columnsettings.$column->text}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-<{$columnsettings.$column->code}>">
-                		    <{include file="input-item.tpl"}>
-                		</div>
-                	</div>
-            
-                <{elseif $column == 'FIRST_NAME' }>
-                	<div class="form-row <{if in_array('FIRST_NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FIRST_NAME')}><{if in_array('FIRST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-first-name">
+                            
+                                <{elseif $column == 'FIRST_NAME' }>
+                                    <tr class="form-row form-row-first-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FIRST_NAME')}><{if in_array('FIRST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-first-name">
+                                                                        <{$tmp_value = $formdataFIRST_NAME}>
 
-                                                    <{if isset($formdata.FIRST_NAME) }>
-                            <{assign var='tmp_value' value=$formdata.FIRST_NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
                         
                             <input class="input-first-name" type="text" name="<{$prefix}>user_formdata_FIRST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'LAST_NAME' }>
-                	<div class="form-row <{if in_array('LAST_NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_LAST_NAME')}><{if in_array('LAST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-last-name">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.LAST_NAME) }>
-                            <{assign var='tmp_value' value=$formdata.LAST_NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'LAST_NAME' }>
+                                    <tr class="form-row form-row-last-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_LAST_NAME')}><{if in_array('LAST_NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-last-name">
+                                                                        <{$tmp_value = $formdataLAST_NAME}>
+
                         
                             <input class="input-last-name" type="text" name="<{$prefix}>user_formdata_LAST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'PHOTO' }>
-                	<div class="form-row <{if in_array('PHOTO', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_PHOTO')}><{if in_array('PHOTO', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-photo">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.PHOTO) }>
-                            <{assign var='tmp_value' value=$formdata.PHOTO}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'PHOTO' }>
+                                    <tr class="form-row form-row-photo <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_PHOTO')}><{if in_array('PHOTO', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-photo">
+                                                                        <{$tmp_value = $formdataPHOTO}>
+
                                                     <{if $force_image_input}>
                                 <input class="input-photo" type="text" name="<{$prefix}>user_formdata_PHOTO" value="<{$tmp_value}>" />
                             <{else}>
@@ -91,314 +120,354 @@ function remove_attachment(element, attachment, spanid)
                             	<{if $formdata.PHOTO}><div style="clear:both"></div><span id="<{$prefix}>user_PHOTO"><{media src=$formdata.PHOTO}> <a onclick="remove_attachment(document.userform.<{$prefix}>user_formdata_PHOTO, '<{$tmp_value}>', '<{$prefix}>user_PHOTO')">Remove</a></span><{/if}>
                                 <input type="hidden" name="<{$prefix}>user_formdata_PHOTO" value="<{$tmp_value}>" />
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'EMAIL' }>
-                	<div class="form-row <{if in_array('EMAIL', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_EMAIL')}><{if in_array('EMAIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-email">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.EMAIL) }>
-                            <{assign var='tmp_value' value=$formdata.EMAIL}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'EMAIL' }>
+                                    <tr class="form-row form-row-email <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_EMAIL')}><{if in_array('EMAIL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-email">
+                                                                        <{$tmp_value = $formdataEMAIL}>
+
                         
                             <input class="input-email" type="text" name="<{$prefix}>user_formdata_EMAIL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="32"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'LOGIN' }>
-                	<div class="form-row <{if in_array('LOGIN', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_LOGIN')}><{if in_array('LOGIN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-login">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.LOGIN) }>
-                            <{assign var='tmp_value' value=$formdata.LOGIN}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'LOGIN' }>
+                                    <tr class="form-row form-row-login <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_LOGIN')}><{if in_array('LOGIN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-login">
+                                                                        <{$tmp_value = $formdataLOGIN}>
+
                         
                             <input class="input-login" type="text" name="<{$prefix}>user_formdata_LOGIN" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'PASSWORD' }>
-                	<div class="form-row <{if in_array('PASSWORD', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_PASSWORD')}><{if in_array('PASSWORD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-password">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.PASSWORD) }>
-                            <{assign var='tmp_value' value=$formdata.PASSWORD}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'PASSWORD' }>
+                                    <tr class="form-row form-row-password <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_PASSWORD')}><{if in_array('PASSWORD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-password">
+                                                                        <{$tmp_value = $formdataPASSWORD}>
+
                         
                             <input class="input-password" type="password" name="<{$prefix}>user_formdata_PASSWORD" value="<{if $tmp_value}>*****<{/if}>" />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'PHONE' }>
-                	<div class="form-row <{if in_array('PHONE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_PHONE')}><{if in_array('PHONE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-phone">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.PHONE) }>
-                            <{assign var='tmp_value' value=$formdata.PHONE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'PHONE' }>
+                                    <tr class="form-row form-row-phone <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_PHONE')}><{if in_array('PHONE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-phone">
+                                                                        <{$tmp_value = $formdataPHONE}>
+
                         
                             <input class="input-phone" type="text" name="<{$prefix}>user_formdata_PHONE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'GENDER' }>
-                	<div class="form-row <{if in_array('GENDER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_GENDER')}><{if in_array('GENDER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-gender">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.GENDER) }>
-                            <{assign var='tmp_value' value=$formdata.GENDER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
-                        
-                            <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $formdata.GENDER}>checked="checked"<{/if}>><{_t('L_MALE')}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$formdata.GENDER}>checked="checked"<{/if}> /><{_t('L_FEMALE')}></span>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'DATE_OF_BIRTH' }>
-                	<div class="form-row <{if in_array('DATE_OF_BIRTH', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_DATE_OF_BIRTH')}><{if in_array('DATE_OF_BIRTH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-date-of-birth">
+                        	
+                                <{elseif $column == 'GENDER' }>
+                                    <tr class="form-row form-row-gender <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_GENDER')}><{if in_array('GENDER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-gender">
+                                                                        <{$tmp_value = $formdataGENDER}>
 
-                                                    <{if isset($formdata.DATE_OF_BIRTH) }>
-                            <{assign var='tmp_value' value=$formdata.DATE_OF_BIRTH}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        
+                            <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $formdata.GENDER}>checked="checked"<{/if}>><{_t('Male')}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$formdata.GENDER}>checked="checked"<{/if}> /><{_t('Female')}></span>
+                                                                    </div>
+                                        </td>
+                                    </tr>
+
+                        	
+                                <{elseif $column == 'DATE_OF_BIRTH' }>
+                                    <tr class="form-row form-row-date-of-birth <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_DATE_OF_BIRTH')}><{if in_array('DATE_OF_BIRTH', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-date-of-birth">
+                                                                        <{$tmp_value = $formdataDATE_OF_BIRTH}>
+
                                                     <input class="input-date-of-birth field-date" type="text" id="<{$prefix}>user_formdata_DATE_OF_BIRTH" name="<{$prefix}>user_formdata_DATE_OF_BIRTH" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'FORCE_PASSWORD_CHANGE' }>
-                	<div class="form-row <{if in_array('FORCE_PASSWORD_CHANGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FORCE_PASSWORD_CHANGE')}><{if in_array('FORCE_PASSWORD_CHANGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-force-password-change">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.FORCE_PASSWORD_CHANGE) }>
-                            <{assign var='tmp_value' value=$formdata.FORCE_PASSWORD_CHANGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'FORCE_PASSWORD_CHANGE' }>
+                                    <tr class="form-row form-row-force-password-change <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FORCE_PASSWORD_CHANGE')}><{if in_array('FORCE_PASSWORD_CHANGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-force-password-change">
+                                                                        <{$tmp_value = $formdataFORCE_PASSWORD_CHANGE}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-force-password-change" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" >
-                                    <option value="1" <{if $formdata.FORCE_PASSWORD_CHANGE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.FORCE_PASSWORD_CHANGE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.FORCE_PASSWORD_CHANGE}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.FORCE_PASSWORD_CHANGE}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $formdata.FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$formdata.FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $formdata.FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$formdata.FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'IS_EMAIL_VERIFIED' }>
-                	<div class="form-row <{if in_array('IS_EMAIL_VERIFIED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_IS_EMAIL_VERIFIED')}><{if in_array('IS_EMAIL_VERIFIED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-is-email-verified">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.IS_EMAIL_VERIFIED) }>
-                            <{assign var='tmp_value' value=$formdata.IS_EMAIL_VERIFIED}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'IS_EMAIL_VERIFIED' }>
+                                    <tr class="form-row form-row-is-email-verified <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_IS_EMAIL_VERIFIED')}><{if in_array('IS_EMAIL_VERIFIED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-is-email-verified">
+                                                                        <{$tmp_value = $formdataIS_EMAIL_VERIFIED}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-email-verified" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" >
-                                    <option value="1" <{if $formdata.IS_EMAIL_VERIFIED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.IS_EMAIL_VERIFIED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.IS_EMAIL_VERIFIED}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_EMAIL_VERIFIED}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $formdata.IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$formdata.IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $formdata.IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$formdata.IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'FACEBOOK_ID' }>
-                	<div class="form-row <{if in_array('FACEBOOK_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FACEBOOK')}><{if in_array('FACEBOOK_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-facebook-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.FACEBOOK_ID) }>
-                            <{assign var='tmp_value' value=$formdata.FACEBOOK_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'FACEBOOK_ID' }>
+                                    <tr class="form-row form-row-facebook-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FACEBOOK')}><{if in_array('FACEBOOK_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-facebook-id">
+                                                                        <{$tmp_value = $formdataFACEBOOK_ID}>
+
                         
                             <input class="input-facebook-id" type="text" name="<{$prefix}>user_formdata_FACEBOOK_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'FACEBOOK_OAUTH_ID' }>
-                	<div class="form-row <{if in_array('FACEBOOK_OAUTH_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FACEBOOK_OAUTH')}><{if in_array('FACEBOOK_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-facebook-oauth-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.FACEBOOK_OAUTH_ID) }>
-                            <{assign var='tmp_value' value=$formdata.FACEBOOK_OAUTH_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'FACEBOOK_OAUTH_ID' }>
+                                    <tr class="form-row form-row-facebook-oauth-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FACEBOOK_OAUTH')}><{if in_array('FACEBOOK_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-facebook-oauth-id">
+                                                                        <{$tmp_value = $formdataFACEBOOK_OAUTH_ID}>
+
                         
                             <input class="input-facebook-oauth-id" type="text" name="<{$prefix}>user_formdata_FACEBOOK_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'GOOGLE_ID' }>
-                	<div class="form-row <{if in_array('GOOGLE_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_GOOGLE')}><{if in_array('GOOGLE_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-google-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.GOOGLE_ID) }>
-                            <{assign var='tmp_value' value=$formdata.GOOGLE_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'GOOGLE_ID' }>
+                                    <tr class="form-row form-row-google-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_GOOGLE')}><{if in_array('GOOGLE_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-google-id">
+                                                                        <{$tmp_value = $formdataGOOGLE_ID}>
+
                         
                             <input class="input-google-id" type="text" name="<{$prefix}>user_formdata_GOOGLE_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'GOOGLE_OAUTH_ID' }>
-                	<div class="form-row <{if in_array('GOOGLE_OAUTH_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_GOOGLE_OAUTH')}><{if in_array('GOOGLE_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-google-oauth-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.GOOGLE_OAUTH_ID) }>
-                            <{assign var='tmp_value' value=$formdata.GOOGLE_OAUTH_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'GOOGLE_OAUTH_ID' }>
+                                    <tr class="form-row form-row-google-oauth-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_GOOGLE_OAUTH')}><{if in_array('GOOGLE_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-google-oauth-id">
+                                                                        <{$tmp_value = $formdataGOOGLE_OAUTH_ID}>
+
                         
                             <input class="input-google-oauth-id" type="text" name="<{$prefix}>user_formdata_GOOGLE_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'YAHOO_ID' }>
-                	<div class="form-row <{if in_array('YAHOO_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_YAHOO')}><{if in_array('YAHOO_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-yahoo-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.YAHOO_ID) }>
-                            <{assign var='tmp_value' value=$formdata.YAHOO_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'YAHOO_ID' }>
+                                    <tr class="form-row form-row-yahoo-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_YAHOO')}><{if in_array('YAHOO_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-yahoo-id">
+                                                                        <{$tmp_value = $formdataYAHOO_ID}>
+
                         
                             <input class="input-yahoo-id" type="text" name="<{$prefix}>user_formdata_YAHOO_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'YAHOO_OAUTH_ID' }>
-                	<div class="form-row <{if in_array('YAHOO_OAUTH_ID', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_YAHOO_OAUTH')}><{if in_array('YAHOO_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-yahoo-oauth-id">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.YAHOO_OAUTH_ID) }>
-                            <{assign var='tmp_value' value=$formdata.YAHOO_OAUTH_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'YAHOO_OAUTH_ID' }>
+                                    <tr class="form-row form-row-yahoo-oauth-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_YAHOO_OAUTH')}><{if in_array('YAHOO_OAUTH_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-yahoo-oauth-id">
+                                                                        <{$tmp_value = $formdataYAHOO_OAUTH_ID}>
+
                         
                             <input class="input-yahoo-oauth-id" type="text" name="<{$prefix}>user_formdata_YAHOO_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'IS_ENABLED' }>
-                	<div class="form-row <{if in_array('IS_ENABLED', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_IS_ENABLED')}><{if in_array('IS_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-is-enabled">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.IS_ENABLED) }>
-                            <{assign var='tmp_value' value=$formdata.IS_ENABLED}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'IS_ENABLED' }>
+                                    <tr class="form-row form-row-is-enabled <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_IS_ENABLED')}><{if in_array('IS_ENABLED', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-is-enabled">
+                                                                        <{$tmp_value = $formdataIS_ENABLED}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-is-enabled" name="<{$prefix}>user_formdata_IS_ENABLED" >
-                                    <option value="1" <{if $formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_ENABLED}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $formdata.IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$formdata.IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $formdata.IS_ENABLED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$formdata.IS_ENABLED}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'CREATION_DATE' }>
-                	<div class="form-row <{if in_array('CREATION_DATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_CREATION_DATE')}><{if in_array('CREATION_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-creation-date">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.CREATION_DATE) }>
-                            <{assign var='tmp_value' value=$formdata.CREATION_DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'CREATION_DATE' }>
+                                    <tr class="form-row form-row-creation-date <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_CREATION_DATE')}><{if in_array('CREATION_DATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-creation-date">
+                                                                        <{$tmp_value = $formdataCREATION_DATE}>
+
                         
                             <input class="input-creation-date" type="text" name="<{$prefix}>user_formdata_CREATION_DATE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'LATEST_LOGIN' }>
-                	<div class="form-row <{if in_array('LATEST_LOGIN', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_LATEST_LOGIN')}><{if in_array('LATEST_LOGIN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-latest-login">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.LATEST_LOGIN) }>
-                            <{assign var='tmp_value' value=$formdata.LATEST_LOGIN}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'LATEST_LOGIN' }>
+                                    <tr class="form-row form-row-latest-login <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_LATEST_LOGIN')}><{if in_array('LATEST_LOGIN', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-latest-login">
+                                                                        <{$tmp_value = $formdataLATEST_LOGIN}>
+
                                                     <input class="input-latest-login field-date" type="text" id="<{$prefix}>user_formdata_LATEST_LOGIN" name="<{$prefix}>user_formdata_LATEST_LOGIN" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-            	<{/if}>
-        <{/foreach}>
-        <div class="view-buttons" style="float:none;top:0px;">
-            <{foreach from=$formactions key=actiontitle item=actionurl}>
-                <div class="button-general button-additional">
-                    <a onclick="$('#userform').attr('action', '<{$actionurl}>');$('#userform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
-                </div>
-            <{/foreach}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
-            <div class="clearer"></div>
-        </div>
-	</div>
-    <div class="clearer"></div>
-</div>
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-</form>
+                        	
+                                <{/if}>
+                            <{/foreach}>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+    	</div>
+        <div class="clearer"></div>
+    </div>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-bottom hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#userform').attr('action', '<{$actionurl}>');$('#userform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
+        <{/foreach}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
+<div>
 
 
 <script type="text/javascript">
@@ -411,6 +480,10 @@ function remove_attachment(element, attachment, spanid)
         if (document.activeElement == document.body) {
         	$('#userform:not(.filter) :input:visible:first').focus();
         }
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>
 

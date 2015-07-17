@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>userrole_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="500"<{/if}> />
                                                 <{else}>

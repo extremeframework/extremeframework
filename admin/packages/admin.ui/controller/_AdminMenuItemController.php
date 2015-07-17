@@ -10,6 +10,7 @@ class _AdminMenuItemController extends __AppController
 {
     var $module = 'adminmenuitem';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminMenuItemController extends __AppController
         PluginManager::do_action('adminmenuitem_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_MENU_ITEM_NAME'));
@@ -36,7 +37,7 @@ class _AdminMenuItemController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _AdminMenuItemController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _AdminMenuItemController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -631,7 +632,7 @@ class _AdminMenuItemController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -706,7 +707,7 @@ class _AdminMenuItemController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'ID_ADMIN_MENU', 'PARENT', 'MODULE', 'PATH', 'FONT_AWESOME_ICON', 'ENABLE_LEFT', 'ENABLE_TOP', 'ENABLE_QUICK', 'ENABLE_ALL', 'ENABLE_SETTINGS', 'OPEN_IN_NEW_WINDOW', 'IS_STARRED', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminmenuitem'));
 
@@ -752,7 +753,7 @@ class _AdminMenuItemController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -768,7 +769,7 @@ class _AdminMenuItemController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -880,7 +881,7 @@ class _AdminMenuItemController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -967,7 +968,7 @@ class _AdminMenuItemController extends __AppController
 		$this->saveAction(true, true);
     }
 
-    private function multiupdate($models, &$errors) {
+    protected function multiupdate($models, &$errors) {
         if (!$this->checkConstraints($models, $errors)) {
     		return false;
         }
@@ -1234,7 +1235,7 @@ class _AdminMenuItemController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1257,7 +1258,7 @@ class _AdminMenuItemController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminmenuitem', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenuitem', 'view');
@@ -1326,7 +1327,7 @@ class _AdminMenuItemController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminmenuitem.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminmenuitem.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminmenuitem.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminmenuitem');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenuitem', 'view');
@@ -1396,7 +1397,7 @@ class _AdminMenuItemController extends __AppController
         PluginManager::do_action('adminmenuitem_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminmenuitem.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminmenuitem.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminmenuitem');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenuitem', 'view');
@@ -1513,7 +1514,7 @@ class _AdminMenuItemController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'ID_ADMIN_MENU', 'PARENT', 'MODULE', 'PATH', 'FONT_AWESOME_ICON', 'ENABLE_LEFT', 'ENABLE_TOP', 'ENABLE_QUICK', 'ENABLE_ALL', 'ENABLE_SETTINGS', 'OPEN_IN_NEW_WINDOW', 'IS_STARRED');
     }
 
@@ -1626,7 +1627,7 @@ class _AdminMenuItemController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1741,7 +1742,7 @@ class _AdminMenuItemController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminMenuItemModel();
 
         $this->enforceObjectAclCheck('adminmenuitem', $model);

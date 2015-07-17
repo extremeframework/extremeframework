@@ -71,6 +71,10 @@ class AdminLanguageModel extends DataObject_ADMIN_LANGUAGE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

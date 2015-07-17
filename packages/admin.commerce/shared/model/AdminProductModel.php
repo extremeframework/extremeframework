@@ -71,6 +71,10 @@ class AdminProductModel extends DataObject_ADMIN_PRODUCT {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

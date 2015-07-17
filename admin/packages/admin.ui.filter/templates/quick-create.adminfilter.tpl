@@ -1,6 +1,6 @@
 <div class="modal-header">
-    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('L_CLOSE', true)}>">x</button>
-    <h3><{_t('L_QUICK_CREATE')|ucwords}> <{_t('L_ADMIN_FILTER')|ucwords}></h3>
+    <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
+    <h3><{_t('Quick create')|ucwords}> <{_t('L_ADMIN_FILTER')|ucwords}></h3>
 </div>
 
 
@@ -162,7 +162,7 @@
                 <div class="form-field form-field-value column-is-default">
                                             
 
-    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('No')}></span>
                         <{if $columntooltips.IS_DEFAULT}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_DEFAULT}>"></i>
                         <{/if}>
@@ -177,7 +177,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                        <span><{_t('Additional information')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -185,13 +185,13 @@
                         <table class="table table-bordered table-custom-layout equal-split">
                             <tbody>
                                 <{foreach from=$customfields item=item}>
-                                    <tr>
-                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                		<td>
                                             <div class="form-field form-field-label">
                                     		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
-                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                        <td colspan="3">
                                             <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                                 <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
                                             </div>
@@ -332,9 +332,9 @@
     
     
             <div class="modal-footer quickCreateActions">
-            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('L_CANCEL')}></a>
+            <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
-                <strong><{_t('L_SAVE')}></strong>
+                <strong><{_t('Save')}></strong>
             </button>
                     </div>
     </div>

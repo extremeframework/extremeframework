@@ -10,6 +10,7 @@ class _AclTypeController extends __AppController
 {
     var $module = 'acltype';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AclTypeController extends __AppController
         PluginManager::do_action('acltype_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ACL_TYPE_NAME'));
@@ -36,7 +37,7 @@ class _AclTypeController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _AclTypeController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _AclTypeController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -553,7 +554,7 @@ class _AclTypeController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -628,7 +629,7 @@ class _AclTypeController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('acltype'));
 
@@ -674,7 +675,7 @@ class _AclTypeController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -690,7 +691,7 @@ class _AclTypeController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1121,7 +1122,7 @@ class _AclTypeController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1144,7 +1145,7 @@ class _AclTypeController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('acltype', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('acltype', 'view');
@@ -1213,7 +1214,7 @@ class _AclTypeController extends __AppController
 	    $this->display($smarty, $templatetype.'.acltype.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.acltype.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.acltype.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('acltype');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('acltype', 'view');
@@ -1283,7 +1284,7 @@ class _AclTypeController extends __AppController
         PluginManager::do_action('acltype_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.acltype.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.acltype.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('acltype');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('acltype', 'view');
@@ -1390,7 +1391,7 @@ class _AclTypeController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME');
     }
 
@@ -1502,7 +1503,7 @@ class _AclTypeController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1547,7 +1548,7 @@ class _AclTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ACL_TYPE`.NAME, `'.TABLE_PREFIX.'ACL_TYPE`.ORDERING, `'.TABLE_PREFIX.'ACL_TYPE`.ID, `'.TABLE_PREFIX.'ACL_TYPE`.JSON, `'.TABLE_PREFIX.'ACL_TYPE`.UUID, `'.TABLE_PREFIX.'ACL_TYPE`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AclTypeModel();
 
         $this->enforceObjectAclCheck('acltype', $model);

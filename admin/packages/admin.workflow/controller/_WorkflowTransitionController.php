@@ -10,6 +10,7 @@ class _WorkflowTransitionController extends __AppController
 {
     var $module = 'workflowtransition';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _WorkflowTransitionController extends __AppController
         PluginManager::do_action('workflowtransition_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_WORKFLOW_TRANSITION_NAME'));
@@ -25,6 +26,10 @@ class _WorkflowTransitionController extends __AppController
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
            $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           return false;
+       }
+       if (in_array('ORDERING', $columns2check) && !empty($model->ORDERING) && !is_numeric($model->ORDERING)) {
+           $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_ORDERING'));
            return false;
        }
 
@@ -36,7 +41,7 @@ class _WorkflowTransitionController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +69,7 @@ class _WorkflowTransitionController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +81,7 @@ class _WorkflowTransitionController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -103,6 +108,28 @@ class _WorkflowTransitionController extends __AppController
 
 		$this->_list();
 	}
+
+    public function updateOrderAction() {
+        AuthenticationController::authenticate();
+
+        LicenseController::enforceLicenseCheck('workflowtransition');
+
+        AclController::checkPermission('workflowtransition', 'edit');
+
+	    $items = isset($_REQUEST['item'])? $_REQUEST['item'] : array();
+
+        if (is_array($items) && !empty($items)) {
+    		$model = new WorkflowTransitionModel();
+
+            foreach ($items as $ordering => $id) {
+                $query = "update ".$model->tableName().
+                        " set ORDERING = '".($ordering+1)."'".
+                        " where UUID = '$id'";
+
+                $model->query($query);
+            }
+        }
+    }
 
     public function sortAction() {
 	    AuthenticationController::authenticate();
@@ -527,7 +554,7 @@ class _WorkflowTransitionController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -544,7 +571,9 @@ class _WorkflowTransitionController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-		
+		if ($column == 'ORDERING') {
+            $value = preg_replace('/[^0-9\.]/is', '', $value);
+        }
 		return $value;
 	}
 
@@ -552,7 +581,7 @@ class _WorkflowTransitionController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('workflowtransition');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN', 'ORDERING');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new WorkflowTransitionModel();
@@ -600,8 +629,8 @@ class _WorkflowTransitionController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+    protected function form2models($prefix = null, &$columns2check = null) {
+        $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('workflowtransition'));
 
         $rows = array();
@@ -646,7 +675,7 @@ class _WorkflowTransitionController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -662,7 +691,7 @@ class _WorkflowTransitionController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -774,7 +803,7 @@ class _WorkflowTransitionController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1099,7 +1128,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE');
+            return array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'TRANSITION_ID_SCREEN', 'ORDERING');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1119,7 +1148,7 @@ class _WorkflowTransitionController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1142,7 +1171,7 @@ class _WorkflowTransitionController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('workflowtransition', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowtransition', 'view');
@@ -1157,7 +1186,7 @@ class _WorkflowTransitionController extends __AppController
         $searchdata = $this->getSearchData();
         $filterdata = $this->getFilterData();
         $customfilterdata = $this->getCustomFilterData();
-        $orderby = $this->getRealOrderBy('ID');
+        $orderby = $this->getRealOrderBy('ORDERING');
         $limit = $this->getPageSize();
         $page = $this->getPageNumber();
 
@@ -1211,7 +1240,7 @@ class _WorkflowTransitionController extends __AppController
 	    $this->display($smarty, $templatetype.'.workflowtransition.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.workflowtransition.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.workflowtransition.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('workflowtransition');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowtransition', 'view');
@@ -1281,7 +1310,7 @@ class _WorkflowTransitionController extends __AppController
         PluginManager::do_action('workflowtransition_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.workflowtransition.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.workflowtransition.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('workflowtransition');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowtransition', 'view');
@@ -1300,7 +1329,7 @@ class _WorkflowTransitionController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('workflowtransition');
 
-        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
+        $roweditablecolumns = array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN', 'ORDERING');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1394,7 +1423,7 @@ class _WorkflowTransitionController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('ID_WORKFLOW', 'NAME', 'CODE', 'START_ID_WORKFLOW_STAGE', 'END_ID_WORKFLOW_STAGE', 'ACTION', 'ID_USER_GROUP', 'ID_USER_ROLE', 'TRANSITION_ID_SCREEN');
     }
 
@@ -1506,7 +1535,7 @@ class _WorkflowTransitionController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1650,7 +1679,7 @@ class _WorkflowTransitionController extends __AppController
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_WORKFLOW, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.NAME, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.CODE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.START_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.END_ID_WORKFLOW_STAGE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ACTION, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_GROUP, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID_USER_ROLE, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.TRANSITION_ID_SCREEN, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ORDERING, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.ID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.JSON, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.UUID, `'.TABLE_PREFIX.'WORKFLOW_TRANSITION`.WFID');
     
         if ($join) {
             if (Framework::hasModule('Workflow')) {
@@ -1701,7 +1730,7 @@ class _WorkflowTransitionController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new WorkflowTransitionModel();
 
         $this->enforceObjectAclCheck('workflowtransition', $model);

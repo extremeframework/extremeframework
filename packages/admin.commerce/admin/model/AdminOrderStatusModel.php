@@ -71,6 +71,10 @@ class AdminOrderStatusModel extends DataObject_ADMIN_ORDER_STATUS {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

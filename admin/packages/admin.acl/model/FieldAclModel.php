@@ -71,6 +71,10 @@ class FieldAclModel extends DataObject_FIELD_ACL {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

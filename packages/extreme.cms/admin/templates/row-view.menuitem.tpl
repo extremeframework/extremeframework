@@ -94,7 +94,7 @@
 	        <{if (in_array('HAS_BREAK_AFTER', $filtercolumns)) }>
             <{if !isset($excludedcolumns['HAS_BREAK_AFTER']) && ((isset($aclviewablecolumns['HAS_BREAK_AFTER']) && $aclviewablecolumns['HAS_BREAK_AFTER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HAS_BREAK_AFTER']) || $aclviewablecolumns['HAS_BREAK_AFTER']))) }>
                 <td class="column column-has-break-after yesno " data-value="<{$row->HAS_BREAK_AFTER}>" data-column="HAS_BREAK_AFTER" data-module="menuitem">
-                                        	<span>	<{if $row->HAS_BREAK_AFTER}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->HAS_BREAK_AFTER}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -132,7 +132,7 @@
 	<{plugin key="menuitem_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.menuitem.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>page_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text" >
                                             <{if (in_array('TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTITLE}>
+
                         
                             <input class="input-title" type="text" name="<{$prefix}>page_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -89,11 +83,8 @@
             <{if !isset($excludedcolumns['META_KEYWORDS']) && ((isset($aclviewablecolumns['META_KEYWORDS']) && $aclviewablecolumns['META_KEYWORDS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['META_KEYWORDS']) || $aclviewablecolumns['META_KEYWORDS']))) }>
                 <td class="column column-meta-keywords text" >
                                             <{if (in_array('META_KEYWORDS', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.META_KEYWORDS) }>
-                            <{assign var='tmp_value' value=$formdata.META_KEYWORDS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMETA_KEYWORDS}>
+
                         
                             <input class="input-meta-keywords" type="text" name="<{$prefix}>page_formdata_META_KEYWORDS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -107,11 +98,8 @@
             <{if !isset($excludedcolumns['ID_TEMPLATE']) && ((isset($aclviewablecolumns['ID_TEMPLATE']) && $aclviewablecolumns['ID_TEMPLATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_TEMPLATE']) || $aclviewablecolumns['ID_TEMPLATE']))) }>
                 <td class="column column-id-template reftext" >
                                             <{if (in_array('ID_TEMPLATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_TEMPLATE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_TEMPLATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_TEMPLATE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$formdata.ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -132,15 +120,64 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('CUSTOM_TOP_ID_MENU', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CUSTOM_TOP_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) && $aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || $aclviewablecolumns['CUSTOM_TOP_ID_MENU']))) }>
+                <td class="column column-custom-top-id-menu reftext" >
+                                            <{if (in_array('CUSTOM_TOP_ID_MENU', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataCUSTOM_TOP_ID_MENU}>
+
+                                                    
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$formdata.CUSTOM_TOP_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+
+                                                                    <span class="onflycreation">
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                                    </span>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_CUSTOM_TOP_ID_MENU}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_CUSTOM_TOP_ID_MENU}>"><{$row->reftext_CUSTOM_TOP_ID_MENU|escape}></a>
+        <{else}>
+            <{$row->reftext_CUSTOM_TOP_ID_MENU|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->CUSTOM_TOP_ID_MENU}><{$row->CUSTOM_TOP_ID_MENU|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
+	        <{if (in_array('CUSTOM_SIDE_ID_MENU', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CUSTOM_SIDE_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) && $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']))) }>
+                <td class="column column-custom-side-id-menu reftext" >
+                                            <{if (in_array('CUSTOM_SIDE_ID_MENU', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataCUSTOM_SIDE_ID_MENU}>
+
+                                                    
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$formdata.CUSTOM_SIDE_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+
+                                                                    <span class="onflycreation">
+                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                                    </span>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_CUSTOM_SIDE_ID_MENU}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_CUSTOM_SIDE_ID_MENU}>"><{$row->reftext_CUSTOM_SIDE_ID_MENU|escape}></a>
+        <{else}>
+            <{$row->reftext_CUSTOM_SIDE_ID_MENU|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->CUSTOM_SIDE_ID_MENU}><{$row->CUSTOM_SIDE_ID_MENU|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('VIEW_MORE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
                 <td class="column column-view-more-title text" >
                                             <{if (in_array('VIEW_MORE_TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VIEW_MORE_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVIEW_MORE_TITLE}>
+
                         
                             <input class="input-view-more-title" type="text" name="<{$prefix}>page_formdata_VIEW_MORE_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -154,11 +191,8 @@
             <{if !isset($excludedcolumns['VIEW_MORE_ID_PAGE']) && ((isset($aclviewablecolumns['VIEW_MORE_ID_PAGE']) && $aclviewablecolumns['VIEW_MORE_ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_ID_PAGE']) || $aclviewablecolumns['VIEW_MORE_ID_PAGE']))) }>
                 <td class="column column-view-more-id-page reftext" >
                                             <{if (in_array('VIEW_MORE_ID_PAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.VIEW_MORE_ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataVIEW_MORE_ID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$formdata.VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -183,11 +217,8 @@
             <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
                 <td class="column column-latest-update datetime" >
                                             <{if (in_array('LATEST_UPDATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.LATEST_UPDATE) }>
-                            <{assign var='tmp_value' value=$formdata.LATEST_UPDATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataLATEST_UPDATE}>
+
                                                     <input class="input-latest-update field-date" type="text" id="<{$prefix}>page_formdata_LATEST_UPDATE" name="<{$prefix}>page_formdata_LATEST_UPDATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -201,11 +232,8 @@
             <{if !isset($excludedcolumns['NBR_VIEWS']) && ((isset($aclviewablecolumns['NBR_VIEWS']) && $aclviewablecolumns['NBR_VIEWS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NBR_VIEWS']) || $aclviewablecolumns['NBR_VIEWS']))) }>
                 <td class="column column-nbr-views number" >
                                             <{if (in_array('NBR_VIEWS', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NBR_VIEWS) }>
-                            <{assign var='tmp_value' value=$formdata.NBR_VIEWS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNBR_VIEWS}>
+
                                                     
                             <input class="input-nbr-views number-format" type="text" name="<{$prefix}>page_formdata_NBR_VIEWS" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

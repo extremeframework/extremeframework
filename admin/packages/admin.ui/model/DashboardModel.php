@@ -71,6 +71,10 @@ class DashboardModel extends DataObject_DASHBOARD {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

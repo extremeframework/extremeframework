@@ -38,7 +38,7 @@
 	<{plugin key="workflowapplication_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.workflowapplication.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowapplication/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

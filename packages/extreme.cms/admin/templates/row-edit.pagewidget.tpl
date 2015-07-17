@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_PAGE']) && ((isset($aclviewablecolumns['ID_PAGE']) && $aclviewablecolumns['ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAGE']) || $aclviewablecolumns['ID_PAGE']))) }>
                 <td class="column column-id-page reftext" >
                                             <{if (in_array('ID_PAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-page" name="`$prefix`pagewidget_formdata_ID_PAGE" value=$formdata.ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text" >
                                             <{if (in_array('TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTITLE}>
+
                         
                             <input class="input-title" type="text" name="<{$prefix}>pagewidget_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -68,11 +62,8 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text" >
                                             <{if (in_array('CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CODE) }>
-                            <{assign var='tmp_value' value=$formdata.CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCODE}>
+
                         
                             <input class="input-code" type="text" name="<{$prefix}>pagewidget_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -94,11 +85,8 @@
             <{if !isset($excludedcolumns['ID_WIDGET_TYPE']) && ((isset($aclviewablecolumns['ID_WIDGET_TYPE']) && $aclviewablecolumns['ID_WIDGET_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WIDGET_TYPE']) || $aclviewablecolumns['ID_WIDGET_TYPE']))) }>
                 <td class="column column-id-widget-type reftext" >
                                             <{if (in_array('ID_WIDGET_TYPE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WIDGET_TYPE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WIDGET_TYPE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WIDGET_TYPE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-widget-type" name="`$prefix`pagewidget_formdata_ID_WIDGET_TYPE" value=$formdata.ID_WIDGET_TYPE datasource="WIDGET_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -123,11 +111,8 @@
             <{if !isset($excludedcolumns['ID_WIDGET_POSITION']) && ((isset($aclviewablecolumns['ID_WIDGET_POSITION']) && $aclviewablecolumns['ID_WIDGET_POSITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WIDGET_POSITION']) || $aclviewablecolumns['ID_WIDGET_POSITION']))) }>
                 <td class="column column-id-widget-position reftext" >
                                             <{if (in_array('ID_WIDGET_POSITION', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WIDGET_POSITION) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WIDGET_POSITION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WIDGET_POSITION}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-widget-position" name="`$prefix`pagewidget_formdata_ID_WIDGET_POSITION" value=$formdata.ID_WIDGET_POSITION datasource="WIDGET_POSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -152,21 +137,18 @@
             <{if !isset($excludedcolumns['HIDE_TITLE']) && ((isset($aclviewablecolumns['HIDE_TITLE']) && $aclviewablecolumns['HIDE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HIDE_TITLE']) || $aclviewablecolumns['HIDE_TITLE']))) }>
                 <td class="column column-hide-title yesno" data-value="<{$row->HIDE_TITLE}>" data-column="HIDE_TITLE" data-module="pagewidget">
                                             <{if (in_array('HIDE_TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.HIDE_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.HIDE_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataHIDE_TITLE}>
+
                                                     <{if $force_boolean_dropdown}>
                                 <select class="input-hide-title" name="<{$prefix}>pagewidget_formdata_HIDE_TITLE" >
-                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_YES')}></option>
-                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('L_NO')}></option>
+                                    <option value="1" <{if $formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.HIDE_TITLE}>selected="selected"<{/if}>><{_t('No')}></option>
                                 </select>
                             <{else}>
-                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagewidget_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>pagewidget_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+                                <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagewidget_formdata_HIDE_TITLE" value="1" <{if $formdata.HIDE_TITLE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>pagewidget_formdata_HIDE_TITLE" value="0" <{if !$formdata.HIDE_TITLE}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span>	<{if $row->HIDE_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                            <span>	<{if $row->HIDE_TITLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
                         <{/if}>
                             		</td>
@@ -176,11 +158,8 @@
             <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
                 <td class="column column-ordering number" >
                                             <{if (in_array('ORDERING', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ORDERING) }>
-                            <{assign var='tmp_value' value=$formdata.ORDERING}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataORDERING}>
+
                                                     
                             <input class="input-ordering number-format" type="text" name="<{$prefix}>pagewidget_formdata_ORDERING" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

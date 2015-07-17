@@ -71,6 +71,10 @@ class AclTypeModel extends DataObject_ACL_TYPE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

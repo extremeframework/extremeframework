@@ -13,125 +13,160 @@ function remove_attachment(element, attachment, spanid)
 }
 </script>
 
-<h2 class="heading"><{$formtitle}></h2>
+<h1 class="heading">
+    <span class="h"><{$formtitle}></span>
+</h1>
 
-<{if $messages}>
-    <ul class="message">
-        <{foreach from=$messages key=field item=message}>
-            <li data-error-field="<{$field}>"><{$message}></li>
+<div class="edit_details">
+
+    <{if !isset($prefix) }>
+        <{assign var='prefix' value=''}>
+    <{/if}>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-top hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#pageform').attr('action', '<{$actionurl}>');$('#pageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
         <{/foreach}>
-    </ul>
-<{/if}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
 
-<{if !isset($prefix) }>
-    <{assign var='prefix' value=''}>
-<{/if}>
+    <!-- Details -->
+    <div class="section" style="padding: 10px 0;">
+        <div>
+            <div class="edit-main edit_details">
+                <{if $messages}>
+                    <ul class="message">
+                        <{foreach from=$messages key=field item=message}>
+                            <li data-error-field="<{$field}>"><{$message}></li>
+                        <{/foreach}>
+                    </ul>
+                <{/if}>
 
-<form name="pageform" id="pageform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                <form name="pageform" id="pageform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split">
+                        <tbody>
+                            <{foreach from=$columns item=column }>
+                                <{if $columnsettings.$column }>
+                                    <tr class="form-row form-row-<{$columnsettings.$column->code}> <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t($columnsettings.$column->text)}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-<{$columnsettings.$column->code}>">
+                                                <{include file="input-item.tpl"}>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-<!-- Details -->
-<div class="section" style="padding: 10px 0;">
-    <div>
-        <{foreach from=$columns item=column }>
-                <{if $columnsettings.$column }>
-                	<div class="form-row <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{$columnsettings.$column->text}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-<{$columnsettings.$column->code}>">
-                		    <{include file="input-item.tpl"}>
-                		</div>
-                	</div>
-            
-                <{elseif $column == 'NAME' }>
-                	<div class="form-row <{if in_array('NAME', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_PAGE_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-name">
+                            
+                                <{elseif $column == 'NAME' }>
+                                    <tr class="form-row form-row-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_PAGE_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-name">
+                                                                        <{$tmp_value = $formdataNAME}>
 
-                                                    <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
                         
                             <input class="input-name" type="text" name="<{$prefix}>page_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'TITLE' }>
-                	<div class="form-row <{if in_array('TITLE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_TITLE')}><{if in_array('TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-title">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'TITLE' }>
+                                    <tr class="form-row form-row-title <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_TITLE')}><{if in_array('TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-title">
+                                                                        <{$tmp_value = $formdataTITLE}>
+
                         
                             <input class="input-title" type="text" name="<{$prefix}>page_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'PARENT' }>
-                	<div class="form-row <{if in_array('PARENT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_PARENT')}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-parent">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.PARENT) }>
-                            <{assign var='tmp_value' value=$formdata.PARENT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'PARENT' }>
+                                    <tr class="form-row form-row-parent <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_PARENT')}><{if in_array('PARENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-parent">
+                                                                        <{$tmp_value = $formdataPARENT}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$formdata.PARENT datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'SLUG' }>
-                	<div class="form-row <{if in_array('SLUG', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_SLUG')}><{if in_array('SLUG', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-slug">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.SLUG) }>
-                            <{assign var='tmp_value' value=$formdata.SLUG}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'SLUG' }>
+                                    <tr class="form-row form-row-slug <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_SLUG')}><{if in_array('SLUG', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-slug">
+                                                                        <{$tmp_value = $formdataSLUG}>
+
                         
                             <input class="input-slug" type="text" name="<{$prefix}>page_formdata_SLUG" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'TAG_LINE' }>
-                	<div class="form-row <{if in_array('TAG_LINE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_TAG_LINE')}><{if in_array('TAG_LINE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-tag-line">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.TAG_LINE) }>
-                            <{assign var='tmp_value' value=$formdata.TAG_LINE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'TAG_LINE' }>
+                                    <tr class="form-row form-row-tag-line <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_TAG_LINE')}><{if in_array('TAG_LINE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-tag-line">
+                                                                        <{$tmp_value = $formdataTAG_LINE}>
+
                         
                             <input class="input-tag-line" type="text" name="<{$prefix}>page_formdata_TAG_LINE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'THUMB' }>
-                	<div class="form-row <{if in_array('THUMB', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_THUMB')}><{if in_array('THUMB', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-thumb">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.THUMB) }>
-                            <{assign var='tmp_value' value=$formdata.THUMB}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'THUMB' }>
+                                    <tr class="form-row form-row-thumb <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_THUMB')}><{if in_array('THUMB', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-thumb">
+                                                                        <{$tmp_value = $formdataTHUMB}>
+
                                                     <{if $force_image_input}>
                                 <input class="input-thumb" type="text" name="<{$prefix}>page_formdata_THUMB" value="<{$tmp_value}>" />
                             <{else}>
@@ -140,20 +175,22 @@ function remove_attachment(element, attachment, spanid)
                             	<{if $formdata.THUMB}><div style="clear:both"></div><span id="<{$prefix}>page_THUMB"><{media src=$formdata.THUMB}> <a onclick="remove_attachment(document.pageform.<{$prefix}>page_formdata_THUMB, '<{$tmp_value}>', '<{$prefix}>page_THUMB')">Remove</a></span><{/if}>
                                 <input type="hidden" name="<{$prefix}>page_formdata_THUMB" value="<{$tmp_value}>" />
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'BACKGROUND_IMAGE' }>
-                	<div class="form-row <{if in_array('BACKGROUND_IMAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_BACKGROUND_IMAGE')}><{if in_array('BACKGROUND_IMAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-background-image">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.BACKGROUND_IMAGE) }>
-                            <{assign var='tmp_value' value=$formdata.BACKGROUND_IMAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'BACKGROUND_IMAGE' }>
+                                    <tr class="form-row form-row-background-image <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_BACKGROUND_IMAGE')}><{if in_array('BACKGROUND_IMAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-background-image">
+                                                                        <{$tmp_value = $formdataBACKGROUND_IMAGE}>
+
                                                     <{if $force_image_input}>
                                 <input class="input-background-image" type="text" name="<{$prefix}>page_formdata_BACKGROUND_IMAGE" value="<{$tmp_value}>" />
                             <{else}>
@@ -162,20 +199,22 @@ function remove_attachment(element, attachment, spanid)
                             	<{if $formdata.BACKGROUND_IMAGE}><div style="clear:both"></div><span id="<{$prefix}>page_BACKGROUND_IMAGE"><{media src=$formdata.BACKGROUND_IMAGE}> <a onclick="remove_attachment(document.pageform.<{$prefix}>page_formdata_BACKGROUND_IMAGE, '<{$tmp_value}>', '<{$prefix}>page_BACKGROUND_IMAGE')">Remove</a></span><{/if}>
                                 <input type="hidden" name="<{$prefix}>page_formdata_BACKGROUND_IMAGE" value="<{$tmp_value}>" />
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'IMAGE' }>
-                	<div class="form-row <{if in_array('IMAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_IMAGE')}><{if in_array('IMAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-image">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.IMAGE) }>
-                            <{assign var='tmp_value' value=$formdata.IMAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'IMAGE' }>
+                                    <tr class="form-row form-row-image <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_IMAGE')}><{if in_array('IMAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-image">
+                                                                        <{$tmp_value = $formdataIMAGE}>
+
                                                     <{if $force_image_input}>
                                 <input class="input-image" type="text" name="<{$prefix}>page_formdata_IMAGE" value="<{$tmp_value}>" />
                             <{else}>
@@ -184,20 +223,22 @@ function remove_attachment(element, attachment, spanid)
                             	<{if $formdata.IMAGE}><div style="clear:both"></div><span id="<{$prefix}>page_IMAGE"><{media src=$formdata.IMAGE}> <a onclick="remove_attachment(document.pageform.<{$prefix}>page_formdata_IMAGE, '<{$tmp_value}>', '<{$prefix}>page_IMAGE')">Remove</a></span><{/if}>
                                 <input type="hidden" name="<{$prefix}>page_formdata_IMAGE" value="<{$tmp_value}>" />
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'VIDEO' }>
-                	<div class="form-row <{if in_array('VIDEO', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_VIDEO')}><{if in_array('VIDEO', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-video">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.VIDEO) }>
-                            <{assign var='tmp_value' value=$formdata.VIDEO}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'VIDEO' }>
+                                    <tr class="form-row form-row-video <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_VIDEO')}><{if in_array('VIDEO', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-video">
+                                                                        <{$tmp_value = $formdataVIDEO}>
+
                                                     <{if $force_image_input}>
                                 <input class="input-video" type="text" name="<{$prefix}>page_formdata_VIDEO" value="<{$tmp_value}>" />
                             <{else}>
@@ -206,238 +247,270 @@ function remove_attachment(element, attachment, spanid)
                             	<{if $formdata.VIDEO}><div style="clear:both"></div><span id="<{$prefix}>page_VIDEO"><{media src=$formdata.VIDEO}> <a onclick="remove_attachment(document.pageform.<{$prefix}>page_formdata_VIDEO, '<{$tmp_value}>', '<{$prefix}>page_VIDEO')">Remove</a></span><{/if}>
                                 <input type="hidden" name="<{$prefix}>page_formdata_VIDEO" value="<{$tmp_value}>" />
                             <{/if}>
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'META_KEYWORDS' }>
-                	<div class="form-row <{if in_array('META_KEYWORDS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_META_KEYWORDS')}><{if in_array('META_KEYWORDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-meta-keywords">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.META_KEYWORDS) }>
-                            <{assign var='tmp_value' value=$formdata.META_KEYWORDS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'META_KEYWORDS' }>
+                                    <tr class="form-row form-row-meta-keywords <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_META_KEYWORDS')}><{if in_array('META_KEYWORDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-meta-keywords">
+                                                                        <{$tmp_value = $formdataMETA_KEYWORDS}>
+
                         
                             <input class="input-meta-keywords" type="text" name="<{$prefix}>page_formdata_META_KEYWORDS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'META_DESCRIPTION' }>
-                	<div class="form-row <{if in_array('META_DESCRIPTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_META_DESCRIPTION')}><{if in_array('META_DESCRIPTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-meta-description">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.META_DESCRIPTION) }>
-                            <{assign var='tmp_value' value=$formdata.META_DESCRIPTION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'META_DESCRIPTION' }>
+                                    <tr class="form-row form-row-meta-description <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_META_DESCRIPTION')}><{if in_array('META_DESCRIPTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-meta-description">
+                                                                        <{$tmp_value = $formdataMETA_DESCRIPTION}>
+
                         
                             <textarea class="input-meta-description" id="<{$prefix}>page_formdata_META_DESCRIPTION" name="<{$prefix}>page_formdata_META_DESCRIPTION" rows="5" ><{$tmp_value}></textarea>
-                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'INTRODUCTION' }>
-                	<div class="form-row <{if in_array('INTRODUCTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_INTRODUCTION')}><{if in_array('INTRODUCTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-introduction">
+                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.INTRODUCTION) }>
-                            <{assign var='tmp_value' value=$formdata.INTRODUCTION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'INTRODUCTION' }>
+                                    <tr class="form-row form-row-introduction <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_INTRODUCTION')}><{if in_array('INTRODUCTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-introduction">
+                                                                        <{$tmp_value = $formdataINTRODUCTION}>
+
                         
                             <textarea class="input-introduction" id="<{$prefix}>page_formdata_INTRODUCTION" name="<{$prefix}>page_formdata_INTRODUCTION" rows="5" ><{$tmp_value}></textarea>
-                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_INTRODUCTION')</script>                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'CONTENT' }>
-                	<div class="form-row <{if in_array('CONTENT', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_CONTENT')}><{if in_array('CONTENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-content">
+                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_INTRODUCTION')</script>                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.CONTENT) }>
-                            <{assign var='tmp_value' value=$formdata.CONTENT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'CONTENT' }>
+                                    <tr class="form-row form-row-content <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_CONTENT')}><{if in_array('CONTENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-content">
+                                                                        <{$tmp_value = $formdataCONTENT}>
+
                         
                             <textarea class="input-content" id="<{$prefix}>page_formdata_CONTENT" name="<{$prefix}>page_formdata_CONTENT" rows="5" ><{$tmp_value}></textarea>
-                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_CONTENT')</script>                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'FOOTER' }>
-                	<div class="form-row <{if in_array('FOOTER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FOOTER')}><{if in_array('FOOTER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-footer">
+                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_CONTENT')</script>                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.FOOTER) }>
-                            <{assign var='tmp_value' value=$formdata.FOOTER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'FOOTER' }>
+                                    <tr class="form-row form-row-footer <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FOOTER')}><{if in_array('FOOTER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-footer">
+                                                                        <{$tmp_value = $formdataFOOTER}>
+
                         
                             <textarea class="input-footer" id="<{$prefix}>page_formdata_FOOTER" name="<{$prefix}>page_formdata_FOOTER" rows="5" ><{$tmp_value}></textarea>
-                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_FOOTER')</script>                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ID_TEMPLATE' }>
-                	<div class="form-row <{if in_array('ID_TEMPLATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_TEMPLATE')}><{if in_array('ID_TEMPLATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-id-template">
+                            <script type="text/javascript">htmlEditor('<{$prefix}>page_formdata_FOOTER')</script>                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ID_TEMPLATE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_TEMPLATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ID_TEMPLATE' }>
+                                    <tr class="form-row form-row-id-template <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_TEMPLATE')}><{if in_array('ID_TEMPLATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-template">
+                                                                        <{$tmp_value = $formdataID_TEMPLATE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$formdata.ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ADDITIONAL_CSS' }>
-                	<div class="form-row <{if in_array('ADDITIONAL_CSS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_ADDITIONAL_CSS')}><{if in_array('ADDITIONAL_CSS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-additional-css">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ADDITIONAL_CSS) }>
-                            <{assign var='tmp_value' value=$formdata.ADDITIONAL_CSS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ADDITIONAL_CSS' }>
+                                    <tr class="form-row form-row-additional-css <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_ADDITIONAL_CSS')}><{if in_array('ADDITIONAL_CSS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-additional-css">
+                                                                        <{$tmp_value = $formdataADDITIONAL_CSS}>
+
                         
                             <textarea class="input-additional-css" id="<{$prefix}>page_formdata_ADDITIONAL_CSS" name="<{$prefix}>page_formdata_ADDITIONAL_CSS" rows="5" ><{$tmp_value}></textarea>
-                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'CUSTOM_TOP_ID_MENU' }>
-                	<div class="form-row <{if in_array('CUSTOM_TOP_ID_MENU', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_CUSTOM_TOP_MENU')}><{if in_array('CUSTOM_TOP_ID_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-custom-top-id-menu">
+                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.CUSTOM_TOP_ID_MENU) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOM_TOP_ID_MENU}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'CUSTOM_TOP_ID_MENU' }>
+                                    <tr class="form-row form-row-custom-top-id-menu <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_CUSTOM_TOP_MENU')}><{if in_array('CUSTOM_TOP_ID_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-custom-top-id-menu">
+                                                                        <{$tmp_value = $formdataCUSTOM_TOP_ID_MENU}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$formdata.CUSTOM_TOP_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'CUSTOM_SIDE_ID_MENU' }>
-                	<div class="form-row <{if in_array('CUSTOM_SIDE_ID_MENU', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_CUSTOM_SIDE_MENU')}><{if in_array('CUSTOM_SIDE_ID_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-custom-side-id-menu">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.CUSTOM_SIDE_ID_MENU) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOM_SIDE_ID_MENU}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'CUSTOM_SIDE_ID_MENU' }>
+                                    <tr class="form-row form-row-custom-side-id-menu <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_CUSTOM_SIDE_MENU')}><{if in_array('CUSTOM_SIDE_ID_MENU', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-custom-side-id-menu">
+                                                                        <{$tmp_value = $formdataCUSTOM_SIDE_ID_MENU}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$formdata.CUSTOM_SIDE_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'VIEW_MORE_TITLE' }>
-                	<div class="form-row <{if in_array('VIEW_MORE_TITLE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_VIEW_MORE_TITLE')}><{if in_array('VIEW_MORE_TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-view-more-title">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.VIEW_MORE_TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'VIEW_MORE_TITLE' }>
+                                    <tr class="form-row form-row-view-more-title <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_VIEW_MORE_TITLE')}><{if in_array('VIEW_MORE_TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-view-more-title">
+                                                                        <{$tmp_value = $formdataVIEW_MORE_TITLE}>
+
                         
                             <input class="input-view-more-title" type="text" name="<{$prefix}>page_formdata_VIEW_MORE_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'VIEW_MORE_ID_PAGE' }>
-                	<div class="form-row <{if in_array('VIEW_MORE_ID_PAGE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_VIEW_MORE_PAGE')}><{if in_array('VIEW_MORE_ID_PAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-view-more-id-page">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.VIEW_MORE_ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'VIEW_MORE_ID_PAGE' }>
+                                    <tr class="form-row form-row-view-more-id-page <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_VIEW_MORE_PAGE')}><{if in_array('VIEW_MORE_ID_PAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-view-more-id-page">
+                                                                        <{$tmp_value = $formdataVIEW_MORE_ID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$formdata.VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'VIEW_MORE_LINK' }>
-                	<div class="form-row <{if in_array('VIEW_MORE_LINK', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_VIEW_MORE_LINK')}><{if in_array('VIEW_MORE_LINK', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-view-more-link">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.VIEW_MORE_LINK) }>
-                            <{assign var='tmp_value' value=$formdata.VIEW_MORE_LINK}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'VIEW_MORE_LINK' }>
+                                    <tr class="form-row form-row-view-more-link <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_VIEW_MORE_LINK')}><{if in_array('VIEW_MORE_LINK', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-view-more-link">
+                                                                        <{$tmp_value = $formdataVIEW_MORE_LINK}>
+
                         
                             <input class="input-view-more-link" type="text" name="<{$prefix}>page_formdata_VIEW_MORE_LINK" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'LATEST_UPDATE' }>
-                	<div class="form-row <{if in_array('LATEST_UPDATE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_LATEST_UPDATE')}><{if in_array('LATEST_UPDATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-latest-update">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.LATEST_UPDATE) }>
-                            <{assign var='tmp_value' value=$formdata.LATEST_UPDATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'LATEST_UPDATE' }>
+                                    <tr class="form-row form-row-latest-update <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_LATEST_UPDATE')}><{if in_array('LATEST_UPDATE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-latest-update">
+                                                                        <{$tmp_value = $formdataLATEST_UPDATE}>
+
                         
                             <input class="input-latest-update" type="text" name="<{$prefix}>page_formdata_LATEST_UPDATE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-            	<{/if}>
-        <{/foreach}>
-        <div class="view-buttons" style="float:none;top:0px;">
-            <{foreach from=$formactions key=actiontitle item=actionurl}>
-                <div class="button-general button-additional">
-                    <a onclick="$('#pageform').attr('action', '<{$actionurl}>');$('#pageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
-                </div>
-            <{/foreach}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
-            <div class="clearer"></div>
-        </div>
-	</div>
-    <div class="clearer"></div>
-</div>
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-</form>
+                        	
+                                <{/if}>
+                            <{/foreach}>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+    	</div>
+        <div class="clearer"></div>
+    </div>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-bottom hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#pageform').attr('action', '<{$actionurl}>');$('#pageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
+        <{/foreach}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
+<div>
 
 
 <script type="text/javascript">
@@ -450,6 +523,10 @@ function remove_attachment(element, attachment, spanid)
         if (document.activeElement == document.body) {
         	$('#pageform:not(.filter) :input:visible:first').focus();
         }
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>
 

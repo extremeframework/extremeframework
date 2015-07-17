@@ -71,6 +71,10 @@ class AdminViewModel extends DataObject_ADMIN_VIEW {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

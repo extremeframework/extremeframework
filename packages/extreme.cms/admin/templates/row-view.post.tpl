@@ -105,7 +105,7 @@
 	        <{if (in_array('IS_FEATURED', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_FEATURED']) && ((isset($aclviewablecolumns['IS_FEATURED']) && $aclviewablecolumns['IS_FEATURED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_FEATURED']) || $aclviewablecolumns['IS_FEATURED']))) }>
                 <td class="column column-is-featured yesno " data-value="<{$row->IS_FEATURED}>" data-column="IS_FEATURED" data-module="post">
-                                        	<span>	<{if $row->IS_FEATURED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_FEATURED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -129,7 +129,7 @@
 	<{plugin key="post_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.post.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

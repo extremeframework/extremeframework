@@ -41,7 +41,7 @@
 	        <{if (in_array('IS_DEFAULT', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
                 <td class="column column-is-default yesno " data-value="<{$row->IS_DEFAULT}>" data-column="IS_DEFAULT" data-module="adminfilter">
-                                        	<span>	<{if $row->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -54,7 +54,7 @@
 	<{plugin key="adminfilter_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.adminfilter.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

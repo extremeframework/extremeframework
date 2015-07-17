@@ -11,9 +11,9 @@ class ScreenController extends _ScreenController
 
         // x. Buttons
         $liveaction = array(
-            'code' => 'live',
-            'title' => 'Live',
-            'link' => APPLICATION_URL.'/screen/live/'.$model->ID
+            'code' => 'preview',
+            'title' => 'Preview',
+            'link' => APPLICATION_URL.'/screen/preview/'.$model->ID
         );
 
         $buttons[] = $liveaction;
@@ -21,7 +21,7 @@ class ScreenController extends _ScreenController
         return $buttons;
     }
 
-    function liveAction() {
+    function previewAction() {
 		list($id) = explode('/', $_REQUEST['args']);
 
         // x. Screen
@@ -86,7 +86,7 @@ class ScreenController extends _ScreenController
             ),
             $formdata,
             $fieldinfos,
-            array('template' => 'live.screen.tpl')
+            array('template' => 'preview.screen.tpl')
         );
     }
 }

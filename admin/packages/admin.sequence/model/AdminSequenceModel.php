@@ -71,6 +71,10 @@ class AdminSequenceModel extends DataObject_ADMIN_SEQUENCE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

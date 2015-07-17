@@ -148,18 +148,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_DEFAULT']) && $acleditablecolumns['IS_DEFAULT']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_DEFAULT']) || $acleditablecolumns['IS_DEFAULT'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $details->IS_DEFAULT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$details->IS_DEFAULT}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -174,7 +174,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                    <span><{_t('Additional information')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -182,16 +182,14 @@
                     <table class="table table-bordered table-custom-layout equal-split">
                         <tbody>
                             <{foreach from=$customfields item=item}>
-                                <tr>
+                                <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
                         		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                    	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
-                                    		<div class="attribute-value">
-                                                <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                    		</div>
-                                    	</div>
+                                		<div class="attribute-value">
+                                            <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                                		</div>
                                     </td>
                         		</tr>
                         	<{/foreach}>
@@ -202,14 +200,28 @@
         </div>
     <{/if}>
 
-    <{foreach from=$additional_view_fields item=item}>
-    	<div class="attribute-line custom-field type-<{$item.type}>">
-    		<label class="attribute-name"><{$item.label}></label>
-    		<div class="attribute-value">
-                <{$item.value}>
-    		</div>
-    	</div>
-	<{/foreach}>
+    <div class="layout-block layout-block-section">
+        <div class="layout-section">
+            <div class="layout-section-content">
+                <table class="table table-bordered table-custom-layout equal-split">
+                    <tbody>
+                        <{foreach from=$additional_view_fields item=item}>
+                            <tr class="attribute-line">
+                        		<td class="form-field form-field-label">
+                    		        <label class="attribute-name"><{$item.label}></label>
+                                </td>
+                                <td class="form-field form-field-value">
+                            		<div class="attribute-value">
+                                        <{$item.value}>
+                            		</div>
+                                </td>
+                    		</tr>
+                    	<{/foreach}>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <{plugin key="adminfilter_view_bottom" args=$details}>
 

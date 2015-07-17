@@ -71,6 +71,10 @@ class ValueTypeModel extends DataObject_VALUE_TYPE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

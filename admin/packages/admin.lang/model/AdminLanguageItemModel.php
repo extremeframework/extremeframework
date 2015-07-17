@@ -71,6 +71,10 @@ class AdminLanguageItemModel extends DataObject_ADMIN_LANGUAGE_ITEM {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->TRANSLATION;
 	}

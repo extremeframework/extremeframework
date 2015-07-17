@@ -2,10 +2,6 @@
     background: #424f63!important;
 }
 
-#globalmodal {
-    background-color: #E1E9F1;
-}
-
 .table {
     border: none!important;
 }
@@ -93,8 +89,8 @@ table.item_list td.onflyedit textarea {
 }
 
 .mirror-name .attribute-value {
-    color: rgb(4, 132, 151);
-    border-left: 3px solid rgb(4, 132, 151);
+    color: #5BB75B;
+    border-left: 3px solid #5BB75B;
 }
 
 .main-content h1.heading .h {

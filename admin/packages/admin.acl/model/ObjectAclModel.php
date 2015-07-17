@@ -71,6 +71,10 @@ class ObjectAclModel extends DataObject_OBJECT_ACL {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

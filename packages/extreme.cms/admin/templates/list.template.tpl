@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="templatequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/template/search" method="get">
-            <input type="text" name="template_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="template_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#templatequicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.template.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_TEMPLATE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_TEMPLATE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_TEMPLATE', true)|strtolower}>"/><{_t('New')}> <{_t('L_TEMPLATE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -122,47 +122,47 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_TEMPLATE')), strtolower(_t('L_TEMPLATE'))));
     <{/php}>
 
-    <div id="templatecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
+    <div id="templatecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="page" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="page" /> <{_t('Copy also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{_t('Copy also')}> <{_t('L_POST')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postcategory" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postcategory" /> <{_t('Copy also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="templateapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
+    <div id="templateapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="page" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="page" /> <{_t('Approve also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{_t('Approve also')}> <{_t('L_POST')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postcategory" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postcategory" /> <{_t('Approve also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="templatedeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
+    <div id="templatedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_TEMPLATE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="page" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="page" /> <{_t('Delete also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{_t('Delete also')}> <{_t('L_POST')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postcategory" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postcategory" /> <{_t('Delete also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -196,12 +196,12 @@ function template_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#templatelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/template/delete/');
             	$('#templatelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -216,12 +216,12 @@ function template_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#templatelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/template/copy/');
             	$('#templatelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -236,12 +236,12 @@ function template_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#templatelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/template/approve/');
             	$('#templatelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -369,7 +369,7 @@ function template_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="template-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="template-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

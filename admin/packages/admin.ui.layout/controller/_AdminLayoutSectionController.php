@@ -10,6 +10,7 @@ class _AdminLayoutSectionController extends __AppController
 {
     var $module = 'adminlayoutsection';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminLayoutSectionController extends __AppController
         PluginManager::do_action('adminlayoutsection_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_LAYOUT_SECTION_NAME'));
@@ -40,7 +41,7 @@ class _AdminLayoutSectionController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -68,7 +69,7 @@ class _AdminLayoutSectionController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -80,7 +81,7 @@ class _AdminLayoutSectionController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -553,7 +554,7 @@ class _AdminLayoutSectionController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -628,7 +629,7 @@ class _AdminLayoutSectionController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'MODULE', 'SHOW_TITLE', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminlayoutsection'));
 
@@ -674,7 +675,7 @@ class _AdminLayoutSectionController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -690,7 +691,7 @@ class _AdminLayoutSectionController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -802,7 +803,7 @@ class _AdminLayoutSectionController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1132,7 +1133,7 @@ class _AdminLayoutSectionController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1155,7 +1156,7 @@ class _AdminLayoutSectionController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutsection', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutsection', 'view');
@@ -1224,7 +1225,7 @@ class _AdminLayoutSectionController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminlayoutsection.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminlayoutsection.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminlayoutsection.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutsection');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutsection', 'view');
@@ -1294,7 +1295,7 @@ class _AdminLayoutSectionController extends __AppController
         PluginManager::do_action('adminlayoutsection_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminlayoutsection.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminlayoutsection.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutsection');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutsection', 'view');
@@ -1401,7 +1402,7 @@ class _AdminLayoutSectionController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'MODULE', 'SHOW_TITLE');
     }
 
@@ -1513,7 +1514,7 @@ class _AdminLayoutSectionController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1589,7 +1590,7 @@ class _AdminLayoutSectionController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminLayoutSectionModel();
 
         $this->enforceObjectAclCheck('adminlayoutsection', $model);

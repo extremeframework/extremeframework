@@ -71,6 +71,10 @@ class UserLogModel extends DataObject_USER_LOG {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->DATE_TIME;
 	}

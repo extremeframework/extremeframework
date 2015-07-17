@@ -22,6 +22,7 @@ class DataObject_WORKFLOW_TRANSITION extends DB_DataObject
     public $ID_USER_GROUP;                   // int(4)  
     public $ID_USER_ROLE;                    // int(4)  
     public $TRANSITION_ID_SCREEN;            // varchar(24)  
+    public $ORDERING;                        // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

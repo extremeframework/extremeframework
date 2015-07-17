@@ -71,6 +71,10 @@ class TemplateModel extends DataObject_TEMPLATE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

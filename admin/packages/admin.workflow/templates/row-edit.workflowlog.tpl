@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
                 <td class="column column-id-workflow reftext" >
                                             <{if (in_array('ID_WORKFLOW', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WORKFLOW) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WORKFLOW}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WORKFLOW}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow" name="`$prefix`workflowlog_formdata_ID_WORKFLOW" value=$formdata.ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW_TRANSITION']) && ((isset($aclviewablecolumns['ID_WORKFLOW_TRANSITION']) && $aclviewablecolumns['ID_WORKFLOW_TRANSITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW_TRANSITION']) || $aclviewablecolumns['ID_WORKFLOW_TRANSITION']))) }>
                 <td class="column column-id-workflow-transition reftext" >
                                             <{if (in_array('ID_WORKFLOW_TRANSITION', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_WORKFLOW_TRANSITION) }>
-                            <{assign var='tmp_value' value=$formdata.ID_WORKFLOW_TRANSITION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_WORKFLOW_TRANSITION}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$formdata.ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -79,11 +73,8 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module text" >
                                             <{if (in_array('MODULE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMODULE}>
+
                         
                             <input class="input-module" type="text" name="<{$prefix}>workflowlog_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -97,11 +88,8 @@
             <{if !isset($excludedcolumns['OBJECT_ID']) && ((isset($aclviewablecolumns['OBJECT_ID']) && $aclviewablecolumns['OBJECT_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OBJECT_ID']) || $aclviewablecolumns['OBJECT_ID']))) }>
                 <td class="column column-object-id key" >
                                             <{if (in_array('OBJECT_ID', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.OBJECT_ID) }>
-                            <{assign var='tmp_value' value=$formdata.OBJECT_ID}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataOBJECT_ID}>
+
                         
                             <input class="input-object-id" type="text" name="<{$prefix}>workflowlog_formdata_OBJECT_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -115,11 +103,8 @@
             <{if !isset($excludedcolumns['DATE']) && ((isset($aclviewablecolumns['DATE']) && $aclviewablecolumns['DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE']) || $aclviewablecolumns['DATE']))) }>
                 <td class="column column-date datetime" >
                                             <{if (in_array('DATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.DATE) }>
-                            <{assign var='tmp_value' value=$formdata.DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataDATE}>
+
                                                     <input class="input-date field-date" type="text" id="<{$prefix}>workflowlog_formdata_DATE" name="<{$prefix}>workflowlog_formdata_DATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -133,11 +118,8 @@
             <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
                 <td class="column column-id-user reftext" >
                                             <{if (in_array('ID_USER', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_USER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_USER}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`workflowlog_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 

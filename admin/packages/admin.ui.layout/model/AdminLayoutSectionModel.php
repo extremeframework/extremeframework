@@ -71,6 +71,10 @@ class AdminLayoutSectionModel extends DataObject_ADMIN_LAYOUT_SECTION {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

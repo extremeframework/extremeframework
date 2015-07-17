@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="userpreferencequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/userpreference/search" method="get">
-            <input type="text" name="userpreference_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="userpreference_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#userpreferencequicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.userpreference.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER_PREFERENCE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_PREFERENCE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER_PREFERENCE', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER_PREFERENCE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -264,7 +264,7 @@ function userpreference_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="userpreference-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="userpreference-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

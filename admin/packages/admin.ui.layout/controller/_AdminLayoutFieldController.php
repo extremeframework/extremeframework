@@ -10,6 +10,7 @@ class _AdminLayoutFieldController extends __AppController
 {
     var $module = 'adminlayoutfield';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminLayoutFieldController extends __AppController
         PluginManager::do_action('adminlayoutfield_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
            $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
@@ -55,7 +56,7 @@ class _AdminLayoutFieldController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -83,7 +84,7 @@ class _AdminLayoutFieldController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -95,7 +96,7 @@ class _AdminLayoutFieldController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -555,7 +556,7 @@ class _AdminLayoutFieldController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -630,7 +631,7 @@ class _AdminLayoutFieldController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'MODULE', 'ID_ADMIN_LAYOUT_SECTION', 'COLUMN', 'POSITION', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminlayoutfield'));
 
@@ -676,7 +677,7 @@ class _AdminLayoutFieldController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -692,7 +693,7 @@ class _AdminLayoutFieldController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -804,7 +805,7 @@ class _AdminLayoutFieldController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1137,7 +1138,7 @@ class _AdminLayoutFieldController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1160,7 +1161,7 @@ class _AdminLayoutFieldController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutfield', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutfield', 'view');
@@ -1229,7 +1230,7 @@ class _AdminLayoutFieldController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminlayoutfield.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminlayoutfield.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminlayoutfield.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutfield');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutfield', 'view');
@@ -1299,7 +1300,7 @@ class _AdminLayoutFieldController extends __AppController
         PluginManager::do_action('adminlayoutfield_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminlayoutfield.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminlayoutfield.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminlayoutfield');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlayoutfield', 'view');
@@ -1406,7 +1407,7 @@ class _AdminLayoutFieldController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('MODULE', 'ID_ADMIN_LAYOUT_SECTION', 'COLUMN', 'POSITION');
     }
 
@@ -1518,7 +1519,7 @@ class _AdminLayoutFieldController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1605,7 +1606,7 @@ class _AdminLayoutFieldController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminLayoutFieldModel();
 
         $this->enforceObjectAclCheck('adminlayoutfield', $model);

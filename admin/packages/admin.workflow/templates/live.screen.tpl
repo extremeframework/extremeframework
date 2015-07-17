@@ -15,21 +15,13 @@ function remove_attachment(element, attachment, spanid)
 
 <h1 class="heading"><span class="h"><{$formtitle}></span></h1>
 
-<{if $messages}>
-    <ul class="message">
-        <{foreach from=$messages key=ignored item=message}>
-            <li><{$message}></li>
-        <{/foreach}>
-    </ul>
-<{/if}>
+<div class="edit_details">
+    <{if !isset($prefix) }>
+        <{assign var='prefix' value=''}>
+    <{/if}>
 
-<{if !isset($prefix) }>
-    <{assign var='prefix' value=''}>
-<{/if}>
-
-<form name="screenform" id="screenform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
-
-    <div class="edit-buttons edit-buttons-top">
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-top hidden-print">
         <{foreach from=$formactions key=actiontitle item=actionurl}>
             <div class="button-general button-save btn btn-success">
                 <a onclick="$('#screenform').attr('action', '<{$actionurl}>');$('#screenform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
@@ -40,30 +32,44 @@ function remove_attachment(element, attachment, spanid)
     </div>
 
     <!-- Details -->
-    <div class="section">
-        <table class="table table-bordered table-custom-layout equal-split">
-            <tbody>
-                <{foreach from=$columns item=column }>
-                    <{if $columnsettings.$column }>
-                        <tr>
-                    		<td class="form-row form-row-<{$columnsettings.$column->code}> form-row-mandatory">
-                                <div class="form-field form-field-label">
-                        		    <label><{_t($columnsettings.$column->text)}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                                </div>
-                            </td>
-                            <td class="form-row form-row-<{$columnsettings.$column->code}> form-row-mandatory">
-                                <div class="form-field form-field-value" colspan="3">
-                                    <{include file="input-item.tpl"}>
-                                </div>
-                            </td>
-                        </tr>
-                    <{/if}>
-                <{/foreach}>
-            </tbody>
-        </table>
-    </div>
+    <div class="section" style="padding: 10px 0;">
+        <div>
+            <div class="edit-main edit_details">
+                <{if $messages}>
+                    <ul class="message">
+                        <{foreach from=$messages key=field item=message}>
+                            <li data-error-field="<{$field}>"><{$message}></li>
+                        <{/foreach}>
+                    </ul>
+                <{/if}>
 
-    <div class="edit-buttons">
+                <form name="screenform" id="screenform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split">
+                        <tbody>
+                            <{foreach from=$columns item=column }>
+                                <{if $columnsettings.$column }>
+                                    <tr class="form-row form-row-<{$columnsettings.$column->code}> <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                            <div class="form-field form-field-label">
+                                    		    <label><{_t($columnsettings.$column->text)}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value">
+                                                <{include file="input-item.tpl"}>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <{/if}>
+                            <{/foreach}>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-bottom hidden-print">
         <{foreach from=$formactions key=actiontitle item=actionurl}>
             <div class="button-general button-save btn btn-success">
                 <a onclick="$('#screenform').attr('action', '<{$actionurl}>');$('#screenform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
@@ -72,9 +78,7 @@ function remove_attachment(element, attachment, spanid)
         <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
         <div class="clearer"></div>
     </div>
-
-</form>
-
+</div>
 
 <script type="text/javascript">
     $(function() {

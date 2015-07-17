@@ -10,6 +10,7 @@ class _ParameterController extends __AppController
 {
     var $module = 'parameter';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _ParameterController extends __AppController
         PluginManager::do_action('parameter_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PARAMETER_NAME'));
@@ -54,7 +55,7 @@ class _ParameterController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -82,7 +83,7 @@ class _ParameterController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -94,7 +95,7 @@ class _ParameterController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -532,7 +533,7 @@ class _ParameterController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -609,7 +610,7 @@ class _ParameterController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'CODE', 'ID_PARAMETER_GROUP', 'ID_PARAMETER_TYPE', 'VALUE', 'DESCRIPTION');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('parameter'));
 
@@ -655,7 +656,7 @@ class _ParameterController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -671,7 +672,7 @@ class _ParameterController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -783,7 +784,7 @@ class _ParameterController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1096,7 +1097,7 @@ class _ParameterController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('NAME', 'CODE', 'ID_PARAMETER_GROUP', 'ID_PARAMETER_TYPE', 'VALUE');
+            return array('NAME', 'CODE', 'VALUE');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1116,7 +1117,7 @@ class _ParameterController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1139,7 +1140,7 @@ class _ParameterController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('parameter', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parameter', 'view');
@@ -1208,7 +1209,7 @@ class _ParameterController extends __AppController
 	    $this->display($smarty, $templatetype.'.parameter.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.parameter.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.parameter.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('parameter');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parameter', 'view');
@@ -1278,7 +1279,7 @@ class _ParameterController extends __AppController
         PluginManager::do_action('parameter_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.parameter.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.parameter.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('parameter');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parameter', 'view');
@@ -1389,7 +1390,7 @@ class _ParameterController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'CODE', 'ID_PARAMETER_GROUP', 'ID_PARAMETER_TYPE', 'VALUE', 'DESCRIPTION');
     }
 
@@ -1501,7 +1502,7 @@ class _ParameterController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1604,7 +1605,7 @@ class _ParameterController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new ParameterModel();
 
         $this->enforceObjectAclCheck('parameter', $model);

@@ -71,6 +71,10 @@ class PostTypeModel extends DataObject_POST_TYPE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

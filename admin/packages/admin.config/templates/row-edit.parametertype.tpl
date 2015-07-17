@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text" >
                                             <{if (in_array('NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.NAME) }>
-                            <{assign var='tmp_value' value=$formdata.NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataNAME}>
+
                         
                             <input class="input-name" type="text" name="<{$prefix}>parametertype_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['BASE_TYPE_CODE']) && ((isset($aclviewablecolumns['BASE_TYPE_CODE']) && $aclviewablecolumns['BASE_TYPE_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BASE_TYPE_CODE']) || $aclviewablecolumns['BASE_TYPE_CODE']))) }>
                 <td class="column column-base-type-code text" >
                                             <{if (in_array('BASE_TYPE_CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.BASE_TYPE_CODE) }>
-                            <{assign var='tmp_value' value=$formdata.BASE_TYPE_CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataBASE_TYPE_CODE}>
+
                         
                             <input class="input-base-type-code" type="text" name="<{$prefix}>parametertype_formdata_BASE_TYPE_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -57,11 +51,8 @@
             <{if !isset($excludedcolumns['EXTRA']) && ((isset($aclviewablecolumns['EXTRA']) && $aclviewablecolumns['EXTRA']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EXTRA']) || $aclviewablecolumns['EXTRA']))) }>
                 <td class="column column-extra text" >
                                             <{if (in_array('EXTRA', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.EXTRA) }>
-                            <{assign var='tmp_value' value=$formdata.EXTRA}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataEXTRA}>
+
                         
                             <input class="input-extra" type="text" name="<{$prefix}>parametertype_formdata_EXTRA" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -75,11 +66,8 @@
             <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
                 <td class="column column-ordering number" >
                                             <{if (in_array('ORDERING', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ORDERING) }>
-                            <{assign var='tmp_value' value=$formdata.ORDERING}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataORDERING}>
+
                                                     
                             <input class="input-ordering number-format" type="text" name="<{$prefix}>parametertype_formdata_ORDERING" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

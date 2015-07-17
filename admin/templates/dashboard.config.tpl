@@ -20,7 +20,7 @@
 
 </head>
 <body class="module" id="dashboard">
-<{assign var='title' value=_t('L_DASHBOARD')}>
+<{assign var='title' value=_t('Dashboard')}>
 <{include file="top.tpl"}>
 
 <style type="text/css">

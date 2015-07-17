@@ -71,6 +71,10 @@ class WorkflowStageModel extends DataObject_WORKFLOW_STAGE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

@@ -71,6 +71,10 @@ class PostModel extends DataObject_POST {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

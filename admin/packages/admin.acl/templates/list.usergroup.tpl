@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="usergroupquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/usergroup/search" method="get">
-            <input type="text" name="usergroup_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="usergroup_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#usergroupquicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.usergroup.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER_GROUP', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER_GROUP')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER_GROUP', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER_GROUP')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -112,38 +112,38 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_USER_GROUP')), strtolower(_t('L_USER_GROUP'))));
     <{/php}>
 
-    <div id="usergroupcopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('L_COPY_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('L_COPY_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="usergroupapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="usergroupdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('L_DELETE_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -177,12 +177,12 @@ function usergroup_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/delete/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -197,12 +197,12 @@ function usergroup_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/copy/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -217,12 +217,12 @@ function usergroup_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/approve/');
             	$('#usergrouplistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -350,7 +350,7 @@ function usergroup_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="usergroup-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="usergroup-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

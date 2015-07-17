@@ -261,18 +261,18 @@
             		                		        <{if (isset($acleditablecolumns['GENDER']) && $acleditablecolumns['GENDER']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['GENDER']) || $acleditablecolumns['GENDER'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->GENDER}><{_t('L_MALE')}><{else}><{_t('L_FEMALE')}><{/if}>
+    <{if $details->GENDER}><{_t('Male')}><{else}><{_t('Female')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $details->GENDER}>checked="checked"<{/if}>><{_t('L_MALE')}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$details->GENDER}>checked="checked"<{/if}> /><{_t('L_FEMALE')}></span>
+    <span class="input-type-radio"><input class="input-gender" type="radio" name="<{$prefix}>user_formdata_GENDER" value="1" <{if $details->GENDER}>checked="checked"<{/if}>><{_t('Male')}> <input type="radio" name="<{$prefix}>user_formdata_GENDER" value="0" <{if !$details->GENDER}>checked="checked"<{/if}> /><{_t('Female')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->GENDER}><{_t('L_MALE')}><{else}><{_t('L_FEMALE')}><{/if}>
+    <{if $details->GENDER}><{_t('Male')}><{else}><{_t('Female')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -328,18 +328,18 @@
             		                		        <{if (isset($acleditablecolumns['FORCE_PASSWORD_CHANGE']) && $acleditablecolumns['FORCE_PASSWORD_CHANGE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['FORCE_PASSWORD_CHANGE']) || $acleditablecolumns['FORCE_PASSWORD_CHANGE'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->FORCE_PASSWORD_CHANGE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->FORCE_PASSWORD_CHANGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-force-password-change" type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="1" <{if $details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_FORCE_PASSWORD_CHANGE" value="0" <{if !$details->FORCE_PASSWORD_CHANGE}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->FORCE_PASSWORD_CHANGE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->FORCE_PASSWORD_CHANGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -362,18 +362,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_EMAIL_VERIFIED']) && $acleditablecolumns['IS_EMAIL_VERIFIED']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_EMAIL_VERIFIED']) || $acleditablecolumns['IS_EMAIL_VERIFIED'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_EMAIL_VERIFIED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_EMAIL_VERIFIED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-email-verified" type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="1" <{if $details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_IS_EMAIL_VERIFIED" value="0" <{if !$details->IS_EMAIL_VERIFIED}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_EMAIL_VERIFIED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_EMAIL_VERIFIED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -600,18 +600,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_ENABLED']) && $acleditablecolumns['IS_ENABLED']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_ENABLED']) || $acleditablecolumns['IS_ENABLED'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_ENABLED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_ENABLED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>user_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_ENABLED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_ENABLED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -692,7 +692,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                    <span><{_t('Additional information')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -700,16 +700,14 @@
                     <table class="table table-bordered table-custom-layout equal-split">
                         <tbody>
                             <{foreach from=$customfields item=item}>
-                                <tr>
+                                <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
                         		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                    	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
-                                    		<div class="attribute-value">
-                                                <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                    		</div>
-                                    	</div>
+                                		<div class="attribute-value">
+                                            <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                                		</div>
                                     </td>
                         		</tr>
                         	<{/foreach}>
@@ -720,14 +718,28 @@
         </div>
     <{/if}>
 
-    <{foreach from=$additional_view_fields item=item}>
-    	<div class="attribute-line custom-field type-<{$item.type}>">
-    		<label class="attribute-name"><{$item.label}></label>
-    		<div class="attribute-value">
-                <{$item.value}>
-    		</div>
-    	</div>
-	<{/foreach}>
+    <div class="layout-block layout-block-section">
+        <div class="layout-section">
+            <div class="layout-section-content">
+                <table class="table table-bordered table-custom-layout equal-split">
+                    <tbody>
+                        <{foreach from=$additional_view_fields item=item}>
+                            <tr class="attribute-line">
+                        		<td class="form-field form-field-label">
+                    		        <label class="attribute-name"><{$item.label}></label>
+                                </td>
+                                <td class="form-field form-field-value">
+                            		<div class="attribute-value">
+                                        <{$item.value}>
+                            		</div>
+                                </td>
+                    		</tr>
+                    	<{/foreach}>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <{plugin key="user_view_bottom" args=$details}>
 

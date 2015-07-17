@@ -10,6 +10,7 @@ class _AdminLanguageController extends __AppController
 {
     var $module = 'adminlanguage';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminLanguageController extends __AppController
         PluginManager::do_action('adminlanguage_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_LANGUAGE_NAME'));
@@ -50,7 +51,7 @@ class _AdminLanguageController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -78,7 +79,7 @@ class _AdminLanguageController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -90,7 +91,7 @@ class _AdminLanguageController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -585,7 +586,7 @@ class _AdminLanguageController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function getTempCreateId() {
+    protected function getTempCreateId() {
         $create = false;
 
         if (!isset($_SESSION['adminlanguage.tmpid'])) {
@@ -612,13 +613,13 @@ class _AdminLanguageController extends __AppController
         return $_SESSION['adminlanguage.tmpid'];
     }
 
-    private function clearTempCreateId() {
+    protected function clearTempCreateId() {
         if (isset($_SESSION['adminlanguage.tmpid'])) {
             unset($_SESSION['adminlanguage.tmpid']);
         }
     }
 
-    private function clearTempCreateItem() {
+    protected function clearTempCreateItem() {
         if (isset($_SESSION['adminlanguage.tmpid'])) {
             self::deleteItem($_SESSION['adminlanguage.tmpid']);
 
@@ -626,7 +627,7 @@ class _AdminLanguageController extends __AppController
         }
     }
 
-    private function deleteItem($id) {
+    protected function deleteItem($id) {
         TransactionHelper::begin();
 
         $this->delete('UUID', array($id));
@@ -635,7 +636,7 @@ class _AdminLanguageController extends __AppController
         TransactionHelper::end();
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -708,7 +709,7 @@ class _AdminLanguageController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'CODE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminlanguage'));
 
@@ -754,7 +755,7 @@ class _AdminLanguageController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -770,7 +771,7 @@ class _AdminLanguageController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1200,7 +1201,7 @@ class _AdminLanguageController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1223,7 +1224,7 @@ class _AdminLanguageController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminlanguage', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlanguage', 'view');
@@ -1292,7 +1293,7 @@ class _AdminLanguageController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminlanguage.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminlanguage.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminlanguage.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminlanguage');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlanguage', 'view');
@@ -1362,7 +1363,7 @@ class _AdminLanguageController extends __AppController
         PluginManager::do_action('adminlanguage_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminlanguage.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminlanguage.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminlanguage');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminlanguage', 'view');
@@ -1469,7 +1470,7 @@ class _AdminLanguageController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'CODE');
     }
 
@@ -1581,7 +1582,7 @@ class _AdminLanguageController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1626,7 +1627,7 @@ class _AdminLanguageController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LANGUAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.ID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminLanguageModel();
 
         $this->enforceObjectAclCheck('adminlanguage', $model);

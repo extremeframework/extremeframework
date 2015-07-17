@@ -15,7 +15,7 @@ class DataObject_SCREEN_FIELD extends DB_DataObject
     public $REFID;                           // varchar(16)  
     public $ID_SCREEN;                       // varchar(24)  
     public $TITLE;                           // varchar(128)  
-    public $CODE;                            // varchar(11)  
+    public $CODE;                            // varchar(24)  
     public $ID_VALUE_TYPE;                   // varchar(11)  
     public $DATASOURCE;                      // varchar(128)  
     public $CONDITION;                       // varchar(128)  

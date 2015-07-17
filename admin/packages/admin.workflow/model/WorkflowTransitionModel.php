@@ -71,6 +71,10 @@ class WorkflowTransitionModel extends DataObject_WORKFLOW_TRANSITION {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

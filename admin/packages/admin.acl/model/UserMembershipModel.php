@@ -71,6 +71,10 @@ class UserMembershipModel extends DataObject_USER_MEMBERSHIP {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->VALID_FROM;
 	}

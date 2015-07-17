@@ -10,6 +10,7 @@ class _OptionController extends __AppController
 {
     var $module = 'option';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _OptionController extends __AppController
         PluginManager::do_action('option_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_OPTION_NAME'));
@@ -51,7 +52,7 @@ class _OptionController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -79,7 +80,7 @@ class _OptionController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -91,7 +92,7 @@ class _OptionController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -539,7 +540,7 @@ class _OptionController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -612,7 +613,7 @@ class _OptionController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'CODE', 'VALUE', 'CONTEXT');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('option'));
 
@@ -658,7 +659,7 @@ class _OptionController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -674,7 +675,7 @@ class _OptionController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1107,7 +1108,7 @@ class _OptionController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1130,7 +1131,7 @@ class _OptionController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('option', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('option', 'view');
@@ -1200,7 +1201,7 @@ class _OptionController extends __AppController
 	    $this->display($smarty, $templatetype.'.option.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.option.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.option.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('option');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('option', 'view');
@@ -1270,7 +1271,7 @@ class _OptionController extends __AppController
         PluginManager::do_action('option_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.option.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.option.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('option');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('option', 'view');
@@ -1377,7 +1378,7 @@ class _OptionController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'CODE', 'VALUE', 'CONTEXT');
     }
 
@@ -1489,7 +1490,7 @@ class _OptionController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1534,7 +1535,7 @@ class _OptionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'OPTION`.NAME, `'.TABLE_PREFIX.'OPTION`.CODE, `'.TABLE_PREFIX.'OPTION`.VALUE, `'.TABLE_PREFIX.'OPTION`.CONTEXT, `'.TABLE_PREFIX.'OPTION`.ID, `'.TABLE_PREFIX.'OPTION`.JSON, `'.TABLE_PREFIX.'OPTION`.UUID, `'.TABLE_PREFIX.'OPTION`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new OptionModel();
 
         $this->enforceObjectAclCheck('option', $model);

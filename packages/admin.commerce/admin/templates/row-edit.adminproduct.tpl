@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text" >
                                             <{if (in_array('TITLE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TITLE) }>
-                            <{assign var='tmp_value' value=$formdata.TITLE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTITLE}>
+
                         
                             <input class="input-title" type="text" name="<{$prefix}>adminproduct_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -47,11 +44,8 @@
             <{if !isset($excludedcolumns['LIST_PRICE']) && ((isset($aclviewablecolumns['LIST_PRICE']) && $aclviewablecolumns['LIST_PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LIST_PRICE']) || $aclviewablecolumns['LIST_PRICE']))) }>
                 <td class="column column-list-price number" >
                                             <{if (in_array('LIST_PRICE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.LIST_PRICE) }>
-                            <{assign var='tmp_value' value=$formdata.LIST_PRICE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataLIST_PRICE}>
+
                                                     
                             <input class="input-list-price currency-format" type="text" name="<{$prefix}>adminproduct_formdata_LIST_PRICE" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
@@ -68,11 +62,8 @@
             <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
                 <td class="column column-price number" >
                                             <{if (in_array('PRICE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PRICE) }>
-                            <{assign var='tmp_value' value=$formdata.PRICE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPRICE}>
+
                                                     
                             <input class="input-price currency-format" type="text" name="<{$prefix}>adminproduct_formdata_PRICE" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
@@ -89,11 +80,8 @@
             <{if !isset($excludedcolumns['PRODUCT_ID_PAGE']) && ((isset($aclviewablecolumns['PRODUCT_ID_PAGE']) && $aclviewablecolumns['PRODUCT_ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRODUCT_ID_PAGE']) || $aclviewablecolumns['PRODUCT_ID_PAGE']))) }>
                 <td class="column column-product-id-page reftext" >
                                             <{if (in_array('PRODUCT_ID_PAGE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PRODUCT_ID_PAGE) }>
-                            <{assign var='tmp_value' value=$formdata.PRODUCT_ID_PAGE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPRODUCT_ID_PAGE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-product-id-page" name="`$prefix`adminproduct_formdata_PRODUCT_ID_PAGE" value=$formdata.PRODUCT_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 

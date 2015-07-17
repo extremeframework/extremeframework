@@ -79,7 +79,7 @@
 	        <{if (in_array('HIDE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['HIDE_TITLE']) && ((isset($aclviewablecolumns['HIDE_TITLE']) && $aclviewablecolumns['HIDE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HIDE_TITLE']) || $aclviewablecolumns['HIDE_TITLE']))) }>
                 <td class="column column-hide-title yesno " data-value="<{$row->HIDE_TITLE}>" data-column="HIDE_TITLE" data-module="pagewidget">
-                                        	<span>	<{if $row->HIDE_TITLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->HIDE_TITLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -102,7 +102,7 @@
 	<{plugin key="pagewidget_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.pagewidget.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

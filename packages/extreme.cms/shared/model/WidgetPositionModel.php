@@ -71,6 +71,10 @@ class WidgetPositionModel extends DataObject_WIDGET_POSITION {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

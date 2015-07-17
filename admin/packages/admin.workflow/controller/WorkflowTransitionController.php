@@ -9,6 +9,9 @@ class WorkflowTransitionController extends _WorkflowTransitionController
     function performAction() {
 		list($workflow_transition_uuid, $module, $object_uuid) = explode('/', $_REQUEST['args']);
 
+        $class = $module.'Controller';
+        $controller = new $class();
+
         // x. Get workflow transition
         $wftm = new WorkflowTransitionModel();
 
@@ -19,7 +22,7 @@ class WorkflowTransitionController extends _WorkflowTransitionController
 
         $workflow_id = $wftm->ID_WORKFLOW;
         $next_stage_id = $wftm->END_ID_WORKFLOW_STAGE;
-        $code = $wftm->CODE;
+        $action = $wftm->ACTION;
 
         // x. Transition screen
         $formdata = array();
@@ -28,7 +31,8 @@ class WorkflowTransitionController extends _WorkflowTransitionController
             // x. Screen
             $sm = new ScreenModel();
 
-            $sm->ID = $wftm->TRANSITION_ID_SCREEN;
+            $sm->setId($wftm->TRANSITION_ID_SCREEN);
+
             $sm->find();
 
             if (!$sm->fetch()) {
@@ -43,6 +47,8 @@ class WorkflowTransitionController extends _WorkflowTransitionController
             $sfm->joinAdd(new ValueTypeModel());
 
             $sfm->ID_SCREEN = $sm->id();
+            $sfm->orderBy('ORDERING ASC');
+
             $sfm->find();
 
             $screenfields = array();
@@ -75,13 +81,16 @@ class WorkflowTransitionController extends _WorkflowTransitionController
             }
 
             $this->ensure_additional_data(
+                Framework::getSmarty($controller->__FILE__),
                 $sm->TITLE,
                 $fields,
                 $mandatories,
-                APPLICATION_URL."/workflowtransition/perform/$workflow_transition_uuid/$module/$object_uuid",
-                ucfirst($code),
+                array(
+                    ucfirst($action) => APPLICATION_URL."/workflowtransition/perform/$workflow_transition_uuid/$module/$object_uuid"
+                ),
                 $formdata,
-                $fieldinfos
+                $fieldinfos,
+                array('template' => "input.$module.tpl")
             );
         }
 
@@ -96,11 +105,8 @@ class WorkflowTransitionController extends _WorkflowTransitionController
             return;
         }
 
-        $class = $module.'Controller';
-        $controller = new $class();
-
         // x. Before workflow transition
-        $controller->onBeforeWorkflowTransition($wftm->CODE, $model, $formdata);
+        $controller->onBeforeWorkflowTransition($wftm, $model, $formdata);
 
         // x. Update WFID
         $model->WFID = $next_stage_id;
@@ -120,7 +126,7 @@ class WorkflowTransitionController extends _WorkflowTransitionController
         $wflm->insert();
 
         // x. After workflow transition
-        $controller->onWorkflowTransitionSuccess($wftm->CODE, $model, $formdata);
+        $controller->onWorkflowTransitionSuccess($wftm, $model, $formdata);
 
         ContextStack::back(0);
     }

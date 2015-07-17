@@ -71,6 +71,10 @@ class AdminOrderItemModel extends DataObject_ADMIN_ORDER_ITEM {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->QUANTITY;
 	}

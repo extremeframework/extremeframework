@@ -3,11 +3,11 @@
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
     <{if $details->UUID > 0}>
-        <{$tmp1 = _t('L_EDIT')}>
+        <{$tmp1 = _t('Edit')}>
         <{$tmp2 = strtolower(_t('L_ADMIN_ORDER_ITEM'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     <{else}>
-        <{$tmp1 = _t('L_NEW')}>
+        <{$tmp1 = _t('New')}>
         <{$tmp2 = strtolower(_t('L_ADMIN_ORDER_ITEM'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     <{/if}>
@@ -67,7 +67,7 @@ function saveclone()
             <!-- Control buttons -->
         <div class="edit-buttons edit-buttons-top hidden-print">
             <div class="button-general button-save btn btn-success">
-                <a class="button-save" onclick="$('#adminorderitemform').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
+                <a class="button-save" onclick="$('#adminorderitemform').submit();return false;"><span class="button-face"><{_t('Save')}></span></a>
             </div>
 
                             <{if !$details->ID}>
@@ -78,7 +78,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('L_CANCEL')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('Cancel')}></a>
             <div class="clearer"></div>
         </div>
     
@@ -93,7 +93,7 @@ function saveclone()
             <!-- Control buttons -->
         <div class="edit-buttons edit-buttons-bottom hidden-print">
             <div class="button-general button-save btn btn-success">
-                <a class="button-save" onclick="$('#adminorderitemform').submit();return false;"><span class="button-face"><{_t('L_SAVE')}></span></a>
+                <a class="button-save" onclick="$('#adminorderitemform').submit();return false;"><span class="button-face"><{_t('Save')}></span></a>
             </div>
 
                             <{if !$details->ID}>
@@ -104,7 +104,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('L_CANCEL')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('Cancel')}></a>
             <div class="clearer"></div>
         </div>
     

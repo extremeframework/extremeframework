@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="userquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/user/search" method="get">
-            <input type="text" name="user_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="user_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#userquicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.user.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_USER', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_USER')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -93,7 +93,7 @@
                                 <span class="custom-filter-footer user-custom-filter-footer hide">
                                     <hr>
                                     <ul>
-                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/user"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
+                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/user"><i class="fa fa-plus-circle"></i> <{_t('Create new filter')}></a></li>
                                     </ul>
                                 </span>
                                 <span class="custom-filter-icons user-custom-filter-icons pull-right" style="display:none">
@@ -134,38 +134,38 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_USER')), strtolower(_t('L_USER'))));
     <{/php}>
 
-    <div id="usercopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="usercopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_USER', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('L_COPY_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{_t('L_COPY_ALSO')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{_t('Copy also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="userapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_USER', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{_t('Approve also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="userdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_USER', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('L_DELETE_ALSO')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{_t('L_DELETE_ALSO')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{_t('Delete also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -199,12 +199,12 @@ function user_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#userlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/user/delete/');
             	$('#userlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -219,12 +219,12 @@ function user_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#userlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/user/copy/');
             	$('#userlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -239,12 +239,12 @@ function user_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#userlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/user/approve/');
             	$('#userlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -372,7 +372,7 @@ function user_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="user-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="user-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

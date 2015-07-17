@@ -83,6 +83,18 @@ class Cache {
         return self::getHandler($type);
     }
 
+    static function session() {
+        return self::getHandler('session');
+    }
+
+    static function apc() {
+        return self::getHandler('apc');
+    }
+
+    static function memcache() {
+        return self::getHandler('memcache');
+    }
+
     static function context($context) {
         $cache = self::getInstance();
 

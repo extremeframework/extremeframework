@@ -88,7 +88,7 @@
 	        <{if (in_array('IS_MANDATORY', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_MANDATORY']) && ((isset($aclviewablecolumns['IS_MANDATORY']) && $aclviewablecolumns['IS_MANDATORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_MANDATORY']) || $aclviewablecolumns['IS_MANDATORY']))) }>
                 <td class="column column-is-mandatory yesno " data-value="<{$row->IS_MANDATORY}>" data-column="IS_MANDATORY" data-module="screenfield">
-                                        	<span>	<{if $row->IS_MANDATORY}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_MANDATORY}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -111,7 +111,7 @@
 	<{plugin key="screenfield_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.screenfield.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

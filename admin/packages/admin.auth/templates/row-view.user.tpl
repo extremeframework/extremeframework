@@ -58,7 +58,7 @@
 	        <{if (in_array('GENDER', $filtercolumns)) }>
             <{if !isset($excludedcolumns['GENDER']) && ((isset($aclviewablecolumns['GENDER']) && $aclviewablecolumns['GENDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GENDER']) || $aclviewablecolumns['GENDER']))) }>
                 <td class="column column-gender gender " >
-                                        	<span>	<{if $row->GENDER}><{_t('L_MALE')}><{else}><{_t('L_FEMALE')}><{/if}>
+                                        	<span>	<{if $row->GENDER}><{_t('Male')}><{else}><{_t('Female')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -75,7 +75,7 @@
 	        <{if (in_array('FORCE_PASSWORD_CHANGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FORCE_PASSWORD_CHANGE']) && ((isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) && $aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || $aclviewablecolumns['FORCE_PASSWORD_CHANGE']))) }>
                 <td class="column column-force-password-change yesno " data-value="<{$row->FORCE_PASSWORD_CHANGE}>" data-column="FORCE_PASSWORD_CHANGE" data-module="user">
-                                        	<span>	<{if $row->FORCE_PASSWORD_CHANGE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->FORCE_PASSWORD_CHANGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -83,7 +83,7 @@
 	        <{if (in_array('IS_EMAIL_VERIFIED', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_EMAIL_VERIFIED']) && ((isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) && $aclviewablecolumns['IS_EMAIL_VERIFIED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) || $aclviewablecolumns['IS_EMAIL_VERIFIED']))) }>
                 <td class="column column-is-email-verified yesno " data-value="<{$row->IS_EMAIL_VERIFIED}>" data-column="IS_EMAIL_VERIFIED" data-module="user">
-                                        	<span>	<{if $row->IS_EMAIL_VERIFIED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_EMAIL_VERIFIED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -139,7 +139,7 @@
 	        <{if (in_array('IS_ENABLED', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_ENABLED']) && ((isset($aclviewablecolumns['IS_ENABLED']) && $aclviewablecolumns['IS_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_ENABLED']) || $aclviewablecolumns['IS_ENABLED']))) }>
                 <td class="column column-is-enabled yesno " data-value="<{$row->IS_ENABLED}>" data-column="IS_ENABLED" data-module="user">
-                                        	<span>	<{if $row->IS_ENABLED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_ENABLED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -170,7 +170,7 @@
 	<{plugin key="user_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.user.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

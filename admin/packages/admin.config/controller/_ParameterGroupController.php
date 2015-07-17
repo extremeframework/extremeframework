@@ -10,6 +10,7 @@ class _ParameterGroupController extends __AppController
 {
     var $module = 'parametergroup';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _ParameterGroupController extends __AppController
         PluginManager::do_action('parametergroup_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PARAMETER_GROUP_NAME'));
@@ -36,7 +37,7 @@ class _ParameterGroupController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _ParameterGroupController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _ParameterGroupController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -549,7 +550,7 @@ class _ParameterGroupController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -624,7 +625,7 @@ class _ParameterGroupController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'ORDERING');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('parametergroup'));
 
@@ -670,7 +671,7 @@ class _ParameterGroupController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -686,7 +687,7 @@ class _ParameterGroupController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1117,7 +1118,7 @@ class _ParameterGroupController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1140,7 +1141,7 @@ class _ParameterGroupController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('parametergroup', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parametergroup', 'view');
@@ -1209,7 +1210,7 @@ class _ParameterGroupController extends __AppController
 	    $this->display($smarty, $templatetype.'.parametergroup.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.parametergroup.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.parametergroup.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('parametergroup');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parametergroup', 'view');
@@ -1279,7 +1280,7 @@ class _ParameterGroupController extends __AppController
         PluginManager::do_action('parametergroup_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.parametergroup.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.parametergroup.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('parametergroup');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('parametergroup', 'view');
@@ -1386,7 +1387,7 @@ class _ParameterGroupController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME');
     }
 
@@ -1498,7 +1499,7 @@ class _ParameterGroupController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1543,7 +1544,7 @@ class _ParameterGroupController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PARAMETER_GROUP`.NAME, `'.TABLE_PREFIX.'PARAMETER_GROUP`.ORDERING, `'.TABLE_PREFIX.'PARAMETER_GROUP`.ID, `'.TABLE_PREFIX.'PARAMETER_GROUP`.JSON, `'.TABLE_PREFIX.'PARAMETER_GROUP`.UUID, `'.TABLE_PREFIX.'PARAMETER_GROUP`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new ParameterGroupModel();
 
         $this->enforceObjectAclCheck('parametergroup', $model);

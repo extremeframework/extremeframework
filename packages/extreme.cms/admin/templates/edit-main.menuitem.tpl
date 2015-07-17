@@ -383,7 +383,7 @@
                 <div class="form-field form-field-value column-has-break-after">
                                             
 
-    <span class="input-type-radio"><input class="input-has-break-after" type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="1" <{if $details->HAS_BREAK_AFTER}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="0" <{if !$details->HAS_BREAK_AFTER}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-has-break-after" type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="1" <{if $details->HAS_BREAK_AFTER}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>menuitem_formdata_HAS_BREAK_AFTER" value="0" <{if !$details->HAS_BREAK_AFTER}>checked="checked"<{/if}> /><{_t('No')}></span>
                         <{if $columntooltips.HAS_BREAK_AFTER}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.HAS_BREAK_AFTER}>"></i>
                         <{/if}>
@@ -464,7 +464,7 @@
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                        <span><{_t('Additional information')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -472,13 +472,13 @@
                         <table class="table table-bordered table-custom-layout equal-split">
                             <tbody>
                                 <{foreach from=$customfields item=item}>
-                                    <tr>
-                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                		<td>
                                             <div class="form-field form-field-label">
                                     		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
-                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                        <td colspan="3">
                                             <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                                 <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
                                             </div>

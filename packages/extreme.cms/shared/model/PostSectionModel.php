@@ -71,6 +71,10 @@ class PostSectionModel extends DataObject_POST_SECTION {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

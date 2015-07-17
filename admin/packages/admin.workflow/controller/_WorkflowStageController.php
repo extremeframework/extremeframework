@@ -10,6 +10,7 @@ class _WorkflowStageController extends __AppController
 {
     var $module = 'workflowstage';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _WorkflowStageController extends __AppController
         PluginManager::do_action('workflowstage_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_WORKFLOW_STAGE_NAME'));
@@ -36,7 +37,7 @@ class _WorkflowStageController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _WorkflowStageController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _WorkflowStageController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -527,7 +528,7 @@ class _WorkflowStageController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -600,7 +601,7 @@ class _WorkflowStageController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'ID_WORKFLOW', 'NAME', 'CODE', 'IS_DEFAULT', 'IS_BINDING_OBJECT_EDITABLE', 'IS_BINDING_OBJECT_DELETABLE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('workflowstage'));
 
@@ -646,7 +647,7 @@ class _WorkflowStageController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -662,7 +663,7 @@ class _WorkflowStageController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -774,7 +775,7 @@ class _WorkflowStageController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1104,7 +1105,7 @@ class _WorkflowStageController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1127,7 +1128,7 @@ class _WorkflowStageController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('workflowstage', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowstage', 'view');
@@ -1196,7 +1197,7 @@ class _WorkflowStageController extends __AppController
 	    $this->display($smarty, $templatetype.'.workflowstage.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.workflowstage.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.workflowstage.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('workflowstage');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowstage', 'view');
@@ -1266,7 +1267,7 @@ class _WorkflowStageController extends __AppController
         PluginManager::do_action('workflowstage_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.workflowstage.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.workflowstage.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('workflowstage');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('workflowstage', 'view');
@@ -1379,7 +1380,7 @@ class _WorkflowStageController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('ID_WORKFLOW', 'NAME', 'CODE', 'IS_DEFAULT', 'IS_BINDING_OBJECT_EDITABLE', 'IS_BINDING_OBJECT_DELETABLE');
     }
 
@@ -1491,7 +1492,7 @@ class _WorkflowStageController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1571,7 +1572,7 @@ class _WorkflowStageController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new WorkflowStageModel();
 
         $this->enforceObjectAclCheck('workflowstage', $model);

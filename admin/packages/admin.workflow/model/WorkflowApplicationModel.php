@@ -71,6 +71,10 @@ class WorkflowApplicationModel extends DataObject_WORKFLOW_APPLICATION {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

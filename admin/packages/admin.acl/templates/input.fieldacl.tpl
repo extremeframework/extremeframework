@@ -13,150 +13,191 @@ function remove_attachment(element, attachment, spanid)
 }
 </script>
 
-<h2 class="heading"><{$formtitle}></h2>
+<h1 class="heading">
+    <span class="h"><{$formtitle}></span>
+</h1>
 
-<{if $messages}>
-    <ul class="message">
-        <{foreach from=$messages key=field item=message}>
-            <li data-error-field="<{$field}>"><{$message}></li>
+<div class="edit_details">
+
+    <{if !isset($prefix) }>
+        <{assign var='prefix' value=''}>
+    <{/if}>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-top hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#fieldaclform').attr('action', '<{$actionurl}>');$('#fieldaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
         <{/foreach}>
-    </ul>
-<{/if}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
 
-<{if !isset($prefix) }>
-    <{assign var='prefix' value=''}>
-<{/if}>
+    <!-- Details -->
+    <div class="section" style="padding: 10px 0;">
+        <div>
+            <div class="edit-main edit_details">
+                <{if $messages}>
+                    <ul class="message">
+                        <{foreach from=$messages key=field item=message}>
+                            <li data-error-field="<{$field}>"><{$message}></li>
+                        <{/foreach}>
+                    </ul>
+                <{/if}>
 
-<form name="fieldaclform" id="fieldaclform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                <form name="fieldaclform" id="fieldaclform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split">
+                        <tbody>
+                            <{foreach from=$columns item=column }>
+                                <{if $columnsettings.$column }>
+                                    <tr class="form-row form-row-<{$columnsettings.$column->code}> <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t($columnsettings.$column->text)}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                            </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-<{$columnsettings.$column->code}>">
+                                                <{include file="input-item.tpl"}>
+                                            </div>
+                                        </td>
+                                    </tr>
 
-<!-- Details -->
-<div class="section" style="padding: 10px 0;">
-    <div>
-        <{foreach from=$columns item=column }>
-                <{if $columnsettings.$column }>
-                	<div class="form-row <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{$columnsettings.$column->text}><{if in_array($column, $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-<{$columnsettings.$column->code}>">
-                		    <{include file="input-item.tpl"}>
-                		</div>
-                	</div>
-            
-                <{elseif $column == 'MODULE' }>
-                	<div class="form-row <{if in_array('MODULE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-module">
+                            
+                                <{elseif $column == 'MODULE' }>
+                                    <tr class="form-row form-row-module <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-module">
+                                                                        <{$tmp_value = $formdataMODULE}>
 
-                                                    <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`fieldacl_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ACTION' }>
-                	<div class="form-row <{if in_array('ACTION', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_ACTION')}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-action">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ACTION) }>
-                            <{assign var='tmp_value' value=$formdata.ACTION}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ACTION' }>
+                                    <tr class="form-row form-row-action <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_ACTION')}><{if in_array('ACTION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-action">
+                                                                        <{$tmp_value = $formdataACTION}>
+
                         
                             <input class="input-action" type="text" name="<{$prefix}>fieldacl_formdata_ACTION" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
-                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ID_USER_GROUP' }>
-                	<div class="form-row <{if in_array('ID_USER_GROUP', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-id-user-group">
+                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ID_USER_GROUP) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER_GROUP}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ID_USER_GROUP' }>
+                                    <tr class="form-row form-row-id-user-group <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-user-group">
+                                                                        <{$tmp_value = $formdataID_USER_GROUP}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-group" name="`$prefix`fieldacl_formdata_ID_USER_GROUP" value=$formdata.ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ID_USER' }>
-                	<div class="form-row <{if in_array('ID_USER', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-id-user">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ID_USER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_USER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ID_USER' }>
+                                    <tr class="form-row form-row-id-user <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-user">
+                                                                        <{$tmp_value = $formdataID_USER}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`fieldacl_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'FIELDS' }>
-                	<div class="form-row <{if in_array('FIELDS', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_FIELDS')}><{if in_array('FIELDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-fields">
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.FIELDS) }>
-                            <{assign var='tmp_value' value=$formdata.FIELDS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'FIELDS' }>
+                                    <tr class="form-row form-row-fields <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_FIELDS')}><{if in_array('FIELDS', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-fields">
+                                                                        <{$tmp_value = $formdataFIELDS}>
+
                         
                             <textarea class="input-fields" id="<{$prefix}>fieldacl_formdata_FIELDS" name="<{$prefix}>fieldacl_formdata_FIELDS" rows="5" ><{$tmp_value}></textarea>
-                            <script type="text/javascript">htmlEditor('<{$prefix}>fieldacl_formdata_FIELDS')</script>                        
-                		</div>
-                	</div>
-        	
-                <{elseif $column == 'ID_ACL_TYPE' }>
-                	<div class="form-row <{if in_array('ID_ACL_TYPE', $mandatories) }>form-row-mandatory<{/if}>">
-                		<label><{_t('L_ACL_TYPE')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                		<div class="form-field column-id-acl-type">
+                            <script type="text/javascript">htmlEditor('<{$prefix}>fieldacl_formdata_FIELDS')</script>                                                                    </div>
+                                        </td>
+                                    </tr>
 
-                                                    <{if isset($formdata.ID_ACL_TYPE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ACL_TYPE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                        	
+                                <{elseif $column == 'ID_ACL_TYPE' }>
+                                    <tr class="form-row form-row-id-acl-type <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('L_ACL_TYPE')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-acl-type">
+                                                                        <{$tmp_value = $formdataID_ACL_TYPE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-acl-type" name="`$prefix`fieldacl_formdata_ID_ACL_TYPE" value=$formdata.ID_ACL_TYPE datasource="ACL_TYPE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                                    
-                		</div>
-                	</div>
-        	
-            	<{/if}>
-        <{/foreach}>
-        <div class="view-buttons" style="float:none;top:0px;">
-            <{foreach from=$formactions key=actiontitle item=actionurl}>
-                <div class="button-general button-additional">
-                    <a onclick="$('#fieldaclform').attr('action', '<{$actionurl}>');$('#fieldaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
-                </div>
-            <{/foreach}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('L_CANCEL')}></span></a>
-            <div class="clearer"></div>
-        </div>
-	</div>
-    <div class="clearer"></div>
-</div>
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
 
-</form>
+                        	
+                                <{/if}>
+                            <{/foreach}>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+    	</div>
+        <div class="clearer"></div>
+    </div>
+
+    <!-- Control buttons -->
+    <div class="edit-buttons edit-buttons-bottom hidden-print">
+        <{foreach from=$formactions key=actiontitle item=actionurl}>
+            <div class="button-general button-save btn btn-success">
+                <a onclick="$('#fieldaclform').attr('action', '<{$actionurl}>');$('#fieldaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+            </div>
+        <{/foreach}>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/fieldacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <div class="clearer"></div>
+    </div>
+<div>
 
 
 <script type="text/javascript">
@@ -169,6 +210,10 @@ function remove_attachment(element, attachment, spanid)
         if (document.activeElement == document.body) {
         	$('#fieldaclform:not(.filter) :input:visible:first').focus();
         }
+    });
+
+    $(function() {
+    	$('body').attr('data-type', 'edit');
     });
 </script>
 

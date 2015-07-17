@@ -81,10 +81,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="paymenttype-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="paymenttype-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="paymenttype-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save paymenttype-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel paymenttype-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save paymenttype-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel paymenttype-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="paymenttype-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

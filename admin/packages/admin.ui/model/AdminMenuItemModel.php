@@ -71,6 +71,10 @@ class AdminMenuItemModel extends DataObject_ADMIN_MENU_ITEM {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

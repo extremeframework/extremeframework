@@ -71,6 +71,10 @@ class PageModel extends DataObject_PAGE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

@@ -86,6 +86,24 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('CUSTOM_TOP_ID_MENU', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['CUSTOM_TOP_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) && $aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || $aclviewablecolumns['CUSTOM_TOP_ID_MENU']))) }>
+    	            <th class="column-custom-top-id-menu">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/page/sort/custom_top_id_menu"><{_t('L_CUSTOM_TOP_MENU')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
+		                        <{if (in_array('CUSTOM_SIDE_ID_MENU', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['CUSTOM_SIDE_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) && $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']))) }>
+    	            <th class="column-custom-side-id-menu">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/page/sort/custom_side_id_menu"><{_t('L_CUSTOM_SIDE_MENU')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('VIEW_MORE_TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
     	            <th class="column-view-more-title">
@@ -153,10 +171,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="page-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="page-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="page-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save page-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel page-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save page-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel page-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="page-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
@@ -165,7 +183,7 @@
         
                     <{if $rows}>
             	<tr style="background-color:#F4FAE1;">
-            		<th colspan="2"><{_t('L_TOTAL')}></th>
+            		<th colspan="2"><{_t('Total')}></th>
             	                	        <{if (in_array('NAME', $filtercolumns)) }>
                             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                     	                                            <th></th>
@@ -203,6 +221,16 @@
                         <{/if}>
             		            	        <{if (in_array('ID_TEMPLATE', $filtercolumns)) }>
                             <{if !isset($excludedcolumns['ID_TEMPLATE']) && ((isset($aclviewablecolumns['ID_TEMPLATE']) && $aclviewablecolumns['ID_TEMPLATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_TEMPLATE']) || $aclviewablecolumns['ID_TEMPLATE']))) }>
+                    	                                            <th></th>
+                                                            <{/if}>
+                        <{/if}>
+            		            	        <{if (in_array('CUSTOM_TOP_ID_MENU', $filtercolumns)) }>
+                            <{if !isset($excludedcolumns['CUSTOM_TOP_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) && $aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || $aclviewablecolumns['CUSTOM_TOP_ID_MENU']))) }>
+                    	                                            <th></th>
+                                                            <{/if}>
+                        <{/if}>
+            		            	        <{if (in_array('CUSTOM_SIDE_ID_MENU', $filtercolumns)) }>
+                            <{if !isset($excludedcolumns['CUSTOM_SIDE_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) && $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']))) }>
                     	                                            <th></th>
                                                             <{/if}>
                         <{/if}>

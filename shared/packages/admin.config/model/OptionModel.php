@@ -71,6 +71,10 @@ class OptionModel extends DataObject_OPTION {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

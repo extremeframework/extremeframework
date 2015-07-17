@@ -10,6 +10,7 @@ class _MenuController extends __AppController
 {
     var $module = 'menu';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _MenuController extends __AppController
         PluginManager::do_action('menu_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MENU_NAME'));
@@ -36,7 +37,7 @@ class _MenuController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _MenuController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _MenuController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -571,7 +572,7 @@ class _MenuController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function getTempCreateId() {
+    protected function getTempCreateId() {
         $create = false;
 
         if (!isset($_SESSION['menu.tmpid'])) {
@@ -598,13 +599,13 @@ class _MenuController extends __AppController
         return $_SESSION['menu.tmpid'];
     }
 
-    private function clearTempCreateId() {
+    protected function clearTempCreateId() {
         if (isset($_SESSION['menu.tmpid'])) {
             unset($_SESSION['menu.tmpid']);
         }
     }
 
-    private function clearTempCreateItem() {
+    protected function clearTempCreateItem() {
         if (isset($_SESSION['menu.tmpid'])) {
             self::deleteItem($_SESSION['menu.tmpid']);
 
@@ -612,7 +613,7 @@ class _MenuController extends __AppController
         }
     }
 
-    private function deleteItem($id) {
+    protected function deleteItem($id) {
         TransactionHelper::begin();
 
         $this->delete('UUID', array($id));
@@ -621,7 +622,7 @@ class _MenuController extends __AppController
         TransactionHelper::end();
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -694,7 +695,7 @@ class _MenuController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'CODE', 'CLASS');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('menu'));
 
@@ -740,7 +741,7 @@ class _MenuController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -756,7 +757,7 @@ class _MenuController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -980,7 +981,7 @@ class _MenuController extends __AppController
         }
     }
 
-    private function performZipImport($filepath, $original) {
+    protected function performZipImport($filepath, $original) {
         $zip = new ZipArchive;
 
         $res = $zip->open($filepath);
@@ -1004,7 +1005,7 @@ class _MenuController extends __AppController
         closedir($dir);
     }
 
-    private function performImport($filepath, $original) {
+    protected function performImport($filepath, $original) {
 		$is_excel = preg_match('/(\.xls|\.xlsx)$/i', $original);
 
     	if ($is_excel) {
@@ -1513,7 +1514,7 @@ class _MenuController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1536,7 +1537,7 @@ class _MenuController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('menu', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('menu', 'view');
@@ -1605,7 +1606,7 @@ class _MenuController extends __AppController
 	    $this->display($smarty, $templatetype.'.menu.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.menu.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.menu.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('menu');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('menu', 'view');
@@ -1675,7 +1676,7 @@ class _MenuController extends __AppController
         PluginManager::do_action('menu_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.menu.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.menu.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('menu');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('menu', 'view');
@@ -1782,7 +1783,7 @@ class _MenuController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'CODE', 'CLASS');
     }
 
@@ -1894,7 +1895,7 @@ class _MenuController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1939,7 +1940,7 @@ class _MenuController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'MENU`.NAME, `'.TABLE_PREFIX.'MENU`.CODE, `'.TABLE_PREFIX.'MENU`.CLASS, `'.TABLE_PREFIX.'MENU`.ID, `'.TABLE_PREFIX.'MENU`.JSON, `'.TABLE_PREFIX.'MENU`.UUID, `'.TABLE_PREFIX.'MENU`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new MenuModel();
 
         $this->enforceObjectAclCheck('menu', $model);
@@ -1971,7 +1972,7 @@ class _MenuController extends __AppController
         }
     }
 
-    private function _import($templatecode = 'import.menu.tpl') {
+    protected function _import($templatecode = 'import.menu.tpl') {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : RequestHelper::get('preset');
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : RequestHelper::get('presetvalue');
 
@@ -1984,7 +1985,7 @@ class _MenuController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function _importxls($filepath, &$error) {
+    protected function _importxls($filepath, &$error) {
         require_once ('Spreadsheet_Excel_Reader.php');
 
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
@@ -2079,7 +2080,7 @@ class _MenuController extends __AppController
         return true;
 	}
 
-    private function _importcsv($filepath, &$error) {
+    protected function _importcsv($filepath, &$error) {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : '';
 
@@ -2163,11 +2164,11 @@ class _MenuController extends __AppController
         return true;
 	}
 
-    private function _ensure_encoding($content) {
+    protected function _ensure_encoding($content) {
         return mb_convert_encoding($content, 'UTF-8', mb_detect_encoding($content, "UTF-8, ISO-8859-1, ISO-8859-15", true));
     }
 
-    private function _label2refval($refcolumn, $reflabel) {
+    protected function _label2refval($refcolumn, $reflabel) {
         static $valuecache = array();
 
         if (is_numeric($reflabel)) {
@@ -2183,7 +2184,7 @@ class _MenuController extends __AppController
         return $value;
     }
 
-    private function _encodecsv($text) {
+    protected function _encodecsv($text) {
 		$tmp = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
 
 		if (stripos($tmp, '?')) {
@@ -2193,7 +2194,7 @@ class _MenuController extends __AppController
         return '"'.str_replace('"', '""', $tmp).'"';
     }
 
-    private function _refval2label($refcolumn, $refvalue) {
+    protected function _refval2label($refcolumn, $refvalue) {
         static $labelcache = array();
 
         if (isset($labelcache[$refcolumn][$refvalue])) {

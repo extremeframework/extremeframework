@@ -10,6 +10,7 @@ class _RecycleBinController extends __AppController
 {
     var $module = 'recyclebin';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _RecycleBinController extends __AppController
         PluginManager::do_action('recyclebin_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
            $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
@@ -32,7 +33,7 @@ class _RecycleBinController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -60,7 +61,7 @@ class _RecycleBinController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -72,7 +73,7 @@ class _RecycleBinController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -510,7 +511,7 @@ class _RecycleBinController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -602,7 +603,7 @@ class _RecycleBinController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'ITEM', 'MODULE', 'DATE_TIME', 'ID_USER');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('recyclebin'));
 
@@ -648,7 +649,7 @@ class _RecycleBinController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -664,7 +665,7 @@ class _RecycleBinController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -776,7 +777,7 @@ class _RecycleBinController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1109,7 +1110,7 @@ class _RecycleBinController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1132,7 +1133,7 @@ class _RecycleBinController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('recyclebin', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('recyclebin', 'view');
@@ -1201,7 +1202,7 @@ class _RecycleBinController extends __AppController
 	    $this->display($smarty, $templatetype.'.recyclebin.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.recyclebin.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.recyclebin.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('recyclebin');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('recyclebin', 'view');
@@ -1271,7 +1272,7 @@ class _RecycleBinController extends __AppController
         PluginManager::do_action('recyclebin_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.recyclebin.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.recyclebin.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('recyclebin');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('recyclebin', 'view');
@@ -1379,7 +1380,7 @@ class _RecycleBinController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('ITEM', 'MODULE', 'DATE_TIME', 'ID_USER');
     }
 
@@ -1491,7 +1492,7 @@ class _RecycleBinController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1595,7 +1596,7 @@ class _RecycleBinController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new RecycleBinModel();
 
         $this->enforceObjectAclCheck('recyclebin', $model);

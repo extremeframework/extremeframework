@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['ID_ADMIN_ORDER']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER']) && $aclviewablecolumns['ID_ADMIN_ORDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER']) || $aclviewablecolumns['ID_ADMIN_ORDER']))) }>
                 <td class="column column-id-admin-order reftext" >
                                             <{if (in_array('ID_ADMIN_ORDER', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_ADMIN_ORDER) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ADMIN_ORDER}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_ADMIN_ORDER}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$formdata.ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -50,11 +47,8 @@
             <{if !isset($excludedcolumns['ID_ADMIN_PRODUCT']) && ((isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) && $aclviewablecolumns['ID_ADMIN_PRODUCT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PRODUCT']) || $aclviewablecolumns['ID_ADMIN_PRODUCT']))) }>
                 <td class="column column-id-admin-product reftext" >
                                             <{if (in_array('ID_ADMIN_PRODUCT', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_ADMIN_PRODUCT) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ADMIN_PRODUCT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_ADMIN_PRODUCT}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$formdata.ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
@@ -79,11 +73,8 @@
             <{if !isset($excludedcolumns['QUANTITY']) && ((isset($aclviewablecolumns['QUANTITY']) && $aclviewablecolumns['QUANTITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['QUANTITY']) || $aclviewablecolumns['QUANTITY']))) }>
                 <td class="column column-quantity number" >
                                             <{if (in_array('QUANTITY', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.QUANTITY) }>
-                            <{assign var='tmp_value' value=$formdata.QUANTITY}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataQUANTITY}>
+
                                                     
                             <input class="input-quantity number-format" type="text" name="<{$prefix}>adminorderitem_formdata_QUANTITY" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
@@ -99,11 +90,8 @@
             <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
                 <td class="column column-price number" >
                                             <{if (in_array('PRICE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PRICE) }>
-                            <{assign var='tmp_value' value=$formdata.PRICE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPRICE}>
+
                                                     
                             <input class="input-price currency-format" type="text" name="<{$prefix}>adminorderitem_formdata_PRICE" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

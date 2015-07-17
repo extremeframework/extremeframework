@@ -71,6 +71,10 @@ class AccessRightModel extends DataObject_ACCESS_RIGHT {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

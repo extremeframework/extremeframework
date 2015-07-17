@@ -71,6 +71,10 @@ class WidgetTypeModel extends DataObject_WIDGET_TYPE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

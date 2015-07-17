@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-    <{$title = _t('L_IMPORT')}>
+    <{$title = _t('Import')}>
 <{include file="top.tpl"}>
 
 <h1 class="heading"><span class="h"><{$title}></span></h1>
@@ -34,7 +34,7 @@
 </div>
 
 <div class="blocker">
-    <span class="button-general large"><button type="submit" value="import" class="button medium"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png"><span class="button-face"><{_t('L_BTN_IMPORT')}></span></button></span>
+    <span class="button-general large"><button type="submit" value="import" class="button medium"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png"><span class="button-face"><{_t('Import')}></span></button></span>
 </div>
 
 </form>

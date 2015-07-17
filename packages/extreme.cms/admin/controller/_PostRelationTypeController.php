@@ -10,6 +10,7 @@ class _PostRelationTypeController extends __AppController
 {
     var $module = 'postrelationtype';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _PostRelationTypeController extends __AppController
         PluginManager::do_action('postrelationtype_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_POST_RELATION_TYPE_NAME'));
@@ -36,7 +37,7 @@ class _PostRelationTypeController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _PostRelationTypeController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _PostRelationTypeController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -527,7 +528,7 @@ class _PostRelationTypeController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -600,7 +601,7 @@ class _PostRelationTypeController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'CODE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('postrelationtype'));
 
@@ -646,7 +647,7 @@ class _PostRelationTypeController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -662,7 +663,7 @@ class _PostRelationTypeController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -889,7 +890,7 @@ class _PostRelationTypeController extends __AppController
         }
     }
 
-    private function performZipImport($filepath, $original) {
+    protected function performZipImport($filepath, $original) {
         $zip = new ZipArchive;
 
         $res = $zip->open($filepath);
@@ -913,7 +914,7 @@ class _PostRelationTypeController extends __AppController
         closedir($dir);
     }
 
-    private function performImport($filepath, $original) {
+    protected function performImport($filepath, $original) {
 		$is_excel = preg_match('/(\.xls|\.xlsx)$/i', $original);
 
     	if ($is_excel) {
@@ -1420,7 +1421,7 @@ class _PostRelationTypeController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1443,7 +1444,7 @@ class _PostRelationTypeController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('postrelationtype', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('postrelationtype', 'view');
@@ -1512,7 +1513,7 @@ class _PostRelationTypeController extends __AppController
 	    $this->display($smarty, $templatetype.'.postrelationtype.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.postrelationtype.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.postrelationtype.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('postrelationtype');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('postrelationtype', 'view');
@@ -1582,7 +1583,7 @@ class _PostRelationTypeController extends __AppController
         PluginManager::do_action('postrelationtype_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.postrelationtype.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.postrelationtype.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('postrelationtype');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('postrelationtype', 'view');
@@ -1689,7 +1690,7 @@ class _PostRelationTypeController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'CODE');
     }
 
@@ -1801,7 +1802,7 @@ class _PostRelationTypeController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1846,7 +1847,7 @@ class _PostRelationTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_RELATION_TYPE`.NAME, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.CODE, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.ID, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.JSON, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.UUID, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new PostRelationTypeModel();
 
         $this->enforceObjectAclCheck('postrelationtype', $model);
@@ -1877,7 +1878,7 @@ class _PostRelationTypeController extends __AppController
         }
     }
 
-    private function _import($templatecode = 'import.postrelationtype.tpl') {
+    protected function _import($templatecode = 'import.postrelationtype.tpl') {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : RequestHelper::get('preset');
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : RequestHelper::get('presetvalue');
 
@@ -1890,7 +1891,7 @@ class _PostRelationTypeController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function _importxls($filepath, &$error) {
+    protected function _importxls($filepath, &$error) {
         require_once ('Spreadsheet_Excel_Reader.php');
 
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
@@ -1985,7 +1986,7 @@ class _PostRelationTypeController extends __AppController
         return true;
 	}
 
-    private function _importcsv($filepath, &$error) {
+    protected function _importcsv($filepath, &$error) {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : '';
 
@@ -2069,11 +2070,11 @@ class _PostRelationTypeController extends __AppController
         return true;
 	}
 
-    private function _ensure_encoding($content) {
+    protected function _ensure_encoding($content) {
         return mb_convert_encoding($content, 'UTF-8', mb_detect_encoding($content, "UTF-8, ISO-8859-1, ISO-8859-15", true));
     }
 
-    private function _label2refval($refcolumn, $reflabel) {
+    protected function _label2refval($refcolumn, $reflabel) {
         static $valuecache = array();
 
         if (is_numeric($reflabel)) {
@@ -2089,7 +2090,7 @@ class _PostRelationTypeController extends __AppController
         return $value;
     }
 
-    private function _encodecsv($text) {
+    protected function _encodecsv($text) {
 		$tmp = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
 
 		if (stripos($tmp, '?')) {
@@ -2099,7 +2100,7 @@ class _PostRelationTypeController extends __AppController
         return '"'.str_replace('"', '""', $tmp).'"';
     }
 
-    private function _refval2label($refcolumn, $refvalue) {
+    protected function _refval2label($refcolumn, $refvalue) {
         static $labelcache = array();
 
         if (isset($labelcache[$refcolumn][$refvalue])) {

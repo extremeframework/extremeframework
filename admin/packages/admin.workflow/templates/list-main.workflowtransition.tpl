@@ -95,6 +95,15 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('ORDERING', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
+    	            <th class="column-ordering">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/ordering"><{_t('L_ORDERING')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		        <{foreach from=$customfields item=item}>
             <th class="column-<{$item->COLUMN}>">
 	            <{$item->NAME}>
@@ -126,10 +135,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowtransition-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="workflowtransition-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="workflowtransition-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save workflowtransition-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel workflowtransition-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save workflowtransition-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel workflowtransition-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="workflowtransition-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
@@ -389,6 +398,39 @@
             });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        var fixHelper = function(e, ui) {
+            ui.children().each(function() {
+                $(this).width($(this).width());
+            });
+            return ui;
+        };
+
+        <{if !$readonly}>
+            $("#workflowtransitionlist > tbody").sortable({
+                helper: fixHelper
+            }).enableSelection();
+
+            $("#workflowtransitionlist > tbody").sortable({
+                update: function(event, ui) {
+                    var order = $('#workflowtransitionlist > tbody').sortable('serialize', { expression: /(item)_(.+)/ });
+
+                    $.ajax({
+                        type: "post",
+                        url: "<{$smarty.const.APPLICATION_URL}>/workflowtransition/updateorder",
+                        data: order,
+                        success: function(msg){
+                            if (msg) {
+                                alert(msg);
+                            }
+                        }
+                    });
+                }
+            });
+        <{/if}>
+    });
+</script>
 
 <script type="text/javascript">
     $(document).ready(function(){

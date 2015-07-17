@@ -71,6 +71,10 @@ class ChangeLogModel extends DataObject_CHANGE_LOG {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->ACTION;
 	}

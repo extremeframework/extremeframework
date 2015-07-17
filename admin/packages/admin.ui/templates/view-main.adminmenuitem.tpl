@@ -297,18 +297,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_LEFT']) && $acleditablecolumns['ENABLE_LEFT']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_LEFT']) || $acleditablecolumns['ENABLE_LEFT'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_LEFT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_LEFT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_LEFT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -331,18 +331,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_TOP']) && $acleditablecolumns['ENABLE_TOP']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_TOP']) || $acleditablecolumns['ENABLE_TOP'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_TOP}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_TOP}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_TOP}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -365,18 +365,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_QUICK']) && $acleditablecolumns['ENABLE_QUICK']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_QUICK']) || $acleditablecolumns['ENABLE_QUICK'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_QUICK}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_QUICK}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_QUICK}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -399,18 +399,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_ALL']) && $acleditablecolumns['ENABLE_ALL']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_ALL']) || $acleditablecolumns['ENABLE_ALL'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_ALL}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_ALL}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_ALL}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -433,18 +433,18 @@
             		                		        <{if (isset($acleditablecolumns['ENABLE_SETTINGS']) && $acleditablecolumns['ENABLE_SETTINGS']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ENABLE_SETTINGS']) || $acleditablecolumns['ENABLE_SETTINGS'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_SETTINGS}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->ENABLE_SETTINGS}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->ENABLE_SETTINGS}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -467,18 +467,18 @@
             		                		        <{if (isset($acleditablecolumns['OPEN_IN_NEW_WINDOW']) && $acleditablecolumns['OPEN_IN_NEW_WINDOW']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['OPEN_IN_NEW_WINDOW']) || $acleditablecolumns['OPEN_IN_NEW_WINDOW'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->OPEN_IN_NEW_WINDOW}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -501,18 +501,18 @@
             		                		        <{if (isset($acleditablecolumns['IS_STARRED']) && $acleditablecolumns['IS_STARRED']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_STARRED']) || $acleditablecolumns['IS_STARRED'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_STARRED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{_t('No')}></span>
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_STARRED}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+    <{if $details->IS_STARRED}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -527,7 +527,7 @@
         <div class="layout-block layout-block-section">
             <div class="layout-section">
                 <div class="layout-section-header">
-                    <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                    <span><{_t('Additional information')}></span>
                     <div class="header-arrow"></div>
                     <div class="clearer"></div>
                 </div>
@@ -535,16 +535,14 @@
                     <table class="table table-bordered table-custom-layout equal-split">
                         <tbody>
                             <{foreach from=$customfields item=item}>
-                                <tr>
+                                <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
                             		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
                         		        <label class="attribute-name"><{_t($item->NAME)}></label>
                                     </td>
                                     <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                    	<div class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
-                                    		<div class="attribute-value">
-                                                <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                    		</div>
-                                    	</div>
+                                		<div class="attribute-value">
+                                            <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                                		</div>
                                     </td>
                         		</tr>
                         	<{/foreach}>
@@ -555,14 +553,28 @@
         </div>
     <{/if}>
 
-    <{foreach from=$additional_view_fields item=item}>
-    	<div class="attribute-line custom-field type-<{$item.type}>">
-    		<label class="attribute-name"><{$item.label}></label>
-    		<div class="attribute-value">
-                <{$item.value}>
-    		</div>
-    	</div>
-	<{/foreach}>
+    <div class="layout-block layout-block-section">
+        <div class="layout-section">
+            <div class="layout-section-content">
+                <table class="table table-bordered table-custom-layout equal-split">
+                    <tbody>
+                        <{foreach from=$additional_view_fields item=item}>
+                            <tr class="attribute-line">
+                        		<td class="form-field form-field-label">
+                    		        <label class="attribute-name"><{$item.label}></label>
+                                </td>
+                                <td class="form-field form-field-value">
+                            		<div class="attribute-value">
+                                        <{$item.value}>
+                            		</div>
+                                </td>
+                    		</tr>
+                    	<{/foreach}>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <{plugin key="adminmenuitem_view_bottom" args=$details}>
 

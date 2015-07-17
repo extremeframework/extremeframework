@@ -3,7 +3,7 @@
 </head>
 <body class="module module-<{$module}>" id="setup">
 
-<{$title = _t('L_WELCOME')}>
+<{$title = _t('Welcome')}>
 <{include file="top.tpl"}>
 
 <h1 class="heading"><span class="h"><{$title}></span></h1>

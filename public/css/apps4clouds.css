@@ -687,8 +687,6 @@ div.col h3 a {
     font-weight: normal;
     width: 200px;
 }
-.attribute-value {
-}
 .attribute-value li {
     margin-left: 15px;
 }
@@ -917,6 +915,14 @@ body[data-type="view"] .content-inner .message {
     margin-bottom: 10px;
 }
 
+body[data-type="edit"] .content-inner .message {
+    color: #000;
+    background-color: yellow;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 /* Reports */
 table.live-report th,table.live-report td {
 	border:1px solid #DCDCDC;
@@ -1066,7 +1072,7 @@ table.live-report th,table.live-report td {
 }
 
 body.module .main-content {
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     overflow: hidden;
 }
 
@@ -2006,7 +2012,7 @@ div#heading h1, .main-content h1.heading {
 }
 .mirror-name .attribute-value {
     font-size: 20px!important;
-    font-weight: normal!important;
+    font-weight: bold!important;
     margin-top: 15px;
     margin-bottom: 20px;
     padding: 5px;

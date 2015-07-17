@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminmenuitemquicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/search" method="get">
-            <input type="text" name="adminmenuitem_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="adminmenuitem_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminmenuitemquicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminmenuitem.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>"/><{_t('New')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -112,29 +112,29 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ADMIN_MENU_ITEM')), strtolower(_t('L_ADMIN_MENU_ITEM'))));
     <{/php}>
 
-    <div id="adminmenuitemcopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
+    <div id="adminmenuitemcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenuitemapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
+    <div id="adminmenuitemapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenuitemdeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
+    <div id="adminmenuitemdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ADMIN_MENU_ITEM', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -168,12 +168,12 @@ function adminmenuitem_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/delete/');
             	$('#adminmenuitemlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -188,12 +188,12 @@ function adminmenuitem_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/copy/');
             	$('#adminmenuitemlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -208,12 +208,12 @@ function adminmenuitem_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/approve/');
             	$('#adminmenuitemlistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -341,7 +341,7 @@ function adminmenuitem_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="adminmenuitem-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="adminmenuitem-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

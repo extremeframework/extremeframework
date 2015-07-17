@@ -71,6 +71,10 @@ class PageSectionModel extends DataObject_PAGE_SECTION {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

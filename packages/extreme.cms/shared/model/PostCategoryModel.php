@@ -71,6 +71,10 @@ class PostCategoryModel extends DataObject_POST_CATEGORY {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

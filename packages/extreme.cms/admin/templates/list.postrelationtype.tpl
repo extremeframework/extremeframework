@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="postrelationtypequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/postrelationtype/search" method="get">
-            <input type="text" name="postrelationtype_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="postrelationtype_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#postrelationtypequicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.postrelationtype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_POST_RELATION_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>"/><{_t('New')}> <{_t('L_POST_RELATION_TYPE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -122,29 +122,29 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_POST_RELATION_TYPE')), strtolower(_t('L_POST_RELATION_TYPE'))));
     <{/php}>
 
-    <div id="postrelationtypecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
+    <div id="postrelationtypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('L_COPY_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('Copy also')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postrelationtypeapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
+    <div id="postrelationtypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('Approve also')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postrelationtypedeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
+    <div id="postrelationtypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_POST_RELATION_TYPE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('L_DELETE_ALSO')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('Delete also')}> <{_t('L_POST_RELATION')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -178,12 +178,12 @@ function postrelationtype_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/delete/');
             	$('#postrelationtypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -198,12 +198,12 @@ function postrelationtype_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/copy/');
             	$('#postrelationtypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -218,12 +218,12 @@ function postrelationtype_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/approve/');
             	$('#postrelationtypelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -351,7 +351,7 @@ function postrelationtype_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="postrelationtype-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="postrelationtype-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

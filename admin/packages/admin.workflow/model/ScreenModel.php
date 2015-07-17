@@ -71,6 +71,10 @@ class ScreenModel extends DataObject_SCREEN {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

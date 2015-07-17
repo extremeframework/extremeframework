@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module text" >
                                             <{if (in_array('MODULE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.MODULE) }>
-                            <{assign var='tmp_value' value=$formdata.MODULE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataMODULE}>
+
                         
                             <input class="input-module" type="text" name="<{$prefix}>adminsequence_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['SEQUENCE_FORMAT']) && ((isset($aclviewablecolumns['SEQUENCE_FORMAT']) && $aclviewablecolumns['SEQUENCE_FORMAT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_FORMAT']) || $aclviewablecolumns['SEQUENCE_FORMAT']))) }>
                 <td class="column column-sequence-format text" >
                                             <{if (in_array('SEQUENCE_FORMAT', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.SEQUENCE_FORMAT) }>
-                            <{assign var='tmp_value' value=$formdata.SEQUENCE_FORMAT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataSEQUENCE_FORMAT}>
+
                         
                             <input class="input-sequence-format" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_FORMAT" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -57,11 +51,8 @@
             <{if !isset($excludedcolumns['CURRENT_VALUE']) && ((isset($aclviewablecolumns['CURRENT_VALUE']) && $aclviewablecolumns['CURRENT_VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENT_VALUE']) || $aclviewablecolumns['CURRENT_VALUE']))) }>
                 <td class="column column-current-value text" >
                                             <{if (in_array('CURRENT_VALUE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CURRENT_VALUE) }>
-                            <{assign var='tmp_value' value=$formdata.CURRENT_VALUE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCURRENT_VALUE}>
+
                         
                             <input class="input-current-value" type="text" name="<{$prefix}>adminsequence_formdata_CURRENT_VALUE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
@@ -75,11 +66,8 @@
             <{if !isset($excludedcolumns['SEQUENCE_STEP']) && ((isset($aclviewablecolumns['SEQUENCE_STEP']) && $aclviewablecolumns['SEQUENCE_STEP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SEQUENCE_STEP']) || $aclviewablecolumns['SEQUENCE_STEP']))) }>
                 <td class="column column-sequence-step number" >
                                             <{if (in_array('SEQUENCE_STEP', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.SEQUENCE_STEP) }>
-                            <{assign var='tmp_value' value=$formdata.SEQUENCE_STEP}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataSEQUENCE_STEP}>
+
                                                     
                             <input class="input-sequence-step number-format" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_STEP" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>

@@ -71,6 +71,10 @@ class AdminFilterModel extends DataObject_ADMIN_FILTER {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

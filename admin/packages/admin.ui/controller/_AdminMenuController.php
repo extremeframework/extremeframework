@@ -10,6 +10,7 @@ class _AdminMenuController extends __AppController
 {
     var $module = 'adminmenu';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminMenuController extends __AppController
         PluginManager::do_action('adminmenu_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ADMIN_MENU_NAME'));
@@ -36,7 +37,7 @@ class _AdminMenuController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -64,7 +65,7 @@ class _AdminMenuController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -76,7 +77,7 @@ class _AdminMenuController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -597,7 +598,7 @@ class _AdminMenuController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function getTempCreateId() {
+    protected function getTempCreateId() {
         $create = false;
 
         if (!isset($_SESSION['adminmenu.tmpid'])) {
@@ -624,13 +625,13 @@ class _AdminMenuController extends __AppController
         return $_SESSION['adminmenu.tmpid'];
     }
 
-    private function clearTempCreateId() {
+    protected function clearTempCreateId() {
         if (isset($_SESSION['adminmenu.tmpid'])) {
             unset($_SESSION['adminmenu.tmpid']);
         }
     }
 
-    private function clearTempCreateItem() {
+    protected function clearTempCreateItem() {
         if (isset($_SESSION['adminmenu.tmpid'])) {
             self::deleteItem($_SESSION['adminmenu.tmpid']);
 
@@ -638,7 +639,7 @@ class _AdminMenuController extends __AppController
         }
     }
 
-    private function deleteItem($id) {
+    protected function deleteItem($id) {
         TransactionHelper::begin();
 
         $this->delete('UUID', array($id));
@@ -648,7 +649,7 @@ class _AdminMenuController extends __AppController
         TransactionHelper::end();
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -723,7 +724,7 @@ class _AdminMenuController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'NAME', 'ORDERING', 'IS_ENABLED');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminmenu'));
 
@@ -769,7 +770,7 @@ class _AdminMenuController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -785,7 +786,7 @@ class _AdminMenuController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null) {
+    protected function saveform($prefix = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -1215,7 +1216,7 @@ class _AdminMenuController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1238,7 +1239,7 @@ class _AdminMenuController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminmenu', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenu', 'view');
@@ -1307,7 +1308,7 @@ class _AdminMenuController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminmenu.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminmenu.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminmenu.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminmenu');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenu', 'view');
@@ -1377,7 +1378,7 @@ class _AdminMenuController extends __AppController
         PluginManager::do_action('adminmenu_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminmenu.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminmenu.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminmenu');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminmenu', 'view');
@@ -1484,7 +1485,7 @@ class _AdminMenuController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('NAME', 'IS_ENABLED');
     }
 
@@ -1596,7 +1597,7 @@ class _AdminMenuController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -1641,7 +1642,7 @@ class _AdminMenuController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MENU`.NAME, `'.TABLE_PREFIX.'ADMIN_MENU`.ORDERING, `'.TABLE_PREFIX.'ADMIN_MENU`.IS_ENABLED, `'.TABLE_PREFIX.'ADMIN_MENU`.ID, `'.TABLE_PREFIX.'ADMIN_MENU`.JSON, `'.TABLE_PREFIX.'ADMIN_MENU`.UUID, `'.TABLE_PREFIX.'ADMIN_MENU`.WFID');
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminMenuModel();
 
         $this->enforceObjectAclCheck('adminmenu', $model);

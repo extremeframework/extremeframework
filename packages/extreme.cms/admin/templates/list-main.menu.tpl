@@ -72,10 +72,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="menu-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="menu-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="menu-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save menu-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel menu-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save menu-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel menu-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="menu-rowedit-message rowedit-message" style="display:none"></span>
                     </td>

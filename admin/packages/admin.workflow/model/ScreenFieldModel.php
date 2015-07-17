@@ -71,6 +71,10 @@ class ScreenFieldModel extends DataObject_SCREEN_FIELD {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

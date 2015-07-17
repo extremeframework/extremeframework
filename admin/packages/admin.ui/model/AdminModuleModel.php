@@ -71,6 +71,10 @@ class AdminModuleModel extends DataObject_ADMIN_MODULE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

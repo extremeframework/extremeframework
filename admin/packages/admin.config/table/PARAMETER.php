@@ -14,7 +14,7 @@ class DataObject_PARAMETER extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
-    public $CODE;                            // varchar(11)  unique_key
+    public $CODE;                            // varchar(24)  unique_key
     public $ID_PARAMETER_GROUP;              // int(4)  
     public $ID_PARAMETER_TYPE;               // int(4)  
     public $VALUE;                           // varchar(255)  

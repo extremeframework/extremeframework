@@ -71,6 +71,10 @@ class PageLinkTypeModel extends DataObject_PAGE_LINK_TYPE {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

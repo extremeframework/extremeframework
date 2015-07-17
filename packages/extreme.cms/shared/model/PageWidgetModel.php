@@ -71,6 +71,10 @@ class PageWidgetModel extends DataObject_PAGE_WIDGET {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->TITLE;
 	}

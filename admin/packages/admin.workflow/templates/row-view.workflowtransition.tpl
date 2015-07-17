@@ -121,6 +121,16 @@
     				        		</td>
     	    <{/if}>
         <{/if}>
+	        <{if (in_array('ORDERING', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
+                <td class="column column-ordering number " >
+                                        	<span>
+            <span class="number number-format"><{if $row->ORDERING != 0}><{$row->ORDERING}><{/if}></span>
+    
+    </span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
 	    <{foreach from=$customfields item=item}>
         <td class="column column-<{$item->COLUMN}>">
             <{CustomFieldHelper::getCustomFieldValue($row, $item->COLUMN)}>
@@ -129,7 +139,7 @@
 	<{plugin key="workflowtransition_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.workflowtransition.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

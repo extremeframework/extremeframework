@@ -41,7 +41,7 @@
 	        <{if (in_array('IS_DEFAULT', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
                 <td class="column column-is-default yesno " data-value="<{$row->IS_DEFAULT}>" data-column="IS_DEFAULT" data-module="workflowstage">
-                                        	<span>	<{if $row->IS_DEFAULT}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -49,7 +49,7 @@
 	        <{if (in_array('IS_BINDING_OBJECT_EDITABLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_EDITABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']))) }>
                 <td class="column column-is-binding-object-editable yesno " data-value="<{$row->IS_BINDING_OBJECT_EDITABLE}>" data-column="IS_BINDING_OBJECT_EDITABLE" data-module="workflowstage">
-                                        	<span>	<{if $row->IS_BINDING_OBJECT_EDITABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_BINDING_OBJECT_EDITABLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -57,7 +57,7 @@
 	        <{if (in_array('IS_BINDING_OBJECT_DELETABLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_DELETABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']))) }>
                 <td class="column column-is-binding-object-deletable yesno " data-value="<{$row->IS_BINDING_OBJECT_DELETABLE}>" data-column="IS_BINDING_OBJECT_DELETABLE" data-module="workflowstage">
-                                        	<span>	<{if $row->IS_BINDING_OBJECT_DELETABLE}><{_t('L_YES')}><{else}><{_t('L_NO')}><{/if}>
+                                        	<span>	<{if $row->IS_BINDING_OBJECT_DELETABLE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
 </span>
     				        		</td>
     	    <{/if}>
@@ -70,7 +70,7 @@
 	<{plugin key="workflowstage_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.workflowstage.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

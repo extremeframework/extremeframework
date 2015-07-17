@@ -78,6 +78,36 @@
     				        		</td>
     	    <{/if}>
         <{/if}>
+	        <{if (in_array('CUSTOM_TOP_ID_MENU', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CUSTOM_TOP_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) && $aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_TOP_ID_MENU']) || $aclviewablecolumns['CUSTOM_TOP_ID_MENU']))) }>
+                <td class="column column-custom-top-id-menu reftext " >
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_CUSTOM_TOP_ID_MENU}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_CUSTOM_TOP_ID_MENU}>"><{$row->reftext_CUSTOM_TOP_ID_MENU|escape}></a>
+        <{else}>
+            <{$row->reftext_CUSTOM_TOP_ID_MENU|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->CUSTOM_TOP_ID_MENU}><{$row->CUSTOM_TOP_ID_MENU|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
+	        <{if (in_array('CUSTOM_SIDE_ID_MENU', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CUSTOM_SIDE_ID_MENU']) && ((isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) && $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOM_SIDE_ID_MENU']) || $aclviewablecolumns['CUSTOM_SIDE_ID_MENU']))) }>
+                <td class="column column-custom-side-id-menu reftext " >
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_CUSTOM_SIDE_ID_MENU}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/view/<{$row->refuuid_CUSTOM_SIDE_ID_MENU}>"><{$row->reftext_CUSTOM_SIDE_ID_MENU|escape}></a>
+        <{else}>
+            <{$row->reftext_CUSTOM_SIDE_ID_MENU|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->CUSTOM_SIDE_ID_MENU}><{$row->CUSTOM_SIDE_ID_MENU|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
 	        <{if (in_array('VIEW_MORE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
                 <td class="column column-view-more-title text " >
@@ -129,7 +159,7 @@
 	<{plugin key="page_list_columns_data" args=$row}>
 	<td class="actions">
 	    <{if isset($smarty.session.acl.page.edit) && WorkflowHelper::isEditable($row->WFID) && !$readonly}>
-            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('L_EDIT', true)}>"></i></a>
+            <a class="edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/edit/<{$row->UUID}>"><i class="fa fa-pencil-square-o" title="<{_t('Edit', true)}>"></i></a>
         <{/if}>
 
         

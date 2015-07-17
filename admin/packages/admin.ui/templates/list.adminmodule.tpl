@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="adminmodulequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/adminmodule/search" method="get">
-            <input type="text" name="adminmodule_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="adminmodule_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#adminmodulequicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminmodule.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_ADMIN_MODULE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>"/><{_t('New')}> <{_t('L_ADMIN_MODULE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -112,155 +112,155 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ADMIN_MODULE')), strtolower(_t('L_ADMIN_MODULE'))));
     <{/php}>
 
-    <div id="adminmodulecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
+    <div id="adminmodulecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('L_COPY_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfilter" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfilter" /> <{_t('Copy also')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutfield" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutfield" /> <{_t('Copy also')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutsection" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminlayoutsection" /> <{_t('Copy also')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminsequence" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminsequence" /> <{_t('Copy also')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminview" /> <{_t('L_COPY_ALSO')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminview" /> <{_t('Copy also')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{_t('L_COPY_ALSO')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{_t('Copy also')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{_t('L_COPY_ALSO')}> <{_t('L_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{_t('Copy also')}> <{_t('L_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{_t('L_COPY_ALSO')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{_t('Copy also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('L_COPY_ALSO')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('Copy also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{_t('L_COPY_ALSO')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{_t('Copy also')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Template')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="template" /> <{_t('L_COPY_ALSO')}> <{_t('L_TEMPLATE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="template" /> <{_t('Copy also')}> <{_t('L_TEMPLATE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('L_COPY_ALSO')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('L_COPY_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmoduleapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
+    <div id="adminmoduleapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfilter" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfilter" /> <{_t('Approve also')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutfield" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutfield" /> <{_t('Approve also')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutsection" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminlayoutsection" /> <{_t('Approve also')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminsequence" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminsequence" /> <{_t('Approve also')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminview" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminview" /> <{_t('Approve also')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{_t('Approve also')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{_t('Approve also')}> <{_t('L_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{_t('Approve also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('Approve also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{_t('Approve also')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Template')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="template" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_TEMPLATE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="template" /> <{_t('Approve also')}> <{_t('L_TEMPLATE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmoduledeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
+    <div id="adminmoduledeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ADMIN_MODULE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminFilter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfilter" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfilter" /> <{_t('Delete also')}> <{_t('L_ADMIN_FILTER')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutfield" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutfield" /> <{_t('Delete also')}> <{_t('L_ADMIN_LAYOUT_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminLayoutSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutsection" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminlayoutsection" /> <{_t('Delete also')}> <{_t('L_ADMIN_LAYOUT_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminSequence')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminsequence" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminsequence" /> <{_t('Delete also')}> <{_t('L_ADMIN_SEQUENCE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('AdminView')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminview" /> <{_t('L_DELETE_ALSO')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminview" /> <{_t('Delete also')}> <{_t('L_ADMIN_VIEW')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{_t('L_DELETE_ALSO')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{_t('Delete also')}> <{_t('L_CHANGE_LOG')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{_t('L_DELETE_ALSO')}> <{_t('L_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{_t('Delete also')}> <{_t('L_FIELD')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{_t('L_DELETE_ALSO')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{_t('Delete also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('L_DELETE_ALSO')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('Delete also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{_t('L_DELETE_ALSO')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{_t('Delete also')}> <{_t('L_RECYCLE_BIN')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Template')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="template" /> <{_t('L_DELETE_ALSO')}> <{_t('L_TEMPLATE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="template" /> <{_t('Delete also')}> <{_t('L_TEMPLATE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('L_DELETE_ALSO')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('L_DELETE_ALSO')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -294,12 +294,12 @@ function adminmodule_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#adminmodulelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmodule/delete/');
             	$('#adminmodulelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -314,12 +314,12 @@ function adminmodule_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#adminmodulelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmodule/copy/');
             	$('#adminmodulelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -334,12 +334,12 @@ function adminmodule_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#adminmodulelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmodule/approve/');
             	$('#adminmodulelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -467,7 +467,7 @@ function adminmodule_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="adminmodule-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="adminmodule-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

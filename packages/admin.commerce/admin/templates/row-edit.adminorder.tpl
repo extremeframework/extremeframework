@@ -21,11 +21,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_ID_COUNTRY']) && ((isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) && $aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || $aclviewablecolumns['CUSTOMER_ID_COUNTRY']))) }>
                 <td class="column column-customer-id-country key" >
                                             <{if (in_array('CUSTOMER_ID_COUNTRY', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_ID_COUNTRY) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_ID_COUNTRY}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_ID_COUNTRY}>
+
                         
                             <input class="input-customer-id-country" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_ID_COUNTRY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -39,11 +36,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_FIRST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) && $aclviewablecolumns['CUSTOMER_FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) || $aclviewablecolumns['CUSTOMER_FIRST_NAME']))) }>
                 <td class="column column-customer-first-name text" >
                                             <{if (in_array('CUSTOMER_FIRST_NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_FIRST_NAME) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_FIRST_NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_FIRST_NAME}>
+
                         
                             <input class="input-customer-first-name" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_FIRST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -57,11 +51,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_LAST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) && $aclviewablecolumns['CUSTOMER_LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) || $aclviewablecolumns['CUSTOMER_LAST_NAME']))) }>
                 <td class="column column-customer-last-name text" >
                                             <{if (in_array('CUSTOMER_LAST_NAME', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_LAST_NAME) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_LAST_NAME}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_LAST_NAME}>
+
                         
                             <input class="input-customer-last-name" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_LAST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
@@ -75,11 +66,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_CITY']) && ((isset($aclviewablecolumns['CUSTOMER_CITY']) && $aclviewablecolumns['CUSTOMER_CITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_CITY']) || $aclviewablecolumns['CUSTOMER_CITY']))) }>
                 <td class="column column-customer-city text" >
                                             <{if (in_array('CUSTOMER_CITY', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_CITY) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_CITY}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_CITY}>
+
                         
                             <input class="input-customer-city" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_CITY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -93,11 +81,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_STATE']) && ((isset($aclviewablecolumns['CUSTOMER_STATE']) && $aclviewablecolumns['CUSTOMER_STATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_STATE']) || $aclviewablecolumns['CUSTOMER_STATE']))) }>
                 <td class="column column-customer-state text" >
                                             <{if (in_array('CUSTOMER_STATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_STATE) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_STATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_STATE}>
+
                         
                             <input class="input-customer-state" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_STATE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -111,11 +96,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_ZIP_CODE']) && ((isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) && $aclviewablecolumns['CUSTOMER_ZIP_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) || $aclviewablecolumns['CUSTOMER_ZIP_CODE']))) }>
                 <td class="column column-customer-zip-code text" >
                                             <{if (in_array('CUSTOMER_ZIP_CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_ZIP_CODE) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_ZIP_CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_ZIP_CODE}>
+
                         
                             <input class="input-customer-zip-code" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_ZIP_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -129,11 +111,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_EMAIL']) && ((isset($aclviewablecolumns['CUSTOMER_EMAIL']) && $aclviewablecolumns['CUSTOMER_EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_EMAIL']) || $aclviewablecolumns['CUSTOMER_EMAIL']))) }>
                 <td class="column column-customer-email email" >
                                             <{if (in_array('CUSTOMER_EMAIL', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_EMAIL) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_EMAIL}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_EMAIL}>
+
                         
                             <input class="input-customer-email" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_EMAIL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="150"<{/if}> />
                                                 <{else}>
@@ -147,11 +126,8 @@
             <{if !isset($excludedcolumns['CUSTOMER_PHONE']) && ((isset($aclviewablecolumns['CUSTOMER_PHONE']) && $aclviewablecolumns['CUSTOMER_PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_PHONE']) || $aclviewablecolumns['CUSTOMER_PHONE']))) }>
                 <td class="column column-customer-phone phone" >
                                             <{if (in_array('CUSTOMER_PHONE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CUSTOMER_PHONE) }>
-                            <{assign var='tmp_value' value=$formdata.CUSTOMER_PHONE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCUSTOMER_PHONE}>
+
                         
                             <input class="input-customer-phone" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_PHONE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -165,11 +141,8 @@
             <{if !isset($excludedcolumns['TOTAL_VALUE']) && ((isset($aclviewablecolumns['TOTAL_VALUE']) && $aclviewablecolumns['TOTAL_VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TOTAL_VALUE']) || $aclviewablecolumns['TOTAL_VALUE']))) }>
                 <td class="column column-total-value number" >
                                             <{if (in_array('TOTAL_VALUE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.TOTAL_VALUE) }>
-                            <{assign var='tmp_value' value=$formdata.TOTAL_VALUE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataTOTAL_VALUE}>
+
                                                     
                             <input class="input-total-value currency-format" type="text" name="<{$prefix}>adminorder_formdata_TOTAL_VALUE" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
@@ -186,11 +159,8 @@
             <{if !isset($excludedcolumns['COUPON_CODE']) && ((isset($aclviewablecolumns['COUPON_CODE']) && $aclviewablecolumns['COUPON_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COUPON_CODE']) || $aclviewablecolumns['COUPON_CODE']))) }>
                 <td class="column column-coupon-code text" >
                                             <{if (in_array('COUPON_CODE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.COUPON_CODE) }>
-                            <{assign var='tmp_value' value=$formdata.COUPON_CODE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCOUPON_CODE}>
+
                         
                             <input class="input-coupon-code" type="text" name="<{$prefix}>adminorder_formdata_COUPON_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -204,11 +174,8 @@
             <{if !isset($excludedcolumns['COUPON_DISCOUNT']) && ((isset($aclviewablecolumns['COUPON_DISCOUNT']) && $aclviewablecolumns['COUPON_DISCOUNT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COUPON_DISCOUNT']) || $aclviewablecolumns['COUPON_DISCOUNT']))) }>
                 <td class="column column-coupon-discount number" >
                                             <{if (in_array('COUPON_DISCOUNT', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.COUPON_DISCOUNT) }>
-                            <{assign var='tmp_value' value=$formdata.COUPON_DISCOUNT}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCOUPON_DISCOUNT}>
+
                                                     
                             <input class="input-coupon-discount number-format" type="text" name="<{$prefix}>adminorder_formdata_COUPON_DISCOUNT" value="<{if $tmp_value != 0}><{$tmp_value}><{/if}>" size="16" />
                                                 <{else}>
@@ -224,11 +191,8 @@
             <{if !isset($excludedcolumns['ID_PAYMENT_TYPE']) && ((isset($aclviewablecolumns['ID_PAYMENT_TYPE']) && $aclviewablecolumns['ID_PAYMENT_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAYMENT_TYPE']) || $aclviewablecolumns['ID_PAYMENT_TYPE']))) }>
                 <td class="column column-id-payment-type reftext" >
                                             <{if (in_array('ID_PAYMENT_TYPE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_PAYMENT_TYPE) }>
-                            <{assign var='tmp_value' value=$formdata.ID_PAYMENT_TYPE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_PAYMENT_TYPE}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$formdata.ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
@@ -253,11 +217,8 @@
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
                 <td class="column column-creation-date datetime" >
                                             <{if (in_array('CREATION_DATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.CREATION_DATE) }>
-                            <{assign var='tmp_value' value=$formdata.CREATION_DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataCREATION_DATE}>
+
                                                     <input class="input-creation-date field-date" type="text" id="<{$prefix}>adminorder_formdata_CREATION_DATE" name="<{$prefix}>adminorder_formdata_CREATION_DATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -271,11 +232,8 @@
             <{if !isset($excludedcolumns['PAYMENT_DATE']) && ((isset($aclviewablecolumns['PAYMENT_DATE']) && $aclviewablecolumns['PAYMENT_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PAYMENT_DATE']) || $aclviewablecolumns['PAYMENT_DATE']))) }>
                 <td class="column column-payment-date datetime" >
                                             <{if (in_array('PAYMENT_DATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PAYMENT_DATE) }>
-                            <{assign var='tmp_value' value=$formdata.PAYMENT_DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPAYMENT_DATE}>
+
                                                     <input class="input-payment-date field-date" type="text" id="<{$prefix}>adminorder_formdata_PAYMENT_DATE" name="<{$prefix}>adminorder_formdata_PAYMENT_DATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -289,11 +247,8 @@
             <{if !isset($excludedcolumns['PAYMENT_REF']) && ((isset($aclviewablecolumns['PAYMENT_REF']) && $aclviewablecolumns['PAYMENT_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PAYMENT_REF']) || $aclviewablecolumns['PAYMENT_REF']))) }>
                 <td class="column column-payment-ref text" >
                                             <{if (in_array('PAYMENT_REF', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PAYMENT_REF) }>
-                            <{assign var='tmp_value' value=$formdata.PAYMENT_REF}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPAYMENT_REF}>
+
                         
                             <input class="input-payment-ref" type="text" name="<{$prefix}>adminorder_formdata_PAYMENT_REF" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -307,11 +262,8 @@
             <{if !isset($excludedcolumns['REFUND_DATE']) && ((isset($aclviewablecolumns['REFUND_DATE']) && $aclviewablecolumns['REFUND_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['REFUND_DATE']) || $aclviewablecolumns['REFUND_DATE']))) }>
                 <td class="column column-refund-date datetime" >
                                             <{if (in_array('REFUND_DATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.REFUND_DATE) }>
-                            <{assign var='tmp_value' value=$formdata.REFUND_DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataREFUND_DATE}>
+
                                                     <input class="input-refund-date field-date" type="text" id="<{$prefix}>adminorder_formdata_REFUND_DATE" name="<{$prefix}>adminorder_formdata_REFUND_DATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -325,11 +277,8 @@
             <{if !isset($excludedcolumns['REFUND_REF']) && ((isset($aclviewablecolumns['REFUND_REF']) && $aclviewablecolumns['REFUND_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['REFUND_REF']) || $aclviewablecolumns['REFUND_REF']))) }>
                 <td class="column column-refund-ref text" >
                                             <{if (in_array('REFUND_REF', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.REFUND_REF) }>
-                            <{assign var='tmp_value' value=$formdata.REFUND_REF}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataREFUND_REF}>
+
                         
                             <input class="input-refund-ref" type="text" name="<{$prefix}>adminorder_formdata_REFUND_REF" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
@@ -343,11 +292,8 @@
             <{if !isset($excludedcolumns['PROCESSED_DATE']) && ((isset($aclviewablecolumns['PROCESSED_DATE']) && $aclviewablecolumns['PROCESSED_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PROCESSED_DATE']) || $aclviewablecolumns['PROCESSED_DATE']))) }>
                 <td class="column column-processed-date datetime" >
                                             <{if (in_array('PROCESSED_DATE', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.PROCESSED_DATE) }>
-                            <{assign var='tmp_value' value=$formdata.PROCESSED_DATE}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataPROCESSED_DATE}>
+
                                                     <input class="input-processed-date field-date" type="text" id="<{$prefix}>adminorder_formdata_PROCESSED_DATE" name="<{$prefix}>adminorder_formdata_PROCESSED_DATE" value="<{$tmp_value|date_format:$smarty.const.SMARTY_DATE_FORMAT}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
                             <span>
@@ -361,11 +307,8 @@
             <{if !isset($excludedcolumns['ID_ADMIN_ORDER_STATUS']) && ((isset($aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) && $aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_ORDER_STATUS']) || $aclviewablecolumns['ID_ADMIN_ORDER_STATUS']))) }>
                 <td class="column column-id-admin-order-status reftext" >
                                             <{if (in_array('ID_ADMIN_ORDER_STATUS', $roweditablecolumns)) }>
-                    	                            <{if isset($formdata.ID_ADMIN_ORDER_STATUS) }>
-                            <{assign var='tmp_value' value=$formdata.ID_ADMIN_ORDER_STATUS}>
-                        <{else}>
-                            <{assign var='tmp_value' value=''}>
-                        <{/if}>
+                    	                            <{$tmp_value = $formdataID_ADMIN_ORDER_STATUS}>
+
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$formdata.ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 

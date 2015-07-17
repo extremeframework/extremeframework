@@ -4,7 +4,7 @@
 
     <body class="module module-<{$module}>" id="<{$module}>">
 
-            <{$tmp1 = _t('L_VIEW')}>
+            <{$tmp1 = _t('View')}>
         <{$tmp2 = strtolower(_t('L_PAGE_SECTION'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     
@@ -16,10 +16,10 @@
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <{if $previd}>
-                <a style="text-decoration: none" class="button-view-prev scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$previd}>"><{_t('L_PREV')}></a>&nbsp;
+                <a style="text-decoration: none" class="button-view-prev scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$previd}>"><{_t('Prev')}></a>&nbsp;
             <{/if}>
             <{if $nextid}>
-                <a style="text-decoration: none" class="button-view-next scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$nextid}>"><{_t('L_NEXT')}></a>
+                <a style="text-decoration: none" class="button-view-next scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$nextid}>"><{_t('Next')}></a>
             <{/if}>
             &nbsp;&nbsp;<a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$details->UUID}>"><i class="fa fa-refresh"></i></a>
 
@@ -49,7 +49,7 @@
     	<{if $details->UUID}>
     		    			<{if isset($smarty.session.acl.pagesection.edit) && WorkflowHelper::isEditable($details->WFID)}>
         		    <div class="button-general">
-        		        <a class="button-edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('L_EDIT', true)}>"><i class="fa fa-pencil"></i></a>
+        		        <a class="button-edit scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/edit/<{$details->UUID}><{if isset($preset)}>/preset/<{$preset}><{/if}><{if isset($presetvalue)}>/presetvalue/<{$presetvalue}><{/if}>" title="<{_t('Edit', true)}>"><i class="fa fa-pencil"></i></a>
         		    </div>
     		    <{/if}>
     		    	    <{foreach from=$additional_view_buttons item=button}>
@@ -82,7 +82,7 @@
         	    </div>
             <{/if}>
             <div class="button-general">
-                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/close/?return=<{ContextStack::getRecentContext()}>"><span class="button-face"><{_t('L_CLOSE')}></span></a>
+                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/close/?return=<{ContextStack::getRecentContext()}>"><span class="button-face"><{_t('Close')}></span></a>
             </div>
     	        <div class="clearer"></div>
     </div>
@@ -102,7 +102,7 @@
 <div class="section">
     
     <div>
-        <{if $details->WFID}><div class="corner-ribbon top-right sticky blue <{$details->WFID}>"><{$details->WFID}></div><{/if}>
+        <{if $details->WFID}><div class="corner-ribbon top-right sticky blue wf-<{$details->WFID}>"><{_t($details->WFID)}></div><{/if}>
         <div class="mirror-title hidden-print" style="clear:none;display:none;"></div>
         <div style="clear:both"></div>
         <{include file="view-main.pagesection.tpl"}>

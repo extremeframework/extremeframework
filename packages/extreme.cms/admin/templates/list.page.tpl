@@ -8,9 +8,9 @@
 <!-- Quick search -->
     <div class="quicksearch hidden-print">
         <form id="pagequicksearch" class="form-quicksearch scope-list" action="<{$smarty.const.APPLICATION_URL}>/page/search" method="get">
-            <input type="text" name="page_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('L_SEARCH', true)}>" />
+            <input type="text" name="page_searchdata___QUICKSEARCH__" value="<{if isset($searchdata.__QUICKSEARCH__)}><{$searchdata.__QUICKSEARCH__}><{/if}>" size="25" placeholder="<{_t('Search', true)}>" />
 	        <a class="button-quick-search" onclick="$('#pagequicksearch').submit(); return false;">
-	            <span><{_t('L_SEARCH')}></span>
+	            <span><{_t('Search')}></span>
             </a>
         </form>
     </div>
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.page.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('L_NEW', true)}> <{_t('L_PAGE', true)|strtolower}>"/><{_t('L_NEW')}> <{_t('L_PAGE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_PAGE', true)|strtolower}>"/><{_t('New')}> <{_t('L_PAGE')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -103,7 +103,7 @@
                                 <span class="custom-filter-footer page-custom-filter-footer hide">
                                     <hr>
                                     <ul>
-                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/page"><i class="fa fa-plus-circle"></i> <{_t('L_CREATE_NEW_FILTER')}></a></li>
+                                    	<li><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/preset/MODULE/presetvalue/page"><i class="fa fa-plus-circle"></i> <{_t('Create new filter')}></a></li>
                                     </ul>
                                 </span>
                                 <span class="custom-filter-icons page-custom-filter-icons pull-right" style="display:none">
@@ -144,65 +144,65 @@
     	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_PAGE')), strtolower(_t('L_PAGE'))));
     <{/php}>
 
-    <div id="pagecopyrelations" style="display:none" title="<{_t('L_COPY', true)}> <{_t('L_PAGE', true)|strtolower}>">
+    <div id="pagecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_PAGE', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="page" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="page" /> <{_t('Copy also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagegallery" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagegallery" /> <{_t('Copy also')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{_t('Copy also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagesection" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagesection" /> <{_t('Copy also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{_t('L_COPY_ALSO')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{_t('Copy also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pageapproverelations" style="display:none" title="<{_t('L_APPROVE', true)}> <{_t('L_PAGE', true)|strtolower}>">
+    <div id="pageapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_PAGE', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="page" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="page" /> <{_t('Approve also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagegallery" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagegallery" /> <{_t('Approve also')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{_t('Approve also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagesection" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagesection" /> <{_t('Approve also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{_t('L_APPROVE_ALSO')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{_t('Approve also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pagedeleterelations" style="display:none" title="<{_t('L_DELETE', true)}> <{_t('L_PAGE', true)|strtolower}>">
+    <div id="pagedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_PAGE', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Page')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="page" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="page" /> <{_t('Delete also')}> <{_t('L_PAGE')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagegallery" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagegallery" /> <{_t('Delete also')}> <{_t('L_PAGE_GALLERY')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{_t('Delete also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagesection" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagesection" /> <{_t('Delete also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{_t('L_DELETE_ALSO')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{_t('Delete also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -236,12 +236,12 @@ function page_delete() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_DELETE', true)}>": function() {
+			"<{_t('Delete', true)}>": function() {
             	$('#pagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/page/delete/');
             	$('#pagelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -256,12 +256,12 @@ function page_copy() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_COPY', true)}>": function() {
+			"<{_t('Copy', true)}>": function() {
             	$('#pagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/page/copy/');
             	$('#pagelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -276,12 +276,12 @@ function page_approve() {
 		width: 500,
 		modal: false,
 		buttons: {
-			"<{_t('L_APPROVE', true)}>": function() {
+			"<{_t('Approve', true)}>": function() {
             	$('#pagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/page/approve/');
             	$('#pagelistform').submit();
 				$( this ).dialog( "close" );
 			},
-			"<{_t('L_CANCEL', true)}>": function() {
+			"<{_t('Cancel', true)}>": function() {
 				$( this ).dialog( "close" );
 			}
 		}
@@ -409,7 +409,7 @@ function page_clearselection() {
     <{else}>
 	<br>
 	<div style="float:left">
-		<span class="page-list-count list-count"><{$total}></span> <{_t('L_RECORDS')}>
+		<span class="page-list-count list-count"><{$total}></span> <{_t('Records')}>
 	</div>
 	<div style="clear:both"></div>
 <{/if}>

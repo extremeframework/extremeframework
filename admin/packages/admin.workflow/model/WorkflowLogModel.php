@@ -71,6 +71,10 @@ class WorkflowLogModel extends DataObject_WORKFLOW_LOG {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->MODULE;
 	}

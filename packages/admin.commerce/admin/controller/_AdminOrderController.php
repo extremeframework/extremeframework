@@ -10,6 +10,7 @@ class _AdminOrderController extends __AppController
 {
     var $module = 'adminorder';
     var $type = 'controller';
+    var $__FILE__ = __FILE__;
 
     public function __construct() {
         parent::__construct();
@@ -17,7 +18,7 @@ class _AdminOrderController extends __AppController
         PluginManager::do_action('adminorder_init');
     }
 
-    private function checkConstraint($model, &$errors, $columns2check) {
+    protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('ID_PAYMENT_TYPE', $columns2check) && trim($model->ID_PAYMENT_TYPE) == '') {
            $errors['id-payment-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PAYMENT_TYPE'));
@@ -48,7 +49,7 @@ class _AdminOrderController extends __AppController
         return true;
     }
 
-    private function checkConstraints($models, &$errors, $columns2check) {
+    protected function checkConstraints($models, &$errors, $columns2check) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -76,7 +77,7 @@ class _AdminOrderController extends __AppController
         return $formdata;
     }
 
-    private function getSearchFormData() {
+    protected function getSearchFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -88,7 +89,7 @@ class _AdminOrderController extends __AppController
         return $searchdata;
     }
 
-    private function getFilterFormData() {
+    protected function getFilterFormData() {
 		$searchdata = array();
 
 		foreach ($_REQUEST as $name => $value) {
@@ -583,7 +584,7 @@ class _AdminOrderController extends __AppController
         parent::onDeleteSuccess($model);
     }
 
-    private function getTempCreateId() {
+    protected function getTempCreateId() {
         $create = false;
 
         if (!isset($_SESSION['adminorder.tmpid'])) {
@@ -610,13 +611,13 @@ class _AdminOrderController extends __AppController
         return $_SESSION['adminorder.tmpid'];
     }
 
-    private function clearTempCreateId() {
+    protected function clearTempCreateId() {
         if (isset($_SESSION['adminorder.tmpid'])) {
             unset($_SESSION['adminorder.tmpid']);
         }
     }
 
-    private function clearTempCreateItem() {
+    protected function clearTempCreateItem() {
         if (isset($_SESSION['adminorder.tmpid'])) {
             self::deleteItem($_SESSION['adminorder.tmpid']);
 
@@ -624,7 +625,7 @@ class _AdminOrderController extends __AppController
         }
     }
 
-    private function deleteItem($id) {
+    protected function deleteItem($id) {
         TransactionHelper::begin();
 
         $this->delete('UUID', array($id));
@@ -633,7 +634,7 @@ class _AdminOrderController extends __AppController
         TransactionHelper::end();
     }
 
-    private function formmode($prefix = null) {
+    protected function formmode($prefix = null) {
         $multiple = false;
 
 		foreach ($_REQUEST as $name => $value) {
@@ -786,7 +787,7 @@ class _AdminOrderController extends __AppController
         return $model;
     }
 
-    private function form2models($prefix = null, &$columns2check = null) {
+    protected function form2models($prefix = null, &$columns2check = null) {
         $columns2edit = array('UUID', 'CUSTOMER_ID_COUNTRY', 'CUSTOMER_FIRST_NAME', 'CUSTOMER_LAST_NAME', 'CUSTOMER_ADDRESS', 'CUSTOMER_CITY', 'CUSTOMER_STATE', 'CUSTOMER_ZIP_CODE', 'CUSTOMER_EMAIL', 'CUSTOMER_PHONE', 'TOTAL_VALUE', 'COUPON_CODE', 'COUPON_DISCOUNT', 'ID_PAYMENT_TYPE', 'CREATION_DATE', 'PAYMENT_DATE', 'PAYMENT_REF', 'REFUND_DATE', 'REFUND_REF', 'PROCESSED_DATE', 'ID_ADMIN_ORDER_STATUS', 'NOTE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminorder'));
 
@@ -832,7 +833,7 @@ class _AdminOrderController extends __AppController
 		return $models;
     }
 
-    private function checkform(&$errors, $prefix = null) {
+    protected function checkform(&$errors, $prefix = null) {
         $formmode = $this->formmode($prefix);
 
         if ($formmode == 'multiple') {
@@ -848,7 +849,7 @@ class _AdminOrderController extends __AppController
         return $result;
     }
 
-    private function saveform($prefix = null, $refobject = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -960,7 +961,7 @@ class _AdminOrderController extends __AppController
         return true;
     }
 
-    private function bind2refobject(&$model, $refobject = null) {
+    protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
@@ -1086,7 +1087,7 @@ class _AdminOrderController extends __AppController
         }
     }
 
-    private function performZipImport($filepath, $original) {
+    protected function performZipImport($filepath, $original) {
         $zip = new ZipArchive;
 
         $res = $zip->open($filepath);
@@ -1110,7 +1111,7 @@ class _AdminOrderController extends __AppController
         closedir($dir);
     }
 
-    private function performImport($filepath, $original) {
+    protected function performImport($filepath, $original) {
 		$is_excel = preg_match('/(\.xls|\.xlsx)$/i', $original);
 
     	if ($is_excel) {
@@ -1619,7 +1620,7 @@ class _AdminOrderController extends __AppController
         return !empty($filter->COLUMNS)? explode(',', $filter->COLUMNS) : array();
     }
 
-    private function initCustomView(&$customview, &$customtemplate) {
+    protected function initCustomView(&$customview, &$customtemplate) {
         if (!Framework::hasModule('AdminView')) {
             return;
         }
@@ -1642,7 +1643,7 @@ class _AdminOrderController extends __AppController
         }
     }
 
-    private function _list() {
+    protected function _list() {
         $filtercolumns = $this->getCustomFilterColumns('adminorder', $filter);
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminorder', 'view');
@@ -1711,7 +1712,7 @@ class _AdminOrderController extends __AppController
 	    $this->display($smarty, $templatetype.'.adminorder.tpl');
     }
 
-    private function _view($id, $details = null, $templatecode = 'view.adminorder.tpl') {
+    protected function _view($id, $details = null, $templatecode = 'view.adminorder.tpl') {
         $filtercolumns = $this->getCustomFilterColumns('adminorder');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminorder', 'view');
@@ -1781,7 +1782,7 @@ class _AdminOrderController extends __AppController
         PluginManager::do_action('adminorder_viewed', $details);
 	}
 
-    private function _edit($id, $details = null, $templatecode = 'edit.adminorder.tpl', $restoredraft = true) {
+    protected function _edit($id, $details = null, $templatecode = 'edit.adminorder.tpl', $restoredraft = true) {
         $filtercolumns = $this->getCustomFilterColumns('adminorder');
 
         $aclviewablecolumns = AclController::getAclEnabledColumns('adminorder', 'view');
@@ -1888,7 +1889,7 @@ class _AdminOrderController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function getLayoutColumns() {
+    protected function getLayoutColumns() {
         return array('CUSTOMER_ID_COUNTRY', 'CUSTOMER_FIRST_NAME', 'CUSTOMER_LAST_NAME', 'CUSTOMER_ADDRESS', 'CUSTOMER_CITY', 'CUSTOMER_STATE', 'CUSTOMER_ZIP_CODE', 'CUSTOMER_EMAIL', 'CUSTOMER_PHONE', 'TOTAL_VALUE', 'COUPON_CODE', 'COUPON_DISCOUNT', 'ID_PAYMENT_TYPE', 'CREATION_DATE', 'PAYMENT_DATE', 'PAYMENT_REF', 'REFUND_DATE', 'REFUND_REF', 'PROCESSED_DATE', 'ID_ADMIN_ORDER_STATUS', 'NOTE');
     }
 
@@ -2000,7 +2001,7 @@ class _AdminOrderController extends __AppController
         return $items;
     }
 
-    private function applyFilters($filters, &$model) {
+    protected function applyFilters($filters, &$model) {
         foreach($filters as $key => $value) {
             $value = trim($value);
 
@@ -2167,7 +2168,7 @@ class _AdminOrderController extends __AppController
         }
     }
 
-    private function getAclEnabledIds() {
+    protected function getAclEnabledIds() {
 		$model = new AdminOrderModel();
 
         $this->enforceObjectAclCheck('adminorder', $model);
@@ -2206,7 +2207,7 @@ class _AdminOrderController extends __AppController
         }
     }
 
-    private function _import($templatecode = 'import.adminorder.tpl') {
+    protected function _import($templatecode = 'import.adminorder.tpl') {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : RequestHelper::get('preset');
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : RequestHelper::get('presetvalue');
 
@@ -2219,7 +2220,7 @@ class _AdminOrderController extends __AppController
 	    $this->display($smarty, $templatecode);
 	}
 
-    private function _importxls($filepath, &$error) {
+    protected function _importxls($filepath, &$error) {
         require_once ('Spreadsheet_Excel_Reader.php');
 
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
@@ -2314,7 +2315,7 @@ class _AdminOrderController extends __AppController
         return true;
 	}
 
-    private function _importcsv($filepath, &$error) {
+    protected function _importcsv($filepath, &$error) {
         $preset = isset($_REQUEST['preset'])? $_REQUEST['preset'] : '';
         $presetvalue = isset($_REQUEST['presetvalue'])? $_REQUEST['presetvalue'] : '';
 
@@ -2398,11 +2399,11 @@ class _AdminOrderController extends __AppController
         return true;
 	}
 
-    private function _ensure_encoding($content) {
+    protected function _ensure_encoding($content) {
         return mb_convert_encoding($content, 'UTF-8', mb_detect_encoding($content, "UTF-8, ISO-8859-1, ISO-8859-15", true));
     }
 
-    private function _label2refval($refcolumn, $reflabel) {
+    protected function _label2refval($refcolumn, $reflabel) {
         static $valuecache = array();
 
         if (is_numeric($reflabel)) {
@@ -2445,7 +2446,7 @@ class _AdminOrderController extends __AppController
         return $value;
     }
 
-    private function _encodecsv($text) {
+    protected function _encodecsv($text) {
 		$tmp = mb_convert_encoding($text, 'ISO-8859-1', 'UTF-8');
 
 		if (stripos($tmp, '?')) {
@@ -2455,7 +2456,7 @@ class _AdminOrderController extends __AppController
         return '"'.str_replace('"', '""', $tmp).'"';
     }
 
-    private function _refval2label($refcolumn, $refvalue) {
+    protected function _refval2label($refcolumn, $refvalue) {
         static $labelcache = array();
 
         if (isset($labelcache[$refcolumn][$refvalue])) {

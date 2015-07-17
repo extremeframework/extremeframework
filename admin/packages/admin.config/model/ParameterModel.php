@@ -71,6 +71,10 @@ class ParameterModel extends DataObject_PARAMETER {
 	    return $this->CODE;
 	}
 
+	function setId($value) {
+        $this->CODE = $value;
+    }
+
 	function name() {
 	    return $this->NAME;
 	}

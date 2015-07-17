@@ -71,6 +71,10 @@ class UserPreferenceModel extends DataObject_USER_PREFERENCE {
 	    return $this->ID;
 	}
 
+	function setId($value) {
+        $this->ID = $value;
+    }
+
 	function name() {
 	    return $this->JSON;
 	}

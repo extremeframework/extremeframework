@@ -135,10 +135,10 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="screenfield-rowedit-add"><{_t('L_ADD_ITEM')}></span>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="screenfield-rowedit-add"><{_t('Add item')}></span>
                 	    <span class="screenfield-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save screenfield-rowedit-save btn btn-success"><{_t('L_SAVE')}></div>
-                    	    <a class="rowedit-cancel screenfield-rowedit-cancel button-cancel"><{_t('L_CANCEL')}></a>
+                    	    <div class="rowedit-save screenfield-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel screenfield-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
                         <span class="screenfield-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
