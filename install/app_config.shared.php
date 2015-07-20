@@ -5,11 +5,11 @@ define('LICENSE_KEY'                            , '{LICENSE_KEY}');
 // Library
 define('LIBRARY_DIR'                            , '{LIBRARY_DIR}');
 
-// Configuration directory
-define('CONFIG_DIR'						        , realpath(dirname(__FILE__).'/../config'));
-
 // Schema directory
 define('SCHEMA_DIR'						        , realpath(dirname(__FILE__).'/../schema'));
+
+// Configuration directory
+define('CONFIG_DIR'						        , APPLICATION_DIR.'/config');
 
 // Cache directory
 define('CACHE_DIR'						        , APPLICATION_DIR.'/cache');
