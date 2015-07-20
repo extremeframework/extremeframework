@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-workflow">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WORKFLOW')}></label>
+        		    <label><{_t('Workflow')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-workflow" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WORKFLOW_TRANSITION_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-start-id-workflow-stage">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_START_WORKFLOW_STAGE')}></label>
+        		    <label><{_t('Start workflow stage')}></label>
                 </div>
             </td>
             <td class="form-row form-row-start-id-workflow-stage" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-end-id-workflow-stage">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_END_WORKFLOW_STAGE')}></label>
+        		    <label><{_t('End workflow stage')}></label>
                 </div>
             </td>
             <td class="form-row form-row-end-id-workflow-stage" colspan="3">
@@ -217,7 +217,7 @@
         <{else}>
     		<td class="form-row form-row-action">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ACTION')}></label>
+        		    <label><{_t('Action')}></label>
                 </div>
             </td>
             <td class="form-row form-row-action" colspan="3">
@@ -247,7 +247,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_GROUP')}></label>
+        		    <label><{_t('User group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-group" colspan="3">
@@ -284,7 +284,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-role">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_ROLE')}></label>
+        		    <label><{_t('User role')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-role" colspan="3">
@@ -321,7 +321,7 @@
         <{else}>
     		<td class="form-row form-row-transition-id-screen">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TRANSITION_SCREEN')}></label>
+        		    <label><{_t('Transition screen')}></label>
                 </div>
             </td>
             <td class="form-row form-row-transition-id-screen" colspan="3">
@@ -358,7 +358,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

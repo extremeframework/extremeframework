@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_POST')}>
+<{assign var='title' value=_t('Post')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.post.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_POST', true)|strtolower}>"/><{_t('New')}> <{_t('L_POST')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Post', true)|strtolower}>"/><{_t('New')}> <{_t('Post')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.post.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/post/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>
@@ -139,61 +139,61 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_POST'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_POST'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_POST')), strtolower(_t('L_POST'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Post'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Post'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Post')), strtolower(_t('Post'))));
     <{/php}>
 
-    <div id="postcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_POST', true)|strtolower}>">
+    <div id="postcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Post', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('Copy also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('Copy also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{_t('Copy also')}> <{_t('L_POST_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{_t('Copy also')}> <{_t('Post Gallery')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('Copy also')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('Copy also')}> <{_t('Post Relation')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{_t('Copy also')}> <{_t('L_POST_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{_t('Copy also')}> <{_t('Post Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_POST', true)|strtolower}>">
+    <div id="postapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Post', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('Approve also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('Approve also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{_t('Approve also')}> <{_t('L_POST_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{_t('Approve also')}> <{_t('Post Gallery')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('Approve also')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('Approve also')}> <{_t('Post Relation')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{_t('Approve also')}> <{_t('L_POST_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{_t('Approve also')}> <{_t('Post Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_POST', true)|strtolower}>">
+    <div id="postdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Post', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('Delete also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('Delete also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{_t('Delete also')}> <{_t('L_POST_GALLERY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{_t('Delete also')}> <{_t('Post Gallery')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('Delete also')}> <{_t('L_POST_RELATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('Delete also')}> <{_t('Post Relation')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{_t('Delete also')}> <{_t('L_POST_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{_t('Delete also')}> <{_t('Post Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

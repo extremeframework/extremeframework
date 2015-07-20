@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#postrelationform').attr('action', '<{$actionurl}>');$('#postrelationform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-post <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_POST')}><{if in_array('ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Post')}><{if in_array('ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-peer-id-post <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_PEER_POST')}><{if in_array('PEER_ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Peer post')}><{if in_array('PEER_ID_POST', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -107,7 +107,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-post-relation-type <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_POST_RELATION_TYPE')}><{if in_array('ID_POST_RELATION_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Post relation type')}><{if in_array('ID_POST_RELATION_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -139,7 +139,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#postrelationform').attr('action', '<{$actionurl}>');$('#postrelationform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postrelation/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

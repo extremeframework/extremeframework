@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#adminlayoutsectionform').attr('action', '<{$actionurl}>');$('#adminlayoutsectionform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ADMIN_LAYOUT_SECTION_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Name')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -87,7 +87,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-module <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Module')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-show-title <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_SHOW_TITLE')}><{if in_array('SHOW_TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Show title')}><{if in_array('SHOW_TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -130,7 +130,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-ordering <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ORDERING')}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Ordering')}><{if in_array('ORDERING', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -161,7 +161,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#adminlayoutsectionform').attr('action', '<{$actionurl}>');$('#adminlayoutsectionform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

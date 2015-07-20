@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usergroup/sort/name"><{_t('L_USER_GROUP_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usergroup/sort/name"><{_t('Name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('DEFAULT_ID_DASHBOARD', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DEFAULT_ID_DASHBOARD']) && ((isset($aclviewablecolumns['DEFAULT_ID_DASHBOARD']) && $aclviewablecolumns['DEFAULT_ID_DASHBOARD']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DEFAULT_ID_DASHBOARD']) || $aclviewablecolumns['DEFAULT_ID_DASHBOARD']))) }>
     	            <th class="column-default-id-dashboard">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usergroup/sort/default_id_dashboard"><{_t('L_DEFAULT_DASHBOARD')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usergroup/sort/default_id_dashboard"><{_t('Default dashboard')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -49,8 +49,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER_GROUP')|strtolower}>s on this page are selected. <a onclick="usergroup_selectall()">Select all <{$total}> <{_t('L_USER_GROUP')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_USER_GROUP')|strtolower}>s in the list are selected. <a onclick="usergroup_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('User Groups')|strtolower}> on this page are selected. <a onclick="usergroup_selectall()">Select all <{$total}> <{_t('User Groups')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('User Groups')|strtolower}> in the list are selected. <a onclick="usergroup_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

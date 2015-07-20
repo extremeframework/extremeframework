@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_WORKFLOW')}>
+<{assign var='title' value=_t('Workflow')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflow.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_WORKFLOW', true)|strtolower}>"/><{_t('New')}> <{_t('L_WORKFLOW')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Workflow', true)|strtolower}>"/><{_t('New')}> <{_t('Workflow')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,70 +107,70 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_WORKFLOW'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_WORKFLOW'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_WORKFLOW')), strtolower(_t('L_WORKFLOW'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Workflow'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Workflow'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Workflow')), strtolower(_t('Workflow'))));
     <{/php}>
 
-    <div id="workflowcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_WORKFLOW', true)|strtolower}>">
+    <div id="workflowcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Workflow', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screen" /> <{_t('Copy also')}> <{_t('L_SCREEN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screen" /> <{_t('Copy also')}> <{_t('Screen')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('Copy also')}> <{_t('Workflow Application')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowstage" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_STAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowstage" /> <{_t('Copy also')}> <{_t('Workflow Stage')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_WORKFLOW', true)|strtolower}>">
+    <div id="workflowapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Workflow', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screen" /> <{_t('Approve also')}> <{_t('L_SCREEN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screen" /> <{_t('Approve also')}> <{_t('Screen')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('Approve also')}> <{_t('Workflow Application')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowstage" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_STAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowstage" /> <{_t('Approve also')}> <{_t('Workflow Stage')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_WORKFLOW', true)|strtolower}>">
+    <div id="workflowdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Workflow', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screen" /> <{_t('Delete also')}> <{_t('L_SCREEN')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screen" /> <{_t('Delete also')}> <{_t('Screen')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_APPLICATION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('Delete also')}> <{_t('Workflow Application')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowstage" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_STAGE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowstage" /> <{_t('Delete also')}> <{_t('Workflow Stage')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

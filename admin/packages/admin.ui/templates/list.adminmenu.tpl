@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_ADMIN_MENU')}>
+<{assign var='title' value=_t('Admin Menu')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminmenu.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ADMIN_MENU', true)|strtolower}>"/><{_t('New')}> <{_t('L_ADMIN_MENU')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Admin Menu', true)|strtolower}>"/><{_t('New')}> <{_t('Admin Menu')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,43 +107,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_ADMIN_MENU'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_ADMIN_MENU'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ADMIN_MENU')), strtolower(_t('L_ADMIN_MENU'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Admin Menu'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Admin Menu'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Admin Menu')), strtolower(_t('Admin Menu'))));
     <{/php}>
 
-    <div id="adminmenucopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ADMIN_MENU', true)|strtolower}>">
+    <div id="adminmenucopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Menu', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('Admin Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{_t('Copy also')}> <{_t('L_DASHBOARD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{_t('Copy also')}> <{_t('Dashboard')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenuapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ADMIN_MENU', true)|strtolower}>">
+    <div id="adminmenuapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Menu', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('Admin Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{_t('Approve also')}> <{_t('L_DASHBOARD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{_t('Approve also')}> <{_t('Dashboard')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminmenudeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ADMIN_MENU', true)|strtolower}>">
+    <div id="adminmenudeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Menu', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('L_ADMIN_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('Admin Menu Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{_t('Delete also')}> <{_t('L_DASHBOARD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{_t('Delete also')}> <{_t('Dashboard')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

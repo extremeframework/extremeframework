@@ -5,7 +5,7 @@
     <body class="module module-<{$module}>" id="<{$module}>">
 
             <{$tmp1 = _t('View')}>
-        <{$tmp2 = strtolower(_t('L_CHANGE_LOG'))}>
+        <{$tmp2 = strtolower(_t('Change Log'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     
     <{include file="top.tpl"}>
@@ -82,7 +82,7 @@
         	    </div>
             <{/if}>
             <div class="button-general">
-                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/close/?return=<{ContextStack::getRecentContext()}>"><span class="button-face"><{_t('Close')}></span></a>
+                <a class="button-close scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/close/"><span class="button-face"><{_t('Close')}></span></a>
             </div>
     	        <div class="clearer"></div>
     </div>

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-tag-line">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAG_LINE')}></label>
+        		    <label><{_t('Tag line')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tag-line" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -133,7 +133,7 @@
         <{else}>
     		<td class="form-row form-row-list-price">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LIST_PRICE')}></label>
+        		    <label><{_t('List price')}></label>
                 </div>
             </td>
             <td class="form-row form-row-list-price" colspan="3">
@@ -162,7 +162,7 @@
         <{else}>
     		<td class="form-row form-row-price">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PRICE')}></label>
+        		    <label><{_t('Price')}></label>
                 </div>
             </td>
             <td class="form-row form-row-price" colspan="3">
@@ -191,7 +191,7 @@
         <{else}>
     		<td class="form-row form-row-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DESCRIPTION')}></label>
+        		    <label><{_t('Description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-description" colspan="3">
@@ -222,7 +222,7 @@
         <{else}>
     		<td class="form-row form-row-product-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PRODUCT_PAGE')}></label>
+        		    <label><{_t('Product page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-product-id-page" colspan="3">

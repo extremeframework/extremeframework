@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -72,7 +72,7 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WORKFLOW', $columns2hide) }>
     		<td class="form-field form-field-label column-id-workflow">
-	                    		                    		        <label class="attribute-name"><{_t('L_WORKFLOW')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Workflow')}></label>
             </td>
             <td class="form-field form-field-value column-id-workflow" colspan="3">
             	<div class="attribute-line column-id-workflow type-reftext">

@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_USER')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('User')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FIRST_NAME')}></label>
+        		    <label><{_t('First name')}></label>
                 </div>
             </td>
             <td class="form-row form-row-first-name" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LAST_NAME')}></label>
+        		    <label><{_t('Last name')}></label>
                 </div>
             </td>
             <td class="form-row form-row-last-name" colspan="3">
@@ -118,7 +118,7 @@
         <{else}>
     		<td class="form-row form-row-email">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EMAIL')}></label>
+        		    <label><{_t('Email')}></label>
                 </div>
             </td>
             <td class="form-row form-row-email" colspan="3">
@@ -148,7 +148,7 @@
         <{else}>
     		<td class="form-row form-row-phone">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PHONE')}></label>
+        		    <label><{_t('Phone')}></label>
                 </div>
             </td>
             <td class="form-row form-row-phone" colspan="3">
@@ -178,7 +178,7 @@
         <{else}>
     		<td class="form-row form-row-is-email-verified">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_EMAIL_VERIFIED')}></label>
+        		    <label><{_t('Email verified?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-email-verified" colspan="3">
@@ -208,7 +208,7 @@
         <{else}>
     		<td class="form-row form-row-is-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_ENABLED')}></label>
+        		    <label><{_t('Enabled?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-enabled" colspan="3">

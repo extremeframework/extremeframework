@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_ADMIN_FILTER')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Filter')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_FILTER_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -125,7 +125,7 @@
         <{else}>
     		<td class="form-row form-row-columns">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_COLUMNS')}></label>
+        		    <label><{_t('Columns')}></label>
                 </div>
             </td>
             <td class="form-row form-row-columns" colspan="3">
@@ -155,7 +155,7 @@
         <{else}>
     		<td class="form-row form-row-is-default">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_DEFAULT')}></label>
+        		    <label><{_t('Default?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-default" colspan="3">

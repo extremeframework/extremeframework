@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_WORKFLOW', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
     	            <th class="column-id-workflow">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_workflow"><{_t('L_WORKFLOW')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_workflow"><{_t('Workflow')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/name"><{_t('L_WORKFLOW_TRANSITION_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/name"><{_t('Name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/code"><{_t('L_CODE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/code"><{_t('Code')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('START_ID_WORKFLOW_STAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['START_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['START_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['START_ID_WORKFLOW_STAGE']))) }>
     	            <th class="column-start-id-workflow-stage">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/start_id_workflow_stage"><{_t('L_START_WORKFLOW_STAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/start_id_workflow_stage"><{_t('Start workflow stage')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('END_ID_WORKFLOW_STAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['END_ID_WORKFLOW_STAGE']) && ((isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) && $aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['END_ID_WORKFLOW_STAGE']) || $aclviewablecolumns['END_ID_WORKFLOW_STAGE']))) }>
     	            <th class="column-end-id-workflow-stage">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/end_id_workflow_stage"><{_t('L_END_WORKFLOW_STAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/end_id_workflow_stage"><{_t('End workflow stage')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('ACTION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
     	            <th class="column-action">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/action"><{_t('L_ACTION')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/action"><{_t('Action')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
     	            <th class="column-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_group"><{_t('L_USER_GROUP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_group"><{_t('User group')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
     	            <th class="column-id-user-role">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_role"><{_t('L_USER_ROLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/id_user_role"><{_t('User role')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -89,7 +89,7 @@
 		                        <{if (in_array('TRANSITION_ID_SCREEN', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TRANSITION_ID_SCREEN']) && ((isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) && $aclviewablecolumns['TRANSITION_ID_SCREEN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) || $aclviewablecolumns['TRANSITION_ID_SCREEN']))) }>
     	            <th class="column-transition-id-screen">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/transition_id_screen"><{_t('L_TRANSITION_SCREEN')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/transition_id_screen"><{_t('Transition screen')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -98,7 +98,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/ordering"><{_t('L_ORDERING')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/sort/ordering"><{_t('Ordering')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -121,8 +121,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s on this page are selected. <a onclick="workflowtransition_selectall()">Select all <{$total}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}>s in the list are selected. <a onclick="workflowtransition_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Workflow Transitions')|strtolower}> on this page are selected. <a onclick="workflowtransition_selectall()">Select all <{$total}> <{_t('Workflow Transitions')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Workflow Transitions')|strtolower}> in the list are selected. <a onclick="workflowtransition_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

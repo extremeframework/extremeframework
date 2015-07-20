@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WORKFLOW', $columns2hide) }>
     		<td class="form-field form-field-label column-id-workflow">
-	                    		                    		        <label class="attribute-name"><{_t('L_WORKFLOW')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Workflow')}></label>
             </td>
             <td class="form-field form-field-value column-id-workflow" colspan="3">
             	<div class="attribute-line column-id-workflow type-reftext">
@@ -67,7 +67,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_WORKFLOW_STAGE_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -101,7 +101,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+	            		        <label class="attribute-name"><{_t('Code')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">
@@ -135,7 +135,7 @@
             <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
         <{if !isset($columns2hide) || !in_array('IS_DEFAULT', $columns2hide) }>
     		<td class="form-field form-field-label column-is-default">
-	            		        <label class="attribute-name"><{_t('L_IS_DEFAULT')}></label>
+	            		        <label class="attribute-name"><{_t('Default?')}></label>
             </td>
             <td class="form-field form-field-value column-is-default" colspan="3">
             	<div class="attribute-line column-is-default type-yesno">
@@ -169,7 +169,7 @@
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_EDITABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']))) }>
         <{if !isset($columns2hide) || !in_array('IS_BINDING_OBJECT_EDITABLE', $columns2hide) }>
     		<td class="form-field form-field-label column-is-binding-object-editable">
-	            		        <label class="attribute-name"><{_t('L_IS_BINDING_OBJECT_EDITABLE')}></label>
+	            		        <label class="attribute-name"><{_t('Binding object editable?')}></label>
             </td>
             <td class="form-field form-field-value column-is-binding-object-editable" colspan="3">
             	<div class="attribute-line column-is-binding-object-editable type-yesno">
@@ -203,7 +203,7 @@
             <{if !isset($excludedcolumns['IS_BINDING_OBJECT_DELETABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']))) }>
         <{if !isset($columns2hide) || !in_array('IS_BINDING_OBJECT_DELETABLE', $columns2hide) }>
     		<td class="form-field form-field-label column-is-binding-object-deletable">
-	            		        <label class="attribute-name"><{_t('L_IS_BINDING_OBJECT_DELETABLE')}></label>
+	            		        <label class="attribute-name"><{_t('Binding object deletable?')}></label>
             </td>
             <td class="form-field form-field-value column-is-binding-object-deletable" colspan="3">
             	<div class="attribute-line column-is-binding-object-deletable type-yesno">

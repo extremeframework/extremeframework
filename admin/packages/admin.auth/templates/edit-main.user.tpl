@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-first-name">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FIRST_NAME')}></label>
+        		    <label><{_t('First name')}></label>
                 </div>
             </td>
             <td class="form-row form-row-first-name" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-last-name">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LAST_NAME')}></label>
+        		    <label><{_t('Last name')}></label>
                 </div>
             </td>
             <td class="form-row form-row-last-name" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-photo">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PHOTO')}></label>
+        		    <label><{_t('Photo')}></label>
                 </div>
             </td>
             <td class="form-row form-row-photo" colspan="3">
@@ -133,7 +133,7 @@
         <{else}>
     		<td class="form-row form-row-email">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EMAIL')}></label>
+        		    <label><{_t('Email')}></label>
                 </div>
             </td>
             <td class="form-row form-row-email" colspan="3">
@@ -163,7 +163,7 @@
         <{else}>
     		<td class="form-row form-row-login">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LOGIN')}></label>
+        		    <label><{_t('Login')}></label>
                 </div>
             </td>
             <td class="form-row form-row-login" colspan="3">
@@ -193,7 +193,7 @@
         <{else}>
     		<td class="form-row form-row-password">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PASSWORD')}></label>
+        		    <label><{_t('Password')}></label>
                 </div>
             </td>
             <td class="form-row form-row-password" colspan="3">
@@ -223,7 +223,7 @@
         <{else}>
     		<td class="form-row form-row-phone">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PHONE')}></label>
+        		    <label><{_t('Phone')}></label>
                 </div>
             </td>
             <td class="form-row form-row-phone" colspan="3">
@@ -253,7 +253,7 @@
         <{else}>
     		<td class="form-row form-row-gender">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_GENDER')}></label>
+        		    <label><{_t('Gender')}></label>
                 </div>
             </td>
             <td class="form-row form-row-gender" colspan="3">
@@ -283,7 +283,7 @@
         <{else}>
     		<td class="form-row form-row-date-of-birth">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DATE_OF_BIRTH')}></label>
+        		    <label><{_t('Date of birth')}></label>
                 </div>
             </td>
             <td class="form-row form-row-date-of-birth" colspan="3">
@@ -312,7 +312,7 @@
         <{else}>
     		<td class="form-row form-row-force-password-change">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FORCE_PASSWORD_CHANGE')}></label>
+        		    <label><{_t('Force password change?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-force-password-change" colspan="3">
@@ -342,7 +342,7 @@
         <{else}>
     		<td class="form-row form-row-is-email-verified">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_EMAIL_VERIFIED')}></label>
+        		    <label><{_t('Email verified?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-email-verified" colspan="3">
@@ -372,7 +372,7 @@
         <{else}>
     		<td class="form-row form-row-facebook-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FACEBOOK')}></label>
+        		    <label><{_t('Facebook')}></label>
                 </div>
             </td>
             <td class="form-row form-row-facebook-id" colspan="3">
@@ -402,7 +402,7 @@
         <{else}>
     		<td class="form-row form-row-facebook-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FACEBOOK_OAUTH')}></label>
+        		    <label><{_t('Facebook oauth')}></label>
                 </div>
             </td>
             <td class="form-row form-row-facebook-oauth-id" colspan="3">
@@ -432,7 +432,7 @@
         <{else}>
     		<td class="form-row form-row-google-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_GOOGLE')}></label>
+        		    <label><{_t('Google')}></label>
                 </div>
             </td>
             <td class="form-row form-row-google-id" colspan="3">
@@ -462,7 +462,7 @@
         <{else}>
     		<td class="form-row form-row-google-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_GOOGLE_OAUTH')}></label>
+        		    <label><{_t('Google oauth')}></label>
                 </div>
             </td>
             <td class="form-row form-row-google-oauth-id" colspan="3">
@@ -492,7 +492,7 @@
         <{else}>
     		<td class="form-row form-row-yahoo-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_YAHOO')}></label>
+        		    <label><{_t('Yahoo')}></label>
                 </div>
             </td>
             <td class="form-row form-row-yahoo-id" colspan="3">
@@ -522,7 +522,7 @@
         <{else}>
     		<td class="form-row form-row-yahoo-oauth-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_YAHOO_OAUTH')}></label>
+        		    <label><{_t('Yahoo oauth')}></label>
                 </div>
             </td>
             <td class="form-row form-row-yahoo-oauth-id" colspan="3">
@@ -552,7 +552,7 @@
         <{else}>
     		<td class="form-row form-row-is-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_ENABLED')}></label>
+        		    <label><{_t('Enabled?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-enabled" colspan="3">
@@ -587,7 +587,7 @@
         <{else}>
     		<td class="form-row form-row-latest-login">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LATEST_LOGIN')}></label>
+        		    <label><{_t('Latest login')}></label>
                 </div>
             </td>
             <td class="form-row form-row-latest-login" colspan="3">

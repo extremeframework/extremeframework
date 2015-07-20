@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARENT')}></label>
+        		    <label><{_t('Parent')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DESCRIPTION')}></label>
+        		    <label><{_t('Description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-description" colspan="3">
@@ -174,7 +174,7 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
@@ -211,7 +211,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/name"><{_t('L_ADMIN_MODULE_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/name"><{_t('Name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/module"><{_t('L_MODULE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/module"><{_t('Module')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('PREFIX', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PREFIX']) && ((isset($aclviewablecolumns['PREFIX']) && $aclviewablecolumns['PREFIX']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PREFIX']) || $aclviewablecolumns['PREFIX']))) }>
     	            <th class="column-prefix">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/prefix"><{_t('L_PREFIX')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/prefix"><{_t('Prefix')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('AVAILABLE_ACTIONS', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['AVAILABLE_ACTIONS']) && ((isset($aclviewablecolumns['AVAILABLE_ACTIONS']) && $aclviewablecolumns['AVAILABLE_ACTIONS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['AVAILABLE_ACTIONS']) || $aclviewablecolumns['AVAILABLE_ACTIONS']))) }>
     	            <th class="column-available-actions">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/available_actions"><{_t('L_AVAILABLE_ACTIONS')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/available_actions"><{_t('Available actions')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('IS_COMMENT_ENABLED', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_COMMENT_ENABLED']) && ((isset($aclviewablecolumns['IS_COMMENT_ENABLED']) && $aclviewablecolumns['IS_COMMENT_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_COMMENT_ENABLED']) || $aclviewablecolumns['IS_COMMENT_ENABLED']))) }>
     	            <th class="column-is-comment-enabled">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/is_comment_enabled"><{_t('L_IS_COMMENT_ENABLED')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/is_comment_enabled"><{_t('Comment enabled?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -76,8 +76,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_MODULE')|strtolower}>s on this page are selected. <a onclick="adminmodule_selectall()">Select all <{$total}> <{_t('L_ADMIN_MODULE')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_MODULE')|strtolower}>s in the list are selected. <a onclick="adminmodule_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Modules')|strtolower}> on this page are selected. <a onclick="adminmodule_selectall()">Select all <{$total}> <{_t('Admin Modules')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Admin Modules')|strtolower}> in the list are selected. <a onclick="adminmodule_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

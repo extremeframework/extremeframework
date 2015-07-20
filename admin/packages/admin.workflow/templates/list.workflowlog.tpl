@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_WORKFLOW_LOG')}>
+<{assign var='title' value=_t('Workflow Log')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflowlog.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowlog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_WORKFLOW_LOG', true)|strtolower}>"/><{_t('New')}> <{_t('L_WORKFLOW_LOG')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowlog/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Workflow Log', true)|strtolower}>"/><{_t('New')}> <{_t('Workflow Log')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>

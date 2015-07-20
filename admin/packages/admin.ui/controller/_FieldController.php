@@ -21,15 +21,15 @@ class _FieldController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_FIELD_NAME'));
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Module'));
            return false;
        }
        if (in_array('COLUMN', $columns2check) && trim($model->COLUMN) == '') {
-           $errors['column'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_COLUMN'));
+           $errors['column'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Column'));
            return false;
        }
        if (in_array('MODULE', $columns2check) || in_array('COLUMN', $columns2check)) {

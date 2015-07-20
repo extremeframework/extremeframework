@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_LAYOUT_SECTION_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-show-title">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SHOW_TITLE')}></label>
+        		    <label><{_t('Show title')}></label>
                 </div>
             </td>
             <td class="form-row form-row-show-title" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

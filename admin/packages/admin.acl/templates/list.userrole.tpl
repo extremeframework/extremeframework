@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_USER_ROLE')}>
+<{assign var='title' value=_t('User Role')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.userrole.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER_ROLE', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER_ROLE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('User Role', true)|strtolower}>"/><{_t('New')}> <{_t('User Role')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,43 +107,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_USER_ROLE'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_USER_ROLE'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_USER_ROLE')), strtolower(_t('L_USER_ROLE'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('User Role'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('User Role'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('User Role')), strtolower(_t('User Role'))));
     <{/php}>
 
-    <div id="userrolecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
+    <div id="userrolecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userroleapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
+    <div id="userroleapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userroledeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_USER_ROLE', true)|strtolower}>">
+    <div id="userroledeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

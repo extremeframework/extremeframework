@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['FIRST_NAME']) && ((isset($aclviewablecolumns['FIRST_NAME']) && $aclviewablecolumns['FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FIRST_NAME']) || $aclviewablecolumns['FIRST_NAME']))) }>
         <{if !isset($columns2hide) || !in_array('FIRST_NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-first-name">
-	            		        <label class="attribute-name"><{_t('L_FIRST_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('First name')}></label>
             </td>
             <td class="form-field form-field-value column-first-name" colspan="3">
             	<div class="attribute-line column-first-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['LAST_NAME']) && ((isset($aclviewablecolumns['LAST_NAME']) && $aclviewablecolumns['LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LAST_NAME']) || $aclviewablecolumns['LAST_NAME']))) }>
         <{if !isset($columns2hide) || !in_array('LAST_NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-last-name">
-	            		        <label class="attribute-name"><{_t('L_LAST_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Last name')}></label>
             </td>
             <td class="form-field form-field-value column-last-name" colspan="3">
             	<div class="attribute-line column-last-name type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['PHOTO']) && ((isset($aclviewablecolumns['PHOTO']) && $aclviewablecolumns['PHOTO']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PHOTO']) || $aclviewablecolumns['PHOTO']))) }>
         <{if !isset($columns2hide) || !in_array('PHOTO', $columns2hide) }>
     		<td class="form-field form-field-label column-photo">
-	            		        <label class="attribute-name"><{_t('L_PHOTO')}></label>
+	            		        <label class="attribute-name"><{_t('Photo')}></label>
             </td>
             <td class="form-field form-field-value column-photo" colspan="3">
             	<div class="attribute-line column-photo type-image">
@@ -117,7 +117,7 @@
             <{if !isset($excludedcolumns['EMAIL']) && ((isset($aclviewablecolumns['EMAIL']) && $aclviewablecolumns['EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EMAIL']) || $aclviewablecolumns['EMAIL']))) }>
         <{if !isset($columns2hide) || !in_array('EMAIL', $columns2hide) }>
     		<td class="form-field form-field-label column-email">
-	            		        <label class="attribute-name"><{_t('L_EMAIL')}></label>
+	            		        <label class="attribute-name"><{_t('Email')}></label>
             </td>
             <td class="form-field form-field-value column-email" colspan="3">
             	<div class="attribute-line column-email type-email">
@@ -151,7 +151,7 @@
             <{if !isset($excludedcolumns['LOGIN']) && ((isset($aclviewablecolumns['LOGIN']) && $aclviewablecolumns['LOGIN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOGIN']) || $aclviewablecolumns['LOGIN']))) }>
         <{if !isset($columns2hide) || !in_array('LOGIN', $columns2hide) }>
     		<td class="form-field form-field-label column-login">
-	            		        <label class="attribute-name"><{_t('L_LOGIN')}></label>
+	            		        <label class="attribute-name"><{_t('Login')}></label>
             </td>
             <td class="form-field form-field-value column-login" colspan="3">
             	<div class="attribute-line column-login type-code">
@@ -185,7 +185,7 @@
             <{if !isset($excludedcolumns['PASSWORD']) && ((isset($aclviewablecolumns['PASSWORD']) && $aclviewablecolumns['PASSWORD']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PASSWORD']) || $aclviewablecolumns['PASSWORD']))) }>
         <{if !isset($columns2hide) || !in_array('PASSWORD', $columns2hide) }>
     		<td class="form-field form-field-label column-password">
-	            		        <label class="attribute-name"><{_t('L_PASSWORD')}></label>
+	            		        <label class="attribute-name"><{_t('Password')}></label>
             </td>
             <td class="form-field form-field-value column-password" colspan="3">
             	<div class="attribute-line column-password type-password">
@@ -219,7 +219,7 @@
             <{if !isset($excludedcolumns['PHONE']) && ((isset($aclviewablecolumns['PHONE']) && $aclviewablecolumns['PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PHONE']) || $aclviewablecolumns['PHONE']))) }>
         <{if !isset($columns2hide) || !in_array('PHONE', $columns2hide) }>
     		<td class="form-field form-field-label column-phone">
-	            		        <label class="attribute-name"><{_t('L_PHONE')}></label>
+	            		        <label class="attribute-name"><{_t('Phone')}></label>
             </td>
             <td class="form-field form-field-value column-phone" colspan="3">
             	<div class="attribute-line column-phone type-phone">
@@ -253,7 +253,7 @@
             <{if !isset($excludedcolumns['GENDER']) && ((isset($aclviewablecolumns['GENDER']) && $aclviewablecolumns['GENDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GENDER']) || $aclviewablecolumns['GENDER']))) }>
         <{if !isset($columns2hide) || !in_array('GENDER', $columns2hide) }>
     		<td class="form-field form-field-label column-gender">
-	            		        <label class="attribute-name"><{_t('L_GENDER')}></label>
+	            		        <label class="attribute-name"><{_t('Gender')}></label>
             </td>
             <td class="form-field form-field-value column-gender" colspan="3">
             	<div class="attribute-line column-gender type-gender">
@@ -287,7 +287,7 @@
             <{if !isset($excludedcolumns['DATE_OF_BIRTH']) && ((isset($aclviewablecolumns['DATE_OF_BIRTH']) && $aclviewablecolumns['DATE_OF_BIRTH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_OF_BIRTH']) || $aclviewablecolumns['DATE_OF_BIRTH']))) }>
         <{if !isset($columns2hide) || !in_array('DATE_OF_BIRTH', $columns2hide) }>
     		<td class="form-field form-field-label column-date-of-birth">
-	            		        <label class="attribute-name"><{_t('L_DATE_OF_BIRTH')}></label>
+	            		        <label class="attribute-name"><{_t('Date of birth')}></label>
             </td>
             <td class="form-field form-field-value column-date-of-birth" colspan="3">
             	<div class="attribute-line column-date-of-birth type-date">
@@ -320,7 +320,7 @@
             <{if !isset($excludedcolumns['FORCE_PASSWORD_CHANGE']) && ((isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) && $aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || $aclviewablecolumns['FORCE_PASSWORD_CHANGE']))) }>
         <{if !isset($columns2hide) || !in_array('FORCE_PASSWORD_CHANGE', $columns2hide) }>
     		<td class="form-field form-field-label column-force-password-change">
-	            		        <label class="attribute-name"><{_t('L_FORCE_PASSWORD_CHANGE')}></label>
+	            		        <label class="attribute-name"><{_t('Force password change?')}></label>
             </td>
             <td class="form-field form-field-value column-force-password-change" colspan="3">
             	<div class="attribute-line column-force-password-change type-yesno">
@@ -354,7 +354,7 @@
             <{if !isset($excludedcolumns['IS_EMAIL_VERIFIED']) && ((isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) && $aclviewablecolumns['IS_EMAIL_VERIFIED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) || $aclviewablecolumns['IS_EMAIL_VERIFIED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_EMAIL_VERIFIED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-email-verified">
-	            		        <label class="attribute-name"><{_t('L_IS_EMAIL_VERIFIED')}></label>
+	            		        <label class="attribute-name"><{_t('Email verified?')}></label>
             </td>
             <td class="form-field form-field-value column-is-email-verified" colspan="3">
             	<div class="attribute-line column-is-email-verified type-yesno">
@@ -388,7 +388,7 @@
             <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
         <{if !isset($columns2hide) || !in_array('FACEBOOK_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-facebook-id">
-	            		        <label class="attribute-name"><{_t('L_FACEBOOK')}></label>
+	            		        <label class="attribute-name"><{_t('Facebook')}></label>
             </td>
             <td class="form-field form-field-value column-facebook-id" colspan="3">
             	<div class="attribute-line column-facebook-id type-key">
@@ -422,7 +422,7 @@
             <{if !isset($excludedcolumns['FACEBOOK_OAUTH_ID']) && ((isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) && $aclviewablecolumns['FACEBOOK_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) || $aclviewablecolumns['FACEBOOK_OAUTH_ID']))) }>
         <{if !isset($columns2hide) || !in_array('FACEBOOK_OAUTH_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-facebook-oauth-id">
-	            		        <label class="attribute-name"><{_t('L_FACEBOOK_OAUTH')}></label>
+	            		        <label class="attribute-name"><{_t('Facebook oauth')}></label>
             </td>
             <td class="form-field form-field-value column-facebook-oauth-id" colspan="3">
             	<div class="attribute-line column-facebook-oauth-id type-key">
@@ -456,7 +456,7 @@
             <{if !isset($excludedcolumns['GOOGLE_ID']) && ((isset($aclviewablecolumns['GOOGLE_ID']) && $aclviewablecolumns['GOOGLE_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_ID']) || $aclviewablecolumns['GOOGLE_ID']))) }>
         <{if !isset($columns2hide) || !in_array('GOOGLE_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-google-id">
-	            		        <label class="attribute-name"><{_t('L_GOOGLE')}></label>
+	            		        <label class="attribute-name"><{_t('Google')}></label>
             </td>
             <td class="form-field form-field-value column-google-id" colspan="3">
             	<div class="attribute-line column-google-id type-key">
@@ -490,7 +490,7 @@
             <{if !isset($excludedcolumns['GOOGLE_OAUTH_ID']) && ((isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) && $aclviewablecolumns['GOOGLE_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) || $aclviewablecolumns['GOOGLE_OAUTH_ID']))) }>
         <{if !isset($columns2hide) || !in_array('GOOGLE_OAUTH_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-google-oauth-id">
-	            		        <label class="attribute-name"><{_t('L_GOOGLE_OAUTH')}></label>
+	            		        <label class="attribute-name"><{_t('Google oauth')}></label>
             </td>
             <td class="form-field form-field-value column-google-oauth-id" colspan="3">
             	<div class="attribute-line column-google-oauth-id type-key">
@@ -524,7 +524,7 @@
             <{if !isset($excludedcolumns['YAHOO_ID']) && ((isset($aclviewablecolumns['YAHOO_ID']) && $aclviewablecolumns['YAHOO_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_ID']) || $aclviewablecolumns['YAHOO_ID']))) }>
         <{if !isset($columns2hide) || !in_array('YAHOO_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-yahoo-id">
-	            		        <label class="attribute-name"><{_t('L_YAHOO')}></label>
+	            		        <label class="attribute-name"><{_t('Yahoo')}></label>
             </td>
             <td class="form-field form-field-value column-yahoo-id" colspan="3">
             	<div class="attribute-line column-yahoo-id type-key">
@@ -558,7 +558,7 @@
             <{if !isset($excludedcolumns['YAHOO_OAUTH_ID']) && ((isset($aclviewablecolumns['YAHOO_OAUTH_ID']) && $aclviewablecolumns['YAHOO_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_OAUTH_ID']) || $aclviewablecolumns['YAHOO_OAUTH_ID']))) }>
         <{if !isset($columns2hide) || !in_array('YAHOO_OAUTH_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-yahoo-oauth-id">
-	            		        <label class="attribute-name"><{_t('L_YAHOO_OAUTH')}></label>
+	            		        <label class="attribute-name"><{_t('Yahoo oauth')}></label>
             </td>
             <td class="form-field form-field-value column-yahoo-oauth-id" colspan="3">
             	<div class="attribute-line column-yahoo-oauth-id type-key">
@@ -592,7 +592,7 @@
             <{if !isset($excludedcolumns['IS_ENABLED']) && ((isset($aclviewablecolumns['IS_ENABLED']) && $aclviewablecolumns['IS_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_ENABLED']) || $aclviewablecolumns['IS_ENABLED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_ENABLED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-enabled">
-	            		        <label class="attribute-name"><{_t('L_IS_ENABLED')}></label>
+	            		        <label class="attribute-name"><{_t('Enabled?')}></label>
             </td>
             <td class="form-field form-field-value column-is-enabled" colspan="3">
             	<div class="attribute-line column-is-enabled type-yesno">
@@ -626,7 +626,7 @@
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('CREATION_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-creation-date">
-	            		        <label class="attribute-name"><{_t('L_CREATION_DATE')}></label>
+	            		        <label class="attribute-name"><{_t('Creation date')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
             	<div class="attribute-line column-creation-date type-datetime">
@@ -659,7 +659,7 @@
             <{if !isset($excludedcolumns['LATEST_LOGIN']) && ((isset($aclviewablecolumns['LATEST_LOGIN']) && $aclviewablecolumns['LATEST_LOGIN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_LOGIN']) || $aclviewablecolumns['LATEST_LOGIN']))) }>
         <{if !isset($columns2hide) || !in_array('LATEST_LOGIN', $columns2hide) }>
     		<td class="form-field form-field-label column-latest-login">
-	            		        <label class="attribute-name"><{_t('L_LATEST_LOGIN')}></label>
+	            		        <label class="attribute-name"><{_t('Latest login')}></label>
             </td>
             <td class="form-field form-field-value column-latest-login" colspan="3">
             	<div class="attribute-line column-latest-login type-datetime">

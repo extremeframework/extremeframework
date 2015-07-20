@@ -21,15 +21,15 @@ class _TemplateController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TEMPLATE_NAME'));
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
            return false;
        }
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Module'));
            return false;
        }
 

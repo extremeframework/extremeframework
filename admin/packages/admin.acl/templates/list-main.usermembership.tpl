@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user"><{_t('L_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user"><{_t('User')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
     	            <th class="column-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user_group"><{_t('L_USER_GROUP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user_group"><{_t('User group')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
     	            <th class="column-id-user-role">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user_role"><{_t('L_USER_ROLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/id_user_role"><{_t('User role')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('VALID_FROM', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VALID_FROM']) && ((isset($aclviewablecolumns['VALID_FROM']) && $aclviewablecolumns['VALID_FROM']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALID_FROM']) || $aclviewablecolumns['VALID_FROM']))) }>
     	            <th class="column-valid-from">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/valid_from"><{_t('L_VALID_FROM')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/valid_from"><{_t('Valid from')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('VALID_UNTIL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VALID_UNTIL']) && ((isset($aclviewablecolumns['VALID_UNTIL']) && $aclviewablecolumns['VALID_UNTIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALID_UNTIL']) || $aclviewablecolumns['VALID_UNTIL']))) }>
     	            <th class="column-valid-until">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/valid_until"><{_t('L_VALID_UNTIL')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/usermembership/sort/valid_until"><{_t('Valid until')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -76,8 +76,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER_MEMBERSHIP')|strtolower}>s on this page are selected. <a onclick="usermembership_selectall()">Select all <{$total}> <{_t('L_USER_MEMBERSHIP')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_USER_MEMBERSHIP')|strtolower}>s in the list are selected. <a onclick="usermembership_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('User Memberships')|strtolower}> on this page are selected. <a onclick="usermembership_selectall()">Select all <{$total}> <{_t('User Memberships')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('User Memberships')|strtolower}> in the list are selected. <a onclick="usermembership_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

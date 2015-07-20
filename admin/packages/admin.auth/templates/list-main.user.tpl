@@ -17,7 +17,7 @@
         	                            <{if (in_array('FIRST_NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['FIRST_NAME']) && ((isset($aclviewablecolumns['FIRST_NAME']) && $aclviewablecolumns['FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FIRST_NAME']) || $aclviewablecolumns['FIRST_NAME']))) }>
     	            <th class="column-first-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/first_name"><{_t('L_FIRST_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/first_name"><{_t('First name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('LAST_NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LAST_NAME']) && ((isset($aclviewablecolumns['LAST_NAME']) && $aclviewablecolumns['LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LAST_NAME']) || $aclviewablecolumns['LAST_NAME']))) }>
     	            <th class="column-last-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/last_name"><{_t('L_LAST_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/last_name"><{_t('Last name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('PHOTO', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PHOTO']) && ((isset($aclviewablecolumns['PHOTO']) && $aclviewablecolumns['PHOTO']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PHOTO']) || $aclviewablecolumns['PHOTO']))) }>
     	            <th class="column-photo">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/photo"><{_t('L_PHOTO')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/photo"><{_t('Photo')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('EMAIL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['EMAIL']) && ((isset($aclviewablecolumns['EMAIL']) && $aclviewablecolumns['EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EMAIL']) || $aclviewablecolumns['EMAIL']))) }>
     	            <th class="column-email">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/email"><{_t('L_EMAIL')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/email"><{_t('Email')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('LOGIN', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LOGIN']) && ((isset($aclviewablecolumns['LOGIN']) && $aclviewablecolumns['LOGIN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOGIN']) || $aclviewablecolumns['LOGIN']))) }>
     	            <th class="column-login">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/login"><{_t('L_LOGIN')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/login"><{_t('Login')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('PHONE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PHONE']) && ((isset($aclviewablecolumns['PHONE']) && $aclviewablecolumns['PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PHONE']) || $aclviewablecolumns['PHONE']))) }>
     	            <th class="column-phone">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/phone"><{_t('L_PHONE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/phone"><{_t('Phone')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('GENDER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['GENDER']) && ((isset($aclviewablecolumns['GENDER']) && $aclviewablecolumns['GENDER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GENDER']) || $aclviewablecolumns['GENDER']))) }>
     	            <th class="column-gender">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/gender"><{_t('L_GENDER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/gender"><{_t('Gender')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('DATE_OF_BIRTH', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DATE_OF_BIRTH']) && ((isset($aclviewablecolumns['DATE_OF_BIRTH']) && $aclviewablecolumns['DATE_OF_BIRTH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_OF_BIRTH']) || $aclviewablecolumns['DATE_OF_BIRTH']))) }>
     	            <th class="column-date-of-birth">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/date_of_birth"><{_t('L_DATE_OF_BIRTH')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/date_of_birth"><{_t('Date of birth')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -89,7 +89,7 @@
 		                        <{if (in_array('FORCE_PASSWORD_CHANGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['FORCE_PASSWORD_CHANGE']) && ((isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) && $aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FORCE_PASSWORD_CHANGE']) || $aclviewablecolumns['FORCE_PASSWORD_CHANGE']))) }>
     	            <th class="column-force-password-change">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/force_password_change"><{_t('L_FORCE_PASSWORD_CHANGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/force_password_change"><{_t('Force password change?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -98,7 +98,7 @@
 		                        <{if (in_array('IS_EMAIL_VERIFIED', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_EMAIL_VERIFIED']) && ((isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) && $aclviewablecolumns['IS_EMAIL_VERIFIED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_EMAIL_VERIFIED']) || $aclviewablecolumns['IS_EMAIL_VERIFIED']))) }>
     	            <th class="column-is-email-verified">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/is_email_verified"><{_t('L_IS_EMAIL_VERIFIED')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/is_email_verified"><{_t('Email verified?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -107,7 +107,7 @@
 		                        <{if (in_array('FACEBOOK_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
     	            <th class="column-facebook-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/facebook_id"><{_t('L_FACEBOOK')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/facebook_id"><{_t('Facebook')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -116,7 +116,7 @@
 		                        <{if (in_array('FACEBOOK_OAUTH_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['FACEBOOK_OAUTH_ID']) && ((isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) && $aclviewablecolumns['FACEBOOK_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) || $aclviewablecolumns['FACEBOOK_OAUTH_ID']))) }>
     	            <th class="column-facebook-oauth-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/facebook_oauth_id"><{_t('L_FACEBOOK_OAUTH')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/facebook_oauth_id"><{_t('Facebook oauth')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -125,7 +125,7 @@
 		                        <{if (in_array('GOOGLE_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['GOOGLE_ID']) && ((isset($aclviewablecolumns['GOOGLE_ID']) && $aclviewablecolumns['GOOGLE_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_ID']) || $aclviewablecolumns['GOOGLE_ID']))) }>
     	            <th class="column-google-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/google_id"><{_t('L_GOOGLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/google_id"><{_t('Google')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -134,7 +134,7 @@
 		                        <{if (in_array('GOOGLE_OAUTH_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['GOOGLE_OAUTH_ID']) && ((isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) && $aclviewablecolumns['GOOGLE_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) || $aclviewablecolumns['GOOGLE_OAUTH_ID']))) }>
     	            <th class="column-google-oauth-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/google_oauth_id"><{_t('L_GOOGLE_OAUTH')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/google_oauth_id"><{_t('Google oauth')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -143,7 +143,7 @@
 		                        <{if (in_array('YAHOO_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['YAHOO_ID']) && ((isset($aclviewablecolumns['YAHOO_ID']) && $aclviewablecolumns['YAHOO_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_ID']) || $aclviewablecolumns['YAHOO_ID']))) }>
     	            <th class="column-yahoo-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/yahoo_id"><{_t('L_YAHOO')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/yahoo_id"><{_t('Yahoo')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -152,7 +152,7 @@
 		                        <{if (in_array('YAHOO_OAUTH_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['YAHOO_OAUTH_ID']) && ((isset($aclviewablecolumns['YAHOO_OAUTH_ID']) && $aclviewablecolumns['YAHOO_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_OAUTH_ID']) || $aclviewablecolumns['YAHOO_OAUTH_ID']))) }>
     	            <th class="column-yahoo-oauth-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/yahoo_oauth_id"><{_t('L_YAHOO_OAUTH')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/yahoo_oauth_id"><{_t('Yahoo oauth')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -161,7 +161,7 @@
 		                        <{if (in_array('IS_ENABLED', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_ENABLED']) && ((isset($aclviewablecolumns['IS_ENABLED']) && $aclviewablecolumns['IS_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_ENABLED']) || $aclviewablecolumns['IS_ENABLED']))) }>
     	            <th class="column-is-enabled">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/is_enabled"><{_t('L_IS_ENABLED')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/is_enabled"><{_t('Enabled?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -170,7 +170,7 @@
 		                        <{if (in_array('CREATION_DATE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
     	            <th class="column-creation-date">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/creation_date"><{_t('L_CREATION_DATE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/creation_date"><{_t('Creation date')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -179,7 +179,7 @@
 		                        <{if (in_array('LATEST_LOGIN', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LATEST_LOGIN']) && ((isset($aclviewablecolumns['LATEST_LOGIN']) && $aclviewablecolumns['LATEST_LOGIN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_LOGIN']) || $aclviewablecolumns['LATEST_LOGIN']))) }>
     	            <th class="column-latest-login">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/latest_login"><{_t('L_LATEST_LOGIN')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/latest_login"><{_t('Latest login')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -202,8 +202,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER')|strtolower}>s on this page are selected. <a onclick="user_selectall()">Select all <{$total}> <{_t('L_USER')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_USER')|strtolower}>s in the list are selected. <a onclick="user_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Users')|strtolower}> on this page are selected. <a onclick="user_selectall()">Select all <{$total}> <{_t('Users')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Users')|strtolower}> in the list are selected. <a onclick="user_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

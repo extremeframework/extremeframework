@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_user"><{_t('L_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_user"><{_t('User')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_DASHBOARD', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_DASHBOARD']) && ((isset($aclviewablecolumns['ID_DASHBOARD']) && $aclviewablecolumns['ID_DASHBOARD']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_DASHBOARD']) || $aclviewablecolumns['ID_DASHBOARD']))) }>
     	            <th class="column-id-dashboard">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_dashboard"><{_t('L_DASHBOARD')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_dashboard"><{_t('Dashboard')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_WALLPAPER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WALLPAPER']) && ((isset($aclviewablecolumns['ID_WALLPAPER']) && $aclviewablecolumns['ID_WALLPAPER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WALLPAPER']) || $aclviewablecolumns['ID_WALLPAPER']))) }>
     	            <th class="column-id-wallpaper">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_wallpaper"><{_t('L_WALLPAPER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_wallpaper"><{_t('Wallpaper')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ID_ADMIN_STYLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_STYLE']) && ((isset($aclviewablecolumns['ID_ADMIN_STYLE']) && $aclviewablecolumns['ID_ADMIN_STYLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_STYLE']) || $aclviewablecolumns['ID_ADMIN_STYLE']))) }>
     	            <th class="column-id-admin-style">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_admin_style"><{_t('L_ADMIN_STYLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userpreference/sort/id_admin_style"><{_t('Admin style')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER_PREFERENCE')|strtolower}>s on this page are selected. <a onclick="userpreference_selectall()">Select all <{$total}> <{_t('L_USER_PREFERENCE')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_USER_PREFERENCE')|strtolower}>s in the list are selected. <a onclick="userpreference_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('User Preferences')|strtolower}> on this page are selected. <a onclick="userpreference_selectall()">Select all <{$total}> <{_t('User Preferences')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('User Preferences')|strtolower}> in the list are selected. <a onclick="userpreference_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

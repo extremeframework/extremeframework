@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_SCREEN')}>
+<{assign var='title' value=_t('Screen')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.screen.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_SCREEN', true)|strtolower}>"/><{_t('New')}> <{_t('L_SCREEN')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Screen', true)|strtolower}>"/><{_t('New')}> <{_t('Screen')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,43 +107,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_SCREEN'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_SCREEN'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_SCREEN')), strtolower(_t('L_SCREEN'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Screen'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Screen'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Screen')), strtolower(_t('Screen'))));
     <{/php}>
 
-    <div id="screencopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_SCREEN', true)|strtolower}>">
+    <div id="screencopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Screen', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="screenapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_SCREEN', true)|strtolower}>">
+    <div id="screenapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Screen', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="screendeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_SCREEN', true)|strtolower}>">
+    <div id="screendeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Screen', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

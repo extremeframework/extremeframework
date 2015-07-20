@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MENU_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-class">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CLASS')}></label>
+        		    <label><{_t('Class')}></label>
                 </div>
             </td>
             <td class="form-row form-row-class" colspan="3">

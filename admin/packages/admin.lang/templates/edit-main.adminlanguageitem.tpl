@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-language">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_LANGUAGE')}></label>
+        		    <label><{_t('Admin language')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-language" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-label">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_LABEL')}></label>
+        		    <label><{_t('Admin label')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-label" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-translation">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TRANSLATION')}></label>
+        		    <label><{_t('Translation')}></label>
                 </div>
             </td>
             <td class="form-row form-row-translation" colspan="3">

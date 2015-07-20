@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['LABEL']) && ((isset($aclviewablecolumns['LABEL']) && $aclviewablecolumns['LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LABEL']) || $aclviewablecolumns['LABEL']))) }>
         <{if !isset($columns2hide) || !in_array('LABEL', $columns2hide) }>
     		<td class="form-field form-field-label column-label">
-	            		        <label class="attribute-name"><{_t('L_LABEL')}></label>
+	            		        <label class="attribute-name"><{_t('Label')}></label>
             </td>
             <td class="form-field form-field-value column-label" colspan="3">
             	<div class="attribute-line column-label type-text">

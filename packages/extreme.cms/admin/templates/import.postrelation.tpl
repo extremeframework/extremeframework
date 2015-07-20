@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_POST_RELATION), APPLICATION_URL.'/postrelation/export', strtolower(L_POST_RELATION)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Post Relation), APPLICATION_URL.'/postrelation/export', strtolower(Post Relation)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_POST_RELATION')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Post Relation')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="postrelation_importfile" />
     </div>

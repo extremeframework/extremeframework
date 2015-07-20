@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-screen">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SCREEN')}></label>
+        		    <label><{_t('Screen')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-screen" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-id-value-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VALUE_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Value type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-value-type form-row-mandatory" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-datasource">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DATASOURCE')}></label>
+        		    <label><{_t('Datasource')}></label>
                 </div>
             </td>
             <td class="form-row form-row-datasource" colspan="3">
@@ -210,7 +210,7 @@
         <{else}>
     		<td class="form-row form-row-condition">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONDITION')}></label>
+        		    <label><{_t('Condition')}></label>
                 </div>
             </td>
             <td class="form-row form-row-condition" colspan="3">
@@ -240,7 +240,7 @@
         <{else}>
     		<td class="form-row form-row-valuecol">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VALUECOL')}></label>
+        		    <label><{_t('Valuecol')}></label>
                 </div>
             </td>
             <td class="form-row form-row-valuecol" colspan="3">
@@ -270,7 +270,7 @@
         <{else}>
     		<td class="form-row form-row-textcol">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEXTCOL')}></label>
+        		    <label><{_t('Textcol')}></label>
                 </div>
             </td>
             <td class="form-row form-row-textcol" colspan="3">
@@ -300,7 +300,7 @@
         <{else}>
     		<td class="form-row form-row-is-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_MANDATORY')}></label>
+        		    <label><{_t('Mandatory?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-mandatory" colspan="3">
@@ -330,7 +330,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

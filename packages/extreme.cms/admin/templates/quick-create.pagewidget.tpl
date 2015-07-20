@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_PAGE_WIDGET')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Page Widget')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -124,7 +124,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -157,7 +157,7 @@
         <{else}>
     		<td class="form-row form-row-id-widget-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WIDGET_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Widget type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-widget-type form-row-mandatory" colspan="3">
@@ -194,7 +194,7 @@
         <{else}>
     		<td class="form-row form-row-hide-title">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_HIDE_TITLE')}></label>
+        		    <label><{_t('Hide title')}></label>
                 </div>
             </td>
             <td class="form-row form-row-hide-title" colspan="3">

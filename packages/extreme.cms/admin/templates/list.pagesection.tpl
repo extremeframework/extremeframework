@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_PAGE_SECTION')}>
+<{assign var='title' value=_t('Page Section')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.pagesection.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_PAGE_SECTION', true)|strtolower}>"/><{_t('New')}> <{_t('L_PAGE_SECTION')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Page Section', true)|strtolower}>"/><{_t('New')}> <{_t('Page Section')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.pagesection.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagesection/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.pagesection.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/pagesection/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/pagesection/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_PAGE_SECTION'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_PAGE_SECTION'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_PAGE_SECTION')), strtolower(_t('L_PAGE_SECTION'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Page Section'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Page Section'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Page Section')), strtolower(_t('Page Section'))));
     <{/php}>
 
-    <div id="pagesectioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_PAGE_SECTION', true)|strtolower}>">
+    <div id="pagesectioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Page Section', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagesection" /> <{_t('Copy also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagesection" /> <{_t('Copy also')}> <{_t('Page Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pagesectionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_PAGE_SECTION', true)|strtolower}>">
+    <div id="pagesectionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Page Section', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagesection" /> <{_t('Approve also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagesection" /> <{_t('Approve also')}> <{_t('Page Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pagesectiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_PAGE_SECTION', true)|strtolower}>">
+    <div id="pagesectiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Page Section', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagesection" /> <{_t('Delete also')}> <{_t('L_PAGE_SECTION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagesection" /> <{_t('Delete also')}> <{_t('Page Section')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

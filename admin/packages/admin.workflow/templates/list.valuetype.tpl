@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_VALUE_TYPE')}>
+<{assign var='title' value=_t('Value Type')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.valuetype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>"/><{_t('New')}> <{_t('L_VALUE_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/valuetype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Value Type', true)|strtolower}>"/><{_t('New')}> <{_t('Value Type')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,34 +107,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_VALUE_TYPE'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_VALUE_TYPE'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_VALUE_TYPE')), strtolower(_t('L_VALUE_TYPE'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Value Type'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Value Type'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Value Type')), strtolower(_t('Value Type'))));
     <{/php}>
 
-    <div id="valuetypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
+    <div id="valuetypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Value Type', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="valuetypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
+    <div id="valuetypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Value Type', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="valuetypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_VALUE_TYPE', true)|strtolower}>">
+    <div id="valuetypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Value Type', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('L_SCREEN_FIELD')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('Screen Field')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

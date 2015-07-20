@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
     	            <th class="column-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/id_user_group"><{_t('L_USER_GROUP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/id_user_group"><{_t('User group')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/module"><{_t('L_MODULE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/module"><{_t('Module')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ACTIONS', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ACTIONS']) && ((isset($aclviewablecolumns['ACTIONS']) && $aclviewablecolumns['ACTIONS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTIONS']) || $aclviewablecolumns['ACTIONS']))) }>
     	            <th class="column-actions">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/actions"><{_t('L_ACTIONS')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/actions"><{_t('Actions')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ACCESS_RIGHT')|strtolower}>s on this page are selected. <a onclick="accessright_selectall()">Select all <{$total}> <{_t('L_ACCESS_RIGHT')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_ACCESS_RIGHT')|strtolower}>s in the list are selected. <a onclick="accessright_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Access Rights')|strtolower}> on this page are selected. <a onclick="accessright_selectall()">Select all <{$total}> <{_t('Access Rights')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Access Rights')|strtolower}> in the list are selected. <a onclick="accessright_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

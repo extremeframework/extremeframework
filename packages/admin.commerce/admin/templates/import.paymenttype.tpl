@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_PAYMENT_TYPE), APPLICATION_URL.'/paymenttype/export', strtolower(L_PAYMENT_TYPE)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Payment Type), APPLICATION_URL.'/paymenttype/export', strtolower(Payment Type)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_PAYMENT_TYPE')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Payment Type')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="paymenttype_importfile" />
     </div>

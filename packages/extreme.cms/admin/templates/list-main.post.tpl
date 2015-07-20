@@ -17,7 +17,7 @@
         	                            <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/title"><{_t('L_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/title"><{_t('Title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_POST_TYPE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_POST_TYPE']) && ((isset($aclviewablecolumns['ID_POST_TYPE']) && $aclviewablecolumns['ID_POST_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_TYPE']) || $aclviewablecolumns['ID_POST_TYPE']))) }>
     	            <th class="column-id-post-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_post_type"><{_t('L_POST_TYPE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_post_type"><{_t('Post type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_POST_CATEGORY', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_POST_CATEGORY']) && ((isset($aclviewablecolumns['ID_POST_CATEGORY']) && $aclviewablecolumns['ID_POST_CATEGORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_CATEGORY']) || $aclviewablecolumns['ID_POST_CATEGORY']))) }>
     	            <th class="column-id-post-category">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_post_category"><{_t('L_POST_CATEGORY')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_post_category"><{_t('Post category')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
     	            <th class="column-image">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/image"><{_t('L_IMAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/image"><{_t('Image')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('META_KEYWORDS', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['META_KEYWORDS']) && ((isset($aclviewablecolumns['META_KEYWORDS']) && $aclviewablecolumns['META_KEYWORDS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['META_KEYWORDS']) || $aclviewablecolumns['META_KEYWORDS']))) }>
     	            <th class="column-meta-keywords">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/meta_keywords"><{_t('L_META_KEYWORDS')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/meta_keywords"><{_t('Meta keywords')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('AUTHOR', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['AUTHOR']) && ((isset($aclviewablecolumns['AUTHOR']) && $aclviewablecolumns['AUTHOR']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['AUTHOR']) || $aclviewablecolumns['AUTHOR']))) }>
     	            <th class="column-author">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/author"><{_t('L_AUTHOR')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/author"><{_t('Author')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('ID_TEMPLATE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_TEMPLATE']) && ((isset($aclviewablecolumns['ID_TEMPLATE']) && $aclviewablecolumns['ID_TEMPLATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_TEMPLATE']) || $aclviewablecolumns['ID_TEMPLATE']))) }>
     	            <th class="column-id-template">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_template"><{_t('L_TEMPLATE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/id_template"><{_t('Template')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('CREATION_DATE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
     	            <th class="column-creation-date">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/creation_date"><{_t('L_CREATION_DATE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/creation_date"><{_t('Creation date')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -89,7 +89,7 @@
 		                        <{if (in_array('LATEST_UPDATE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
     	            <th class="column-latest-update">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/latest_update"><{_t('L_LATEST_UPDATE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/latest_update"><{_t('Latest update')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -98,7 +98,7 @@
 		                        <{if (in_array('IS_FEATURED', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_FEATURED']) && ((isset($aclviewablecolumns['IS_FEATURED']) && $aclviewablecolumns['IS_FEATURED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_FEATURED']) || $aclviewablecolumns['IS_FEATURED']))) }>
     	            <th class="column-is-featured">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/is_featured"><{_t('L_IS_FEATURED')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/is_featured"><{_t('Featured?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -107,7 +107,7 @@
 		                        <{if (in_array('NBR_VIEWS', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NBR_VIEWS']) && ((isset($aclviewablecolumns['NBR_VIEWS']) && $aclviewablecolumns['NBR_VIEWS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NBR_VIEWS']) || $aclviewablecolumns['NBR_VIEWS']))) }>
     	            <th class="column-nbr-views">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/nbr_views"><{_t('L_NBR_VIEWS')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/post/sort/nbr_views"><{_t('# views')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -130,8 +130,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_POST')|strtolower}>s on this page are selected. <a onclick="post_selectall()">Select all <{$total}> <{_t('L_POST')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_POST')|strtolower}>s in the list are selected. <a onclick="post_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Posts')|strtolower}> on this page are selected. <a onclick="post_selectall()">Select all <{$total}> <{_t('Posts')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Posts')|strtolower}> in the list are selected. <a onclick="post_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

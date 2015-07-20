@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_PAGE_GALLERY), APPLICATION_URL.'/pagegallery/export', strtolower(L_PAGE_GALLERY)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Page Gallery), APPLICATION_URL.'/pagegallery/export', strtolower(Page Gallery)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_PAGE_GALLERY')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Page Gallery')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="pagegallery_importfile" />
     </div>

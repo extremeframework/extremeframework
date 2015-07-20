@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#workflowstageform').attr('action', '<{$actionurl}>');$('#workflowstageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-workflow <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_WORKFLOW')}><{if in_array('ID_WORKFLOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Workflow')}><{if in_array('ID_WORKFLOW', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_WORKFLOW_STAGE_NAME')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Name')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-code <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_CODE')}><{if in_array('CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Code')}><{if in_array('CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -124,7 +124,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-is-default <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_IS_DEFAULT')}><{if in_array('IS_DEFAULT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Default?')}><{if in_array('IS_DEFAULT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -148,7 +148,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-is-binding-object-editable <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_IS_BINDING_OBJECT_EDITABLE')}><{if in_array('IS_BINDING_OBJECT_EDITABLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Binding object editable?')}><{if in_array('IS_BINDING_OBJECT_EDITABLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -172,7 +172,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-is-binding-object-deletable <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_IS_BINDING_OBJECT_DELETABLE')}><{if in_array('IS_BINDING_OBJECT_DELETABLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Binding object deletable?')}><{if in_array('IS_BINDING_OBJECT_DELETABLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -209,7 +209,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#workflowstageform').attr('action', '<{$actionurl}>');$('#workflowstageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

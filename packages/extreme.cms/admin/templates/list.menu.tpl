@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_MENU')}>
+<{assign var='title' value=_t('Menu')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.menu.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_MENU', true)|strtolower}>"/><{_t('New')}> <{_t('L_MENU')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Menu', true)|strtolower}>"/><{_t('New')}> <{_t('Menu')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.menu.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/menu/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.menu.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/menu/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/menu/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_MENU'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_MENU'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_MENU')), strtolower(_t('L_MENU'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Menu'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Menu'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Menu')), strtolower(_t('Menu'))));
     <{/php}>
 
-    <div id="menucopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_MENU', true)|strtolower}>">
+    <div id="menucopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Menu', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('Copy also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('Copy also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="menuapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_MENU', true)|strtolower}>">
+    <div id="menuapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Menu', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('Approve also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('Approve also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="menudeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_MENU', true)|strtolower}>">
+    <div id="menudeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Menu', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('Delete also')}> <{_t('L_MENU_ITEM')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('Delete also')}> <{_t('Menu Item')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

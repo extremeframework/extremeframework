@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="user" data-id="<{$details->refuuid_ID_USER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_USER')}></label>
+    	                            		        <label class="attribute-name"><{_t('User')}></label>
             </td>
             <td class="form-field form-field-value column-id-user" colspan="3">
             	<div class="attribute-line column-id-user type-reftext">
@@ -72,7 +72,7 @@
             <{if !isset($excludedcolumns['DATE_TIME']) && ((isset($aclviewablecolumns['DATE_TIME']) && $aclviewablecolumns['DATE_TIME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_TIME']) || $aclviewablecolumns['DATE_TIME']))) }>
         <{if !isset($columns2hide) || !in_array('DATE_TIME', $columns2hide) }>
     		<td class="form-field form-field-label column-date-time">
-	            		        <label class="attribute-name"><{_t('L_DATE_TIME')}></label>
+	            		        <label class="attribute-name"><{_t('Date time')}></label>
             </td>
             <td class="form-field form-field-value column-date-time" colspan="3">
             	<div class="attribute-line column-date-time type-datetime">
@@ -105,7 +105,7 @@
             <{if !isset($excludedcolumns['IP']) && ((isset($aclviewablecolumns['IP']) && $aclviewablecolumns['IP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IP']) || $aclviewablecolumns['IP']))) }>
         <{if !isset($columns2hide) || !in_array('IP', $columns2hide) }>
     		<td class="form-field form-field-label column-ip">
-	            		        <label class="attribute-name"><{_t('L_IP')}></label>
+	            		        <label class="attribute-name"><{_t('IP')}></label>
             </td>
             <td class="form-field form-field-value column-ip" colspan="3">
             	<div class="attribute-line column-ip type-text">

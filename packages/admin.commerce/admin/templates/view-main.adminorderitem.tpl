@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminorder" data-id="<{$details->refuuid_ID_ADMIN_ORDER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_ADMIN_ORDER')}></label>
+    	                            		        <label class="attribute-name"><{_t('Admin order')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-order" colspan="3">
             	<div class="attribute-line column-id-admin-order type-reftext">
@@ -77,7 +77,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminproduct" data-id="<{$details->refuuid_ID_ADMIN_PRODUCT}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_ADMIN_PRODUCT')}></label>
+    	                            		        <label class="attribute-name"><{_t('Admin product')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-product" colspan="3">
             	<div class="attribute-line column-id-admin-product type-reftext">
@@ -132,7 +132,7 @@
             <{if !isset($excludedcolumns['QUANTITY']) && ((isset($aclviewablecolumns['QUANTITY']) && $aclviewablecolumns['QUANTITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['QUANTITY']) || $aclviewablecolumns['QUANTITY']))) }>
         <{if !isset($columns2hide) || !in_array('QUANTITY', $columns2hide) }>
     		<td class="form-field form-field-label column-quantity">
-	            		        <label class="attribute-name"><{_t('L_QUANTITY')}></label>
+	            		        <label class="attribute-name"><{_t('Quantity')}></label>
             </td>
             <td class="form-field form-field-value column-quantity" colspan="3">
             	<div class="attribute-line column-quantity type-number">
@@ -165,7 +165,7 @@
             <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
         <{if !isset($columns2hide) || !in_array('PRICE', $columns2hide) }>
     		<td class="form-field form-field-label column-price">
-	            		        <label class="attribute-name"><{_t('L_PRICE')}></label>
+	            		        <label class="attribute-name"><{_t('Price')}></label>
             </td>
             <td class="form-field form-field-value column-price" colspan="3">
             	<div class="attribute-line column-price type-number">

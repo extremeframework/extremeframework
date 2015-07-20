@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="user" data-id="<{$details->refuuid_ID_USER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_USER')}></label>
+    	                            		        <label class="attribute-name"><{_t('User')}></label>
             </td>
             <td class="form-field form-field-value column-id-user" colspan="3">
             	<div class="attribute-line column-id-user type-reftext">
@@ -77,7 +77,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="dashboard" data-id="<{$details->refuuid_ID_DASHBOARD}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_DASHBOARD')}></label>
+    	                            		        <label class="attribute-name"><{_t('Dashboard')}></label>
             </td>
             <td class="form-field form-field-value column-id-dashboard" colspan="3">
             	<div class="attribute-line column-id-dashboard type-reftext">
@@ -132,7 +132,7 @@
             <{if !isset($excludedcolumns['ID_WALLPAPER']) && ((isset($aclviewablecolumns['ID_WALLPAPER']) && $aclviewablecolumns['ID_WALLPAPER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WALLPAPER']) || $aclviewablecolumns['ID_WALLPAPER']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WALLPAPER', $columns2hide) }>
     		<td class="form-field form-field-label column-id-wallpaper">
-	            		        <label class="attribute-name"><{_t('L_WALLPAPER')}></label>
+	            		        <label class="attribute-name"><{_t('Wallpaper')}></label>
             </td>
             <td class="form-field form-field-value column-id-wallpaper" colspan="3">
             	<div class="attribute-line column-id-wallpaper type-key">
@@ -166,7 +166,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_STYLE']) && ((isset($aclviewablecolumns['ID_ADMIN_STYLE']) && $aclviewablecolumns['ID_ADMIN_STYLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_STYLE']) || $aclviewablecolumns['ID_ADMIN_STYLE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_STYLE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-style">
-	            		        <label class="attribute-name"><{_t('L_ADMIN_STYLE')}></label>
+	            		        <label class="attribute-name"><{_t('Admin style')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-style" colspan="3">
             	<div class="attribute-line column-id-admin-style type-key">

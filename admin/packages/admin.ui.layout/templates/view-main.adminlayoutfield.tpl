@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -77,7 +77,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminlayoutsection" data-id="<{$details->refuuid_ID_ADMIN_LAYOUT_SECTION}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_ADMIN_LAYOUT_SECTION')}></label>
+    	                            		        <label class="attribute-name"><{_t('Admin layout section')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-layout-section" colspan="3">
             	<div class="attribute-line column-id-admin-layout-section type-reftext">
@@ -132,7 +132,7 @@
             <{if !isset($excludedcolumns['COLUMN']) && ((isset($aclviewablecolumns['COLUMN']) && $aclviewablecolumns['COLUMN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COLUMN']) || $aclviewablecolumns['COLUMN']))) }>
         <{if !isset($columns2hide) || !in_array('COLUMN', $columns2hide) }>
     		<td class="form-field form-field-label column-column">
-	            		        <label class="attribute-name"><{_t('L_COLUMN')}></label>
+	            		        <label class="attribute-name"><{_t('Column')}></label>
             </td>
             <td class="form-field form-field-value column-column" colspan="3">
             	<div class="attribute-line column-column type-text">
@@ -166,7 +166,7 @@
             <{if !isset($excludedcolumns['POSITION']) && ((isset($aclviewablecolumns['POSITION']) && $aclviewablecolumns['POSITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['POSITION']) || $aclviewablecolumns['POSITION']))) }>
         <{if !isset($columns2hide) || !in_array('POSITION', $columns2hide) }>
     		<td class="form-field form-field-label column-position">
-	            		        <label class="attribute-name"><{_t('L_POSITION')}></label>
+	            		        <label class="attribute-name"><{_t('Position')}></label>
             </td>
             <td class="form-field form-field-value column-position" colspan="3">
             	<div class="attribute-line column-position type-text">

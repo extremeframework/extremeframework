@@ -21,23 +21,23 @@ class _PageWidgetController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
-           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TITLE'));
+           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Title'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
            return false;
        }
        if (in_array('ID_WIDGET_TYPE', $columns2check) && trim($model->ID_WIDGET_TYPE) == '') {
-           $errors['id-widget-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_WIDGET_TYPE'));
+           $errors['id-widget-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Widget type'));
            return false;
        }
        if (in_array('LINK', $columns2check) && !empty($model->LINK) && !preg_match('/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.?[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?/i', $model->LINK)) {
-           $errors['link'] = sprintf(_t('L_VALIDATION_URL'), _t('L_LINK'));
+           $errors['link'] = sprintf(_t('L_VALIDATION_URL'), _t('Link'));
            return false;
        }
        if (in_array('ORDERING', $columns2check) && !empty($model->ORDERING) && !is_numeric($model->ORDERING)) {
-           $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_ORDERING'));
+           $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Ordering'));
            return false;
        }
 

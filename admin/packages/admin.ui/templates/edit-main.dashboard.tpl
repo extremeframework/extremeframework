@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MENU')}></label>
+        		    <label><{_t('Admin menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-menu" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-id-dashboard-layout">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_LAYOUT')}></label>
+        		    <label><{_t('Dashboard layout')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-dashboard-layout" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-dashboard-file-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_FILE_PATH')}></label>
+        		    <label><{_t('Dashboard file path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-dashboard-file-path" colspan="3">

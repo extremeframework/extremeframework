@@ -17,7 +17,7 @@
         	                            <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/title"><{_t('L_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/title"><{_t('Title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_POST', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_POST']) && ((isset($aclviewablecolumns['ID_POST']) && $aclviewablecolumns['ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST']) || $aclviewablecolumns['ID_POST']))) }>
     	            <th class="column-id-post">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/id_post"><{_t('L_POST')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/id_post"><{_t('Post')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
     	            <th class="column-image">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/image"><{_t('L_IMAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/image"><{_t('Image')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('BACKGROUND_IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['BACKGROUND_IMAGE']) && ((isset($aclviewablecolumns['BACKGROUND_IMAGE']) && $aclviewablecolumns['BACKGROUND_IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BACKGROUND_IMAGE']) || $aclviewablecolumns['BACKGROUND_IMAGE']))) }>
     	            <th class="column-background-image">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/background_image"><{_t('L_BACKGROUND_IMAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/background_image"><{_t('Background image')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('BACKGROUND_COLOR', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['BACKGROUND_COLOR']) && ((isset($aclviewablecolumns['BACKGROUND_COLOR']) && $aclviewablecolumns['BACKGROUND_COLOR']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BACKGROUND_COLOR']) || $aclviewablecolumns['BACKGROUND_COLOR']))) }>
     	            <th class="column-background-color">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/background_color"><{_t('L_BACKGROUND_COLOR')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/background_color"><{_t('Background color')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('VIDEO', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['VIDEO']) && ((isset($aclviewablecolumns['VIDEO']) && $aclviewablecolumns['VIDEO']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIDEO']) || $aclviewablecolumns['VIDEO']))) }>
     	            <th class="column-video">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/video"><{_t('L_VIDEO')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/video"><{_t('Video')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('LINK_PATH', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LINK_PATH']) && ((isset($aclviewablecolumns['LINK_PATH']) && $aclviewablecolumns['LINK_PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LINK_PATH']) || $aclviewablecolumns['LINK_PATH']))) }>
     	            <th class="column-link-path">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/link_path"><{_t('L_LINK_PATH')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/link_path"><{_t('Link path')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/ordering"><{_t('L_ORDERING')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postsection/sort/ordering"><{_t('Ordering')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -103,8 +103,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_POST_SECTION')|strtolower}>s on this page are selected. <a onclick="postsection_selectall()">Select all <{$total}> <{_t('L_POST_SECTION')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_POST_SECTION')|strtolower}>s in the list are selected. <a onclick="postsection_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Post Sections')|strtolower}> on this page are selected. <a onclick="postsection_selectall()">Select all <{$total}> <{_t('Post Sections')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Post Sections')|strtolower}> in the list are selected. <a onclick="postsection_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

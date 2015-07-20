@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/id_user"><{_t('L_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/id_user"><{_t('User')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('DATE_TIME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DATE_TIME']) && ((isset($aclviewablecolumns['DATE_TIME']) && $aclviewablecolumns['DATE_TIME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_TIME']) || $aclviewablecolumns['DATE_TIME']))) }>
     	            <th class="column-date-time">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/date_time"><{_t('L_DATE_TIME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/date_time"><{_t('Date time')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('IP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IP']) && ((isset($aclviewablecolumns['IP']) && $aclviewablecolumns['IP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IP']) || $aclviewablecolumns['IP']))) }>
     	            <th class="column-ip">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/ip"><{_t('L_IP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/userlog/sort/ip"><{_t('IP')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_USER_LOG')|strtolower}>s on this page are selected. <a onclick="userlog_selectall()">Select all <{$total}> <{_t('L_USER_LOG')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_USER_LOG')|strtolower}>s in the list are selected. <a onclick="userlog_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('User Logs')|strtolower}> on this page are selected. <a onclick="userlog_selectall()">Select all <{$total}> <{_t('User Logs')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('User Logs')|strtolower}> in the list are selected. <a onclick="userlog_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

@@ -17,7 +17,7 @@
         	                            <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/name"><{_t('L_ADMIN_ORDER_STATUS_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/name"><{_t('Name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/code"><{_t('L_CODE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/code"><{_t('Code')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/ordering"><{_t('L_ORDERING')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/sort/ordering"><{_t('Ordering')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_ORDER_STATUS')|strtolower}>s on this page are selected. <a onclick="adminorderstatus_selectall()">Select all <{$total}> <{_t('L_ADMIN_ORDER_STATUS')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_ORDER_STATUS')|strtolower}>s in the list are selected. <a onclick="adminorderstatus_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Order Statuses')|strtolower}> on this page are selected. <a onclick="adminorderstatus_selectall()">Select all <{$total}> <{_t('Admin Order Statuses')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Admin Order Statuses')|strtolower}> in the list are selected. <a onclick="adminorderstatus_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

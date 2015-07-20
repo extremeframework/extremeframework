@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_DASHBOARD_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['ID_ADMIN_MENU']) && ((isset($aclviewablecolumns['ID_ADMIN_MENU']) && $aclviewablecolumns['ID_ADMIN_MENU']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_MENU']) || $aclviewablecolumns['ID_ADMIN_MENU']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_MENU', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-menu">
-	                    		                    		        <label class="attribute-name"><{_t('L_ADMIN_MENU')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Admin menu')}></label>
             </td>
             <td class="form-field form-field-value column-id-admin-menu" colspan="3">
             	<div class="attribute-line column-id-admin-menu type-reftext">
@@ -101,7 +101,7 @@
             <{if !isset($excludedcolumns['ID_DASHBOARD_LAYOUT']) && ((isset($aclviewablecolumns['ID_DASHBOARD_LAYOUT']) && $aclviewablecolumns['ID_DASHBOARD_LAYOUT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_DASHBOARD_LAYOUT']) || $aclviewablecolumns['ID_DASHBOARD_LAYOUT']))) }>
         <{if !isset($columns2hide) || !in_array('ID_DASHBOARD_LAYOUT', $columns2hide) }>
     		<td class="form-field form-field-label column-id-dashboard-layout">
-	            		        <label class="attribute-name"><{_t('L_DASHBOARD_LAYOUT')}></label>
+	            		        <label class="attribute-name"><{_t('Dashboard layout')}></label>
             </td>
             <td class="form-field form-field-value column-id-dashboard-layout" colspan="3">
             	<div class="attribute-line column-id-dashboard-layout type-key">
@@ -135,7 +135,7 @@
             <{if !isset($excludedcolumns['DASHBOARD_FILE_PATH']) && ((isset($aclviewablecolumns['DASHBOARD_FILE_PATH']) && $aclviewablecolumns['DASHBOARD_FILE_PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DASHBOARD_FILE_PATH']) || $aclviewablecolumns['DASHBOARD_FILE_PATH']))) }>
         <{if !isset($columns2hide) || !in_array('DASHBOARD_FILE_PATH', $columns2hide) }>
     		<td class="form-field form-field-label column-dashboard-file-path">
-	            		        <label class="attribute-name"><{_t('L_DASHBOARD_FILE_PATH')}></label>
+	            		        <label class="attribute-name"><{_t('Dashboard file path')}></label>
             </td>
             <td class="form-field form-field-value column-dashboard-file-path" colspan="3">
             	<div class="attribute-line column-dashboard-file-path type-text">

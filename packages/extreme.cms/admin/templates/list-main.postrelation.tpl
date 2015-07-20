@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_POST', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_POST']) && ((isset($aclviewablecolumns['ID_POST']) && $aclviewablecolumns['ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST']) || $aclviewablecolumns['ID_POST']))) }>
     	            <th class="column-id-post">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/id_post"><{_t('L_POST')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/id_post"><{_t('Post')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('PEER_ID_POST', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PEER_ID_POST']) && ((isset($aclviewablecolumns['PEER_ID_POST']) && $aclviewablecolumns['PEER_ID_POST']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PEER_ID_POST']) || $aclviewablecolumns['PEER_ID_POST']))) }>
     	            <th class="column-peer-id-post">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/peer_id_post"><{_t('L_PEER_POST')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/peer_id_post"><{_t('Peer post')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_POST_RELATION_TYPE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_POST_RELATION_TYPE']) && ((isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) && $aclviewablecolumns['ID_POST_RELATION_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) || $aclviewablecolumns['ID_POST_RELATION_TYPE']))) }>
     	            <th class="column-id-post-relation-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/id_post_relation_type"><{_t('L_POST_RELATION_TYPE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/postrelation/sort/id_post_relation_type"><{_t('Post relation type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_POST_RELATION')|strtolower}>s on this page are selected. <a onclick="postrelation_selectall()">Select all <{$total}> <{_t('L_POST_RELATION')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_POST_RELATION')|strtolower}>s in the list are selected. <a onclick="postrelation_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Post Relations')|strtolower}> on this page are selected. <a onclick="postrelation_selectall()">Select all <{$total}> <{_t('Post Relations')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Post Relations')|strtolower}> in the list are selected. <a onclick="postrelation_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

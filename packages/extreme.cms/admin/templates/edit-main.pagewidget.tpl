@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PAGE')}></label>
+        		    <label><{_t('Page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-page" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-link">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LINK')}></label>
+        		    <label><{_t('Link')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link" colspan="3">
@@ -173,7 +173,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -206,7 +206,7 @@
         <{else}>
     		<td class="form-row form-row-id-widget-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WIDGET_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Widget type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-widget-type form-row-mandatory" colspan="3">
@@ -243,7 +243,7 @@
         <{else}>
     		<td class="form-row form-row-id-widget-position">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WIDGET_POSITION')}></label>
+        		    <label><{_t('Widget position')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-widget-position" colspan="3">
@@ -280,7 +280,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONTENT')}></label>
+        		    <label><{_t('Content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -311,7 +311,7 @@
         <{else}>
     		<td class="form-row form-row-hide-title">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_HIDE_TITLE')}></label>
+        		    <label><{_t('Hide title')}></label>
                 </div>
             </td>
             <td class="form-row form-row-hide-title" colspan="3">
@@ -341,7 +341,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-class">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CLASS')}></label>
+        		    <label><{_t('Class')}></label>
                 </div>
             </td>
             <td class="form-row form-row-class" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-tag-line">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAG_LINE')}></label>
+        		    <label><{_t('Tag line')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tag-line" colspan="3">
@@ -130,7 +130,7 @@
         <{else}>
     		<td class="form-row form-row-id-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MENU')}></label>
+        		    <label><{_t('Menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-menu" colspan="3">
@@ -167,7 +167,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARENT')}></label>
+        		    <label><{_t('Parent')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -204,7 +204,7 @@
         <{else}>
     		<td class="form-row form-row-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PAGE')}></label>
+        		    <label><{_t('Page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-page" colspan="3">
@@ -241,7 +241,7 @@
         <{else}>
     		<td class="form-row form-row-id-post">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST')}></label>
+        		    <label><{_t('Post')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post" colspan="3">
@@ -278,7 +278,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-category">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY')}></label>
+        		    <label><{_t('Post category')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-category" colspan="3">
@@ -315,7 +315,7 @@
         <{else}>
     		<td class="form-row form-row-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PATH')}></label>
+        		    <label><{_t('Path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-path" colspan="3">
@@ -345,7 +345,7 @@
         <{else}>
     		<td class="form-row form-row-custom-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CUSTOM_CONTENT')}></label>
+        		    <label><{_t('Custom content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-custom-content" colspan="3">
@@ -376,7 +376,7 @@
         <{else}>
     		<td class="form-row form-row-has-break-after">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_HAS_BREAK_AFTER')}></label>
+        		    <label><{_t('Has break after?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-has-break-after" colspan="3">
@@ -406,7 +406,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
@@ -435,7 +435,7 @@
         <{else}>
     		<td class="form-row form-row-acl-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ACL_USER_GROUP')}></label>
+        		    <label><{_t('Acl user group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-acl-id-user-group" colspan="3">

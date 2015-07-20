@@ -17,7 +17,7 @@
         	                            <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/title"><{_t('L_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/title"><{_t('Title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
     	            <th class="column-image">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/image"><{_t('L_IMAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/image"><{_t('Image')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('LIST_PRICE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LIST_PRICE']) && ((isset($aclviewablecolumns['LIST_PRICE']) && $aclviewablecolumns['LIST_PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LIST_PRICE']) || $aclviewablecolumns['LIST_PRICE']))) }>
     	            <th class="column-list-price">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/list_price"><{_t('L_LIST_PRICE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/list_price"><{_t('List price')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('PRICE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
     	            <th class="column-price">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/price"><{_t('L_PRICE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/price"><{_t('Price')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('PRODUCT_ID_PAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['PRODUCT_ID_PAGE']) && ((isset($aclviewablecolumns['PRODUCT_ID_PAGE']) && $aclviewablecolumns['PRODUCT_ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRODUCT_ID_PAGE']) || $aclviewablecolumns['PRODUCT_ID_PAGE']))) }>
     	            <th class="column-product-id-page">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/product_id_page"><{_t('L_PRODUCT_PAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/sort/product_id_page"><{_t('Product page')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -76,8 +76,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_PRODUCT')|strtolower}>s on this page are selected. <a onclick="adminproduct_selectall()">Select all <{$total}> <{_t('L_ADMIN_PRODUCT')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_PRODUCT')|strtolower}>s in the list are selected. <a onclick="adminproduct_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Products')|strtolower}> on this page are selected. <a onclick="adminproduct_selectall()">Select all <{$total}> <{_t('Admin Products')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Admin Products')|strtolower}> in the list are selected. <a onclick="adminproduct_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

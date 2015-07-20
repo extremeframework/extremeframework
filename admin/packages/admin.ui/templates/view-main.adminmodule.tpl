@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_ADMIN_MODULE_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
         <{if !isset($columns2hide) || !in_array('MODULE', $columns2hide) }>
     		<td class="form-field form-field-label column-module">
-	            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+	            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['PREFIX']) && ((isset($aclviewablecolumns['PREFIX']) && $aclviewablecolumns['PREFIX']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PREFIX']) || $aclviewablecolumns['PREFIX']))) }>
         <{if !isset($columns2hide) || !in_array('PREFIX', $columns2hide) }>
     		<td class="form-field form-field-label column-prefix">
-	            		        <label class="attribute-name"><{_t('L_PREFIX')}></label>
+	            		        <label class="attribute-name"><{_t('Prefix')}></label>
             </td>
             <td class="form-field form-field-value column-prefix" colspan="3">
             	<div class="attribute-line column-prefix type-text">
@@ -114,7 +114,7 @@
             <{if !isset($excludedcolumns['AVAILABLE_ACTIONS']) && ((isset($aclviewablecolumns['AVAILABLE_ACTIONS']) && $aclviewablecolumns['AVAILABLE_ACTIONS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['AVAILABLE_ACTIONS']) || $aclviewablecolumns['AVAILABLE_ACTIONS']))) }>
         <{if !isset($columns2hide) || !in_array('AVAILABLE_ACTIONS', $columns2hide) }>
     		<td class="form-field form-field-label column-available-actions">
-	            		        <label class="attribute-name"><{_t('L_AVAILABLE_ACTIONS')}></label>
+	            		        <label class="attribute-name"><{_t('Available actions')}></label>
             </td>
             <td class="form-field form-field-value column-available-actions" colspan="3">
             	<div class="attribute-line column-available-actions type-text">
@@ -148,7 +148,7 @@
             <{if !isset($excludedcolumns['IS_COMMENT_ENABLED']) && ((isset($aclviewablecolumns['IS_COMMENT_ENABLED']) && $aclviewablecolumns['IS_COMMENT_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_COMMENT_ENABLED']) || $aclviewablecolumns['IS_COMMENT_ENABLED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_COMMENT_ENABLED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-comment-enabled">
-	            		        <label class="attribute-name"><{_t('L_IS_COMMENT_ENABLED')}></label>
+	            		        <label class="attribute-name"><{_t('Comment enabled?')}></label>
             </td>
             <td class="form-field form-field-value column-is-comment-enabled" colspan="3">
             	<div class="attribute-line column-is-comment-enabled type-yesno">

@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_MENU), APPLICATION_URL.'/menu/export', strtolower(L_MENU)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Menu), APPLICATION_URL.'/menu/export', strtolower(Menu)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_MENU')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Menu')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="menu_importfile" />
     </div>

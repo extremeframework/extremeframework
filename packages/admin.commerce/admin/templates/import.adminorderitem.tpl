@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_ADMIN_ORDER_ITEM), APPLICATION_URL.'/adminorderitem/export', strtolower(L_ADMIN_ORDER_ITEM)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Admin Order Item), APPLICATION_URL.'/adminorderitem/export', strtolower(Admin Order Item)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_ADMIN_ORDER_ITEM')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Admin Order Item')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="adminorderitem_importfile" />
     </div>

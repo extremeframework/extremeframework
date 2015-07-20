@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_PAGE_LINK_TYPE')}>
+<{assign var='title' value=_t('Page Link Type')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.pagelinktype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_PAGE_LINK_TYPE', true)|strtolower}>"/><{_t('New')}> <{_t('L_PAGE_LINK_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Page Link Type', true)|strtolower}>"/><{_t('New')}> <{_t('Page Link Type')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.pagelinktype.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.pagelinktype.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_PAGE_LINK_TYPE'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_PAGE_LINK_TYPE'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_PAGE_LINK_TYPE')), strtolower(_t('L_PAGE_LINK_TYPE'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Page Link Type'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Page Link Type'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Page Link Type')), strtolower(_t('Page Link Type'))));
     <{/php}>
 
-    <div id="pagelinktypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_PAGE_LINK_TYPE', true)|strtolower}>">
+    <div id="pagelinktypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Page Link Type', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{_t('Copy also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{_t('Copy also')}> <{_t('Page Link')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pagelinktypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_PAGE_LINK_TYPE', true)|strtolower}>">
+    <div id="pagelinktypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Page Link Type', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{_t('Approve also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{_t('Approve also')}> <{_t('Page Link')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="pagelinktypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_PAGE_LINK_TYPE', true)|strtolower}>">
+    <div id="pagelinktypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Page Link Type', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{_t('Delete also')}> <{_t('L_PAGE_LINK')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{_t('Delete also')}> <{_t('Page Link')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

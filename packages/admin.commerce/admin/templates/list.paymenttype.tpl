@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_PAYMENT_TYPE')}>
+<{assign var='title' value=_t('Payment Type')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.paymenttype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_PAYMENT_TYPE', true)|strtolower}>"/><{_t('New')}> <{_t('L_PAYMENT_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Payment Type', true)|strtolower}>"/><{_t('New')}> <{_t('Payment Type')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.paymenttype.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.paymenttype.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/paymenttype/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_PAYMENT_TYPE'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_PAYMENT_TYPE'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_PAYMENT_TYPE')), strtolower(_t('L_PAYMENT_TYPE'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Payment Type'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Payment Type'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Payment Type')), strtolower(_t('Payment Type'))));
     <{/php}>
 
-    <div id="paymenttypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_PAYMENT_TYPE', true)|strtolower}>">
+    <div id="paymenttypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Payment Type', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorder" /> <{_t('Copy also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorder" /> <{_t('Copy also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="paymenttypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_PAYMENT_TYPE', true)|strtolower}>">
+    <div id="paymenttypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Payment Type', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorder" /> <{_t('Approve also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorder" /> <{_t('Approve also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="paymenttypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_PAYMENT_TYPE', true)|strtolower}>">
+    <div id="paymenttypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Payment Type', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorder" /> <{_t('Delete also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorder" /> <{_t('Delete also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

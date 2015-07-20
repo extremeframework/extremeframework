@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WORKFLOW', $columns2hide) }>
     		<td class="form-field form-field-label column-id-workflow">
-	                    		                    		        <label class="attribute-name"><{_t('L_WORKFLOW')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Workflow')}></label>
             </td>
             <td class="form-field form-field-value column-id-workflow" colspan="3">
             	<div class="attribute-line column-id-workflow type-reftext">
@@ -67,7 +67,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_WORKFLOW_TRANSITION_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -101,7 +101,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+	            		        <label class="attribute-name"><{_t('Code')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">
@@ -140,7 +140,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="workflowstage" data-id="<{$details->refuuid_START_ID_WORKFLOW_STAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_START_WORKFLOW_STAGE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Start workflow stage')}></label>
             </td>
             <td class="form-field form-field-value column-start-id-workflow-stage" colspan="3">
             	<div class="attribute-line column-start-id-workflow-stage type-reftext">
@@ -200,7 +200,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="workflowstage" data-id="<{$details->refuuid_END_ID_WORKFLOW_STAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_END_WORKFLOW_STAGE')}></label>
+    	                            		        <label class="attribute-name"><{_t('End workflow stage')}></label>
             </td>
             <td class="form-field form-field-value column-end-id-workflow-stage" colspan="3">
             	<div class="attribute-line column-end-id-workflow-stage type-reftext">
@@ -255,7 +255,7 @@
             <{if !isset($excludedcolumns['ACTION']) && ((isset($aclviewablecolumns['ACTION']) && $aclviewablecolumns['ACTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTION']) || $aclviewablecolumns['ACTION']))) }>
         <{if !isset($columns2hide) || !in_array('ACTION', $columns2hide) }>
     		<td class="form-field form-field-label column-action">
-	            		        <label class="attribute-name"><{_t('L_ACTION')}></label>
+	            		        <label class="attribute-name"><{_t('Action')}></label>
             </td>
             <td class="form-field form-field-value column-action" colspan="3">
             	<div class="attribute-line column-action type-text">
@@ -289,7 +289,7 @@
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ID_USER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-id-user-group">
-	                    		                    		        <label class="attribute-name"><{_t('L_USER_GROUP')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('User group')}></label>
             </td>
             <td class="form-field form-field-value column-id-user-group" colspan="3">
             	<div class="attribute-line column-id-user-group type-reftext">
@@ -344,7 +344,7 @@
             <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_USER_ROLE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-user-role">
-	                    		                    		        <label class="attribute-name"><{_t('L_USER_ROLE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('User role')}></label>
             </td>
             <td class="form-field form-field-value column-id-user-role" colspan="3">
             	<div class="attribute-line column-id-user-role type-reftext">
@@ -399,7 +399,7 @@
             <{if !isset($excludedcolumns['TRANSITION_ID_SCREEN']) && ((isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) && $aclviewablecolumns['TRANSITION_ID_SCREEN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TRANSITION_ID_SCREEN']) || $aclviewablecolumns['TRANSITION_ID_SCREEN']))) }>
         <{if !isset($columns2hide) || !in_array('TRANSITION_ID_SCREEN', $columns2hide) }>
     		<td class="form-field form-field-label column-transition-id-screen">
-	                    		                    		        <label class="attribute-name"><{_t('L_TRANSITION_SCREEN')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Transition screen')}></label>
             </td>
             <td class="form-field form-field-value column-transition-id-screen" colspan="3">
             	<div class="attribute-line column-transition-id-screen type-reftext">

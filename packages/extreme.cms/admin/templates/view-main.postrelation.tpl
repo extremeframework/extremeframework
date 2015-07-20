@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="post" data-id="<{$details->refuuid_ID_POST}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_POST')}></label>
+    	                            		        <label class="attribute-name"><{_t('Post')}></label>
             </td>
             <td class="form-field form-field-value column-id-post" colspan="3">
             	<div class="attribute-line column-id-post type-reftext">
@@ -77,7 +77,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="post" data-id="<{$details->refuuid_PEER_ID_POST}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_PEER_POST')}></label>
+    	                            		        <label class="attribute-name"><{_t('Peer post')}></label>
             </td>
             <td class="form-field form-field-value column-peer-id-post" colspan="3">
             	<div class="attribute-line column-peer-id-post type-reftext">
@@ -132,7 +132,7 @@
             <{if !isset($excludedcolumns['ID_POST_RELATION_TYPE']) && ((isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) && $aclviewablecolumns['ID_POST_RELATION_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_RELATION_TYPE']) || $aclviewablecolumns['ID_POST_RELATION_TYPE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_POST_RELATION_TYPE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-post-relation-type">
-	                    		                    		        <label class="attribute-name"><{_t('L_POST_RELATION_TYPE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Post relation type')}></label>
             </td>
             <td class="form-field form-field-value column-id-post-relation-type" colspan="3">
             	<div class="attribute-line column-id-post-relation-type type-reftext">

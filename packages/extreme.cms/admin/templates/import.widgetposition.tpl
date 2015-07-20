@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_WIDGET_POSITION), APPLICATION_URL.'/widgetposition/export', strtolower(L_WIDGET_POSITION)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Widget Position), APPLICATION_URL.'/widgetposition/export', strtolower(Widget Position)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_WIDGET_POSITION')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Widget Position')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="widgetposition_importfile" />
     </div>

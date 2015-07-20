@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#adminlanguageitemform').attr('action', '<{$actionurl}>');$('#adminlanguageitemform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-admin-language <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ADMIN_LANGUAGE')}><{if in_array('ID_ADMIN_LANGUAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Admin language')}><{if in_array('ID_ADMIN_LANGUAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-admin-label <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ADMIN_LABEL')}><{if in_array('ID_ADMIN_LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Admin label')}><{if in_array('ID_ADMIN_LABEL', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -107,7 +107,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-translation <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_TRANSLATION')}><{if in_array('TRANSLATION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Translation')}><{if in_array('TRANSLATION', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -138,7 +138,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#adminlanguageitemform').attr('action', '<{$actionurl}>');$('#adminlanguageitemform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguageitem/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

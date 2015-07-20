@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#objectaclform').attr('action', '<{$actionurl}>');$('#objectaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-module <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_MODULE')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Module')}><{if in_array('MODULE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-object-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_OBJECT')}><{if in_array('OBJECT_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Object')}><{if in_array('OBJECT_ID', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -106,7 +106,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-user-group <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_USER_GROUP')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('User group')}><{if in_array('ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -125,7 +125,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-user <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('User')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -144,7 +144,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-arg-id-user-group <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ARG_USER_GROUP')}><{if in_array('ARG_ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Arg user group')}><{if in_array('ARG_ID_USER_GROUP', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -163,7 +163,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-arg-id-user <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ARG_USER')}><{if in_array('ARG_ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Arg user')}><{if in_array('ARG_ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -182,7 +182,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-acl-type <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ACL_TYPE')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Acl type')}><{if in_array('ID_ACL_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -214,7 +214,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#objectaclform').attr('action', '<{$actionurl}>');$('#objectaclform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/objectacl/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

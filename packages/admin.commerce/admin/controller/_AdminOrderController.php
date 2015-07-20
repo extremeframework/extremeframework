@@ -21,23 +21,23 @@ class _AdminOrderController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('ID_PAYMENT_TYPE', $columns2check) && trim($model->ID_PAYMENT_TYPE) == '') {
-           $errors['id-payment-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PAYMENT_TYPE'));
+           $errors['id-payment-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Payment type'));
            return false;
        }
        if (in_array('CUSTOMER_EMAIL', $columns2check) && !empty($model->CUSTOMER_EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->CUSTOMER_EMAIL)) {
-           $errors['customer-email'] = sprintf(_t('L_VALIDATION_EMAIL'), _t('L_CUSTOMER_EMAIL'));
+           $errors['customer-email'] = sprintf(_t('L_VALIDATION_EMAIL'), _t('Customer email'));
            return false;
        }
        if (in_array('CUSTOMER_PHONE', $columns2check) && !empty($model->CUSTOMER_PHONE) && !preg_match('/^[0-9 +-\.\(\)]*$/i', $model->CUSTOMER_PHONE)) {
-           $errors['customer-phone'] = sprintf(_t('L_VALIDATION_PHONE'), _t('L_CUSTOMER_PHONE'));
+           $errors['customer-phone'] = sprintf(_t('L_VALIDATION_PHONE'), _t('Customer phone'));
            return false;
        }
        if (in_array('TOTAL_VALUE', $columns2check) && !empty($model->TOTAL_VALUE) && !is_numeric($model->TOTAL_VALUE)) {
-           $errors['total-value'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_TOTAL_VALUE'));
+           $errors['total-value'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Total value'));
            return false;
        }
        if (in_array('COUPON_DISCOUNT', $columns2check) && !empty($model->COUPON_DISCOUNT) && !is_numeric($model->COUPON_DISCOUNT)) {
-           $errors['coupon-discount'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_COUPON_DISCOUNT'));
+           $errors['coupon-discount'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Coupon discount'));
            return false;
        }
 

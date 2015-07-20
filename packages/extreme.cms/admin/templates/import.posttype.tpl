@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_POST_TYPE), APPLICATION_URL.'/posttype/export', strtolower(L_POST_TYPE)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Post Type), APPLICATION_URL.'/posttype/export', strtolower(Post Type)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_POST_TYPE')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Post Type')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="posttype_importfile" />
     </div>

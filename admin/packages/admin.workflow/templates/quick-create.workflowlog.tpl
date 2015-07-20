@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_WORKFLOW_LOG')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Workflow Log')|ucwords}></h3>
 </div>
 
 

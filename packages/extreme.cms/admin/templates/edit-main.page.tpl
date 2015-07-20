@@ -56,7 +56,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PAGE_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -86,7 +86,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -116,7 +116,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARENT')}></label>
+        		    <label><{_t('Parent')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -153,7 +153,7 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
@@ -189,7 +189,7 @@
         <{else}>
     		<td class="form-row form-row-tag-line">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAG_LINE')}></label>
+        		    <label><{_t('Tag line')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tag-line" colspan="3">
@@ -219,7 +219,7 @@
         <{else}>
     		<td class="form-row form-row-meta-keywords">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_KEYWORDS')}></label>
+        		    <label><{_t('Meta keywords')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-keywords" colspan="3">
@@ -249,7 +249,7 @@
         <{else}>
     		<td class="form-row form-row-meta-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_DESCRIPTION')}></label>
+        		    <label><{_t('Meta description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-description" colspan="3">
@@ -280,7 +280,7 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
@@ -317,7 +317,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONTENT')}></label>
+        		    <label><{_t('Content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -371,7 +371,7 @@
         <{else}>
     		<td class="form-row form-row-thumb">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_THUMB')}></label>
+        		    <label><{_t('Thumb')}></label>
                 </div>
             </td>
             <td class="form-row form-row-thumb" colspan="3">
@@ -404,7 +404,7 @@
         <{else}>
     		<td class="form-row form-row-background-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_BACKGROUND_IMAGE')}></label>
+        		    <label><{_t('Background image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-image" colspan="3">
@@ -439,7 +439,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -472,7 +472,7 @@
         <{else}>
     		<td class="form-row form-row-video">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VIDEO')}></label>
+        		    <label><{_t('Video')}></label>
                 </div>
             </td>
             <td class="form-row form-row-video" colspan="3">
@@ -523,7 +523,7 @@
         <{else}>
     		<td class="form-row form-row-introduction">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_INTRODUCTION')}></label>
+        		    <label><{_t('Introduction')}></label>
                 </div>
             </td>
             <td class="form-row form-row-introduction" colspan="3">
@@ -554,7 +554,7 @@
         <{else}>
     		<td class="form-row form-row-footer">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FOOTER')}></label>
+        		    <label><{_t('Footer')}></label>
                 </div>
             </td>
             <td class="form-row form-row-footer" colspan="3">
@@ -585,7 +585,7 @@
         <{else}>
     		<td class="form-row form-row-additional-css">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADDITIONAL_CSS')}></label>
+        		    <label><{_t('Additional css')}></label>
                 </div>
             </td>
             <td class="form-row form-row-additional-css" colspan="3">
@@ -616,7 +616,7 @@
         <{else}>
     		<td class="form-row form-row-custom-top-id-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CUSTOM_TOP_MENU')}></label>
+        		    <label><{_t('Custom top menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-custom-top-id-menu" colspan="3">
@@ -653,7 +653,7 @@
         <{else}>
     		<td class="form-row form-row-custom-side-id-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CUSTOM_SIDE_MENU')}></label>
+        		    <label><{_t('Custom side menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-custom-side-id-menu" colspan="3">
@@ -690,7 +690,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-title">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VIEW_MORE_TITLE')}></label>
+        		    <label><{_t('View more title')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-title" colspan="3">
@@ -720,7 +720,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VIEW_MORE_PAGE')}></label>
+        		    <label><{_t('View more page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-id-page" colspan="3">
@@ -757,7 +757,7 @@
         <{else}>
     		<td class="form-row form-row-view-more-link">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VIEW_MORE_LINK')}></label>
+        		    <label><{_t('View more link')}></label>
                 </div>
             </td>
             <td class="form-row form-row-view-more-link" colspan="3">

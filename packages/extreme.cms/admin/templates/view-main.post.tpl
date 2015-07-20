@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{_t('L_TITLE')}></label>
+	            		        <label class="attribute-name"><{_t('Title')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['SLUG']) && ((isset($aclviewablecolumns['SLUG']) && $aclviewablecolumns['SLUG']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SLUG']) || $aclviewablecolumns['SLUG']))) }>
         <{if !isset($columns2hide) || !in_array('SLUG', $columns2hide) }>
     		<td class="form-field form-field-label column-slug">
-	            		        <label class="attribute-name"><{_t('L_SLUG')}></label>
+	            		        <label class="attribute-name"><{_t('Slug')}></label>
             </td>
             <td class="form-field form-field-value column-slug" colspan="3">
             	<div class="attribute-line column-slug type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['ID_POST_TYPE']) && ((isset($aclviewablecolumns['ID_POST_TYPE']) && $aclviewablecolumns['ID_POST_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_POST_TYPE']) || $aclviewablecolumns['ID_POST_TYPE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_POST_TYPE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-post-type">
-	                    		                    		        <label class="attribute-name"><{_t('L_POST_TYPE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Post type')}></label>
             </td>
             <td class="form-field form-field-value column-id-post-type" colspan="3">
             	<div class="attribute-line column-id-post-type type-reftext">
@@ -140,7 +140,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="postcategory" data-id="<{$details->refuuid_ID_POST_CATEGORY}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_POST_CATEGORY')}></label>
+    	                            		        <label class="attribute-name"><{_t('Post category')}></label>
             </td>
             <td class="form-field form-field-value column-id-post-category" colspan="3">
             	<div class="attribute-line column-id-post-category type-reftext">
@@ -195,7 +195,7 @@
             <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
         <{if !isset($columns2hide) || !in_array('IMAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-image">
-	            		        <label class="attribute-name"><{_t('L_IMAGE')}></label>
+	            		        <label class="attribute-name"><{_t('Image')}></label>
             </td>
             <td class="form-field form-field-value column-image" colspan="3">
             	<div class="attribute-line column-image type-image">
@@ -232,7 +232,7 @@
             <{if !isset($excludedcolumns['META_KEYWORDS']) && ((isset($aclviewablecolumns['META_KEYWORDS']) && $aclviewablecolumns['META_KEYWORDS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['META_KEYWORDS']) || $aclviewablecolumns['META_KEYWORDS']))) }>
         <{if !isset($columns2hide) || !in_array('META_KEYWORDS', $columns2hide) }>
     		<td class="form-field form-field-label column-meta-keywords">
-	            		        <label class="attribute-name"><{_t('L_META_KEYWORDS')}></label>
+	            		        <label class="attribute-name"><{_t('Meta keywords')}></label>
             </td>
             <td class="form-field form-field-value column-meta-keywords" colspan="3">
             	<div class="attribute-line column-meta-keywords type-text">
@@ -266,7 +266,7 @@
             <{if !isset($excludedcolumns['META_DESCRIPTION']) && ((isset($aclviewablecolumns['META_DESCRIPTION']) && $aclviewablecolumns['META_DESCRIPTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['META_DESCRIPTION']) || $aclviewablecolumns['META_DESCRIPTION']))) }>
         <{if !isset($columns2hide) || !in_array('META_DESCRIPTION', $columns2hide) }>
     		<td class="form-field form-field-label column-meta-description">
-	            		        <label class="attribute-name"><{_t('L_META_DESCRIPTION')}></label>
+	            		        <label class="attribute-name"><{_t('Meta description')}></label>
             </td>
             <td class="form-field form-field-value column-meta-description" colspan="3">
             	<div class="attribute-line column-meta-description type-textarea">
@@ -301,7 +301,7 @@
             <{if !isset($excludedcolumns['EXCERPT']) && ((isset($aclviewablecolumns['EXCERPT']) && $aclviewablecolumns['EXCERPT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EXCERPT']) || $aclviewablecolumns['EXCERPT']))) }>
         <{if !isset($columns2hide) || !in_array('EXCERPT', $columns2hide) }>
     		<td class="form-field form-field-label column-excerpt">
-	            		        <label class="attribute-name"><{_t('L_EXCERPT')}></label>
+	            		        <label class="attribute-name"><{_t('Excerpt')}></label>
             </td>
             <td class="form-field form-field-value column-excerpt" colspan="3">
             	<div class="attribute-line column-excerpt type-textarea">
@@ -336,7 +336,7 @@
             <{if !isset($excludedcolumns['CONTENT']) && ((isset($aclviewablecolumns['CONTENT']) && $aclviewablecolumns['CONTENT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONTENT']) || $aclviewablecolumns['CONTENT']))) }>
         <{if !isset($columns2hide) || !in_array('CONTENT', $columns2hide) }>
     		<td class="form-field form-field-label column-content">
-	            		        <label class="attribute-name"><{_t('L_CONTENT')}></label>
+	            		        <label class="attribute-name"><{_t('Content')}></label>
             </td>
             <td class="form-field form-field-value column-content" colspan="3">
             	<div class="attribute-line column-content type-textarea">
@@ -371,7 +371,7 @@
             <{if !isset($excludedcolumns['TAGS']) && ((isset($aclviewablecolumns['TAGS']) && $aclviewablecolumns['TAGS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TAGS']) || $aclviewablecolumns['TAGS']))) }>
         <{if !isset($columns2hide) || !in_array('TAGS', $columns2hide) }>
     		<td class="form-field form-field-label column-tags">
-	            		        <label class="attribute-name"><{_t('L_TAGS')}></label>
+	            		        <label class="attribute-name"><{_t('Tags')}></label>
             </td>
             <td class="form-field form-field-value column-tags" colspan="3">
             	<div class="attribute-line column-tags type-text">
@@ -405,7 +405,7 @@
             <{if !isset($excludedcolumns['AUTHOR']) && ((isset($aclviewablecolumns['AUTHOR']) && $aclviewablecolumns['AUTHOR']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['AUTHOR']) || $aclviewablecolumns['AUTHOR']))) }>
         <{if !isset($columns2hide) || !in_array('AUTHOR', $columns2hide) }>
     		<td class="form-field form-field-label column-author">
-	            		        <label class="attribute-name"><{_t('L_AUTHOR')}></label>
+	            		        <label class="attribute-name"><{_t('Author')}></label>
             </td>
             <td class="form-field form-field-value column-author" colspan="3">
             	<div class="attribute-line column-author type-text">
@@ -439,7 +439,7 @@
             <{if !isset($excludedcolumns['EXTERNAL_LINK']) && ((isset($aclviewablecolumns['EXTERNAL_LINK']) && $aclviewablecolumns['EXTERNAL_LINK']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EXTERNAL_LINK']) || $aclviewablecolumns['EXTERNAL_LINK']))) }>
         <{if !isset($columns2hide) || !in_array('EXTERNAL_LINK', $columns2hide) }>
     		<td class="form-field form-field-label column-external-link">
-	            		        <label class="attribute-name"><{_t('L_EXTERNAL_LINK')}></label>
+	            		        <label class="attribute-name"><{_t('External link')}></label>
             </td>
             <td class="form-field form-field-value column-external-link" colspan="3">
             	<div class="attribute-line column-external-link type-url">
@@ -473,7 +473,7 @@
             <{if !isset($excludedcolumns['ID_TEMPLATE']) && ((isset($aclviewablecolumns['ID_TEMPLATE']) && $aclviewablecolumns['ID_TEMPLATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_TEMPLATE']) || $aclviewablecolumns['ID_TEMPLATE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_TEMPLATE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-template">
-	                    		                    		        <label class="attribute-name"><{_t('L_TEMPLATE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Template')}></label>
             </td>
             <td class="form-field form-field-value column-id-template" colspan="3">
             	<div class="attribute-line column-id-template type-reftext">
@@ -528,7 +528,7 @@
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
         <{if !isset($columns2hide) || !in_array('CREATION_DATE', $columns2hide) }>
     		<td class="form-field form-field-label column-creation-date">
-	            		        <label class="attribute-name"><{_t('L_CREATION_DATE')}></label>
+	            		        <label class="attribute-name"><{_t('Creation date')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
             	<div class="attribute-line column-creation-date type-datetime">
@@ -561,7 +561,7 @@
             <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
         <{if !isset($columns2hide) || !in_array('LATEST_UPDATE', $columns2hide) }>
     		<td class="form-field form-field-label column-latest-update">
-	            		        <label class="attribute-name"><{_t('L_LATEST_UPDATE')}></label>
+	            		        <label class="attribute-name"><{_t('Latest update')}></label>
             </td>
             <td class="form-field form-field-value column-latest-update" colspan="3">
             	<div class="attribute-line column-latest-update type-datetime">
@@ -594,7 +594,7 @@
             <{if !isset($excludedcolumns['IS_FEATURED']) && ((isset($aclviewablecolumns['IS_FEATURED']) && $aclviewablecolumns['IS_FEATURED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_FEATURED']) || $aclviewablecolumns['IS_FEATURED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_FEATURED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-featured">
-	            		        <label class="attribute-name"><{_t('L_IS_FEATURED')}></label>
+	            		        <label class="attribute-name"><{_t('Featured?')}></label>
             </td>
             <td class="form-field form-field-value column-is-featured" colspan="3">
             	<div class="attribute-line column-is-featured type-yesno">
@@ -628,7 +628,7 @@
             <{if !isset($excludedcolumns['NBR_VIEWS']) && ((isset($aclviewablecolumns['NBR_VIEWS']) && $aclviewablecolumns['NBR_VIEWS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NBR_VIEWS']) || $aclviewablecolumns['NBR_VIEWS']))) }>
         <{if !isset($columns2hide) || !in_array('NBR_VIEWS', $columns2hide) }>
     		<td class="form-field form-field-label column-nbr-views">
-	            		        <label class="attribute-name"><{_t('L_NBR_VIEWS')}></label>
+	            		        <label class="attribute-name"><{_t('# views')}></label>
             </td>
             <td class="form-field form-field-value column-nbr-views" colspan="3">
             	<div class="attribute-line column-nbr-views type-number">

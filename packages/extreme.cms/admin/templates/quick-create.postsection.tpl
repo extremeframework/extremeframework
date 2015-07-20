@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_POST_SECTION')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Post Section')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -121,7 +121,7 @@
         <{else}>
     		<td class="form-row form-row-background-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_BACKGROUND_IMAGE')}></label>
+        		    <label><{_t('Background image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-image" colspan="3">

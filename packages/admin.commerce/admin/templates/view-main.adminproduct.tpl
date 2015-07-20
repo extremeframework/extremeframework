@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{_t('L_TITLE')}></label>
+	            		        <label class="attribute-name"><{_t('Title')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['TAG_LINE']) && ((isset($aclviewablecolumns['TAG_LINE']) && $aclviewablecolumns['TAG_LINE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TAG_LINE']) || $aclviewablecolumns['TAG_LINE']))) }>
         <{if !isset($columns2hide) || !in_array('TAG_LINE', $columns2hide) }>
     		<td class="form-field form-field-label column-tag-line">
-	            		        <label class="attribute-name"><{_t('L_TAG_LINE')}></label>
+	            		        <label class="attribute-name"><{_t('Tag line')}></label>
             </td>
             <td class="form-field form-field-value column-tag-line" colspan="3">
             	<div class="attribute-line column-tag-line type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
         <{if !isset($columns2hide) || !in_array('IMAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-image">
-	            		        <label class="attribute-name"><{_t('L_IMAGE')}></label>
+	            		        <label class="attribute-name"><{_t('Image')}></label>
             </td>
             <td class="form-field form-field-value column-image" colspan="3">
             	<div class="attribute-line column-image type-image">
@@ -117,7 +117,7 @@
             <{if !isset($excludedcolumns['LIST_PRICE']) && ((isset($aclviewablecolumns['LIST_PRICE']) && $aclviewablecolumns['LIST_PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LIST_PRICE']) || $aclviewablecolumns['LIST_PRICE']))) }>
         <{if !isset($columns2hide) || !in_array('LIST_PRICE', $columns2hide) }>
     		<td class="form-field form-field-label column-list-price">
-	            		        <label class="attribute-name"><{_t('L_LIST_PRICE')}></label>
+	            		        <label class="attribute-name"><{_t('List price')}></label>
             </td>
             <td class="form-field form-field-value column-list-price" colspan="3">
             	<div class="attribute-line column-list-price type-number">
@@ -150,7 +150,7 @@
             <{if !isset($excludedcolumns['PRICE']) && ((isset($aclviewablecolumns['PRICE']) && $aclviewablecolumns['PRICE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PRICE']) || $aclviewablecolumns['PRICE']))) }>
         <{if !isset($columns2hide) || !in_array('PRICE', $columns2hide) }>
     		<td class="form-field form-field-label column-price">
-	            		        <label class="attribute-name"><{_t('L_PRICE')}></label>
+	            		        <label class="attribute-name"><{_t('Price')}></label>
             </td>
             <td class="form-field form-field-value column-price" colspan="3">
             	<div class="attribute-line column-price type-number">
@@ -183,7 +183,7 @@
             <{if !isset($excludedcolumns['DESCRIPTION']) && ((isset($aclviewablecolumns['DESCRIPTION']) && $aclviewablecolumns['DESCRIPTION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DESCRIPTION']) || $aclviewablecolumns['DESCRIPTION']))) }>
         <{if !isset($columns2hide) || !in_array('DESCRIPTION', $columns2hide) }>
     		<td class="form-field form-field-label column-description">
-	            		        <label class="attribute-name"><{_t('L_DESCRIPTION')}></label>
+	            		        <label class="attribute-name"><{_t('Description')}></label>
             </td>
             <td class="form-field form-field-value column-description" colspan="3">
             	<div class="attribute-line column-description type-textarea">
@@ -223,7 +223,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="page" data-id="<{$details->refuuid_PRODUCT_ID_PAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_PRODUCT_PAGE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Product page')}></label>
             </td>
             <td class="form-field form-field-value column-product-id-page" colspan="3">
             	<div class="attribute-line column-product-id-page type-reftext">

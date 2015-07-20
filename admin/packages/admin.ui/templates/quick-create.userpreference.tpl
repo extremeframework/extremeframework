@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_USER_PREFERENCE')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('User Preference')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER')}></label>
+        		    <label><{_t('User')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -95,7 +95,7 @@
         <{else}>
     		<td class="form-row form-row-id-dashboard">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD')}></label>
+        		    <label><{_t('Dashboard')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-dashboard" colspan="3">
@@ -132,7 +132,7 @@
         <{else}>
     		<td class="form-row form-row-id-wallpaper">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WALLPAPER')}></label>
+        		    <label><{_t('Wallpaper')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-wallpaper" colspan="3">
@@ -162,7 +162,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-style">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_STYLE')}></label>
+        		    <label><{_t('Admin style')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-style" colspan="3">

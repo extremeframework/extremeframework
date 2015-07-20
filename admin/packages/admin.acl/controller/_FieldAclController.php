@@ -21,11 +21,11 @@ class _FieldAclController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('MODULE', $columns2check) && trim($model->MODULE) == '') {
-           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_MODULE'));
+           $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Module'));
            return false;
        }
        if (in_array('ID_ACL_TYPE', $columns2check) && trim($model->ID_ACL_TYPE) == '') {
-           $errors['id-acl-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_ACL_TYPE'));
+           $errors['id-acl-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Acl type'));
            return false;
        }
 

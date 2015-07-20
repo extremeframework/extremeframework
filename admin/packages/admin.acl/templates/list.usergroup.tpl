@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_USER_GROUP')}>
+<{assign var='title' value=_t('User Group')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.usergroup.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER_GROUP', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER_GROUP')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('User Group', true)|strtolower}>"/><{_t('New')}> <{_t('User Group')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,43 +107,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_USER_GROUP'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_USER_GROUP'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_USER_GROUP')), strtolower(_t('L_USER_GROUP'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('User Group'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('User Group'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('User Group')), strtolower(_t('User Group'))));
     <{/php}>
 
-    <div id="usergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Group', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('Access Right')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="usergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Group', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('Access Right')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="usergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_USER_GROUP', true)|strtolower}>">
+    <div id="usergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Group', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('L_ACCESS_RIGHT')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('Access Right')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

@@ -21,11 +21,11 @@ class _ScreenController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
-           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TITLE'));
+           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Title'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
            return false;
        }
        if (in_array('CODE', $columns2check)) {

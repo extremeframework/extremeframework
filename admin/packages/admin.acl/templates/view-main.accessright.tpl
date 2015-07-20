@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ID_USER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-id-user-group">
-	                    		                    		        <label class="attribute-name"><{_t('L_USER_GROUP')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('User group')}></label>
             </td>
             <td class="form-field form-field-value column-id-user-group" colspan="3">
             	<div class="attribute-line column-id-user-group type-reftext">
@@ -72,7 +72,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -127,7 +127,7 @@
             <{if !isset($excludedcolumns['ACTIONS']) && ((isset($aclviewablecolumns['ACTIONS']) && $aclviewablecolumns['ACTIONS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ACTIONS']) || $aclviewablecolumns['ACTIONS']))) }>
         <{if !isset($columns2hide) || !in_array('ACTIONS', $columns2hide) }>
     		<td class="form-field form-field-label column-actions">
-	            		        <label class="attribute-name"><{_t('L_ACTIONS')}></label>
+	            		        <label class="attribute-name"><{_t('Actions')}></label>
             </td>
             <td class="form-field form-field-value column-actions" colspan="3">
             	<div class="attribute-line column-actions type-text">

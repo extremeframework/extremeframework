@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_PAGE_LINK), APPLICATION_URL.'/pagelink/export', strtolower(L_PAGE_LINK)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Page Link), APPLICATION_URL.'/pagelink/export', strtolower(Page Link)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_PAGE_LINK')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Page Link')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="pagelink_importfile" />
     </div>

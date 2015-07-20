@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_POST_RELATION_TYPE_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+	            		        <label class="attribute-name"><{_t('Code')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">

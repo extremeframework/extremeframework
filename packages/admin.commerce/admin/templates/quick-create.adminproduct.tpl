@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_ADMIN_PRODUCT')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Product')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -121,7 +121,7 @@
         <{else}>
     		<td class="form-row form-row-list-price">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LIST_PRICE')}></label>
+        		    <label><{_t('List price')}></label>
                 </div>
             </td>
             <td class="form-row form-row-list-price" colspan="3">
@@ -150,7 +150,7 @@
         <{else}>
     		<td class="form-row form-row-price">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PRICE')}></label>
+        		    <label><{_t('Price')}></label>
                 </div>
             </td>
             <td class="form-row form-row-price" colspan="3">

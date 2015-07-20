@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_ADMIN_FILTER_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['COLUMNS']) && ((isset($aclviewablecolumns['COLUMNS']) && $aclviewablecolumns['COLUMNS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COLUMNS']) || $aclviewablecolumns['COLUMNS']))) }>
         <{if !isset($columns2hide) || !in_array('COLUMNS', $columns2hide) }>
     		<td class="form-field form-field-label column-columns">
-	            		        <label class="attribute-name"><{_t('L_COLUMNS')}></label>
+	            		        <label class="attribute-name"><{_t('Columns')}></label>
             </td>
             <td class="form-field form-field-value column-columns" colspan="3">
             	<div class="attribute-line column-columns type-text">
@@ -140,7 +140,7 @@
             <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
         <{if !isset($columns2hide) || !in_array('IS_DEFAULT', $columns2hide) }>
     		<td class="form-field form-field-label column-is-default">
-	            		        <label class="attribute-name"><{_t('L_IS_DEFAULT')}></label>
+	            		        <label class="attribute-name"><{_t('Default?')}></label>
             </td>
             <td class="form-field form-field-value column-is-default" colspan="3">
             	<div class="attribute-line column-is-default type-yesno">

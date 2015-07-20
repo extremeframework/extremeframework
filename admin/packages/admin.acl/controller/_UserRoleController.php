@@ -21,7 +21,7 @@ class _UserRoleController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_USER_ROLE_NAME'));
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
 

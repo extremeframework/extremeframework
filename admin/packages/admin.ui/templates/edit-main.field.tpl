@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FIELD_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-column form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_COLUMN')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Column')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-column form-row-mandatory" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-tooltip">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TOOLTIP')}></label>
+        		    <label><{_t('Tooltip')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tooltip" colspan="3">
@@ -167,7 +167,7 @@
         <{else}>
     		<td class="form-row form-row-is-excluded">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_EXCLUDED')}></label>
+        		    <label><{_t('Excluded?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-excluded" colspan="3">

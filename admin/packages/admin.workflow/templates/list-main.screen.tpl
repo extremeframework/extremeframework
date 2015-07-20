@@ -17,7 +17,7 @@
         	                            <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/title"><{_t('L_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/title"><{_t('Title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('ID_WORKFLOW', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
     	            <th class="column-id-workflow">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/id_workflow"><{_t('L_WORKFLOW')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/id_workflow"><{_t('Workflow')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/code"><{_t('L_CODE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/screen/sort/code"><{_t('Code')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -58,8 +58,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_SCREEN')|strtolower}>s on this page are selected. <a onclick="screen_selectall()">Select all <{$total}> <{_t('L_SCREEN')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_SCREEN')|strtolower}>s in the list are selected. <a onclick="screen_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Screens')|strtolower}> on this page are selected. <a onclick="screen_selectall()">Select all <{$total}> <{_t('Screens')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Screens')|strtolower}> in the list are selected. <a onclick="screen_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

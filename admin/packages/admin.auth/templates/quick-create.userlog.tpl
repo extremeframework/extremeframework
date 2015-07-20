@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_USER_LOG')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('User Log')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER')}></label>
+        		    <label><{_t('User')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -95,7 +95,7 @@
         <{else}>
     		<td class="form-row form-row-date-time">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DATE_TIME')}></label>
+        		    <label><{_t('Date time')}></label>
                 </div>
             </td>
             <td class="form-row form-row-date-time" colspan="3">
@@ -124,7 +124,7 @@
         <{else}>
     		<td class="form-row form-row-ip">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IP')}></label>
+        		    <label><{_t('IP')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ip" colspan="3">

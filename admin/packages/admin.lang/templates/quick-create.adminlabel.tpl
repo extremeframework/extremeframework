@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_ADMIN_LABEL')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Label')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-label">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LABEL')}></label>
+        		    <label><{_t('Label')}></label>
                 </div>
             </td>
             <td class="form-row form-row-label" colspan="3">

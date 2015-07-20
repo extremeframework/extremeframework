@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{_t('L_TITLE')}></label>
+	            		        <label class="attribute-name"><{_t('Title')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
         <{if !isset($columns2hide) || !in_array('ID_WORKFLOW', $columns2hide) }>
     		<td class="form-field form-field-label column-id-workflow">
-	                    		                    		        <label class="attribute-name"><{_t('L_WORKFLOW')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Workflow')}></label>
             </td>
             <td class="form-field form-field-value column-id-workflow" colspan="3">
             	<div class="attribute-line column-id-workflow type-reftext">
@@ -101,7 +101,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+	            		        <label class="attribute-name"><{_t('Code')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">

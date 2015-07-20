@@ -21,11 +21,11 @@ class _WidgetPositionController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_WIDGET_POSITION_NAME'));
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
        if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
-           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_CODE'));
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
            return false;
        }
        if (in_array('CODE', $columns2check)) {

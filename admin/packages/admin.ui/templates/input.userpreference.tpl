@@ -30,7 +30,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#userpreferenceform').attr('action', '<{$actionurl}>');$('#userpreferenceform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -69,7 +69,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-user <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_USER')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('User')}><{if in_array('ID_USER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -88,7 +88,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-dashboard <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_DASHBOARD')}><{if in_array('ID_DASHBOARD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Dashboard')}><{if in_array('ID_DASHBOARD', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -107,7 +107,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-wallpaper <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_WALLPAPER')}><{if in_array('ID_WALLPAPER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Wallpaper')}><{if in_array('ID_WALLPAPER', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -125,7 +125,7 @@ function remove_attachment(element, attachment, spanid)
                                     <tr class="form-row form-row-id-admin-style <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('L_ADMIN_STYLE')}><{if in_array('ID_ADMIN_STYLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Admin style')}><{if in_array('ID_ADMIN_STYLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
@@ -156,7 +156,7 @@ function remove_attachment(element, attachment, spanid)
                 <a onclick="$('#userpreferenceform').attr('action', '<{$actionurl}>');$('#userpreferenceform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/cancel/?return=<{ContextStack::getCurrentContext()}>"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>

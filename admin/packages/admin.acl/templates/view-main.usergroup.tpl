@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_USER_GROUP_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="dashboard" data-id="<{$details->refuuid_DEFAULT_ID_DASHBOARD}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_DEFAULT_DASHBOARD')}></label>
+    	                            		        <label class="attribute-name"><{_t('Default dashboard')}></label>
             </td>
             <td class="form-field form-field-value column-default-id-dashboard" colspan="3">
             	<div class="attribute-line column-default-id-dashboard type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['PARENT']) && ((isset($aclviewablecolumns['PARENT']) && $aclviewablecolumns['PARENT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PARENT']) || $aclviewablecolumns['PARENT']))) }>
         <{if !isset($columns2hide) || !in_array('PARENT', $columns2hide) }>
     		<td class="form-field form-field-label column-parent">
-	                    		                    		        <label class="attribute-name"><{_t('L_PARENT')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Parent')}></label>
             </td>
             <td class="form-field form-field-value column-parent" colspan="3">
             	<div class="attribute-line column-parent type-reftext">

@@ -59,7 +59,7 @@
         		</div>
         	</div>
         	<div class="form-row form-row-mandatory">
-        		<label>Please type the two words in the image to the box underneath</label>
+        		<label>Please type the number (as shown in the image) to the box below it</label>
         		<div class="form-field column-captcha">
                     <{$captcha}>
         		</div>

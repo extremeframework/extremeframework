@@ -21,27 +21,27 @@ class _PageController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('NAME', $columns2check) && trim($model->NAME) == '') {
-           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_PAGE_NAME'));
+           $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
-           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TITLE'));
+           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Title'));
            return false;
        }
        if (in_array('SLUG', $columns2check) && trim($model->SLUG) == '') {
-           $errors['slug'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_SLUG'));
+           $errors['slug'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Slug'));
            return false;
        }
        if (in_array('ID_TEMPLATE', $columns2check) && trim($model->ID_TEMPLATE) == '') {
-           $errors['id-template'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TEMPLATE'));
+           $errors['id-template'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Template'));
            return false;
        }
        if (in_array('VIEW_MORE_LINK', $columns2check) && !empty($model->VIEW_MORE_LINK) && !preg_match('/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.?[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?/i', $model->VIEW_MORE_LINK)) {
-           $errors['view-more-link'] = sprintf(_t('L_VALIDATION_URL'), _t('L_VIEW_MORE_LINK'));
+           $errors['view-more-link'] = sprintf(_t('L_VALIDATION_URL'), _t('View more link'));
            return false;
        }
        if (in_array('NBR_VIEWS', $columns2check) && !empty($model->NBR_VIEWS) && !is_numeric($model->NBR_VIEWS)) {
-           $errors['nbr-views'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_NBR_VIEWS'));
+           $errors['nbr-views'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('# views'));
            return false;
        }
 

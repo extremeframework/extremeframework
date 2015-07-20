@@ -17,7 +17,7 @@
         	                            <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/module"><{_t('L_MODULE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/module"><{_t('Module')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('OBJECT_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['OBJECT_ID']) && ((isset($aclviewablecolumns['OBJECT_ID']) && $aclviewablecolumns['OBJECT_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OBJECT_ID']) || $aclviewablecolumns['OBJECT_ID']))) }>
     	            <th class="column-object-id">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/object_id"><{_t('L_OBJECT')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/object_id"><{_t('Object')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
     	            <th class="column-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_user_group"><{_t('L_USER_GROUP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_user_group"><{_t('User group')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_user"><{_t('L_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_user"><{_t('User')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('ARG_ID_USER_GROUP', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ARG_ID_USER_GROUP']) && ((isset($aclviewablecolumns['ARG_ID_USER_GROUP']) && $aclviewablecolumns['ARG_ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ARG_ID_USER_GROUP']) || $aclviewablecolumns['ARG_ID_USER_GROUP']))) }>
     	            <th class="column-arg-id-user-group">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/arg_id_user_group"><{_t('L_ARG_USER_GROUP')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/arg_id_user_group"><{_t('Arg user group')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('ARG_ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ARG_ID_USER']) && ((isset($aclviewablecolumns['ARG_ID_USER']) && $aclviewablecolumns['ARG_ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ARG_ID_USER']) || $aclviewablecolumns['ARG_ID_USER']))) }>
     	            <th class="column-arg-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/arg_id_user"><{_t('L_ARG_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/arg_id_user"><{_t('Arg user')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('ID_ACL_TYPE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ACL_TYPE']) && ((isset($aclviewablecolumns['ID_ACL_TYPE']) && $aclviewablecolumns['ID_ACL_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ACL_TYPE']) || $aclviewablecolumns['ID_ACL_TYPE']))) }>
     	            <th class="column-id-acl-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_acl_type"><{_t('L_ACL_TYPE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/objectacl/sort/id_acl_type"><{_t('Acl type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -94,8 +94,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_OBJECT_ACL')|strtolower}>s on this page are selected. <a onclick="objectacl_selectall()">Select all <{$total}> <{_t('L_OBJECT_ACL')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_OBJECT_ACL')|strtolower}>s in the list are selected. <a onclick="objectacl_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Object Acls')|strtolower}> on this page are selected. <a onclick="objectacl_selectall()">Select all <{$total}> <{_t('Object Acls')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Object Acls')|strtolower}> in the list are selected. <a onclick="objectacl_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

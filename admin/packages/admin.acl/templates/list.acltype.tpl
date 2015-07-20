@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_ACL_TYPE')}>
+<{assign var='title' value=_t('Acl Type')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.acltype.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/acltype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ACL_TYPE', true)|strtolower}>"/><{_t('New')}> <{_t('L_ACL_TYPE')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/acltype/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Acl Type', true)|strtolower}>"/><{_t('New')}> <{_t('Acl Type')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,43 +107,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_ACL_TYPE'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_ACL_TYPE'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ACL_TYPE')), strtolower(_t('L_ACL_TYPE'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Acl Type'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Acl Type'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Acl Type')), strtolower(_t('Acl Type'))));
     <{/php}>
 
-    <div id="acltypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ACL_TYPE', true)|strtolower}>">
+    <div id="acltypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Acl Type', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{_t('Copy also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{_t('Copy also')}> <{_t('Field Acl')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('Copy also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('Copy also')}> <{_t('Object Acl')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="acltypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ACL_TYPE', true)|strtolower}>">
+    <div id="acltypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Acl Type', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{_t('Approve also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{_t('Approve also')}> <{_t('Field Acl')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('Approve also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('Approve also')}> <{_t('Object Acl')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="acltypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ACL_TYPE', true)|strtolower}>">
+    <div id="acltypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Acl Type', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{_t('Delete also')}> <{_t('L_FIELD_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{_t('Delete also')}> <{_t('Field Acl')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('Delete also')}> <{_t('L_OBJECT_ACL')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('Delete also')}> <{_t('Object Acl')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

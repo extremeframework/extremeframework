@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{_t('L_TITLE')}></label>
+	            		        <label class="attribute-name"><{_t('Title')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="page" data-id="<{$details->refuuid_ID_PAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_PAGE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Page')}></label>
             </td>
             <td class="form-field form-field-value column-id-page" colspan="3">
             	<div class="attribute-line column-id-page type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['FONT_AWESOME_ICON']) && ((isset($aclviewablecolumns['FONT_AWESOME_ICON']) && $aclviewablecolumns['FONT_AWESOME_ICON']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FONT_AWESOME_ICON']) || $aclviewablecolumns['FONT_AWESOME_ICON']))) }>
         <{if !isset($columns2hide) || !in_array('FONT_AWESOME_ICON', $columns2hide) }>
     		<td class="form-field form-field-label column-font-awesome-icon">
-	            		        <label class="attribute-name"><{_t('L_FONT_AWESOME_ICON')}></label>
+	            		        <label class="attribute-name"><{_t('Font awesome icon')}></label>
             </td>
             <td class="form-field form-field-value column-font-awesome-icon" colspan="3">
             	<div class="attribute-line column-font-awesome-icon type-text">
@@ -145,7 +145,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="page" data-id="<{$details->refuuid_LINK_ID_PAGE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_LINK_PAGE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Link page')}></label>
             </td>
             <td class="form-field form-field-value column-link-id-page" colspan="3">
             	<div class="attribute-line column-link-id-page type-reftext">
@@ -200,7 +200,7 @@
             <{if !isset($excludedcolumns['LINK_PATH']) && ((isset($aclviewablecolumns['LINK_PATH']) && $aclviewablecolumns['LINK_PATH']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LINK_PATH']) || $aclviewablecolumns['LINK_PATH']))) }>
         <{if !isset($columns2hide) || !in_array('LINK_PATH', $columns2hide) }>
     		<td class="form-field form-field-label column-link-path">
-	            		        <label class="attribute-name"><{_t('L_LINK_PATH')}></label>
+	            		        <label class="attribute-name"><{_t('Link path')}></label>
             </td>
             <td class="form-field form-field-value column-link-path" colspan="3">
             	<div class="attribute-line column-link-path type-text">
@@ -234,7 +234,7 @@
             <{if !isset($excludedcolumns['ID_PAGE_LINK_TYPE']) && ((isset($aclviewablecolumns['ID_PAGE_LINK_TYPE']) && $aclviewablecolumns['ID_PAGE_LINK_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAGE_LINK_TYPE']) || $aclviewablecolumns['ID_PAGE_LINK_TYPE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_PAGE_LINK_TYPE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-page-link-type">
-	                    		                    		        <label class="attribute-name"><{_t('L_PAGE_LINK_TYPE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Page link type')}></label>
             </td>
             <td class="form-field form-field-value column-id-page-link-type" colspan="3">
             	<div class="attribute-line column-id-page-link-type type-reftext">

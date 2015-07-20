@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_DASHBOARD')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Dashboard')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MENU')}></label>
+        		    <label><{_t('Admin menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-menu" colspan="3">
@@ -125,7 +125,7 @@
         <{else}>
     		<td class="form-row form-row-id-dashboard-layout">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_LAYOUT')}></label>
+        		    <label><{_t('Dashboard layout')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-dashboard-layout" colspan="3">
@@ -155,7 +155,7 @@
         <{else}>
     		<td class="form-row form-row-dashboard-file-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DASHBOARD_FILE_PATH')}></label>
+        		    <label><{_t('Dashboard file path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-dashboard-file-path" colspan="3">

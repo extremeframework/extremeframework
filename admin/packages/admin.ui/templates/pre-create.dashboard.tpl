@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('New')|ucwords}> <{_t('L_DASHBOARD')|ucwords}></h3>
+    <h3><{_t('New')|ucwords}> <{_t('Dashboard')|ucwords}></h3>
 </div>
 
 

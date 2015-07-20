@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_WORKFLOW_TRANSITION')}>
+<{assign var='title' value=_t('Workflow Transition')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.workflowtransition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>"/><{_t('New')}> <{_t('L_WORKFLOW_TRANSITION')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Workflow Transition', true)|strtolower}>"/><{_t('New')}> <{_t('Workflow Transition')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,34 +107,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_WORKFLOW_TRANSITION')), strtolower(_t('L_WORKFLOW_TRANSITION'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Workflow Transition'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Workflow Transition'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Workflow Transition')), strtolower(_t('Workflow Transition'))));
     <{/php}>
 
-    <div id="workflowtransitioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>">
+    <div id="workflowtransitioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Workflow Transition', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowtransitionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>">
+    <div id="workflowtransitionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Workflow Transition', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="workflowtransitiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_WORKFLOW_TRANSITION', true)|strtolower}>">
+    <div id="workflowtransitiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Workflow Transition', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('L_WORKFLOW_LOG')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('Workflow Log')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

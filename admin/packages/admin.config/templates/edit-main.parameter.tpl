@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARAMETER_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-id-parameter-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARAMETER_GROUP')}></label>
+        		    <label><{_t('Parameter group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-parameter-group" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-id-parameter-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARAMETER_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Parameter type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-parameter-type form-row-mandatory" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-value">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VALUE')}></label>
+        		    <label><{_t('Value')}></label>
                 </div>
             </td>
             <td class="form-row form-row-value" colspan="3">
@@ -210,7 +210,7 @@
         <{else}>
     		<td class="form-row form-row-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DESCRIPTION')}></label>
+        		    <label><{_t('Description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-description" colspan="3">

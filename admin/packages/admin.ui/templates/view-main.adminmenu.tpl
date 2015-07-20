@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_ADMIN_MENU_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['IS_ENABLED']) && ((isset($aclviewablecolumns['IS_ENABLED']) && $aclviewablecolumns['IS_ENABLED']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_ENABLED']) || $aclviewablecolumns['IS_ENABLED']))) }>
         <{if !isset($columns2hide) || !in_array('IS_ENABLED', $columns2hide) }>
     		<td class="form-field form-field-label column-is-enabled">
-	            		        <label class="attribute-name"><{_t('L_IS_ENABLED')}></label>
+	            		        <label class="attribute-name"><{_t('Enabled?')}></label>
             </td>
             <td class="form-field form-field-value column-is-enabled" colspan="3">
             	<div class="attribute-line column-is-enabled type-yesno">

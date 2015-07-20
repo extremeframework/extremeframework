@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_PAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_PAGE']) && ((isset($aclviewablecolumns['ID_PAGE']) && $aclviewablecolumns['ID_PAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_PAGE']) || $aclviewablecolumns['ID_PAGE']))) }>
     	            <th class="column-id-page">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_page"><{_t('L_PAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_page"><{_t('Page')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
     	            <th class="column-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/title"><{_t('L_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/title"><{_t('Title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/code"><{_t('L_CODE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/code"><{_t('Code')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
     	            <th class="column-image">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/image"><{_t('L_IMAGE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/image"><{_t('Image')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('ID_WIDGET_TYPE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WIDGET_TYPE']) && ((isset($aclviewablecolumns['ID_WIDGET_TYPE']) && $aclviewablecolumns['ID_WIDGET_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WIDGET_TYPE']) || $aclviewablecolumns['ID_WIDGET_TYPE']))) }>
     	            <th class="column-id-widget-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_widget_type"><{_t('L_WIDGET_TYPE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_widget_type"><{_t('Widget type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('ID_WIDGET_POSITION', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WIDGET_POSITION']) && ((isset($aclviewablecolumns['ID_WIDGET_POSITION']) && $aclviewablecolumns['ID_WIDGET_POSITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WIDGET_POSITION']) || $aclviewablecolumns['ID_WIDGET_POSITION']))) }>
     	            <th class="column-id-widget-position">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_widget_position"><{_t('L_WIDGET_POSITION')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/id_widget_position"><{_t('Widget position')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -71,7 +71,7 @@
 		                        <{if (in_array('HIDE_TITLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['HIDE_TITLE']) && ((isset($aclviewablecolumns['HIDE_TITLE']) && $aclviewablecolumns['HIDE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['HIDE_TITLE']) || $aclviewablecolumns['HIDE_TITLE']))) }>
     	            <th class="column-hide-title">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/hide_title"><{_t('L_HIDE_TITLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/hide_title"><{_t('Hide title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -80,7 +80,7 @@
 		                        <{if (in_array('ORDERING', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ORDERING']) && ((isset($aclviewablecolumns['ORDERING']) && $aclviewablecolumns['ORDERING']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ORDERING']) || $aclviewablecolumns['ORDERING']))) }>
     	            <th class="column-ordering">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/ordering"><{_t('L_ORDERING')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/pagewidget/sort/ordering"><{_t('Ordering')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -103,8 +103,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_PAGE_WIDGET')|strtolower}>s on this page are selected. <a onclick="pagewidget_selectall()">Select all <{$total}> <{_t('L_PAGE_WIDGET')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_PAGE_WIDGET')|strtolower}>s in the list are selected. <a onclick="pagewidget_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Page Widgets')|strtolower}> on this page are selected. <a onclick="pagewidget_selectall()">Select all <{$total}> <{_t('Page Widgets')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Page Widgets')|strtolower}> in the list are selected. <a onclick="pagewidget_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

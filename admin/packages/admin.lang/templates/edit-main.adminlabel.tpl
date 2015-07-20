@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-label">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LABEL')}></label>
+        		    <label><{_t('Label')}></label>
                 </div>
             </td>
             <td class="form-row form-row-label" colspan="3">

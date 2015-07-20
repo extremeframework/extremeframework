@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER')}></label>
+        		    <label><{_t('User')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_GROUP')}></label>
+        		    <label><{_t('User group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-group" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-role">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_ROLE')}></label>
+        		    <label><{_t('User role')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-role" colspan="3">
@@ -151,7 +151,7 @@
         <{else}>
     		<td class="form-row form-row-valid-from">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VALID_FROM')}></label>
+        		    <label><{_t('Valid from')}></label>
                 </div>
             </td>
             <td class="form-row form-row-valid-from" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-valid-until">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VALID_UNTIL')}></label>
+        		    <label><{_t('Valid until')}></label>
                 </div>
             </td>
             <td class="form-row form-row-valid-until" colspan="3">

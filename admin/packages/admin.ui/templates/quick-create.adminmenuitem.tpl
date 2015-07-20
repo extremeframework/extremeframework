@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_ADMIN_MENU_ITEM')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Menu Item')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MENU_ITEM_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-enable-left">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_LEFT')}></label>
+        		    <label><{_t('Enable left?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-left" colspan="3">
@@ -118,7 +118,7 @@
         <{else}>
     		<td class="form-row form-row-enable-top">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_TOP')}></label>
+        		    <label><{_t('Enable top?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-top" colspan="3">
@@ -148,7 +148,7 @@
         <{else}>
     		<td class="form-row form-row-enable-quick">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_QUICK')}></label>
+        		    <label><{_t('Enable quick?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-quick" colspan="3">
@@ -178,7 +178,7 @@
         <{else}>
     		<td class="form-row form-row-enable-all">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_ALL')}></label>
+        		    <label><{_t('Enable all?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-all" colspan="3">
@@ -208,7 +208,7 @@
         <{else}>
     		<td class="form-row form-row-enable-settings">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_SETTINGS')}></label>
+        		    <label><{_t('Enable settings?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-settings" colspan="3">

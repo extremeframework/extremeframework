@@ -17,7 +17,7 @@
         	                            <{if (in_array('LABEL', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['LABEL']) && ((isset($aclviewablecolumns['LABEL']) && $aclviewablecolumns['LABEL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LABEL']) || $aclviewablecolumns['LABEL']))) }>
     	            <th class="column-label">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/sort/label"><{_t('L_LABEL')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/sort/label"><{_t('Label')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -40,8 +40,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_ADMIN_LABEL')|strtolower}>s on this page are selected. <a onclick="adminlabel_selectall()">Select all <{$total}> <{_t('L_ADMIN_LABEL')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_ADMIN_LABEL')|strtolower}>s in the list are selected. <a onclick="adminlabel_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Labels')|strtolower}> on this page are selected. <a onclick="adminlabel_selectall()">Select all <{$total}> <{_t('Admin Labels')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Admin Labels')|strtolower}> in the list are selected. <a onclick="adminlabel_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

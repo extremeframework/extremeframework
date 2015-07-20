@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
@@ -106,7 +106,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Post type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-type form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-category">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY')}></label>
+        		    <label><{_t('Post category')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-category" colspan="3">
@@ -180,7 +180,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -213,7 +213,7 @@
         <{else}>
     		<td class="form-row form-row-meta-keywords">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_KEYWORDS')}></label>
+        		    <label><{_t('Meta keywords')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-keywords" colspan="3">
@@ -243,7 +243,7 @@
         <{else}>
     		<td class="form-row form-row-meta-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_DESCRIPTION')}></label>
+        		    <label><{_t('Meta description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-description" colspan="3">
@@ -274,7 +274,7 @@
         <{else}>
     		<td class="form-row form-row-excerpt">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EXCERPT')}></label>
+        		    <label><{_t('Excerpt')}></label>
                 </div>
             </td>
             <td class="form-row form-row-excerpt" colspan="3">
@@ -305,7 +305,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONTENT')}></label>
+        		    <label><{_t('Content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -336,7 +336,7 @@
         <{else}>
     		<td class="form-row form-row-tags">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAGS')}></label>
+        		    <label><{_t('Tags')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tags" colspan="3">
@@ -366,7 +366,7 @@
         <{else}>
     		<td class="form-row form-row-author">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_AUTHOR')}></label>
+        		    <label><{_t('Author')}></label>
                 </div>
             </td>
             <td class="form-row form-row-author" colspan="3">
@@ -396,7 +396,7 @@
         <{else}>
     		<td class="form-row form-row-external-link">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EXTERNAL_LINK')}></label>
+        		    <label><{_t('External link')}></label>
                 </div>
             </td>
             <td class="form-row form-row-external-link" colspan="3">
@@ -426,7 +426,7 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
@@ -473,7 +473,7 @@
         <{else}>
     		<td class="form-row form-row-is-featured">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_FEATURED')}></label>
+        		    <label><{_t('Featured?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-featured" colspan="3">

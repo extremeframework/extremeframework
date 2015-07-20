@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_GROUP')}></label>
+        		    <label><{_t('User group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-group" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-actions">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ACTIONS')}></label>
+        		    <label><{_t('Actions')}></label>
                 </div>
             </td>
             <td class="form-row form-row-actions" colspan="3">

@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_ADMIN_FILTER')}>
+<{assign var='title' value=_t('Admin Filter')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminfilter.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>"/><{_t('New')}> <{_t('L_ADMIN_FILTER')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Admin Filter', true)|strtolower}>"/><{_t('New')}> <{_t('Admin Filter')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,34 +107,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_ADMIN_FILTER'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_ADMIN_FILTER'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ADMIN_FILTER')), strtolower(_t('L_ADMIN_FILTER'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Admin Filter'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Admin Filter'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Admin Filter')), strtolower(_t('Admin Filter'))));
     <{/php}>
 
-    <div id="adminfiltercopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>">
+    <div id="adminfiltercopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Filter', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminFilterCondition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfiltercondition" /> <{_t('Copy also')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminfiltercondition" /> <{_t('Copy also')}> <{_t('Admin Filter Condition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminfilterapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>">
+    <div id="adminfilterapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Filter', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminFilterCondition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfiltercondition" /> <{_t('Approve also')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminfiltercondition" /> <{_t('Approve also')}> <{_t('Admin Filter Condition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminfilterdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ADMIN_FILTER', true)|strtolower}>">
+    <div id="adminfilterdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Filter', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminFilterCondition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfiltercondition" /> <{_t('Delete also')}> <{_t('L_ADMIN_FILTER_CONDITION')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminfiltercondition" /> <{_t('Delete also')}> <{_t('Admin Filter Condition')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

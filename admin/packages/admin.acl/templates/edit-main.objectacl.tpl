@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-object-id">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_OBJECT')}></label>
+        		    <label><{_t('Object')}></label>
                 </div>
             </td>
             <td class="form-row form-row-object-id" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER_GROUP')}></label>
+        		    <label><{_t('User group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user-group" colspan="3">
@@ -144,7 +144,7 @@
         <{else}>
     		<td class="form-row form-row-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_USER')}></label>
+        		    <label><{_t('User')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-user" colspan="3">
@@ -181,7 +181,7 @@
         <{else}>
     		<td class="form-row form-row-arg-id-user-group">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ARG_USER_GROUP')}></label>
+        		    <label><{_t('Arg user group')}></label>
                 </div>
             </td>
             <td class="form-row form-row-arg-id-user-group" colspan="3">
@@ -218,7 +218,7 @@
         <{else}>
     		<td class="form-row form-row-arg-id-user">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ARG_USER')}></label>
+        		    <label><{_t('Arg user')}></label>
                 </div>
             </td>
             <td class="form-row form-row-arg-id-user" colspan="3">
@@ -255,7 +255,7 @@
         <{else}>
     		<td class="form-row form-row-id-acl-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ACL_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Acl type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-acl-type form-row-mandatory" colspan="3">

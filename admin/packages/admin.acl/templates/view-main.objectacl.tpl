@@ -17,7 +17,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -72,7 +72,7 @@
             <{if !isset($excludedcolumns['OBJECT_ID']) && ((isset($aclviewablecolumns['OBJECT_ID']) && $aclviewablecolumns['OBJECT_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['OBJECT_ID']) || $aclviewablecolumns['OBJECT_ID']))) }>
         <{if !isset($columns2hide) || !in_array('OBJECT_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-object-id">
-	            		        <label class="attribute-name"><{_t('L_OBJECT')}></label>
+	            		        <label class="attribute-name"><{_t('Object')}></label>
             </td>
             <td class="form-field form-field-value column-object-id" colspan="3">
             	<div class="attribute-line column-object-id type-key">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ID_USER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-id-user-group">
-	                    		                    		        <label class="attribute-name"><{_t('L_USER_GROUP')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('User group')}></label>
             </td>
             <td class="form-field form-field-value column-id-user-group" colspan="3">
             	<div class="attribute-line column-id-user-group type-reftext">
@@ -166,7 +166,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="user" data-id="<{$details->refuuid_ID_USER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_USER')}></label>
+    	                            		        <label class="attribute-name"><{_t('User')}></label>
             </td>
             <td class="form-field form-field-value column-id-user" colspan="3">
             	<div class="attribute-line column-id-user type-reftext">
@@ -221,7 +221,7 @@
             <{if !isset($excludedcolumns['ARG_ID_USER_GROUP']) && ((isset($aclviewablecolumns['ARG_ID_USER_GROUP']) && $aclviewablecolumns['ARG_ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ARG_ID_USER_GROUP']) || $aclviewablecolumns['ARG_ID_USER_GROUP']))) }>
         <{if !isset($columns2hide) || !in_array('ARG_ID_USER_GROUP', $columns2hide) }>
     		<td class="form-field form-field-label column-arg-id-user-group">
-	                    		                    		        <label class="attribute-name"><{_t('L_ARG_USER_GROUP')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Arg user group')}></label>
             </td>
             <td class="form-field form-field-value column-arg-id-user-group" colspan="3">
             	<div class="attribute-line column-arg-id-user-group type-reftext">
@@ -281,7 +281,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="user" data-id="<{$details->refuuid_ARG_ID_USER}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_ARG_USER')}></label>
+    	                            		        <label class="attribute-name"><{_t('Arg user')}></label>
             </td>
             <td class="form-field form-field-value column-arg-id-user" colspan="3">
             	<div class="attribute-line column-arg-id-user type-reftext">
@@ -336,7 +336,7 @@
             <{if !isset($excludedcolumns['ID_ACL_TYPE']) && ((isset($aclviewablecolumns['ID_ACL_TYPE']) && $aclviewablecolumns['ID_ACL_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ACL_TYPE']) || $aclviewablecolumns['ID_ACL_TYPE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ACL_TYPE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-acl-type">
-	                    		                    		        <label class="attribute-name"><{_t('L_ACL_TYPE')}></label>
+	                    		                    		        <label class="attribute-name"><{_t('Acl type')}></label>
             </td>
             <td class="form-field form-field-value column-id-acl-type" colspan="3">
             	<div class="attribute-line column-id-acl-type type-reftext">

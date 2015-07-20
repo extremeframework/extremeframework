@@ -17,7 +17,7 @@
         	                            <{if (in_array('ITEM', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ITEM']) && ((isset($aclviewablecolumns['ITEM']) && $aclviewablecolumns['ITEM']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ITEM']) || $aclviewablecolumns['ITEM']))) }>
     	            <th class="column-item">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/item"><{_t('L_ITEM')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/item"><{_t('Item')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/module"><{_t('L_MODULE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/module"><{_t('Module')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('DATE_TIME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['DATE_TIME']) && ((isset($aclviewablecolumns['DATE_TIME']) && $aclviewablecolumns['DATE_TIME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE_TIME']) || $aclviewablecolumns['DATE_TIME']))) }>
     	            <th class="column-date-time">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/date_time"><{_t('L_DATE_TIME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/date_time"><{_t('Date time')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('ID_USER', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_USER']) && ((isset($aclviewablecolumns['ID_USER']) && $aclviewablecolumns['ID_USER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER']) || $aclviewablecolumns['ID_USER']))) }>
     	            <th class="column-id-user">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/id_user"><{_t('L_USER')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/recyclebin/sort/id_user"><{_t('User')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -67,8 +67,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_RECYCLE_BIN')|strtolower}>s on this page are selected. <a onclick="recyclebin_selectall()">Select all <{$total}> <{_t('L_RECYCLE_BIN')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_RECYCLE_BIN')|strtolower}>s in the list are selected. <a onclick="recyclebin_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Recycle Bins')|strtolower}> on this page are selected. <a onclick="recyclebin_selectall()">Select all <{$total}> <{_t('Recycle Bins')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Recycle Bins')|strtolower}> in the list are selected. <a onclick="recyclebin_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

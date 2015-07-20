@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-post">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST')}></label>
+        		    <label><{_t('Post')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-tag-line">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAG_LINE')}></label>
+        		    <label><{_t('Tag line')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tag-line" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
@@ -170,7 +170,7 @@
         <{else}>
     		<td class="form-row form-row-background-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_BACKGROUND_IMAGE')}></label>
+        		    <label><{_t('Background image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-image" colspan="3">
@@ -203,7 +203,7 @@
         <{else}>
     		<td class="form-row form-row-background-color">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_BACKGROUND_COLOR')}></label>
+        		    <label><{_t('Background color')}></label>
                 </div>
             </td>
             <td class="form-row form-row-background-color" colspan="3">
@@ -233,7 +233,7 @@
         <{else}>
     		<td class="form-row form-row-video">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_VIDEO')}></label>
+        		    <label><{_t('Video')}></label>
                 </div>
             </td>
             <td class="form-row form-row-video" colspan="3">
@@ -266,7 +266,7 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONTENT')}></label>
+        		    <label><{_t('Content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
@@ -297,7 +297,7 @@
         <{else}>
     		<td class="form-row form-row-link-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LINK_PATH')}></label>
+        		    <label><{_t('Link path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link-path" colspan="3">
@@ -327,7 +327,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

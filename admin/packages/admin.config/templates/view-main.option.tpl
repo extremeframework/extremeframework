@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_OPTION_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -46,7 +46,7 @@
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
         <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
     		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('L_CODE')}></label>
+	            		        <label class="attribute-name"><{_t('Code')}></label>
             </td>
             <td class="form-field form-field-value column-code" colspan="3">
             	<div class="attribute-line column-code type-text">
@@ -80,7 +80,7 @@
             <{if !isset($excludedcolumns['VALUE']) && ((isset($aclviewablecolumns['VALUE']) && $aclviewablecolumns['VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUE']) || $aclviewablecolumns['VALUE']))) }>
         <{if !isset($columns2hide) || !in_array('VALUE', $columns2hide) }>
     		<td class="form-field form-field-label column-value">
-	            		        <label class="attribute-name"><{_t('L_VALUE')}></label>
+	            		        <label class="attribute-name"><{_t('Value')}></label>
             </td>
             <td class="form-field form-field-value column-value" colspan="3">
             	<div class="attribute-line column-value type-text">
@@ -114,7 +114,7 @@
             <{if !isset($excludedcolumns['CONTEXT']) && ((isset($aclviewablecolumns['CONTEXT']) && $aclviewablecolumns['CONTEXT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONTEXT']) || $aclviewablecolumns['CONTEXT']))) }>
         <{if !isset($columns2hide) || !in_array('CONTEXT', $columns2hide) }>
     		<td class="form-field form-field-label column-context">
-	            		        <label class="attribute-name"><{_t('L_CONTEXT')}></label>
+	            		        <label class="attribute-name"><{_t('Context')}></label>
             </td>
             <td class="form-field form-field-value column-context" colspan="3">
             	<div class="attribute-line column-context type-text">

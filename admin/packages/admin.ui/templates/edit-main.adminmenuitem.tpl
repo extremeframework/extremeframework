@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MENU_ITEM_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-admin-menu">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MENU')}></label>
+        		    <label><{_t('Admin menu')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-admin-menu" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARENT')}></label>
+        		    <label><{_t('Parent')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
@@ -144,7 +144,7 @@
         <{else}>
     		<td class="form-row form-row-module">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}></label>
+        		    <label><{_t('Module')}></label>
                 </div>
             </td>
             <td class="form-row form-row-module" colspan="3">
@@ -181,7 +181,7 @@
         <{else}>
     		<td class="form-row form-row-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PATH')}></label>
+        		    <label><{_t('Path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-path" colspan="3">
@@ -211,7 +211,7 @@
         <{else}>
     		<td class="form-row form-row-font-awesome-icon">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_FONT_AWESOME_ICON')}></label>
+        		    <label><{_t('Font awesome icon')}></label>
                 </div>
             </td>
             <td class="form-row form-row-font-awesome-icon" colspan="3">
@@ -241,7 +241,7 @@
         <{else}>
     		<td class="form-row form-row-enable-left">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_LEFT')}></label>
+        		    <label><{_t('Enable left?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-left" colspan="3">
@@ -271,7 +271,7 @@
         <{else}>
     		<td class="form-row form-row-enable-top">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_TOP')}></label>
+        		    <label><{_t('Enable top?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-top" colspan="3">
@@ -301,7 +301,7 @@
         <{else}>
     		<td class="form-row form-row-enable-quick">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_QUICK')}></label>
+        		    <label><{_t('Enable quick?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-quick" colspan="3">
@@ -331,7 +331,7 @@
         <{else}>
     		<td class="form-row form-row-enable-all">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_ALL')}></label>
+        		    <label><{_t('Enable all?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-all" colspan="3">
@@ -361,7 +361,7 @@
         <{else}>
     		<td class="form-row form-row-enable-settings">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ENABLE_SETTINGS')}></label>
+        		    <label><{_t('Enable settings?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-enable-settings" colspan="3">
@@ -391,7 +391,7 @@
         <{else}>
     		<td class="form-row form-row-open-in-new-window">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_OPEN_IN_NEW_WINDOW')}></label>
+        		    <label><{_t('Open in new window')}></label>
                 </div>
             </td>
             <td class="form-row form-row-open-in-new-window" colspan="3">
@@ -421,7 +421,7 @@
         <{else}>
     		<td class="form-row form-row-is-starred">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_STARRED')}></label>
+        		    <label><{_t('Starred?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-starred" colspan="3">
@@ -451,7 +451,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

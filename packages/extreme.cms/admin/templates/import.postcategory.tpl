@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(L_POST_CATEGORY), APPLICATION_URL.'/postcategory/export', strtolower(L_POST_CATEGORY)));
+	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Post Category), APPLICATION_URL.'/postcategory/export', strtolower(Post Category)));
 <{/php}>
 
 <{$guidelines}>
@@ -27,7 +27,7 @@
 <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
 
 <div class="form-row">
-    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('L_POST_CATEGORY')|strtolower}></label>
+    <label><{_t('L_CSV_FILE_CONTAINS_DATA_ABOUT')}> <{_t('Post Category')|strtolower}></label>
     <div class="form-field">
         <input type="file" name="postcategory_importfile" />
     </div>

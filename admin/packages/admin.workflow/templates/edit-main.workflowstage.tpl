@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-workflow">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WORKFLOW')}></label>
+        		    <label><{_t('Workflow')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-workflow" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_WORKFLOW_STAGE_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-code form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CODE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-code form-row-mandatory" colspan="3">
@@ -143,7 +143,7 @@
         <{else}>
     		<td class="form-row form-row-is-default">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_DEFAULT')}></label>
+        		    <label><{_t('Default?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-default" colspan="3">
@@ -173,7 +173,7 @@
         <{else}>
     		<td class="form-row form-row-is-binding-object-editable">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_BINDING_OBJECT_EDITABLE')}></label>
+        		    <label><{_t('Binding object editable?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-binding-object-editable" colspan="3">
@@ -203,7 +203,7 @@
         <{else}>
     		<td class="form-row form-row-is-binding-object-deletable">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_BINDING_OBJECT_DELETABLE')}></label>
+        		    <label><{_t('Binding object deletable?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-binding-object-deletable" colspan="3">

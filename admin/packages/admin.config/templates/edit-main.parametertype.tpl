@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARAMETER_TYPE_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-base-type-code">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_BASE_TYPE_CODE')}></label>
+        		    <label><{_t('Base type code')}></label>
                 </div>
             </td>
             <td class="form-row form-row-base-type-code" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-extra">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EXTRA')}></label>
+        		    <label><{_t('Extra')}></label>
                 </div>
             </td>
             <td class="form-row form-row-extra" colspan="3">
@@ -130,7 +130,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

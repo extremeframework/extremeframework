@@ -65,16 +65,18 @@
     </div>
 </div>
 
-<section class="social-signin">
-    <button onclick="facebook_login();" class="button button-social button-facebook">
-        <i class="fa fa-facebook"></i><{_t('Sign in with Facebook')}>
-    </button>
-    <button class="button-social button button-google" onclick="google_login();">
-        <i class="fa fa-google-plus"></i><{_t('Sign in with Google+')}>
-    </button>
-    <button class="button-social button button-yahoo" onclick="yahoo_login();">
-        <i class="fa fa-yahoo"></i><{_t('Sign in with Yahoo')}>
-    </button>
-</section>
+<{if get_option('enable-social-registration', false, null, false)}>
+    <section class="social-signin">
+        <button onclick="facebook_login();" class="button button-social button-facebook">
+            <i class="fa fa-facebook"></i><{_t('Sign in with Facebook')}>
+        </button>
+        <button class="button-social button button-google" onclick="google_login();">
+            <i class="fa fa-google-plus"></i><{_t('Sign in with Google+')}>
+        </button>
+        <button class="button-social button button-yahoo" onclick="yahoo_login();">
+            <i class="fa fa-yahoo"></i><{_t('Sign in with Yahoo')}>
+        </button>
+    </section>
+<{/if}>
 
 <{include file="footer.tpl"}>

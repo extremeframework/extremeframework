@@ -21,27 +21,27 @@ class _PostController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
-           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TITLE'));
+           $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Title'));
            return false;
        }
        if (in_array('SLUG', $columns2check) && trim($model->SLUG) == '') {
-           $errors['slug'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_SLUG'));
+           $errors['slug'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Slug'));
            return false;
        }
        if (in_array('ID_POST_TYPE', $columns2check) && trim($model->ID_POST_TYPE) == '') {
-           $errors['id-post-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_POST_TYPE'));
+           $errors['id-post-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Post type'));
            return false;
        }
        if (in_array('ID_TEMPLATE', $columns2check) && trim($model->ID_TEMPLATE) == '') {
-           $errors['id-template'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('L_TEMPLATE'));
+           $errors['id-template'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Template'));
            return false;
        }
        if (in_array('EXTERNAL_LINK', $columns2check) && !empty($model->EXTERNAL_LINK) && !preg_match('/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.?[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?/i', $model->EXTERNAL_LINK)) {
-           $errors['external-link'] = sprintf(_t('L_VALIDATION_URL'), _t('L_EXTERNAL_LINK'));
+           $errors['external-link'] = sprintf(_t('L_VALIDATION_URL'), _t('External link'));
            return false;
        }
        if (in_array('NBR_VIEWS', $columns2check) && !empty($model->NBR_VIEWS) && !is_numeric($model->NBR_VIEWS)) {
-           $errors['nbr-views'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_NBR_VIEWS'));
+           $errors['nbr-views'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('# views'));
            return false;
        }
 

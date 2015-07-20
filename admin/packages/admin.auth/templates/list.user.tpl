@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_USER')}>
+<{assign var='title' value=_t('User')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.user.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_USER', true)|strtolower}>"/><{_t('New')}> <{_t('L_USER')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('User', true)|strtolower}>"/><{_t('New')}> <{_t('User')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -129,43 +129,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_USER'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_USER'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_USER')), strtolower(_t('L_USER'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('User'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('User'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('User')), strtolower(_t('User'))));
     <{/php}>
 
-    <div id="usercopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="usercopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{_t('Copy also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpreference" /> <{_t('Copy also')}> <{_t('User Preference')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="userapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{_t('Approve also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpreference" /> <{_t('Approve also')}> <{_t('User Preference')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="userdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_USER', true)|strtolower}>">
+    <div id="userdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('L_USER_MEMBERSHIP')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('UserPreference')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{_t('Delete also')}> <{_t('L_USER_PREFERENCE')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpreference" /> <{_t('Delete also')}> <{_t('User Preference')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

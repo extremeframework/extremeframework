@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PAGE')}></label>
+        		    <label><{_t('Page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-page" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-image form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Image')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-image form-row-mandatory" colspan="3">
@@ -140,7 +140,7 @@
         <{else}>
     		<td class="form-row form-row-link-id-page">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LINK_PAGE')}></label>
+        		    <label><{_t('Link page')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link-id-page" colspan="3">
@@ -177,7 +177,7 @@
         <{else}>
     		<td class="form-row form-row-link-path">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_LINK_PATH')}></label>
+        		    <label><{_t('Link path')}></label>
                 </div>
             </td>
             <td class="form-row form-row-link-path" colspan="3">
@@ -207,7 +207,7 @@
         <{else}>
     		<td class="form-row form-row-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DESCRIPTION')}></label>
+        		    <label><{_t('Description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-description" colspan="3">
@@ -238,7 +238,7 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">

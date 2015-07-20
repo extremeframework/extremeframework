@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ADMIN_MODULE_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -70,7 +70,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -100,7 +100,7 @@
         <{else}>
     		<td class="form-row form-row-prefix form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PREFIX')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Prefix')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-prefix form-row-mandatory" colspan="3">
@@ -130,7 +130,7 @@
         <{else}>
     		<td class="form-row form-row-available-actions">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_AVAILABLE_ACTIONS')}></label>
+        		    <label><{_t('Available actions')}></label>
                 </div>
             </td>
             <td class="form-row form-row-available-actions" colspan="3">
@@ -160,7 +160,7 @@
         <{else}>
     		<td class="form-row form-row-is-comment-enabled">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_COMMENT_ENABLED')}></label>
+        		    <label><{_t('Comment enabled?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-comment-enabled" colspan="3">

@@ -17,7 +17,7 @@
         	                            <{if (in_array('ID_WORKFLOW', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_WORKFLOW']) && ((isset($aclviewablecolumns['ID_WORKFLOW']) && $aclviewablecolumns['ID_WORKFLOW']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WORKFLOW']) || $aclviewablecolumns['ID_WORKFLOW']))) }>
     	            <th class="column-id-workflow">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/id_workflow"><{_t('L_WORKFLOW')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/id_workflow"><{_t('Workflow')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -26,7 +26,7 @@
 		                        <{if (in_array('NAME', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
     	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/name"><{_t('L_WORKFLOW_STAGE_NAME')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/name"><{_t('Name')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -35,7 +35,7 @@
 		                        <{if (in_array('CODE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
     	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/code"><{_t('L_CODE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/code"><{_t('Code')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -44,7 +44,7 @@
 		                        <{if (in_array('IS_DEFAULT', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_DEFAULT']) && ((isset($aclviewablecolumns['IS_DEFAULT']) && $aclviewablecolumns['IS_DEFAULT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_DEFAULT']) || $aclviewablecolumns['IS_DEFAULT']))) }>
     	            <th class="column-is-default">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_default"><{_t('L_IS_DEFAULT')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_default"><{_t('Default?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -53,7 +53,7 @@
 		                        <{if (in_array('IS_BINDING_OBJECT_EDITABLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_BINDING_OBJECT_EDITABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_EDITABLE']))) }>
     	            <th class="column-is-binding-object-editable">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_binding_object_editable"><{_t('L_IS_BINDING_OBJECT_EDITABLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_binding_object_editable"><{_t('Binding object editable?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -62,7 +62,7 @@
 		                        <{if (in_array('IS_BINDING_OBJECT_DELETABLE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IS_BINDING_OBJECT_DELETABLE']) && ((isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) && $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']) || $aclviewablecolumns['IS_BINDING_OBJECT_DELETABLE']))) }>
     	            <th class="column-is-binding-object-deletable">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_binding_object_deletable"><{_t('L_IS_BINDING_OBJECT_DELETABLE')}></a>
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/sort/is_binding_object_deletable"><{_t('Binding object deletable?')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -85,8 +85,8 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('L_WORKFLOW_STAGE')|strtolower}>s on this page are selected. <a onclick="workflowstage_selectall()">Select all <{$total}> <{_t('L_WORKFLOW_STAGE')|strtolower}>s in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('L_WORKFLOW_STAGE')|strtolower}>s in the list are selected. <a onclick="workflowstage_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Workflow Stages')|strtolower}> on this page are selected. <a onclick="workflowstage_selectall()">Select all <{$total}> <{_t('Workflow Stages')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Workflow Stages')|strtolower}> in the list are selected. <a onclick="workflowstage_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>

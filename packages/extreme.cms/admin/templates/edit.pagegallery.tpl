@@ -4,11 +4,11 @@
 <body class="module module-<{$module}>" id="<{$module}>">
     <{if $details->UUID > 0}>
         <{$tmp1 = _t('Edit')}>
-        <{$tmp2 = strtolower(_t('L_PAGE_GALLERY'))}>
+        <{$tmp2 = strtolower(_t('Page Gallery'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     <{else}>
         <{$tmp1 = _t('New')}>
-        <{$tmp2 = strtolower(_t('L_PAGE_GALLERY'))}>
+        <{$tmp2 = strtolower(_t('Page Gallery'))}>
         <{$title = "`$tmp1` `$tmp2`"}>
     <{/if}>
 <{include file="top.tpl"}>
@@ -78,7 +78,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('Cancel')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/cancel/"><{_t('Cancel')}></a>
             <div class="clearer"></div>
         </div>
     
@@ -104,7 +104,7 @@ function saveclone()
             
             <{if $details->ID}>
                             <{/if}>
-            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/cancel/?return=<{ContextStack::getRecentContext()}>"><{_t('Cancel')}></a>
+            <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/cancel/"><{_t('Cancel')}></a>
             <div class="clearer"></div>
         </div>
     

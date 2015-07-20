@@ -21,11 +21,11 @@ class _AdminOrderItemController extends __AppController
     protected function checkConstraint($model, &$errors, $columns2check) {
         
        if (in_array('QUANTITY', $columns2check) && !empty($model->QUANTITY) && !is_numeric($model->QUANTITY)) {
-           $errors['quantity'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_QUANTITY'));
+           $errors['quantity'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Quantity'));
            return false;
        }
        if (in_array('PRICE', $columns2check) && !empty($model->PRICE) && !is_numeric($model->PRICE)) {
-           $errors['price'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('L_PRICE'));
+           $errors['price'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Price'));
            return false;
        }
 

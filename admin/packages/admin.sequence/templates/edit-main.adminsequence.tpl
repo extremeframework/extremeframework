@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-module form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_MODULE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-module form-row-mandatory" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-sequence-format">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SEQUENCE_FORMAT')}></label>
+        		    <label><{_t('Sequence format')}></label>
                 </div>
             </td>
             <td class="form-row form-row-sequence-format" colspan="3">
@@ -107,7 +107,7 @@
         <{else}>
     		<td class="form-row form-row-current-value">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CURRENT_VALUE')}></label>
+        		    <label><{_t('Current value')}></label>
                 </div>
             </td>
             <td class="form-row form-row-current-value" colspan="3">
@@ -137,7 +137,7 @@
         <{else}>
     		<td class="form-row form-row-sequence-step">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SEQUENCE_STEP')}></label>
+        		    <label><{_t('Sequence step')}></label>
                 </div>
             </td>
             <td class="form-row form-row-sequence-step" colspan="3">

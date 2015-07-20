@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_ADMIN_ORDER_STATUS')}>
+<{assign var='title' value=_t('Admin Order Status')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.adminorderstatus.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_ADMIN_ORDER_STATUS', true)|strtolower}>"/><{_t('New')}> <{_t('L_ADMIN_ORDER_STATUS')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Admin Order Status', true)|strtolower}>"/><{_t('New')}> <{_t('Admin Order Status')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.adminorderstatus.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.adminorderstatus.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_ADMIN_ORDER_STATUS'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_ADMIN_ORDER_STATUS'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_ADMIN_ORDER_STATUS')), strtolower(_t('L_ADMIN_ORDER_STATUS'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Admin Order Status'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Admin Order Status'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Admin Order Status')), strtolower(_t('Admin Order Status'))));
     <{/php}>
 
-    <div id="adminorderstatuscopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_ADMIN_ORDER_STATUS', true)|strtolower}>">
+    <div id="adminorderstatuscopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Order Status', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorder" /> <{_t('Copy also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminorder" /> <{_t('Copy also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminorderstatusapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_ADMIN_ORDER_STATUS', true)|strtolower}>">
+    <div id="adminorderstatusapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Order Status', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorder" /> <{_t('Approve also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminorder" /> <{_t('Approve also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="adminorderstatusdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_ADMIN_ORDER_STATUS', true)|strtolower}>">
+    <div id="adminorderstatusdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Order Status', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('AdminOrder')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorder" /> <{_t('Delete also')}> <{_t('L_ADMIN_ORDER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminorder" /> <{_t('Delete also')}> <{_t('Admin Order')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

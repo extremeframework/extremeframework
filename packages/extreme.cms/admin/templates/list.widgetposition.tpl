@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_WIDGET_POSITION')}>
+<{assign var='title' value=_t('Widget Position')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.widgetposition.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>"/><{_t('New')}> <{_t('L_WIDGET_POSITION')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Widget Position', true)|strtolower}>"/><{_t('New')}> <{_t('Widget Position')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.widgetposition.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.widgetposition.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,34 +117,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_WIDGET_POSITION'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_WIDGET_POSITION'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_WIDGET_POSITION')), strtolower(_t('L_WIDGET_POSITION'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Widget Position'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Widget Position'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Widget Position')), strtolower(_t('Widget Position'))));
     <{/php}>
 
-    <div id="widgetpositioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
+    <div id="widgetpositioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Widget Position', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{_t('Copy also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{_t('Copy also')}> <{_t('Page Widget')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="widgetpositionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
+    <div id="widgetpositionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Widget Position', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{_t('Approve also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{_t('Approve also')}> <{_t('Page Widget')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="widgetpositiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_WIDGET_POSITION', true)|strtolower}>">
+    <div id="widgetpositiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Widget Position', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{_t('Delete also')}> <{_t('L_PAGE_WIDGET')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{_t('Delete also')}> <{_t('Page Widget')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

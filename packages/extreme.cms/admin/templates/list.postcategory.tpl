@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_POST_CATEGORY')}>
+<{assign var='title' value=_t('Post Category')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.postcategory.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>"/><{_t('New')}> <{_t('L_POST_CATEGORY')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Post Category', true)|strtolower}>"/><{_t('New')}> <{_t('Post Category')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -88,12 +88,12 @@
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.postcategory.import)}>
                                             <div class="btn button-general">
-                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('L_IMPORT', true)}>" /><{_t('L_IMPORT')}></span></a>
+                            <a class="button-import scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/import/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-import.png" alt="<{_t('Import', true)}>" /><{_t('L_IMPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                 <{if isset($smarty.session.acl.postcategory.export)}>
                                             <div class="btn button-general">
-                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/postcategory/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('L_EXPORT', true)}>" /><{_t('L_EXPORT')}></span></a>
+                            <a class="button-export" href="<{$smarty.const.APPLICATION_URL}>/postcategory/export/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-export.png" alt="<{_t('Export', true)}>" /><{_t('L_EXPORT')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>
@@ -117,43 +117,43 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_POST_CATEGORY'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_POST_CATEGORY'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_POST_CATEGORY')), strtolower(_t('L_POST_CATEGORY'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Post Category'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Post Category'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Post Category')), strtolower(_t('Post Category'))));
     <{/php}>
 
-    <div id="postcategorycopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>">
+    <div id="postcategorycopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Post Category', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postcategory" /> <{_t('Copy also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postcategory" /> <{_t('Copy also')}> <{_t('Post Category')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{_t('Copy also')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{_t('Copy also')}> <{_t('Post')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postcategoryapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>">
+    <div id="postcategoryapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Post Category', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postcategory" /> <{_t('Approve also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postcategory" /> <{_t('Approve also')}> <{_t('Post Category')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{_t('Approve also')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{_t('Approve also')}> <{_t('Post')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="postcategorydeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_POST_CATEGORY', true)|strtolower}>">
+    <div id="postcategorydeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Post Category', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('PostCategory')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postcategory" /> <{_t('Delete also')}> <{_t('L_POST_CATEGORY')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postcategory" /> <{_t('Delete also')}> <{_t('Post Category')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{_t('Delete also')}> <{_t('L_POST')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{_t('Delete also')}> <{_t('Post')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

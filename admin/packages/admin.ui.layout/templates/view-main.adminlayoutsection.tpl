@@ -12,7 +12,7 @@
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
         <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
     		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('L_ADMIN_LAYOUT_SECTION_NAME')}></label>
+	            		        <label class="attribute-name"><{_t('Name')}></label>
             </td>
             <td class="form-field form-field-value column-name" colspan="3">
             	<div class="attribute-line column-name type-text">
@@ -51,7 +51,7 @@
                                 <i class="fa fa-caret-right row-expander view-row-expander" data-module="adminmodule" data-id="<{$details->refuuid_MODULE}>"></i>
                             <{/if}>
                         <{/if}>
-    	                            		        <label class="attribute-name"><{_t('L_MODULE')}></label>
+    	                            		        <label class="attribute-name"><{_t('Module')}></label>
             </td>
             <td class="form-field form-field-value column-module" colspan="3">
             	<div class="attribute-line column-module type-reftext">
@@ -106,7 +106,7 @@
             <{if !isset($excludedcolumns['SHOW_TITLE']) && ((isset($aclviewablecolumns['SHOW_TITLE']) && $aclviewablecolumns['SHOW_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SHOW_TITLE']) || $aclviewablecolumns['SHOW_TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('SHOW_TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-show-title">
-	            		        <label class="attribute-name"><{_t('L_SHOW_TITLE')}></label>
+	            		        <label class="attribute-name"><{_t('Show title')}></label>
             </td>
             <td class="form-field form-field-value column-show-title" colspan="3">
             	<div class="attribute-line column-show-title type-yesno">

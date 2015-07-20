@@ -40,7 +40,7 @@
         <{else}>
     		<td class="form-row form-row-id-post">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST')}></label>
+        		    <label><{_t('Post')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post" colspan="3">
@@ -77,7 +77,7 @@
         <{else}>
     		<td class="form-row form-row-peer-id-post">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PEER_POST')}></label>
+        		    <label><{_t('Peer post')}></label>
                 </div>
             </td>
             <td class="form-row form-row-peer-id-post" colspan="3">
@@ -114,7 +114,7 @@
         <{else}>
     		<td class="form-row form-row-id-post-relation-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_RELATION_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Post relation type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-relation-type form-row-mandatory" colspan="3">

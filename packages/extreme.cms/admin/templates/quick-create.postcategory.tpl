@@ -1,6 +1,6 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('L_POST_CATEGORY')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Post Category')|ucwords}></h3>
 </div>
 
 
@@ -58,7 +58,7 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
@@ -88,7 +88,7 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">

@@ -2,7 +2,7 @@
 
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-<{assign var='title' value=_t('L_PARAMETER_GROUP')}>
+<{assign var='title' value=_t('Parameter Group')}>
 <{include file="top.tpl"}>
 
 <!-- Quick search -->
@@ -71,7 +71,7 @@
             <div class="buttons">
                         	                		        <{if isset($smarty.session.acl.parametergroup.new) && !$readonly}>
             		        <div class="btn button-general">
-            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('L_PARAMETER_GROUP', true)|strtolower}>"/><{_t('New')}> <{_t('L_PARAMETER_GROUP')|strtolower}></span></a>
+            		            <a class="button-new scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametergroup/new/"><span class="button-face"><img class="button-icon" src="<{$smarty.const.APPLICATION_URL}>/images/button-icon-add.png" alt="<{_t('New', true)}> <{_t('Parameter Group', true)|strtolower}>"/><{_t('New')}> <{_t('Parameter Group')|strtolower}></span></a>
             		        </div>
                                     		        <{/if}>
         			                                <{if isset($additional_list_buttons) }>
@@ -107,34 +107,34 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('L_PARAMETER_GROUP'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('L_PARAMETER_GROUP'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('L_PARAMETER_GROUP')), strtolower(_t('L_PARAMETER_GROUP'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Parameter Group'))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Parameter Group'))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Parameter Group')), strtolower(_t('Parameter Group'))));
     <{/php}>
 
-    <div id="parametergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('L_PARAMETER_GROUP', true)|strtolower}>">
+    <div id="parametergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Parameter Group', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parameter" /> <{_t('Copy also')}> <{_t('L_PARAMETER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parameter" /> <{_t('Copy also')}> <{_t('Parameter')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="parametergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('L_PARAMETER_GROUP', true)|strtolower}>">
+    <div id="parametergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Parameter Group', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parameter" /> <{_t('Approve also')}> <{_t('L_PARAMETER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parameter" /> <{_t('Approve also')}> <{_t('Parameter')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
 
-    <div id="parametergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('L_PARAMETER_GROUP', true)|strtolower}>">
+    <div id="parametergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Parameter Group', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
                             <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parameter" /> <{_t('Delete also')}> <{_t('L_PARAMETER')|strtolower}></li>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parameter" /> <{_t('Delete also')}> <{_t('Parameter')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
