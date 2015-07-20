@@ -78,7 +78,7 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.widgetposition.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="widgetposition_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
+                            <a href="#" onclick="widgetposition_delete()"><span class="button-face"><{_t('Delete')}></span></a>
                         </div>
                                             <{/if}>
                                                                                     <{if $admin_list_actions}>

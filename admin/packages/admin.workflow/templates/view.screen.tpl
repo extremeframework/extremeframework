@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.screen.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/screen/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/screen/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="screentabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('ScreenField') && isset($smarty.session.acl.screenfield) }>
-                            <li><a href="#tab-screenfields"><{_t('L_SCREEN_FIELD')}> <span class="badge screenfield-badge-count"></span></a></li>
+                            <li><a href="#tab-screenfields"><{_t('Screen field')}> <span class="badge screenfield-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{_t('L_WORKFLOW_TRANSITION')}> <span class="badge workflowtransition-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowtransitions"><{_t('Workflow transition')}> <span class="badge workflowtransition-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('ScreenField') && isset($smarty.session.acl.screenfield) }>
                         <div id="tab-screenfields">
                         	<{if true || $tab == 'screenfields'}>
-                            	<h2 class="print"><{_t('L_SCREEN_FIELD')}></h2>
+                            	<h2 class="print"><{_t('Screen field')}></h2>
                                                                     <{ajaxmodule class="WidgetListScreenField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_SCREEN="`$details->CODE`" where=""  template='widgetlist.screenfield.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
                         <div id="tab-workflowtransitions">
                         	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_TRANSITION')}></h2>
+                            	<h2 class="print"><{_t('Workflow transition')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) TRANSITION_ID_SCREEN="`$details->CODE`" where="" ID_WORKFLOW="`$details->ID_WORKFLOW`" template='widgetlist.workflowtransition.tpl'}>
                                                             <{/if}>
                         </div>

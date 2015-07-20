@@ -897,6 +897,7 @@ div.col h3 a {
     color: rgb(255, 131, 0);
     list-style: none;
     padding: 10px 0 0 0;
+    font-weight: bold;
 }
 
 body[data-type="list"] .content-inner .message {
@@ -908,14 +909,6 @@ body[data-type="list"] .content-inner .message {
 }
 
 body[data-type="view"] .content-inner .message {
-    color: #000;
-    background-color: yellow;
-    padding: 10px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-body[data-type="edit"] .content-inner .message {
     color: #000;
     background-color: yellow;
     padding: 10px;

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.menuitem.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/menuitem/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="menuitemtabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                            <li><a href="#tab-menuitems"><{_t('L_MENU_ITEM')}> <span class="badge menuitem-badge-count"></span></a></li>
+                            <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
                         <div id="tab-menuitems">
                         	<{if true || $tab == 'menuitems'}>
-                            	<h2 class="print"><{_t('L_MENU_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Menu item')}></h2>
                                                                     <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->ID`" where=""  template='widgetlist.menuitem.tpl'}>
                                                             <{/if}>
                         </div>

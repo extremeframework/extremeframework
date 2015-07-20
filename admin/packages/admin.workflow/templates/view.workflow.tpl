@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.workflow.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflow/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -138,26 +138,26 @@
             <div id="workflowtabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('Screen') && isset($smarty.session.acl.screen) }>
-                            <li><a href="#tab-screens"><{_t('L_SCREEN')}> <span class="badge screen-badge-count"></span></a></li>
+                            <li><a href="#tab-screens"><{_t('Screen')}> <span class="badge screen-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
-                            <li><a href="#tab-workflowapplications"><{_t('L_WORKFLOW_APPLICATION')}> <span class="badge workflowapplication-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowapplications"><{_t('Workflow application')}> <span class="badge workflowapplication-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                            <li><a href="#tab-workflowlogs"><{_t('L_WORKFLOW_LOG')}> <span class="badge workflowlog-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowlogs"><{_t('Workflow log')}> <span class="badge workflowlog-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowStage') && isset($smarty.session.acl.workflowstage) }>
-                            <li><a href="#tab-workflowstages"><{_t('L_WORKFLOW_STAGE')}> <span class="badge workflowstage-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowstages"><{_t('Workflow stage')}> <span class="badge workflowstage-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{_t('L_WORKFLOW_TRANSITION')}> <span class="badge workflowtransition-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowtransitions"><{_t('Workflow transition')}> <span class="badge workflowtransition-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('Screen') && isset($smarty.session.acl.screen) }>
                         <div id="tab-screens">
                         	<{if true || $tab == 'screens'}>
-                            	<h2 class="print"><{_t('L_SCREEN')}></h2>
+                            	<h2 class="print"><{_t('Screen')}></h2>
                                                                     <{ajaxmodule class="WidgetListScreen" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.screen.tpl'}>
                                                             <{/if}>
                         </div>
@@ -165,7 +165,7 @@
                                     <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
                         <div id="tab-workflowapplications">
                         	<{if true || $tab == 'workflowapplications'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_APPLICATION')}></h2>
+                            	<h2 class="print"><{_t('Workflow application')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowApplication" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowapplication.tpl'}>
                                                             <{/if}>
                         </div>
@@ -173,7 +173,7 @@
                                     <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
                         <div id="tab-workflowlogs">
                         	<{if true || $tab == 'workflowlogs'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_LOG')}></h2>
+                            	<h2 class="print"><{_t('Workflow log')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowlog.tpl'}>
                                                             <{/if}>
                         </div>
@@ -181,7 +181,7 @@
                                     <{if Framework::hasModule('WorkflowStage') && isset($smarty.session.acl.workflowstage) }>
                         <div id="tab-workflowstages">
                         	<{if true || $tab == 'workflowstages'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_STAGE')}></h2>
+                            	<h2 class="print"><{_t('Workflow stage')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowStage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowstage.tpl'}>
                                                             <{/if}>
                         </div>
@@ -189,7 +189,7 @@
                                     <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
                         <div id="tab-workflowtransitions">
                         	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_TRANSITION')}></h2>
+                            	<h2 class="print"><{_t('Workflow transition')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowtransition.tpl'}>
                                                             <{/if}>
                         </div>

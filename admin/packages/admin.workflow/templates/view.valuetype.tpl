@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.valuetype.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/valuetype/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="valuetypetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('ScreenField') && isset($smarty.session.acl.screenfield) }>
-                            <li><a href="#tab-screenfields"><{_t('L_SCREEN_FIELD')}> <span class="badge screenfield-badge-count"></span></a></li>
+                            <li><a href="#tab-screenfields"><{_t('Screen field')}> <span class="badge screenfield-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('ScreenField') && isset($smarty.session.acl.screenfield) }>
                         <div id="tab-screenfields">
                         	<{if true || $tab == 'screenfields'}>
-                            	<h2 class="print"><{_t('L_SCREEN_FIELD')}></h2>
+                            	<h2 class="print"><{_t('Screen field')}></h2>
                                                                     <{ajaxmodule class="WidgetListScreenField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_VALUE_TYPE="`$details->CODE`" where=""  template='widgetlist.screenfield.tpl'}>
                                                             <{/if}>
                         </div>

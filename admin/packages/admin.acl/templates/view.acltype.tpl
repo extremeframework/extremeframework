@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.acltype.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/acltype/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/acltype/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="acltypetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                            <li><a href="#tab-fieldacls"><{_t('L_FIELD_ACL')}> <span class="badge fieldacl-badge-count"></span></a></li>
+                            <li><a href="#tab-fieldacls"><{_t('Field acl')}> <span class="badge fieldacl-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                            <li><a href="#tab-objectacls"><{_t('L_OBJECT_ACL')}> <span class="badge objectacl-badge-count"></span></a></li>
+                            <li><a href="#tab-objectacls"><{_t('Object acl')}> <span class="badge objectacl-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
                         <div id="tab-fieldacls">
                         	<{if true || $tab == 'fieldacls'}>
-                            	<h2 class="print"><{_t('L_FIELD_ACL')}></h2>
+                            	<h2 class="print"><{_t('Field acl')}></h2>
                                                                     <{ajaxmodule class="WidgetListFieldAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ACL_TYPE="`$details->ID`" where=""  template='widgetlist.fieldacl.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
                         <div id="tab-objectacls">
                         	<{if true || $tab == 'objectacls'}>
-                            	<h2 class="print"><{_t('L_OBJECT_ACL')}></h2>
+                            	<h2 class="print"><{_t('Object acl')}></h2>
                                                                     <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ACL_TYPE="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
                                                             <{/if}>
                         </div>

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.page.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/page/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -138,26 +138,26 @@
             <div id="pagetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                            <li><a href="#tab-pages"><{_t('L_PAGE')}> <span class="badge page-badge-count"></span></a></li>
+                            <li><a href="#tab-pages"><{_t('Page')}> <span class="badge page-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
-                            <li><a href="#tab-pagegalleries"><{_t('L_PAGE_GALLERY')}> <span class="badge pagegallery-badge-count"></span></a></li>
+                            <li><a href="#tab-pagegalleries"><{_t('Page gallery')}> <span class="badge pagegallery-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
-                            <li><a href="#tab-pagelinks"><{_t('L_PAGE_LINK')}> <span class="badge pagelink-badge-count"></span></a></li>
+                            <li><a href="#tab-pagelinks"><{_t('Page link')}> <span class="badge pagelink-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                            <li><a href="#tab-pagesections"><{_t('L_PAGE_SECTION')}> <span class="badge pagesection-badge-count"></span></a></li>
+                            <li><a href="#tab-pagesections"><{_t('Page section')}> <span class="badge pagesection-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
-                            <li><a href="#tab-pagewidgets"><{_t('L_PAGE_WIDGET')}> <span class="badge pagewidget-badge-count"></span></a></li>
+                            <li><a href="#tab-pagewidgets"><{_t('Page widget')}> <span class="badge pagewidget-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
                         <div id="tab-pages">
                         	<{if true || $tab == 'pages'}>
-                            	<h2 class="print"><{_t('L_PAGE')}></h2>
+                            	<h2 class="print"><{_t('Page')}></h2>
                                                                     <{ajaxmodule class="WidgetListPage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->ID`" where=""  template='widgetlist.page.tpl'}>
                                                             <{/if}>
                         </div>
@@ -165,7 +165,7 @@
                                     <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
                         <div id="tab-pagegalleries">
                         	<{if true || $tab == 'pagegalleries'}>
-                            	<h2 class="print"><{_t('L_PAGE_GALLERY')}></h2>
+                            	<h2 class="print"><{_t('Page gallery')}></h2>
                                                                     <{ajaxmodule class="WidgetListPageGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagegallery.tpl'}>
                                                             <{/if}>
                         </div>
@@ -173,7 +173,7 @@
                                     <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
                         <div id="tab-pagelinks">
                         	<{if true || $tab == 'pagelinks'}>
-                            	<h2 class="print"><{_t('L_PAGE_LINK')}></h2>
+                            	<h2 class="print"><{_t('Page link')}></h2>
                                                                     <{ajaxmodule class="WidgetListPageLink" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagelink.tpl'}>
                                                             <{/if}>
                         </div>
@@ -181,7 +181,7 @@
                                     <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
                         <div id="tab-pagesections">
                         	<{if true || $tab == 'pagesections'}>
-                            	<h2 class="print"><{_t('L_PAGE_SECTION')}></h2>
+                            	<h2 class="print"><{_t('Page section')}></h2>
                                                                     <{ajaxmodule class="WidgetListPageSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where="" PARENT="`$details->PARENT`" VIEW_MORE_ID_PAGE="`$details->VIEW_MORE_ID_PAGE`" template='widgetlist.pagesection.tpl'}>
                                                             <{/if}>
                         </div>
@@ -189,7 +189,7 @@
                                     <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
                         <div id="tab-pagewidgets">
                         	<{if true || $tab == 'pagewidgets'}>
-                            	<h2 class="print"><{_t('L_PAGE_WIDGET')}></h2>
+                            	<h2 class="print"><{_t('Page widget')}></h2>
                                                                     <{ajaxmodule class="WidgetListPageWidget" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagewidget.tpl'}>
                                                             <{/if}>
                         </div>

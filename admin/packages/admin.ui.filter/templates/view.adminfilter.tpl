@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminfilter.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminfiltertabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
-                            <li><a href="#tab-adminfilterconditions"><{_t('L_ADMIN_FILTER_CONDITION')}> <span class="badge adminfiltercondition-badge-count"></span></a></li>
+                            <li><a href="#tab-adminfilterconditions"><{_t('Admin filter condition')}> <span class="badge adminfiltercondition-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
                         <div id="tab-adminfilterconditions">
                         	<{if true || $tab == 'adminfilterconditions'}>
-                            	<h2 class="print"><{_t('L_ADMIN_FILTER_CONDITION')}></h2>
+                            	<h2 class="print"><{_t('Admin filter condition')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminFilterCondition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_FILTER="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.adminfiltercondition.tpl'}>
                                                             <{/if}>
                         </div>

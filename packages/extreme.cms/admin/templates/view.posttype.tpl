@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.posttype.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/posttype/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/posttype/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="posttypetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
-                            <li><a href="#tab-posts"><{_t('L_POST')}> <span class="badge post-badge-count"></span></a></li>
+                            <li><a href="#tab-posts"><{_t('Post')}> <span class="badge post-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
                         <div id="tab-posts">
                         	<{if true || $tab == 'posts'}>
-                            	<h2 class="print"><{_t('L_POST')}></h2>
+                            	<h2 class="print"><{_t('Post')}></h2>
                                                                     <{ajaxmodule class="WidgetListPost" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST_TYPE="`$details->CODE`" where=""  template='widgetlist.post.tpl'}>
                                                             <{/if}>
                         </div>

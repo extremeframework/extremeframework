@@ -78,7 +78,7 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.adminorder.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="adminorder_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
+                            <a href="#" onclick="adminorder_delete()"><span class="button-face"><{_t('Delete')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>

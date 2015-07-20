@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.post.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/post/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -135,23 +135,23 @@
             <div id="posttabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                            <li><a href="#tab-menuitems"><{_t('L_MENU_ITEM')}> <span class="badge menuitem-badge-count"></span></a></li>
+                            <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
-                            <li><a href="#tab-postgalleries"><{_t('L_POST_GALLERY')}> <span class="badge postgallery-badge-count"></span></a></li>
+                            <li><a href="#tab-postgalleries"><{_t('Post gallery')}> <span class="badge postgallery-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
-                            <li><a href="#tab-postrelations"><{_t('L_POST_RELATION')}> <span class="badge postrelation-badge-count"></span></a></li>
+                            <li><a href="#tab-postrelations"><{_t('Post relation')}> <span class="badge postrelation-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
-                            <li><a href="#tab-postsections"><{_t('L_POST_SECTION')}> <span class="badge postsection-badge-count"></span></a></li>
+                            <li><a href="#tab-postsections"><{_t('Post section')}> <span class="badge postsection-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
                         <div id="tab-menuitems">
                         	<{if true || $tab == 'menuitems'}>
-                            	<h2 class="print"><{_t('L_MENU_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Menu item')}></h2>
                                                                     <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where="" ID_POST_CATEGORY="`$details->ID_POST_CATEGORY`" template='widgetlist.menuitem.tpl'}>
                                                             <{/if}>
                         </div>
@@ -159,7 +159,7 @@
                                     <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
                         <div id="tab-postgalleries">
                         	<{if true || $tab == 'postgalleries'}>
-                            	<h2 class="print"><{_t('L_POST_GALLERY')}></h2>
+                            	<h2 class="print"><{_t('Post gallery')}></h2>
                                                                     <{ajaxmodule class="WidgetListPostGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postgallery.tpl'}>
                                                             <{/if}>
                         </div>
@@ -167,7 +167,7 @@
                                     <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
                         <div id="tab-postrelations">
                         	<{if true || $tab == 'postrelations'}>
-                            	<h2 class="print"><{_t('L_POST_RELATION')}></h2>
+                            	<h2 class="print"><{_t('Post relation')}></h2>
                                                                     <{ajaxmodule class="WidgetListPostRelation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postrelation.tpl'}>
                                                             <{/if}>
                         </div>
@@ -175,7 +175,7 @@
                                     <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
                         <div id="tab-postsections">
                         	<{if true || $tab == 'postsections'}>
-                            	<h2 class="print"><{_t('L_POST_SECTION')}></h2>
+                            	<h2 class="print"><{_t('Post section')}></h2>
                                                                     <{ajaxmodule class="WidgetListPostSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postsection.tpl'}>
                                                             <{/if}>
                         </div>

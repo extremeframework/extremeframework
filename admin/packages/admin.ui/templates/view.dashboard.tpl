@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.dashboard.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/dashboard/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="dashboardtabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('UserGroup') && isset($smarty.session.acl.usergroup) }>
-                            <li><a href="#tab-usergroups"><{_t('L_USER_GROUP')}> <span class="badge usergroup-badge-count"></span></a></li>
+                            <li><a href="#tab-usergroups"><{_t('User group')}> <span class="badge usergroup-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('UserPreference') && isset($smarty.session.acl.userpreference) }>
-                            <li><a href="#tab-userpreferences"><{_t('L_USER_PREFERENCE')}> <span class="badge userpreference-badge-count"></span></a></li>
+                            <li><a href="#tab-userpreferences"><{_t('User preference')}> <span class="badge userpreference-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('UserGroup') && isset($smarty.session.acl.usergroup) }>
                         <div id="tab-usergroups">
                         	<{if true || $tab == 'usergroups'}>
-                            	<h2 class="print"><{_t('L_USER_GROUP')}></h2>
+                            	<h2 class="print"><{_t('User group')}></h2>
                                                                     <{ajaxmodule class="WidgetListUserGroup" method="" readonly=!WorkflowHelper::isEditable($details->WFID) DEFAULT_ID_DASHBOARD="`$details->ID`" where=""  template='widgetlist.usergroup.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('UserPreference') && isset($smarty.session.acl.userpreference) }>
                         <div id="tab-userpreferences">
                         	<{if true || $tab == 'userpreferences'}>
-                            	<h2 class="print"><{_t('L_USER_PREFERENCE')}></h2>
+                            	<h2 class="print"><{_t('User preference')}></h2>
                                                                     <{ajaxmodule class="WidgetListUserPreference" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_DASHBOARD="`$details->ID`" where=""  template='widgetlist.userpreference.tpl'}>
                                                             <{/if}>
                         </div>

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminlanguage.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminlanguagetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminLanguageItem') && isset($smarty.session.acl.adminlanguageitem) }>
-                            <li><a href="#tab-adminlanguageitems"><{_t('L_ADMIN_LANGUAGE_ITEM')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
+                            <li><a href="#tab-adminlanguageitems"><{_t('Admin language item')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminLanguageItem') && isset($smarty.session.acl.adminlanguageitem) }>
                         <div id="tab-adminlanguageitems">
                         	<{if true || $tab == 'adminlanguageitems'}>
-                            	<h2 class="print"><{_t('L_ADMIN_LANGUAGE_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Admin language item')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LANGUAGE="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
                                                             <{/if}>
                         </div>

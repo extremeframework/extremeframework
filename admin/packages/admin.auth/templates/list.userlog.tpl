@@ -83,7 +83,7 @@
         	    <{/if}>
                                                             <{if isset($smarty.session.acl.userlog.delete) && !$readonly}>
                                             <div class="btn button-general">
-                            <a href="#" onclick="userlog_delete()"><span class="button-face"><{_t('L_DELETE')}></span></a>
+                            <a href="#" onclick="userlog_delete()"><span class="button-face"><{_t('Delete')}></span></a>
                         </div>
                                             <{/if}>
                                                                         <{if Framework::hasModule('AdminFilter')}>

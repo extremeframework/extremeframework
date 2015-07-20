@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminorderstatus.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorderstatus/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminorderstatustabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
-                            <li><a href="#tab-adminorders"><{_t('L_ADMIN_ORDER')}> <span class="badge adminorder-badge-count"></span></a></li>
+                            <li><a href="#tab-adminorders"><{_t('Admin order')}> <span class="badge adminorder-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
                         <div id="tab-adminorders">
                         	<{if true || $tab == 'adminorders'}>
-                            	<h2 class="print"><{_t('L_ADMIN_ORDER')}></h2>
+                            	<h2 class="print"><{_t('Admin order')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminOrder" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_ORDER_STATUS="`$details->CODE`" where=""  template='widgetlist.adminorder.tpl'}>
                                                             <{/if}>
                         </div>

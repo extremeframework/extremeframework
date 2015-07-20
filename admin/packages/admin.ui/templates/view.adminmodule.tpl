@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminmodule.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -168,56 +168,56 @@
             <div id="adminmoduletabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
-                            <li><a href="#tab-accessrights"><{_t('L_ACCESS_RIGHT')}> <span class="badge accessright-badge-count"></span></a></li>
+                            <li><a href="#tab-accessrights"><{_t('Access right')}> <span class="badge accessright-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminFilter') && isset($smarty.session.acl.adminfilter) }>
-                            <li><a href="#tab-adminfilters"><{_t('L_ADMIN_FILTER')}> <span class="badge adminfilter-badge-count"></span></a></li>
+                            <li><a href="#tab-adminfilters"><{_t('Admin filter')}> <span class="badge adminfilter-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
-                            <li><a href="#tab-adminlayoutfields"><{_t('L_ADMIN_LAYOUT_FIELD')}> <span class="badge adminlayoutfield-badge-count"></span></a></li>
+                            <li><a href="#tab-adminlayoutfields"><{_t('Admin layout field')}> <span class="badge adminlayoutfield-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminLayoutSection') && isset($smarty.session.acl.adminlayoutsection) }>
-                            <li><a href="#tab-adminlayoutsections"><{_t('L_ADMIN_LAYOUT_SECTION')}> <span class="badge adminlayoutsection-badge-count"></span></a></li>
+                            <li><a href="#tab-adminlayoutsections"><{_t('Admin layout section')}> <span class="badge adminlayoutsection-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
-                            <li><a href="#tab-adminmenuitems"><{_t('L_ADMIN_MENU_ITEM')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                            <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminSequence') && isset($smarty.session.acl.adminsequence) }>
-                            <li><a href="#tab-adminsequences"><{_t('L_ADMIN_SEQUENCE')}> <span class="badge adminsequence-badge-count"></span></a></li>
+                            <li><a href="#tab-adminsequences"><{_t('Admin sequence')}> <span class="badge adminsequence-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('AdminView') && isset($smarty.session.acl.adminview) }>
-                            <li><a href="#tab-adminviews"><{_t('L_ADMIN_VIEW')}> <span class="badge adminview-badge-count"></span></a></li>
+                            <li><a href="#tab-adminviews"><{_t('Admin view')}> <span class="badge adminview-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
-                            <li><a href="#tab-changelogs"><{_t('L_CHANGE_LOG')}> <span class="badge changelog-badge-count"></span></a></li>
+                            <li><a href="#tab-changelogs"><{_t('Change log')}> <span class="badge changelog-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
-                            <li><a href="#tab-fields"><{_t('L_FIELD')}> <span class="badge field-badge-count"></span></a></li>
+                            <li><a href="#tab-fields"><{_t('Field')}> <span class="badge field-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                            <li><a href="#tab-fieldacls"><{_t('L_FIELD_ACL')}> <span class="badge fieldacl-badge-count"></span></a></li>
+                            <li><a href="#tab-fieldacls"><{_t('Field acl')}> <span class="badge fieldacl-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                            <li><a href="#tab-objectacls"><{_t('L_OBJECT_ACL')}> <span class="badge objectacl-badge-count"></span></a></li>
+                            <li><a href="#tab-objectacls"><{_t('Object acl')}> <span class="badge objectacl-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
-                            <li><a href="#tab-recyclebins"><{_t('L_RECYCLE_BIN')}> <span class="badge recyclebin-badge-count"></span></a></li>
+                            <li><a href="#tab-recyclebins"><{_t('Recycle bin')}> <span class="badge recyclebin-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
-                            <li><a href="#tab-templates"><{_t('L_TEMPLATE')}> <span class="badge template-badge-count"></span></a></li>
+                            <li><a href="#tab-templates"><{_t('Template')}> <span class="badge template-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
-                            <li><a href="#tab-workflowapplications"><{_t('L_WORKFLOW_APPLICATION')}> <span class="badge workflowapplication-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowapplications"><{_t('Workflow application')}> <span class="badge workflowapplication-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                            <li><a href="#tab-workflowlogs"><{_t('L_WORKFLOW_LOG')}> <span class="badge workflowlog-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowlogs"><{_t('Workflow log')}> <span class="badge workflowlog-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
                         <div id="tab-accessrights">
                         	<{if true || $tab == 'accessrights'}>
-                            	<h2 class="print"><{_t('L_ACCESS_RIGHT')}></h2>
+                            	<h2 class="print"><{_t('Access right')}></h2>
                                                                     <{ajaxmodule class="WidgetListAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.accessright.tpl'}>
                                                             <{/if}>
                         </div>
@@ -225,7 +225,7 @@
                                     <{if Framework::hasModule('AdminFilter') && isset($smarty.session.acl.adminfilter) }>
                         <div id="tab-adminfilters">
                         	<{if true || $tab == 'adminfilters'}>
-                            	<h2 class="print"><{_t('L_ADMIN_FILTER')}></h2>
+                            	<h2 class="print"><{_t('Admin filter')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminFilter" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminfilter.tpl'}>
                                                             <{/if}>
                         </div>
@@ -233,7 +233,7 @@
                                     <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
                         <div id="tab-adminlayoutfields">
                         	<{if true || $tab == 'adminlayoutfields'}>
-                            	<h2 class="print"><{_t('L_ADMIN_LAYOUT_FIELD')}></h2>
+                            	<h2 class="print"><{_t('Admin layout field')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminLayoutField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminlayoutfield.tpl'}>
                                                             <{/if}>
                         </div>
@@ -241,7 +241,7 @@
                                     <{if Framework::hasModule('AdminLayoutSection') && isset($smarty.session.acl.adminlayoutsection) }>
                         <div id="tab-adminlayoutsections">
                         	<{if true || $tab == 'adminlayoutsections'}>
-                            	<h2 class="print"><{_t('L_ADMIN_LAYOUT_SECTION')}></h2>
+                            	<h2 class="print"><{_t('Admin layout section')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminLayoutSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminlayoutsection.tpl'}>
                                                             <{/if}>
                         </div>
@@ -249,7 +249,7 @@
                                     <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
                         <div id="tab-adminmenuitems">
                         	<{if true || $tab == 'adminmenuitems'}>
-                            	<h2 class="print"><{_t('L_ADMIN_MENU_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Admin menu item')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
                                                             <{/if}>
                         </div>
@@ -257,7 +257,7 @@
                                     <{if Framework::hasModule('AdminSequence') && isset($smarty.session.acl.adminsequence) }>
                         <div id="tab-adminsequences">
                         	<{if true || $tab == 'adminsequences'}>
-                            	<h2 class="print"><{_t('L_ADMIN_SEQUENCE')}></h2>
+                            	<h2 class="print"><{_t('Admin sequence')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminSequence" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminsequence.tpl'}>
                                                             <{/if}>
                         </div>
@@ -265,7 +265,7 @@
                                     <{if Framework::hasModule('AdminView') && isset($smarty.session.acl.adminview) }>
                         <div id="tab-adminviews">
                         	<{if true || $tab == 'adminviews'}>
-                            	<h2 class="print"><{_t('L_ADMIN_VIEW')}></h2>
+                            	<h2 class="print"><{_t('Admin view')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminView" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.adminview.tpl'}>
                                                             <{/if}>
                         </div>
@@ -273,7 +273,7 @@
                                     <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
                         <div id="tab-changelogs">
                         	<{if true || $tab == 'changelogs'}>
-                            	<h2 class="print"><{_t('L_CHANGE_LOG')}></h2>
+                            	<h2 class="print"><{_t('Change log')}></h2>
                                                                     <{ajaxmodule class="WidgetListChangeLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.changelog.tpl'}>
                                                             <{/if}>
                         </div>
@@ -281,7 +281,7 @@
                                     <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
                         <div id="tab-fields">
                         	<{if true || $tab == 'fields'}>
-                            	<h2 class="print"><{_t('L_FIELD')}></h2>
+                            	<h2 class="print"><{_t('Field')}></h2>
                                                                     <{ajaxmodule class="WidgetListField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.field.tpl'}>
                                                             <{/if}>
                         </div>
@@ -289,7 +289,7 @@
                                     <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
                         <div id="tab-fieldacls">
                         	<{if true || $tab == 'fieldacls'}>
-                            	<h2 class="print"><{_t('L_FIELD_ACL')}></h2>
+                            	<h2 class="print"><{_t('Field acl')}></h2>
                                                                     <{ajaxmodule class="WidgetListFieldAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.fieldacl.tpl'}>
                                                             <{/if}>
                         </div>
@@ -297,7 +297,7 @@
                                     <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
                         <div id="tab-objectacls">
                         	<{if true || $tab == 'objectacls'}>
-                            	<h2 class="print"><{_t('L_OBJECT_ACL')}></h2>
+                            	<h2 class="print"><{_t('Object acl')}></h2>
                                                                     <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
                                                             <{/if}>
                         </div>
@@ -305,7 +305,7 @@
                                     <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
                         <div id="tab-recyclebins">
                         	<{if true || $tab == 'recyclebins'}>
-                            	<h2 class="print"><{_t('L_RECYCLE_BIN')}></h2>
+                            	<h2 class="print"><{_t('Recycle bin')}></h2>
                                                                     <{ajaxmodule class="WidgetListRecycleBin" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.recyclebin.tpl'}>
                                                             <{/if}>
                         </div>
@@ -313,7 +313,7 @@
                                     <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
                         <div id="tab-templates">
                         	<{if true || $tab == 'templates'}>
-                            	<h2 class="print"><{_t('L_TEMPLATE')}></h2>
+                            	<h2 class="print"><{_t('Template')}></h2>
                                                                     <{ajaxmodule class="WidgetListTemplate" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.template.tpl'}>
                                                             <{/if}>
                         </div>
@@ -321,7 +321,7 @@
                                     <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
                         <div id="tab-workflowapplications">
                         	<{if true || $tab == 'workflowapplications'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_APPLICATION')}></h2>
+                            	<h2 class="print"><{_t('Workflow application')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowApplication" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.workflowapplication.tpl'}>
                                                             <{/if}>
                         </div>
@@ -329,7 +329,7 @@
                                     <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
                         <div id="tab-workflowlogs">
                         	<{if true || $tab == 'workflowlogs'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_LOG')}></h2>
+                            	<h2 class="print"><{_t('Workflow log')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.workflowlog.tpl'}>
                                                             <{/if}>
                         </div>

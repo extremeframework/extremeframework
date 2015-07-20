@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.workflowtransition.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/workflowtransition/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="workflowtransitiontabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                            <li><a href="#tab-workflowlogs"><{_t('L_WORKFLOW_LOG')}> <span class="badge workflowlog-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowlogs"><{_t('Workflow log')}> <span class="badge workflowlog-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
                         <div id="tab-workflowlogs">
                         	<{if true || $tab == 'workflowlogs'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_LOG')}></h2>
+                            	<h2 class="print"><{_t('Workflow log')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW_TRANSITION="`$details->CODE`" where="" ID_WORKFLOW="`$details->ID_WORKFLOW`" template='widgetlist.workflowlog.tpl'}>
                                                             <{/if}>
                         </div>

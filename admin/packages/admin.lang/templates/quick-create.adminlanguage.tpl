@@ -284,14 +284,14 @@
         <div id="adminlanguagetabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <li><a href="#tab-adminlanguageitems"><{_t('L_ADMIN_LANGUAGE_ITEM')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminlanguageitems"><{_t('Admin language item')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminlanguageitem) }>
                     <div id="tab-adminlanguageitems">
                     	<{if true || $tab == 'adminlanguageitems'}>
-                        	<h2 class="print"><{_t('L_ADMIN_LANGUAGE_ITEM')}></h2>
+                        	<h2 class="print"><{_t('Admin language item')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LANGUAGE="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
                                                     <{/if}>
                     </div>

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.userrole.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/userrole/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="userroletabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                            <li><a href="#tab-usermemberships"><{_t('L_USER_MEMBERSHIP')}> <span class="badge usermembership-badge-count"></span></a></li>
+                            <li><a href="#tab-usermemberships"><{_t('User membership')}> <span class="badge usermembership-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{_t('L_WORKFLOW_TRANSITION')}> <span class="badge workflowtransition-badge-count"></span></a></li>
+                            <li><a href="#tab-workflowtransitions"><{_t('Workflow transition')}> <span class="badge workflowtransition-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                         <div id="tab-usermemberships">
                         	<{if true || $tab == 'usermemberships'}>
-                            	<h2 class="print"><{_t('L_USER_MEMBERSHIP')}></h2>
+                            	<h2 class="print"><{_t('User membership')}></h2>
                                                                     <{ajaxmodule class="WidgetListUserMembership" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.usermembership.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
                         <div id="tab-workflowtransitions">
                         	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{_t('L_WORKFLOW_TRANSITION')}></h2>
+                            	<h2 class="print"><{_t('Workflow transition')}></h2>
                                                                     <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.workflowtransition.tpl'}>
                                                             <{/if}>
                         </div>

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.template.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -132,20 +132,20 @@
             <div id="templatetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                            <li><a href="#tab-pages"><{_t('L_PAGE')}> <span class="badge page-badge-count"></span></a></li>
+                            <li><a href="#tab-pages"><{_t('Page')}> <span class="badge page-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
-                            <li><a href="#tab-posts"><{_t('L_POST')}> <span class="badge post-badge-count"></span></a></li>
+                            <li><a href="#tab-posts"><{_t('Post')}> <span class="badge post-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
-                            <li><a href="#tab-postcategories"><{_t('L_POST_CATEGORY')}> <span class="badge postcategory-badge-count"></span></a></li>
+                            <li><a href="#tab-postcategories"><{_t('Post category')}> <span class="badge postcategory-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
                         <div id="tab-pages">
                         	<{if true || $tab == 'pages'}>
-                            	<h2 class="print"><{_t('L_PAGE')}></h2>
+                            	<h2 class="print"><{_t('Page')}></h2>
                                                                     <{ajaxmodule class="WidgetListPage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where=""  template='widgetlist.page.tpl'}>
                                                             <{/if}>
                         </div>
@@ -153,7 +153,7 @@
                                     <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
                         <div id="tab-posts">
                         	<{if true || $tab == 'posts'}>
-                            	<h2 class="print"><{_t('L_POST')}></h2>
+                            	<h2 class="print"><{_t('Post')}></h2>
                                                                     <{ajaxmodule class="WidgetListPost" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where=""  template='widgetlist.post.tpl'}>
                                                             <{/if}>
                         </div>
@@ -161,7 +161,7 @@
                                     <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
                         <div id="tab-postcategories">
                         	<{if true || $tab == 'postcategories'}>
-                            	<h2 class="print"><{_t('L_POST_CATEGORY')}></h2>
+                            	<h2 class="print"><{_t('Post category')}></h2>
                                                                     <{ajaxmodule class="WidgetListPostCategory" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where="" MODULE="`$details->MODULE`" template='widgetlist.postcategory.tpl'}>
                                                             <{/if}>
                         </div>

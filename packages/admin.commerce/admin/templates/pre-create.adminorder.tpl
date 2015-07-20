@@ -238,14 +238,14 @@
         <div id="adminordertabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.adminorderitem) }>
-                    <li><a href="#tab-adminorderitems"><{_t('L_ADMIN_ORDER_ITEM')}> <span class="badge adminorderitem-badge-count"></span></a></li>
+                    <li><a href="#tab-adminorderitems"><{_t('Admin order item')}> <span class="badge adminorderitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.adminorderitem) }>
                     <div id="tab-adminorderitems">
                     	<{if true || $tab == 'adminorderitems'}>
-                        	<h2 class="print"><{_t('L_ADMIN_ORDER_ITEM')}></h2>
+                        	<h2 class="print"><{_t('Admin order item')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_ORDER="`$details->ID`" where=""  template='widgetlist.adminorderitem.tpl'}>
                                                     <{/if}>
                     </div>

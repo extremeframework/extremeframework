@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminmenu.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="adminmenutabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
-                            <li><a href="#tab-adminmenuitems"><{_t('L_ADMIN_MENU_ITEM')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                            <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Dashboard') && isset($smarty.session.acl.dashboard) }>
-                            <li><a href="#tab-dashboards"><{_t('L_DASHBOARD')}> <span class="badge dashboard-badge-count"></span></a></li>
+                            <li><a href="#tab-dashboards"><{_t('Dashboard')}> <span class="badge dashboard-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
                         <div id="tab-adminmenuitems">
                         	<{if true || $tab == 'adminmenuitems'}>
-                            	<h2 class="print"><{_t('L_ADMIN_MENU_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Admin menu item')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('Dashboard') && isset($smarty.session.acl.dashboard) }>
                         <div id="tab-dashboards">
                         	<{if true || $tab == 'dashboards'}>
-                            	<h2 class="print"><{_t('L_DASHBOARD')}></h2>
+                            	<h2 class="print"><{_t('Dashboard')}></h2>
                                                                     <{ajaxmodule class="WidgetListDashboard" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.dashboard.tpl'}>
                                                             <{/if}>
                         </div>

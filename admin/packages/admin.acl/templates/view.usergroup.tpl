@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.usergroup.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/usergroup/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -129,17 +129,17 @@
             <div id="usergrouptabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
-                            <li><a href="#tab-accessrights"><{_t('L_ACCESS_RIGHT')}> <span class="badge accessright-badge-count"></span></a></li>
+                            <li><a href="#tab-accessrights"><{_t('Access right')}> <span class="badge accessright-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                            <li><a href="#tab-usermemberships"><{_t('L_USER_MEMBERSHIP')}> <span class="badge usermembership-badge-count"></span></a></li>
+                            <li><a href="#tab-usermemberships"><{_t('User membership')}> <span class="badge usermembership-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
                         <div id="tab-accessrights">
                         	<{if true || $tab == 'accessrights'}>
-                            	<h2 class="print"><{_t('L_ACCESS_RIGHT')}></h2>
+                            	<h2 class="print"><{_t('Access right')}></h2>
                                                                     <{ajaxmodule class="WidgetListAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.accessright.tpl'}>
                                                             <{/if}>
                         </div>
@@ -147,7 +147,7 @@
                                     <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                         <div id="tab-usermemberships">
                         	<{if true || $tab == 'usermemberships'}>
-                            	<h2 class="print"><{_t('L_USER_MEMBERSHIP')}></h2>
+                            	<h2 class="print"><{_t('User membership')}></h2>
                                                                     <{ajaxmodule class="WidgetListUserMembership" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_GROUP="`$details->ID`" where=""  template='widgetlist.usermembership.tpl'}>
                                                             <{/if}>
                         </div>

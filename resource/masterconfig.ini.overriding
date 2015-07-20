@@ -68,11 +68,13 @@ searchformcolumns = ID_PROJECT,ID_PROJECT_VERSION,ASSIGNED_ID_USER,ID_ISSUE_STAT
 mandatorycolumns = TITLE,ID_PROJECT,ID_ISSUE_TYPE
 list_statistics_column = ID_ISSUE_STATUS
 enablehtmlcolumns =
+viewafterinsert = true
 reflection = ID_PROJECT:ID_PROJECT_COMPONENT:ID_PROJECT_VERSION
 features = order,sort,quicksearch,ajaxorder,json,hasref,import,export,saveaddnew,search
 
 [project]
 enablehtmlcolumns =
+viewafterinsert = true
 
 [document]
 enablehtmlcolumns =

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.postrelationtype.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/postrelationtype/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="postrelationtypetabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
-                            <li><a href="#tab-postrelations"><{_t('L_POST_RELATION')}> <span class="badge postrelation-badge-count"></span></a></li>
+                            <li><a href="#tab-postrelations"><{_t('Post relation')}> <span class="badge postrelation-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
                         <div id="tab-postrelations">
                         	<{if true || $tab == 'postrelations'}>
-                            	<h2 class="print"><{_t('L_POST_RELATION')}></h2>
+                            	<h2 class="print"><{_t('Post relation')}></h2>
                                                                     <{ajaxmodule class="WidgetListPostRelation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST_RELATION_TYPE="`$details->CODE`" where=""  template='widgetlist.postrelation.tpl'}>
                                                             <{/if}>
                         </div>

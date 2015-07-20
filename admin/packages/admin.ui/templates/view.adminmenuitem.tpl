@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminmenuitem.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminmenuitemtabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
-                            <li><a href="#tab-adminmenuitems"><{_t('L_ADMIN_MENU_ITEM')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                            <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
                         <div id="tab-adminmenuitems">
                         	<{if true || $tab == 'adminmenuitems'}>
-                            	<h2 class="print"><{_t('L_ADMIN_MENU_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Admin menu item')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
                                                             <{/if}>
                         </div>

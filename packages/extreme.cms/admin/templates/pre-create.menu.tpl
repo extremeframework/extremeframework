@@ -227,14 +227,14 @@
         <div id="menutabs" class="section">
             <ul>
                                 <{if isset($smarty.session.acl.menuitem) }>
-                    <li><a href="#tab-menuitems"><{_t('L_MENU_ITEM')}> <span class="badge menuitem-badge-count"></span></a></li>
+                    <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
                 <{/if}>
                             </ul>
 
                             <{if isset($smarty.session.acl.menuitem) }>
                     <div id="tab-menuitems">
                     	<{if true || $tab == 'menuitems'}>
-                        	<h2 class="print"><{_t('L_MENU_ITEM')}></h2>
+                        	<h2 class="print"><{_t('Menu item')}></h2>
                                                             <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_MENU="`$details->CODE`" where=""  template='widgetlist.menuitem.tpl'}>
                                                     <{/if}>
                     </div>

@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminlayoutsection.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminlayoutsectiontabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
-                            <li><a href="#tab-adminlayoutfields"><{_t('L_ADMIN_LAYOUT_FIELD')}> <span class="badge adminlayoutfield-badge-count"></span></a></li>
+                            <li><a href="#tab-adminlayoutfields"><{_t('Admin layout field')}> <span class="badge adminlayoutfield-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
                         <div id="tab-adminlayoutfields">
                         	<{if true || $tab == 'adminlayoutfields'}>
-                            	<h2 class="print"><{_t('L_ADMIN_LAYOUT_FIELD')}></h2>
+                            	<h2 class="print"><{_t('Admin layout field')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminLayoutField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LAYOUT_SECTION="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.adminlayoutfield.tpl'}>
                                                             <{/if}>
                         </div>

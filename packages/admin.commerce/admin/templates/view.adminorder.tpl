@@ -60,7 +60,7 @@
     	        	        
     	    	    		            		            <{if isset($smarty.session.acl.adminorder.delete) && WorkflowHelper::isDeletable($details->WFID)}>
     		            		            <div class="button-general">
-    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/delete/<{$details->UUID}>" title="<{_t('L_DELETE', true)}>"><i class="fa fa-trash-o"></i></a>
+    		                <a class="button-delete scope-main" href="<{$smarty.const.APPLICATION_URL}>/adminorder/delete/<{$details->UUID}>" title="<{_t('Delete', true)}>"><i class="fa fa-trash-o"></i></a>
     		            </div>
     		            		            <{/if}>
     		            	            	            <{else}>
@@ -126,14 +126,14 @@
             <div id="adminordertabs" class="section">
                 <ul>
                                             <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
-                            <li><a href="#tab-adminorderitems"><{_t('L_ADMIN_ORDER_ITEM')}> <span class="badge adminorderitem-badge-count"></span></a></li>
+                            <li><a href="#tab-adminorderitems"><{_t('Admin order item')}> <span class="badge adminorderitem-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
                                     <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
                         <div id="tab-adminorderitems">
                         	<{if true || $tab == 'adminorderitems'}>
-                            	<h2 class="print"><{_t('L_ADMIN_ORDER_ITEM')}></h2>
+                            	<h2 class="print"><{_t('Admin order item')}></h2>
                                                                     <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_ORDER="`$details->ID`" where=""  template='widgetlist.adminorderitem.tpl'}>
                                                             <{/if}>
                         </div>
