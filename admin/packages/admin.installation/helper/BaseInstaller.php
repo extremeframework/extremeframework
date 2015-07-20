@@ -32,6 +32,9 @@ class BaseInstaller {
         if (!empty($error)) {
             return false;
         }
+
+        // x. Notify new package installed
+        NotificationHelper::notifyNewPackageInstalled();
     }
 
     function check_package_extension($downloaded_package) {

@@ -18,7 +18,7 @@ class NotificationHelper {
             $modules = array_merge(array($module), self::getReferringModules($module));
 
             foreach ($modules as $m) {
-                self::cleanHtmlCaches($m);
+                self::clearHtmlCaches($m);
             }
 
             // x. Update database change log
@@ -31,7 +31,7 @@ class NotificationHelper {
         self::updateCacheManifestFile();
     }
 
-    static function cleanHtmlCaches($module) {
+    static function clearHtmlCaches($module) {
         $cachedir = APPLICATION_DIR.'/cache/html/'.$module;
 
         if (is_dir($cachedir)) {
@@ -41,6 +41,14 @@ class NotificationHelper {
             // Delete files
             array_map('unlink', $files);
         }
+    }
+
+    static function notifyNewPackageInstalled() {
+        array_map('unlink', glob(CACHE_DIR.'/data/*'));
+    }
+
+    static function clearDataCaches() {
+        array_map('unlink', glob(CACHE_DIR.'/data/*'));
     }
 
     static function getReferringModules($module) {

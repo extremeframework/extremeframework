@@ -84,9 +84,9 @@
     <a class="scope-main cachable btn-heading" style="background:none;" href="<{$smarty.const.APPLICATION_URL}>/installation/">Back</a>
 </h1>
 
-<{if $messages.installation}>
+<{if $messages}>
     <ul class="message" style="margin:0 0 10px 0;padding:0">
-        <{foreach from=$messages.installation key=ignored item=message}>
+        <{foreach from=$messages key=ignored item=message}>
             <li><{$message}></li>
         <{/foreach}>
     </ul>
