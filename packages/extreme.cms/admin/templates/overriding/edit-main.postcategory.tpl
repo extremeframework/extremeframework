@@ -1,7 +1,7 @@
 <div class="edit-main edit_details">
-    <{if isset($messages.postcategory) }>
+    <{if $messages}>
         <ul class="message">
-            <{foreach from=$messages.postcategory key=field item=message}>
+            <{foreach from=$messages key=field item=message}>
                 <li data-error-field="<{$field}>"><{$message}></li>
             <{/foreach}>
         </ul>
@@ -25,14 +25,14 @@
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
                                                                                             <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['NAME'])}>
-
+    
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="postcategory_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
@@ -40,12 +40,12 @@
         <{else}>
     		<td class="form-row form-row-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY_NAME')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-name form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-name">
-
+                                            
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>postcategory_formdata_NAME" value="<{$details->NAME|escape}>"  />
                         <{if $columntooltips.NAME}>
@@ -55,14 +55,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['SLUG'])}>
-
+    
         <{if $preset == 'SLUG'}>
             <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
@@ -70,17 +70,17 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-slug">
                                             <{if $details->ID && $details->SLUG != ''}>
                             <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$details->SLUG}>" />
-
+                            
     <{$details->SLUG|escape}>
                         <{else}>
-
+                            
 
     <input class="input-slug input-type-text" type="text" name="<{$prefix}>postcategory_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
                             <{if $columntooltips.SLUG}>
@@ -91,14 +91,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['PARENT'])}>
-
+    
         <{if $preset == 'PARENT'}>
             <input type="hidden" class="input-parent" name="postcategory_formdata_PARENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PARENT']) && !$acleditablecolumns['PARENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PARENT'])}>
@@ -106,17 +106,17 @@
         <{else}>
     		<td class="form-row form-row-parent">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_PARENT')}></label>
+        		    <label><{_t('Parent')}></label>
                 </div>
             </td>
             <td class="form-row form-row-parent" colspan="3">
                 <div class="form-field form-field-value column-parent">
-
+                                            
             <{if Framework::hasModule('PostCategory')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`postcategory_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
                 </span>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>postcategory_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
@@ -128,14 +128,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['DESCRIPTION'])}>
-
+    
         <{if $preset == 'DESCRIPTION'}>
             <input type="hidden" class="input-description" name="postcategory_formdata_DESCRIPTION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['DESCRIPTION']) && !$acleditablecolumns['DESCRIPTION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['DESCRIPTION'])}>
@@ -143,12 +143,12 @@
         <{else}>
     		<td class="form-row form-row-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_DESCRIPTION')}></label>
+        		    <label><{_t('Description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-description" colspan="3">
                 <div class="form-field form-field-value column-description">
-
+                                            
     <{$tmpid = uniqid()}>
 
     <textarea class="input-description enable-html" id="<{$prefix}>postcategory_formdata_DESCRIPTION_<{$tmpid}>" name="<{$prefix}>postcategory_formdata_DESCRIPTION" rows="5" ><{$details->DESCRIPTION}></textarea>
@@ -159,14 +159,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ID_TEMPLATE'])}>
-
+    
         <{if $preset == 'ID_TEMPLATE'}>
             <input type="hidden" class="input-id-template" name="postcategory_formdata_ID_TEMPLATE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_TEMPLATE']) && !$acleditablecolumns['ID_TEMPLATE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_TEMPLATE'])}>
@@ -174,17 +174,17 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-id-template">
-
+                                            
             <{if Framework::hasModule('Template')}>
             <{html_ref_select preset="MODULE" presetvalue="postcategory" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`postcategory_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
                 </span>
                     <{else}>
             <input class="input-id-template input-type-text" type="text" name="<{$prefix}>postcategory_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE|escape}>"  />
@@ -196,14 +196,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ORDERING'])}>
-
+    
         <{if $preset == 'ORDERING'}>
             <input type="hidden" class="input-ordering" name="postcategory_formdata_ORDERING" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ORDERING']) && !$acleditablecolumns['ORDERING'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ORDERING'])}>
@@ -211,12 +211,12 @@
         <{else}>
     		<td class="form-row form-row-ordering">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_ORDERING')}></label>
+        		    <label><{_t('Ordering')}></label>
                 </div>
             </td>
             <td class="form-row form-row-ordering" colspan="3">
                 <div class="form-field form-field-value column-ordering">
-
+                                            
         <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>postcategory_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
                         <{if $columntooltips.ORDERING}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
@@ -227,12 +227,12 @@
     <{/if}>    </tr>                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
-
+        
         <{if $customfields}>
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                        <span><{_t('Additional information')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -240,13 +240,13 @@
                         <table class="table table-bordered table-custom-layout equal-split">
                             <tbody>
                                 <{foreach from=$customfields item=item}>
-                                    <tr>
-                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                		<td>
                                             <div class="form-field form-field-label">
                                     		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
-                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                        <td colspan="3">
                                             <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                                 <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
                                             </div>

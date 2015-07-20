@@ -1,7 +1,7 @@
 <div class="edit-main edit_details">
-    <{if isset($messages.post) }>
+    <{if $messages}>
         <ul class="message">
-            <{foreach from=$messages.post key=field item=message}>
+            <{foreach from=$messages key=field item=message}>
                 <li data-error-field="<{$field}>"><{$message}></li>
             <{/foreach}>
         </ul>
@@ -25,14 +25,14 @@
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
                                                                                             <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['TITLE'])}>
-
+    
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="post_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
@@ -40,12 +40,12 @@
         <{else}>
     		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TITLE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-title form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-title">
-
+                                            
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>post_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
                         <{if $columntooltips.TITLE}>
@@ -55,14 +55,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['SLUG'])}>
-
+    
         <{if $preset == 'SLUG'}>
             <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
@@ -70,17 +70,17 @@
         <{else}>
     		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_SLUG')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-slug form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-slug">
                                             <{if $details->ID && $details->SLUG != ''}>
                             <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$details->SLUG}>" />
-
+                            
     <{$details->SLUG|escape}>
                         <{else}>
-
+                            
 
     <input class="input-slug input-type-text" type="text" name="<{$prefix}>post_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
                             <{if $columntooltips.SLUG}>
@@ -91,14 +91,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ID_POST_TYPE'])}>
-
+    
         <{if $preset == 'ID_POST_TYPE'}>
             <input type="hidden" class="input-id-post-type" name="post_formdata_ID_POST_TYPE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_TYPE']) && !$acleditablecolumns['ID_POST_TYPE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_TYPE'])}>
@@ -106,17 +106,17 @@
         <{else}>
     		<td class="form-row form-row-id-post-type form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_TYPE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Post type')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-type form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-id-post-type">
-
+                                            
             <{if Framework::hasModule('PostType')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post-type" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$details->ID_POST_TYPE text=$details->reftext_ID_POST_TYPE datasource="POST_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/posttype/new" title="Create a New Post Type">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/posttype/new" title="Create a New Post Type">+</a>
                 </span>
                     <{else}>
             <input class="input-id-post-type input-type-text" type="text" name="<{$prefix}>post_formdata_ID_POST_TYPE" value="<{$details->ID_POST_TYPE|escape}>"  />
@@ -128,14 +128,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ID_POST_CATEGORY'])}>
-
+    
         <{if $preset == 'ID_POST_CATEGORY'}>
             <input type="hidden" class="input-id-post-category" name="post_formdata_ID_POST_CATEGORY" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_CATEGORY']) && !$acleditablecolumns['ID_POST_CATEGORY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_CATEGORY'])}>
@@ -143,17 +143,17 @@
         <{else}>
     		<td class="form-row form-row-id-post-category">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_POST_CATEGORY')}></label>
+        		    <label><{_t('Post category')}></label>
                 </div>
             </td>
             <td class="form-row form-row-id-post-category" colspan="3">
                 <div class="form-field form-field-value column-id-post-category">
-
+                                            
             <{if Framework::hasModule('PostCategory')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
                 </span>
                     <{else}>
             <input class="input-id-post-category input-type-text" type="text" name="<{$prefix}>post_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY|escape}>"  />
@@ -165,14 +165,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['IMAGE'])}>
-
+    
         <{if $preset == 'IMAGE'}>
             <input type="hidden" class="input-image" name="post_formdata_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IMAGE']) && !$acleditablecolumns['IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IMAGE'])}>
@@ -180,12 +180,12 @@
         <{else}>
     		<td class="form-row form-row-image">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IMAGE')}></label>
+        		    <label><{_t('Image')}></label>
                 </div>
             </td>
             <td class="form-row form-row-image" colspan="3">
                 <div class="form-field form-field-value column-image">
-
+                                            
 
 	<input class="input-image input-type-file" type="file" name="<{$prefix}>post_formdata_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
@@ -198,14 +198,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['META_KEYWORDS'])}>
-
+    
         <{if $preset == 'META_KEYWORDS'}>
             <input type="hidden" class="input-meta-keywords" name="post_formdata_META_KEYWORDS" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['META_KEYWORDS']) && !$acleditablecolumns['META_KEYWORDS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['META_KEYWORDS'])}>
@@ -213,12 +213,12 @@
         <{else}>
     		<td class="form-row form-row-meta-keywords">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_KEYWORDS')}></label>
+        		    <label><{_t('Meta keywords')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-keywords" colspan="3">
                 <div class="form-field form-field-value column-meta-keywords">
-
+                                            
 
     <input class="input-meta-keywords input-type-text" type="text" name="<{$prefix}>post_formdata_META_KEYWORDS" value="<{$details->META_KEYWORDS|escape}>"  />
                         <{if $columntooltips.META_KEYWORDS}>
@@ -228,14 +228,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['META_DESCRIPTION'])}>
-
+    
         <{if $preset == 'META_DESCRIPTION'}>
             <input type="hidden" class="input-meta-description" name="post_formdata_META_DESCRIPTION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['META_DESCRIPTION']) && !$acleditablecolumns['META_DESCRIPTION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['META_DESCRIPTION'])}>
@@ -243,12 +243,12 @@
         <{else}>
     		<td class="form-row form-row-meta-description">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_META_DESCRIPTION')}></label>
+        		    <label><{_t('Meta description')}></label>
                 </div>
             </td>
             <td class="form-row form-row-meta-description" colspan="3">
                 <div class="form-field form-field-value column-meta-description">
-
+                                            
     <{$tmpid = uniqid()}>
 
     <textarea class="input-meta-description " id="<{$prefix}>post_formdata_META_DESCRIPTION_<{$tmpid}>" name="<{$prefix}>post_formdata_META_DESCRIPTION" rows="5" ><{$details->META_DESCRIPTION}></textarea>
@@ -259,14 +259,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['EXCERPT'])}>
-
+    
         <{if $preset == 'EXCERPT'}>
             <input type="hidden" class="input-excerpt" name="post_formdata_EXCERPT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['EXCERPT']) && !$acleditablecolumns['EXCERPT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['EXCERPT'])}>
@@ -274,12 +274,12 @@
         <{else}>
     		<td class="form-row form-row-excerpt">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EXCERPT')}></label>
+        		    <label><{_t('Excerpt')}></label>
                 </div>
             </td>
             <td class="form-row form-row-excerpt" colspan="3">
                 <div class="form-field form-field-value column-excerpt">
-
+                                            
     <{$tmpid = uniqid()}>
 
     <textarea class="input-excerpt enable-html" id="<{$prefix}>post_formdata_EXCERPT_<{$tmpid}>" name="<{$prefix}>post_formdata_EXCERPT" rows="5" ><{$details->EXCERPT}></textarea>
@@ -290,14 +290,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['CONTENT'])}>
-
+    
         <{if $preset == 'CONTENT'}>
             <input type="hidden" class="input-content" name="post_formdata_CONTENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CONTENT']) && !$acleditablecolumns['CONTENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CONTENT'])}>
@@ -305,12 +305,12 @@
         <{else}>
     		<td class="form-row form-row-content">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_CONTENT')}></label>
+        		    <label><{_t('Content')}></label>
                 </div>
             </td>
             <td class="form-row form-row-content" colspan="3">
                 <div class="form-field form-field-value column-content">
-
+                                            
     <{$tmpid = uniqid()}>
 
     <textarea class="input-content enable-html" id="<{$prefix}>post_formdata_CONTENT_<{$tmpid}>" name="<{$prefix}>post_formdata_CONTENT" rows="5" ><{$details->CONTENT}></textarea>
@@ -321,14 +321,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['TAGS'])}>
-
+    
         <{if $preset == 'TAGS'}>
             <input type="hidden" class="input-tags" name="post_formdata_TAGS" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TAGS']) && !$acleditablecolumns['TAGS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TAGS'])}>
@@ -336,12 +336,12 @@
         <{else}>
     		<td class="form-row form-row-tags">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TAGS')}></label>
+        		    <label><{_t('Tags')}></label>
                 </div>
             </td>
             <td class="form-row form-row-tags" colspan="3">
                 <div class="form-field form-field-value column-tags">
-
+                                            
 
     <input class="input-tags input-type-text" type="text" name="<{$prefix}>post_formdata_TAGS" value="<{$details->TAGS|escape}>"  />
                         <{if $columntooltips.TAGS}>
@@ -351,14 +351,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['AUTHOR'])}>
-
+    
         <{if $preset == 'AUTHOR'}>
             <input type="hidden" class="input-author" name="post_formdata_AUTHOR" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['AUTHOR']) && !$acleditablecolumns['AUTHOR'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['AUTHOR'])}>
@@ -366,12 +366,12 @@
         <{else}>
     		<td class="form-row form-row-author">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_AUTHOR')}></label>
+        		    <label><{_t('Author')}></label>
                 </div>
             </td>
             <td class="form-row form-row-author" colspan="3">
                 <div class="form-field form-field-value column-author">
-
+                                            
 
     <input class="input-author input-type-text" type="text" name="<{$prefix}>post_formdata_AUTHOR" value="<{$details->AUTHOR|escape}>"  />
                         <{if $columntooltips.AUTHOR}>
@@ -381,14 +381,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['EXTERNAL_LINK'])}>
-
+    
         <{if $preset == 'EXTERNAL_LINK'}>
             <input type="hidden" class="input-external-link" name="post_formdata_EXTERNAL_LINK" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['EXTERNAL_LINK']) && !$acleditablecolumns['EXTERNAL_LINK'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['EXTERNAL_LINK'])}>
@@ -396,12 +396,12 @@
         <{else}>
     		<td class="form-row form-row-external-link">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_EXTERNAL_LINK')}></label>
+        		    <label><{_t('External link')}></label>
                 </div>
             </td>
             <td class="form-row form-row-external-link" colspan="3">
                 <div class="form-field form-field-value column-external-link">
-
+                                            
 
     <input class="input-external-link input-type-text" type="text" name="<{$prefix}>post_formdata_EXTERNAL_LINK" value="<{$details->EXTERNAL_LINK|escape}>"  />
                         <{if $columntooltips.EXTERNAL_LINK}>
@@ -411,14 +411,14 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ID_TEMPLATE'])}>
-
+    
         <{if $preset == 'ID_TEMPLATE'}>
             <input type="hidden" class="input-id-template" name="post_formdata_ID_TEMPLATE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_TEMPLATE']) && !$acleditablecolumns['ID_TEMPLATE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_TEMPLATE'])}>
@@ -426,17 +426,17 @@
         <{else}>
     		<td class="form-row form-row-id-template form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_TEMPLATE')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
                 </div>
             </td>
             <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-id-template">
-
+                                            
             <{if Framework::hasModule('Template')}>
             <{html_ref_select preset="MODULE" presetvalue="post" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`post_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <span class="onflycreation">
-                    <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
+                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
                 </span>
                     <{else}>
             <input class="input-id-template input-type-text" type="text" name="<{$prefix}>post_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE|escape}>"  />
@@ -448,24 +448,24 @@
             </td>
     	<{/if}>
     <{/if}>    </tr>                                                                                            <tr>
-
-
-
-
+    
+            
+        
+        
                     </tr>                                                                                            <tr>
-
-
-
-
+    
+            
+        
+        
                     </tr>                                                                                            <tr>
-
-
-
-
-
-
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['IS_FEATURED'])}>
-
+    
         <{if $preset == 'IS_FEATURED'}>
             <input type="hidden" class="input-is-featured" name="post_formdata_IS_FEATURED" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IS_FEATURED']) && !$acleditablecolumns['IS_FEATURED'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_FEATURED'])}>
@@ -473,14 +473,14 @@
         <{else}>
     		<td class="form-row form-row-is-featured">
                 <div class="form-field form-field-label">
-        		    <label><{_t('L_IS_FEATURED')}></label>
+        		    <label><{_t('featured?')}></label>
                 </div>
             </td>
             <td class="form-row form-row-is-featured" colspan="3">
                 <div class="form-field form-field-value column-is-featured">
+                                            
 
-
-    <span class="input-type-radio"><input class="input-is-featured" type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="1" <{if $details->IS_FEATURED}>checked="checked"<{/if}>><{_t('L_YES')}> <input type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="0" <{if !$details->IS_FEATURED}>checked="checked"<{/if}> /><{_t('L_NO')}></span>
+    <span class="input-type-radio"><input class="input-is-featured" type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="1" <{if $details->IS_FEATURED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>post_formdata_IS_FEATURED" value="0" <{if !$details->IS_FEATURED}>checked="checked"<{/if}> /><{_t('No')}></span>
                         <{if $columntooltips.IS_FEATURED}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.IS_FEATURED}>"></i>
                         <{/if}>
@@ -490,12 +490,12 @@
     <{/if}>    </tr>                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
-
+        
         <{if $customfields}>
             <div class="layout-block layout-block-section">
                 <div class="layout-section">
                     <div class="layout-section-header">
-                        <span><{_t('L_ADDITIONAL_INFORMATION')}></span>
+                        <span><{_t('Additional information')}></span>
                         <div class="header-arrow"></div>
                         <div class="clearer"></div>
                     </div>
@@ -503,13 +503,13 @@
                         <table class="table table-bordered table-custom-layout equal-split">
                             <tbody>
                                 <{foreach from=$customfields item=item}>
-                                    <tr>
-                                		<td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+                                		<td>
                                             <div class="form-field form-field-label">
                                     		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                                             </div>
                                         </td>
-                                        <td class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>" colspan="3">
+                                        <td colspan="3">
                                             <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
                                                 <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
                                             </div>
