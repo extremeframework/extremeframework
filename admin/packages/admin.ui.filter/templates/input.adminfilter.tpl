@@ -114,7 +114,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataCOLUMNS}>
 
                         
-                            <{html_multi_ref_select class="input-columns" name="`$prefix`adminfilter_formdata_COLUMNS" value=$formdata.COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME"}>
+                            <input class="input-columns" type="text" name="<{$prefix}>adminfilter_formdata_COLUMNS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
                                                                     </div>
                                         </td>
                                     </tr>

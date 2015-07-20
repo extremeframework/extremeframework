@@ -114,7 +114,7 @@
                 <div class="form-field form-field-value column-columns">
                                             
 
-    <{html_ref_select multiple="1" autocomplete="1" ajax="0" method="" id="input-columns" class="input-columns" name="`$prefix`adminfilter_formdata_COLUMNS" value=$details->COLUMNS text=$details->reftext_COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+    <input class="input-columns input-type-text" type="text" name="<{$prefix}>adminfilter_formdata_COLUMNS" value="<{$details->COLUMNS|escape}>"  />
                         <{if $columntooltips.COLUMNS}>
                             <i class="fa fa-info-circle" title="<{$columntooltips.COLUMNS}>"></i>
                         <{/if}>

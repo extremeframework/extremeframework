@@ -109,23 +109,23 @@
 	            		        <label class="attribute-name"><{_t('Columns')}></label>
             </td>
             <td class="form-field form-field-value column-columns" colspan="3">
-            	<div class="attribute-line column-columns type-multireftext">
+            	<div class="attribute-line column-columns type-text">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['COLUMNS']) && $acleditablecolumns['COLUMNS']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['COLUMNS']) || $acleditablecolumns['COLUMNS'])) }>
                     		    <span class="value-mode">
                                     
-    <{html_multi_ref_text value=$details->COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME"}>
+    <{$details->COLUMNS|escape}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <{html_ref_select multiple="1" autocomplete="1" ajax="0" method="" id="input-columns" class="input-columns" name="`$prefix`adminfilter_formdata_COLUMNS" value=$details->COLUMNS text=$details->reftext_COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME" sortcol=""}>
+    <input class="input-columns input-type-text" type="text" name="<{$prefix}>adminfilter_formdata_COLUMNS" value="<{$details->COLUMNS|escape}>"  />
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{html_multi_ref_text value=$details->COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME"}>
+    <{$details->COLUMNS|escape}>
                             <{/if}>
                                     		</div>
             	</div>

@@ -60,15 +60,15 @@
 	    <{/if}>
 	        <{if (in_array('COLUMNS', $filtercolumns)) }>
             <{if !isset($excludedcolumns['COLUMNS']) && ((isset($aclviewablecolumns['COLUMNS']) && $aclviewablecolumns['COLUMNS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COLUMNS']) || $aclviewablecolumns['COLUMNS']))) }>
-                <td class="column column-columns multireftext" >
+                <td class="column column-columns text" >
                                             <{if (in_array('COLUMNS', $roweditablecolumns)) }>
                     	                            <{$tmp_value = $formdataCOLUMNS}>
 
                         
                             <input class="input-columns" type="text" name="<{$prefix}>adminfilter_formdata_COLUMNS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>    <{html_multi_ref_text value=$row->COLUMNS datasource="FIELD" valuecol="COLUMN" textcol="NAME" groupcol=""}>
-</span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminfilter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/view/<{$row->UUID}>"><{/if}>	<{$row->COLUMNS|escape}>
+<{if isset($smarty.session.acl.adminfilter.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -88,8 +88,8 @@
                                 <span class="input-type-radio"><input class="input-is-default" type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="1" <{if $formdata.IS_DEFAULT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminfilter_formdata_IS_DEFAULT" value="0" <{if !$formdata.IS_DEFAULT}>checked="checked"<{/if}> /><{_t('No')}></span>
                             <{/if}>
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminfilter.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminfilter/view/<{$row->UUID}>"><{/if}>	<{if $row->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
-<{if isset($smarty.session.acl.adminfilter.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span>	<{if $row->IS_DEFAULT}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+</span>
                         <{/if}>
                             		</td>
     	    <{/if}>
