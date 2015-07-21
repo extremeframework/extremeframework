@@ -13,7 +13,7 @@ class DataObject_ADMIN_SEQUENCE extends DB_DataObject
     public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
-    public $MODULE;                          // varchar(32)  
+    public $MODULE;                          // varchar(32)  unique_key
     public $SEQUENCE_FORMAT;                 // varchar(128)  
     public $CURRENT_VALUE;                   // varchar(128)  
     public $SEQUENCE_STEP;                   // smallint(2)  

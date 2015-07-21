@@ -14,8 +14,8 @@ class DataObject_ADMIN_FILTER extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
-    public $MODULE;                          // varchar(32)  
-    public $COLUMNS;                         // varchar(128)  
+    public $MODULE;                          // varchar(32)  unique_key
+    public $COLUMNS;                         // varchar(128)  unique_key
     public $IS_DEFAULT;                      // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  

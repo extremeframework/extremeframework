@@ -13,8 +13,8 @@ class DataObject_WORKFLOW_APPLICATION extends DB_DataObject
     public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
-    public $MODULE;                          // varchar(32)  
-    public $ID_WORKFLOW;                     // varchar(24)  
+    public $MODULE;                          // varchar(32)  unique_key
+    public $ID_WORKFLOW;                     // varchar(24)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

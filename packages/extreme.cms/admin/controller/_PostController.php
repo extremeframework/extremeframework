@@ -19,7 +19,7 @@ class _PostController extends __AppController
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {
-
+        
        if (in_array('TITLE', $columns2check) && trim($model->TITLE) == '') {
            $errors['title'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Title'));
            return false;
@@ -181,7 +181,7 @@ class _PostController extends __AppController
         AclController::checkPermission('post', 'list');
 
 		ContextStack::register(APPLICATION_URL.'/post/list/');
-
+        
         $this->setPresetData(null);
 
 		$this->_list();
@@ -423,7 +423,7 @@ class _PostController extends __AppController
 		}
 
         $this->enforceObjectAclCheck('post', $model);
-
+		
 		$model->delete();
 
         foreach ($_models as $_model) {
@@ -474,19 +474,19 @@ class _PostController extends __AppController
             if (!empty($relations)) {
                 foreach ($relations as $module) {
                     switch ($module) {
-                        case 'menuitem':
+                        case 'menuitem': 
                             (new MenuItemController())->delete('ID_POST', $_ids);
                             break;
 
-                        case 'postgallery':
+                        case 'postgallery': 
                             (new PostGalleryController())->delete('ID_POST', $_ids);
                             break;
 
-                        case 'postrelation':
+                        case 'postrelation': 
                             (new PostRelationController())->delete('ID_POST', $_ids);
                             break;
 
-                        case 'postsection':
+                        case 'postsection': 
                             (new PostSectionController())->delete('ID_POST', $_ids);
                             break;
 
@@ -612,15 +612,15 @@ class _PostController extends __AppController
 		$this->_edit($id);
 	}
 
+    
 
+    
 
+    
 
+	
 
-
-
-
-
-
+    
     static function update_json($id, $property, $value) {
         $model = new PostModel();
         $model->ID = $id;
@@ -691,12 +691,12 @@ class _PostController extends __AppController
     }
 
     protected function onSaveSuccess($model) {
-
+        
         parent::onSaveSuccess($model);
     }
 
     protected function onDeleteSuccess($model) {
-
+        
         parent::onDeleteSuccess($model);
     }
 
@@ -791,7 +791,7 @@ class _PostController extends __AppController
     		        $customfieldvalues[$key] = $value;
     		    }
 
-
+    		    
             if ($key == 'EXCERPT' || $key == 'CONTENT') {
                 $model->$key = trim($value);
             } else {
@@ -936,7 +936,7 @@ class _PostController extends __AppController
 
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('post', $model);
-
+            
             $this->bind2refobject($model, $refobject);
             $this->onBeforeSave($model);
             PluginManager::do_action('post_before_save', $model);
@@ -993,7 +993,7 @@ class _PostController extends __AppController
     protected function bind2refobject(&$model, $refobject = null) {
         if ($refobject != null) {
             $refclass = get_class($refobject);
-
+            
             if ($refclass == 'PostTypeModel' && empty($model->ID_POST_TYPE)) {
                 $model->ID_POST_TYPE = $refobject->CODE;
             }
@@ -1061,8 +1061,8 @@ class _PostController extends __AppController
 
                 $handler->saveform($prefix, $model);
             }
-
-
+            
+            
             if ($this->source != 'modal') {
                 if ($addmore) {
                     $this->newAction();
@@ -1461,10 +1461,10 @@ class _PostController extends __AppController
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
         $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
-
+        
         DraftHelper::clearAllDrafts('post');
-
-
+        
+        
 		ContextStack::back($back, $returnurl);
 	}
 
@@ -1475,9 +1475,9 @@ class _PostController extends __AppController
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 1;
         $returnurl = isset($_REQUEST['return'])? $_REQUEST['return'] : '';
-
+        
         DraftHelper::clearAllDrafts('post');
-
+        
 		ContextStack::back($back, $returnurl);
 	}
 
@@ -1687,7 +1687,7 @@ class _PostController extends __AppController
         }
 
         $excludedcolumns = AclController::getSystemExcludedColumns('post');
-
+        
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
         $filterdata = $this->getFilterData();
@@ -1697,7 +1697,7 @@ class _PostController extends __AppController
         $page = $this->getPageNumber();
 
         $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
-
+        
 
         $ids = array();
         foreach ($rows as $row) {
@@ -1717,7 +1717,6 @@ class _PostController extends __AppController
         $this->initPlugins();
 
         $this->initCustomView($customview, $customtemplate);
-
 
 		$smarty = Framework::getSmarty(__FILE__);
 		$smarty->assign('rows', $rows);
@@ -1741,7 +1740,7 @@ class _PostController extends __AppController
 		$smarty->assign('customview', $customview);
 		$smarty->assign('customtemplate', $customtemplate);
 		$smarty->assign('admin_view_options', AdminViewHelper::getAdminViews('post', 'view'));
-
+		
 
         $templatetype = !empty($this->templatetype)? $this->templatetype : 'list';
 	    $this->display($smarty, $templatetype.'.post.tpl');
@@ -1859,7 +1858,7 @@ class _PostController extends __AppController
             $acleditablecolumns[$column] = false;
         }
 
-
+        
 
         if (empty($details)) {
     		$model = new PostModel();
@@ -1876,15 +1875,15 @@ class _PostController extends __AppController
                 }
             } else {
                 // Set default values here
-
+                
                 $this->onInitialization($model);
                 PluginManager::do_action('post_new', $model);
             }
-
+            
             if ($restoredraft) {
                 DraftHelper::tryRestoreDraft('post', $model->UUID, $model);
             }
-
+            
     		$details = $model;
         }
 
@@ -1894,10 +1893,10 @@ class _PostController extends __AppController
             }
         }
 
-
+        
 
         WorkflowHelper::ensureEditable($details->WFID);
-
+        
         $this->initPlugins();
 
         $this->onBeforeEdit($details);
@@ -1907,7 +1906,7 @@ class _PostController extends __AppController
 		$smarty->assign('preset', $preset);
 		$smarty->assign('presetvalue', $presetvalue);
 		$smarty->assign('presetparams', $presetparams);
-
+		
 		$smarty->assign('details', $details);
 		$smarty->assign('row', $details);
 		$smarty->assign('messages', $this->getMessages());
@@ -2131,7 +2130,7 @@ class _PostController extends __AppController
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
         $model->selectAdd('`'.TABLE_PREFIX.'POST`.TITLE, `'.TABLE_PREFIX.'POST`.SLUG, `'.TABLE_PREFIX.'POST`.ID_POST_TYPE, `'.TABLE_PREFIX.'POST`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'POST`.IMAGE, `'.TABLE_PREFIX.'POST`.META_KEYWORDS, `'.TABLE_PREFIX.'POST`.META_DESCRIPTION, `'.TABLE_PREFIX.'POST`.EXCERPT, `'.TABLE_PREFIX.'POST`.CONTENT, `'.TABLE_PREFIX.'POST`.TAGS, `'.TABLE_PREFIX.'POST`.AUTHOR, `'.TABLE_PREFIX.'POST`.EXTERNAL_LINK, `'.TABLE_PREFIX.'POST`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST`.CREATION_DATE, `'.TABLE_PREFIX.'POST`.LATEST_UPDATE, `'.TABLE_PREFIX.'POST`.IS_FEATURED, `'.TABLE_PREFIX.'POST`.NBR_VIEWS, `'.TABLE_PREFIX.'POST`.ID, `'.TABLE_PREFIX.'POST`.JSON, `'.TABLE_PREFIX.'POST`.UUID, `'.TABLE_PREFIX.'POST`.WFID');
-
+    
         if ($join) {
             if (Framework::hasModule('PostType')) {
                 $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
@@ -2146,7 +2145,7 @@ class _PostController extends __AppController
                 $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
             }
         }
-
+    
         if ($join) {
             if (Framework::hasModule('PostType')) {
                 $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
@@ -2163,7 +2162,7 @@ class _PostController extends __AppController
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
         $model->selectAdd('`'.TABLE_PREFIX.'POST`.TITLE, `'.TABLE_PREFIX.'POST`.ID_POST_TYPE, `'.TABLE_PREFIX.'POST`.ID_POST_CATEGORY, `'.TABLE_PREFIX.'POST`.IMAGE, `'.TABLE_PREFIX.'POST`.META_KEYWORDS, `'.TABLE_PREFIX.'POST`.AUTHOR, `'.TABLE_PREFIX.'POST`.ID_TEMPLATE, `'.TABLE_PREFIX.'POST`.CREATION_DATE, `'.TABLE_PREFIX.'POST`.LATEST_UPDATE, `'.TABLE_PREFIX.'POST`.IS_FEATURED, `'.TABLE_PREFIX.'POST`.NBR_VIEWS, `'.TABLE_PREFIX.'POST`.ID, `'.TABLE_PREFIX.'POST`.JSON, `'.TABLE_PREFIX.'POST`.UUID, `'.TABLE_PREFIX.'POST`.WFID');
-
+    
         if ($join) {
             if (Framework::hasModule('PostType')) {
                 $model->selectAdd('reftable_ID_POST_TYPE.NAME as reftext_ID_POST_TYPE');
@@ -2178,7 +2177,7 @@ class _PostController extends __AppController
                 $model->selectAdd('reftable_ID_TEMPLATE.UUID as refuuid_ID_TEMPLATE');
             }
         }
-
+    
         if ($join) {
             if (Framework::hasModule('PostType')) {
                 $model->joinAdd(array('ID_POST_TYPE',TABLE_PREFIX.'POST_TYPE:CODE'), 'LEFT', 'reftable_ID_POST_TYPE');
@@ -2530,5 +2529,5 @@ class _PostController extends __AppController
         return $label;
     }
 
-
+    
 }

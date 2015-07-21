@@ -28,6 +28,23 @@ class _FieldAclController extends __AppController
            $errors['id-acl-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Acl type'));
            return false;
        }
+       if (in_array('MODULE', $columns2check) || in_array('ACTION', $columns2check) || in_array('ID_USER_GROUP', $columns2check) || in_array('ID_ACL_TYPE', $columns2check)) {
+           $_model = new FieldAclModel();
+           $_model->MODULE = $model->MODULE;
+           $_model->ACTION = $model->ACTION;
+           $_model->ID_USER_GROUP = $model->ID_USER_GROUP;
+           $_model->ID_ACL_TYPE = $model->ID_ACL_TYPE;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['module+action+id-user-group+id-acl-type'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_MODULE.', '.L_ACTION.', '.L_USER_GROUP.', '.L_ACL_TYPE.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('fieldacl', $model, $errors)) {

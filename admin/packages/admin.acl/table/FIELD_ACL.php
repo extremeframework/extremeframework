@@ -13,12 +13,12 @@ class DataObject_FIELD_ACL extends DB_DataObject
     public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
-    public $MODULE;                          // varchar(32)  
-    public $ACTION;                          // varchar(128)  
-    public $ID_USER_GROUP;                   // int(4)  
+    public $MODULE;                          // varchar(32)  unique_key
+    public $ACTION;                          // varchar(128)  unique_key
+    public $ID_USER_GROUP;                   // int(4)  unique_key
     public $ID_USER;                         // int(4)  
     public $FIELDS;                          // text  
-    public $ID_ACL_TYPE;                     // int(4)  
+    public $ID_ACL_TYPE;                     // int(4)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  

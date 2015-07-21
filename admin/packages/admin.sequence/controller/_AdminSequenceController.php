@@ -28,6 +28,20 @@ class _AdminSequenceController extends __AppController
            $errors['sequence-step'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Sequence step'));
            return false;
        }
+       if (in_array('MODULE', $columns2check)) {
+           $_model = new AdminSequenceModel();
+           $_model->MODULE = $model->MODULE;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['module'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_MODULE.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminsequence', $model, $errors)) {

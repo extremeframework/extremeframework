@@ -28,6 +28,21 @@ class _AdminFilterController extends __AppController
            $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Module'));
            return false;
        }
+       if (in_array('MODULE', $columns2check) || in_array('COLUMNS', $columns2check)) {
+           $_model = new AdminFilterModel();
+           $_model->MODULE = $model->MODULE;
+           $_model->COLUMNS = $model->COLUMNS;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['module+columns'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_MODULE.', '.L_COLUMNS.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminfilter', $model, $errors)) {

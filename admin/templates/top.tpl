@@ -26,7 +26,7 @@
     <{if Framework::hasModule('AdminShortcut')}>
         <div id="shortcuts" <{if $is_horizontal_menu_visible}>class="with-horizontal-menu"<{/if}>>
             <form method="post" action="<{$smarty.const.APPLICATION_URL}>/adminshortcut/execute/" class="scope-main">
-                <input type="text" name="op" placeholder="Quick operation" style="height:24px; width:130px;"/>
+                <input type="text" name="op" placeholder="<{_t('Quick operation', true)}>" style="height:24px; width:130px;"/>
             </form>
             <script type="text/javascript">
                 $(function() {
