@@ -4,7 +4,7 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-require_once("PHPMailer/PHPMailerAutoload.php");
+//require_once("PHPMailer/PHPMailerAutoload.php");
 require_once 'SwiftMailer/lib/swift_required.php';
 
 global $GLOBAL_MailController_Debug;
