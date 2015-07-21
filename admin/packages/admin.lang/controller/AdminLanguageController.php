@@ -47,6 +47,25 @@ class AdminLanguageController extends _AdminLanguageController
 		$model->find();
 
      	while ($model->fetch()) {
+    		$filepath = SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php';
+
+            // x. File header
+            $header = "<?php\n";
+
+            $header .= "global \$_L;\n";
+            $header .= "\$_L = array();\n\n";
+
+            if (!file_exists($filepath)) {
+                file_put_contents($filepath, $header);
+            }
+
+            // x. Current labels
+            global $_L;
+
+            include ($filepath);
+
+            $current = array_keys($_L);
+
             // Language item lines
             $alim = new AdminLanguageItemModel();
 
@@ -59,19 +78,24 @@ class AdminLanguageController extends _AdminLanguageController
             $alim->orderBy('LABEL ASC');
             $alim->find();
 
-    	    $lines = array('<?php');
-
-    	    $lines[] = 'global $_L;';
-    	    $lines[] = '$_L = array();';
-    	    $lines[] = '';
-    	    $lines[] = '/* Labels */';
-
             while($alim->fetch()) {
-                $lines[] = "\$_L['{$alim->LABEL}'] = '{$alim->TRANSLATION}';";
+                $label = $alim->LABEL;
+                $translation = $alim->TRANSLATION;
+
+                $_L[$label] = addslashes($translation);
             }
 
-            // Write to file
-            file_put_contents(SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php', implode("\n", $lines));
+            ksort($_L);
+
+            $s = $header;
+
+            foreach ($_L as $label => $translation) {
+                if (!empty($translation)) {
+                    $s .= "\$_L['$label'] = '".trim($translation)."';\n";
+                }
+            }
+
+            file_put_contents($filepath, $s);
         }
     }
 
