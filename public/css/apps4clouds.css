@@ -1406,6 +1406,10 @@ table.item_list .embedded-view .table tr {
     white-space: nowrap;
 }
 
+.left-side-collapsed .adminex-nav li.nav-hover .sub-menu-list {
+    background-color: #65cea7!important;
+}
+
 .adminex-nav .sub-menu-list > li > a {
     display: block;
     padding: 10px 5px 10px 20px;
@@ -1430,7 +1434,7 @@ table.item_list .embedded-view .table tr {
 }
 
 .adminex-nav .sub-menu-list > li.active > a {
-    color: rgb(170, 150, 30);
+
 }
 
 .adminex-nav .sub-menu-list ul {
@@ -1461,7 +1465,7 @@ table.item_list .embedded-view .table tr {
 }
 
 .left-side-collapsed .adminex-nav {
-    margin: 2px 0 20px 0;
+    margin: 0px 0 20px 0;
 }
 
 .left-side-collapsed .adminex-nav li a {
