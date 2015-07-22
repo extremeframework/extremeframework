@@ -100,13 +100,12 @@
 }
 
 .view_details div[class*="status"] .attribute-value {
-    border: 1px solid gray;
-    padding: 0 5px;
-    background-color: green;
+    color: #5bb75b;
+    font-weight: bold;
 }
 
 .view_details div[class*="status"] .attribute-value a {
-    color: white;
+    color: #5bb75b;
 }
 
 /* Override fancybox */
