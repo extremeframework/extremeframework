@@ -26,9 +26,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$formdata.ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new" title="Create a New Admin Order">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.adminorder.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/new" title="Create a New Admin Order">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_ORDER}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminorder.view)}>
@@ -52,9 +54,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$formdata.ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/new" title="Create a New Admin Product">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.adminproduct.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminproduct/new" title="Create a New Admin Product">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorderitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorderitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PRODUCT}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminproduct.view)}>

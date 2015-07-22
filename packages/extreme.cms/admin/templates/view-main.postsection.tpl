@@ -74,9 +74,11 @@
             <{if Framework::hasModule('Post')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postsection_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.post.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-post input-type-text" type="text" name="<{$prefix}>postsection_formdata_ID_POST" value="<{$details->ID_POST|escape}>"  />
         <{/if}>

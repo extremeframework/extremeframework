@@ -49,9 +49,11 @@
             <{if Framework::hasModule('Page')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`pagewidget_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.page.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-page input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_PAGE" value="<{$details->ID_PAGE|escape}>"  />
         <{/if}>
@@ -215,9 +217,11 @@
             <{if Framework::hasModule('WidgetType')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-type" class="input-id-widget-type" name="`$prefix`pagewidget_formdata_ID_WIDGET_TYPE" value=$details->ID_WIDGET_TYPE text=$details->reftext_ID_WIDGET_TYPE datasource="WIDGET_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.widgettype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-widget-type input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_TYPE" value="<{$details->ID_WIDGET_TYPE|escape}>"  />
         <{/if}>
@@ -252,9 +256,11 @@
             <{if Framework::hasModule('WidgetPosition')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-position" class="input-id-widget-position" name="`$prefix`pagewidget_formdata_ID_WIDGET_POSITION" value=$details->ID_WIDGET_POSITION text=$details->reftext_ID_WIDGET_POSITION datasource="WIDGET_POSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new" title="Create a New Widget Position">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.widgetposition.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgetposition/new" title="Create a New Widget Position">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-widget-position input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_POSITION" value="<{$details->ID_WIDGET_POSITION|escape}>"  />
         <{/if}>

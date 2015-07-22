@@ -56,9 +56,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-menu" name="`$prefix`menuitem_formdata_ID_MENU" value=$formdata.ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.menu.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menu/new" title="Create a New Menu">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_MENU}>
         <{if $alreadyhaslink && isset($smarty.session.acl.menu.view)}>
@@ -82,9 +84,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-page" name="`$prefix`menuitem_formdata_ID_PAGE" value=$formdata.ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.page.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_PAGE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.page.view)}>
@@ -108,9 +112,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post" name="`$prefix`menuitem_formdata_ID_POST" value=$formdata.ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.post.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/new" title="Create a New Post">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST}>
         <{if $alreadyhaslink && isset($smarty.session.acl.post.view)}>
@@ -134,9 +140,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post-category" name="`$prefix`menuitem_formdata_ID_POST_CATEGORY" value=$formdata.ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.postcategory.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/new" title="Create a New Post Category">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_POST_CATEGORY}>
         <{if $alreadyhaslink && isset($smarty.session.acl.postcategory.view)}>
@@ -213,9 +221,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-acl-id-user-group" name="`$prefix`menuitem_formdata_ACL_ID_USER_GROUP" value=$formdata.ACL_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.usergroup.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.menuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/menuitem/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ACL_ID_USER_GROUP}>
         <{if $alreadyhaslink && isset($smarty.session.acl.usergroup.view)}>

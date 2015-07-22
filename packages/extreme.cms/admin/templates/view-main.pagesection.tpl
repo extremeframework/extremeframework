@@ -90,9 +90,11 @@
             <{if Framework::hasModule('PageSection')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`pagesection_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE_SECTION" valuecol="CODE" textcol="TITLE" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/new" title="Create a New Page Section">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.pagesection.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/new" title="Create a New Page Section">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>pagesection_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
         <{/if}>
@@ -544,9 +546,11 @@
             <{if Framework::hasModule('Page')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`pagesection_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.page.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-view-more-id-page input-type-text" type="text" name="<{$prefix}>pagesection_formdata_VIEW_MORE_ID_PAGE" value="<{$details->VIEW_MORE_ID_PAGE|escape}>"  />
         <{/if}>

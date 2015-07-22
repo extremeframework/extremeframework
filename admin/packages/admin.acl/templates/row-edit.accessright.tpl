@@ -26,9 +26,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user-group" name="`$prefix`accessright_formdata_ID_USER_GROUP" value=$formdata.ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.usergroup.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/accessright/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_USER_GROUP}>
         <{if $alreadyhaslink && isset($smarty.session.acl.usergroup.view)}>

@@ -41,9 +41,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-template" name="`$prefix`postcategory_formdata_ID_TEMPLATE" value=$formdata.ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.template.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/template/new" title="Create a New Template">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.postcategory.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/postcategory/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_TEMPLATE}>
         <{if $alreadyhaslink && isset($smarty.session.acl.template.view)}>

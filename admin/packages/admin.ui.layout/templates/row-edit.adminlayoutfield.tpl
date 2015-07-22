@@ -41,9 +41,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$formdata.ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/new" title="Create a New Admin Layout Section">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.adminlayoutsection.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutsection/new" title="Create a New Admin Layout Section">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_LAYOUT_SECTION}>
         <{if $alreadyhaslink && isset($smarty.session.acl.adminlayoutsection.view)}>

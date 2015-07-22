@@ -40,9 +40,11 @@
             <{if Framework::hasModule('User')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`userpreference_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.user.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>userpreference_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
         <{/if}>
@@ -100,9 +102,11 @@
             <{if Framework::hasModule('Dashboard')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-dashboard" class="input-id-dashboard" name="`$prefix`userpreference_formdata_ID_DASHBOARD" value=$details->ID_DASHBOARD text=$details->reftext_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.dashboard.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-dashboard input-type-text" type="text" name="<{$prefix}>userpreference_formdata_ID_DASHBOARD" value="<{$details->ID_DASHBOARD|escape}>"  />
         <{/if}>

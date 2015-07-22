@@ -49,9 +49,11 @@
             <{if Framework::hasModule('Workflow')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`workflowtransition_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.workflow.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflow/new" title="Create a New Workflow">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-workflow input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_WORKFLOW" value="<{$details->ID_WORKFLOW|escape}>"  />
         <{/if}>
@@ -152,9 +154,11 @@
             <{if Framework::hasModule('WorkflowStage')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-start-id-workflow-stage" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$details->START_ID_WORKFLOW_STAGE text=$details->reftext_START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.workflowstage.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-start-id-workflow-stage input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value="<{$details->START_ID_WORKFLOW_STAGE|escape}>"  />
         <{/if}>
@@ -189,9 +193,11 @@
             <{if Framework::hasModule('WorkflowStage')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-end-id-workflow-stage" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$details->END_ID_WORKFLOW_STAGE text=$details->reftext_END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.workflowstage.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowstage/new" title="Create a New Workflow Stage">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-end-id-workflow-stage input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value="<{$details->END_ID_WORKFLOW_STAGE|escape}>"  />
         <{/if}>
@@ -256,9 +262,11 @@
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.usergroup.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
         <{/if}>
@@ -293,9 +301,11 @@
             <{if Framework::hasModule('UserRole')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`workflowtransition_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.userrole.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user-role input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE|escape}>"  />
         <{/if}>
@@ -330,9 +340,11 @@
             <{if Framework::hasModule('Screen')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-transition-id-screen" class="input-transition-id-screen" name="`$prefix`workflowtransition_formdata_TRANSITION_ID_SCREEN" value=$details->TRANSITION_ID_SCREEN text=$details->reftext_TRANSITION_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/new" title="Create a New Screen">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.screen.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screen/new" title="Create a New Screen">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-transition-id-screen input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_TRANSITION_ID_SCREEN" value="<{$details->TRANSITION_ID_SCREEN|escape}>"  />
         <{/if}>

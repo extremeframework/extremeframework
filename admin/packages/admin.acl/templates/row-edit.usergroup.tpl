@@ -41,9 +41,11 @@
                                                     
                                 <{html_ref_select autocomplete="1" ajax="0" method="" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$formdata.DEFAULT_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                                                                    <span class="onflycreation">
-                                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
-                                    </span>
+                                                                    <{if isset($smarty.session.acl.dashboard.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/dashboard/new" title="Create a New Dashboard">+</a>
+                                        </span>
+                                    <{/if}>
                                                                                                             <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.usergroup.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_DEFAULT_ID_DASHBOARD}>
         <{if $alreadyhaslink && isset($smarty.session.acl.dashboard.view)}>

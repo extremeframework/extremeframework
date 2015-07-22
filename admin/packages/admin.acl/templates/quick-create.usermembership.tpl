@@ -67,9 +67,11 @@
             <{if Framework::hasModule('User')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`usermembership_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.user.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>usermembership_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
         <{/if}>
@@ -104,9 +106,11 @@
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`usermembership_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.usergroup.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>usermembership_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
         <{/if}>
@@ -141,9 +145,11 @@
             <{if Framework::hasModule('UserRole')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`usermembership_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.userrole.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user-role input-type-text" type="text" name="<{$prefix}>usermembership_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE|escape}>"  />
         <{/if}>

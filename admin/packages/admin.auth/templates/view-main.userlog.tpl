@@ -40,9 +40,11 @@
             <{if Framework::hasModule('User')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`userlog_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.user.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/new" title="Create a New User">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>userlog_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
         <{/if}>

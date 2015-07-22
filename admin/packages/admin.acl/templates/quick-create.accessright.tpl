@@ -67,9 +67,11 @@
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`accessright_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.usergroup.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/usergroup/new" title="Create a New User Group">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>accessright_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
         <{/if}>
@@ -104,9 +106,11 @@
             <{if Framework::hasModule('AdminModule')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`accessright_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.adminmodule.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>accessright_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
         <{/if}>

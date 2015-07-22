@@ -74,9 +74,11 @@
             <{if Framework::hasModule('Page')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`pagegallery_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.page.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-page input-type-text" type="text" name="<{$prefix}>pagegallery_formdata_ID_PAGE" value="<{$details->ID_PAGE|escape}>"  />
         <{/if}>
@@ -171,9 +173,11 @@
             <{if Framework::hasModule('Page')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-link-id-page" class="input-link-id-page" name="`$prefix`pagegallery_formdata_LINK_ID_PAGE" value=$details->LINK_ID_PAGE text=$details->reftext_LINK_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.page.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-link-id-page input-type-text" type="text" name="<{$prefix}>pagegallery_formdata_LINK_ID_PAGE" value="<{$details->LINK_ID_PAGE|escape}>"  />
         <{/if}>

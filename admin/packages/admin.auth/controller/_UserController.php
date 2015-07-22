@@ -965,13 +965,9 @@ class _UserController extends __AppController
             }
             
             
-            if ($this->source != 'modal') {
-                if ($addmore) {
-                    $this->newAction();
-                } else {
-                    ContextStack::back($back);
-                }
-            }
+		    ContextStack::replace(APPLICATION_URL.'/user/view/'.$model->UUID);
+
+    		$this->_view($model->UUID);
         }
     }
 

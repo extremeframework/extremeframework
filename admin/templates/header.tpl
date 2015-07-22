@@ -14,7 +14,7 @@ var APPLICATION_URL = "<{$smarty.const.APPLICATION_URL}>";
 var THEME_URL = "<{$smarty.const.THEME_URL}>";
 var DATE_FORMAT = "<{$smarty.const.DATE_FORMAT}>";
 var DEFAULT_CURRENCY_SYMBOL = "<{$smarty.const.DEFAULT_CURRENCY_SYMBOL}>";
-var USERID = "<{if isset($smarty.session.user)}><{md5($smarty.session.user->UUID)}><{/if}>";
+var USERID = "<{md5(session_id())}>";
 </script>
 
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:light,italic,bold"/>

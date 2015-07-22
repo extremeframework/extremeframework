@@ -97,9 +97,11 @@
             <{if Framework::hasModule('PageLinkType')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-page-link-type" class="input-id-page-link-type" name="`$prefix`pagelink_formdata_ID_PAGE_LINK_TYPE" value=$details->ID_PAGE_LINK_TYPE text=$details->reftext_ID_PAGE_LINK_TYPE datasource="PAGE_LINK_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new" title="Create a New Page Link Type">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.pagelinktype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagelinktype/new" title="Create a New Page Link Type">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-page-link-type input-type-text" type="text" name="<{$prefix}>pagelink_formdata_ID_PAGE_LINK_TYPE" value="<{$details->ID_PAGE_LINK_TYPE|escape}>"  />
         <{/if}>

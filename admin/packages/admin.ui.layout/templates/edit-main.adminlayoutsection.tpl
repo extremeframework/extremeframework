@@ -79,9 +79,11 @@
             <{if Framework::hasModule('AdminModule')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminlayoutsection_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.adminmodule.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new" title="Create a New Admin Module">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>adminlayoutsection_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
         <{/if}>

@@ -166,9 +166,11 @@
             <{if Framework::hasModule('WidgetType')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-widget-type" class="input-id-widget-type" name="`$prefix`pagewidget_formdata_ID_WIDGET_TYPE" value=$details->ID_WIDGET_TYPE text=$details->reftext_ID_WIDGET_TYPE datasource="WIDGET_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.widgettype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/widgettype/new" title="Create a New Widget Type">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-widget-type input-type-text" type="text" name="<{$prefix}>pagewidget_formdata_ID_WIDGET_TYPE" value="<{$details->ID_WIDGET_TYPE|escape}>"  />
         <{/if}>

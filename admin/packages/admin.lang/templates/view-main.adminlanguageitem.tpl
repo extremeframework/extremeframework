@@ -35,9 +35,11 @@
             <{if Framework::hasModule('AdminLanguage')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-admin-language" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$details->ID_ADMIN_LANGUAGE text=$details->reftext_ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" valuecol="ID" textcol="NAME" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/new" title="Create a New Admin Language">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.adminlanguage.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/new" title="Create a New Admin Language">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-admin-language input-type-text" type="text" name="<{$prefix}>adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value="<{$details->ID_ADMIN_LANGUAGE|escape}>"  />
         <{/if}>
@@ -90,9 +92,11 @@
             <{if Framework::hasModule('AdminLabel')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-admin-label" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$details->ID_ADMIN_LABEL text=$details->reftext_ID_ADMIN_LABEL datasource="ADMIN_LABEL" valuecol="ID" textcol="LABEL" sortcol=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/new" title="Create a New Admin Label">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.adminlabel.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlabel/new" title="Create a New Admin Label">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-id-admin-label input-type-text" type="text" name="<{$prefix}>adminlanguageitem_formdata_ID_ADMIN_LABEL" value="<{$details->ID_ADMIN_LABEL|escape}>"  />
         <{/if}>

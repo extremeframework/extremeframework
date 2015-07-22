@@ -231,9 +231,11 @@
             <{if Framework::hasModule('Page')}>
             <{html_ref_select autocomplete="1" ajax="0" method="" id="input-product-id-page" class="input-product-id-page" name="`$prefix`adminproduct_formdata_PRODUCT_ID_PAGE" value=$details->PRODUCT_ID_PAGE text=$details->reftext_PRODUCT_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
-                            <span class="onflycreation">
-                    <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
-                </span>
+                            <{if isset($smarty.session.acl.page.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/new" title="Create a New Page">+</a>
+                    </span>
+                <{/if}>
                     <{else}>
             <input class="input-product-id-page input-type-text" type="text" name="<{$prefix}>adminproduct_formdata_PRODUCT_ID_PAGE" value="<{$details->PRODUCT_ID_PAGE|escape}>"  />
         <{/if}>
