@@ -6,106 +6,49 @@
  */
 
 /**
- * Usage: <{module class="WidgetListAccessRight" method="<overriding_method>" COLUMN=? REFTABLE___REFCOLUMN=? where="<overriding_condition>" template='widgetlist.accessright.tpl'}>
+ * Usage: <{module class="WidgetListAccessRight" COLUMN=? REFTABLE___REFCOLUMN=? template='widgetlist.accessright.tpl'}>
  */
 
-defined('APPLICATION_DIR') OR exit();
-
-class WidgetListAccessRight extends AccessRightController {
+class WidgetListAccessRight extends UserMembershipController {
     function fetch($params) {
-        if (isset($params['method']) && trim($params['method']) != '') {
-            $method = trim($params['method']);
-
-            unset($params['method']);
-
-            return $this->$method($params, $smarty);
-        }
-
         $template = isset($params['template'])? $params['template'] : 'widgetlist.accessright.tpl';
-        $limit = isset($params['limit'])? $params['limit'] : 10;
-        $readonly = isset($params['readonly'])? $params['readonly'] : false;
 
-        if (AclController::hasPermission('accessright')) {
-            $vars = array_keys(get_object_vars(new AccessRightModel()));
+		$id_user_group = $params['ID_USER_GROUP'];
 
-            $preset = null;
-            $presetvalue = null;
-            $presetparams = array();
-            $presetdata = array();
-            $searchdata = $this->getSearchData();
-            $filterdata = $this->getFilterData();
-            $customfilterdata = $this->getCustomFilterData();
-            $filtercolumns = $this->getCustomFilterColumns('accessright', $filter);
-            $aclviewablecolumns = AclController::getAclEnabledColumns('accessright', 'view');
+		$modules = array();
+		$available_actions = array();
 
-            if (isset($params['where']) && trim($params['where']) != '') {
-                $wheres = array($params['where']);
-            } else {
-                $wheres = array();
+		$model = new AdminModuleModel();
+		$model->find();
 
-                foreach ($params as $param => $value) {
-                    if (in_array($param, $vars)) {
-                        if (trim($value) == '') {
-                            $value = '0';
-                        }
+		while ($model->fetch()) {
+			if ($id_user_group > 0) {
+				$modelmod = new AccessRightModel();
 
-                        $preset = $preset? $preset.','.$param : $param;
-                        $presetvalue = $presetvalue? $presetvalue.','.$value : $value;
-                        $aclviewablecolumns[$param] = false;
-                        $presetdata[$param] = $value;
-                    }
-                }
-            }
+				$modelmod->MODULE = $model->MODULE;
+				$modelmod->ID_USER_GROUP = $id_user_group;
 
-            $this->setPresetData($presetdata);
+				$modelmod->find();
 
-            foreach ($params as $param => $value) {
-                if (preg_match('/^preset_/i', $param)) {
-                    $presetparams[] = "$param=$value";
-                }
-            }
+				$modelmod->fetch();
 
-            if (empty($aclviewablecolumns) || (!isset($aclviewablecolumns['*']) && !in_array(true, $aclviewablecolumns))) {
-                return 'No view available';
-            }
+				if ($modelmod->ACTIONS) {
+					$aray_choice_action = explode(' ', $modelmod->ACTIONS);
 
-            $orderby = $this->getRealOrderBy();
-            $limit = $this->getPageSize();
-            $page = $this->getPageNumber();
+					foreach($aray_choice_action as $keylist){
+						$available_actions[$model->ID][$keylist] = $keylist;
+					}
+				}
+			}
 
-            $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination, true, $wheres);
-            
+			$modules[$model->MODULE] = array($model->MODULE, explode(' ',$model->AVAILABLE_ACTIONS), $model->ID, $model->NAME);
+		}
 
-            $total = $pagination['total'];
-            $page = $pagination['page'];
-            $limit = $pagination['pagesize'];
-            $limit_from = $pagination['from'];
-            $limit_to = $pagination['to'];
+        $smarty = Framework::getSmarty(__FILE__);
 
-            $pagination = new Pagination($pagination['total'], ($pagination['page']-1)*$pagination['pagesize'], $pagination['pagesize']);
-            $pagination = $pagination->getPageLinks();
-
-            $smarty = Framework::getSmarty(__FILE__);
-
-    		$smarty->assign('rows', $rows);
-    		$smarty->assign('pagination', $pagination);
-            $smarty->assign('total', $total);
-			$smarty->assign('limit', $limit);
-			$smarty->assign('limit_from', $limit_from);
-			$smarty->assign('limit_to', $limit_to);
-			$smarty->assign('readonly', $readonly);
-            $smarty->assign('preset', $preset);
-            $smarty->assign('presetvalue', $presetvalue);
-            $smarty->assign('presetstring', implode('&', $presetparams));
-            $smarty->assign('filter', $filter);
-            $smarty->assign('filtercolumns', $filtercolumns);
-            $smarty->assign('aclviewablecolumns', $aclviewablecolumns);
-    		$smarty->assign('customfields', CustomFieldHelper::getListCustomFields('accessright', $preset, $presetvalue));
-    		
-    		$smarty->assign('admin_list_actions', AdminActionHelper::getAdminActions('accessright', 'list'));
-    		$smarty->assign('admin_listitem_actions', AdminActionHelper::getAdminActions('accessright', 'listitem'));
-    		
-        }
+ 		$smarty->assign('modules', $modules);
+		$smarty->assign('id_user_group', $id_user_group);
+		$smarty->assign('available_actions', $available_actions);
 
 		return $smarty->fetch($template);
 	}
