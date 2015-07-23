@@ -799,6 +799,13 @@ class __AppController {
                     $specific_where = "{$model->__table}.ID IN ('".implode("','", $specific_ids)."')";
                 }
 
+                // x. Peer items
+                $peer_where = '';
+                if (AclController::hasPermission($module, 'viewpeer')) {
+                    // UDID: 0 - public
+                    $peer_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID = ".$_SESSION['user']->UDID;
+                }
+
                 // x. Building whereAdd
                 $or_wheres = array();
 
@@ -814,8 +821,12 @@ class __AppController {
                     $or_wheres[] = $inherited_where;
                 }
 
+                if (!empty($peer_where)) {
+                    $or_wheres[] = $peer_where;
+                }
+
                 if (!empty($or_wheres)) {
-                    $model->whereAdd("((".implode(') OR (', $or_wheres)."))");
+                    $model->whereAdd("((".implode(') OR (', array_unique($or_wheres))."))");
                 }
             }
         }
@@ -893,7 +904,7 @@ class __AppController {
                 }
 
                 if (!empty($and_wheres)) {
-                    $model->whereAdd("((".implode(') AND (', $and_wheres)."))");
+                    $model->whereAdd("((".implode(') AND (', array_unique($and_wheres))."))");
                 }
             }
         }
