@@ -2891,7 +2891,7 @@ class DB_DataObject extends DB_DataObject_Overload
         if (is_array($cp)) {
             $class = array();
             foreach($cp as $cpr) {
-                $ce = substr(phpversion(),0,1) > 4 ? class_exists($cpr . $tbl,false) : class_exists($cpr . $tbl);
+                $ce = class_exists($cpr . $tbl); // VIETTQ
                 if ($ce) {
                     $class = $cpr . $tbl;
                     break;
@@ -2900,7 +2900,7 @@ class DB_DataObject extends DB_DataObject_Overload
             }
         } else {
             $class = $tbl;
-            $ce = substr(phpversion(),0,1) > 4 ? class_exists($class,false) : class_exists($class);
+            $ce = class_exists($class); // VIETTQ
         }
 
 
@@ -3031,7 +3031,7 @@ class DB_DataObject extends DB_DataObject_Overload
 
         $ce = false;
         foreach($cls as $c) {
-            $ce = substr(phpversion(),0,1) > 4 ? class_exists($c,false) : class_exists($c);
+            $ce = class_exists($c); // VIETTQ
             if ($ce) {
                 $class = $c;
                 break;
@@ -3618,7 +3618,7 @@ class DB_DataObject extends DB_DataObject_Overload
         }
 
         // if they are the same, then dont add a prefix...
-        if ($obj->_database == $this->_database) {
+        if ($obj->_database == $this->_database || $obj->_database_dsn_md5 == $this->_database_dsn_md5) { // VIETTQ
            $dbPrefix = '';
         }
         // as far as we know only mysql supports database prefixes..
@@ -4944,7 +4944,7 @@ class DB_DataObject extends DB_DataObject_Overload
             $_DB_DATAOBJECT['CONFIG']['class_prefix'] : '';
         $class = $p . preg_replace('/[^A-Z0-9]/i','_',ucfirst($table));
 
-        $ce = substr(phpversion(),0,1) > 4 ? class_exists($class,false) : class_exists($class);
+        $ce = class_exists($class); // VIETTQ
         $class = $ce ? $class  : DB_DataObject::_autoloadClass($class);
         return $class;
     }
