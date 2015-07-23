@@ -2092,7 +2092,7 @@ class _MenuItemController extends __AppController
                 $model->joinAdd(array('ID_MENU',TABLE_PREFIX.'MENU:CODE'), 'LEFT', 'reftable_ID_MENU');
             }
             if (Framework::hasModule('MenuItem')) {
-                $model->joinAdd(array('PARENT',TABLE_PREFIX.'MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
+                $model->joinAdd(array('PARENT,ID_MENU',TABLE_PREFIX.'MENU_ITEM:ID,ID_MENU'), 'LEFT', 'reftable_PARENT');
             }
             if (Framework::hasModule('Page')) {
                 $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');

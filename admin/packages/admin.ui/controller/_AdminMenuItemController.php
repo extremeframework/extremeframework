@@ -1709,7 +1709,7 @@ class _AdminMenuItemController extends __AppController
                 $model->joinAdd(array('ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU:ID'), 'LEFT', 'reftable_ID_ADMIN_MENU');
             }
             if (Framework::hasModule('AdminMenuItem')) {
-                $model->joinAdd(array('PARENT',TABLE_PREFIX.'ADMIN_MENU_ITEM:ID'), 'LEFT', 'reftable_PARENT');
+                $model->joinAdd(array('PARENT,ID_ADMIN_MENU',TABLE_PREFIX.'ADMIN_MENU_ITEM:ID,ID_ADMIN_MENU'), 'LEFT', 'reftable_PARENT');
             }
             if (Framework::hasModule('AdminModule')) {
                 $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');

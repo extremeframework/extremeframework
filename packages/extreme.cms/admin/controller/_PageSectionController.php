@@ -2096,7 +2096,7 @@ class _PageSectionController extends __AppController
                 $model->joinAdd(array('ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_ID_PAGE');
             }
             if (Framework::hasModule('PageSection')) {
-                $model->joinAdd(array('PARENT',TABLE_PREFIX.'PAGE_SECTION:CODE'), 'LEFT', 'reftable_PARENT');
+                $model->joinAdd(array('PARENT,ID_PAGE',TABLE_PREFIX.'PAGE_SECTION:CODE,ID_PAGE'), 'LEFT', 'reftable_PARENT');
             }
             if (Framework::hasModule('Page')) {
                 $model->joinAdd(array('VIEW_MORE_ID_PAGE',TABLE_PREFIX.'PAGE:ID'), 'LEFT', 'reftable_VIEW_MORE_ID_PAGE');

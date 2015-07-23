@@ -1676,10 +1676,10 @@ class _WorkflowTransitionController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowStage')) {
-                $model->joinAdd(array('START_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
+                $model->joinAdd(array('START_ID_WORKFLOW_STAGE,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_STAGE:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('WorkflowStage')) {
-                $model->joinAdd(array('END_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
+                $model->joinAdd(array('END_ID_WORKFLOW_STAGE,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_STAGE:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('UserGroup')) {
                 $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
@@ -1729,10 +1729,10 @@ class _WorkflowTransitionController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowStage')) {
-                $model->joinAdd(array('START_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
+                $model->joinAdd(array('START_ID_WORKFLOW_STAGE,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_STAGE:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_START_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('WorkflowStage')) {
-                $model->joinAdd(array('END_ID_WORKFLOW_STAGE',TABLE_PREFIX.'WORKFLOW_STAGE:CODE'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
+                $model->joinAdd(array('END_ID_WORKFLOW_STAGE,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_STAGE:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_END_ID_WORKFLOW_STAGE');
             }
             if (Framework::hasModule('UserGroup')) {
                 $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');

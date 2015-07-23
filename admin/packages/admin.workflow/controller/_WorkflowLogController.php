@@ -1603,7 +1603,7 @@ class _WorkflowLogController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowTransition')) {
-                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
             }
             if (Framework::hasModule('AdminModule')) {
                 $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
@@ -1638,7 +1638,7 @@ class _WorkflowLogController extends __AppController
                 $model->joinAdd(array('ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW:CODE'), 'LEFT', 'reftable_ID_WORKFLOW');
             }
             if (Framework::hasModule('WorkflowTransition')) {
-                $model->joinAdd(array('ID_WORKFLOW_TRANSITION',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
+                $model->joinAdd(array('ID_WORKFLOW_TRANSITION,ID_WORKFLOW',TABLE_PREFIX.'WORKFLOW_TRANSITION:CODE,ID_WORKFLOW'), 'LEFT', 'reftable_ID_WORKFLOW_TRANSITION');
             }
             if (Framework::hasModule('User')) {
                 $model->joinAdd(array('ID_USER',TABLE_PREFIX.'USER:ID'), 'LEFT', 'reftable_ID_USER');
