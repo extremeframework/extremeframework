@@ -1546,7 +1546,7 @@ class _UserLogController extends __AppController
     
         if ($join) {
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1564,7 +1564,7 @@ class _UserLogController extends __AppController
     
         if ($join) {
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1576,7 +1576,7 @@ class _UserLogController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new UserLogModel();
 
         $this->enforceObjectAclCheck('userlog', $model);

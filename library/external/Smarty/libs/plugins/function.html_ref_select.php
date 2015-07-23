@@ -162,7 +162,9 @@ function smarty_function_html_ref_select($params, &$smarty)
             } elseif (isset($params['sortcol']) && $params['sortcol']) {
                 $model->orderBy($orderbyoptgroup.$params['sortcol']);
             } else {
-                $model->orderBy($orderbyoptgroup.$textcol);
+                if (property_exists($model, $textcol)) {
+                    $model->orderBy($orderbyoptgroup.$firstcol);
+                }
             }
 
     		$model->find();
@@ -178,7 +180,7 @@ function smarty_function_html_ref_select($params, &$smarty)
     		}
 
             if (in_array('PARENT', $cols)) {
-                $rows = UiHelper::hierachical($rows, $params['valuecol'], $usereftextcol? 'reftext_'.$textcol : $textcol, 'PARENT', '10');
+                $rows = UiHelper::hierachical($rows, $params['valuecol'], '', 'PARENT', '10');
             }
 
             $cache[$datasource] = $rows;
@@ -204,7 +206,7 @@ function smarty_function_html_ref_select($params, &$smarty)
      			$selected = ' selected="selected" ';
     		}
 
-    	    $options .= '<option id="option-'.$model->{$params['valuecol']}.'" class="option-'.$model->{$params['valuecol']}.'" value="'.$model->{$params['valuecol']}.'"'.$selected.'>'.(isset($model->INDENT)? $model->INDENT : '').($usereftextcol? htmlspecialchars($model->{'reftext_'.$textcol}, ENT_QUOTES, 'UTF-8') : htmlspecialchars($model->{$textcol}, ENT_QUOTES, 'UTF-8')).'</option>';
+    	    $options .= '<option id="option-'.$model->{$params['valuecol']}.'" class="option-'.$model->{$params['valuecol']}.'" value="'.$model->{$params['valuecol']}.'"'.$selected.'>'.(isset($model->INDENT)? $model->INDENT : '').($usereftextcol? htmlspecialchars($model->{'reftext_'.$textcol}, ENT_QUOTES, 'UTF-8') : htmlspecialchars(ModelHelper::get($model, $textcol), ENT_QUOTES, 'UTF-8')).'</option>';
     	}
         if (!empty($curoptgroup)) {
     	    $options .= '</optgroup>';

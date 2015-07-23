@@ -1520,7 +1520,7 @@ class _UserRoleController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'USER_ROLE`.NAME, `'.TABLE_PREFIX.'USER_ROLE`.ID, `'.TABLE_PREFIX.'USER_ROLE`.JSON, `'.TABLE_PREFIX.'USER_ROLE`.UUID, `'.TABLE_PREFIX.'USER_ROLE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new UserRoleModel();
 
         $this->enforceObjectAclCheck('userrole', $model);

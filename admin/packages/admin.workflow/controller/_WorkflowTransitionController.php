@@ -32,6 +32,22 @@ class _WorkflowTransitionController extends __AppController
            $errors['ordering'] = sprintf(_t('L_VALIDATION_NUMBER'), _t('Ordering'));
            return false;
        }
+       if (in_array('ID_WORKFLOW', $columns2check) || in_array('START_ID_WORKFLOW_STAGE', $columns2check) || in_array('ACTION', $columns2check)) {
+           $_model = new WorkflowTransitionModel();
+           $_model->ID_WORKFLOW = $model->ID_WORKFLOW;
+           $_model->START_ID_WORKFLOW_STAGE = $model->START_ID_WORKFLOW_STAGE;
+           $_model->ACTION = $model->ACTION;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['id-workflow+start-id-workflow-stage+action'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_WORKFLOW.', '.L_START_WORKFLOW_STAGE.', '.L_ACTION.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('workflowtransition', $model, $errors)) {
@@ -1730,7 +1746,7 @@ class _WorkflowTransitionController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WorkflowTransitionModel();
 
         $this->enforceObjectAclCheck('workflowtransition', $model);

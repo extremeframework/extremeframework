@@ -1984,7 +1984,7 @@ class _PostGalleryController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostGalleryModel();
 
         $this->enforceObjectAclCheck('postgallery', $model);

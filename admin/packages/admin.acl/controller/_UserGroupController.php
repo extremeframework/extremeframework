@@ -1672,7 +1672,7 @@ class _UserGroupController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new UserGroupModel();
 
         $this->enforceObjectAclCheck('usergroup', $model);

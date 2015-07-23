@@ -191,7 +191,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('User')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`objectacl_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`objectacl_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol=""}>
 
                             <{if isset($smarty.session.acl.user.new)}>
                     <span class="onflycreation">
@@ -310,7 +310,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('User')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-arg-id-user" class="input-arg-id-user" name="`$prefix`objectacl_formdata_ARG_ID_USER" value=$details->ARG_ID_USER text=$details->reftext_ARG_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME" sortcol=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-arg-id-user" class="input-arg-id-user" name="`$prefix`objectacl_formdata_ARG_ID_USER" value=$details->ARG_ID_USER text=$details->reftext_ARG_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol=""}>
 
                             <{if isset($smarty.session.acl.user.new)}>
                     <span class="onflycreation">

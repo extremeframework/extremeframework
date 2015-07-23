@@ -1991,7 +1991,7 @@ class _AdminProductController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminProductModel();
 
         $this->enforceObjectAclCheck('adminproduct', $model);

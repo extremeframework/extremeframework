@@ -1554,7 +1554,7 @@ class _WorkflowController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WORKFLOW`.NAME, `'.TABLE_PREFIX.'WORKFLOW`.CODE, `'.TABLE_PREFIX.'WORKFLOW`.ID, `'.TABLE_PREFIX.'WORKFLOW`.JSON, `'.TABLE_PREFIX.'WORKFLOW`.UUID, `'.TABLE_PREFIX.'WORKFLOW`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WorkflowModel();
 
         $this->enforceObjectAclCheck('workflow', $model);

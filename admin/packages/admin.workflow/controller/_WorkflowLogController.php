@@ -1593,7 +1593,7 @@ class _WorkflowLogController extends __AppController
                 $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1628,7 +1628,7 @@ class _WorkflowLogController extends __AppController
                 $model->selectAdd('reftable_ID_WORKFLOW_TRANSITION.UUID as refuuid_ID_WORKFLOW_TRANSITION');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1646,7 +1646,7 @@ class _WorkflowLogController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WorkflowLogModel();
 
         $this->enforceObjectAclCheck('workflowlog', $model);

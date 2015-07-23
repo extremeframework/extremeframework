@@ -2044,7 +2044,7 @@ class _PageWidgetController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PageWidgetModel();
 
         $this->enforceObjectAclCheck('pagewidget', $model);

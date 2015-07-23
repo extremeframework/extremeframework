@@ -1642,7 +1642,7 @@ class _AdminMenuController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MENU`.NAME, `'.TABLE_PREFIX.'ADMIN_MENU`.ORDERING, `'.TABLE_PREFIX.'ADMIN_MENU`.IS_ENABLED, `'.TABLE_PREFIX.'ADMIN_MENU`.ID, `'.TABLE_PREFIX.'ADMIN_MENU`.JSON, `'.TABLE_PREFIX.'ADMIN_MENU`.UUID, `'.TABLE_PREFIX.'ADMIN_MENU`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminMenuModel();
 
         $this->enforceObjectAclCheck('adminmenu', $model);

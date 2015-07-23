@@ -1534,7 +1534,7 @@ class _ValueTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'VALUE_TYPE`.NAME, `'.TABLE_PREFIX.'VALUE_TYPE`.CODE, `'.TABLE_PREFIX.'VALUE_TYPE`.ID, `'.TABLE_PREFIX.'VALUE_TYPE`.JSON, `'.TABLE_PREFIX.'VALUE_TYPE`.UUID, `'.TABLE_PREFIX.'VALUE_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ValueTypeModel();
 
         $this->enforceObjectAclCheck('valuetype', $model);

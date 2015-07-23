@@ -1875,7 +1875,7 @@ class _PageLinkTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAGE_LINK_TYPE`.NAME, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.CODE, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.ORDERING, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.ID, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.JSON, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.UUID, `'.TABLE_PREFIX.'PAGE_LINK_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PageLinkTypeModel();
 
         $this->enforceObjectAclCheck('pagelinktype', $model);

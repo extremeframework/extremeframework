@@ -1742,7 +1742,7 @@ class _AdminMenuItemController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminMenuItemModel();
 
         $this->enforceObjectAclCheck('adminmenuitem', $model);

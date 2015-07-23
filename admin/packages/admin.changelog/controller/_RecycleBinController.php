@@ -1556,7 +1556,7 @@ class _RecycleBinController extends __AppController
                 $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1581,7 +1581,7 @@ class _RecycleBinController extends __AppController
                 $model->selectAdd('reftable_MODULE.UUID as refuuid_MODULE');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
         }
@@ -1596,7 +1596,7 @@ class _RecycleBinController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new RecycleBinModel();
 
         $this->enforceObjectAclCheck('recyclebin', $model);

@@ -1581,7 +1581,7 @@ class _FieldController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new FieldModel();
 
         $this->enforceObjectAclCheck('field', $model);

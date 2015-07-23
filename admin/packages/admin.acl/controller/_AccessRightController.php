@@ -1577,7 +1577,7 @@ class _AccessRightController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AccessRightModel();
 
         $this->enforceObjectAclCheck('accessright', $model);

@@ -1544,7 +1544,7 @@ class _ParameterGroupController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PARAMETER_GROUP`.NAME, `'.TABLE_PREFIX.'PARAMETER_GROUP`.ORDERING, `'.TABLE_PREFIX.'PARAMETER_GROUP`.ID, `'.TABLE_PREFIX.'PARAMETER_GROUP`.JSON, `'.TABLE_PREFIX.'PARAMETER_GROUP`.UUID, `'.TABLE_PREFIX.'PARAMETER_GROUP`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ParameterGroupModel();
 
         $this->enforceObjectAclCheck('parametergroup', $model);

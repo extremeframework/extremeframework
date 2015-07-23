@@ -1901,7 +1901,7 @@ class _TemplateController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new TemplateModel();
 
         $this->enforceObjectAclCheck('template', $model);

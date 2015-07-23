@@ -1861,7 +1861,7 @@ class _WidgetPositionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WIDGET_POSITION`.NAME, `'.TABLE_PREFIX.'WIDGET_POSITION`.CODE, `'.TABLE_PREFIX.'WIDGET_POSITION`.ID, `'.TABLE_PREFIX.'WIDGET_POSITION`.JSON, `'.TABLE_PREFIX.'WIDGET_POSITION`.UUID, `'.TABLE_PREFIX.'WIDGET_POSITION`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WidgetPositionModel();
 
         $this->enforceObjectAclCheck('widgetposition', $model);

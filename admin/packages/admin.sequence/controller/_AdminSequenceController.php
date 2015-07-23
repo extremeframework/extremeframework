@@ -1557,7 +1557,7 @@ class _AdminSequenceController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_SEQUENCE`.MODULE, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.SEQUENCE_FORMAT, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.CURRENT_VALUE, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.SEQUENCE_STEP, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.ID, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.JSON, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.UUID, `'.TABLE_PREFIX.'ADMIN_SEQUENCE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminSequenceModel();
 
         $this->enforceObjectAclCheck('adminsequence', $model);

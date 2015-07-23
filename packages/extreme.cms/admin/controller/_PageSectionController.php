@@ -2129,7 +2129,7 @@ class _PageSectionController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PageSectionModel();
 
         $this->enforceObjectAclCheck('pagesection', $model);

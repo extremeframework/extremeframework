@@ -1613,7 +1613,7 @@ class _ScreenFieldController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ScreenFieldModel();
 
         $this->enforceObjectAclCheck('screenfield', $model);

@@ -1,4 +1,4 @@
-    <{assign var='meta_description' value=$details->FIRST_NAME}>
+    <{assign var='meta_description' value=$details->FIRST_NAME+LASTNAME}>
     <{include file="header.tpl"}>
     </head>
 
@@ -103,7 +103,7 @@
     
     <div>
         <{if $details->WFID}><div class="corner-ribbon top-right sticky blue wf-<{$details->WFID}>"><{_t($details->WFID)}></div><{/if}>
-        <div class="mirror-first-name hidden-print" style="clear:none;display:none;"></div>
+        <div class="mirror-first-name+lastname hidden-print" style="clear:none;display:none;"></div>
         <div style="clear:both"></div>
         <{include file="view-main.user.tpl"}>
     </div>
@@ -216,8 +216,8 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-    	var origin = $('#userview .form-field-value .column-first-name');
-    	var mirror = $('#userview .mirror-first-name');
+    	var origin = $('#userview .form-field-value .column-first-name+lastname');
+    	var mirror = $('#userview .mirror-first-name+lastname');
 
     	mirror.html(origin.html());
     	mirror.addClass('mirror-name attribute-line column-name');

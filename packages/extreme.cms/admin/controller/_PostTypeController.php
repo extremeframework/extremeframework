@@ -1847,7 +1847,7 @@ class _PostTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_TYPE`.NAME, `'.TABLE_PREFIX.'POST_TYPE`.CODE, `'.TABLE_PREFIX.'POST_TYPE`.ID, `'.TABLE_PREFIX.'POST_TYPE`.JSON, `'.TABLE_PREFIX.'POST_TYPE`.UUID, `'.TABLE_PREFIX.'POST_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostTypeModel();
 
         $this->enforceObjectAclCheck('posttype', $model);

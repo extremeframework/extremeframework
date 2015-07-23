@@ -1594,7 +1594,7 @@ class _AdminModuleController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminModuleModel();
 
         $this->enforceObjectAclCheck('adminmodule', $model);

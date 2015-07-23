@@ -1544,7 +1544,7 @@ class _ParameterTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PARAMETER_TYPE`.NAME, `'.TABLE_PREFIX.'PARAMETER_TYPE`.BASE_TYPE_CODE, `'.TABLE_PREFIX.'PARAMETER_TYPE`.EXTRA, `'.TABLE_PREFIX.'PARAMETER_TYPE`.ORDERING, `'.TABLE_PREFIX.'PARAMETER_TYPE`.ID, `'.TABLE_PREFIX.'PARAMETER_TYPE`.JSON, `'.TABLE_PREFIX.'PARAMETER_TYPE`.UUID, `'.TABLE_PREFIX.'PARAMETER_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ParameterTypeModel();
 
         $this->enforceObjectAclCheck('parametertype', $model);

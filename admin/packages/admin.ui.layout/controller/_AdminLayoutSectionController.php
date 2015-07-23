@@ -1590,7 +1590,7 @@ class _AdminLayoutSectionController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminLayoutSectionModel();
 
         $this->enforceObjectAclCheck('adminlayoutsection', $model);

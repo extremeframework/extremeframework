@@ -1606,7 +1606,7 @@ class _AdminLayoutFieldController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminLayoutFieldModel();
 
         $this->enforceObjectAclCheck('adminlayoutfield', $model);

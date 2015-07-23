@@ -2035,7 +2035,7 @@ class _PostCategoryController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostCategoryModel();
 
         $this->enforceObjectAclCheck('postcategory', $model);

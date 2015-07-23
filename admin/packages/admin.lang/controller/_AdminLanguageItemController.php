@@ -1613,7 +1613,7 @@ class _AdminLanguageItemController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminLanguageItemModel();
 
         $this->enforceObjectAclCheck('adminlanguageitem', $model);

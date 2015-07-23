@@ -2191,7 +2191,7 @@ class _PostController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostModel();
 
         $this->enforceObjectAclCheck('post', $model);

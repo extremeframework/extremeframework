@@ -1940,7 +1940,7 @@ class _MenuController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'MENU`.NAME, `'.TABLE_PREFIX.'MENU`.CODE, `'.TABLE_PREFIX.'MENU`.CLASS, `'.TABLE_PREFIX.'MENU`.ID, `'.TABLE_PREFIX.'MENU`.JSON, `'.TABLE_PREFIX.'MENU`.UUID, `'.TABLE_PREFIX.'MENU`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new MenuModel();
 
         $this->enforceObjectAclCheck('menu', $model);

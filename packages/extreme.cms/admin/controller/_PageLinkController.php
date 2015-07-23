@@ -1966,7 +1966,7 @@ class _PageLinkController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PageLinkModel();
 
         $this->enforceObjectAclCheck('pagelink', $model);

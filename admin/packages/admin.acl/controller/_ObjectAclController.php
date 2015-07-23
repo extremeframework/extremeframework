@@ -1591,7 +1591,7 @@ class _ObjectAclController extends __AppController
                 $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
             if (Framework::hasModule('UserGroup')) {
@@ -1599,7 +1599,7 @@ class _ObjectAclController extends __AppController
                 $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ARG_ID_USER.FIRST_NAME, reftable_ARG_ID_USER.LAST_NAME) as reftext_ARG_ID_USER');
                 $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
             }
             if (Framework::hasModule('AclType')) {
@@ -1640,7 +1640,7 @@ class _ObjectAclController extends __AppController
                 $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ID_USER.FIRST_NAME as reftext_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ID_USER.FIRST_NAME, reftable_ID_USER.LAST_NAME) as reftext_ID_USER');
                 $model->selectAdd('reftable_ID_USER.UUID as refuuid_ID_USER');
             }
             if (Framework::hasModule('UserGroup')) {
@@ -1648,7 +1648,7 @@ class _ObjectAclController extends __AppController
                 $model->selectAdd('reftable_ARG_ID_USER_GROUP.UUID as refuuid_ARG_ID_USER_GROUP');
             }
             if (Framework::hasModule('User')) {
-                $model->selectAdd('reftable_ARG_ID_USER.FIRST_NAME as reftext_ARG_ID_USER');
+                $model->selectAdd('CONCAT_WS(\' \', reftable_ARG_ID_USER.FIRST_NAME, reftable_ARG_ID_USER.LAST_NAME) as reftext_ARG_ID_USER');
                 $model->selectAdd('reftable_ARG_ID_USER.UUID as refuuid_ARG_ID_USER');
             }
             if (Framework::hasModule('AclType')) {
@@ -1676,7 +1676,7 @@ class _ObjectAclController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ObjectAclModel();
 
         $this->enforceObjectAclCheck('objectacl', $model);

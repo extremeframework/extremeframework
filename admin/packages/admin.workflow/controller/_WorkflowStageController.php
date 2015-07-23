@@ -1572,7 +1572,7 @@ class _WorkflowStageController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WorkflowStageModel();
 
         $this->enforceObjectAclCheck('workflowstage', $model);

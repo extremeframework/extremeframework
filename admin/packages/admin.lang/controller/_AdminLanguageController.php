@@ -1627,7 +1627,7 @@ class _AdminLanguageController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LANGUAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.ID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_LANGUAGE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminLanguageModel();
 
         $this->enforceObjectAclCheck('adminlanguage', $model);

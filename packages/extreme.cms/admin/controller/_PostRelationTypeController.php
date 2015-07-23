@@ -1847,7 +1847,7 @@ class _PostRelationTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'POST_RELATION_TYPE`.NAME, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.CODE, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.ID, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.JSON, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.UUID, `'.TABLE_PREFIX.'POST_RELATION_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostRelationTypeModel();
 
         $this->enforceObjectAclCheck('postrelationtype', $model);

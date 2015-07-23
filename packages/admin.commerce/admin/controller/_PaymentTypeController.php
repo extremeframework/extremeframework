@@ -1879,7 +1879,7 @@ class _PaymentTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'PAYMENT_TYPE`.NAME, `'.TABLE_PREFIX.'PAYMENT_TYPE`.CODE, `'.TABLE_PREFIX.'PAYMENT_TYPE`.IS_ENABLED, `'.TABLE_PREFIX.'PAYMENT_TYPE`.ORDERING, `'.TABLE_PREFIX.'PAYMENT_TYPE`.ID, `'.TABLE_PREFIX.'PAYMENT_TYPE`.JSON, `'.TABLE_PREFIX.'PAYMENT_TYPE`.UUID, `'.TABLE_PREFIX.'PAYMENT_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PaymentTypeModel();
 
         $this->enforceObjectAclCheck('paymenttype', $model);

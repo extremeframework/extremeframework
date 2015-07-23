@@ -1521,7 +1521,7 @@ class _AdminLabelController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_LABEL`.LABEL, `'.TABLE_PREFIX.'ADMIN_LABEL`.ID, `'.TABLE_PREFIX.'ADMIN_LABEL`.JSON, `'.TABLE_PREFIX.'ADMIN_LABEL`.UUID, `'.TABLE_PREFIX.'ADMIN_LABEL`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminLabelModel();
 
         $this->enforceObjectAclCheck('adminlabel', $model);

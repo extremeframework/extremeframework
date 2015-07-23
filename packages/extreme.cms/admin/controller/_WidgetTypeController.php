@@ -1861,7 +1861,7 @@ class _WidgetTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'WIDGET_TYPE`.NAME, `'.TABLE_PREFIX.'WIDGET_TYPE`.CODE, `'.TABLE_PREFIX.'WIDGET_TYPE`.ID, `'.TABLE_PREFIX.'WIDGET_TYPE`.JSON, `'.TABLE_PREFIX.'WIDGET_TYPE`.UUID, `'.TABLE_PREFIX.'WIDGET_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new WidgetTypeModel();
 
         $this->enforceObjectAclCheck('widgettype', $model);

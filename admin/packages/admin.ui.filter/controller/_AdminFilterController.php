@@ -797,6 +797,9 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
+            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
+                $model->COLUMNS = $refobject->COLUMN;
+            }
 
         }
     }
@@ -1522,6 +1525,11 @@ class _AdminFilterController extends __AppController
 
                         break;
 
+                    case 'COLUMNS':
+                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -1577,7 +1585,7 @@ class _AdminFilterController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminFilterModel();
 
         $this->enforceObjectAclCheck('adminfilter', $model);

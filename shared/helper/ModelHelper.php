@@ -27,6 +27,41 @@ class ModelHelper {
         return $model;
     }
 
+    static function get($model, $property) {
+        // x. If a normal property
+        if (property_exists($model, $property)) {
+            return $model->$property;
+        }
+
+        // x. If a property template (with backtick '`' characters)
+        if (stripos($property, '`') !== false) {
+            $property = preg_replace_callback('/`([^`]+)`/', function ($m) use ($model) {
+                if (property_exists($model, $m[1])) {
+                    return $model->{$m[1]};
+                }
+            }, $property);
+
+            return $property;
+        }
+
+        // x. If a simple property template (ex: "FIRST_NAME LAST_NAME" or "FIRST_NAME+LAST_NAME")
+        $property = str_replace('+', ' ', $property);
+
+        $parts = explode(' ', $property);
+
+        if (count($parts) > 1) {
+            foreach ($parts as $part) {
+                if (property_exists($model, $part)) {
+                    $property = str_replace($part, $model->$part, $property);
+                }
+            }
+
+            return $property;
+        }
+
+        return null;
+    }
+
     static function onInsertSuccess($model) {
         if (in_array($model->_module, array('adminsequence', 'changelog', 'recyclebin', 'cloudsync', 'draft'))) {
             return;

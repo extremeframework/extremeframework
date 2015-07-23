@@ -1889,7 +1889,7 @@ class _AdminOrderStatusController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.NAME, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.CODE, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.ORDERING, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.ID, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.JSON, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.UUID, `'.TABLE_PREFIX.'ADMIN_ORDER_STATUS`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminOrderStatusModel();
 
         $this->enforceObjectAclCheck('adminorderstatus', $model);

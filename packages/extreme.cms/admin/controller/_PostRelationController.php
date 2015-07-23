@@ -1929,7 +1929,7 @@ class _PostRelationController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new PostRelationModel();
 
         $this->enforceObjectAclCheck('postrelation', $model);

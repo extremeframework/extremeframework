@@ -1949,7 +1949,7 @@ class _AdminOrderItemController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AdminOrderItemModel();
 
         $this->enforceObjectAclCheck('adminorderitem', $model);

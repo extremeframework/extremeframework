@@ -1584,7 +1584,7 @@ class _ScreenController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ScreenModel();
 
         $this->enforceObjectAclCheck('screen', $model);

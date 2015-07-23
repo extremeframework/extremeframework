@@ -1605,7 +1605,7 @@ class _ParameterController extends __AppController
         }
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new ParameterModel();
 
         $this->enforceObjectAclCheck('parameter', $model);

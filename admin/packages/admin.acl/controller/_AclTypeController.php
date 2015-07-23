@@ -1548,7 +1548,7 @@ class _AclTypeController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'ACL_TYPE`.NAME, `'.TABLE_PREFIX.'ACL_TYPE`.ORDERING, `'.TABLE_PREFIX.'ACL_TYPE`.ID, `'.TABLE_PREFIX.'ACL_TYPE`.JSON, `'.TABLE_PREFIX.'ACL_TYPE`.UUID, `'.TABLE_PREFIX.'ACL_TYPE`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new AclTypeModel();
 
         $this->enforceObjectAclCheck('acltype', $model);

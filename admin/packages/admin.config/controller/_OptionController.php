@@ -1535,7 +1535,7 @@ class _OptionController extends __AppController
         $model->selectAdd('`'.TABLE_PREFIX.'OPTION`.NAME, `'.TABLE_PREFIX.'OPTION`.CODE, `'.TABLE_PREFIX.'OPTION`.VALUE, `'.TABLE_PREFIX.'OPTION`.CONTEXT, `'.TABLE_PREFIX.'OPTION`.ID, `'.TABLE_PREFIX.'OPTION`.JSON, `'.TABLE_PREFIX.'OPTION`.UUID, `'.TABLE_PREFIX.'OPTION`.WFID');
     }
 
-    protected function getAclEnabledIds() {
+    public function getAclEnabledIds() {
 		$model = new OptionModel();
 
         $this->enforceObjectAclCheck('option', $model);
