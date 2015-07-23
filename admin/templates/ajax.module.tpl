@@ -3,7 +3,7 @@
 <script type="text/javascript">
     $(function() {
     	$.ajax({
-    	    url: '<{$smarty.const.APPLICATION_URL}>/ajax/widget/&<{$querystring}>',
+    	    url: '<{$smarty.const.APPLICATION_URL}>/ajax/widget/?q=<{base64_encode($querystring)}>',
     	    method: 'GET',
     	    dataType: 'html',
     	    localCache: true
