@@ -1155,7 +1155,7 @@ class DB_DataObject extends DB_DataObject_Overload
         foreach($items as $k => $v) {
 
             // if we are using autoincrement - skip the column...
-            if ($key && ($k == $key) && $useNative) {
+            if ($key && ($k == $key) && $useNative && !$this->$key) {// VIETTQ
                 continue;
             }
 
@@ -3379,6 +3379,7 @@ class DB_DataObject extends DB_DataObject_Overload
      * @param    optional $obj       object |array    the joining object (no value resets the join)
      *                                          If you use an array here it should be in the format:
      *                                          array('local_column','remotetable:remote_column');
+     *                                          array('local_column1,local_column2','remotetable:remote_column1,remote_column2'); // VIETTQ
      *                                             if remotetable does not have a definition, you should
      *                                             use @ to hide the include error message..
      *                                          array('local_column',  $dataobject , 'remote_column');
@@ -3448,6 +3449,15 @@ class DB_DataObject extends DB_DataObject_Overload
                 $obj = $obj[1];
             } else {
                 list($toTable,$ofield) = explode(':',$obj[1]);
+
+                // VIETTQ - Support joining multiple keys. The variable $obj should be in the
+                // format array('local_column1,local_column2','remotetable:remote_column1,remote_column2')
+                if (strpos($tfield,',')) {
+                    $tfield = explode(',', $tfield);
+                }
+                if (strpos($ofield,',')) {
+                    $ofield = explode(',', $ofield);
+                }
 
                 $obj = is_string($toTable) ? DB_DataObject::factory($toTable) : $toTable;
 
@@ -3775,8 +3785,29 @@ class DB_DataObject extends DB_DataObject_Overload
                     }
                     $jadd .= ' ' . $appendJoin . ' ';
                 } else {
-	                $jadd .= " ON ({$joinAs}.{$ofield}={$table}.{$tfield}) {$appendJoin} ";
+                    // VIETTQ - Workaround the bug of joining the same table
+                    if ($table == substr($joinAs, 0, -1) || substr($table, 0, -1) == $joinAs) {
+                        $jadd .= " ON ({$table}.{$ofield}={$joinAs}.{$tfield}) {$appendJoin} ";
+                    } else {
+                        // VIETTQ - Support joining two remote tables
+                        if (preg_match('/(.*)[\:\.]{1}(.*)/i', $tfield, $matches)) {
+                            $_m1 = $matches[1];
+                            $_m2 = $matches[2];
+
+                            $has_back_stick = strpos($tfield, '`') !== false;
+
+                            if ($has_back_stick) {
+                                $_m1 = '`'.trim($matches[1], '`').'`';
+                                $_m2 = '`'.trim($matches[2], '`').'`';
+                            }
+
+                            $jadd .= " ON ({$joinAs}.{$ofield}={$_m1}.{$_m2}) {$appendJoin} ";
+                        } else {
+    	                    $jadd .= " ON ({$joinAs}.{$ofield}={$table}.{$tfield}) {$appendJoin} ";
+                        }
+                    }
                 }
+
                 // jadd avaliable for debugging join build.
                 //echo $jadd ."\n";
                 $this->_join .= $jadd;
