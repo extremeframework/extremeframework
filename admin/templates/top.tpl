@@ -5,7 +5,7 @@
 
 <{if Framework::hasModule('AdminMenu')}>
     <{if isset($smarty.request.context) && $smarty.request.context == 'settings'}>
-        <{include file="menu.settings.tpl"}>
+        <{include file="menu.adminex.tpl"}>
     <{else}>
         <{$style = get_option('admin-menu-style')}>
 
