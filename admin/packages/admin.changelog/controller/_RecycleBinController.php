@@ -16,6 +16,8 @@ class _RecycleBinController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('recyclebin_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

@@ -16,6 +16,8 @@ class _AdminFilterController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('adminfilter_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {
@@ -797,9 +799,6 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
-            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
-                $model->COLUMNS = $refobject->COLUMN;
-            }
 
         }
     }
@@ -1522,11 +1521,6 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
-
-                        break;
-
-                    case 'COLUMNS':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 

@@ -16,6 +16,8 @@ class _PostController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('post_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

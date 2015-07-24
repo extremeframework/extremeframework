@@ -45,7 +45,9 @@
     width: 38px;
     background-position: 18px center;
 }
-
+#issuelist tr[id="item_"] .indicators {
+   background:none!important;
+}
 #issuelist .priority-high td.indicators {
     background: url(../images/high-priority.png) no-repeat;
     width: 43px;

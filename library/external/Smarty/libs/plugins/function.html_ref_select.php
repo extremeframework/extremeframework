@@ -38,6 +38,7 @@ function smarty_function_html_ref_select($params, &$smarty)
     $module = str_replace('_', '', strtolower($datasource));
 
 	$options = '';
+    $callback = RefSelectHelper::getOptionsSource($params['name']);
 
     // x. Ajax case
     if (isset($params['ajax']) && $params['ajax']) {
@@ -61,16 +62,10 @@ function smarty_function_html_ref_select($params, &$smarty)
         foreach ($parts as $part) {
             $options .= '<option value="'.$part.'">'.$part.'</option>';
         }
-    } else if (!empty($method) && preg_match('/^(.*)::(.*)$/i', $method, $match)) {
-        $cname = $match[1];
-        $mname = $match[2];
-
-        if (!class_exists($cname)) {
-            return _smarty_function_html_ref_select_simple_input($params);
-        }
-
-    	$controller = new $cname();
-        $options .= $controller->$mname($params);
+    } else if (!empty($method) && is_callable($method)) {
+        $options .= call_user_func($method, $params);
+    } else if (!empty($callback) && is_callable($callback)) {
+        $options .= call_user_func($callback, $params);
     } else {
     	$datasource = $params['datasource'];
         $module = str_replace('_', '', strtolower($datasource));

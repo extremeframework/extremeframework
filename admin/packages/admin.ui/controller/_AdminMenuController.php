@@ -16,6 +16,8 @@ class _AdminMenuController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('adminmenu_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

@@ -18,6 +18,10 @@ class __AppController {
         $this->return = isset($_REQUEST['__return'])? $_REQUEST['__return'] : '';
     }
 
+    protected function initialize() {
+        // To be overrided if necessary
+    }
+
 	public function display(&$smarty, $template) {
         if ($this->caller == 'ajax') {
 		    $content = $smarty->fetch($template);

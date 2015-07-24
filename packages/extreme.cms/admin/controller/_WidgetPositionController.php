@@ -16,6 +16,8 @@ class _WidgetPositionController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('widgetposition_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

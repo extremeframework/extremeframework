@@ -16,6 +16,8 @@ class _PostCategoryController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('postcategory_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

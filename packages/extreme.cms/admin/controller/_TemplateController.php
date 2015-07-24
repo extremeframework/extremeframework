@@ -16,6 +16,8 @@ class _TemplateController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('template_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

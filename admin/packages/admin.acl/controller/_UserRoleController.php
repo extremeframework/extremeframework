@@ -16,6 +16,8 @@ class _UserRoleController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('userrole_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

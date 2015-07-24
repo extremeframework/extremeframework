@@ -16,6 +16,8 @@ class _PageWidgetController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('pagewidget_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

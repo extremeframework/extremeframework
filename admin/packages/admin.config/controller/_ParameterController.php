@@ -16,6 +16,8 @@ class _ParameterController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('parameter_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

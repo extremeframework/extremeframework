@@ -2385,6 +2385,28 @@ class DB_DataObject extends DB_DataObject_Overload
             : $_DB_DATAOBJECT['CONNECTIONS'][$this->_database_dsn_md5]->quote($str);
     }
 
+    // VIETTQ
+    function get_database_dsn() {
+        global $_DB_DATAOBJECT;
+
+        $dsn = isset($this->_database_dsn) ? $this->_database_dsn : null;
+
+        if (empty($dsn)) {
+            $options = $_DB_DATAOBJECT['CONFIG'];
+
+            if (!$this->_database && !empty($this->__table)) {
+                $this->_database = isset($options["table_{$this->tableName()}"]) ? $options["table_{$this->tableName()}"] : null;
+            }
+
+            if ($this->_database && !empty($options["database_{$this->_database}"]))  {
+                $dsn = $options["database_{$this->_database}"];
+            } else if (!empty($options['database'])) {
+                $dsn = $options['database'];
+            }
+        }
+
+        return $dsn;
+    }
 
     /**
      * connects to the database
@@ -3618,9 +3640,10 @@ class DB_DataObject extends DB_DataObject_Overload
         }
 
         // if they are the same, then dont add a prefix...
-        if ($obj->_database == $this->_database || $obj->_database_dsn_md5 == $this->_database_dsn_md5) { // VIETTQ
+        if ($obj->_database == $this->_database || $obj->get_database_dsn() == $this->get_database_dsn()) { // VIETTQ
            $dbPrefix = '';
         }
+
         // as far as we know only mysql supports database prefixes..
         // prefixing the database name is now the default behaviour,
         // as it enables joining mutiple columns from multiple databases...

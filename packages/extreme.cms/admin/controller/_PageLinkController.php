@@ -16,6 +16,8 @@ class _PageLinkController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('pagelink_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

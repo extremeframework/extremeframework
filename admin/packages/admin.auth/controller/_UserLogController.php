@@ -16,6 +16,8 @@ class _UserLogController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('userlog_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

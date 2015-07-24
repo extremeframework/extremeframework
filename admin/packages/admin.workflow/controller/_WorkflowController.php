@@ -16,6 +16,8 @@ class _WorkflowController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('workflow_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

@@ -16,6 +16,8 @@ class _AdminOrderStatusController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('adminorderstatus_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

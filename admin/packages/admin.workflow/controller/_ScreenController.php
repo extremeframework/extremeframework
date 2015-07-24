@@ -16,6 +16,8 @@ class _ScreenController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('screen_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {

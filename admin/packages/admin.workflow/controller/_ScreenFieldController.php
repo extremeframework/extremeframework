@@ -16,6 +16,8 @@ class _ScreenFieldController extends __AppController
         parent::__construct();
 
         PluginManager::do_action('screenfield_init');
+
+        $this->initialize();
     }
 
     protected function checkConstraint($model, &$errors, $columns2check) {
