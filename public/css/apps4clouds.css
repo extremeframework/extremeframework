@@ -257,7 +257,6 @@ div.section {
 
 /* Quick search */
 .quicksearch {
-    float:right;
     padding-top:5px;
     padding-bottom:5px;
 }
@@ -598,7 +597,7 @@ tr.additem .button-cancel {
 
 /* View - details */
 div.section {
-    padding: 10px;
+    padding: 10px 10px 10px 0;
     display: block;
     float: none;
 }
@@ -611,6 +610,7 @@ div.section div.section {
     background-color: white;
     padding: 0 10px 5px 10px;
     overflow: hidden;
+    clear: both;
 }
 
 .view_details > h2,.edit_details > h2 {
@@ -861,6 +861,7 @@ div.col h3 a {
 .form-row .input-sizes-width-height {
     margin-left: 5px;
     margin-right: 5px;
+    display: inline-block;
 }
 
 .form-row select {
@@ -1452,7 +1453,8 @@ table.item_list .embedded-view .table tr {
 }
 
 .left-side-collapsed .main-content,
-.left-side-collapsed .horizontal-menu {
+.left-side-collapsed .horizontal-menu,
+.left-side-collapsed #footer {
     margin-left: 52px!important;
 }
 
@@ -1585,7 +1587,8 @@ table.item_list .embedded-view .table tr {
 }
 
 .left-side-hide .main-content,
-.left-side-hide .horizontal-menu {
+.left-side-hide .horizontal-menu,
+.left-side-hide #footer {
     margin-left: 0px!important;
 }
 
@@ -1905,7 +1908,7 @@ body#signin div#container{
     text-decoration:none;
 }
 .main-content .content-inner {
-	margin: 0px 10px 10px 15px;
+	margin: 0px 10px 10px 10px;
 }
 div#top-nav{
     width:100%;
@@ -1958,7 +1961,7 @@ div#heading h1, .main-content h1.heading {
     margin:10px 20px 0 0;
 }
 .main-content h1.heading {
-    padding: 0 0 10px 0px;
+    padding: 0 0 5px 0px;
 }
 .main-content h1.heading .h {
     white-space: nowrap;
@@ -2129,7 +2132,7 @@ div.col-two {
     position:relative;
 }
 .edit-buttons-top {
-    top:-38px;
+    top: -55px;
     height:0px;
 }
 .edit-buttons-bottom {
@@ -2171,12 +2174,11 @@ div.button-save-more:hover {
 }
 
 /* View - buttons */
+.view-control-bar {
+    margin-bottom: 10px;
+}
 .view-buttons {
-    float:right;
-    position:relative;
-    top:-35px;
-    right:0px;
-    height:0px;
+    background-color: rgb(233, 233, 233);
 }
 .widgetview .view-buttons {
 	top: 0;
@@ -2271,22 +2273,29 @@ div.button-save-more:hover {
 .live-search input {
     width: 150px;
     bottom: 6px;
-    margin-left: 8px;
+    margin-left: 3px;
+}
+
+/* Language selection */
+.language-selection {
+    list-style: none;
+    padding: 0 20px;
+}
+.language-selection li {
+    float: left;
+    margin-right: 30px;
+    padding: 0 0 10px;
+}
+.language-selection li a {
+    text-decoration: none;
 }
 
 /* Input sizes by types */
 .input-type-text {
-    width: 310px;
+    width: 100%;
 }
 .form-field textarea {
-    width: 680px;
-}
-.form-field textarea.enable-html {
-    width: 680px;
-    height: 380px;
-    font-family: "Courier New", Courier, monospace;
-    color: #000;
-    overflow: scroll;
+    width: 100%;
 }
 .input-type-date {
     width: 86px;
@@ -2301,13 +2310,12 @@ div.button-save-more:hover {
     float: left;
 }
 
-/* Input sizes by field */
 .input-name,
 .input-title,
 .input-tag-line,
 .input-desc,
 .input-reason {
-    width: 310px;
+    width: 100%;
 }
 .form-field-value input[class*="keywords"] ,
 .form-field-value input[class*="tags"],
@@ -2315,7 +2323,7 @@ div.button-save-more:hover {
 .form-field-value input[class*="path"],
 .form-field-value input[class*="slug"]
 {
-    width: 310px;
+    width: 100%;
 }
 .input-ordering {
     width: 28px;
@@ -2336,6 +2344,15 @@ div.button-save-more:hover {
 }
 .input-type-file {
     width: 240px;
+}
+.edit-main input[type="file"] {
+    float: left;
+    width: auto;
+}
+.form-field textarea.enable-html {
+    font-family: "Courier New", Courier, monospace;
+    color: #000;
+    overflow: scroll;
 }
 
 /* Configurable labels */

@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Post Type), APPLICATION_URL.'/posttype/export', strtolower(Post Type)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Post Type), APPLICATION_URL.'/posttype/export', strtolower(Post Type)));
 <{/php}>
 
 <{$guidelines}>

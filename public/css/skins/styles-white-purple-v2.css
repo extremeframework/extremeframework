@@ -26,7 +26,6 @@
     vertical-align: top!important;
 }
 
-.edit_details .equal-split>tbody>tr>td:nth-child(odd),
 .view_details .equal-split>tbody>tr>td:nth-child(odd) {
     border-bottom: 1px dashed #D2D2D2!important;
     vertical-align: top!important;

@@ -154,6 +154,12 @@
                             <{if Framework::hasModule('Template')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="template" /> <{_t('Copy also')}> <{_t('Template')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('UserQuota')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userquota" /> <{_t('Copy also')}> <{_t('User Quota')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserQuotaLog')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userquotalog" /> <{_t('Copy also')}> <{_t('User Quota Log')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('Copy also')}> <{_t('Workflow Application')|strtolower}></li>
                 <{/if}>
@@ -205,6 +211,12 @@
                             <{if Framework::hasModule('Template')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="template" /> <{_t('Approve also')}> <{_t('Template')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('UserQuota')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userquota" /> <{_t('Approve also')}> <{_t('User Quota')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserQuotaLog')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userquotalog" /> <{_t('Approve also')}> <{_t('User Quota Log')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('Approve also')}> <{_t('Workflow Application')|strtolower}></li>
                 <{/if}>
@@ -255,6 +267,12 @@
                 <{/if}>
                             <{if Framework::hasModule('Template')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="template" /> <{_t('Delete also')}> <{_t('Template')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserQuota')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userquota" /> <{_t('Delete also')}> <{_t('User Quota')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserQuotaLog')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userquotalog" /> <{_t('Delete also')}> <{_t('User Quota Log')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('WorkflowApplication')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('Delete also')}> <{_t('Workflow Application')|strtolower}></li>

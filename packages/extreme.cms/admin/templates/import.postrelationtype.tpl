@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Post Relation Type), APPLICATION_URL.'/postrelationtype/export', strtolower(Post Relation Type)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Post Relation Type), APPLICATION_URL.'/postrelationtype/export', strtolower(Post Relation Type)));
 <{/php}>
 
 <{$guidelines}>

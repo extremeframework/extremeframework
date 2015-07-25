@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Admin Order Status), APPLICATION_URL.'/adminorderstatus/export', strtolower(Admin Order Status)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Admin Order Status), APPLICATION_URL.'/adminorderstatus/export', strtolower(Admin Order Status)));
 <{/php}>
 
 <{$guidelines}>

@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Widget Position), APPLICATION_URL.'/widgetposition/export', strtolower(Widget Position)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Widget Position), APPLICATION_URL.'/widgetposition/export', strtolower(Widget Position)));
 <{/php}>
 
 <{$guidelines}>

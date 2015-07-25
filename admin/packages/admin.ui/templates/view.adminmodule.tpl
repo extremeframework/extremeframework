@@ -157,6 +157,12 @@
             <{if isset($smarty.session.acl.template) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.userquota) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.userquotalog) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.workflowapplication) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -205,6 +211,12 @@
                         <{/if}>
                                             <{if Framework::hasModule('Template') && isset($smarty.session.acl.template) }>
                             <li><a href="#tab-templates"><{_t('Template')}> <span class="badge template-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('UserQuota') && isset($smarty.session.acl.userquota) }>
+                            <li><a href="#tab-userquotas"><{_t('User quota')}> <span class="badge userquota-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('UserQuotaLog') && isset($smarty.session.acl.userquotalog) }>
+                            <li><a href="#tab-userquotalogs"><{_t('User quota log')}> <span class="badge userquotalog-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
                             <li><a href="#tab-workflowapplications"><{_t('Workflow application')}> <span class="badge workflowapplication-badge-count"></span></a></li>
@@ -315,6 +327,22 @@
                         	<{if true || $tab == 'templates'}>
                             	<h2 class="print"><{_t('Template')}></h2>
                                                                     <{ajaxmodule class="WidgetListTemplate" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.template.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('UserQuota') && isset($smarty.session.acl.userquota) }>
+                        <div id="tab-userquotas">
+                        	<{if true || $tab == 'userquotas'}>
+                            	<h2 class="print"><{_t('User quota')}></h2>
+                                                                    <{ajaxmodule class="WidgetListUserQuota" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.userquota.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('UserQuotaLog') && isset($smarty.session.acl.userquotalog) }>
+                        <div id="tab-userquotalogs">
+                        	<{if true || $tab == 'userquotalogs'}>
+                            	<h2 class="print"><{_t('User quota log')}></h2>
+                                                                    <{ajaxmodule class="WidgetListUserQuotaLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.userquotalog.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

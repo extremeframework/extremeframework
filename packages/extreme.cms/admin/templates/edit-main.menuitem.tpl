@@ -176,7 +176,7 @@
                 <div class="form-field form-field-value column-parent">
                                             
             <{if Framework::hasModule('MenuItem')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`menuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="MENU_ITEM" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`menuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="MENU_ITEM" valuecol="ID" textcol="TITLE" sortcol="" groupcol="ID_MENU" blankitem=""}>
 
                             <{if isset($smarty.session.acl.menuitem.new)}>
                     <span class="onflycreation">

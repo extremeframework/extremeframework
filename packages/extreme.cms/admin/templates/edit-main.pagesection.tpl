@@ -93,7 +93,7 @@
                 <div class="form-field form-field-value column-parent">
                                             
             <{if Framework::hasModule('PageSection')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`pagesection_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE_SECTION" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`pagesection_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE_SECTION" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="ID_PAGE" blankitem=""}>
 
                             <{if isset($smarty.session.acl.pagesection.new)}>
                     <span class="onflycreation">

@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Admin Product), APPLICATION_URL.'/adminproduct/export', strtolower(Admin Product)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Admin Product), APPLICATION_URL.'/adminproduct/export', strtolower(Admin Product)));
 <{/php}>
 
 <{$guidelines}>

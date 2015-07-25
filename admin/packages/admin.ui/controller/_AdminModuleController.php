@@ -464,6 +464,14 @@ class _AdminModuleController extends __AppController
                             (new TemplateController())->delete('MODULE', $_ids);
                             break;
 
+                        case 'userquota': 
+                            (new UserQuotaController())->delete('MODULE', $_ids);
+                            break;
+
+                        case 'userquotalog': 
+                            (new UserQuotaLogController())->delete('MODULE', $_ids);
+                            break;
+
                         case 'workflowapplication': 
                             (new WorkflowApplicationController())->delete('MODULE', $_ids);
                             break;

@@ -3,20 +3,7 @@
     <h3><{_t('Select language')}></h3>
 </div>
 
-<style>
-.language-selection {
-    list-style: none;
-}
-.language-selection li {
-    float: left;
-    min-width: 160px;
-}
-.language-selection li a {
-    text-decoration: none;
-}
-</style>
-
-<div class="modal-inner" style="padding:0 20px">
+<div class="modal-inner">
     <ul class="language-selection">
         <{foreach from=$rows item=item}>
             <li>

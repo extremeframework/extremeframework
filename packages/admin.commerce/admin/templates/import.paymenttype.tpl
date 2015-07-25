@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Payment Type), APPLICATION_URL.'/paymenttype/export', strtolower(Payment Type)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Payment Type), APPLICATION_URL.'/paymenttype/export', strtolower(Payment Type)));
 <{/php}>
 
 <{$guidelines}>

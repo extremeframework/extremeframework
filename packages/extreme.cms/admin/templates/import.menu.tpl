@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Menu), APPLICATION_URL.'/menu/export', strtolower(Menu)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Menu), APPLICATION_URL.'/menu/export', strtolower(Menu)));
 <{/php}>
 
 <{$guidelines}>

@@ -16,7 +16,7 @@
 <div class="section">
 
 <{php}>
-	$template->assign('guidelines', sprintf(L_GUIDELINES_IMPORT, strtolower(Page Section), APPLICATION_URL.'/pagesection/export', strtolower(Page Section)));
+	$template->assign('guidelines', sprintf(_t('L_GUIDELINES_IMPORT'), strtolower(Page Section), APPLICATION_URL.'/pagesection/export', strtolower(Page Section)));
 <{/php}>
 
 <{$guidelines}>

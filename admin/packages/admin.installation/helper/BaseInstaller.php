@@ -42,8 +42,8 @@ class BaseInstaller {
 
         $res = $zip->open($downloaded_package);
 
-        if ($res === FALSE) {
-            return "Package file should be a .zip file";
+        if ($res !== TRUE) {
+            return "Package file should be a valid .zip file";
         }
     }
 

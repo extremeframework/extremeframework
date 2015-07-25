@@ -19,7 +19,6 @@
 
 .package {
     float: left;
-    width: 47%;
     border: 1px solid #E2E2E2;
     padding: 10px;
     margin: 10px 20px 10px 0;
@@ -28,7 +27,6 @@
 
 .package .image {
     float: left;
-    width: 30%;
     margin-right: 10px;
 }
 
@@ -38,13 +36,13 @@
 
 .package .info {
     float: left;
-    width: 65%;
 }
 
 .package .name {
     font-size: 18px;
     color: #048497;
     font-family: Helvetica;
+    padding-top: 5px;
 }
 
 .package .actions li {
@@ -61,6 +59,20 @@
 .package .version {
     float: right;
     font-style: italic;
+}
+
+@media only screen and (min-width : 768px) {
+    .package {
+        width: 47%;
+    }
+
+    .package .image {
+        width: 30%;
+    }
+
+    .package .info {
+        width: 65%;
+    }
 }
 </style>
 

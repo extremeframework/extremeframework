@@ -86,7 +86,7 @@
                 <div class="form-field form-field-value column-id-workflow-transition">
                                             
             <{if Framework::hasModule('WorkflowTransition')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow-transition" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$details->ID_WORKFLOW_TRANSITION text=$details->reftext_ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-workflow-transition" class="input-id-workflow-transition" name="`$prefix`workflowlog_formdata_ID_WORKFLOW_TRANSITION" value=$details->ID_WORKFLOW_TRANSITION text=$details->reftext_ID_WORKFLOW_TRANSITION datasource="WORKFLOW_TRANSITION" valuecol="CODE" textcol="NAME" sortcol="" groupcol="ID_WORKFLOW" blankitem=""}>
 
                             <{if isset($smarty.session.acl.workflowtransition.new)}>
                     <span class="onflycreation">

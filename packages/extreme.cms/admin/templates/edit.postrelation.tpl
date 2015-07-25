@@ -2,7 +2,7 @@
 <{include file="header.tpl"}>
 </head>
 <body class="module module-<{$module}>" id="<{$module}>">
-    <{if $details->UUID > 0}>
+    <{if $details->UUID}>
         <{$tmp1 = _t('Edit')}>
         <{$tmp2 = strtolower(_t('Post Relation'))}>
         <{$title = "`$tmp1` `$tmp2`"}>

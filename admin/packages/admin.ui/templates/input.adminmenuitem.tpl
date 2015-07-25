@@ -114,7 +114,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataPARENT}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-parent" name="`$prefix`adminmenuitem_formdata_PARENT" value=$formdata.PARENT datasource="ADMIN_MENU_ITEM" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-parent" name="`$prefix`adminmenuitem_formdata_PARENT" value=$formdata.PARENT datasource="ADMIN_MENU_ITEM" valuecol="ID" textcol="NAME" sortcol="" groupcol="ID_ADMIN_MENU" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
