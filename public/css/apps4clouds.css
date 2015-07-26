@@ -159,6 +159,11 @@ input[type='checkbox'] {
     float: left;
 }
 
+optgroup {
+    color: gray;
+    font-size: 13px;
+}
+
 /* General input styles */
 input[type="text"], input[type="password"], select, textarea {
 	padding: 0 3px;
