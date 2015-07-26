@@ -1,0 +1,33 @@
+/* IE */
+* html body {
+    scrollbar-3dlight-color:#F0F0EE;
+    scrollbar-arrow-color:#676662;
+    scrollbar-base-color:#F0F0EE;
+    scrollbar-darkshadow-color:#DDD;
+    scrollbar-face-color:#E0E0DD;
+    scrollbar-highlight-color:#F0F0EE;
+    scrollbar-shadow-color:#F0F0EE;
+    scrollbar-track-color:#F5F5F5;
+}
+
+/* Editor styles */
+body.mceContentBody {
+    color: #1a1a1a;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.mceContentBody h1 {font-family: 'Segoe UI Light';}
+.mceContentBody h2 {font-family: 'Segoe UI Light';}
+.mceContentBody h3 {font-family: 'Segoe UI Light';}
+.mceContentBody h4 {font-family: 'Segoe UI Light';}
+.mceContentBody h5 {font-family: 'Segoe UI Light';}
+.mceContentBody h6 {font-family: 'Segoe UI Light';}
+
+.mceContentBody h1 {font-size: 2em}
+.mceContentBody h2 {font-size: 1.5em}
+.mceContentBody h3 {font-size: 1.17em}
+.mceContentBody h4 {font-size: 1em}
+.mceContentBody h5 {font-size: .83em}
+.mceContentBody h6 {font-size: .75em}

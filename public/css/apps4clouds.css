@@ -1760,11 +1760,8 @@ div.controls ul li {
 div.controls ul li a, div#top-nav li.status a {
     padding: 2px 8px;
     margin: 0 0 0 3px;
-    background-color: #F1F1F3;
-    border: 1px solid #ccc;
     text-decoration: none;
     color: #333;
-    text-shadow: 0 1px #fff;
     -moz-border-radius: 10px;
     -o-border-radius: 10px;
     -icab-border-radius: 10px;
@@ -1772,10 +1769,6 @@ div.controls ul li a, div#top-nav li.status a {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     font-size: .9em;
-    font-weight: normal;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff',endColorstr = '#ECECEE');
-    background: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#ECECEE));
-    background: -moz-linear-gradient(top,#fff,#ECECEE);
 }
 
 div#top-nav li.status a {
