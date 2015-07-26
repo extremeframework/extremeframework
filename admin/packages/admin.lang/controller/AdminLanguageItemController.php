@@ -60,6 +60,8 @@ class AdminLanguageItemController extends _AdminLanguageItemController
         $alm->CODE = $lang;
         $alm->find();
         if (!$alm->fetch()) {
+            echo "Language '$lang' not found";
+
             return false;
         }
 
@@ -70,8 +72,9 @@ class AdminLanguageItemController extends _AdminLanguageItemController
         $lm->LABEL = $key;
         $lm->find();
         if (!$lm->fetch()) {
-            return false;
+            $lm->insert();
         }
+
         $ID_ADMIN_LABEL = $lm->ID;
 
         // x. Find translation
@@ -79,17 +82,18 @@ class AdminLanguageItemController extends _AdminLanguageItemController
         $alim->ID_ADMIN_LANGUAGE = $ID_ADMIN_LANGUAGE;
         $alim->ID_ADMIN_LABEL = $ID_ADMIN_LABEL;
         $alim->find();
+
         if (!$alim->fetch()) {
-            return false;
-        }
-
-        // x. Update if needed
-        if ($alim->TRANSLATION != $text) {
             $alim->TRANSLATION = $text;
-            $alim->update();
-
-            // Synchronize
-            AdminLanguageController::sync($ID_ADMIN_LANGUAGE);
+            $alim->insert();
+        } else {
+            if ($alim->TRANSLATION != $text) {
+                $alim->TRANSLATION = $text;
+                $alim->update();
+            }
         }
+
+        // Synchronize
+        AdminLanguageController::sync($ID_ADMIN_LANGUAGE);
     }
 }

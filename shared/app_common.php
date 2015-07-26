@@ -2,11 +2,11 @@
 function __t($text, $key = '', $insidequote = false) {
     static $flag = false;
 
-    if (isset($_REQUEST['_configlabel'])) {
-        $_SESSION['_configlabel'] = $_REQUEST['_configlabel'];
+    if (isset($_REQUEST['configlabel'])) {
+        $_SESSION['configlabel'] = $_REQUEST['configlabel'];
     }
 
-    $config = isset($_SESSION['_configlabel']) && $_SESSION['_configlabel'];
+    $config = isset($_SESSION['configlabel']) && $_SESSION['configlabel'];
 
     if ($config && !$insidequote) {
         $html = '<span class="config-label" data-label-text="'.$text.'" data-label-key="'.$key.'">'.$text.'</span>';
@@ -15,16 +15,10 @@ function __t($text, $key = '', $insidequote = false) {
             $flag = true;
 
             $html .= '
-                <div id="config-label-panel">
-                    <div class="header">Translation</div>
-                    <div class="content">
-                        <input type="text" class="translation"/><br/>
-                    </div>
-                    <div class="footer">Key = <span class="key"></span></div>
-                </div>
-
                 <script type="text/javascript">
                     $(function() {
+                        $(\'body\').append(\'<div id="config-label-panel"><div class="header">Translation</div><div class="content"><input type="text" class="translation"/><br/></div><div class="footer">Key = <span class="key"></span></div></div>\');
+
                         $(".config-label").live("mouseover", function(e){
                             var label = $(this);
 
@@ -92,6 +86,8 @@ function _t($key, $insidequote = false) {
                 }
             }
         }
+
+        $text = __t($text, $key, $insidequote);
     }
 
     return $text;

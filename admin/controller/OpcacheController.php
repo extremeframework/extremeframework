@@ -18,6 +18,9 @@ class OpcacheController extends __AppController
         echo '<a href="'.APPLICATION_URL.'/opcache/clear-template-cache">Clear template cache</a> &nbsp; ';
         echo '<a href="'.APPLICATION_URL.'/opcache/clear-data-cache">Clear data cache</a> &nbsp; ';
 
+        echo '<br/> <br/><a href="'.APPLICATION_URL.'/opcache/test-apc">Test APC</a> &nbsp; ';
+        echo '<a href="'.APPLICATION_URL.'/opcache/test-memcache">Test Memcache</a> &nbsp; ';
+
         if ($operation == 'config') {
             echo "<pre>";print_r(opcache_get_configuration());echo "</pre>";
         }
@@ -66,6 +69,26 @@ class OpcacheController extends __AppController
             array_map('unlink', glob(CACHE_DIR.'/data/*'));
 
             echo 'Data cache cleared';
+        }
+
+        if ($operation == 'test-apc') {
+			Cache::apc()->set('test-apc', 'hello');
+
+			$ok = Cache::apc()->get('test-apc') == 'hello';
+
+            if ($ok) {
+                echo 'APC cache working';
+            }
+        }
+
+        if ($operation == 'test-memcache') {
+			Cache::memcache()->set('test-memcache', 'hello2');
+
+			$ok = Cache::memcache()->get('test-memcache') == 'hello2';
+
+            if ($ok) {
+                echo 'Memcache working';
+            }
         }
     }
 }

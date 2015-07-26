@@ -37,6 +37,10 @@ class PackageInstaller extends BaseInstaller {
     function install_package_content($package_root, $packagename) {
         $dir = realpath(APPLICATION_DIR.'/../packages');
 
+        if (!is_writable($dir)) {
+            return "No permission: the directory $dir should be writable";
+        }
+
         // x. Copy package files
         self::recursive_copy($package_root, $dir, true);
 
@@ -45,6 +49,10 @@ class PackageInstaller extends BaseInstaller {
         // x. Copy schema files
         if (is_dir($packagedir.'/schema')) {
             $schemadir = realpath(APPLICATION_DIR.'/../schema');
+
+            if (!is_writable($schemadir)) {
+                return "No permission: the directory $schemadir should be writable";
+            }
 
             self::recursive_copy($packagedir.'/schema', $schemadir, true);
         }
