@@ -7,7 +7,7 @@
     <{if isset($smarty.request.context) && $smarty.request.context == 'settings'}>
         <{include file="menu.adminex.tpl"}>
     <{else}>
-        <{$style = get_option('admin-menu-style')}>
+        <{$style = get_option('admin-menu-style', 'adminex', null, false)}>
 
         <{if $style == 'easytree'}>
             <{include file="menu.easytree.tpl"}>
