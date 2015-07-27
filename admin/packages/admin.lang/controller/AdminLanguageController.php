@@ -37,6 +37,12 @@ class AdminLanguageController extends _AdminLanguageController
     }
 
     static function sync($id = '') {
+        $dir = SHARED_DIR.'/locales';
+
+        if (!is_writable($dir)) {
+            return "No permission: the directory $dir should be writable";
+        }
+
         // Details
 		$model = new AdminLanguageModel();
 
@@ -47,7 +53,7 @@ class AdminLanguageController extends _AdminLanguageController
 		$model->find();
 
      	while ($model->fetch()) {
-    		$filepath = SHARED_DIR.'/locales/app_lang_'.$model->CODE.'.php';
+    		$filepath = $dir.'/app_lang_'.$model->CODE.'.php';
 
             // x. File header
             $header = "<?php\n";
