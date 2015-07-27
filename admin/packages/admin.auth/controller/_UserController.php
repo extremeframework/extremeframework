@@ -22,11 +22,27 @@ class _UserController extends __AppController
 
     protected function checkConstraint($model, &$errors, $columns2check) {
         
-       if (in_array('EMAIL', $columns2check) && !empty($model->EMAIL) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
+       if (in_array('FIRST_NAME', $columns2check) && trim($model->FIRST_NAME) == '') {
+           $errors['first-name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('First name'));
+           return false;
+       }
+       if (in_array('EMAIL', $columns2check) && trim($model->EMAIL) == '') {
+           $errors['email'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Email'));
+           return false;
+       }
+       if (in_array('LOGIN', $columns2check) && trim($model->LOGIN) == '') {
+           $errors['login'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Login'));
+           return false;
+       }
+       if (in_array('PASSWORD', $columns2check) && trim($model->PASSWORD) == '') {
+           $errors['password'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Password'));
+           return false;
+       }
+       if (in_array('EMAIL', $columns2check) && !preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
            $errors['email'] = sprintf(_t('L_VALIDATION_EMAIL'), _t('Email'));
            return false;
        }
-       if (in_array('LOGIN', $columns2check) && !empty($model->LOGIN) && !preg_match('/^[a-z0-9@_\-\.\/#$]+$/i', $model->LOGIN)) {
+       if (in_array('LOGIN', $columns2check) && !preg_match('/^[a-z0-9@_\-\.\/#$]+$/i', $model->LOGIN)) {
            $errors['login'] = sprintf(_t('L_VALIDATION_CODE'), _t('Login'));
            return false;
        }

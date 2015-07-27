@@ -61,7 +61,10 @@
         <span style="float:right">
             <a href="<{$smarty.const.APPLICATION_URL}>/user/forgot"><{_t('Forgot password')}></a>
         </span>
-        <a href="<{$smarty.const.APPLICATION_URL}>/user/register"><{_t('Create an account now')}></a>
+        <{if get_option('enable-registration', true)}>
+            <a href="<{$smarty.const.APPLICATION_URL}>/user/register"><{_t('Create an account now')}></a>
+        <{/if}>
+        <div style="clear:both"></div>
     </div>
 </div>
 

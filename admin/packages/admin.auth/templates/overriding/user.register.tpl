@@ -5,86 +5,140 @@
         lang : '<{$smarty.session.lang}>'
     };
 </script>
+
+<style>
+.user-register .content-inner {
+    margin: auto;
+    padding: 0 20px;
+    max-width: 620px;
+}
+
+.user-register .edit_details .equal-split>tbody>tr>td:nth-child(odd) {
+    border-bottom: none!important;
+}
+
+a.button-register {
+    font-weight: bold;
+    padding: 5px 10px;
+}
+</style>
 </head>
-<body>
+<body class="module user-register">
 
-<{include file="headerbar.tpl"}>
+<{include file="top.tpl"}>
 
-<div id="container">
-<div id="main-body" class="main-content">
+<h1 class="heading">
+    <span class="h"><{_t('Create an Account')}></span>
+</h1>
 
-<div id="heading">
-    <div class="inner">
-        <h1>Create an Account</h1>
-    </div>
-</div>
-
-<div class="content-inner">
-
-<form name="userform" id="userform" action="<{$smarty.const.APPLICATION_URL}>/user/register" method="post" enctype="multipart/form-data">
+<div class="edit_details">
+    <!-- Details -->
     <div class="section">
         <div>
-            <{if $message}>
-                <p style="color:red;"><{$message}></p>
-            <{/if}>
-        	<div class="form-row form-row-mandatory">
-        		<label>Your first name</label>
-        		<div class="form-field column-first-name">
-                    <input class="input-first-name" type="text" name="<{$prefix}>user_formdata_FIRST_NAME" value="<{$details->FIRST_NAME|escape}>" size="40">
-        		</div>
-        	</div>
-        	<div class="form-row form-row-mandatory">
-        		<label>Your last name</label>
-        		<div class="form-field column-last-name">
-                    <input class="input-last-name" type="text" name="<{$prefix}>user_formdata_LAST_NAME" value="<{$details->LAST_NAME|escape}>" size="40">
-        		</div>
-        	</div>
-        	<div class="form-row form-row-mandatory">
-        		<label>Email address</label>
-        		<div class="form-field column-email">
-                    <input class="input-email" type="text" name="<{$prefix}>user_formdata_EMAIL" value="<{$details->EMAIL|escape}>" size="40">
-                    <div style="padding:5px 0 5px 0">(account activation information will be sent to this address)</div>
-        		</div>
-        	</div>
-        	<div class="form-row form-row-mandatory">
-        		<label>Create an account password</label>
-        		<div class="form-field column-password">
-                    <input class="input-password" type="password" name="<{$prefix}>user_formdata_PASSWORD" value="<{$details->PASSWORD}>">
-        		</div>
-        	</div>
-        	<div class="form-row form-row-mandatory">
-        		<label>Retype the password</label>
-        		<div class="form-field column-password2">
-                    <input class="input-password2" type="password" name="PASSWORD2" value="<{$details->PASSWORD2}>">
-        		</div>
-        	</div>
-        	<div class="form-row form-row-mandatory">
-        		<label>Please type the number (as shown in the image) to the box below it</label>
-        		<div class="form-field column-captcha">
-                    <{$captcha}>
-        		</div>
-            </div>
-        	<div class="form-row form-row-mandatory">
-        		<div class="form-field column-tos">
-        		    <input type="checkbox" name="ACCEPT_TOS" value="1"/>&nbsp;
-        		    <span>I accept the <a href="<{$smarty.const.APPLICATION_URL}>/scopes/cms/terms-of-service" style="text-decoration:none" target="_blank">Terms of service</a> of <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
-        		</div>
-            </div>
-        	<div class="form-row form-row-mandatory">
-        		<div class="form-field column-newsletter">
-        		    <input type="checkbox" name="ACCEPT_NEWSLETTER" value="1"/>&nbsp;
-        		    <span>I would like to receive new updates, promotions or special offers from <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
-        		</div>
+            <div class="edit-main edit_details">
+                <{if $message}>
+                    <ul class="message">
+                        <li><{$message}></li>
+                    </ul>
+                <{/if}>
+
+                <form name="userform" id="userform" action="<{$smarty.const.APPLICATION_URL}>/user/register" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split" style="margin-top:10px;">
+                        <tbody>
+                            <tr class="form-row form-row-first-name">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('First name')}></label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-first-name">
+                                        <input class="input-first-name input-type-text" type="text" name="user_formdata_FIRST_NAME" value="<{$details->FIRST_NAME|escape}>"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="form-row form-row-last-name">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('Last name')}></label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-last-name">
+                                        <input class="input-last-name input-type-text" type="text" name="user_formdata_LAST_NAME" value="<{$details->LAST_NAME|escape}>"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="form-row form-row-email">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('Email address')}></label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-email">
+                                        <input class="input-email input-type-text" type="text" name="user_formdata_EMAIL" value="<{$details->EMAIL|escape}>"/>
+                                        <div style="padding:5px 0 5px 0">(<{_t('account activation information will be sent to this address')}>)</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="form-row form-row-password">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('Create an account password')}></label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-password">
+                                        <input class="input-password input-type-text" type="password" name="user_formdata_PASSWORD" value="<{$details->PASSWORD}>"/>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="form-row form-row-password">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('Retype the password')}></label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-password2">
+                                        <input class="input-password input-type-text" type="password" name="PASSWORD2" value="<{$details->PASSWORD2}>"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                	<div class="form-row form-row-mandatory">
+                		<label>Please type the number (as shown in the image) to the box below it</label>
+                		<div class="form-field column-captcha">
+                            <{$captcha}>
+                		</div>
+                    </div>
+                	<div class="form-row form-row-mandatory">
+                		<div class="form-field column-tos">
+                		    <input type="checkbox" name="ACCEPT_TOS" value="1"/>&nbsp;
+                		    <span>I accept the <a href="<{$smarty.const.APPLICATION_URL}>/terms-of-service" style="text-decoration:none" target="_blank">Terms of service</a> of <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
+                		</div>
+                    </div>
+                	<div class="form-row form-row-mandatory">
+                		<div class="form-field column-newsletter">
+                		    <input type="checkbox" name="ACCEPT_NEWSLETTER" value="1"/>&nbsp;
+                		    <span><{_t('I would like to receive information updates from')}> <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
+                		</div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="clearer"></div>
-    <div class="button-bar buttons">
-        <div class="button-general button-save">
-            <a class="button-save" onclick="$('#userform').submit();return false;"><span class="button-face">Register</span></a>
+
+    <!-- Control buttons -->
+    <div style="margin-top: 10px;">
+        <div class="button-general button-save btn btn-success">
+            <a class="button-register" onclick="$('#userform').submit();return false;"><span class="button-face"><{_t('Register')}></span></a>
         </div>
         <div class="clearer"></div>
     </div>
-</form>
+</div>
 
 <{include file="footer.tpl"}>

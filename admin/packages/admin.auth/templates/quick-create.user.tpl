@@ -56,12 +56,12 @@
         <{elseif isset($acleditablecolumns['FIRST_NAME']) && !$acleditablecolumns['FIRST_NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['FIRST_NAME'])}>
             <input type="hidden" class="input-first-name" name="user_formdata_FIRST_NAME" value="<{$details->FIRST_NAME}>" />
         <{else}>
-    		<td class="form-row form-row-first-name">
+    		<td class="form-row form-row-first-name form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('First name')}></label>
+        		    <label><{_t('First name')}><span class="mandatory">*</span></label>
                 </div>
             </td>
-            <td class="form-row form-row-first-name" colspan="3">
+            <td class="form-row form-row-first-name form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-first-name">
                                             
 
@@ -116,12 +116,12 @@
         <{elseif isset($acleditablecolumns['EMAIL']) && !$acleditablecolumns['EMAIL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['EMAIL'])}>
             <input type="hidden" class="input-email" name="user_formdata_EMAIL" value="<{$details->EMAIL}>" />
         <{else}>
-    		<td class="form-row form-row-email">
+    		<td class="form-row form-row-email form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('Email')}></label>
+        		    <label><{_t('Email')}><span class="mandatory">*</span></label>
                 </div>
             </td>
-            <td class="form-row form-row-email" colspan="3">
+            <td class="form-row form-row-email form-row-mandatory" colspan="3">
                 <div class="form-field form-field-value column-email">
                                             
 

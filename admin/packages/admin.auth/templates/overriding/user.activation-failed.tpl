@@ -1,20 +1,20 @@
 <{include file="header.tpl"}>
+<style>
+.module.center .content-inner {
+    margin: auto;
+    padding: 0 20px;
+    max-width: 620px;
+}
+</style>
 </head>
-<body>
+<body class="module center">
 
-<{include file="headerbar.tpl"}>
+<{include file="top.tpl"}>
 
-<div id="container">
-<div id="main-body" class="main-content">
+<h1 class="heading">
+    <span class="h"><{_t('Activation failed')}></span>
+</h1>
 
-<div id="heading">
-    <div class="inner">
-        <h1>Activation failed</h1>
-    </div>
-</div>
-
-<div class="content-inner">
-
-<p>Unable to perform account activation.</p>
+<p><{sprintf(_t('Unable to perform account activation.')}></p>
 
 <{include file="footer.tpl"}>

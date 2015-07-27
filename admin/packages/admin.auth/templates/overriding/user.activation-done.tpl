@@ -1,20 +1,20 @@
 <{include file="header.tpl"}>
+<style>
+.module.center .content-inner {
+    margin: auto;
+    padding: 0 20px;
+    max-width: 620px;
+}
+</style>
 </head>
-<body>
+<body class="module center">
 
-<{include file="headerbar.tpl"}>
+<{include file="top.tpl"}>
 
-<div id="container">
-<div id="main-body" class="main-content">
+<h1 class="heading">
+    <span class="h"><{_t('Account activated')}></span>
+</h1>
 
-<div id="heading">
-    <div class="inner">
-        <h1>Account activated</h1>
-    </div>
-</div>
-
-<div class="content-inner">
-
-<p>Your account has been activated. Click <a href="<{$smarty.const.APPLICATION_URL}>/">here</a> to return to the login page.</p>
+<p><{sprintf(_t('Your account has been activated. Click <a href="%s">here</a> to return to the login page.'), $smarty.const.APPLICATION_URL)}></p>
 
 <{include file="footer.tpl"}>

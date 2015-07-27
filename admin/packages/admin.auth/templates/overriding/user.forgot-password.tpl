@@ -1,42 +1,69 @@
 <{include file="header.tpl"}>
+<style>
+.forgot-password .content-inner {
+    margin: auto;
+    padding: 0 20px;
+    max-width: 620px;
+}
+
+.forgot-password .edit_details .equal-split>tbody>tr>td:nth-child(odd) {
+    border-bottom: none!important;
+}
+
+a.button-send {
+    font-weight: bold;
+    padding: 5px 10px;
+}
+</style>
 </head>
-<body>
+<body class="module forgot-password">
 
-<{include file="headerbar.tpl"}>
+<{include file="top.tpl"}>
 
-<div id="container">
-<div id="main-body" class="main-content">
+<h1 class="heading">
+    <span class="h"><{_t('Forgot Password')}></span>
+</h1>
 
-<div id="heading">
-    <div class="inner">
-        <h1>Forgot Password</h1>
-    </div>
-</div>
-
-<div class="content-inner">
-
-<form name="userform" id="userform" action="<{$smarty.const.APPLICATION_URL}>/user/forgot" method="post" enctype="multipart/form-data">
+<div class="edit_details">
+    <!-- Details -->
     <div class="section">
         <div>
-            <{if $message}>
-                <p style="color:red;"><{$message}></p>
-            <{/if}>
-        	<div class="form-row form-row-mandatory">
-        		<label>Enter your account's email address:</span></label>
-        		<div class="form-field column-email">
-                    <div style="padding:5px 0 5px 0">A link to reset your password will be sent to this address</div>
-                    <input class="input-email" type="text" name="user_formdata_EMAIL" value="<{$details->EMAIL|escape}>" size="60">
-        		</div>
-        	</div>
+            <div class="edit-main edit_details">
+                <{if $message}>
+                    <ul class="message">
+                        <li><{$message}></li>
+                    </ul>
+                <{/if}>
+
+                <form name="userform" id="userform" action="<{$smarty.const.APPLICATION_URL}>/user/forgot" method="post" enctype="multipart/form-data">
+                    <table class="table table-bordered table-custom-layout equal-split" style="margin-top:10px;">
+                        <tbody>
+                            <tr class="form-row form-row-email">
+                        		<td>
+                                    <div class="form-field form-field-label">
+                            		    <label><{_t('Enter your account\'s email address')}>:</label>
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="form-field form-field-value column-email">
+                                        <input class="input-email" type="text" name="user_formdata_EMAIL" value="<{$details->EMAIL|escape}>" size="60">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
         </div>
     </div>
-    <div class="clearer"></div>
-    <div class="button-bar buttons">
-        <div class="button-general button-save">
-            <a class="button-save" onclick="$('#userform').submit();return false;"><span class="button-face">Send</span></a>
+
+    <!-- Control buttons -->
+    <div style="margin:10px 0 0 3px">
+        <div class="button-general button-save btn btn-success">
+            <a class="button-send" onclick="$('#userform').submit();return false;"><span class="button-face"><{_t('Recover')}></span></a>
         </div>
         <div class="clearer"></div>
     </div>
-</form>
+</div>
 
 <{include file="footer.tpl"}>

@@ -28,7 +28,7 @@ class UserMembershipModel extends DataObject_USER_MEMBERSHIP {
             $this->WFID = WorkflowHelper::getDefaultWorkflowStage($this->_module);
         }
 
-	    parent::insert();
+        $result = parent::insert();
 
 	    if ($check && !$this->id()) {
             TransactionHelper::rollback();
@@ -36,9 +36,11 @@ class UserMembershipModel extends DataObject_USER_MEMBERSHIP {
             (new __AppController())->pagenotfound("[{$this->_module}] There is a record with an empty key");
         }
 
-        if ($notify) {
+        if ($result && $notify) {
             NotificationHelper::notifyChange($this->_module, 'insert');
         }
+
+        return $result;
     }
 
     function update($dataObject = false, $notify = true) {
@@ -46,11 +48,13 @@ class UserMembershipModel extends DataObject_USER_MEMBERSHIP {
             $this->WFID = WorkflowHelper::getDefaultWorkflowStage($this->_module);
         }
 
-        parent::update($dataObject);
+        $result = parent::update($dataObject);
 
-        if ($notify) {
+        if ($result && $notify) {
             NotificationHelper::notifyChange($this->_module, 'update');
         }
+
+        return $result;
     }
 
     function delete($notify = true) {
@@ -60,9 +64,9 @@ class UserMembershipModel extends DataObject_USER_MEMBERSHIP {
 
         $this->whereAdd(TABLE_PREFIX.$this->__table.".WFID IS NULL OR ".TABLE_PREFIX.$this->__table.".WFID = '".implode("' OR ".TABLE_PREFIX.$this->__table.".WFID = '", WorkflowHelper::getDeletableStages($this->_module))."'");
 
-        parent::delete(true);
+        $result = parent::delete(true);
 
-        if ($notify) {
+        if ($result && $notify) {
             NotificationHelper::notifyChange($this->_module, 'delete');
         }
     }

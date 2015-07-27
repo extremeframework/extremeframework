@@ -57,23 +57,23 @@ class UserController extends _UserController
             $message = '';
 
             if (empty($model->FIRST_NAME)) {
-                $message = 'First Name should not be empty';
+                $message = _t('First name should not be empty');
             } elseif (empty($model->LAST_NAME)) {
-                $message = 'Last Name should not be empty';
+                $message = _t('Last name should not be empty');
             } elseif (empty($model->EMAIL)) {
-                $message = 'Email Address should not be empty';
+                $message = _t('Email address should not be empty');
             } elseif (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
-                $message = 'Invalid email address';
+                $message = _t('Invalid email address');
             } elseif (empty($model->PASSWORD) || strlen(trim($model->PASSWORD)) < 6) {
-                $message = 'Password should be at least 6 characters and contains no spaces';
+                $message = _t('Password should be at least 6 characters and contains no spaces');
             } elseif (empty($model->PASSWORD2)) {
-                $message = 'Password confirmation should not be empty';
+                $message = _t('Password confirmation should not be empty');
             } elseif ($model->PASSWORD != $model->PASSWORD2) {
-                $message = 'Password confirmation mismatch';
+                $message = _t('Password confirmation mismatch');
             } elseif (empty($_POST["recaptcha_response_field"])) {
-                $message = 'Please type the text displayed in the verification image';
+                $message = _t('Please type the text displayed in the verification image');
             } elseif (!$accept_tos) {
-                $message = 'You need to accept the Terms of service of '.ORGANIZATION_NAME_SHORT.' before continuing';
+                $message = _t('You need to accept the Terms of service of ').ORGANIZATION_NAME_SHORT.' '._t('before continuing');
             }
 
             // x. Captcha checking
@@ -84,9 +84,9 @@ class UserController extends _UserController
                     $captcha_error = $captcha_resp->error;
 
                     if ($captcha_error == 'incorrect-captcha-sol') {
-                        $message = "Incorrect captcha verification.";
+                        $message = _t("Incorrect captcha verification");
                     } else {
-                        $message = "Captcha verification error.";
+                        $message = _t("Captcha verification error");
                     }
                 }
             }
@@ -112,12 +112,9 @@ class UserController extends _UserController
                 $model->FORCE_PASSWORD_CHANGE = false;
                 $model->IS_ENABLED = false;
                 $model->CREATION_DATE = date('Y-m-d H:i:s');
-                $model->REFID = $uc->nextRefid();
-                $model->UUID = $uc->uuid();
-                $model->WFID = $uc->getDefaultWorkflowStage('user');
 
         		if (!$model->insert()) {
-                    $message = 'Account registration error';
+                    $message = _t('Account registration error');
         		} else {
                     // x. Update user domain id
                     $model->UDID = $model->ID;
@@ -142,7 +139,7 @@ class UserController extends _UserController
         		    // x. Add to the Base User group
         		    $umc = new UserMembershipController();
         		    if (!$umc->addUserToGroup($model, DEFAULT_USER_GROUP)) {
-                        $message = 'Account registration error';
+                        $message = _t('Account registration error');
                     } else {
                         // Create activation link
                         $compound = $model->ID.','.$model->PASSWORD;
@@ -170,7 +167,7 @@ class UserController extends _UserController
                         $headers .= 'From: '.SUPPORT_NAME.' <'.SUPPORT_EMAIL.'>' . "\r\n";
 
                         if (!MailController::mail($model->EMAIL, 'Account Information', nl2br($content), $headers)) {
-                            $message = 'Cannot send notification email';
+                            $message = _t('Cannot send notification email');
                         }
                     }
                 }
@@ -215,16 +212,16 @@ class UserController extends _UserController
             $error = '';
 
             if (empty($model->EMAIL)) {
-                $error = 'Email Address should not be empty';
+                $error = _t('Email address should not be empty');
             } elseif (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
-                $error = 'Invalid email address';
+                $error = _t('Invalid email address');
             } else {
                 // x. Get account information
                 $um = new UserModel();
                 $um->EMAIL = $model->EMAIL;
                 $um->find();
                 if (!$um->fetch()) {
-                    $error = 'There is no account associated with the given email address';
+                    $error = _t('There is no account associated with the given email address');
                 }
             }
 
@@ -235,7 +232,7 @@ class UserController extends _UserController
 
                 // x. Build email
                 $smarty = Framework::getSmarty(__FILE__);
-                $smarty->assign('name', $um->NAME);
+                $smarty->assign('name', $um->FIRST_NAME.' '.$um->LAST_NAME);
                 $smarty->assign('password_reset_link', $password_reset_link);
                 $content = $smarty->fetch('.email.forgot-password.tpl');
 
@@ -245,7 +242,7 @@ class UserController extends _UserController
                 $headers .= 'From: '.SUPPORT_NAME.' <'.SUPPORT_EMAIL.'>' . "\r\n";
 
                 if (!MailController::mail($model->EMAIL, 'Reset Password', nl2br($content), $headers)) {
-                    $error = 'Cannot send notification email';
+                    $error = _t('Cannot send notification email');
                 }
             }
 
@@ -277,23 +274,21 @@ class UserController extends _UserController
             $error = '';
 
             if (empty($email)) {
-                $error = 'Email Address should not be empty';
+                $error = _t('Email address should not be empty');
             } elseif (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $email)) {
-                $error = 'Invalid email address';
+                $error = _t('Invalid email address');
             } else {
                 // x. Get account information
                 $model = new UserModel();
                 $model->EMAIL = $email;
                 $model->find();
                 if (!$model->fetch()) {
-                    $error = 'There is no account associated with the given email address';
+                    $error = _t('There is no account associated with the given email address');
                 }
 
-                // x. Check if inactivated
+                // x. Check if already activated
                 if ($model->IS_ENABLED) {
-                    header('Location:'.APPLICATION_URL);
-
-                    exit(1);
+                    $error = _t('The email address is already activated!');
                 }
             }
 
@@ -304,7 +299,7 @@ class UserController extends _UserController
 
                 // x. Activation email content
                 $smarty = Framework::getSmarty(__FILE__);
-                $smarty->assign('name', $model->NAME);
+                $smarty->assign('name', $model->FIRST_NAME.' '.$model->LAST_NAME);
                 $smarty->assign('activation', $activation);
                 $content = $smarty->fetch('.email.resend-activation.tpl');
 
@@ -314,7 +309,7 @@ class UserController extends _UserController
                 $headers .= 'From: '.SUPPORT_NAME.' <'.SUPPORT_EMAIL.'>' . "\r\n";
 
                 if (!MailController::mail($model->EMAIL, 'Account Activation', nl2br($content), $headers)) {
-                    $error = 'Cannot send account activation email';
+                    $error = _t('Cannot send account activation email');
                 }
             }
 
@@ -474,11 +469,11 @@ class UserController extends _UserController
 
             $error = '';
             if (empty($password) || strlen(trim($password)) < 6) {
-                $error = 'Password should be at least 6 characters and contains no spaces';
+                $error = _t('Password should be at least 6 characters with no spaces');
             } elseif (empty($password2)) {
-                $error = 'Password confirmation should not be empty';
+                $error = _t('Password confirmation should not be empty');
             } elseif ($password != $password2) {
-                $error = 'Password confirmation mismatch';
+                $error = _t('Password confirmation mismatch');
             }
 
             if (empty($error)) {
@@ -496,6 +491,7 @@ class UserController extends _UserController
                 $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $error);
+                $smarty->assign('password', $password);
                 $smarty->assign('compound', $_REQUEST['c']);
 
                 $this->display($smarty, 'user.reset-password.tpl');
