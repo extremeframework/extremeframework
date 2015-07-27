@@ -81,7 +81,7 @@ class AclController
              	    $m->IS_IMPLICIT = true;
 
          		    $memberships[] = $m;
-         		    $explicit_group_ids[] = $m->ID;
+         		    $explicit_group_ids[] = $ugm->ID;
                 }
     		}
         }
