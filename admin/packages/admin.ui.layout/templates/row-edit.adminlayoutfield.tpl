@@ -26,8 +26,8 @@
                         
                             <input class="input-module" type="text" name="<{$prefix}>adminlayoutfield_formdata_MODULE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/view/<{$row->UUID}>"><{/if}>	<{$row->MODULE|escape}>
-<{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->MODULE|escape}>
+    <{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -39,7 +39,7 @@
                     	                            <{$tmp_value = $formdataID_ADMIN_LAYOUT_SECTION}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$formdata.ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$formdata.ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.adminlayoutsection.new)}>
                                         <span class="onflycreation">
@@ -69,8 +69,8 @@
                         
                             <input class="input-column" type="text" name="<{$prefix}>adminlayoutfield_formdata_COLUMN" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/view/<{$row->UUID}>"><{/if}>	<{$row->COLUMN|escape}>
-<{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlayoutfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->COLUMN|escape}>
+    <{if isset($smarty.session.acl.adminlayoutfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -84,8 +84,8 @@
                         
                             <input class="input-position" type="text" name="<{$prefix}>adminlayoutfield_formdata_POSITION" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->POSITION|escape}>
-</span>
+                            <span>    	    <{$row->POSITION|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

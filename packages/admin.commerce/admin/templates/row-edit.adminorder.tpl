@@ -26,8 +26,8 @@
                         
                             <input class="input-customer-id-country" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_ID_COUNTRY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>	<{$row->CUSTOMER_ID_COUNTRY|escape}>
-<{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>    	    <{$row->CUSTOMER_ID_COUNTRY|escape}>
+    <{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -41,8 +41,8 @@
                         
                             <input class="input-customer-first-name" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_FIRST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>	<{$row->CUSTOMER_FIRST_NAME|escape}>
-<{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>    	    <{$row->CUSTOMER_FIRST_NAME|escape}>
+    <{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -56,8 +56,8 @@
                         
                             <input class="input-customer-last-name" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_LAST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_LAST_NAME|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_LAST_NAME|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -71,8 +71,8 @@
                         
                             <input class="input-customer-city" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_CITY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_CITY|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_CITY|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -86,8 +86,8 @@
                         
                             <input class="input-customer-state" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_STATE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_STATE|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_STATE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -101,8 +101,8 @@
                         
                             <input class="input-customer-zip-code" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_ZIP_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_ZIP_CODE|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_ZIP_CODE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -116,8 +116,8 @@
                         
                             <input class="input-customer-email" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_EMAIL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="150"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_EMAIL|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_EMAIL|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -131,8 +131,8 @@
                         
                             <input class="input-customer-phone" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_PHONE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CUSTOMER_PHONE|escape}>
-</span>
+                            <span>    	    <{$row->CUSTOMER_PHONE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -164,8 +164,8 @@
                         
                             <input class="input-coupon-code" type="text" name="<{$prefix}>adminorder_formdata_COUPON_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->COUPON_CODE|escape}>
-</span>
+                            <span>    	    <{$row->COUPON_CODE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -194,7 +194,7 @@
                     	                            <{$tmp_value = $formdataID_PAYMENT_TYPE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$formdata.ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$formdata.ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.paymenttype.new)}>
                                         <span class="onflycreation">
@@ -254,8 +254,8 @@
                         
                             <input class="input-payment-ref" type="text" name="<{$prefix}>adminorder_formdata_PAYMENT_REF" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->PAYMENT_REF|escape}>
-</span>
+                            <span>    	    <{$row->PAYMENT_REF|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -284,8 +284,8 @@
                         
                             <input class="input-refund-ref" type="text" name="<{$prefix}>adminorder_formdata_REFUND_REF" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->REFUND_REF|escape}>
-</span>
+                            <span>    	    <{$row->REFUND_REF|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -312,7 +312,7 @@
                     	                            <{$tmp_value = $formdataID_ADMIN_ORDER_STATUS}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$formdata.ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$formdata.ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.adminorderstatus.new)}>
                                         <span class="onflycreation">

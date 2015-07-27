@@ -42,9 +42,9 @@
 <{elseif $type == 'price'}>
     <input class="input-<{$columncode}> input-type-currency currency-format" type="text" name="<{$module}>_formdata_<{$column}>" value="<{$value}>"  />
 <{elseif $type == 'select'}>
-    <{html_ref_select multiple=$settings.multiple autocomplete="1" ajax="0" id="input-`$columncode`" class="input-`$columncode`" name="`$module`_formdata_`$column`" value=$value options=$settings.options groupcol=$settings.groupcol blankitem=$settings.blankitem}>
+    <{html_ref_select multilingual="0" multiple=$settings.multiple autocomplete="1" ajax="0" id="input-`$columncode`" class="input-`$columncode`" name="`$module`_formdata_`$column`" value=$value options=$settings.options groupcol=$settings.groupcol blankitem=$settings.blankitem}>
 <{elseif $type == 'refselect'}>
-    <{html_ref_select multiple=$settings.multiple autocomplete="1" ajax="0" id="input-`$columncode`" class="input-`$columncode`" name="`$module`_formdata_`$column`" value=$value datasource=$settings.datasource valuecol=$settings.valuecol textcol=$settings.textcol sortcol=$settings.sortcol groupcol=$settings.groupcol blankitem=$settings.blankitem}>
+    <{html_ref_select multilingual="0" multiple=$settings.multiple autocomplete="1" ajax="0" id="input-`$columncode`" class="input-`$columncode`" name="`$module`_formdata_`$column`" value=$value datasource=$settings.datasource valuecol=$settings.valuecol textcol=$settings.textcol sortcol=$settings.sortcol groupcol=$settings.groupcol blankitem=$settings.blankitem}>
 <{else}>
     <input class="input-<{$columncode}> input-type-text" type="text" name="<{$module}>_formdata_<{$column}>" value="<{$value|escape}>"  />
 <{/if}>

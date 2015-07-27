@@ -26,8 +26,8 @@
                         
                             <input class="input-title" type="text" name="<{$prefix}>post_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.post.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.post.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.post.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/post/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.post.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -39,7 +39,7 @@
                     	                            <{$tmp_value = $formdataID_POST_TYPE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$formdata.ID_POST_TYPE datasource="POST_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$formdata.ID_POST_TYPE datasource="POST_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.posttype.new)}>
                                         <span class="onflycreation">
@@ -67,7 +67,7 @@
                     	                            <{$tmp_value = $formdataID_POST_CATEGORY}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$formdata.ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$formdata.ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.postcategory.new)}>
                                         <span class="onflycreation">
@@ -105,8 +105,8 @@
                         
                             <input class="input-meta-keywords" type="text" name="<{$prefix}>post_formdata_META_KEYWORDS" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->META_KEYWORDS|escape}>
-</span>
+                            <span>    	    <{$row->META_KEYWORDS|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -120,8 +120,8 @@
                         
                             <input class="input-author" type="text" name="<{$prefix}>post_formdata_AUTHOR" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->AUTHOR|escape}>
-</span>
+                            <span>    	    <{$row->AUTHOR|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -133,7 +133,7 @@
                     	                            <{$tmp_value = $formdataID_TEMPLATE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-template" name="`$prefix`post_formdata_ID_TEMPLATE" value=$formdata.ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-template" name="`$prefix`post_formdata_ID_TEMPLATE" value=$formdata.ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.template.new)}>
                                         <span class="onflycreation">

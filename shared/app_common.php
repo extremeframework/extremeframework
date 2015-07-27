@@ -1,6 +1,10 @@
 <?php
-function __t($text, $key = '', $insidequote = false) {
+function __t($text, $key = '', $insidequote = false, $escape = false) {
     static $flag = false;
+
+    if ($escape) {
+        $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8', true);
+    }
 
     if (isset($_REQUEST['configlabel'])) {
         $_SESSION['configlabel'] = $_REQUEST['configlabel'];
@@ -57,37 +61,13 @@ function __t($text, $key = '', $insidequote = false) {
     }
 }
 
-function _t($key, $insidequote = false) {
+function _t($key, $insidequote = false, $escape = false) {
     global $_L;
 
     if (isset($_L[$key])) {
-        $text = __t($_L[$key], $key, $insidequote);
+        $text = __t($_L[$key], $key, $insidequote, $escape);
     } else {
-        $text = $key;
-
-        $is_english = !preg_match('/[^a-z0-9\s\-\?\.:,;]/i', $text);
-
-        if ($is_english) {
-            if (Framework::hasModule('AdminLabel')) {
-                $model = new AdminLabelModel();
-                $model->LABEL = $text;
-                $model->find();
-                $model->fetch();
-
-                if (!$model->ID) {
-                    $model->insert(false);
-
-                    $item = new AdminLanguageItemModel();
-                    $item->ID_ADMIN_LANGUAGE = 1;
-                    $item->ID_ADMIN_LABEL = $model->ID;
-                    $item->TRANSLATION = $text;
-
-                    $item->insert(false);
-                }
-            }
-        }
-
-        $text = __t($text, $key, $insidequote);
+        $text = __t($key, $key, $insidequote, $escape);
     }
 
     return $text;

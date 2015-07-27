@@ -26,8 +26,8 @@
                         
                             <input class="input-name" type="text" name="<{$prefix}>adminmenuitem_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
-<{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/view/<{$row->UUID}>"><{/if}>    	    <{$row->NAME|escape}>
+    <{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -39,7 +39,7 @@
                     	                            <{$tmp_value = $formdataID_ADMIN_MENU}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-admin-menu" name="`$prefix`adminmenuitem_formdata_ID_ADMIN_MENU" value=$formdata.ID_ADMIN_MENU datasource="ADMIN_MENU" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-menu" name="`$prefix`adminmenuitem_formdata_ID_ADMIN_MENU" value=$formdata.ID_ADMIN_MENU datasource="ADMIN_MENU" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.adminmenu.new)}>
                                         <span class="onflycreation">
@@ -67,7 +67,7 @@
                     	                            <{$tmp_value = $formdataMODULE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`adminmenuitem_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`adminmenuitem_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.adminmodule.new)}>
                                         <span class="onflycreation">
@@ -97,8 +97,8 @@
                         
                             <input class="input-path" type="text" name="<{$prefix}>adminmenuitem_formdata_PATH" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/view/<{$row->UUID}>"><{/if}>	<{$row->PATH|escape}>
-<{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmenuitem/view/<{$row->UUID}>"><{/if}>    	    <{$row->PATH|escape}>
+    <{if isset($smarty.session.acl.adminmenuitem.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -112,8 +112,8 @@
                         
                             <input class="input-font-awesome-icon" type="text" name="<{$prefix}>adminmenuitem_formdata_FONT_AWESOME_ICON" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->FONT_AWESOME_ICON|escape}>
-</span>
+                            <span>    	    <{$row->FONT_AWESOME_ICON|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

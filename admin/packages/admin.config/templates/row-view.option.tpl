@@ -10,32 +10,32 @@
             <{if (in_array('NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.option.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/option/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
-<{if isset($smarty.session.acl.option.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.option.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/option/view/<{$row->UUID}>"><{/if}>    	    <{$row->NAME|escape}>
+    <{if isset($smarty.session.acl.option.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.option.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/option/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
-<{if isset($smarty.session.acl.option.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.option.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/option/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
+    <{if isset($smarty.session.acl.option.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('VALUE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VALUE']) && ((isset($aclviewablecolumns['VALUE']) && $aclviewablecolumns['VALUE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUE']) || $aclviewablecolumns['VALUE']))) }>
                 <td class="column column-value text " >
-                                        	<span>	<{$row->VALUE|escape}>
-</span>
+                                        	<span>    	    <{$row->VALUE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CONTEXT', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CONTEXT']) && ((isset($aclviewablecolumns['CONTEXT']) && $aclviewablecolumns['CONTEXT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONTEXT']) || $aclviewablecolumns['CONTEXT']))) }>
                 <td class="column column-context text " >
-                                        	<span>	<{$row->CONTEXT|escape}>
-</span>
+                                        	<span>    	    <{$row->CONTEXT|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

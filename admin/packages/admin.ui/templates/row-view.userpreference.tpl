@@ -40,16 +40,16 @@
 	        <{if (in_array('ID_WALLPAPER', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_WALLPAPER']) && ((isset($aclviewablecolumns['ID_WALLPAPER']) && $aclviewablecolumns['ID_WALLPAPER']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_WALLPAPER']) || $aclviewablecolumns['ID_WALLPAPER']))) }>
                 <td class="column column-id-wallpaper key " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.userpreference.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/view/<{$row->UUID}>"><{/if}>	<{$row->ID_WALLPAPER|escape}>
-<{if isset($smarty.session.acl.userpreference.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.userpreference.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userpreference/view/<{$row->UUID}>"><{/if}>    	    <{$row->ID_WALLPAPER|escape}>
+    <{if isset($smarty.session.acl.userpreference.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('ID_ADMIN_STYLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_STYLE']) && ((isset($aclviewablecolumns['ID_ADMIN_STYLE']) && $aclviewablecolumns['ID_ADMIN_STYLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_STYLE']) || $aclviewablecolumns['ID_ADMIN_STYLE']))) }>
                 <td class="column column-id-admin-style key " >
-                                        	<span>	<{$row->ID_ADMIN_STYLE|escape}>
-</span>
+                                        	<span>    	    <{$row->ID_ADMIN_STYLE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

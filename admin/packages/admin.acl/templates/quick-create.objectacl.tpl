@@ -65,7 +65,7 @@
                 <div class="form-field form-field-value column-id-user-group">
                                             
             <{if Framework::hasModule('UserGroup')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`objectacl_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`objectacl_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.usergroup.new)}>
                     <span class="onflycreation">
@@ -104,7 +104,7 @@
                 <div class="form-field form-field-value column-arg-id-user-group">
                                             
             <{if Framework::hasModule('UserGroup')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-arg-id-user-group" class="input-arg-id-user-group" name="`$prefix`objectacl_formdata_ARG_ID_USER_GROUP" value=$details->ARG_ID_USER_GROUP text=$details->reftext_ARG_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-arg-id-user-group" class="input-arg-id-user-group" name="`$prefix`objectacl_formdata_ARG_ID_USER_GROUP" value=$details->ARG_ID_USER_GROUP text=$details->reftext_ARG_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.usergroup.new)}>
                     <span class="onflycreation">
@@ -143,7 +143,7 @@
                 <div class="form-field form-field-value column-id-acl-type">
                                             
             <{if Framework::hasModule('AclType')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-acl-type" class="input-id-acl-type" name="`$prefix`objectacl_formdata_ID_ACL_TYPE" value=$details->ID_ACL_TYPE text=$details->reftext_ID_ACL_TYPE datasource="ACL_TYPE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-acl-type" class="input-id-acl-type" name="`$prefix`objectacl_formdata_ID_ACL_TYPE" value=$details->ID_ACL_TYPE text=$details->reftext_ID_ACL_TYPE datasource="ACL_TYPE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.acltype.new)}>
                     <span class="onflycreation">

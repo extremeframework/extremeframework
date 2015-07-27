@@ -10,16 +10,16 @@
             <{if (in_array('NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
-<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    	    <{$row->NAME|escape}>
+    <{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.page.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/page/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.page.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -58,8 +58,8 @@
 	        <{if (in_array('META_KEYWORDS', $filtercolumns)) }>
             <{if !isset($excludedcolumns['META_KEYWORDS']) && ((isset($aclviewablecolumns['META_KEYWORDS']) && $aclviewablecolumns['META_KEYWORDS']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['META_KEYWORDS']) || $aclviewablecolumns['META_KEYWORDS']))) }>
                 <td class="column column-meta-keywords text " >
-                                        	<span>	<{$row->META_KEYWORDS|escape}>
-</span>
+                                        	<span>    	    <{$row->META_KEYWORDS|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -111,8 +111,8 @@
 	        <{if (in_array('VIEW_MORE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
                 <td class="column column-view-more-title text " >
-                                        	<span>	<{$row->VIEW_MORE_TITLE|escape}>
-</span>
+                                        	<span>    	    <{$row->VIEW_MORE_TITLE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

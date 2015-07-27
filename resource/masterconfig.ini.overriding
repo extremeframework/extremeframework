@@ -89,3 +89,17 @@ widgetcolumns = ID_WORKFLOW,NAME,CODE,START_ID_WORKFLOW_STAGE,END_ID_WORKFLOW_ST
 [parameter]
 listcolumns = NAME,CODE,VALUE
 widgetcolumns = NAME,CODE,VALUE
+
+[note]
+listcolumns = TITLE
+widgetcolumns = TITLE
+enablehtmlcolumns =
+
+[issueresolution]
+enable_multilingual_title = true
+
+[issuestatus]
+enable_multilingual_title = true
+
+[issuetype]
+enable_multilingual_title = true

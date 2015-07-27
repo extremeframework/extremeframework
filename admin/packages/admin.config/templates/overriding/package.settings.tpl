@@ -125,7 +125,7 @@
                                         <{/foreach}>
                                     </select>
                                 <{elseif $type == 'refselect'}>
-                                    <{html_ref_select autocomplete="1" name="<{$name}>" value="<{$value}>" datasource="<{$option.options.datasource}>" valuecol="<{$option.options.valuecol}>" textcol="<{$option.options.textcol}>" sortcol="<{$option.options.sortcol}>" blankitem=""}>
+                                    <{html_ref_select multilingual="0" autocomplete="1" name="<{$name}>" value="<{$value}>" datasource="<{$option.options.datasource}>" valuecol="<{$option.options.valuecol}>" textcol="<{$option.options.textcol}>" sortcol="<{$option.options.sortcol}>" blankitem=""}>
                                 <{else}>
                                     <input class="input-<{$code}> input-type-<{$type}>" type="text" name="<{$name}>" value="<{$value}>"/>
                                 <{/if}>

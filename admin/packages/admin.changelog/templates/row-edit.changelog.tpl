@@ -26,8 +26,8 @@
                         
                             <input class="input-action" type="text" name="<{$prefix}>changelog_formdata_ACTION" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/view/<{$row->UUID}>"><{/if}>	<{$row->ACTION|escape}>
-<{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/view/<{$row->UUID}>"><{/if}>    	    <{$row->ACTION|escape}>
+    <{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -41,8 +41,8 @@
                         
                             <input class="input-item" type="text" name="<{$prefix}>changelog_formdata_ITEM" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/view/<{$row->UUID}>"><{/if}>	<{$row->ITEM|escape}>
-<{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/changelog/view/<{$row->UUID}>"><{/if}>    	    <{$row->ITEM|escape}>
+    <{if isset($smarty.session.acl.changelog.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -54,7 +54,7 @@
                     	                            <{$tmp_value = $formdataMODULE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`changelog_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`changelog_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.adminmodule.new)}>
                                         <span class="onflycreation">
@@ -97,7 +97,7 @@
                     	                            <{$tmp_value = $formdataID_USER}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`changelog_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-user" name="`$prefix`changelog_formdata_ID_USER" value=$formdata.ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.user.new)}>
                                         <span class="onflycreation">

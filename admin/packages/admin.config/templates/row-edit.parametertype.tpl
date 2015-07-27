@@ -26,8 +26,8 @@
                         
                             <input class="input-name" type="text" name="<{$prefix}>parametertype_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
-<{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>            <{_t($row->NAME, false, true)}>
+    <{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -41,8 +41,8 @@
                         
                             <input class="input-base-type-code" type="text" name="<{$prefix}>parametertype_formdata_BASE_TYPE_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>	<{$row->BASE_TYPE_CODE|escape}>
-<{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>    	    <{$row->BASE_TYPE_CODE|escape}>
+    <{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -56,8 +56,8 @@
                         
                             <input class="input-extra" type="text" name="<{$prefix}>parametertype_formdata_EXTRA" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->EXTRA|escape}>
-</span>
+                            <span>    	    <{$row->EXTRA|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

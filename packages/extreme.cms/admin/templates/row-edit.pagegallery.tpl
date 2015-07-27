@@ -26,8 +26,8 @@
                         
                             <input class="input-title" type="text" name="<{$prefix}>pagegallery_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagegallery.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.pagegallery.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagegallery.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagegallery/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.pagegallery.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -39,7 +39,7 @@
                     	                            <{$tmp_value = $formdataID_PAGE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-page" name="`$prefix`pagegallery_formdata_ID_PAGE" value=$formdata.ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-page" name="`$prefix`pagegallery_formdata_ID_PAGE" value=$formdata.ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.page.new)}>
                                         <span class="onflycreation">
@@ -75,7 +75,7 @@
                     	                            <{$tmp_value = $formdataLINK_ID_PAGE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-link-id-page" name="`$prefix`pagegallery_formdata_LINK_ID_PAGE" value=$formdata.LINK_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-link-id-page" name="`$prefix`pagegallery_formdata_LINK_ID_PAGE" value=$formdata.LINK_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.page.new)}>
                                         <span class="onflycreation">
@@ -105,8 +105,8 @@
                         
                             <input class="input-link-path" type="text" name="<{$prefix}>pagegallery_formdata_LINK_PATH" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->LINK_PATH|escape}>
-</span>
+                            <span>    	    <{$row->LINK_PATH|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

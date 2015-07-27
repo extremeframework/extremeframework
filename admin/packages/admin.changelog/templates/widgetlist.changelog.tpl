@@ -84,7 +84,7 @@
                                                                         <{if Framework::hasModule('AdminFilter')}>
                         <{if isset($smarty.session.acl.adminfilter.edit) }>
                             <div class="custom-filter">
-                                <{html_ref_select data-url="<{$smarty.const.APPLICATION_URL}>/changelog/customfilter/{id}" class="changelog-custom-filter" value="<{$filter->ID}>" datasource="ADMIN_FILTER" preset="MODULE" presetvalue="changelog" valuecol="UUID" textcol="NAME" sortcol="NAME"}>
+                                <{html_ref_select multilingual="0" data-url="<{$smarty.const.APPLICATION_URL}>/changelog/customfilter/{id}" class="changelog-custom-filter" value="<{$filter->ID}>" datasource="ADMIN_FILTER" preset="MODULE" presetvalue="changelog" valuecol="UUID" textcol="NAME" sortcol="NAME"}>
                                 <span class="custom-filter-footer changelog-custom-filter-footer hide">
                                     <hr>
                                     <ul>

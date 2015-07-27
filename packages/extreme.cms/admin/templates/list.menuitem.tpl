@@ -99,7 +99,7 @@
                                                                         <{if Framework::hasModule('AdminFilter')}>
                         <{if isset($smarty.session.acl.adminfilter.edit) }>
                             <div class="custom-filter">
-                                <{html_ref_select data-url="<{$smarty.const.APPLICATION_URL}>/menuitem/customfilter/{id}" class="menuitem-custom-filter" value="<{$filter->ID}>" datasource="ADMIN_FILTER" preset="MODULE" presetvalue="menuitem" valuecol="UUID" textcol="NAME" sortcol="NAME"}>
+                                <{html_ref_select multilingual="0" data-url="<{$smarty.const.APPLICATION_URL}>/menuitem/customfilter/{id}" class="menuitem-custom-filter" value="<{$filter->ID}>" datasource="ADMIN_FILTER" preset="MODULE" presetvalue="menuitem" valuecol="UUID" textcol="NAME" sortcol="NAME"}>
                                 <span class="custom-filter-footer menuitem-custom-filter-footer hide">
                                     <hr>
                                     <ul>
@@ -139,9 +139,9 @@
 
 <!-- Relations -->
     <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS'), strtolower(_t('Menu Item'))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS'), strtolower(_t('Menu Item'))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS'), strtolower(_t('Menu Item')), strtolower(_t('Menu Item'))));
+    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Menu Item', true))));
+    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Menu Item', true))));
+    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Menu Item', true)), strtolower(_t('Menu Item', true))));
     <{/php}>
 
     <div id="menuitemcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Menu Item', true)|strtolower}>">

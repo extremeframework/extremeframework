@@ -34,6 +34,7 @@ function smarty_function_html_ref_select($params, &$smarty)
 	$optionstring = isset($params['options'])? $params['options'] : '';
 	$datasource = $params['datasource'];
 	$noauth = isset($params['noauth'])? $params['noauth'] : false;
+	$multilingual = isset($params['multilingual'])? $params['multilingual'] : false;
 
     $module = str_replace('_', '', strtolower($datasource));
 
@@ -201,7 +202,12 @@ function smarty_function_html_ref_select($params, &$smarty)
      			$selected = ' selected="selected" ';
     		}
 
-    	    $options .= '<option id="option-'.$model->{$params['valuecol']}.'" class="option-'.$model->{$params['valuecol']}.'" value="'.$model->{$params['valuecol']}.'"'.$selected.'>'.(isset($model->INDENT)? $model->INDENT : '').($usereftextcol? htmlspecialchars($model->{'reftext_'.$textcol}, ENT_QUOTES, 'UTF-8') : htmlspecialchars(ModelHelper::get($model, $textcol), ENT_QUOTES, 'UTF-8')).'</option>';
+            $text = ($usereftextcol? htmlspecialchars($model->{'reftext_'.$textcol}, ENT_QUOTES, 'UTF-8') : htmlspecialchars(ModelHelper::get($model, $textcol), ENT_QUOTES, 'UTF-8'));
+            if ($multilingual) {
+                $text = _t($text);
+            }
+
+    	    $options .= '<option id="option-'.$model->{$params['valuecol']}.'" class="option-'.$model->{$params['valuecol']}.'" value="'.$model->{$params['valuecol']}.'"'.$selected.'>'.(isset($model->INDENT)? $model->INDENT : '').$text.'</option>';
     	}
         if (!empty($curoptgroup)) {
     	    $options .= '</optgroup>';

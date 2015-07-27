@@ -25,16 +25,16 @@
 	        <{if (in_array('TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
-<{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
+    <{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -56,32 +56,32 @@
 	        <{if (in_array('DATASOURCE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['DATASOURCE']) && ((isset($aclviewablecolumns['DATASOURCE']) && $aclviewablecolumns['DATASOURCE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATASOURCE']) || $aclviewablecolumns['DATASOURCE']))) }>
                 <td class="column column-datasource text " >
-                                        	<span>	<{$row->DATASOURCE|escape}>
-</span>
+                                        	<span>    	    <{$row->DATASOURCE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CONDITION', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CONDITION']) && ((isset($aclviewablecolumns['CONDITION']) && $aclviewablecolumns['CONDITION']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONDITION']) || $aclviewablecolumns['CONDITION']))) }>
                 <td class="column column-condition text " >
-                                        	<span>	<{$row->CONDITION|escape}>
-</span>
+                                        	<span>    	    <{$row->CONDITION|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('VALUECOL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VALUECOL']) && ((isset($aclviewablecolumns['VALUECOL']) && $aclviewablecolumns['VALUECOL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VALUECOL']) || $aclviewablecolumns['VALUECOL']))) }>
                 <td class="column column-valuecol text " >
-                                        	<span>	<{$row->VALUECOL|escape}>
-</span>
+                                        	<span>    	    <{$row->VALUECOL|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('TEXTCOL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TEXTCOL']) && ((isset($aclviewablecolumns['TEXTCOL']) && $aclviewablecolumns['TEXTCOL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TEXTCOL']) || $aclviewablecolumns['TEXTCOL']))) }>
                 <td class="column column-textcol text " >
-                                        	<span>	<{$row->TEXTCOL|escape}>
-</span>
+                                        	<span>    	    <{$row->TEXTCOL|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

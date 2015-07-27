@@ -24,7 +24,7 @@
                     	                            <{$tmp_value = $formdataID_SCREEN}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-screen" name="`$prefix`screenfield_formdata_ID_SCREEN" value=$formdata.ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-screen" name="`$prefix`screenfield_formdata_ID_SCREEN" value=$formdata.ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.screen.new)}>
                                         <span class="onflycreation">
@@ -54,8 +54,8 @@
                         
                             <input class="input-title" type="text" name="<{$prefix}>screenfield_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -69,8 +69,8 @@
                         
                             <input class="input-code" type="text" name="<{$prefix}>screenfield_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
-<{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/screenfield/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
+    <{if isset($smarty.session.acl.screenfield.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -82,7 +82,7 @@
                     	                            <{$tmp_value = $formdataID_VALUE_TYPE}>
 
                                                     
-                                <{html_ref_select autocomplete="1" ajax="0" method="" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$formdata.ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$formdata.ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
 
                                                                     <{if isset($smarty.session.acl.valuetype.new)}>
                                         <span class="onflycreation">
@@ -112,8 +112,8 @@
                         
                             <input class="input-datasource" type="text" name="<{$prefix}>screenfield_formdata_DATASOURCE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->DATASOURCE|escape}>
-</span>
+                            <span>    	    <{$row->DATASOURCE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -127,8 +127,8 @@
                         
                             <input class="input-condition" type="text" name="<{$prefix}>screenfield_formdata_CONDITION" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->CONDITION|escape}>
-</span>
+                            <span>    	    <{$row->CONDITION|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -142,8 +142,8 @@
                         
                             <input class="input-valuecol" type="text" name="<{$prefix}>screenfield_formdata_VALUECOL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->VALUECOL|escape}>
-</span>
+                            <span>    	    <{$row->VALUECOL|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -157,8 +157,8 @@
                         
                             <input class="input-textcol" type="text" name="<{$prefix}>screenfield_formdata_TEXTCOL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->TEXTCOL|escape}>
-</span>
+                            <span>    	    <{$row->TEXTCOL|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

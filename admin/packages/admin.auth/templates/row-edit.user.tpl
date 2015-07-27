@@ -26,8 +26,8 @@
                         
                             <input class="input-first-name" type="text" name="<{$prefix}>user_formdata_FIRST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>	<{$row->FIRST_NAME|escape}>
-<{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>    	    <{$row->FIRST_NAME|escape}>
+    <{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -41,8 +41,8 @@
                         
                             <input class="input-last-name" type="text" name="<{$prefix}>user_formdata_LAST_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
                                                 <{else}>
-                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>	<{$row->LAST_NAME|escape}>
-<{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>    	    <{$row->LAST_NAME|escape}>
+    <{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -64,8 +64,8 @@
                         
                             <input class="input-email" type="text" name="<{$prefix}>user_formdata_EMAIL" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="150"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->EMAIL|escape}>
-</span>
+                            <span>    	    <{$row->EMAIL|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -79,8 +79,8 @@
                         
                             <input class="input-login" type="text" name="<{$prefix}>user_formdata_LOGIN" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->LOGIN|escape}>
-</span>
+                            <span>    	    <{$row->LOGIN|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -94,8 +94,8 @@
                         
                             <input class="input-phone" type="text" name="<{$prefix}>user_formdata_PHONE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->PHONE|escape}>
-</span>
+                            <span>    	    <{$row->PHONE|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -181,8 +181,8 @@
                         
                             <input class="input-facebook-id" type="text" name="<{$prefix}>user_formdata_FACEBOOK_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->FACEBOOK_ID|escape}>
-</span>
+                            <span>    	    <{$row->FACEBOOK_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -196,8 +196,8 @@
                         
                             <input class="input-facebook-oauth-id" type="text" name="<{$prefix}>user_formdata_FACEBOOK_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->FACEBOOK_OAUTH_ID|escape}>
-</span>
+                            <span>    	    <{$row->FACEBOOK_OAUTH_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -211,8 +211,8 @@
                         
                             <input class="input-google-id" type="text" name="<{$prefix}>user_formdata_GOOGLE_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->GOOGLE_ID|escape}>
-</span>
+                            <span>    	    <{$row->GOOGLE_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -226,8 +226,8 @@
                         
                             <input class="input-google-oauth-id" type="text" name="<{$prefix}>user_formdata_GOOGLE_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->GOOGLE_OAUTH_ID|escape}>
-</span>
+                            <span>    	    <{$row->GOOGLE_OAUTH_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -241,8 +241,8 @@
                         
                             <input class="input-yahoo-id" type="text" name="<{$prefix}>user_formdata_YAHOO_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->YAHOO_ID|escape}>
-</span>
+                            <span>    	    <{$row->YAHOO_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>
@@ -256,8 +256,8 @@
                         
                             <input class="input-yahoo-oauth-id" type="text" name="<{$prefix}>user_formdata_YAHOO_OAUTH_ID" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
                                                 <{else}>
-                            <span>	<{$row->YAHOO_OAUTH_ID|escape}>
-</span>
+                            <span>    	    <{$row->YAHOO_OAUTH_ID|escape}>
+    </span>
                         <{/if}>
                             		</td>
     	    <{/if}>

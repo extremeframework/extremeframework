@@ -10,64 +10,64 @@
             <{if (in_array('CUSTOMER_ID_COUNTRY', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_ID_COUNTRY']) && ((isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) && $aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ID_COUNTRY']) || $aclviewablecolumns['CUSTOMER_ID_COUNTRY']))) }>
                 <td class="column column-customer-id-country key " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>	<{$row->CUSTOMER_ID_COUNTRY|escape}>
-<{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>    	    <{$row->CUSTOMER_ID_COUNTRY|escape}>
+    <{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_FIRST_NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_FIRST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) && $aclviewablecolumns['CUSTOMER_FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_FIRST_NAME']) || $aclviewablecolumns['CUSTOMER_FIRST_NAME']))) }>
                 <td class="column column-customer-first-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>	<{$row->CUSTOMER_FIRST_NAME|escape}>
-<{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminorder/view/<{$row->UUID}>"><{/if}>    	    <{$row->CUSTOMER_FIRST_NAME|escape}>
+    <{if isset($smarty.session.acl.adminorder.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_LAST_NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_LAST_NAME']) && ((isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) && $aclviewablecolumns['CUSTOMER_LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_LAST_NAME']) || $aclviewablecolumns['CUSTOMER_LAST_NAME']))) }>
                 <td class="column column-customer-last-name text " >
-                                        	<span>	<{$row->CUSTOMER_LAST_NAME|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_LAST_NAME|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_CITY', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_CITY']) && ((isset($aclviewablecolumns['CUSTOMER_CITY']) && $aclviewablecolumns['CUSTOMER_CITY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_CITY']) || $aclviewablecolumns['CUSTOMER_CITY']))) }>
                 <td class="column column-customer-city text " >
-                                        	<span>	<{$row->CUSTOMER_CITY|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_CITY|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_STATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_STATE']) && ((isset($aclviewablecolumns['CUSTOMER_STATE']) && $aclviewablecolumns['CUSTOMER_STATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_STATE']) || $aclviewablecolumns['CUSTOMER_STATE']))) }>
                 <td class="column column-customer-state text " >
-                                        	<span>	<{$row->CUSTOMER_STATE|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_STATE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_ZIP_CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_ZIP_CODE']) && ((isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) && $aclviewablecolumns['CUSTOMER_ZIP_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_ZIP_CODE']) || $aclviewablecolumns['CUSTOMER_ZIP_CODE']))) }>
                 <td class="column column-customer-zip-code text " >
-                                        	<span>	<{$row->CUSTOMER_ZIP_CODE|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_ZIP_CODE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_EMAIL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_EMAIL']) && ((isset($aclviewablecolumns['CUSTOMER_EMAIL']) && $aclviewablecolumns['CUSTOMER_EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_EMAIL']) || $aclviewablecolumns['CUSTOMER_EMAIL']))) }>
                 <td class="column column-customer-email email " >
-                                        	<span>	<{$row->CUSTOMER_EMAIL|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_EMAIL|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('CUSTOMER_PHONE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CUSTOMER_PHONE']) && ((isset($aclviewablecolumns['CUSTOMER_PHONE']) && $aclviewablecolumns['CUSTOMER_PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CUSTOMER_PHONE']) || $aclviewablecolumns['CUSTOMER_PHONE']))) }>
                 <td class="column column-customer-phone phone " >
-                                        	<span>	<{$row->CUSTOMER_PHONE|escape}>
-</span>
+                                        	<span>    	    <{$row->CUSTOMER_PHONE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -85,8 +85,8 @@
 	        <{if (in_array('COUPON_CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['COUPON_CODE']) && ((isset($aclviewablecolumns['COUPON_CODE']) && $aclviewablecolumns['COUPON_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['COUPON_CODE']) || $aclviewablecolumns['COUPON_CODE']))) }>
                 <td class="column column-coupon-code text " >
-                                        	<span>	<{$row->COUPON_CODE|escape}>
-</span>
+                                        	<span>    	    <{$row->COUPON_CODE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -136,8 +136,8 @@
 	        <{if (in_array('PAYMENT_REF', $filtercolumns)) }>
             <{if !isset($excludedcolumns['PAYMENT_REF']) && ((isset($aclviewablecolumns['PAYMENT_REF']) && $aclviewablecolumns['PAYMENT_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PAYMENT_REF']) || $aclviewablecolumns['PAYMENT_REF']))) }>
                 <td class="column column-payment-ref text " >
-                                        	<span>	<{$row->PAYMENT_REF|escape}>
-</span>
+                                        	<span>    	    <{$row->PAYMENT_REF|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -153,8 +153,8 @@
 	        <{if (in_array('REFUND_REF', $filtercolumns)) }>
             <{if !isset($excludedcolumns['REFUND_REF']) && ((isset($aclviewablecolumns['REFUND_REF']) && $aclviewablecolumns['REFUND_REF']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['REFUND_REF']) || $aclviewablecolumns['REFUND_REF']))) }>
                 <td class="column column-refund-ref text " >
-                                        	<span>	<{$row->REFUND_REF|escape}>
-</span>
+                                        	<span>    	    <{$row->REFUND_REF|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

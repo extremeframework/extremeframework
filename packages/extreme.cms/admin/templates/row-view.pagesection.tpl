@@ -10,8 +10,8 @@
             <{if (in_array('TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
                 <td class="column column-title text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$row->UUID}>"><{/if}>	<{$row->TITLE|escape}>
-<{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$row->UUID}>"><{/if}>    	    <{$row->TITLE|escape}>
+    <{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -33,8 +33,8 @@
 	        <{if (in_array('CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
                 <td class="column column-code text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$row->UUID}>"><{/if}>	<{$row->CODE|escape}>
-<{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/pagesection/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
+    <{if isset($smarty.session.acl.pagesection.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -49,8 +49,8 @@
 	        <{if (in_array('FONT_AWESOME_ICON', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FONT_AWESOME_ICON']) && ((isset($aclviewablecolumns['FONT_AWESOME_ICON']) && $aclviewablecolumns['FONT_AWESOME_ICON']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FONT_AWESOME_ICON']) || $aclviewablecolumns['FONT_AWESOME_ICON']))) }>
                 <td class="column column-font-awesome-icon text " >
-                                        	<span>	<{$row->FONT_AWESOME_ICON|escape}>
-</span>
+                                        	<span>    	    <{$row->FONT_AWESOME_ICON|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -65,8 +65,8 @@
 	        <{if (in_array('BACKGROUND_COLOR', $filtercolumns)) }>
             <{if !isset($excludedcolumns['BACKGROUND_COLOR']) && ((isset($aclviewablecolumns['BACKGROUND_COLOR']) && $aclviewablecolumns['BACKGROUND_COLOR']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BACKGROUND_COLOR']) || $aclviewablecolumns['BACKGROUND_COLOR']))) }>
                 <td class="column column-background-color color " >
-                                        	<span>	<{$row->BACKGROUND_COLOR|escape}>
-</span>
+                                        	<span>    	    <{$row->BACKGROUND_COLOR|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -81,8 +81,8 @@
 	        <{if (in_array('VIEW_MORE_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['VIEW_MORE_TITLE']) && ((isset($aclviewablecolumns['VIEW_MORE_TITLE']) && $aclviewablecolumns['VIEW_MORE_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['VIEW_MORE_TITLE']) || $aclviewablecolumns['VIEW_MORE_TITLE']))) }>
                 <td class="column column-view-more-title text " >
-                                        	<span>	<{$row->VIEW_MORE_TITLE|escape}>
-</span>
+                                        	<span>    	    <{$row->VIEW_MORE_TITLE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -120,8 +120,8 @@
 	        <{if (in_array('TAB_ANCHOR_TITLE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['TAB_ANCHOR_TITLE']) && ((isset($aclviewablecolumns['TAB_ANCHOR_TITLE']) && $aclviewablecolumns['TAB_ANCHOR_TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TAB_ANCHOR_TITLE']) || $aclviewablecolumns['TAB_ANCHOR_TITLE']))) }>
                 <td class="column column-tab-anchor-title text " >
-                                        	<span>	<{$row->TAB_ANCHOR_TITLE|escape}>
-</span>
+                                        	<span>    	    <{$row->TAB_ANCHOR_TITLE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

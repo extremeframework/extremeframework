@@ -38,7 +38,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Post')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol=""}>
 
                             <{if isset($smarty.session.acl.post.new)}>
                     <span class="onflycreation">
@@ -100,7 +100,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Post')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-peer-id-post" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$details->PEER_ID_POST text=$details->reftext_PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-peer-id-post" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$details->PEER_ID_POST text=$details->reftext_PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol=""}>
 
                             <{if isset($smarty.session.acl.post.new)}>
                     <span class="onflycreation">
@@ -157,7 +157,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('PostRelationType')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-post-relation-type" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$details->ID_POST_RELATION_TYPE text=$details->reftext_ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-relation-type" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$details->ID_POST_RELATION_TYPE text=$details->reftext_ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <{if isset($smarty.session.acl.postrelationtype.new)}>
                     <span class="onflycreation">

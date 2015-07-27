@@ -10,16 +10,16 @@
             <{if (in_array('FIRST_NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FIRST_NAME']) && ((isset($aclviewablecolumns['FIRST_NAME']) && $aclviewablecolumns['FIRST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FIRST_NAME']) || $aclviewablecolumns['FIRST_NAME']))) }>
                 <td class="column column-first-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>	<{$row->FIRST_NAME|escape}>
-<{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>    	    <{$row->FIRST_NAME|escape}>
+    <{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('LAST_NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['LAST_NAME']) && ((isset($aclviewablecolumns['LAST_NAME']) && $aclviewablecolumns['LAST_NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LAST_NAME']) || $aclviewablecolumns['LAST_NAME']))) }>
                 <td class="column column-last-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>	<{$row->LAST_NAME|escape}>
-<{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.user.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/user/view/<{$row->UUID}>"><{/if}>    	    <{$row->LAST_NAME|escape}>
+    <{if isset($smarty.session.acl.user.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -34,24 +34,24 @@
 	        <{if (in_array('EMAIL', $filtercolumns)) }>
             <{if !isset($excludedcolumns['EMAIL']) && ((isset($aclviewablecolumns['EMAIL']) && $aclviewablecolumns['EMAIL']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EMAIL']) || $aclviewablecolumns['EMAIL']))) }>
                 <td class="column column-email email " >
-                                        	<span>	<{$row->EMAIL|escape}>
-</span>
+                                        	<span>    	    <{$row->EMAIL|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('LOGIN', $filtercolumns)) }>
             <{if !isset($excludedcolumns['LOGIN']) && ((isset($aclviewablecolumns['LOGIN']) && $aclviewablecolumns['LOGIN']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOGIN']) || $aclviewablecolumns['LOGIN']))) }>
                 <td class="column column-login code " >
-                                        	<span>	<{$row->LOGIN|escape}>
-</span>
+                                        	<span>    	    <{$row->LOGIN|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('PHONE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['PHONE']) && ((isset($aclviewablecolumns['PHONE']) && $aclviewablecolumns['PHONE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['PHONE']) || $aclviewablecolumns['PHONE']))) }>
                 <td class="column column-phone phone " >
-                                        	<span>	<{$row->PHONE|escape}>
-</span>
+                                        	<span>    	    <{$row->PHONE|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -91,48 +91,48 @@
 	        <{if (in_array('FACEBOOK_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
                 <td class="column column-facebook-id key " >
-                                        	<span>	<{$row->FACEBOOK_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->FACEBOOK_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('FACEBOOK_OAUTH_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FACEBOOK_OAUTH_ID']) && ((isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) && $aclviewablecolumns['FACEBOOK_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_OAUTH_ID']) || $aclviewablecolumns['FACEBOOK_OAUTH_ID']))) }>
                 <td class="column column-facebook-oauth-id key " >
-                                        	<span>	<{$row->FACEBOOK_OAUTH_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->FACEBOOK_OAUTH_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('GOOGLE_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['GOOGLE_ID']) && ((isset($aclviewablecolumns['GOOGLE_ID']) && $aclviewablecolumns['GOOGLE_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_ID']) || $aclviewablecolumns['GOOGLE_ID']))) }>
                 <td class="column column-google-id key " >
-                                        	<span>	<{$row->GOOGLE_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->GOOGLE_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('GOOGLE_OAUTH_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['GOOGLE_OAUTH_ID']) && ((isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) && $aclviewablecolumns['GOOGLE_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['GOOGLE_OAUTH_ID']) || $aclviewablecolumns['GOOGLE_OAUTH_ID']))) }>
                 <td class="column column-google-oauth-id key " >
-                                        	<span>	<{$row->GOOGLE_OAUTH_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->GOOGLE_OAUTH_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('YAHOO_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['YAHOO_ID']) && ((isset($aclviewablecolumns['YAHOO_ID']) && $aclviewablecolumns['YAHOO_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_ID']) || $aclviewablecolumns['YAHOO_ID']))) }>
                 <td class="column column-yahoo-id key " >
-                                        	<span>	<{$row->YAHOO_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->YAHOO_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('YAHOO_OAUTH_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['YAHOO_OAUTH_ID']) && ((isset($aclviewablecolumns['YAHOO_OAUTH_ID']) && $aclviewablecolumns['YAHOO_OAUTH_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['YAHOO_OAUTH_ID']) || $aclviewablecolumns['YAHOO_OAUTH_ID']))) }>
                 <td class="column column-yahoo-oauth-id key " >
-                                        	<span>	<{$row->YAHOO_OAUTH_ID|escape}>
-</span>
+                                        	<span>    	    <{$row->YAHOO_OAUTH_ID|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

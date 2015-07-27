@@ -10,24 +10,24 @@
             <{if (in_array('NAME', $filtercolumns)) }>
             <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
                 <td class="column column-name text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>	<{$row->NAME|escape}>
-<{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>            <{_t($row->NAME, false, true)}>
+    <{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('BASE_TYPE_CODE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['BASE_TYPE_CODE']) && ((isset($aclviewablecolumns['BASE_TYPE_CODE']) && $aclviewablecolumns['BASE_TYPE_CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['BASE_TYPE_CODE']) || $aclviewablecolumns['BASE_TYPE_CODE']))) }>
                 <td class="column column-base-type-code text " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>	<{$row->BASE_TYPE_CODE|escape}>
-<{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/parametertype/view/<{$row->UUID}>"><{/if}>    	    <{$row->BASE_TYPE_CODE|escape}>
+    <{if isset($smarty.session.acl.parametertype.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
 	        <{if (in_array('EXTRA', $filtercolumns)) }>
             <{if !isset($excludedcolumns['EXTRA']) && ((isset($aclviewablecolumns['EXTRA']) && $aclviewablecolumns['EXTRA']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['EXTRA']) || $aclviewablecolumns['EXTRA']))) }>
                 <td class="column column-extra text " >
-                                        	<span>	<{$row->EXTRA|escape}>
-</span>
+                                        	<span>    	    <{$row->EXTRA|escape}>
+    </span>
     				        		</td>
     	    <{/if}>
         <{/if}>

@@ -38,7 +38,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminOrder')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-admin-order" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$details->ID_ADMIN_ORDER text=$details->reftext_ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-order" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$details->ID_ADMIN_ORDER text=$details->reftext_ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol=""}>
 
                             <{if isset($smarty.session.acl.adminorder.new)}>
                     <span class="onflycreation">
@@ -100,7 +100,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminProduct')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-admin-product" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$details->ID_ADMIN_PRODUCT text=$details->reftext_ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-product" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$details->ID_ADMIN_PRODUCT text=$details->reftext_ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol=""}>
 
                             <{if isset($smarty.session.acl.adminproduct.new)}>
                     <span class="onflycreation">

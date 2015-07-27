@@ -33,7 +33,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Screen')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-screen" class="input-id-screen" name="`$prefix`screenfield_formdata_ID_SCREEN" value=$details->ID_SCREEN text=$details->reftext_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-screen" class="input-id-screen" name="`$prefix`screenfield_formdata_ID_SCREEN" value=$details->ID_SCREEN text=$details->reftext_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol=""}>
 
                             <{if isset($smarty.session.acl.screen.new)}>
                     <span class="onflycreation">
@@ -69,7 +69,7 @@
             <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
         <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
     		<td class="form-field form-field-label column-title">
-	            		        <label class="attribute-name"><{_t('Title')}></label>
+	            		        <label class="attribute-name"><{_t('Screen field title')}></label>
             </td>
             <td class="form-field form-field-value column-title" colspan="3">
             	<div class="attribute-line column-title type-text">
@@ -158,7 +158,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('ValueType')}>
-            <{html_ref_select autocomplete="1" ajax="0" method="" id="input-id-value-type" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$details->ID_VALUE_TYPE text=$details->reftext_ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-value-type" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$details->ID_VALUE_TYPE text=$details->reftext_ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol=""}>
 
                             <{if isset($smarty.session.acl.valuetype.new)}>
                     <span class="onflycreation">
