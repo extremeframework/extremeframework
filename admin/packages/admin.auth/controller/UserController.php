@@ -510,6 +510,8 @@ class UserController extends _UserController
     function editAccountAction() {
         AuthenticationController::authenticate();
 
+        AclController::checkPermission('user', 'edit');
+
         $user = clone $_SESSION['user'];
 
         if (!empty($_POST)) {
