@@ -14,7 +14,7 @@ class RefSelectHelper {
 	 * @param $callback A callback function to return options string
 	 *        (e.g <option>Hello</option><option>World</option>)
 	 */
-    function registerOptionsSource($names, $callback) {
+    public static function registerOptionsSource($names, $callback) {
         if (!is_array($names)) {
             $names = array($names);
         }
@@ -29,7 +29,7 @@ class RefSelectHelper {
 	 *
 	 * @param $name Name of the refselect element
 	 */
-    function getOptionsSource($name) {
+    public static function getOptionsSource($name) {
         return isset(self::$callbacks[$name])? self::$callbacks[$name] : null;
     }
 }
