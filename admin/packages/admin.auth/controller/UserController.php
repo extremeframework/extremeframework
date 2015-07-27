@@ -188,25 +188,25 @@ class UserController extends _UserController
                 $smarty->assign('details', $model);
                 $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')));
 
-                $smarty->display('user.register.tpl');
+                $this->display($smarty, 'user.register.tpl');
             } else {
                 $smarty = Framework::getSmarty(__FILE__);
 
-                $smarty->display('user.activation-sent.tpl');
+                $this->display($smarty, 'user.activation-sent.tpl');
             }
         } else {
             $smarty = Framework::getSmarty(__FILE__);
 
             $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')));
 
-            $smarty->display('user.register.tpl');
+            $this->display($smarty, 'user.register.tpl');
         }
     }
 
     function forgotAction() {
         if (empty($_POST)) {
             $smarty = Framework::getSmarty(__FILE__);
-            $smarty->display('user.forgot-password.tpl');
+            $this->display($smarty, 'user.forgot-password.tpl');
         } else {
             // x. Get data
             $model = $this->form2model();
@@ -256,11 +256,11 @@ class UserController extends _UserController
                 $smarty->assign('message', $error);
                 $smarty->assign('details', $model);
 
-                $smarty->display('user.forgot-password.tpl');
+                $this->display($smarty, 'user.forgot-password.tpl');
             } else {
                 $smarty = Framework::getSmarty(__FILE__);
 
-                $smarty->display('user.forgot-password-sent.tpl');
+                $this->display($smarty, 'user.forgot-password-sent.tpl');
             }
         }
     }
@@ -268,7 +268,7 @@ class UserController extends _UserController
     function resendAction() {
         if (empty($_POST)) {
             $smarty = Framework::getSmarty(__FILE__);
-            $smarty->display('user.resend-activation.tpl');
+            $this->display($smarty, 'user.resend-activation.tpl');
         } else {
             // x. Get data
             $email = $_POST['email'];
@@ -325,11 +325,11 @@ class UserController extends _UserController
                 $smarty->assign('message', $error);
                 $smarty->assign('email', $email);
 
-                $smarty->display('user.resend-activation.tpl');
+                $this->display($smarty, 'user.resend-activation.tpl');
             } else {
                 $smarty = Framework::getSmarty(__FILE__);
 
-                $smarty->display('user.resend-activation-sent.tpl');
+                $this->display($smarty, 'user.resend-activation-sent.tpl');
             }
         }
     }
@@ -345,7 +345,7 @@ class UserController extends _UserController
 
                 if ($this->activate($id_user, $activation, $referral_user, $referral_id)) {
                     $smarty = Framework::getSmarty(__FILE__);
-                    $smarty->display('user.activation-done.tpl');
+                    $this->display($smarty, 'user.activation-done.tpl');
 
                     return;
                 }
@@ -353,7 +353,7 @@ class UserController extends _UserController
         }
 
         $smarty = Framework::getSmarty(__FILE__);
-        $smarty->display('user.activation-failed.tpl');
+        $this->display($smarty, 'user.activation-failed.tpl');
     }
 
     function activate($id_user, $activation, $referral_user = null, $referral_id = null) {
@@ -438,11 +438,11 @@ class UserController extends _UserController
 
             $smarty->assign('compound', $_REQUEST['c']);
 
-            $smarty->display('user.reset-password.tpl');
+            $this->display($smarty, 'user.reset-password.tpl');
         } else {
             $smarty = Framework::getSmarty(__FILE__);
             $smarty->assign('error', 'Invalid request.');
-            $smarty->display('error.tpl');
+            $this->display($smarty, 'error.tpl');
         }
     }
 
@@ -491,19 +491,71 @@ class UserController extends _UserController
             if (empty($error)) {
                 $smarty = Framework::getSmarty(__FILE__);
 
-                $smarty->display('user.reset-password-done.tpl');
+                $this->display($smarty, 'user.reset-password-done.tpl');
             } else {
                 $smarty = Framework::getSmarty(__FILE__);
 
                 $smarty->assign('message', $error);
                 $smarty->assign('compound', $_REQUEST['c']);
 
-                $smarty->display('user.reset-password.tpl');
+                $this->display($smarty, 'user.reset-password.tpl');
             }
         } else {
             $smarty = Framework::getSmarty(__FILE__);
             $smarty->assign('error', 'Invalid request.');
-            $smarty->display('error.tpl');
+            $this->display($smarty, 'error.tpl');
+        }
+    }
+
+    function editAccountAction() {
+        AuthenticationController::authenticate();
+
+        $user = clone $_SESSION['user'];
+
+        if (!empty($_POST)) {
+            $controller = new UserController();
+
+            $model = $controller->form2model();
+
+            $password2 = isset($_REQUEST['PASSWORD2'])? $_REQUEST['PASSWORD2'] : '';
+
+            $message = null;
+            if (empty($model->FIRST_NAME)) {
+                $message = _t('First name should not be empty');
+            } elseif (empty($model->PASSWORD) || strlen(trim($model->PASSWORD)) < 6) {
+                $message = _t('Password should be at least 6 characters and contains no spaces');
+            } elseif (empty($password2)) {
+                $message = _t('Password confirmation should not be empty');
+            } elseif ($model->PASSWORD != $password2) {
+                $message = _t('Password confirmation mismatch');
+            } else {
+                // x. Update user
+                $um = new UserModel();
+                $um->ID = $user->ID;
+                $um->FIRST_NAME = $model->FIRST_NAME;
+                $um->LAST_NAME = $model->LAST_NAME;
+                $um->PASSWORD = md5($model->PASSWORD);
+
+        		$um->update();
+
+                $_SESSION['user']->FIRST_NAME = $um->FIRST_NAME;
+                $_SESSION['user']->LAST_NAME = $um->LAST_NAME;
+
+                $message = _t('Your account has been updated!');
+            }
+
+            $smarty = Framework::getSmarty(__FILE__);
+
+            $smarty->assign('message', $message);
+            $smarty->assign('details', $model);
+
+            $this->display($smarty, 'user.edit-account.tpl');
+        } else {
+            $smarty = Framework::getSmarty(__FILE__);
+
+            $smarty->assign('details', $user);
+
+            $this->display($smarty, 'user.edit-account.tpl');
         }
     }
 }

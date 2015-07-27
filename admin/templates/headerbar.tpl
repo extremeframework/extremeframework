@@ -32,8 +32,9 @@
                     <span class="dropdown" style="margin-left:15px">
                         <i class="fa fa-gear dropdown-toggle" data-toggle="dropdown"></i>
                         <ul class="dropdown-menu pull-right">
+                            <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/user/edit-account"><{_t('Edit account information')}></a></li>
                             <{if Framework::hasModule('AdminMenu')}>
-                                <li><a href="<{$smarty.const.APPLICATION_URL}>/?context=settings"><{_t('Settings')}></a></li>
+                                <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/?context=settings"><{_t('Settings')}></a></li>
                             <{/if}>
                             <{if Framework::hasModule('AdminLanguage')}>
                                 <li><a class="show-modal" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/quickSelect"><{_t('Change display language')}></a></li>
