@@ -1,3 +1,13 @@
+#signin {
+    background-color: #048497;
+    background: url(../images/bg_login.jpg);
+    background-size: cover;
+}
+
+#signin #footer .content {
+    color: #fff!important;
+}
+
 #footer {
     background: transparent!important;
 }
