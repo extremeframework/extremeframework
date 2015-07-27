@@ -107,7 +107,7 @@
 <div class="install-upload">
     <p>If you have a <{$title}> in a .zip format, you may install it by uploading it here.</p>
 
-    <form id="installationform" class="scope-main" action="<{$smarty.const.APPLICATION_URL}>/installation/install" method="post" enctype="multipart/form-data">
+    <form id="installationform" action="<{$smarty.const.APPLICATION_URL}>/installation/install" method="post" enctype="multipart/form-data">
         <input type="hidden" name="type" value="<{$type}>"/>
 
         <div class="form-row">
