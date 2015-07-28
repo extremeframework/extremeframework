@@ -4,7 +4,7 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-class ThumbController extends AppController
+class ThumbController extends __AppController
 {
 	var $image_library		= 'gd2';	// Can be:  imagemagick, netpbm, gd, gd2
 	var $library_path		= '';
