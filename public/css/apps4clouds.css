@@ -1102,7 +1102,7 @@ body#signin #heading h1 {
     padding: 0 0px 10px 0;
 }
 #signin .buttons {
-    margin: 0 0 0 80px;
+    margin: 0 0 0 102px;
 }
 #signin .buttons .button-general {
     padding: 0px;
@@ -1823,10 +1823,6 @@ div#container{
     font-size: 150%;
 }
 
-#signin .form-row {
-    padding: 0 20px 10px 0;
-}
-
 #signin .form-row .form-field {
     clear: none;
 }
@@ -1882,17 +1878,18 @@ body#signin div.main-content .content-inner{
     margin:0;
 }
 body#signin div#container{
-    width:430px;
+    width:400px;
     margin: auto;
 }
 #signin-form {
-    width: 400px;
+    width: 415px;
     margin: 10px auto 20px;
     padding: 20px;
 }
 #signin .form-row label {
     padding: 0px;
-    width: 70px;
+    width: 92px;
+    white-space: nowrap;
 }
 #signin-form input {
     width: 250px;

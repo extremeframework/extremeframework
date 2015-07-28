@@ -61,15 +61,15 @@ class AuthenticationController extends __AppController
     		$member->find(1);
 
             if (empty($member) || !$member->ID) {
-                $errors[] = 'The account does not exist. Please check if the specified user name is correct.';
+                $errors[] = _t('The account does not exist. Please check if the specified user name is correct.');
             } elseif (!$member->IS_ENABLED) {
                 if (empty($member->LATEST_LOGIN)) {
-                    $errors[] = 'The account is not activated.<br/>Click <a href="'.(APPLICATION_URL.'/user/resend').'">here</a> to receive an instruction email to activate it.';
+                    $errors[] = _t('The account is not activated.<br/>Click <a href="'.(APPLICATION_URL.'/user/resend').'">here</a> to receive an instruction email to activate it.');
                 } else {
-                    $errors[] = 'The account is disabled.';
+                    $errors[] = _t('The account is disabled.');
                 }
             } elseif ($md5password != $member->PASSWORD) {
-                $errors[] = 'Incorrect password. Please try again';
+                $errors[] = _t('Incorrect password. Please try again');
             }
 
             if (!empty($errors)) {
@@ -303,15 +303,15 @@ class AuthenticationController extends __AppController
             $errors = array();
 
             if (empty($password) || empty($confirmpassword)) {
-                $errors[] = 'Please specify both password and password confirmation';
+                $errors[] = _t('Please specify both password and password confirmation');
             }
 
             if ($password != $confirmpassword) {
-                $errors[] = 'Password and password confirmation mismatched';
+                $errors[] = _t('Password and password confirmation mismatched');
             }
 
             if (md5($password) == $_SESSION['_force_password_change_user']->PASSWORD) {
-                $errors[] = 'New password and old password should be different';
+                $errors[] = _t('New password and old password should be different');
             }
 
             if (!empty($errors)) {
