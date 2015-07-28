@@ -40,7 +40,7 @@ class MailController
 //        return $result;
 //    }
 
-    function mail($to, $subject, $body, $headers = '') {
+    public static function mail($to, $subject, $body, $headers = '') {
         global $GLOBAL_MailController_Debug;
 
         // Checking
