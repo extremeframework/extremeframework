@@ -1,5 +1,5 @@
 <{include file="header.tpl"}>
-<title><{_t('Authentication')}></title>
+<title><{_t('Authentication', true)}></title>
 </head>
 
 <body id="signin">
