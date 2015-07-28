@@ -1,6 +1,6 @@
 Hello <{$name}>,
 
-You have been registered for an account via the Intelligence Extreme's website. An account has been created for you with the following information:
+You have been registered for a <{$smarty.const.ORGANIZATION_NAME_SHORT}> account. The account has been created for you with the following login information:
 
 - Username: <{$username}>
 - Password: <{$password}>
