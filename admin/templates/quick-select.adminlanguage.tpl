@@ -7,10 +7,7 @@
     <ul class="language-selection">
         <{foreach from=$rows item=item}>
             <li>
-                <{if $smarty.session.lang == $item->CODE}>
-                    <{$item->NAME}>
-                <{else}>
-                    <a href="<{$smarty.const.APPLICATION_URL}>/?lang=<{$item->CODE}>"><{$item->NAME}></a>
+                <a href="<{$smarty.const.APPLICATION_URL}>/?lang=<{$item->CODE}>"><{$item->NAME}></a>
                 <{/if}>
             </li>
         <{/foreach}>

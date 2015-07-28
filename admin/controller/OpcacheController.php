@@ -7,6 +7,8 @@
 class OpcacheController extends __AppController
 {
     function indexAction() {
+        AuthenticationController::authenticate();
+
 		list($operation) = explode('/', $_REQUEST['args']);
 
         echo '<a href="'.APPLICATION_URL.'/opcache/config">View config</a> &nbsp; ';

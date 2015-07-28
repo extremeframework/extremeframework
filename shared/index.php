@@ -142,10 +142,12 @@ function application_route($url = null) {
     //////////////////////////////////////////////////////////////////
     if (isset($_REQUEST['lang']) && !empty($_REQUEST['lang'])) {
         $lang = $_REQUEST['lang'];
+    } else if (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
+        $lang = $_COOKIE['lang'];
     } else {
-        $lang = isset($_SESSION['lang'])? $_SESSION['lang'] : 'en';
+        $lang = 'en';
     }
-    $_SESSION['lang'] = $lang;
+    setcookie('lang', $lang);
 
     require_once(SHARED_DIR."/locales/app_lang_{$lang}.php");
 
