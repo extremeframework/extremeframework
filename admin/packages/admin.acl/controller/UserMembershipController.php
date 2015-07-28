@@ -30,7 +30,8 @@ class UserMembershipController extends _UserMembershipController
         $umm->ID_USER_GROUP = $id_user_group;
         $umm->VALID_FROM = $valid_from;
         $umm->VALID_UNTIL = $valid_until;
-        $umm->GUID = 1;
+        $umm->GUID = $user->ID;
+        $umm->UDID = $user->ID;
 
         $umm->insert();
 
@@ -70,6 +71,8 @@ class UserMembershipController extends _UserMembershipController
 
         $upm->ID_USER = $user->ID;
         $upm->ID_DASHBOARD = $id_dashboard;
+        $upm->GUID = $user->ID;
+        $upm->UDID = $user->ID;
 
         $upm->insert();
 
