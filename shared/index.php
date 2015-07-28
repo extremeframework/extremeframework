@@ -147,7 +147,7 @@ function application_route($url = null) {
     } else {
         $lang = 'en';
     }
-    setcookie('lang', $lang);
+    setcookie('lang', $lang, time() + 864000, '/'); // 10 days for the entire domain
 
     require_once(SHARED_DIR."/locales/app_lang_{$lang}.php");
 
