@@ -289,7 +289,7 @@ class __AppController {
     public function pagenotfound($error = '') {
         $this->simple_page('<p>The address is invalid, or the page has been moved or permission denied.</p>'.(!empty($error)? '<p style="color:gray">::'.$error.'::</p>' : ''), 'Access denied');
 
-        die(-1);
+        application_exit(-1);
     }
 
     protected function simple_page($message, $title) {
@@ -713,7 +713,15 @@ class __AppController {
         // To be overrided if necessary
     }
 
+    public function enforceCustomAclCheck(&$model) {
+        // To be overrided if necessary
+    }
+
     public function enforceObjectAclCheck($module, &$model, $require_non_empty_includes = true, $by_pass_self_check = false) {
+        // x. Enforce custom ACL check first
+        $this->enforceCustomAclCheck($model);
+
+        // x. Enforce system ACL check later
         $this->getAccessGrantedItems($includes, $excludes, $all_details);
 
         if (empty($includes)) {
