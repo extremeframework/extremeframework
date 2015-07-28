@@ -2,7 +2,7 @@
 <script type="text/javascript">
     var RecaptchaOptions = {
         theme : 'clean',
-        lang : '<{$smarty.cookies.lang}>'
+        lang : '<{$smarty.session.lang}>'
     };
 </script>
 

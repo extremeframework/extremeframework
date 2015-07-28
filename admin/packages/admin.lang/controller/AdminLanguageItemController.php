@@ -53,7 +53,7 @@ class AdminLanguageItemController extends _AdminLanguageItemController
     function updateTranslationAction() {
         $key = isset($_REQUEST['key'])? $_REQUEST['key'] : false;
         $text = isset($_REQUEST['text'])? $_REQUEST['text'] : false;
-        $lang = isset($_COOKIE['lang'])? $_COOKIE['lang'] : 'en';
+        $lang = isset($_SESSION['lang'])? $_SESSION['lang'] : 'en';
 
         // x. Find language
         $alm = new AdminLanguageModel();

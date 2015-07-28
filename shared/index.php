@@ -142,12 +142,15 @@ function application_route($url = null) {
     //////////////////////////////////////////////////////////////////
     if (isset($_REQUEST['lang']) && !empty($_REQUEST['lang'])) {
         $lang = $_REQUEST['lang'];
+    } else if (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+        $lang = $_SESSION['lang'];
     } else if (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
         $lang = $_COOKIE['lang'];
     } else {
         $lang = 'en';
     }
-    setcookie('lang', $lang, time() + 864000, '/'); // 10 days for the entire domain
+    setcookie('lang', $lang, time() + 86400, '/'); // 10 days for the entire domain
+    $_SESSION['lang'] = $lang;
 
     require_once(SHARED_DIR."/locales/app_lang_{$lang}.php");
 
