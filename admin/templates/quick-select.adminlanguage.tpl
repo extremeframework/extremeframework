@@ -8,7 +8,6 @@
         <{foreach from=$rows item=item}>
             <li>
                 <a href="<{$smarty.const.APPLICATION_URL}>/?lang=<{$item->CODE}>"><{$item->NAME}></a>
-                <{/if}>
             </li>
         <{/foreach}>
     </ul>
