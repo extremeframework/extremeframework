@@ -183,7 +183,7 @@ class UserController extends _UserController
 
                 $smarty->assign('message', $message);
                 $smarty->assign('details', $model);
-                $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')));
+                $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'), ENT_QUOTES, 'UTF-8'));
 
                 $this->display($smarty, 'user.register.tpl');
             } else {
@@ -194,7 +194,7 @@ class UserController extends _UserController
         } else {
             $smarty = Framework::getSmarty(__FILE__);
 
-            $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')));
+            $smarty->assign('captcha', html_entity_decode(recaptcha_get_html($publickey, $captcha_error, isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'), ENT_QUOTES, 'UTF-8'));
 
             $this->display($smarty, 'user.register.tpl');
         }

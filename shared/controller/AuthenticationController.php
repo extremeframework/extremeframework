@@ -115,7 +115,7 @@ class AuthenticationController extends __AppController
         }
     }
 
-    function tryLoginAs($username) {
+    static function tryLoginAs($username) {
         // Member
 		$member = new UserModel();
 		$member->LOGIN = $username;
@@ -126,7 +126,7 @@ class AuthenticationController extends __AppController
         }
     }
 
-    function login($user) {
+    static function login($user) {
         $date_time = date('Y-m-d H:i:s');
 
         // Store into session
@@ -151,7 +151,7 @@ class AuthenticationController extends __AppController
         AuthenticationController::initializeUserContext($user->ID);
     }
 
-    function initializeUserContext($id_user) {
+    static function initializeUserContext($id_user) {
         // Load access rights
         $acl = new AclController();
 		$acl->loadAccessRights($id_user);
@@ -213,7 +213,7 @@ class AuthenticationController extends __AppController
         }
     }
 
-    function loadMenu($id_menu) {
+    static function loadMenu($id_menu) {
         if (!Framework::hasModule('AdminMenu')) {
             return;
         }
