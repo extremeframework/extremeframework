@@ -21,8 +21,12 @@ class AccessRightModel extends DataObject_ACCESS_RIGHT {
         AclController::ensureCreationQuota($this->_module);
 
         $this->REFID = SequenceHelper::nextRefid($this->_module);
-        $this->GUID = isset($_SESSION['user'])? $_SESSION['user']->ID : null;
-        $this->UDID = isset($_SESSION['user'])? ($_SESSION['user']->ID != 1? $_SESSION['user']->UDID : 0) : null;
+        if (empty($this->GUID)) {
+            $this->GUID = isset($_SESSION['user'])? $_SESSION['user']->ID : null;
+        }
+        if (empty($this->UDID)) {
+            $this->UDID = isset($_SESSION['user'])? ($_SESSION['user']->ID != 1? $_SESSION['user']->UDID : 0) : null;
+        }
         $this->UUID = IdHelper::uuid();
         if (empty($this->WFID)) {
             $this->WFID = WorkflowHelper::getDefaultWorkflowStage($this->_module);
