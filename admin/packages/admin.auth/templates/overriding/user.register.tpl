@@ -110,7 +110,7 @@ a.button-register {
                     </table>
 
                 	<div class="form-row form-row-mandatory">
-                		<label>Please type the number (as shown in the image) to the box below it</label>
+                		<label><{_t('Please type the number (as shown in the image) to the box below it')}></label>
                 		<div class="form-field column-captcha">
                             <{$captcha}>
                 		</div>
@@ -118,7 +118,7 @@ a.button-register {
                 	<div class="form-row form-row-mandatory">
                 		<div class="form-field column-tos">
                 		    <input type="checkbox" name="ACCEPT_TOS" value="1"/>&nbsp;
-                		    <span>I accept the <a href="<{$smarty.const.APPLICATION_URL}>/terms-of-service" style="text-decoration:none" target="_blank">Terms of service</a> of <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
+                		    <span><{_t('I accept the')}> <a href="<{$smarty.const.APPLICATION_URL}>/terms-of-service" style="text-decoration:none" target="_blank"><{_t('Terms of service')}></a> <{_t('of')}> <{$smarty.const.ORGANIZATION_NAME_SHORT}></span>
                 		</div>
                     </div>
                 	<div class="form-row form-row-mandatory">
