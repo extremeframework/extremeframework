@@ -75,16 +75,52 @@ function get_cache_path($request) {
     // x. Construct a cache file path
     $query = http_build_query($request);
 
-    $filename = md5($query).'.html';
+    $filename = md5(session_id()).'-'.md5($query).'-'.get_lang().'.html';
     $filepath = $cachedir.'/'.$filename;
 
     return $filepath;
 }
 
+function is_auth_required($request) {
+    $p = isset($_GET['p'])? $_GET['p'] : '';
+
+    // x. Get cache config
+    $config = include(CONFIG_DIR.'/html-cache.php');
+
+    // x. Check auth-required paths
+    $auth_required_paths = isset($config['auth_required_paths'])? $config['auth_required_paths'] : array();
+
+    foreach ($auth_required_paths as $pattern) {
+        if (preg_match('/'.$pattern.'/is', $p)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function get_lang() {
+    if (isset($_REQUEST['lang']) && !empty($_REQUEST['lang'])) {
+        $lang = $_REQUEST['lang'];
+    } else if (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+        $lang = $_SESSION['lang'];
+    } else if (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
+        $lang = $_COOKIE['lang'];
+    } else {
+        $lang = 'en';
+    }
+
+    return $lang;
+};
+
 function application_route($url = null) {
     global $cachepath;
     global $dont_load_cache;
     static $rewrited = false;
+    static $thin_session_checked = false;
+    static $thin_session_started = false;
+    static $is_auth_required = false;
+    static $is_user_authed = false;
 
     if (!empty($url)) {
         @list($main, $querystring) = explode('?', $url);
@@ -100,6 +136,27 @@ function application_route($url = null) {
     $_GET['p'] = str_replace('.xml', '/xml', $_GET['p']);
 
     ///////////////////////////////////////////////////////////
+    // Pre-start session to check if user is authenticated so
+    // that we can consider applying HTML cache or not
+    ///////////////////////////////////////////////////////////
+    $is_auth_required = is_auth_required($_GET);
+
+    if ($is_auth_required) {
+        if (!$thin_session_checked) {
+            if (defined('APPLICATION_NAME')) {
+            	session_name(md5(APPLICATION_NAME));
+            }
+
+            session_start();
+
+            $is_user_authed = isset($_SESSION['user']);
+
+            $thin_session_checked = true;
+            $thin_session_started = true;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////
     // Use cache if applicable
     ///////////////////////////////////////////////////////////
     if (empty($cachepath) || $rewrited) {
@@ -108,10 +165,22 @@ function application_route($url = null) {
 
     $cachetime = 86400; // 1 day cache
 
-    if (!$dont_load_cache && !empty($cachepath) && is_file($cachepath) && time() - $cachetime < filemtime($cachepath)) {
+    if ((!$is_auth_required || $is_user_authed) && !$dont_load_cache && !empty($cachepath) && is_file($cachepath) && time() - $cachetime < filemtime($cachepath)) {
         echo file_get_contents($cachepath);
 
         exit(0);
+    }
+
+    ///////////////////////////////////////////////////////////
+    // Here, we dont use cache, so we need to perform the full
+    // processing. So, we need to close the pre-session (with
+    // no class definition loaded) so it can be re-openned later
+    // with class definition loaded or with autoloads defined
+    ///////////////////////////////////////////////////////////
+    if ($thin_session_checked && $thin_session_started) {
+        session_write_close();
+
+        $thin_session_started = false;
     }
 
     ///////////////////////////////////////////////////////////
@@ -140,15 +209,8 @@ function application_route($url = null) {
     //////////////////////////////////////////////////////////////////
     // Load language file
     //////////////////////////////////////////////////////////////////
-    if (isset($_REQUEST['lang']) && !empty($_REQUEST['lang'])) {
-        $lang = $_REQUEST['lang'];
-    } else if (isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
-        $lang = $_SESSION['lang'];
-    } else if (isset($_COOKIE['lang']) && !empty($_COOKIE['lang'])) {
-        $lang = $_COOKIE['lang'];
-    } else {
-        $lang = 'en';
-    }
+    $lang = get_lang();
+
     setcookie('lang', $lang, time() + 86400, '/'); // 10 days for the entire domain
     $_SESSION['lang'] = $lang;
 

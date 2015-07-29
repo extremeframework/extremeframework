@@ -1,15 +1,27 @@
 <?php
 return array(
-    /**
-     * Specify if HTML cache is enabled
-     */
-    'enabled' => false,
+    ////////////////////////////////////////////////////////
+    // Specify if HTML cache is enabled
+    ////////////////////////////////////////////////////////
 
-    /**
-     * Don't use cache for the following link patterns
-     */
+    'enabled' => true,
+
+    ////////////////////////////////////////////////////////
+    // Don't use cache for the following link patterns
+    ////////////////////////////////////////////////////////
+
     'excludes' => array(
         '^(thumb|opcache|notification|authentication)',
         '.*\/(sort)',
+    ),
+
+    ////////////////////////////////////////////////////////
+    // Paths that match one of the following patterns will
+    // require user authentication check before considering
+    // using cache
+    ////////////////////////////////////////////////////////
+
+    'auth_required_paths' => array(
+        '.*'
     )
 );
