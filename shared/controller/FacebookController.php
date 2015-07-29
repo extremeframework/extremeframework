@@ -103,17 +103,10 @@ class FacebookController {
             $model->GENDER = ($gender == 'male');
 
             $model->CREATION_DATE = date('Y-m-d H:i:s');
-            $model->REFID = $uc->nextRefid();
-            $model->UUID = $uc->uuid();
-            $model->WFID = $uc->getDefaultWorkflowStage('user');
-
-            $model->insert();
-
-            // x. Update user domain id
             $model->UDID = $model->ID;
             $model->GUID = $model->ID;
 
-            $model->update();
+            $model->insert();
 
             // x. Add to the Base User group
     	    $umc = new UserMembershipController();
