@@ -281,7 +281,9 @@ function application_exit($code = 0) {
         $dir = dirname($cachepath);
 
         if (!is_dir($dir)) {
-            mkdir($dir, 777, true);
+            $old = umask(0);
+            mkdir($dir, 0755, true);
+            umask($old);
         }
 
         // x. Write cache file
