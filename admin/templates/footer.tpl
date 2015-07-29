@@ -27,7 +27,7 @@
     (function () {
         var e = document.createElement('script');
         e.type = 'text/javascript';
-        e.src = 'https://connect.facebook.net/en_US/all.js';
+        e.src = 'http://connect.facebook.net/en_US/all.js';
         e.async = true;
         document.getElementById('fb-root').appendChild(e);
     }());

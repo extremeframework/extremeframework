@@ -149,6 +149,7 @@
     color: white;
     opacity: 1;
     font-weight: normal;
+    outline: none;
 }
 #globalmodal .message {
     margin: 10px 15px 0;
