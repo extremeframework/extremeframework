@@ -70,14 +70,14 @@
 
 <{if get_option('enable-social-registration')}>
     <section class="social-signin">
-        <button onclick="facebook_login();" class="button button-social button-facebook" title="<{_t('Sign in with Facebook', true)}>">
-            <i class="fa fa-facebook"></i><{_t('Facebook')}>
+        <button onclick="facebook_login();" class="button button-social button-facebook">
+            <i class="fa fa-facebook"></i><{_t('Sign in with Facebook')}>
         </button>
-        <button class="button-social button button-google" title="<{_t('Sign in with Google+', true)}>" onclick="google_login();">
-            <i class="fa fa-google-plus"></i><{_t('Google+')}>
+        <button class="button-social button button-google" onclick="google_login();">
+            <i class="fa fa-google-plus"></i><{_t('Sign in with Google+')}>
         </button>
-        <button class="button-social button button-yahoo" title="<{_t('Sign in with Yahoo', true)}>" onclick="yahoo_login();">
-            <i class="fa fa-yahoo"></i><{_t('Yahoo')}>
+        <button class="button-social button button-yahoo" onclick="yahoo_login();">
+            <i class="fa fa-yahoo"></i><{_t('Sign in with Yahoo')}>
         </button>
     </section>
 <{/if}>
