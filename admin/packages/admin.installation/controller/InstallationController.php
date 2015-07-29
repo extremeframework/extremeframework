@@ -10,6 +10,10 @@ class InstallationController extends __AppController
     var $type = 'controller';
 
     function indexAction($type = '') {
+        AuthenticationController::authenticate();
+
+        AclController::checkPermission('installation', '');
+
         if ($type == 'package') {
             $this->packageAction();
         } else if ($type == 'plugin') {
@@ -28,6 +32,10 @@ class InstallationController extends __AppController
     }
 
     function packageAction($type = 'package') {
+        AuthenticationController::authenticate();
+
+        AclController::checkPermission('installation', $type);
+
 		$messages = $this->getMessages();
 
 		$smarty = Framework::getSmarty(__FILE__);
@@ -47,6 +55,10 @@ class InstallationController extends __AppController
     }
 
     function installAction() {
+        AuthenticationController::authenticate();
+
+        AclController::checkPermission('installation', '');
+
         $type = RequestHelper::get('type');
 
         if (isset($_FILES['installation_file'])) {
