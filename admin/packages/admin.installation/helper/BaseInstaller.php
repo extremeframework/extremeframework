@@ -63,7 +63,9 @@ class BaseInstaller {
         $package_root = $this->get_temp_dir().'/'.substr(basename($package), 0, -4);
 
         if (!is_dir($package_root)) {
-            mkdir($package_root);
+            $old = umask(0);
+            mkdir($package_root, 0755, true);
+            umask($old);
         } else {
             $this->delete_dir($package_root);
         }
@@ -210,7 +212,13 @@ class BaseInstaller {
 
     function recursive_copy($src, $dst, $overwrite = false) {
         $dir = opendir($src);
-        @mkdir($dst);
+
+        if (!is_dir($dst)) {
+            $old = umask(0);
+            mkdir($dst, 0755, true);
+            umask($old);
+        }
+
         while(false !== ( $file = readdir($dir)) ) {
             if (( $file != '.' ) && ( $file != '..' ) && ( $file != '.svn' )) {
                 if ( is_dir($src . '/' . $file) ) {

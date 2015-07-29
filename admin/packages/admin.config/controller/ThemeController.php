@@ -129,7 +129,9 @@ class ThemeController extends __AppController
 
                     $dir = UPLOAD_DIR."/".$rel;
                     if (!is_dir($dir)) {
-                        mkdir($dir, 0777, true);
+                        $old = umask(0);
+                        mkdir($dir, 0755, true);
+                        umask($old);
                     }
 
                     $uploadfile = $dir.'/'.$basename;

@@ -916,7 +916,10 @@ class _WidgetPositionController extends __AppController
         }
 
         $tempdir = $this->truepath(UPLOAD_DIR.'/'.uniqid());
-        mkdir($tempdir, 0777);
+
+        $old = umask(0);
+        mkdir($tempdir, 0755, true);
+        umask($old);
 
         $zip->extractTo($tempdir);
         $zip->close();

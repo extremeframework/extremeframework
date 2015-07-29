@@ -799,6 +799,9 @@ class _AdminFilterController extends __AppController
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
+            if ($refclass == 'FieldModel' && empty($model->COLUMNS)) {
+                $model->COLUMNS = $refobject->COLUMN;
+            }
 
         }
     }
@@ -1521,6 +1524,11 @@ class _AdminFilterController extends __AppController
 
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
+
+                        break;
+
+                    case 'COLUMNS':
+                        $model->whereAdd(TABLE_PREFIX."ADMIN_FILTER.COLUMNS LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
                         break;
 
