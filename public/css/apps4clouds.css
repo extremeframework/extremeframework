@@ -1132,13 +1132,30 @@ body#signin #heading h1 {
     background: rgb(75, 168, 83);
     color: #fff!important;
     position: relative;
-    width: 208px;
+    min-width: 100px;
     text-align: left;
     border: 1px solid rgb(233, 233, 233);
 }
 
-#signin .button-social:hover {
-    background: #16781e;
+#signin .button-facebook {
+    background-color: #214285;
+}
+#signin .button-facebook:hover {
+    background-color: #163779;
+}
+
+#signin .button-google {
+    background-color: #DF4A32;
+}
+#signin .button-google:hover {
+    background-color: #D03E26;
+}
+
+#signin .button-yahoo {
+    background-color: #620973;
+}
+#signin .button-yahoo:hover {
+    background-color: #831A99;
 }
 
 #signin .button-social i {
