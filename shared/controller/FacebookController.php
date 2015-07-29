@@ -94,6 +94,10 @@ class FacebookController {
 
         // x. Insert or update
         if ($exists) {
+            if (empty($model->LOGIN)) {
+                $model->LOGIN = $email;
+            }
+
             $model->update();
         } else {
             $uc = new UserController();
@@ -102,7 +106,7 @@ class FacebookController {
             $model->FIRST_NAME = $first_name;
             $model->LAST_NAME = ($middle_name? $middle_name.' ' : '').$last_name;
             $model->GENDER = ($gender == 'male');
-
+            $model->IS_ENABLED = true;
             $model->CREATION_DATE = date('Y-m-d H:i:s');
 
             $model->insert();

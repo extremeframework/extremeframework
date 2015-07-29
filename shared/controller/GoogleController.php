@@ -94,6 +94,10 @@ class GoogleController {
 
             // x. Insert or update
             if ($exists) {
+                if (empty($model->LOGIN)) {
+                    $model->LOGIN = $email;
+                }
+
                 $model->update();
             } else {
                 $uc = new UserController();
@@ -102,7 +106,7 @@ class GoogleController {
                 $model->FIRST_NAME = $given_name;
                 $model->LAST_NAME = $family_name;
                 $model->GENDER = ($gender == 'male');
-
+                $model->IS_ENABLED = true;
                 $model->CREATION_DATE = date('Y-m-d H:i:s');
 
                 $model->insert();

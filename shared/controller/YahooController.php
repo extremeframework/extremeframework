@@ -68,6 +68,10 @@ class YahooController {
 
                 // x. Insert or update
                 if ($exists) {
+                    if (empty($model->LOGIN)) {
+                        $model->LOGIN = $email;
+                    }
+
                     $model->update();
                 } else {
                     $uc = new UserController();
@@ -75,7 +79,7 @@ class YahooController {
                     $model->LOGIN = $email;
                     $model->FIRST_NAME = $first_name;
                     $model->LAST_NAME = $last_name;
-
+                    $model->IS_ENABLED = true;
                     $model->CREATION_DATE = date('Y-m-d H:i:s');
 
                     $model->insert();
