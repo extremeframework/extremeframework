@@ -285,9 +285,13 @@ function application_exit($code = 0) {
         }
 
         // x. Write cache file
-        $contents = ob_get_contents();
+        if (is_writable($dir)) {
+            $contents = ob_get_contents();
 
-        file_put_contents($cachepath, $contents);
+            file_put_contents($cachepath, $contents);
+        } else {
+            MessageHelper::setAppMessage("The directory $dir should be writable");
+        }
     }
 
     ob_end_flush();
