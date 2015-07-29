@@ -520,6 +520,12 @@ class UserController extends _UserController
             $message = null;
             if (empty($model->FIRST_NAME)) {
                 $message = _t('First name should not be empty');
+            } elseif (empty($model->LAST_NAME)) {
+                $message = _t('Last name should not be empty');
+            } elseif (empty($model->EMAIL)) {
+                $message = _t('Email address should not be empty');
+            } elseif (!preg_match('/^([.0-9a-z_-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,4})$/i', $model->EMAIL)) {
+                $message = _t('Invalid email address');
             } elseif (empty($model->PASSWORD) || strlen(trim($model->PASSWORD)) < 6) {
                 $message = _t('Password should be at least 6 characters and contains no spaces');
             } elseif (empty($password2)) {
