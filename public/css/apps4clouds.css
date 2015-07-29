@@ -1138,10 +1138,10 @@ body#signin #heading h1 {
 }
 
 #signin .button-facebook {
-    background-color: #214285;
+    background-color: #2758BC;
 }
 #signin .button-facebook:hover {
-    background-color: #163779;
+    background-color: #1E479A;
 }
 
 #signin .button-google {
@@ -1152,10 +1152,10 @@ body#signin #heading h1 {
 }
 
 #signin .button-yahoo {
-    background-color: #620973;
+    background-color: #841A99;
 }
 #signin .button-yahoo:hover {
-    background-color: #831A99;
+    background-color: #721984;
 }
 
 #signin .button-social i {
