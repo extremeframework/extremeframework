@@ -106,10 +106,6 @@ class AdminLanguageController extends _AdminLanguageController
     }
 
     function quickSelectAction() {
-        AuthenticationController::authenticate();
-
-        LicenseController::enforceLicenseCheck('adminlanguage');
-
         $model = new AdminLanguageModel();
         $model->find();
 

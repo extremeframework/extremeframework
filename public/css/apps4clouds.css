@@ -1083,6 +1083,29 @@ div#heading{
     background-color: #FFFFFF;
 }
 
+/* Language selector in the signin page */
+#signin .locales {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    margin: 10px 20px;
+    border: 1px solid white;
+    padding: 5px;
+    color: white;
+}
+
+#signin .locales a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+#signin .locales .fa-globe {
+    font-size: 16px;
+    margin-right: 3px;
+}
+
+/* Signin form */
 #signin {
     background-color: #333;
 }
@@ -1092,7 +1115,7 @@ div#heading{
     color: #FFF;
 }
 
-body#signin #heading h1 {
+#signin #heading h1 {
     float:none;text-align:center;
     padding-top: 7px;
     margin: 0;

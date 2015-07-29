@@ -7,6 +7,14 @@
 <{assign var='title' value=_t('Sign in')}>
 <{include file="top.tpl"}>
 
+<div class="locales">
+    <i class="fa fa-globe"></i>
+    <a class="show-modal" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/quickSelect">
+        <{_t('Change display language')}>
+        <b class="caret"></b>
+    </a>
+</div>
+
 <div class="account-signin">
 
     <div id="heading">
@@ -68,7 +76,7 @@
     </div>
 </div>
 
-<{if get_option('enable-social-registration')}>
+<{if get_option('enable-social-registration', false, null, false)}>
     <section class="social-signin">
         <button onclick="facebook_login();" class="button button-social button-facebook">
             <i class="fa fa-facebook"></i><{_t('Sign in with Facebook')}>
