@@ -76,10 +76,14 @@ class YahooController {
                     $model->LAST_NAME = $last_name;
 
                     $model->CREATION_DATE = date('Y-m-d H:i:s');
+
+                    $model->insert();
+
+                    // x. Update
                     $model->UDID = $model->ID;
                     $model->GUID = $model->ID;
 
-                    $model->insert();
+                    $model->update();
 
                     // x. Add to the Base User group
             	    $umc = new UserMembershipController();
