@@ -98,6 +98,7 @@ class FacebookController {
         } else {
             $uc = new UserController();
 
+            $model->LOGIN = $email;
             $model->FIRST_NAME = $first_name;
             $model->LAST_NAME = ($middle_name? $middle_name.' ' : '').$last_name;
             $model->GENDER = ($gender == 'male');

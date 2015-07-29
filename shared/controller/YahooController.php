@@ -72,6 +72,7 @@ class YahooController {
                 } else {
                     $uc = new UserController();
 
+                    $model->LOGIN = $email;
                     $model->FIRST_NAME = $first_name;
                     $model->LAST_NAME = $last_name;
 

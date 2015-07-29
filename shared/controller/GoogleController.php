@@ -98,6 +98,7 @@ class GoogleController {
             } else {
                 $uc = new UserController();
 
+                $model->LOGIN = $email;
                 $model->FIRST_NAME = $given_name;
                 $model->LAST_NAME = $family_name;
                 $model->GENDER = ($gender == 'male');
