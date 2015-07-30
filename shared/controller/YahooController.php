@@ -99,6 +99,16 @@ class YahooController {
                     // x. Add to the Base User group
             	    $umc = new UserMembershipController();
             	    $umc->addUserToGroup($model, DEFAULT_USER_GROUP);
+
+            	    // x. Send email confirmation
+            	    UserController::sendEmailConfirmation($model);
+                }
+
+                // x. Set language
+                list($lang) = explode('_', $model->LOCALE);
+
+                if (!empty($lang)) {
+                    $_SESSION['lang'] = $lang;
                 }
 
                 // x. Login
