@@ -562,4 +562,62 @@ class UserController extends _UserController
             $this->display($smarty, 'user.edit-account.tpl');
         }
     }
+
+    static function sendEmailConfirmation($model) {
+        // Create confirmation link
+        $compound = $model->UUID.','.$model->EMAIL;
+
+        $activation = APPLICATION_URL.'/user/confirm?c='.base64_encode($compound);
+
+        // x. Confirmation email content
+        $smarty = Framework::getSmarty(__FILE__);
+        $smarty->assign('name', trim($model->FIRST_NAME.' '.$model->LAST_NAME));
+        $smarty->assign('email', $model->EMAIL);
+        $smarty->assign('activation', $activation);
+        $content = $smarty->fetch('.email.email-confirmation.tpl');
+
+        // x. Send an email to the subscriber
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $headers .= 'From: '.SUPPORT_NAME.' <'.SUPPORT_EMAIL.'>' . "\r\n";
+
+        if (!MailController::mail($model->EMAIL, 'Email Confirmation', nl2br($content), $headers)) {
+            return _t('Cannot send verification email');
+        }
+    }
+
+    function confirmAction() {
+        $compound = isset($_REQUEST['c'])? $_REQUEST['c'] : '';
+
+        if (!empty($compound)) {
+            $compound = base64_decode($compound);
+
+            if (preg_match('/.*,.*/i',$compound)) {
+                @list($uuid, $email) = explode(',', $compound);
+
+                if ($this->confirm($uuid, $email)) {
+                    $smarty = Framework::getSmarty(__FILE__);
+                    $this->display($smarty, 'user.email-confirmation-done.tpl');
+
+                    return;
+                }
+            }
+        }
+
+        $smarty = Framework::getSmarty(__FILE__);
+        $this->display($smarty, 'user.email-confirmation-failed.tpl');
+    }
+
+    function confirm($uuid, $email) {
+		$model = new UserModel();
+		$model->UUID = $uuid;
+		$model->EMAIL = $email;
+        $model->find();
+
+        if (!$model->fetch()) {
+            return false;
+        }
+
+        return true;
+    }
 }
