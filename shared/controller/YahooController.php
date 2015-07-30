@@ -52,15 +52,10 @@ class YahooController {
                 $first_name = array_shift($parts);
                 $last_name = implode (' ', $parts);
 
-                // x. Ensure email available
-                if (empty($email)) {
-                    Framework::redirect(APPLICATION_URL.'/authentication/login');
-                }
-
                 // x. Check if user exists
                 $model = new UserModel();
 
-                $model->whereAdd("EMAIL = '$email'");
+                $model->EMAIL = $email;
 
                 $model->find();
                 $model->fetch();

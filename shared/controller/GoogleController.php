@@ -58,11 +58,6 @@ class GoogleController {
             $email = $token_data['payload']['email'];
             $email_verified = $token_data['payload']['email_verified'];
 
-            // x. Ensure email available
-            if (empty($email)) {
-                Framework::redirect(APPLICATION_URL.'/authentication/login');
-            }
-
             // x. Get further information
             $access_token_string = json_decode($client->getAccessToken())->access_token;
 
@@ -82,7 +77,7 @@ class GoogleController {
             // x. Check if user exists
             $model = new UserModel();
 
-            $model->whereAdd("EMAIL = '$email'");
+            $model->EMAIL = $email;
 
             $model->find();
             $model->fetch();
@@ -95,9 +90,6 @@ class GoogleController {
             $model->IS_EMAIL_VERIFIED = $email_verified;
             if (empty($model->PHOTO)) {
                 $model->PHOTO = $picture;
-            }
-            if (empty($model->LOCALE)) {
-                $model->LOCALE = $locale;
             }
 
             // x. Insert or update

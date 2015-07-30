@@ -60,7 +60,7 @@ class FacebookController {
 
     function onSessionData($session) {
         // Get graph data
-        $request = new Facebook\FacebookRequest($session, 'GET', '/me?fields=id,name,email,first_name,middle_name,last_name,gender,link,verified,locale,currency,birthday');
+        $request = new Facebook\FacebookRequest($session, 'GET', '/me');
         $response = $request->execute();
         $graph_object = $response->getGraphObject();
 
@@ -74,19 +74,10 @@ class FacebookController {
         $link = $graph_object->getProperty('link');
         $verified = $graph_object->getProperty('verified');
 
-        $locale = $graph_object->getProperty('locale');
-        $currency = $graph_object->getProperty('currency');
-        $birthday = $graph_object->getProperty('birthday');
-
-        // x. Ensure email available
-        if (empty($email)) {
-            Framework::redirect(APPLICATION_URL.'/authentication/login');
-        }
-
         // x. Check if user exists
         $model = new UserModel();
 
-        $model->whereAdd("EMAIL = '$email'");
+        $model->EMAIL = $email;
 
         $model->find();
         $model->fetch();
@@ -99,9 +90,6 @@ class FacebookController {
         $model->IS_EMAIL_VERIFIED = $verified;
         if (empty($model->PHOTO)) {
             $model->PHOTO = "http://graph.facebook.com/{$id}/picture";
-        }
-        if (empty($model->LOCALE)) {
-            $model->LOCALE = $locale;
         }
 
         // x. Insert or update
