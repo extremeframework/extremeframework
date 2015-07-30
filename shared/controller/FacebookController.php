@@ -4,80 +4,104 @@
  *
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
-require_once(LIBRARY_DIR.'/external/facebook-php-sdk/autoload.php');
+require_once(LIBRARY_DIR.'/external/facebook-php-sdk-v4-5.0/autoload.php');
 
 class FacebookController {
-    function __construct() {
-        Facebook\FacebookSession::setDefaultApplication(get_option('facebook-oauth2-app-id'), get_option('facebook-oauth2-app-secret'));
+    function getFacebookInstance() {
+        $fb = new Facebook\Facebook([
+            'app_id' => get_option('facebook-oauth2-app-id'),
+            'app_secret' => get_option('facebook-oauth2-app-secret'),
+            'default_graph_version' => 'v2.2',
+        ]);
+
+        return $fb;
     }
 
     function loginAction() {
-        $helper = new Facebook\FacebookRedirectLoginHelper(APPLICATION_URL.'/facebook/oauth2callback');
+        $fb = $this->getFacebookInstance();
 
-        header('Location:'.$helper->getLoginUrl());
+        $helper = $fb->getRedirectLoginHelper();
+        $permissions = ['email']; // optional
+        $loginUrl = $helper->getLoginUrl(APPLICATION_URL.'/facebook/oauth2callback', $permissions);
+
+        header('Location:'.$loginUrl);
     }
 
     // Support callback from PHP SDK
     function oauth2callbackAction() {
-        $helper = new Facebook\FacebookRedirectLoginHelper(APPLICATION_URL.'/facebook/oauth2callback');
+        $fb = $this->getFacebookInstance();
+
+        $helper = $fb->getRedirectLoginHelper();
 
         try {
-            $session = $helper->getSessionFromRedirect();
-        } catch(FacebookRequestException $ex) {
-            $this->onError();
-        } catch(\Exception $ex) {
-            $this->onError();
-        }
+            $accessToken = $helper->getAccessToken();
 
-        // x. If session ok
-        if ($session) {
-            $this->onSessionData($session);
+            $this->onAccessToken($accessToken);
+        } catch(Exception $e) {
+            $this->onError($e->getMessage());
         }
     }
 
     // Support callback from Javascript SDK
     function callbackAction() {
-        $helper = new Facebook\FacebookJavaScriptLoginHelper();
+        $accessToken = isset($_REQUEST['token'])? $_REQUEST['token'] : '';
 
-        // x. Get Facebook session
+        if (empty($accessToken)) {
+            $this->onError();
+        }
+
+        $this->onAccessToken($accessToken);
+    }
+
+    function onAccessToken($accessToken) {
+        $fb = $this->getFacebookInstance();
+
+        // Exchanges a short-lived access token for a long-lived one
+        $oAuth2Client = $fb->getOAuth2Client();
+        $accessToken = $oAuth2Client->getLongLivedAccessToken($accessToken);
+
+        // Set default access token for subsequence requests
+        $fb->setDefaultAccessToken($accessToken);
+
         try {
-            $session = $helper->getSession();
-        } catch(FacebookRequestException $ex) {
-            $this->onError();
-        } catch(\Exception $ex) {
-            $this->onError();
-        }
+            $response = $fb->get('/me?fields=id,name,email,first_name,middle_name,last_name,gender,link,verified,cover,work,website,timezone,relationship_status,locale,location,languages,education,currency,birthday,address,age_range,about');
 
-        // x. If session ok
-        if ($session) {
-            $this->onSessionData($session);
+            $gu = $response->getGraphUser();
+
+            $this->onGraphUser($gu);
+        } catch(Exception $e) {
+            $this->onError($e->getMessage());
         }
     }
 
-    function onError() {
-        Framework::redirect(APPLICATION_URL.'/authentication/login');
-    }
-
-    function onSessionData($session) {
-        // Get graph data
-        $request = new Facebook\FacebookRequest($session, 'GET', '/me');
-        $response = $request->execute();
-        $graph_object = $response->getGraphObject();
-
+    function onGraphUser($gu) {
         // x. Extract information
-        $id = $graph_object->getProperty('id');
-        $email = $graph_object->getProperty('email');
-        $first_name = $graph_object->getProperty('first_name');
-        $middle_name = $graph_object->getProperty('middle_name');
-        $last_name = $graph_object->getProperty('last_name');
-        $gender = $graph_object->getProperty('gender');
-        $link = $graph_object->getProperty('link');
-        $verified = $graph_object->getProperty('verified');
+        $id = $gu->getProperty('id');
+        $email = $gu->getProperty('email');
+        $first_name = $gu->getProperty('first_name');
+        $middle_name = $gu->getProperty('middle_name');
+        $last_name = $gu->getProperty('last_name');
+        $gender = $gu->getProperty('gender');
+        $link = $gu->getProperty('link');
+        $verified = $gu->getProperty('verified');
+
+        $locale = $gu->getProperty('locale');
+        $currency = $gu->getProperty('currency');
+        $birthday = $gu->getProperty('birthday');
+
+        if (is_array($currency) && isset($currency['user_currency'])) {
+            $currency = $currency['user_currency'];
+        }
+
+        // x. Ensure email available
+        if (empty($email)) {
+            $this->onError();
+        }
 
         // x. Check if user exists
         $model = new UserModel();
 
-        $model->EMAIL = $email;
+        $model->whereAdd("EMAIL = '$email'");
 
         $model->find();
         $model->fetch();
@@ -85,11 +109,15 @@ class FacebookController {
         $exists = ($model->ID > 0);
 
         // x. Set data
+        $model->EMAIL = $email;
         $model->FACEBOOK_ID = $id;
         $model->FACEBOOK_OAUTH_ID = $id;
         $model->IS_EMAIL_VERIFIED = $verified;
         if (empty($model->PHOTO)) {
             $model->PHOTO = "http://graph.facebook.com/{$id}/picture";
+        }
+        if (empty($model->LOCALE)) {
+            $model->LOCALE = $locale;
         }
 
         // x. Insert or update
@@ -127,5 +155,9 @@ class FacebookController {
 
         // x. Redirect to a target page
         Framework::redirect(APPLICATION_URL);
+    }
+
+    function onError($message = '') {
+        Framework::redirect(APPLICATION_URL.'/authentication/login');
     }
 }
