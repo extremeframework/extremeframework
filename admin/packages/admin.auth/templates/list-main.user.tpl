@@ -104,6 +104,24 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('LOCALE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['LOCALE']) && ((isset($aclviewablecolumns['LOCALE']) && $aclviewablecolumns['LOCALE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOCALE']) || $aclviewablecolumns['LOCALE']))) }>
+    	            <th class="column-locale">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/locale"><{_t('Locale')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
+		                        <{if (in_array('CURRENCY', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['CURRENCY']) && ((isset($aclviewablecolumns['CURRENCY']) && $aclviewablecolumns['CURRENCY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENCY']) || $aclviewablecolumns['CURRENCY']))) }>
+    	            <th class="column-currency">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/user/sort/currency"><{_t('Currency')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('FACEBOOK_ID', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
     	            <th class="column-facebook-id">

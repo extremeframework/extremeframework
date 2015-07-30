@@ -385,6 +385,74 @@
             
         
         
+            <{if !isset($excludedcolumns['LOCALE']) && ((isset($aclviewablecolumns['LOCALE']) && $aclviewablecolumns['LOCALE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOCALE']) || $aclviewablecolumns['LOCALE']))) }>
+        <{if !isset($columns2hide) || !in_array('LOCALE', $columns2hide) }>
+    		<td class="form-field form-field-label column-locale">
+	            		        <label class="attribute-name"><{_t('Locale')}></label>
+            </td>
+            <td class="form-field form-field-value column-locale" colspan="3">
+            	<div class="attribute-line column-locale type-text">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['LOCALE']) && $acleditablecolumns['LOCALE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['LOCALE']) || $acleditablecolumns['LOCALE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{$details->LOCALE|escape}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+
+    <input class="input-locale input-type-text" type="text" name="<{$prefix}>user_formdata_LOCALE" value="<{$details->LOCALE|escape}>"  />
+                                </span>
+                                -->
+                            <{else}>
+                                
+    <{$details->LOCALE|escape}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
+            <{if !isset($excludedcolumns['CURRENCY']) && ((isset($aclviewablecolumns['CURRENCY']) && $aclviewablecolumns['CURRENCY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENCY']) || $aclviewablecolumns['CURRENCY']))) }>
+        <{if !isset($columns2hide) || !in_array('CURRENCY', $columns2hide) }>
+    		<td class="form-field form-field-label column-currency">
+	            		        <label class="attribute-name"><{_t('Currency')}></label>
+            </td>
+            <td class="form-field form-field-value column-currency" colspan="3">
+            	<div class="attribute-line column-currency type-text">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['CURRENCY']) && $acleditablecolumns['CURRENCY']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CURRENCY']) || $acleditablecolumns['CURRENCY'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{$details->CURRENCY|escape}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+
+    <input class="input-currency input-type-text" type="text" name="<{$prefix}>user_formdata_CURRENCY" value="<{$details->CURRENCY|escape}>"  />
+                                </span>
+                                -->
+                            <{else}>
+                                
+    <{$details->CURRENCY|escape}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
         <{if !isset($columns2hide) || !in_array('FACEBOOK_ID', $columns2hide) }>
     		<td class="form-field form-field-label column-facebook-id">

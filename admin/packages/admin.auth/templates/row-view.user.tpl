@@ -88,6 +88,22 @@
     				        		</td>
     	    <{/if}>
         <{/if}>
+	        <{if (in_array('LOCALE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['LOCALE']) && ((isset($aclviewablecolumns['LOCALE']) && $aclviewablecolumns['LOCALE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOCALE']) || $aclviewablecolumns['LOCALE']))) }>
+                <td class="column column-locale text " >
+                                        	<span>    	    <{$row->LOCALE|escape}>
+    </span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
+	        <{if (in_array('CURRENCY', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CURRENCY']) && ((isset($aclviewablecolumns['CURRENCY']) && $aclviewablecolumns['CURRENCY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENCY']) || $aclviewablecolumns['CURRENCY']))) }>
+                <td class="column column-currency text " >
+                                        	<span>    	    <{$row->CURRENCY|escape}>
+    </span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
 	        <{if (in_array('FACEBOOK_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
                 <td class="column column-facebook-id key " >

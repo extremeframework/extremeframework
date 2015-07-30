@@ -24,6 +24,8 @@ class DataObject_USER extends DB_DataObject
     public $DATE_OF_BIRTH;                   // date  
     public $FORCE_PASSWORD_CHANGE;           // tinyint(1)  
     public $IS_EMAIL_VERIFIED;               // tinyint(1)  
+    public $LOCALE;                          // varchar(6)  
+    public $CURRENCY;                        // varchar(3)  
     public $FACEBOOK_ID;                     // varchar(128)  
     public $FACEBOOK_OAUTH_ID;               // varchar(128)  
     public $GOOGLE_ID;                       // varchar(128)  

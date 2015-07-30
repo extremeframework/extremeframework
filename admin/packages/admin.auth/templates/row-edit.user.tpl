@@ -172,6 +172,36 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('LOCALE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['LOCALE']) && ((isset($aclviewablecolumns['LOCALE']) && $aclviewablecolumns['LOCALE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LOCALE']) || $aclviewablecolumns['LOCALE']))) }>
+                <td class="column column-locale text" >
+                                            <{if (in_array('LOCALE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataLOCALE}>
+
+                        
+                            <input class="input-locale" type="text" name="<{$prefix}>user_formdata_LOCALE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
+                                                <{else}>
+                            <span>    	    <{$row->LOCALE|escape}>
+    </span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
+	        <{if (in_array('CURRENCY', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CURRENCY']) && ((isset($aclviewablecolumns['CURRENCY']) && $aclviewablecolumns['CURRENCY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CURRENCY']) || $aclviewablecolumns['CURRENCY']))) }>
+                <td class="column column-currency text" >
+                                            <{if (in_array('CURRENCY', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataCURRENCY}>
+
+                        
+                            <input class="input-currency" type="text" name="<{$prefix}>user_formdata_CURRENCY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
+                                                <{else}>
+                            <span>    	    <{$row->CURRENCY|escape}>
+    </span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('FACEBOOK_ID', $filtercolumns)) }>
             <{if !isset($excludedcolumns['FACEBOOK_ID']) && ((isset($aclviewablecolumns['FACEBOOK_ID']) && $aclviewablecolumns['FACEBOOK_ID']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['FACEBOOK_ID']) || $aclviewablecolumns['FACEBOOK_ID']))) }>
                 <td class="column column-facebook-id key" >

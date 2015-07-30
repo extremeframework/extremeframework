@@ -363,6 +363,66 @@
         
         
         
+<{if !isset($excludedcolumns['LOCALE'])}>
+    
+        <{if $preset == 'LOCALE'}>
+            <input type="hidden" class="input-locale" name="user_formdata_LOCALE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['LOCALE']) && !$acleditablecolumns['LOCALE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['LOCALE'])}>
+            <input type="hidden" class="input-locale" name="user_formdata_LOCALE" value="<{$details->LOCALE}>" />
+        <{else}>
+    		<td class="form-row form-row-locale">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Locale')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-locale" colspan="3">
+                <div class="form-field form-field-value column-locale">
+                                            
+
+    <input class="input-locale input-type-text" type="text" name="<{$prefix}>user_formdata_LOCALE" value="<{$details->LOCALE|escape}>"  />
+                        <{if $columntooltips.LOCALE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.LOCALE}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['CURRENCY'])}>
+    
+        <{if $preset == 'CURRENCY'}>
+            <input type="hidden" class="input-currency" name="user_formdata_CURRENCY" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['CURRENCY']) && !$acleditablecolumns['CURRENCY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CURRENCY'])}>
+            <input type="hidden" class="input-currency" name="user_formdata_CURRENCY" value="<{$details->CURRENCY}>" />
+        <{else}>
+    		<td class="form-row form-row-currency">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Currency')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-currency" colspan="3">
+                <div class="form-field form-field-value column-currency">
+                                            
+
+    <input class="input-currency input-type-text" type="text" name="<{$prefix}>user_formdata_CURRENCY" value="<{$details->CURRENCY|escape}>"  />
+                        <{if $columntooltips.CURRENCY}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CURRENCY}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['FACEBOOK_ID'])}>
     
         <{if $preset == 'FACEBOOK_ID'}>

@@ -280,6 +280,42 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'LOCALE' }>
+                                    <tr class="form-row form-row-locale <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Locale')}><{if in_array('LOCALE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-locale">
+                                                                        <{$tmp_value = $formdataLOCALE}>
+
+                        
+                            <input class="input-locale" type="text" name="<{$prefix}>user_formdata_LOCALE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                                                                    </div>
+                                        </td>
+                                    </tr>
+
+                        	
+                                <{elseif $column == 'CURRENCY' }>
+                                    <tr class="form-row form-row-currency <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Currency')}><{if in_array('CURRENCY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-currency">
+                                                                        <{$tmp_value = $formdataCURRENCY}>
+
+                        
+                            <input class="input-currency" type="text" name="<{$prefix}>user_formdata_CURRENCY" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                                                                    </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{elseif $column == 'FACEBOOK_ID' }>
                                     <tr class="form-row form-row-facebook-id <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
