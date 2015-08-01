@@ -1,8 +1,10 @@
-<{foreach from=$messages.accessright key=ignored item=message}>
-<li><{$message}></li>
-<{/foreach}>
-
-<form name="accessrightadvancedlist" action="" method="post">
+<{if $messages}>
+    <ul class="message">
+        <{foreach from=$messages key=ignored item=message}>
+            <li><{$message}></li>
+        <{/foreach}>
+    </ul>
+<{/if}>
 
 <!-- List -->
 <div class="ajaxablelist">
@@ -13,7 +15,6 @@
 	<tr>
          <th><{_t('Module')}></th>
          <th><{_t('Actions')}></th>
-    	 <th class="actions"></th>
 	</tr>
 	</thead>
     <{php}>
@@ -31,7 +32,6 @@
 						<div class="button-general <{if $available_actions.$idmodule.$rowchild==$rowchild}>button-selected<{/if}>"><a class="toggle" data-action="<{$rowchild}>"><span class="button-face"><{$rowchild}></span></a></div>
                     <{/foreach}>
 				</td>
-				<td class="actions"></td>
 			</tr>
 		<{/foreach}>
 	</tbody>
@@ -53,15 +53,15 @@ $(function() {
 		var module = tr.attr('data-module');
 		var action = a.attr('data-action');
 
-		var api = null;
+		var url = null;
 
 		if (ison) {
-			api = '<{$smarty.const.APPLICATION_URL}>/api/accessright/remove/' + ugid + '/' + module + '/' + action;
+			url = '<{$smarty.const.APPLICATION_URL}>/accessright/jsonRemovePermission/' + ugid + '/' + module + '/' + action;
 		} else {
-			api = '<{$smarty.const.APPLICATION_URL}>/api/accessright/add/' + ugid + '/' + module + '/' + action;
+			url = '<{$smarty.const.APPLICATION_URL}>/accessright/jsonAddPermission/' + ugid + '/' + module + '/' + action;
 		}
 
-		$.get(api, function(response) {
+		$.get(url, function(response) {
 			if (response.success) {
 				div.toggleClass('button-selected');
 
@@ -82,5 +82,3 @@ $(function() {
 
 <!--:listbodyend:-->
 </div>
-
-</form>

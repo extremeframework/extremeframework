@@ -124,6 +124,50 @@ class AclController
      	    }
 		}
 
+        // x. Load custom access rights
+        if (Framework::hasModule('CustomAccessRight')) {
+            // x. Load custom permission sets
+    		$model = new CustomAccessRightModel();
+
+            $model->whereAdd("{$tbprefix}CUSTOM_ACCESS_RIGHT.ID_USER = '$id_user'");
+            $model->whereAdd("{$tbprefix}CUSTOM_ACCESS_RIGHT.VALID_FROM IS NULL OR {$tbprefix}CUSTOM_ACCESS_RIGHT.VALID_FROM <= '$now'");
+            $model->whereAdd("{$tbprefix}CUSTOM_ACCESS_RIGHT.VALID_UNTIL IS NULL OR {$tbprefix}CUSTOM_ACCESS_RIGHT.VALID_UNTIL >= '$now'");
+
+    		$model->find();
+
+    		$permission_set_ids = array();
+
+    		while ($model->fetch()) {
+    		    $permission_set_ids[] = $model->ID_PERMISSION_SET;
+            }
+
+            // x. Load custom access rights
+    		$model = new PermissionSetItemModel();
+
+            $model->whereAdd("ID_PERMISSION_SET = '".implode("' OR ID_PERMISSION_SET = '", $permission_set_ids)."'");
+
+    		$model->find();
+
+    		$customaccessrights = array();
+
+         	while ($model->fetch()) {
+         	    $actions = explode(' ', $model->ACTIONS);
+
+         	    foreach ($actions as $action) {
+         	        if (!empty($action)) {
+             		    $customaccessrights[$model->MODULE][$action] = 1;
+                    }
+         	    }
+    		}
+
+            // x. Merge user membership accessrights and custom access rights
+            foreach ($customaccessrights as $module => $settings) {
+                foreach ($settings as $action => $ignore) {
+                    $accessrights[$module][$action] = 1;
+                }
+            }
+        }
+
         $_SESSION['acl'] = $accessrights;
     }
 

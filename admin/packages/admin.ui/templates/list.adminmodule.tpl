@@ -139,6 +139,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{_t('Copy also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomAccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="customaccessright" /> <{_t('Copy also')}> <{_t('Custom Access Right')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{_t('Copy also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -147,6 +150,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('Copy also')}> <{_t('Object Acl')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PermissionSetItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="permissionsetitem" /> <{_t('Copy also')}> <{_t('Permission Set Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="recyclebin" /> <{_t('Copy also')}> <{_t('Recycle Bin')|strtolower}></li>
@@ -196,6 +202,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{_t('Approve also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomAccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="customaccessright" /> <{_t('Approve also')}> <{_t('Custom Access Right')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{_t('Approve also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -204,6 +213,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('Approve also')}> <{_t('Object Acl')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PermissionSetItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="permissionsetitem" /> <{_t('Approve also')}> <{_t('Permission Set Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="recyclebin" /> <{_t('Approve also')}> <{_t('Recycle Bin')|strtolower}></li>
@@ -253,6 +265,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{_t('Delete also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomAccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="customaccessright" /> <{_t('Delete also')}> <{_t('Custom Access Right')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{_t('Delete also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -261,6 +276,9 @@
                 <{/if}>
                             <{if Framework::hasModule('ObjectAcl')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('Delete also')}> <{_t('Object Acl')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('PermissionSetItem')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="permissionsetitem" /> <{_t('Delete also')}> <{_t('Permission Set Item')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('RecycleBin')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="recyclebin" /> <{_t('Delete also')}> <{_t('Recycle Bin')|strtolower}></li>

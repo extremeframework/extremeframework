@@ -444,6 +444,10 @@ class _AdminModuleController extends __AppController
                             (new ChangeLogController())->delete('MODULE', $_ids);
                             break;
 
+                        case 'customaccessright': 
+                            (new CustomAccessRightController())->delete('MODULE', $_ids);
+                            break;
+
                         case 'field': 
                             (new FieldController())->delete('MODULE', $_ids);
                             break;
@@ -454,6 +458,10 @@ class _AdminModuleController extends __AppController
 
                         case 'objectacl': 
                             (new ObjectAclController())->delete('MODULE', $_ids);
+                            break;
+
+                        case 'permissionsetitem': 
+                            (new PermissionSetItemController())->delete('MODULE', $_ids);
                             break;
 
                         case 'recyclebin': 

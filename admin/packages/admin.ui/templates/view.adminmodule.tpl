@@ -142,6 +142,9 @@
             <{if isset($smarty.session.acl.changelog) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.customaccessright) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.field) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -149,6 +152,9 @@
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.objectacl) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.permissionsetitem) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
             <{if isset($smarty.session.acl.recyclebin) }>
@@ -197,6 +203,9 @@
                                             <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
                             <li><a href="#tab-changelogs"><{_t('Change log')}> <span class="badge changelog-badge-count"></span></a></li>
                         <{/if}>
+                                            <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
+                            <li><a href="#tab-customaccessrights"><{_t('Custom access right')}> <span class="badge customaccessright-badge-count"></span></a></li>
+                        <{/if}>
                                             <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
                             <li><a href="#tab-fields"><{_t('Field')}> <span class="badge field-badge-count"></span></a></li>
                         <{/if}>
@@ -205,6 +214,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
                             <li><a href="#tab-objectacls"><{_t('Object acl')}> <span class="badge objectacl-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('PermissionSetItem') && isset($smarty.session.acl.permissionsetitem) }>
+                            <li><a href="#tab-permissionsetitems"><{_t('Permission set item')}> <span class="badge permissionsetitem-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('RecycleBin') && isset($smarty.session.acl.recyclebin) }>
                             <li><a href="#tab-recyclebins"><{_t('Recycle bin')}> <span class="badge recyclebin-badge-count"></span></a></li>
@@ -290,6 +302,14 @@
                                                             <{/if}>
                         </div>
                     <{/if}>
+                                    <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
+                        <div id="tab-customaccessrights">
+                        	<{if true || $tab == 'customaccessrights'}>
+                            	<h2 class="print"><{_t('Custom access right')}></h2>
+                                                                    <{ajaxmodule class="WidgetListCustomAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.customaccessright.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
                                     <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
                         <div id="tab-fields">
                         	<{if true || $tab == 'fields'}>
@@ -311,6 +331,14 @@
                         	<{if true || $tab == 'objectacls'}>
                             	<h2 class="print"><{_t('Object acl')}></h2>
                                                                     <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('PermissionSetItem') && isset($smarty.session.acl.permissionsetitem) }>
+                        <div id="tab-permissionsetitems">
+                        	<{if true || $tab == 'permissionsetitems'}>
+                            	<h2 class="print"><{_t('Permission set item')}></h2>
+                                                                    <{ajaxmodule class="WidgetListPermissionSetItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.permissionsetitem.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

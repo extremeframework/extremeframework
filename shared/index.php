@@ -65,8 +65,22 @@ function get_cache_path($request) {
     $dirname = $controller;
 
     if ($controller == 'ajax' && $action == 'widget') {
-        if (preg_match('/(widgetlist|widgetview)(.*)/is', $request['class'], $match)) {
-            $dirname = $match[2];
+        if (isset($_REQUEST['q']) && !empty($_REQUEST['q'])) {
+            $querystring = base64_decode($_REQUEST['q']);
+
+            if (!empty($querystring)) {
+                parse_str($querystring, $params);
+
+        		$class = isset($params['class'])? $params['class'] : '';
+
+                if (!empty($class)) {
+                    $module = strtolower($class);
+
+                    $module = preg_replace('/(widgetlist|widgetview)/is', '', $module);
+
+                    $dirname = $module;
+                }
+            }
         }
     }
 

@@ -103,3 +103,19 @@ enable_multilingual_title = true
 
 [issuetype]
 enable_multilingual_title = true
+
+[todo]
+enablehtmlcolumns =
+
+[mindmap]
+listcolumns = NAME
+widgetcolumns = NAME
+viewcolumns = NAME
+editcolumns = NAME,BACKGROUND_URL
+childtables =
+
+[mindmapitem]
+listcolumns = TITLE,ID_MINDMAP
+widgetcolumns = TITLE,ID_MINDMAP
+viewcolumns = TITLE,ID_MINDMAP,PARENT,BACKGROUND,ICON
+editcolumns = TITLE,ID_MINDMAP,PARENT,BACKGROUND,ICON

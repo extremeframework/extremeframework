@@ -700,7 +700,7 @@ class _UserController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('user');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
+        $columns2edit = array('UUID', 'FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'LOCALE', 'CURRENCY', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new UserModel();
@@ -749,7 +749,7 @@ class _UserController extends __AppController
     }
 
     protected function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
+        $columns2edit = array('UUID', 'FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'LOCALE', 'CURRENCY', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('user'));
 
         $rows = array();
@@ -1432,7 +1432,7 @@ class _UserController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('user');
 
-        $roweditablecolumns = array('FIRST_NAME', 'LAST_NAME', 'EMAIL', 'LOGIN', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
+        $roweditablecolumns = array('FIRST_NAME', 'LAST_NAME', 'EMAIL', 'LOGIN', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'LOCALE', 'CURRENCY', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1529,7 +1529,7 @@ class _UserController extends __AppController
 	}
 
     protected function getLayoutColumns() {
-        return array('FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
+        return array('FIRST_NAME', 'LAST_NAME', 'PHOTO', 'EMAIL', 'LOGIN', 'PASSWORD', 'PHONE', 'GENDER', 'DATE_OF_BIRTH', 'FORCE_PASSWORD_CHANGE', 'IS_EMAIL_VERIFIED', 'LOCALE', 'CURRENCY', 'FACEBOOK_ID', 'FACEBOOK_OAUTH_ID', 'GOOGLE_ID', 'GOOGLE_OAUTH_ID', 'YAHOO_ID', 'YAHOO_OAUTH_ID', 'IS_ENABLED', 'CREATION_DATE', 'LATEST_LOGIN');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1692,12 +1692,12 @@ class _UserController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'USER`.FIRST_NAME, `'.TABLE_PREFIX.'USER`.LAST_NAME, `'.TABLE_PREFIX.'USER`.PHOTO, `'.TABLE_PREFIX.'USER`.EMAIL, `'.TABLE_PREFIX.'USER`.LOGIN, `'.TABLE_PREFIX.'USER`.PASSWORD, `'.TABLE_PREFIX.'USER`.PHONE, `'.TABLE_PREFIX.'USER`.GENDER, `'.TABLE_PREFIX.'USER`.DATE_OF_BIRTH, `'.TABLE_PREFIX.'USER`.FORCE_PASSWORD_CHANGE, `'.TABLE_PREFIX.'USER`.IS_EMAIL_VERIFIED, `'.TABLE_PREFIX.'USER`.FACEBOOK_ID, `'.TABLE_PREFIX.'USER`.FACEBOOK_OAUTH_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_OAUTH_ID, `'.TABLE_PREFIX.'USER`.YAHOO_ID, `'.TABLE_PREFIX.'USER`.YAHOO_OAUTH_ID, `'.TABLE_PREFIX.'USER`.IS_ENABLED, `'.TABLE_PREFIX.'USER`.CREATION_DATE, `'.TABLE_PREFIX.'USER`.LATEST_LOGIN, `'.TABLE_PREFIX.'USER`.ID, `'.TABLE_PREFIX.'USER`.JSON, `'.TABLE_PREFIX.'USER`.UUID, `'.TABLE_PREFIX.'USER`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'USER`.FIRST_NAME, `'.TABLE_PREFIX.'USER`.LAST_NAME, `'.TABLE_PREFIX.'USER`.PHOTO, `'.TABLE_PREFIX.'USER`.EMAIL, `'.TABLE_PREFIX.'USER`.LOGIN, `'.TABLE_PREFIX.'USER`.PASSWORD, `'.TABLE_PREFIX.'USER`.PHONE, `'.TABLE_PREFIX.'USER`.GENDER, `'.TABLE_PREFIX.'USER`.DATE_OF_BIRTH, `'.TABLE_PREFIX.'USER`.FORCE_PASSWORD_CHANGE, `'.TABLE_PREFIX.'USER`.IS_EMAIL_VERIFIED, `'.TABLE_PREFIX.'USER`.LOCALE, `'.TABLE_PREFIX.'USER`.CURRENCY, `'.TABLE_PREFIX.'USER`.FACEBOOK_ID, `'.TABLE_PREFIX.'USER`.FACEBOOK_OAUTH_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_OAUTH_ID, `'.TABLE_PREFIX.'USER`.YAHOO_ID, `'.TABLE_PREFIX.'USER`.YAHOO_OAUTH_ID, `'.TABLE_PREFIX.'USER`.IS_ENABLED, `'.TABLE_PREFIX.'USER`.CREATION_DATE, `'.TABLE_PREFIX.'USER`.LATEST_LOGIN, `'.TABLE_PREFIX.'USER`.ID, `'.TABLE_PREFIX.'USER`.JSON, `'.TABLE_PREFIX.'USER`.UUID, `'.TABLE_PREFIX.'USER`.WFID');
     }
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'USER`.FIRST_NAME, `'.TABLE_PREFIX.'USER`.LAST_NAME, `'.TABLE_PREFIX.'USER`.PHOTO, `'.TABLE_PREFIX.'USER`.EMAIL, `'.TABLE_PREFIX.'USER`.LOGIN, `'.TABLE_PREFIX.'USER`.PHONE, `'.TABLE_PREFIX.'USER`.GENDER, `'.TABLE_PREFIX.'USER`.DATE_OF_BIRTH, `'.TABLE_PREFIX.'USER`.FORCE_PASSWORD_CHANGE, `'.TABLE_PREFIX.'USER`.IS_EMAIL_VERIFIED, `'.TABLE_PREFIX.'USER`.FACEBOOK_ID, `'.TABLE_PREFIX.'USER`.FACEBOOK_OAUTH_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_OAUTH_ID, `'.TABLE_PREFIX.'USER`.YAHOO_ID, `'.TABLE_PREFIX.'USER`.YAHOO_OAUTH_ID, `'.TABLE_PREFIX.'USER`.IS_ENABLED, `'.TABLE_PREFIX.'USER`.CREATION_DATE, `'.TABLE_PREFIX.'USER`.LATEST_LOGIN, `'.TABLE_PREFIX.'USER`.ID, `'.TABLE_PREFIX.'USER`.JSON, `'.TABLE_PREFIX.'USER`.UUID, `'.TABLE_PREFIX.'USER`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'USER`.FIRST_NAME, `'.TABLE_PREFIX.'USER`.LAST_NAME, `'.TABLE_PREFIX.'USER`.PHOTO, `'.TABLE_PREFIX.'USER`.EMAIL, `'.TABLE_PREFIX.'USER`.LOGIN, `'.TABLE_PREFIX.'USER`.PHONE, `'.TABLE_PREFIX.'USER`.GENDER, `'.TABLE_PREFIX.'USER`.DATE_OF_BIRTH, `'.TABLE_PREFIX.'USER`.FORCE_PASSWORD_CHANGE, `'.TABLE_PREFIX.'USER`.IS_EMAIL_VERIFIED, `'.TABLE_PREFIX.'USER`.LOCALE, `'.TABLE_PREFIX.'USER`.CURRENCY, `'.TABLE_PREFIX.'USER`.FACEBOOK_ID, `'.TABLE_PREFIX.'USER`.FACEBOOK_OAUTH_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_ID, `'.TABLE_PREFIX.'USER`.GOOGLE_OAUTH_ID, `'.TABLE_PREFIX.'USER`.YAHOO_ID, `'.TABLE_PREFIX.'USER`.YAHOO_OAUTH_ID, `'.TABLE_PREFIX.'USER`.IS_ENABLED, `'.TABLE_PREFIX.'USER`.CREATION_DATE, `'.TABLE_PREFIX.'USER`.LATEST_LOGIN, `'.TABLE_PREFIX.'USER`.ID, `'.TABLE_PREFIX.'USER`.JSON, `'.TABLE_PREFIX.'USER`.UUID, `'.TABLE_PREFIX.'USER`.WFID');
     }
 
     public function getAclEnabledIds() {
@@ -1725,6 +1725,8 @@ class _UserController extends __AppController
             $conds[] = TABLE_PREFIX."USER.REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."USER.FIRST_NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."USER.LAST_NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
+            $conds[] = TABLE_PREFIX."USER.LOCALE LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
+            $conds[] = TABLE_PREFIX."USER.CURRENCY LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."USER.JSON LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
 
             $model->whereAdd(implode(' OR ', $conds));
