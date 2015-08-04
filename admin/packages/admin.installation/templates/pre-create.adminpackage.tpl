@@ -60,7 +60,7 @@
                     </tr>                                                                                            <tr>
     
             
-                    </tr>                                                                                                                                                                                                </tbody>
+                    </tr>                                                                                                                                                                                                                                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
         

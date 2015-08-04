@@ -96,6 +96,14 @@
     				        		</td>
     	    <{/if}>
         <{/if}>
+	        <{if (in_array('IS_USER_PACKAGE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
+                <td class="column column-is-user-package yesno " data-value="<{$row->IS_USER_PACKAGE}>" data-column="IS_USER_PACKAGE" data-module="adminpackage">
+                                        	<span>	<{if $row->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+</span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
 	    <{foreach from=$customfields item=item}>
         <td class="column column-<{$item->COLUMN}>">
             <{CustomFieldHelper::getCustomFieldValue($row, $item->COLUMN)}>

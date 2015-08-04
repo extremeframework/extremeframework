@@ -407,7 +407,37 @@
             
         
         
-                    </tr>                                    </tbody>
+                    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['IS_USER_PACKAGE'])}>
+    
+        <{if $preset == 'IS_USER_PACKAGE'}>
+            <input type="hidden" class="input-is-user-package" name="adminpackage_formdata_IS_USER_PACKAGE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['IS_USER_PACKAGE']) && !$acleditablecolumns['IS_USER_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_USER_PACKAGE'])}>
+            <input type="hidden" class="input-is-user-package" name="adminpackage_formdata_IS_USER_PACKAGE" value="<{$details->IS_USER_PACKAGE}>" />
+        <{else}>
+    		<td class="form-row form-row-is-user-package">
+                <div class="form-field form-field-label">
+        		    <label><{_t('User package?')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-is-user-package" colspan="3">
+                <div class="form-field form-field-value column-is-user-package">
+                                            
+
+    <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $details->IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$details->IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
+                        <{if $columntooltips.IS_USER_PACKAGE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.IS_USER_PACKAGE}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
         

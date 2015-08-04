@@ -240,7 +240,7 @@
                                     </div>
             </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                </tbody>
+    <{/if}>    </tr>                                                                                                                                                                                                                                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
         

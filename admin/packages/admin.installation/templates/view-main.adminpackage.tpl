@@ -471,6 +471,40 @@
             </td>
     	<{/if}>
 	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
+            <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
+        <{if !isset($columns2hide) || !in_array('IS_USER_PACKAGE', $columns2hide) }>
+    		<td class="form-field form-field-label column-is-user-package">
+	            		        <label class="attribute-name"><{_t('User package?')}></label>
+            </td>
+            <td class="form-field form-field-value column-is-user-package" colspan="3">
+            	<div class="attribute-line column-is-user-package type-yesno">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['IS_USER_PACKAGE']) && $acleditablecolumns['IS_USER_PACKAGE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_USER_PACKAGE']) || $acleditablecolumns['IS_USER_PACKAGE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{if $details->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+
+    <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $details->IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$details->IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
+                                </span>
+                                -->
+                            <{else}>
+                                
+    <{if $details->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
     </tr>                            </tbody>
         </table>
     	<!-- Standard layout columns end -->

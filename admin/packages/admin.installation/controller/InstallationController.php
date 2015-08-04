@@ -160,8 +160,10 @@ class InstallationController extends __AppController
             }
         }
 
-        // x. Get available packages
+        // x. Get available user packages
         $model = new AdminPackageModel();
+
+        $model->IS_USER_PACKAGE = 1;
 
         $model->find();
 

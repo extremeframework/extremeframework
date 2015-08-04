@@ -173,6 +173,27 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('IS_USER_PACKAGE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
+                <td class="column column-is-user-package yesno" data-value="<{$row->IS_USER_PACKAGE}>" data-column="IS_USER_PACKAGE" data-module="adminpackage">
+                                            <{if (in_array('IS_USER_PACKAGE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataIS_USER_PACKAGE}>
+
+                                                    <{if $force_boolean_dropdown}>
+                                <select class="input-is-user-package" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" >
+                                    <option value="1" <{if $formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('No')}></option>
+                                </select>
+                            <{else}>
+                                <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $formdata.IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$formdata.IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
+                            <{/if}>
+                                                <{else}>
+                            <span>	<{if $row->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+</span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	    <{foreach from=$customfields item=item}>
         <td class="column column-<{$item->COLUMN}>">
             <{include file="item.edit.tpl" customfield=$item id=$row->UUID value=CustomFieldHelper::getCustomFieldValue($row, $item->COLUMN)}>

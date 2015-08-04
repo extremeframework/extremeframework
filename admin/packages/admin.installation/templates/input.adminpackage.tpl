@@ -305,6 +305,30 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'IS_USER_PACKAGE' }>
+                                    <tr class="form-row form-row-is-user-package <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('User package?')}><{if in_array('IS_USER_PACKAGE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-is-user-package">
+                                                                        <{$tmp_value = $formdataIS_USER_PACKAGE}>
+
+                                                    <{if $force_boolean_dropdown}>
+                                <select class="input-is-user-package" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" >
+                                    <option value="1" <{if $formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('Yes')}></option>
+                                    <option value="0" <{if !$formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('No')}></option>
+                                </select>
+                            <{else}>
+                                <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $formdata.IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$formdata.IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
+                            <{/if}>
+                                                                    </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{/if}>
                             <{/foreach}>
                         </tbody>

@@ -26,6 +26,7 @@ class DataObject_ADMIN_PACKAGE extends DB_DataObject
     public $PACKAGE_PATH;                    // varchar(128)  
     public $INSTALLATION_DATE;               // date  
     public $LATEST_UPDATE;                   // date  
+    public $IS_USER_PACKAGE;                 // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  
