@@ -15,6 +15,7 @@ class DataObject_ADMIN_PACKAGE extends DB_DataObject
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
     public $CODE;                            // varchar(32)  
+    public $ID_ADMIN_PACKAGE_CATEGORY;       // int(4)  
     public $IMAGE;                           // varchar(128)  
     public $DESCRIPTION;                     // text  
     public $ENTRY_PATH;                      // varchar(128)  

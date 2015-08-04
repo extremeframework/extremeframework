@@ -115,6 +115,45 @@
         
         
         
+<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY'])}>
+    
+        <{if $preset == 'ID_ADMIN_PACKAGE_CATEGORY'}>
+            <input type="hidden" class="input-id-admin-package-category" name="adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && !$acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY'])}>
+            <input type="hidden" class="input-id-admin-package-category" name="adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$details->ID_ADMIN_PACKAGE_CATEGORY}>" />
+        <{else}>
+    		<td class="form-row form-row-id-admin-package-category">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Admin package category')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-id-admin-package-category" colspan="3">
+                <div class="form-field form-field-value column-id-admin-package-category">
+                                            
+            <{if Framework::hasModule('AdminPackageCategory')}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-category" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$details->ID_ADMIN_PACKAGE_CATEGORY text=$details->reftext_ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                            <{if isset($smarty.session.acl.adminpackagecategory.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/new" title="Create a New Admin Package Category">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-category input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$details->ID_ADMIN_PACKAGE_CATEGORY|escape}>"  />
+        <{/if}>
+                            <{if $columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['IMAGE'])}>
     
         <{if $preset == 'IMAGE'}>

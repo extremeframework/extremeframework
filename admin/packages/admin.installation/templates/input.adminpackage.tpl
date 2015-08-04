@@ -101,6 +101,25 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'ID_ADMIN_PACKAGE_CATEGORY' }>
+                                    <tr class="form-row form-row-id-admin-package-category <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Admin package category')}><{if in_array('ID_ADMIN_PACKAGE_CATEGORY', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-admin-package-category">
+                                                                        <{$tmp_value = $formdataID_ADMIN_PACKAGE_CATEGORY}>
+
+                                                    
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$formdata.ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{elseif $column == 'IMAGE' }>
                                     <tr class="form-row form-row-image <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>

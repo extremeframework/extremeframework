@@ -77,6 +77,63 @@
             
         
         
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']))) }>
+        <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_CATEGORY', $columns2hide) }>
+    		<td class="form-field form-field-label column-id-admin-package-category">
+	                    		                    		        <label class="attribute-name"><{_t('Admin package category')}></label>
+            </td>
+            <td class="form-field form-field-value column-id-admin-package-category" colspan="3">
+            	<div class="attribute-line column-id-admin-package-category type-reftext">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && $acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || $acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{if $details->reftext_ID_ADMIN_PACKAGE_CATEGORY}>
+        <{if isset($smarty.session.acl.adminpackagecategory.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/view/<{$details->refuuid_ID_ADMIN_PACKAGE_CATEGORY}>"><{$details->reftext_ID_ADMIN_PACKAGE_CATEGORY|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_CATEGORY|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_CATEGORY}>
+    <{/if}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+            <{if Framework::hasModule('AdminPackageCategory')}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-category" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$details->ID_ADMIN_PACKAGE_CATEGORY text=$details->reftext_ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+
+                            <{if isset($smarty.session.acl.adminpackagecategory.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/new" title="Create a New Admin Package Category">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-category input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$details->ID_ADMIN_PACKAGE_CATEGORY|escape}>"  />
+        <{/if}>
+                                    </span>
+                                -->
+                            <{else}>
+                                
+    <{if $details->reftext_ID_ADMIN_PACKAGE_CATEGORY}>
+        <{if isset($smarty.session.acl.adminpackagecategory.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/view/<{$details->refuuid_ID_ADMIN_PACKAGE_CATEGORY}>"><{$details->reftext_ID_ADMIN_PACKAGE_CATEGORY|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_CATEGORY|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_CATEGORY}>
+    <{/if}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
         <{if !isset($columns2hide) || !in_array('IMAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-image">

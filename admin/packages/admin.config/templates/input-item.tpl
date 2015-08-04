@@ -3,7 +3,7 @@
 <{elseif $columnsettings.$column->type == 'password'}>
     <input type="password" class="input-<{$columnsettings.$column->code}>" name="<{$prefix}><{$module}>_formdata_<{$column}>" value="<{$formdata.$column|escape}>"/>
 <{elseif $columnsettings.$column->type == 'refselect'}>
-    <{html_ref_select autocomplete="1" method="" class="input-<{$columnsettings.$column->code}>" name="`$prefix``$module`_formdata_`$column`" value=$formdata.$column datasource="<{$columnsettings.$column->settings.datasource}>" valuecol="<{$columnsettings.$column->settings.valuecol}>" textcol="<{$columnsettings.$column->settings.textcol}>" sortcol="<{$columnsettings.$column->settings.sortcol}>" blankitem=""}>
+    <{html_ref_select multilingual="0" autocomplete="1" method="" class="input-<{$columnsettings.$column->code}>" name="`$prefix``$module`_formdata_`$column`" value=$formdata.$column datasource="<{$columnsettings.$column->settings.datasource}>" valuecol="<{$columnsettings.$column->settings.valuecol}>" textcol="<{$columnsettings.$column->settings.textcol}>" sortcol="<{$columnsettings.$column->settings.sortcol}>" blankitem=""}>
 <{elseif $columnsettings.$column->type == 'date' || $columnsettings.$column->type == 'datetime'}>
     <input type="text" class="input-<{$columnsettings.$column->code}> field-date" name="<{$prefix}><{$module}>_formdata_<{$column}>" value="<{$formdata.$column|escape}>"/>
 <{elseif $columnsettings.$column->type == 'number'}>
