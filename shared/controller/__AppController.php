@@ -934,9 +934,11 @@ class __AppController {
 
         $module = $this->module;
 
+        $cache = Cache::session();
+
         $key = 'system.accessgranteditems.'.$module;
 
-        if (!Cache::has($key)) {
+        if (!$cache->has($key)) {
     	    $user_id = $_SESSION['user']->ID;
     	    $group_ids = $_SESSION['memberships.groups'];
 
@@ -961,14 +963,14 @@ class __AppController {
                 }
             }
 
-            Cache::set($key, array('includes' => $includes, 'excludes' => $excludes, 'all_details' => $all_details));
+            $cache->set($key, array('includes' => $includes, 'excludes' => $excludes, 'all_details' => $all_details));
         }
 
-        $cache = Cache::get($key);
+        $data = $cache->get($key);
 
-        $all_details = $cache['all_details'];
-        $includes = $cache['includes'];
-        $excludes = $cache['excludes'];
+        $all_details = $data['all_details'];
+        $includes = $data['includes'];
+        $excludes = $data['excludes'];
     }
 
     protected function initPlugins() {
