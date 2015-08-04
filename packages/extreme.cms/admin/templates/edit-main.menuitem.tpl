@@ -137,7 +137,7 @@
                 <div class="form-field form-field-value column-id-menu">
                                             
             <{if Framework::hasModule('Menu')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-menu" class="input-id-menu" name="`$prefix`menuitem_formdata_ID_MENU" value=$details->ID_MENU text=$details->reftext_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-menu" class="input-id-menu" name="`$prefix`menuitem_formdata_ID_MENU" value=$details->ID_MENU text=$details->reftext_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.menu.new)}>
                     <span class="onflycreation">
@@ -176,7 +176,7 @@
                 <div class="form-field form-field-value column-parent">
                                             
             <{if Framework::hasModule('MenuItem')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`menuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="MENU_ITEM" valuecol="ID" textcol="TITLE" sortcol="" groupcol="ID_MENU" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`menuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="MENU_ITEM" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="ID_MENU" blankitem=""}>
 
                             <{if isset($smarty.session.acl.menuitem.new)}>
                     <span class="onflycreation">
@@ -215,7 +215,7 @@
                 <div class="form-field form-field-value column-id-page">
                                             
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`menuitem_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-page" class="input-id-page" name="`$prefix`menuitem_formdata_ID_PAGE" value=$details->ID_PAGE text=$details->reftext_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">
@@ -254,7 +254,7 @@
                 <div class="form-field form-field-value column-id-post">
                                             
             <{if Framework::hasModule('Post')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`menuitem_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`menuitem_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.post.new)}>
                     <span class="onflycreation">
@@ -293,7 +293,7 @@
                 <div class="form-field form-field-value column-id-post-category">
                                             
             <{if Framework::hasModule('PostCategory')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`menuitem_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`menuitem_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.postcategory.new)}>
                     <span class="onflycreation">
@@ -452,7 +452,7 @@
                 <div class="form-field form-field-value column-acl-id-user-group">
                                             
             <{if Framework::hasModule('UserGroup')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-acl-id-user-group" class="input-acl-id-user-group" name="`$prefix`menuitem_formdata_ACL_ID_USER_GROUP" value=$details->ACL_ID_USER_GROUP text=$details->reftext_ACL_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-acl-id-user-group" class="input-acl-id-user-group" name="`$prefix`menuitem_formdata_ACL_ID_USER_GROUP" value=$details->ACL_ID_USER_GROUP text=$details->reftext_ACL_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.usergroup.new)}>
                     <span class="onflycreation">

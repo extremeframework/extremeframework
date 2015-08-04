@@ -15,13 +15,14 @@ class DataObject_ADMIN_MODULE extends DB_DataObject
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(32)  
     public $MODULE;                          // varchar(32)  unique_key
+    public $ID_ADMIN_PACKAGE;                // varchar(32)  
     public $PREFIX;                          // varchar(3)  
     public $AVAILABLE_ACTIONS;               // varchar(128)  
     public $IS_COMMENT_ENABLED;              // tinyint(1)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  
-    public $WFID;                            // varchar(11)  
+    public $WFID;                            // varchar(24)  
     public $UUID;                            // char(36)  
 
     /* the code above is auto generated do not remove the tag below */

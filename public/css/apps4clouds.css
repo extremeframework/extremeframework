@@ -1498,7 +1498,6 @@ table.item_list .embedded-view .table tr {
 }
 
 .left-side-collapsed .main-content,
-.left-side-collapsed .horizontal-menu,
 .left-side-collapsed #footer {
     margin-left: 52px!important;
 }
@@ -1621,8 +1620,7 @@ table.item_list .embedded-view .table tr {
     width: 220px;
 }
 
-.left-side-full .main-content,
-.left-side-full .horizontal-menu {
+.left-side-full .main-content {
     margin-left: 220px!important;
 }
 
@@ -1632,7 +1630,6 @@ table.item_list .embedded-view .table tr {
 }
 
 .left-side-hide .main-content,
-.left-side-hide .horizontal-menu,
 .left-side-hide #footer {
     margin-left: 0px!important;
 }
@@ -1654,7 +1651,7 @@ table.item_list .embedded-view .table tr {
 .left-side-complete-collapsed #navigation {
     display: none;
 }
-.left-side-complete-collapsed .main-content, .left-side-complete-collapsed .horizontal-menu {
+.left-side-complete-collapsed .main-content {
     margin-left: 0!important;
 }
 .sf-menu {

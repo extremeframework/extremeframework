@@ -23,7 +23,7 @@
             	<div class="form-row">
             		<label>Country*</label>
             		<div class="form-field">
-                        <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" name="id_country" value=$data->CUSTOMER_ID_COUNTRY datasource="COUNTRY" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem="" noauth="1"}>
+                        <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" name="id_country" value=$data->CUSTOMER_ID_COUNTRY datasource="COUNTRY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem="" noauth="1"}>
             		</div>
             	</div>
             	<div class="form-row">

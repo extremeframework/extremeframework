@@ -91,6 +91,45 @@
         
         
         
+<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
+    
+        <{if $preset == 'ID_ADMIN_PACKAGE'}>
+            <input type="hidden" class="input-id-admin-package" name="adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE']) && !$acleditablecolumns['ID_ADMIN_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE'])}>
+            <input type="hidden" class="input-id-admin-package" name="adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE}>" />
+        <{else}>
+    		<td class="form-row form-row-id-admin-package">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Admin package')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-id-admin-package" colspan="3">
+                <div class="form-field form-field-value column-id-admin-package">
+                                            
+            <{if Framework::hasModule('AdminPackage')}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`adminmodule_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                            <{if isset($smarty.session.acl.adminpackage.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/new" title="Create a New Admin Package">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE|escape}>"  />
+        <{/if}>
+                            <{if $columntooltips.ID_ADMIN_PACKAGE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['PREFIX'])}>
     
         <{if $preset == 'PREFIX'}>

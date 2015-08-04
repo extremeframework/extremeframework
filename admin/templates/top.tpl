@@ -17,9 +17,6 @@
             <{include file="menu.tpl"}>
         <{/if}>
     <{/if}>
-
-    <{$is_horizontal_menu_visible = false}>
-    <{include file="menu.horizontal.tpl"}>
 <{/if}>
 
 <{if isset($smarty.session.user)}>
@@ -41,5 +38,10 @@
 
 <div id="main-body" class="main-content">
 <!--:mainbodybegin:-->
+
+<{if Framework::hasModule('AdminMenu')}>
+    <{$is_horizontal_menu_visible = false}>
+    <{include file="menu.horizontal.tpl"}>
+<{/if}>
 
 <div class="content-inner">

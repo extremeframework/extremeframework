@@ -444,10 +444,6 @@ class _AdminModuleController extends __AppController
                             (new ChangeLogController())->delete('MODULE', $_ids);
                             break;
 
-                        case 'customaccessright': 
-                            (new CustomAccessRightController())->delete('MODULE', $_ids);
-                            break;
-
                         case 'field': 
                             (new FieldController())->delete('MODULE', $_ids);
                             break;
@@ -645,7 +641,7 @@ class _AdminModuleController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('adminmodule');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
+        $columns2edit = array('UUID', 'NAME', 'MODULE', 'ID_ADMIN_PACKAGE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new AdminModuleModel();
@@ -694,7 +690,7 @@ class _AdminModuleController extends __AppController
     }
 
     protected function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
+        $columns2edit = array('UUID', 'NAME', 'MODULE', 'ID_ADMIN_PACKAGE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminmodule'));
 
         $rows = array();
@@ -755,7 +751,7 @@ class _AdminModuleController extends __AppController
         return $result;
     }
 
-    protected function saveform($prefix = null) {
+    protected function saveform($prefix = null, $refobject = null) {
         $formmode = $this->formmode($prefix);
 
         TransactionHelper::begin();
@@ -763,7 +759,7 @@ class _AdminModuleController extends __AppController
         if ($formmode == 'multiple') {
             $models = $this->form2models($prefix);
 
-            $result = $this->save($models);
+            $result = $this->save($models, $refobject);
 
             $deleteditems = isset($_REQUEST[$prefix.'adminmodule_multiformdata_deleteditems'])? $_REQUEST[$prefix.'adminmodule_multiformdata_deleteditems'] : '';
             $deleteditems = explode(',', trim($deleteditems, ','));
@@ -799,7 +795,7 @@ class _AdminModuleController extends __AppController
 
             
 
-            $result = $this->save(array($model));
+            $result = $this->save(array($model), $refobject);
         }
 
         TransactionHelper::end();
@@ -807,7 +803,7 @@ class _AdminModuleController extends __AppController
         return $result;
     }
 
-    protected function save($models = array()) {
+    protected function save($models = array(), $refobject = null) {
         if (!is_array($models)) {
             $models = array($models);
         }
@@ -815,7 +811,7 @@ class _AdminModuleController extends __AppController
         foreach ($models as $model) {
             CustomFieldHelper::updateCustomFieldValues('adminmodule', $model);
             
-            
+            $this->bind2refobject($model, $refobject);
             $this->onBeforeSave($model);
             PluginManager::do_action('adminmodule_before_save', $model);
 
@@ -865,6 +861,17 @@ class _AdminModuleController extends __AppController
         }
 
         return true;
+    }
+
+    protected function bind2refobject(&$model, $refobject = null) {
+        if ($refobject != null) {
+            $refclass = get_class($refobject);
+            
+            if ($refclass == 'AdminPackageModel' && empty($model->ID_ADMIN_PACKAGE)) {
+                $model->ID_ADMIN_PACKAGE = $refobject->CODE;
+            }
+
+        }
     }
 
     public function saveDraftAction() {
@@ -1166,7 +1173,7 @@ class _AdminModuleController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
+            return array('NAME', 'MODULE', 'ID_ADMIN_PACKAGE', 'PREFIX');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1367,7 +1374,7 @@ class _AdminModuleController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('adminmodule');
 
-        $roweditablecolumns = array('NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
+        $roweditablecolumns = array('NAME', 'MODULE', 'ID_ADMIN_PACKAGE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1456,7 +1463,7 @@ class _AdminModuleController extends __AppController
 	}
 
     protected function getLayoutColumns() {
-        return array('NAME', 'MODULE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
+        return array('NAME', 'MODULE', 'ID_ADMIN_PACKAGE', 'PREFIX', 'AVAILABLE_ACTIONS', 'IS_COMMENT_ENABLED');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1583,6 +1590,15 @@ class _AdminModuleController extends __AppController
 
                         break;
 
+                    case 'ID_ADMIN_PACKAGE':
+                        if ($value == '__NULL__') {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_MODULE.ID_ADMIN_PACKAGE IS NULL");
+                        } else {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_MODULE.ID_ADMIN_PACKAGE = '$value'");
+                        }
+
+                        break;
+
                     default:
                         if (preg_match('/^custom.*/i', $key)) {
                             $model->whereAdd($value);
@@ -1604,12 +1620,38 @@ class _AdminModuleController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID_ADMIN_PACKAGE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
+    
+        if ($join) {
+            if (Framework::hasModule('AdminPackage')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE.NAME as reftext_ID_ADMIN_PACKAGE');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE.UUID as refuuid_ID_ADMIN_PACKAGE');
+            }
+        }
+    
+        if ($join) {
+            if (Framework::hasModule('AdminPackage')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE',TABLE_PREFIX.'ADMIN_PACKAGE:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE');
+            }
+        }
     }
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_MODULE`.NAME, `'.TABLE_PREFIX.'ADMIN_MODULE`.MODULE, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID_ADMIN_PACKAGE, `'.TABLE_PREFIX.'ADMIN_MODULE`.PREFIX, `'.TABLE_PREFIX.'ADMIN_MODULE`.AVAILABLE_ACTIONS, `'.TABLE_PREFIX.'ADMIN_MODULE`.IS_COMMENT_ENABLED, `'.TABLE_PREFIX.'ADMIN_MODULE`.ID, `'.TABLE_PREFIX.'ADMIN_MODULE`.JSON, `'.TABLE_PREFIX.'ADMIN_MODULE`.UUID, `'.TABLE_PREFIX.'ADMIN_MODULE`.WFID');
+    
+        if ($join) {
+            if (Framework::hasModule('AdminPackage')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE.NAME as reftext_ID_ADMIN_PACKAGE');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE.UUID as refuuid_ID_ADMIN_PACKAGE');
+            }
+        }
+    
+        if ($join) {
+            if (Framework::hasModule('AdminPackage')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE',TABLE_PREFIX.'ADMIN_PACKAGE:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE');
+            }
+        }
     }
 
     public function getAclEnabledIds() {

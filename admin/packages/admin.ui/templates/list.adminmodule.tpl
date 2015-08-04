@@ -139,9 +139,6 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{_t('Copy also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="customaccessright" /> <{_t('Copy also')}> <{_t('Custom Access Right')|strtolower}></li>
-                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{_t('Copy also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -202,9 +199,6 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{_t('Approve also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="customaccessright" /> <{_t('Approve also')}> <{_t('Custom Access Right')|strtolower}></li>
-                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{_t('Approve also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -264,9 +258,6 @@
                 <{/if}>
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{_t('Delete also')}> <{_t('Change Log')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="customaccessright" /> <{_t('Delete also')}> <{_t('Custom Access Right')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{_t('Delete also')}> <{_t('Field')|strtolower}></li>

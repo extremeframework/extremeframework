@@ -280,6 +280,9 @@ function application_route($url = null) {
 
     //////////////////////////////////////////////////////////////////
     // Execute
+    Framework::register('controller', $controller);
+    Framework::register('action', $action);
+
     $handler->$actionmethod();
 }
 

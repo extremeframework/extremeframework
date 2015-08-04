@@ -6,13 +6,4 @@
  */
 class AdminMenuController extends _AdminMenuController
 {
-    function changeAction() {
-        list($id) = explode('/', $_REQUEST['args']);
-
-        $auth = new AuthenticationController();
-
-        $auth->loadMenu($id);
-
-        Framework::redirect(APPLICATION_URL);
-    }
 }

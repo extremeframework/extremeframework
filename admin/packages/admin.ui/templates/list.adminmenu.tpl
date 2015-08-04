@@ -118,6 +118,9 @@
                             <{if Framework::hasModule('AdminMenuItem')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('Admin Menu Item')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('AdminPackageMenu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackagemenu" /> <{_t('Copy also')}> <{_t('Admin Package Menu')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="dashboard" /> <{_t('Copy also')}> <{_t('Dashboard')|strtolower}></li>
                 <{/if}>
@@ -130,6 +133,9 @@
                             <{if Framework::hasModule('AdminMenuItem')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('Admin Menu Item')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('AdminPackageMenu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackagemenu" /> <{_t('Approve also')}> <{_t('Admin Package Menu')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="dashboard" /> <{_t('Approve also')}> <{_t('Dashboard')|strtolower}></li>
                 <{/if}>
@@ -141,6 +147,9 @@
         <ul>
                             <{if Framework::hasModule('AdminMenuItem')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('Admin Menu Item')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('AdminPackageMenu')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackagemenu" /> <{_t('Delete also')}> <{_t('Admin Package Menu')|strtolower}></li>
                 <{/if}>
                             <{if Framework::hasModule('Dashboard')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="dashboard" /> <{_t('Delete also')}> <{_t('Dashboard')|strtolower}></li>

@@ -69,10 +69,6 @@ class Framework {
         return $smarty;
     }
 
-    private static function getCacheContextKey() {
-        return APPLICATION_NAME.'::Framework';
-    }
-
     static function registerTemplateDir($directory, $packageroot = '') {
         $templatemap = self::getTemplateMap();
 
@@ -289,7 +285,7 @@ class Framework {
     }
 
     static function hasModule($name) {
-        $cache = Cache::context(self::getCacheContextKey().'::modules');
+        $cache = Cache::session()->context('hasModule');
 
         if (!$cache->has($name)) {
             $cache->set($name, class_exists($name.'Model'), 86400);

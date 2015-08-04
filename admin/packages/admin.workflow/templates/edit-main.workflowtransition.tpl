@@ -47,7 +47,7 @@
                 <div class="form-field form-field-value column-id-workflow">
                                             
             <{if Framework::hasModule('Workflow')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`workflowtransition_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`workflowtransition_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.workflow.new)}>
                     <span class="onflycreation">
@@ -152,7 +152,7 @@
                 <div class="form-field form-field-value column-start-id-workflow-stage">
                                             
             <{if Framework::hasModule('WorkflowStage')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-start-id-workflow-stage" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$details->START_ID_WORKFLOW_STAGE text=$details->reftext_START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="ID_WORKFLOW" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-start-id-workflow-stage" class="input-start-id-workflow-stage" name="`$prefix`workflowtransition_formdata_START_ID_WORKFLOW_STAGE" value=$details->START_ID_WORKFLOW_STAGE text=$details->reftext_START_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="ID_WORKFLOW" blankitem=""}>
 
                             <{if isset($smarty.session.acl.workflowstage.new)}>
                     <span class="onflycreation">
@@ -191,7 +191,7 @@
                 <div class="form-field form-field-value column-end-id-workflow-stage">
                                             
             <{if Framework::hasModule('WorkflowStage')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-end-id-workflow-stage" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$details->END_ID_WORKFLOW_STAGE text=$details->reftext_END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="" groupcol="ID_WORKFLOW" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-end-id-workflow-stage" class="input-end-id-workflow-stage" name="`$prefix`workflowtransition_formdata_END_ID_WORKFLOW_STAGE" value=$details->END_ID_WORKFLOW_STAGE text=$details->reftext_END_ID_WORKFLOW_STAGE datasource="WORKFLOW_STAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="ID_WORKFLOW" blankitem=""}>
 
                             <{if isset($smarty.session.acl.workflowstage.new)}>
                     <span class="onflycreation">
@@ -260,7 +260,7 @@
                 <div class="form-field form-field-value column-id-user-group">
                                             
             <{if Framework::hasModule('UserGroup')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.usergroup.new)}>
                     <span class="onflycreation">
@@ -299,7 +299,7 @@
                 <div class="form-field form-field-value column-id-user-role">
                                             
             <{if Framework::hasModule('UserRole')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`workflowtransition_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`workflowtransition_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.userrole.new)}>
                     <span class="onflycreation">
@@ -338,7 +338,7 @@
                 <div class="form-field form-field-value column-transition-id-screen">
                                             
             <{if Framework::hasModule('Screen')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-transition-id-screen" class="input-transition-id-screen" name="`$prefix`workflowtransition_formdata_TRANSITION_ID_SCREEN" value=$details->TRANSITION_ID_SCREEN text=$details->reftext_TRANSITION_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-transition-id-screen" class="input-transition-id-screen" name="`$prefix`workflowtransition_formdata_TRANSITION_ID_SCREEN" value=$details->TRANSITION_ID_SCREEN text=$details->reftext_TRANSITION_ID_SCREEN datasource="SCREEN" valuecol="CODE" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.screen.new)}>
                     <span class="onflycreation">

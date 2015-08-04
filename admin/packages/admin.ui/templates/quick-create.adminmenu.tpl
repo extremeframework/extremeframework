@@ -295,6 +295,9 @@
             <{if isset($smarty.session.acl.adminmenuitem) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.adminpackagemenu) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.dashboard) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -304,6 +307,9 @@
             <ul>
                                 <{if isset($smarty.session.acl.adminmenuitem) }>
                     <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
+                <{/if}>
+                                <{if isset($smarty.session.acl.adminpackagemenu) }>
+                    <li><a href="#tab-adminpackagemenus"><{_t('Admin package menu')}> <span class="badge adminpackagemenu-badge-count"></span></a></li>
                 <{/if}>
                                 <{if isset($smarty.session.acl.dashboard) }>
                     <li><a href="#tab-dashboards"><{_t('Dashboard')}> <span class="badge dashboard-badge-count"></span></a></li>
@@ -315,6 +321,14 @@
                     	<{if true || $tab == 'adminmenuitems'}>
                         	<h2 class="print"><{_t('Admin menu item')}></h2>
                                                             <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
+                                                    <{/if}>
+                    </div>
+                <{/if}>
+                            <{if isset($smarty.session.acl.adminpackagemenu) }>
+                    <div id="tab-adminpackagemenus">
+                    	<{if true || $tab == 'adminpackagemenus'}>
+                        	<h2 class="print"><{_t('Admin package menu')}></h2>
+                                                            <{ajaxmodule class="WidgetListAdminPackageMenu" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminpackagemenu.tpl'}>
                                                     <{/if}>
                     </div>
                 <{/if}>

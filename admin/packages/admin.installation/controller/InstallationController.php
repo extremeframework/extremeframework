@@ -111,4 +111,88 @@ class InstallationController extends __AppController
                 return "Unknown installation type";
         }
     }
+
+    function userPackagesAction() {
+        AuthenticationController::authenticate();
+
+        list($uuid) = explode('/', $_REQUEST['args']);
+
+        // x. Install a requested package
+        if (!empty($uuid)) {
+            $model = new AdminPackageModel();
+
+            $model->UUID = $uuid;
+
+            $model->find();
+
+            if ($model->fetch()) {
+                // x. Add user package
+                $up = new UserPackageModel();
+
+                $up->ID_USER = $_SESSION['user']->ID;
+                $up->ID_ADMIN_PACKAGE = $model->id();
+                $up->INSTALLATION_DATE = date('Y-m-d H:i:s');
+
+                $up->insert();
+
+                // x. Get package permission sets
+                $app = new AdminPackagePermissionModel();
+
+                $app->ID_ADMIN_PACKAGE = $model->id();
+
+                $app->find();
+
+                $permission_set_ids = array();
+
+                while ($app->fetch()) {
+                    $permission_set_ids[] = $app->ID_PERMISSION_SET;
+                }
+
+                // x. Add custom access rights
+                foreach ($permission_set_ids as $permission_set_id) {
+                    $car = new CustomAccessRightModel();
+
+                    $car->ID_USER = $_SESSION['user']->ID;
+                    $car->ID_PERMISSION_SET = $permission_set_id;
+
+                    $car->insert();
+                }
+            }
+        }
+
+        // x. Get available packages
+        $model = new AdminPackageModel();
+
+        $model->find();
+
+        $packages = array();
+
+        while ($model->fetch()) {
+            $packages[] = clone $model;
+        }
+
+        // x. Get user's installed packages
+        $model = new UserPackageModel();
+
+        $model->ID_USER = $_SESSION['user']->ID;
+
+        $model->find();
+
+        $user_installed_package_ids = array();
+
+        while ($model->fetch()) {
+            $user_installed_package_ids[$model->ID_ADMIN_PACKAGE] = 1;
+        }
+
+        // x. Display
+		$messages = $this->getMessages();
+
+		$smarty = Framework::getSmarty(__FILE__);
+
+		$smarty->assign('messages', $messages);
+		$smarty->assign('packages', $packages);
+		$smarty->assign('user_installed_package_ids', $user_installed_package_ids);
+
+		$smarty->display('install.user-packages.tpl');
+    }
 }

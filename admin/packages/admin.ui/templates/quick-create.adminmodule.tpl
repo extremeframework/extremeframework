@@ -72,97 +72,7 @@
                                     </div>
             </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
-            
-        
-        
-        
-        
-<{if !isset($excludedcolumns['MODULE'])}>
-    
-        <{if $preset == 'MODULE'}>
-            <input type="hidden" class="input-module" name="adminmodule_formdata_MODULE" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['MODULE']) && !$acleditablecolumns['MODULE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['MODULE'])}>
-            <input type="hidden" class="input-module" name="adminmodule_formdata_MODULE" value="<{$details->MODULE}>" />
-        <{else}>
-    		<td class="form-row form-row-module form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
-                </div>
-            </td>
-            <td class="form-row form-row-module form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-module">
-                                            
-
-    <input class="input-module input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
-                        <{if $columntooltips.MODULE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
-    	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
-            
-        
-        
-        
-        
-<{if !isset($excludedcolumns['PREFIX'])}>
-    
-        <{if $preset == 'PREFIX'}>
-            <input type="hidden" class="input-prefix" name="adminmodule_formdata_PREFIX" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['PREFIX']) && !$acleditablecolumns['PREFIX'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PREFIX'])}>
-            <input type="hidden" class="input-prefix" name="adminmodule_formdata_PREFIX" value="<{$details->PREFIX}>" />
-        <{else}>
-    		<td class="form-row form-row-prefix form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Prefix')}><span class="mandatory">*</span></label>
-                </div>
-            </td>
-            <td class="form-row form-row-prefix form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-prefix">
-                                            
-
-    <input class="input-prefix input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_PREFIX" value="<{$details->PREFIX|escape}>"  />
-                        <{if $columntooltips.PREFIX}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PREFIX}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
-    	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
-            
-        
-        
-        
-        
-<{if !isset($excludedcolumns['AVAILABLE_ACTIONS'])}>
-    
-        <{if $preset == 'AVAILABLE_ACTIONS'}>
-            <input type="hidden" class="input-available-actions" name="adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['AVAILABLE_ACTIONS']) && !$acleditablecolumns['AVAILABLE_ACTIONS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['AVAILABLE_ACTIONS'])}>
-            <input type="hidden" class="input-available-actions" name="adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$details->AVAILABLE_ACTIONS}>" />
-        <{else}>
-    		<td class="form-row form-row-available-actions">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Available actions')}></label>
-                </div>
-            </td>
-            <td class="form-row form-row-available-actions" colspan="3">
-                <div class="form-field form-field-value column-available-actions">
-                                            
-
-    <input class="input-available-actions input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$details->AVAILABLE_ACTIONS|escape}>"  />
-                        <{if $columntooltips.AVAILABLE_ACTIONS}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.AVAILABLE_ACTIONS}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
-    	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
+    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                            <tr>
     
             
         
@@ -359,6 +269,9 @@
             <button class="btn btn-success" type="submit" onclick="$('#pageform').submit()">
                 <strong><{_t('Save')}></strong>
             </button>
+                            <a class="btn btn-full-form scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/new">
+                    <strong><{_t('Go to full form')}></strong>
+                </a>
                     </div>
     </div>
 

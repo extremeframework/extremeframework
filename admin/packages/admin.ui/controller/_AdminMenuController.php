@@ -420,6 +420,10 @@ class _AdminMenuController extends __AppController
                             (new AdminMenuItemController())->delete('ID_ADMIN_MENU', $_ids);
                             break;
 
+                        case 'adminpackagemenu': 
+                            (new AdminPackageMenuController())->delete('ID_ADMIN_MENU', $_ids);
+                            break;
+
                         case 'dashboard': 
                             (new DashboardController())->delete('ID_ADMIN_MENU', $_ids);
                             break;
@@ -647,6 +651,7 @@ class _AdminMenuController extends __AppController
         $this->delete('UUID', array($id));
 
         (new AdminMenuItemController())->delete('ID_ADMIN_MENU', array($id));
+        (new AdminPackageMenuController())->delete('ID_ADMIN_MENU', array($id));
         (new DashboardController())->delete('ID_ADMIN_MENU', array($id));
         TransactionHelper::end();
     }

@@ -131,17 +131,6 @@
             <{/if}>
         <{/if}>
 
-        <{if count($smarty.session.menus) > 1}>
-            <div id="application-domains">
-                <ul>
-                    <{foreach from=$smarty.session.menus item=menu}>
-                        <li>
-                            <a style="text-decoration:none" href="<{$smarty.const.APPLICATION_URL}>/adminmenu/change/<{$menu->ID}>"><{$menu->NAME}>&nbsp;</a>
-                        </li>
-                    <{/foreach}>
-                </ul>
-            </div>
-        <{/if}>
         <{if isset($smarty.session.user) }>
             <div class="top-all-menu">
                 <{if $has_all}>

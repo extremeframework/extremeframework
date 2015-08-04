@@ -142,9 +142,6 @@
             <{if isset($smarty.session.acl.changelog) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
-            <{if isset($smarty.session.acl.customaccessright) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
             <{if isset($smarty.session.acl.field) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -202,9 +199,6 @@
                         <{/if}>
                                             <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
                             <li><a href="#tab-changelogs"><{_t('Change log')}> <span class="badge changelog-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
-                            <li><a href="#tab-customaccessrights"><{_t('Custom access right')}> <span class="badge customaccessright-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
                             <li><a href="#tab-fields"><{_t('Field')}> <span class="badge field-badge-count"></span></a></li>
@@ -299,14 +293,6 @@
                         	<{if true || $tab == 'changelogs'}>
                             	<h2 class="print"><{_t('Change log')}></h2>
                                                                     <{ajaxmodule class="WidgetListChangeLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.changelog.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
-                        <div id="tab-customaccessrights">
-                        	<{if true || $tab == 'customaccessrights'}>
-                            	<h2 class="print"><{_t('Custom access right')}></h2>
-                                                                    <{ajaxmodule class="WidgetListCustomAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.customaccessright.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>
