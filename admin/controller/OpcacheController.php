@@ -111,6 +111,20 @@ class OpcacheController extends __AppController
                 echo 'DB checking done';
             }
         }
+
+        if ($operation == 'patchdb') {
+            $patches = isset($_SESSION['db.patches'])? $_SESSION['db.patches'] : array();
+
+            if (!empty($patches)) {
+                $ok = $this->apply_database_patch($patches);
+
+                if ($ok) {
+                    echo 'Patch done';
+                }
+            } else {
+                echo 'No patch to apply';
+            }
+        }
     }
 
     function check_against_script_file($file) {
@@ -129,22 +143,61 @@ class OpcacheController extends __AppController
                 $table = $match[1];
                 $columnscript = $match[2];
 
-                $this->check_against_struct($table, $tablescript, $columnscript, $logs);
+                $datascript = $this->parse_table_data_script($content, $table);
+
+                $this->check_against_struct($table, $tablescript, $columnscript, $datascript, $logs);
             }
         }
 
+        $_SESSION['db.patches'] = $logs;
+
         echo "<pre>";
-        echo implode(";\n", $logs).";";
+
+        if (!empty($logs)) {
+            echo implode(";\n", $logs).";";
+            echo '<br/> <br/><a href="'.APPLICATION_URL.'/opcache/patchdb"><input type="button" value="Patch now"></a>';
+        } else {
+            echo "Checking done. Nothing to patch";
+        }
+
         echo "</pre>";
     }
 
-    function check_against_struct($rawname, $tablescript, $columnscript, &$logs) {
+    function parse_table_data_script($content, $table) {
+        if (preg_match_all("/INSERT.*INTO\s+`[^`]*$table`.*\);[\n|\r]+/i", $content, $matches)) {
+            $datascript = $matches[0];
+
+            foreach ($datascript as $k => $v) {
+                $datascript[$k] = trim($v);
+            }
+        } else {
+            $datascript = array();
+        }
+
+        return $datascript;
+    }
+
+    function apply_database_patch($patches) {
+        foreach ($patches as $patch) {
+            $model = new DB_DataObject();
+
+    	    $model->query($patch);
+        }
+
+        return true;
+    }
+
+    function check_against_struct($rawname, $tablescript, $columnscript, $datascript, &$logs) {
         // x. Check if table exists
         $table_exists = $this->table_exists($rawname);
 
         // x. Run table script if table doesn't exists
         if (!$table_exists) {
             $logs[] = $tablescript;
+
+            if (!empty($datascript)) {
+                $logs = array_merge($logs, $datascript);
+            }
         } else {
             // x. Alter table structure if needed
             $this->alter_table($rawname, $columnscript, $logs);
