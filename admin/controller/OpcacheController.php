@@ -304,7 +304,7 @@ class OpcacheController extends __AppController
                 $logs[] = "ALTER TABLE `$rawname` ADD COLUMN $definition".(!empty($prevcolumn)? " AFTER `$prevcolumn`" : '');
             } else {
                 if ($type != $tablecolumns[$column]) {
-                    $logs[] = "ALTER TABLE `$rawname` CHANGE COLUMN $definition";
+                    $logs[] = "ALTER TABLE `$rawname` MODIFY $definition";
                 }
             }
 
