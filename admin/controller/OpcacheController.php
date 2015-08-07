@@ -24,6 +24,7 @@ class OpcacheController extends __AppController
 
         echo '<br/> <br/><a href="'.APPLICATION_URL.'/opcache/test-apc">Test APC</a> &nbsp; ';
         echo '<a href="'.APPLICATION_URL.'/opcache/test-memcache">Test Memcache</a> &nbsp; ';
+        echo '<a href="'.APPLICATION_URL.'/opcache/backupdb">Backup database</a> &nbsp; ';
 
         echo '<br/> <form action="'.APPLICATION_URL.'/opcache/checkdb" method="POST" enctype="multipart/form-data">';
         echo 'Database script: <input type="file" name="dbfile"/>';
@@ -125,6 +126,74 @@ class OpcacheController extends __AppController
                 echo 'No patch to apply';
             }
         }
+
+        if ($operation == 'backupdb') {
+            $msg = $this->backup_database();
+
+            if (!empty($msg)) {
+                echo $msg;
+            }
+        }
+    }
+
+    function backup_database() {
+        // x. Parse database settings from the global DSN
+        global $database_dsn;
+        $dsn = $database_dsn['database'];
+
+        if (!preg_match('#//([^:]+):([^@]*)@([^/]+)/(.+)#is', $dsn, $match)) {
+            return 'Cannot parse database settings';
+        }
+
+        $username = $match[1];
+        $password = $match[2];
+        $hostname = $match[3];
+        $database = $match[4];
+
+        // x. Ensure backup directories
+        $backupdir = CACHE_DIR.'/backup/';
+
+        if (!is_dir($backupdir)) {
+            $old = umask(0);
+            mkdir($backupdir, 0755, true);
+            umask($old);
+        }
+
+        // x. Dump
+        $output = $backupdir.'/'.$database.'.sql';
+
+        $options = '--complete-insert --skip-add-locks --skip-add-drop-table --skip-dump-date --skip-extended-insert --all';
+
+        $cmd = "mysqldump -u ".$username.($password != ''? ' -p'.$password : '')." $options $database ".(!empty($tables_with_prefixes)? implode(' ', $tables_with_prefixes) : '')."> $output";
+        exec($cmd, $ignored, $ret);
+
+        // x. Remove AUTOINCREMENT
+        $content = file_get_contents($output);
+        $content = preg_replace("/\sAUTO_INCREMENT=[0-9]+/i", '', $content);
+        file_put_contents($output, $content);
+
+        // x. Zip
+        $zip = new ZipArchive();
+        $filename = $backupdir."/{$database}-".date('YmdHi').'.zip';
+
+        if ($zip->open($filename, ZIPARCHIVE::CREATE) !== TRUE) {
+            return "Cannot open '$filename'";
+        }
+
+        $zip->addFile($backupdir."/{$database}.sql", "{$database}.sql");
+        $zip->close();
+
+        unlink($backupdir."/{$database}.sql");
+
+        // x. Force download
+        header("Content-disposition: attachment; filename=".basename($filename));
+        header("Content-Type: application/force-download");
+        header("Content-Transfer-Encoding: application/zip;\n");
+        header("Pragma: no-cache");
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0, public");
+        header("Expires: 0");
+
+        readfile($filename);
     }
 
     function check_against_script_file($file) {
