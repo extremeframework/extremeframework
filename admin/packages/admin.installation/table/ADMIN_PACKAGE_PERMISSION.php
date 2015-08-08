@@ -14,8 +14,8 @@ class DataObject_ADMIN_PACKAGE_PERMISSION extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $NAME;                            // varchar(128)  
     public $REFID;                           // varchar(16)  
-    public $ID_ADMIN_PACKAGE;                // varchar(32)  
-    public $ID_PERMISSION_SET;               // int(4)  
+    public $ID_ADMIN_PACKAGE;                // varchar(32)  unique_key
+    public $ID_PERMISSION_SET;               // int(4)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

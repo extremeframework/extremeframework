@@ -9,8 +9,10 @@ defined('APPLICATION_DIR') OR exit();
 class UserGroupController extends _UserGroupController
 {
     function enforceCustomAclCheck(&$model) {
-        $group_ids = $_SESSION['memberships.groups'];
+        if (isset($_SESSION['user']) && $_SESSION['user']->ID != 1) {
+            $group_ids = $_SESSION['memberships.groups'];
 
-        $model->whereAdd("USER_GROUP.ID = '".implode("' OR USER_GROUP.ID = '", $group_ids)."'");
+            $model->whereAdd("USER_GROUP.ID = '".implode("' OR USER_GROUP.ID = '", $group_ids)."'");
+        }
     }
 }

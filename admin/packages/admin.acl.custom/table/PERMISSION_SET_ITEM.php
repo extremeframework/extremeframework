@@ -13,9 +13,9 @@ class DataObject_PERMISSION_SET_ITEM extends DB_DataObject
     public $_database = 'extremeframework-git';    // database name (used with database_{*} config)
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
-    public $ID_PERMISSION_SET;               // int(4)  
-    public $MODULE;                          // varchar(32)  
-    public $ACTIONS;                         // text  
+    public $ID_PERMISSION_SET;               // int(4)  unique_key
+    public $MODULE;                          // varchar(32)  unique_key
+    public $ACTIONS;                         // varchar(64)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

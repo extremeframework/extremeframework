@@ -14,6 +14,7 @@ class DataObject_ADMIN_PACKAGE_CATEGORY extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
+    public $CODE;                            // varchar(24)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

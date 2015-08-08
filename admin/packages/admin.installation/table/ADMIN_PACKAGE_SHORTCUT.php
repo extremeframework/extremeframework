@@ -14,9 +14,9 @@ class DataObject_ADMIN_PACKAGE_SHORTCUT extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
-    public $ID_ADMIN_PACKAGE;                // varchar(32)  
+    public $ID_ADMIN_PACKAGE;                // varchar(32)  unique_key
     public $IMAGE;                           // varchar(255)  
-    public $PATH;                            // text  
+    public $PATH;                            // varchar(32)  unique_key
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $WFID;                            // varchar(24)  

@@ -35,6 +35,7 @@ class AdminPackageShortcutModel extends DataObject_ADMIN_PACKAGE_SHORTCUT {
         $result = parent::insert();
 
 	    if ($check && !$this->id()) {
+
             TransactionHelper::rollback();
 
             (new __AppController())->pagenotfound("[{$this->_module}] There is a record with an empty key");
