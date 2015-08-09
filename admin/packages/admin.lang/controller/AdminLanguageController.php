@@ -88,7 +88,7 @@ class AdminLanguageController extends _AdminLanguageController
                 $label = $alim->LABEL;
                 $translation = $alim->TRANSLATION;
 
-                $_L[$label] = addslashes($translation);
+                $_L[$label] = $translation;
             }
 
             ksort($_L);
@@ -97,7 +97,7 @@ class AdminLanguageController extends _AdminLanguageController
 
             foreach ($_L as $label => $translation) {
                 if (!empty($translation)) {
-                    $s .= "\$_L['".addslashes($label)."'] = '".trim($translation)."';\n";
+                    $s .= "\$_L['".addslashes($label)."'] = '".addslashes(trim($translation))."';\n";
                 }
             }
 
