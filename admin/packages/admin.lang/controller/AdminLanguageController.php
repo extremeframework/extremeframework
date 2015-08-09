@@ -43,6 +43,10 @@ class AdminLanguageController extends _AdminLanguageController
             return "No permission: the directory $dir should be writable";
         }
 
+        // Backup current language data
+        global $_L;
+        $old = $_L;
+
         // Details
 		$model = new AdminLanguageModel();
 
@@ -66,8 +70,6 @@ class AdminLanguageController extends _AdminLanguageController
             }
 
             // x. Current labels
-            global $_L;
-
             include ($filepath);
 
             $current = array_keys($_L);
@@ -103,6 +105,9 @@ class AdminLanguageController extends _AdminLanguageController
 
             file_put_contents($filepath, $s);
         }
+
+        // Restore current language data
+        $_L = $old;
     }
 
     function quickSelectAction() {
