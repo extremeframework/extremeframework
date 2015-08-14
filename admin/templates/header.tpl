@@ -18,6 +18,7 @@ var USERID = "<{md5(session_id())}>";
 </script>
 
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:light,italic,bold"/>
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Rouge+Script"/>
 <link rel="stylesheet" type="text/css" href="<{$smarty.const.APPLICATION_URL}>/css/apps4clouds.header.css" media="all"/>
 <script type="text/javascript" src="<{$smarty.const.APPLICATION_URL}>/js/apps4clouds.header.js"></script>
 
