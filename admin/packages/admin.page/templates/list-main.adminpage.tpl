@@ -1,5 +1,5 @@
 <{plugin key="generic_list_before" args=""}>
-<{plugin key="adminpackagecategory_list_before" args=""}>
+<{plugin key="adminpage_list_before" args=""}>
 
 <div class="table-top-scroll">
     <div class="table-top-scroll-div">&nbsp;</div>
@@ -8,25 +8,25 @@
 <div class="table-bottom-scroll">
 <div class="table-bottom-scroll-div">
 
-<table class="item_list" id="adminpackagecategorylist" data-module="adminpackagecategory">
+<table class="item_list" id="adminpagelist" data-module="adminpage">
 	<thead>
 	<tr>
-		<th class="checkbox"><input type="checkbox" id="chk-adminpackagecategory-all" onclick="adminpackagecategory_checkall(this.checked)" /></th>
+		<th class="checkbox"><input type="checkbox" id="chk-adminpage-all" onclick="adminpage_checkall(this.checked)" /></th>
 		<th class="indicators"></th>
         <{assign var='colcount' value=1}>
-        	                            <{if (in_array('NAME', $filtercolumns)) }>
-    	        <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
-    	            <th class="column-name">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/sort/name"><{_t('Admin package category name')}></a>
+        	                            <{if (in_array('TITLE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
+    	            <th class="column-title">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpage/sort/title"><{_t('Admin page title')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
-		                        <{if (in_array('CODE', $filtercolumns)) }>
-    	        <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
-    	            <th class="column-code">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/sort/code"><{_t('Code')}></a>
+		                        <{if (in_array('SLUG', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['SLUG']) && ((isset($aclviewablecolumns['SLUG']) && $aclviewablecolumns['SLUG']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SLUG']) || $aclviewablecolumns['SLUG']))) }>
+    	            <th class="column-slug">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpage/sort/slug"><{_t('Slug')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>
@@ -38,7 +38,7 @@
 			</th>
 			<{assign var='colcount' value=$colcount+1}>
     	<{/foreach}>
-		<{plugin key="adminpackagecategory_list_columns_headers" args=""}>
+		<{plugin key="adminpage_list_columns_headers" args=""}>
 		<th class="actions"></th>
 	</tr>
 	</thead>
@@ -49,13 +49,13 @@
 	<{if $pagination}>
 	<tr class="top-holder" style="display:none">
 	    <td colspan="<{$colcount+2}>" style="text-align:center;">
-	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Package Categories')|strtolower}> on this page are selected. <a onclick="adminpackagecategory_selectall()">Select all <{$total}> <{_t('Admin Package Categories')|strtolower}> in the list</a></div>
-	    	<div class="clearselection">All <{$total}> <{_t('Admin Package Categories')|strtolower}> in the list are selected. <a onclick="adminpackagecategory_clearselection()">Clear selection</a></div>
+	    	<div class="selectall">All <{$rows|@count}> <{_t('Admin Pages')|strtolower}> on this page are selected. <a onclick="adminpage_selectall()">Select all <{$total}> <{_t('Admin Pages')|strtolower}> in the list</a></div>
+	    	<div class="clearselection">All <{$total}> <{_t('Admin Pages')|strtolower}> in the list are selected. <a onclick="adminpage_clearselection()">Clear selection</a></div>
 		</td>
 	</tr>
 	<{/if}>
 	<{foreach from=$rows key=counter item=row}>
-        <{include file="row-view.adminpackagecategory.tpl"}>
+        <{include file="row-view.adminpage.tpl"}>
 	<{/foreach}>
 	</tbody>
 	<tfoot>
@@ -63,12 +63,12 @@
             	<tr class="additem">
             	    <td colspan="2"></td>
             		<td colspan="<{$colcount}>">
-                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminpackagecategory-rowedit-add"><{_t('Add item')}></span>
-                	    <span class="adminpackagecategory-rowedit-buttons" style="display:none">
-                    	    <div class="rowedit-save adminpackagecategory-rowedit-save btn btn-success"><{_t('Save')}></div>
-                    	    <a class="rowedit-cancel adminpackagecategory-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
+                        <span style="cursor:pointer;text-decoration:underline;color:blue" class="adminpage-rowedit-add"><{_t('Add item')}></span>
+                	    <span class="adminpage-rowedit-buttons" style="display:none">
+                    	    <div class="rowedit-save adminpage-rowedit-save btn btn-success"><{_t('Save')}></div>
+                    	    <a class="rowedit-cancel adminpage-rowedit-cancel button-cancel"><{_t('Cancel')}></a>
                         </span>
-                        <span class="adminpackagecategory-rowedit-message rowedit-message" style="display:none"></span>
+                        <span class="adminpage-rowedit-message rowedit-message" style="display:none"></span>
                     </td>
             	</tr>
             <{/if}>
@@ -80,7 +80,7 @@
 </div>
 
 <{plugin key="generic_list_after" args=""}>
-<{plugin key="adminpackagecategory_list_after" args=""}>
+<{plugin key="adminpage_list_after" args=""}>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -101,15 +101,15 @@
 
         <{if !$readonly}>
             // x. Double-click on a viewing-row to edit it
-            $('#adminpackagecategorylist > tbody tr.row-view').die('dblclick').live('dblclick', function(){
+            $('#adminpagelist > tbody tr.row-view').die('dblclick').live('dblclick', function(){
                 var tr = $(this);
 
                 $.ajax({
                     type: "get",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/rowEdit/" + tr.data('id'),
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/rowEdit/" + tr.data('id'),
                     data: "<{if $preset}>preset=<{$preset}>&presetvalue=<{$presetvalue}><{/if}>"
                 }).done(function(html) {
-                    $('.adminpackagecategory-rowedit-message').html('').hide();
+                    $('.adminpage-rowedit-message').html('').hide();
 
                     tr.after(html);
                     tr.remove();
@@ -117,15 +117,15 @@
             });
 
             // x. Double-click on a editing-row to cancel editing
-            $('#adminpackagecategorylist > tbody tr.rowedit-existing').die('dblclick').live('dblclick', function(){
+            $('#adminpagelist > tbody tr.rowedit-existing').die('dblclick').live('dblclick', function(){
                 var tr = $(this);
 
                 $.ajax({
                     type: "get",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/rowView/" + tr.data('id'),
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/rowView/" + tr.data('id'),
                     data: "<{if $preset}>preset=<{$preset}>&presetvalue=<{$presetvalue}><{/if}>"
                 }).done(function(html) {
-                    $('.adminpackagecategory-rowedit-message').html('').hide();
+                    $('.adminpage-rowedit-message').html('').hide();
 
                     tr.after(html);
                     tr.remove();
@@ -133,7 +133,7 @@
             });
 
             // x. Button Save in an editing-row to save the editing item
-            $('.adminpackagecategory-rowedit-save-existing').die('click').live('click', function(event) {
+            $('.adminpage-rowedit-save-existing').die('click').live('click', function(event) {
                 event.preventDefault();
 
                 tinyMCE.triggerSave();
@@ -161,12 +161,12 @@
 
                 $.ajax({
                     type: "post",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/rowSave",
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/rowSave",
                     data: fd,
                     contentType: false,
                     processData: false
                 }).done(function(html) {
-                    $('.adminpackagecategory-rowedit-message').html('').hide();
+                    $('.adminpage-rowedit-message').html('').hide();
 
                     tr.after(html);
                     tr.remove();
@@ -174,64 +174,64 @@
             });
 
             // x. 'Add item' link to quick-add a new item
-            $('.adminpackagecategory-rowedit-add').click(function() {
-                if ($('#adminpackagecategorylist #item_').length > 0) {
+            $('.adminpage-rowedit-add').click(function() {
+                if ($('#adminpagelist #item_').length > 0) {
                     return;
                 }
 
                 $.ajax({
                     type: "get",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/rowNew",
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/rowNew",
                     data: "<{if $preset}>preset=<{$preset}>&presetvalue=<{$presetvalue}><{/if}>"
                 }).done(function(html) {
-                    $('#adminpackagecategorylist > tbody').append(html);
+                    $('#adminpagelist > tbody').append(html);
 
-                    $('.adminpackagecategory-rowedit-add').hide();
-                    $('.adminpackagecategory-rowedit-buttons').show();
+                    $('.adminpage-rowedit-add').hide();
+                    $('.adminpage-rowedit-buttons').show();
                 });
             });
 
             // x. Button Cancel to cancel the quick-add item
-            $('.adminpackagecategory-rowedit-cancel').click(function(event) {
+            $('.adminpage-rowedit-cancel').click(function(event) {
                 event.preventDefault();
 
-                var tr = $('#adminpackagecategorylist #item_');
+                var tr = $('#adminpagelist #item_');
 
                 tr.remove();
 
-                $('.adminpackagecategory-rowedit-message').html('').hide();
+                $('.adminpage-rowedit-message').html('').hide();
 
-                $('.adminpackagecategory-rowedit-add').show();
-                $('.adminpackagecategory-rowedit-buttons').hide();
+                $('.adminpage-rowedit-add').show();
+                $('.adminpage-rowedit-buttons').hide();
             });
 
             // x. Button Save to save the quick-add item
-            $('.adminpackagecategory-rowedit-save').click(function(event) {
+            $('.adminpage-rowedit-save').click(function(event) {
                 event.preventDefault();
 
-                var tr = $('#adminpackagecategorylist #item_');
+                var tr = $('#adminpagelist #item_');
 
                 $.ajax({
                     type: "post",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/rowSave",
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/rowSave",
                     data: tr.find(':input').serialize() + "<{if $preset}>&preset=<{$preset}>&presetvalue=<{$presetvalue}><{/if}>"
                 }).done(function(html) {
-                    $('.adminpackagecategory-rowedit-message').html('').hide();
+                    $('.adminpage-rowedit-message').html('').hide();
 
                     tr.after(html);
                     tr.remove();
 
-                    if ($('#adminpackagecategorylist #item_').length == 0) {
-                        $('.adminpackagecategory-rowedit-add').show();
-                        $('.adminpackagecategory-rowedit-buttons').hide();
+                    if ($('#adminpagelist #item_').length == 0) {
+                        $('.adminpage-rowedit-add').show();
+                        $('.adminpage-rowedit-buttons').hide();
 
-                        $('.adminpackagecategory-list-count, .adminpackagecategory-pagination-to').each(function(){
+                        $('.adminpage-list-count, .adminpage-pagination-to').each(function(){
                             var counter = $(this);
 
                             counter.text(parseInt(counter.text()) + 1);
                         });
 
-                        $('.adminpackagecategory-rowedit-add').click();
+                        $('.adminpage-rowedit-add').click();
                     }
                 });
             });
@@ -244,10 +244,10 @@
 <script type="text/javascript">
     $(document).ready(function(){
         // x. Shift-checkbox
-        $('.adminpackagecategorylistchk').shiftcheckbox();
+        $('.adminpagelistchk').shiftcheckbox();
 
         // x. CSS for selected rows
-        $('.adminpackagecategorylistchk').change(function(){
+        $('.adminpagelistchk').change(function(){
         	if ($(this).is(':checked')) {
     			$(this).closest('tr').addClass('row-selected');
     		} else {
@@ -255,10 +255,10 @@
     		}
         });
 
-        $('.adminpackagecategorylistchk').click(function(){
-    		$('#adminpackagecategorylist .top-holder').hide();
+        $('.adminpagelistchk').click(function(){
+    		$('#adminpagelist .top-holder').hide();
 
-    	    document.adminpackagecategorylist.adminpackagecategorylist_selection_selectall.value = 0;
+    	    document.adminpagelist.adminpagelist_selection_selectall.value = 0;
         });
     });
 </script>

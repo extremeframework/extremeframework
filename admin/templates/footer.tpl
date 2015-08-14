@@ -34,9 +34,17 @@
 </script>
 
 <div id="footer">
-<div class="content">
-	<{$smarty.const.COPYRIGHT_NOTICE}>
-</div>
+    <div class="content">
+        <{if !isset($smarty.session.user)}>
+            <ul class="links">
+                <li><a href="about"><{_t('About')}></a></li>
+                <li><a href="help"><{_t('Help')}></a></li>
+                <li><a href="terms"><{_t('Terms')}></a></li>
+                <li><a href="privacy"><{_t('Privacy')}></a></li>
+            </ul>
+        <{/if}>
+        <span><{$smarty.const.COPYRIGHT_NOTICE}></span>
+    </div>
 </div>
 <div class="clearer"></div>
 

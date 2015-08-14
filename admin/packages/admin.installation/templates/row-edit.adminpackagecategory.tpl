@@ -24,9 +24,24 @@
                     	                            <{$tmp_value = $formdataNAME}>
 
                         
-                            <input class="input-name" type="text" name="<{$prefix}>adminpackagecategory_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="500"<{/if}> />
+                            <input class="input-name" type="text" name="<{$prefix}>adminpackagecategory_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="200"<{/if}> />
                                                 <{else}>
                             <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackagecategory.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/view/<{$row->UUID}>"><{/if}>            <{_t($row->NAME, false, true)}>
+    <{if isset($smarty.session.acl.adminpackagecategory.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
+	        <{if (in_array('CODE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
+                <td class="column column-code text" >
+                                            <{if (in_array('CODE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataCODE}>
+
+                        
+                            <input class="input-code" type="text" name="<{$prefix}>adminpackagecategory_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
+                                                <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackagecategory.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
     <{if isset($smarty.session.acl.adminpackagecategory.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
@@ -65,4 +80,9 @@
     bind_hotkey("#adminpackagecategorylist > tbody tr.rowedit input[type=text]", 'esc', '.adminpackagecategory-rowedit-cancel');
 </script>
 
+    <{if $row->UUID == 0}>
+        <script type="text/javascript">
+                                                alias_hint('adminpackagecategory_formdata_NAME', 'adminpackagecategory_formdata_CODE', 'tr');
+                                    </script>
+    <{/if}>
 

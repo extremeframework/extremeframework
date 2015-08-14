@@ -134,7 +134,7 @@
                         <div id="tab-adminpackages">
                         	<{if true || $tab == 'adminpackages'}>
                             	<h2 class="print"><{_t('Admin package')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE_CATEGORY="`$details->ID`" where=""  template='widgetlist.adminpackage.tpl'}>
+                                                                    <{ajaxmodule class="WidgetListAdminPackage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE_CATEGORY="`$details->CODE`" where=""  template='widgetlist.adminpackage.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

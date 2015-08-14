@@ -1,6 +1,6 @@
 <{include file="header.tpl"}>
 </head>
-<body class="module module-<{$module}> additional-adminpackagecategory">
+<body class="module module-<{$module}> additional-adminpage">
 
 <{include file="top.tpl"}>
 
@@ -27,10 +27,10 @@ function remove_attachment(element, attachment, spanid)
     <div class="edit-buttons edit-buttons-top hidden-print">
         <{foreach from=$formactions key=actiontitle item=actionurl}>
             <div class="button-general button-save btn btn-success">
-                <a onclick="$('#adminpackagecategoryform').attr('action', '<{$actionurl}>');$('#adminpackagecategoryform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+                <a onclick="$('#adminpageform').attr('action', '<{$actionurl}>');$('#adminpageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpage/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 
@@ -46,7 +46,7 @@ function remove_attachment(element, attachment, spanid)
                     </ul>
                 <{/if}>
 
-                <form name="adminpackagecategoryform" id="adminpackagecategoryform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
+                <form name="adminpageform" id="adminpageform" class="form-edit scope-main" action="" method="post" enctype="multipart/form-data">
                     <table class="table table-bordered table-custom-layout equal-split">
                         <tbody>
                             <{foreach from=$columns item=column }>
@@ -65,38 +65,56 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                             
-                                <{elseif $column == 'NAME' }>
-                                    <tr class="form-row form-row-name <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                <{elseif $column == 'TITLE' }>
+                                    <tr class="form-row form-row-title <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('Admin package category name')}><{if in_array('NAME', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Admin page title')}><{if in_array('TITLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
-                                            <div class="form-field form-field-value column-name">
-                                                                        <{$tmp_value = $formdataNAME}>
+                                            <div class="form-field form-field-value column-title">
+                                                                        <{$tmp_value = $formdataTITLE}>
 
                         
-                            <input class="input-name" type="text" name="<{$prefix}>adminpackagecategory_formdata_NAME" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                            <input class="input-title" type="text" name="<{$prefix}>adminpage_formdata_TITLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
                                                                     </div>
                                         </td>
                                     </tr>
 
                         	
-                                <{elseif $column == 'CODE' }>
-                                    <tr class="form-row form-row-code <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                <{elseif $column == 'SLUG' }>
+                                    <tr class="form-row form-row-slug <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
                                 		    <div class="form-field form-field-label">
-                                		        <label><{_t('Code')}><{if in_array('CODE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		        <label><{_t('Slug')}><{if in_array('SLUG', $mandatories) }><span class="mandatory">*</span><{/if}></label>
                                 		    </div>
                                         </td>
                                         <td colspan="3">
-                                            <div class="form-field form-field-value column-code">
-                                                                        <{$tmp_value = $formdataCODE}>
+                                            <div class="form-field form-field-value column-slug">
+                                                                        <{$tmp_value = $formdataSLUG}>
 
                         
-                            <input class="input-code" type="text" name="<{$prefix}>adminpackagecategory_formdata_CODE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                            <input class="input-slug" type="text" name="<{$prefix}>adminpage_formdata_SLUG" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
                                                                     </div>
+                                        </td>
+                                    </tr>
+
+                        	
+                                <{elseif $column == 'CONTENT' }>
+                                    <tr class="form-row form-row-content <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Content')}><{if in_array('CONTENT', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-content">
+                                                                        <{$tmp_value = $formdataCONTENT}>
+
+                        
+                            <textarea class="input-content" id="<{$prefix}>adminpage_formdata_CONTENT" name="<{$prefix}>adminpage_formdata_CONTENT" rows="5" ><{$tmp_value}></textarea>
+                            <script type="text/javascript">htmlEditor('<{$prefix}>adminpage_formdata_CONTENT')</script>                                                                    </div>
                                         </td>
                                     </tr>
 
@@ -115,10 +133,10 @@ function remove_attachment(element, attachment, spanid)
     <div class="edit-buttons edit-buttons-bottom hidden-print">
         <{foreach from=$formactions key=actiontitle item=actionurl}>
             <div class="button-general button-save btn btn-success">
-                <a onclick="$('#adminpackagecategoryform').attr('action', '<{$actionurl}>');$('#adminpackagecategoryform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
+                <a onclick="$('#adminpageform').attr('action', '<{$actionurl}>');$('#adminpageform').submit();return false;"><span class="button-face"><{$actiontitle}></span></a>
             </div>
         <{/foreach}>
-        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
+        <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpage/cancel/?back=0"><span class="button-face"><{_t('Cancel')}></span></a>
         <div class="clearer"></div>
     </div>
 <div>
@@ -126,13 +144,13 @@ function remove_attachment(element, attachment, spanid)
 
 <script type="text/javascript">
     $(function() {
-    	bind_hotkey('#adminpackagecategoryform', 'f2', '.button-save');
-    	bind_hotkey('#adminpackagecategoryform', 'esc', '.button-cancel');
+    	bind_hotkey('#adminpageform', 'f2', '.button-save');
+    	bind_hotkey('#adminpageform', 'esc', '.button-cancel');
     });
 
     $(function() {
         if (document.activeElement == document.body) {
-        	$('#adminpackagecategoryform:not(.filter) :input:visible:first').focus();
+        	$('#adminpageform:not(.filter) :input:visible:first').focus();
         }
     });
 

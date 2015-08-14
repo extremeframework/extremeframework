@@ -1,10 +1,10 @@
 <div class="modal-header">
     <button class="close" aria-hidden="true" data-dismiss="modal" type="button" title="<{_t('Close', true)}>">x</button>
-    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Package Category')|ucwords}></h3>
+    <h3><{_t('Quick create')|ucwords}> <{_t('Admin Page')|ucwords}></h3>
 </div>
 
 
-<div id="adminpackagecategory-edit" class="edit_details">
+<div id="adminpage-edit" class="edit_details">
 
     <{if !isset($prefix) }>
         <{assign var='prefix' value=''}>
@@ -25,19 +25,19 @@
         </ul>
     <{/if}>
 
-    <form name="adminpackagecategoryform" id="adminpackagecategoryform" class="form-edit scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/save/?back=1" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="adminpackagecategory_formdata_UUID" value="<{$details->UUID}>" />
+    <form name="adminpageform" id="adminpageform" class="form-edit scope-main" action="<{$smarty.const.APPLICATION_URL}>/adminpage/save/?back=1" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="adminpage_formdata_UUID" value="<{$details->UUID}>" />
         <input type="hidden" name="view-type" value="quick-create" />
         <{if isset($preset)}><input type="hidden" name="preset" value="<{$preset}>" /><{/if}>
         <{if isset($presetvalue)}><input type="hidden" name="presetvalue" value="<{$presetvalue}>" /><{/if}>
         <{if isset($presetparams)}>
             <{foreach from=$presetparams key=key item=value}>
                 <input type="hidden" name="preset_<{$key}>" value="<{$value}>" />
-                <input type="hidden" name="adminpackagecategory_formdata_<{$key}>" value="<{$value}>" />
+                <input type="hidden" name="adminpage_formdata_<{$key}>" value="<{$value}>" />
             <{/foreach}>
         <{/if}>
 
-        <{plugin key="adminpackagecategory_form_top" args=$details}>
+        <{plugin key="adminpage_form_top" args=$details}>
 
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
@@ -49,25 +49,25 @@
         
         
         
-<{if !isset($excludedcolumns['NAME'])}>
+<{if !isset($excludedcolumns['TITLE'])}>
     
-        <{if $preset == 'NAME'}>
-            <input type="hidden" class="input-name" name="adminpackagecategory_formdata_NAME" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
-            <input type="hidden" class="input-name" name="adminpackagecategory_formdata_NAME" value="<{$details->NAME}>" />
+        <{if $preset == 'TITLE'}>
+            <input type="hidden" class="input-title" name="adminpage_formdata_TITLE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
+            <input type="hidden" class="input-title" name="adminpage_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
+    		<td class="form-row form-row-title form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('Admin package category name')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Admin page title')}><span class="mandatory">*</span></label>
                 </div>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
+            <td class="form-row form-row-title form-row-mandatory" colspan="3">
+                <div class="form-field form-field-value column-title">
                                             
 
-    <input class="input-name input-type-text" type="text" name="<{$prefix}>adminpackagecategory_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+    <input class="input-title input-type-text" type="text" name="<{$prefix}>adminpage_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
+                        <{if $columntooltips.TITLE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
                         <{/if}>
                                     </div>
             </td>
@@ -79,31 +79,62 @@
         
         
         
-<{if !isset($excludedcolumns['CODE'])}>
+<{if !isset($excludedcolumns['SLUG'])}>
     
-        <{if $preset == 'CODE'}>
-            <input type="hidden" class="input-code" name="adminpackagecategory_formdata_CODE" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
-            <input type="hidden" class="input-code" name="adminpackagecategory_formdata_CODE" value="<{$details->CODE}>" />
+        <{if $preset == 'SLUG'}>
+            <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
+            <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$details->SLUG}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
+    		<td class="form-row form-row-slug form-row-mandatory">
                 <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
+        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
                 </div>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="adminpackagecategory_formdata_CODE" value="<{$details->CODE}>" />
+            <td class="form-row form-row-slug form-row-mandatory" colspan="3">
+                <div class="form-field form-field-value column-slug">
+                                            <{if $details->ID && $details->SLUG != ''}>
+                            <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$details->SLUG}>" />
                             
-    <{$details->CODE|escape}>
+    <{$details->SLUG|escape}>
                         <{else}>
                             
 
-    <input class="input-code input-type-text" type="text" name="<{$prefix}>adminpackagecategory_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
+    <input class="input-slug input-type-text" type="text" name="<{$prefix}>adminpage_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
+                            <{if $columntooltips.SLUG}>
+                                <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
                             <{/if}>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
+<{if !isset($excludedcolumns['CONTENT'])}>
+    
+        <{if $preset == 'CONTENT'}>
+            <input type="hidden" class="input-content" name="adminpage_formdata_CONTENT" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['CONTENT']) && !$acleditablecolumns['CONTENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CONTENT'])}>
+            <input type="hidden" class="input-content" name="adminpage_formdata_CONTENT" value="<{$details->CONTENT}>" />
+        <{else}>
+    		<td class="form-row form-row-content">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Content')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-content" colspan="3">
+                <div class="form-field form-field-value column-content">
+                                            
+    <{$tmpid = uniqid()}>
+
+    <textarea class="input-content enable-html" id="<{$prefix}>adminpage_formdata_CONTENT_<{$tmpid}>" name="<{$prefix}>adminpage_formdata_CONTENT" rows="5" ><{$details->CONTENT}></textarea>
+                        <{if $columntooltips.CONTENT}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CONTENT}>"></i>
                         <{/if}>
                                     </div>
             </td>
@@ -144,14 +175,14 @@
             </div>
         <{/if}>
 
-        <{plugin key="adminpackagecategory_form_bottom" args=$details}>
+        <{plugin key="adminpage_form_bottom" args=$details}>
     </form>
 </div>
 
     <{if $details->UUID == 0}>
         <script type="text/javascript">
             $(document).ready(function() {
-                                                            alias_hint('adminpackagecategory_formdata_NAME', 'adminpackagecategory_formdata_CODE');
+                                                            alias_hint('adminpage_formdata_TITLE', 'adminpage_formdata_SLUG');
                                                 });
         </script>
     <{/if}>
@@ -160,26 +191,26 @@
 <script type="text/javascript">
     $(function() {
         if (document.activeElement == document.body) {
-        	$('#adminpackagecategoryform:not(.filter) :input:visible:first').focus();
+        	$('#adminpageform:not(.filter) :input:visible:first').focus();
         }
     });
 </script>
 
 <script type="text/javascript">
-    $('#adminpackagecategoryform :input').change(function() {
-        $('#adminpackagecategoryform').data('changed', true);
+    $('#adminpageform :input').change(function() {
+        $('#adminpageform').data('changed', true);
     });
 
         function saveDraft() {
-        if ($('#adminpackagecategoryform').length) {
-            if ($('#adminpackagecategoryform').data('changed')) {
+        if ($('#adminpageform').length) {
+            if ($('#adminpageform').data('changed')) {
                 $.ajax({
                     type: "post",
-                    url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/savedraft/",
-                    data: $('#adminpackagecategoryform').serialize()
+                    url: "<{$smarty.const.APPLICATION_URL}>/adminpage/savedraft/",
+                    data: $('#adminpageform').serialize()
                 });
 
-                $('#adminpackagecategoryform').data('changed', false);
+                $('#adminpageform').data('changed', false);
             }
         }
     }
@@ -212,13 +243,13 @@
 <script type="text/javascript">
     ///////////////////////////////////////////////////////////////////////////////
     // VISIBILITY REFLECTION
-    adminpackagecategory_get_editing_model = function () {
+    adminpage_get_editing_model = function () {
         var model = {};
 
-        var formdata = $('#adminpackagecategoryform').find('[name*=adminpackagecategory_formdata]').serializeArray();
+        var formdata = $('#adminpageform').find('[name*=adminpage_formdata]').serializeArray();
 
         jQuery.map(formdata, function(x) {
-            x.name = x.name.replace('adminpackagecategory_formdata_', '');
+            x.name = x.name.replace('adminpage_formdata_', '');
 
             model[x.name] = x.value;
 
@@ -228,7 +259,7 @@
         return model;
     }
 
-    adminpackagecategory_get_visibility_settings = function (model) {
+    adminpage_get_visibility_settings = function (model) {
         var settings = {};
 
         // Rules based on dependency settings
@@ -241,13 +272,13 @@
         return settings;
     }
 
-    adminpackagecategory_apply_visibility_settings = function (settings) {
+    adminpage_apply_visibility_settings = function (settings) {
         $.each(settings, function(key, value) {
-            adminpackagecategory_apply_block_visibility(key, value);
+            adminpage_apply_block_visibility(key, value);
         });
     }
 
-    adminpackagecategory_apply_block_visibility = function (key, value) {
+    adminpage_apply_block_visibility = function (key, value) {
         var block = $('.form-row-' + key.toLowerCase().replace(/_/g, '-'));
 
         if (value) {
@@ -257,20 +288,20 @@
         }
     }
 
-    adminpackagecategory_update_visibility_settings = function () {
-        var model = adminpackagecategory_get_editing_model();
+    adminpage_update_visibility_settings = function () {
+        var model = adminpage_get_editing_model();
 
-        var settings = adminpackagecategory_get_visibility_settings(model);
+        var settings = adminpage_get_visibility_settings(model);
 
-        adminpackagecategory_apply_visibility_settings(settings);
+        adminpage_apply_visibility_settings(settings);
     }
 
     $(function() {
-        $('#adminpackagecategoryform :input').change(function() {
-            adminpackagecategory_update_visibility_settings();
+        $('#adminpageform :input').change(function() {
+            adminpage_update_visibility_settings();
         });
 
-        adminpackagecategory_update_visibility_settings();
+        adminpage_update_visibility_settings();
     });
 </script>                    </div>
     </div>
@@ -287,11 +318,11 @@
 
 <script type="text/javascript">
     $(function() {
-    	bind_hotkey('#adminpackagecategoryform', 'f2', 'a.button-save');
-    	bind_hotkey('#adminpackagecategoryform', 'ctrl+s', 'a.button-save');
-    	bind_hotkey('#adminpackagecategoryform', 'f3', 'a.button-save-more');
-    	bind_hotkey('#adminpackagecategoryform', 'ctrl+m', 'a.button-save-more');
-    	bind_hotkey('#adminpackagecategoryform', 'esc', 'a.button-cancel');
+    	bind_hotkey('#adminpageform', 'f2', 'a.button-save');
+    	bind_hotkey('#adminpageform', 'ctrl+s', 'a.button-save');
+    	bind_hotkey('#adminpageform', 'f3', 'a.button-save-more');
+    	bind_hotkey('#adminpageform', 'ctrl+m', 'a.button-save-more');
+    	bind_hotkey('#adminpageform', 'esc', 'a.button-cancel');
     });
 
     $(function() {

@@ -1,5 +1,5 @@
 <div class="view-main">
-    <{plugin key="adminpackagecategory_view_top" args=$details}>
+    <{plugin key="adminpage_view_top" args=$details}>
 
             <!-- Standard layout columns -->
         <table class="table table-bordered table-custom-layout equal-split">
@@ -9,29 +9,29 @@
             
         
         
-            <{if !isset($excludedcolumns['NAME']) && ((isset($aclviewablecolumns['NAME']) && $aclviewablecolumns['NAME']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['NAME']) || $aclviewablecolumns['NAME']))) }>
-        <{if !isset($columns2hide) || !in_array('NAME', $columns2hide) }>
-    		<td class="form-field form-field-label column-name">
-	            		        <label class="attribute-name"><{_t('Admin package category name')}></label>
+            <{if !isset($excludedcolumns['TITLE']) && ((isset($aclviewablecolumns['TITLE']) && $aclviewablecolumns['TITLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TITLE']) || $aclviewablecolumns['TITLE']))) }>
+        <{if !isset($columns2hide) || !in_array('TITLE', $columns2hide) }>
+    		<td class="form-field form-field-label column-title">
+	            		        <label class="attribute-name"><{_t('Admin page title')}></label>
             </td>
-            <td class="form-field form-field-value column-name" colspan="3">
-            	<div class="attribute-line column-name type-text">
+            <td class="form-field form-field-value column-title" colspan="3">
+            	<div class="attribute-line column-title type-text">
             		<div class="attribute-value">
-            		                		        <{if (isset($acleditablecolumns['NAME']) && $acleditablecolumns['NAME']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['NAME']) || $acleditablecolumns['NAME'])) }>
+            		                		        <{if (isset($acleditablecolumns['TITLE']) && $acleditablecolumns['TITLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['TITLE']) || $acleditablecolumns['TITLE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->NAME|escape}>
+    <{$details->TITLE|escape}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <input class="input-name input-type-text" type="text" name="<{$prefix}>adminpackagecategory_formdata_NAME" value="<{$details->NAME|escape}>"  />
+    <input class="input-title input-type-text" type="text" name="<{$prefix}>adminpage_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{$details->NAME|escape}>
+    <{$details->TITLE|escape}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -43,30 +43,65 @@
             
         
         
-            <{if !isset($excludedcolumns['CODE']) && ((isset($aclviewablecolumns['CODE']) && $aclviewablecolumns['CODE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CODE']) || $aclviewablecolumns['CODE']))) }>
-        <{if !isset($columns2hide) || !in_array('CODE', $columns2hide) }>
-    		<td class="form-field form-field-label column-code">
-	            		        <label class="attribute-name"><{_t('Code')}></label>
+            <{if !isset($excludedcolumns['SLUG']) && ((isset($aclviewablecolumns['SLUG']) && $aclviewablecolumns['SLUG']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['SLUG']) || $aclviewablecolumns['SLUG']))) }>
+        <{if !isset($columns2hide) || !in_array('SLUG', $columns2hide) }>
+    		<td class="form-field form-field-label column-slug">
+	            		        <label class="attribute-name"><{_t('Slug')}></label>
             </td>
-            <td class="form-field form-field-value column-code" colspan="3">
-            	<div class="attribute-line column-code type-text">
+            <td class="form-field form-field-value column-slug" colspan="3">
+            	<div class="attribute-line column-slug type-text">
             		<div class="attribute-value">
-            		                		        <{if (isset($acleditablecolumns['CODE']) && $acleditablecolumns['CODE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CODE']) || $acleditablecolumns['CODE'])) }>
+            		                		        <{if (isset($acleditablecolumns['SLUG']) && $acleditablecolumns['SLUG']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['SLUG']) || $acleditablecolumns['SLUG'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->CODE|escape}>
+    <{$details->SLUG|escape}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
 
-    <input class="input-code input-type-text" type="text" name="<{$prefix}>adminpackagecategory_formdata_CODE" value="<{$details->CODE|escape}>"  />
+    <input class="input-slug input-type-text" type="text" name="<{$prefix}>adminpage_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
                                 </span>
                                 -->
                             <{else}>
                                 
-    <{$details->CODE|escape}>
+    <{$details->SLUG|escape}>
                             <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
+            <{if !isset($excludedcolumns['CONTENT']) && ((isset($aclviewablecolumns['CONTENT']) && $aclviewablecolumns['CONTENT']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CONTENT']) || $aclviewablecolumns['CONTENT']))) }>
+        <{if !isset($columns2hide) || !in_array('CONTENT', $columns2hide) }>
+    		<td class="form-field form-field-label column-content">
+	            		        <label class="attribute-name"><{_t('Content')}></label>
+            </td>
+            <td class="form-field form-field-value column-content" colspan="3">
+            	<div class="attribute-line column-content type-textarea">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['CONTENT']) && $acleditablecolumns['CONTENT']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CONTENT']) || $acleditablecolumns['CONTENT'])) }>
+                    		    <span class="value-mode">
+                                        
+        <{$details->CONTENT|plugin:"adminpage_view_field_CONTENT":$details}>
+                                    </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+    <{$tmpid = uniqid()}>
+
+    <textarea class="input-content enable-html" id="<{$prefix}>adminpage_formdata_CONTENT_<{$tmpid}>" name="<{$prefix}>adminpage_formdata_CONTENT" rows="5" ><{$details->CONTENT}></textarea>
+                                </span>
+                                -->
+                            <{else}>
+                                    
+        <{$details->CONTENT|plugin:"adminpage_view_field_CONTENT":$details}>
+                                <{/if}>
                                     		</div>
             	</div>
             </td>
@@ -125,25 +160,25 @@
         </table>
     <{/if}>
 
-    <{plugin key="adminpackagecategory_view_bottom" args=$details}>
+    <{plugin key="adminpage_view_bottom" args=$details}>
 
     <script type="text/javascript">
         ///////////////////////////////////////////////////////////////////////////////
         // VISIBILITY REFLECTION
-        adminpackagecategoryview_get_visibility_settings = function (model) {
+        adminpageview_get_visibility_settings = function (model) {
             var settings = {};
 
             
             return settings;
         }
 
-        adminpackagecategoryview_apply_visibility_settings = function (settings) {
+        adminpageview_apply_visibility_settings = function (settings) {
             $.each(settings, function(key, value) {
-                adminpackagecategoryview_apply_block_visibility(key, value);
+                adminpageview_apply_block_visibility(key, value);
             });
         }
 
-        adminpackagecategoryview_apply_block_visibility = function (key, value) {
+        adminpageview_apply_block_visibility = function (key, value) {
             var block = $('.column-' + key.replace(/_/g, '-').toLowerCase());
 
             if (value) {
@@ -153,14 +188,14 @@
             }
         }
 
-        adminpackagecategoryview_update_visibility_settings = function () {
-            var settings = adminpackagecategoryview_get_visibility_settings();
+        adminpageview_update_visibility_settings = function () {
+            var settings = adminpageview_get_visibility_settings();
 
-            adminpackagecategoryview_apply_visibility_settings(settings);
+            adminpageview_apply_visibility_settings(settings);
         }
 
         $(function() {
-            adminpackagecategoryview_update_visibility_settings();
+            adminpageview_update_visibility_settings();
         });
 
         $(function() {
@@ -249,8 +284,8 @@
 //                    $.ajax({
 //                        type: "post",
 //                        dataType: "json",
-//                        url: "<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/fieldSave",
-//                        data: td.find(':input').serialize() + "&adminpackagecategory_formdata_UUID=<{$details->UUID}>"
+//                        url: "<{$smarty.const.APPLICATION_URL}>/adminpage/fieldSave",
+//                        data: td.find(':input').serialize() + "&adminpage_formdata_UUID=<{$details->UUID}>"
 //                    }).done(function(data) {
 //                        if (data.success) {
 //                            if (input.is("select")) {

@@ -6,8 +6,8 @@
  */
 defined('APPLICATION_DIR') OR exit();
 
-class AdminPackageCategoryModel extends DataObject_ADMIN_PACKAGE_CATEGORY {
-    var $_module = 'adminpackagecategory';
+class AdminPageModel extends DataObject_ADMIN_PAGE {
+    var $_module = 'adminpage';
 
 	function find($n = null) {
 	    if (isset($_SESSION['user'])) {
@@ -76,14 +76,14 @@ class AdminPackageCategoryModel extends DataObject_ADMIN_PACKAGE_CATEGORY {
     }
 
 	function id() {
-	    return $this->CODE;
+	    return $this->ID;
 	}
 
 	function setId($value) {
-        $this->CODE = $value;
+        $this->ID = $value;
     }
 
 	function name() {
-	    return $this->NAME;
+	    return $this->TITLE;
 	}
 }

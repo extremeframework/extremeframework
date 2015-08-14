@@ -45,6 +45,9 @@
                                                                                             <tr>
     
             
+                    </tr>                                                                                            <tr>
+    
+            
                     </tr>                                    </tbody>
             </table>
         	<!-- Standard layout rows end -->
@@ -85,6 +88,13 @@
     </form>
 </div>
 
+    <{if $details->UUID == 0}>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                                                            alias_hint('adminpackagecategory_formdata_NAME', 'adminpackagecategory_formdata_CODE');
+                                                });
+        </script>
+    <{/if}>
 
 
 <script type="text/javascript">
