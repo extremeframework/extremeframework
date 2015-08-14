@@ -1083,19 +1083,38 @@ div#heading{
     background-color: #FFFFFF;
 }
 
+/* Top bar in the signin page */
+#signin .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    border-bottom: 1px solid #DBDBDB;
+    z-index: 1;
+}
+
+#signin .topbar .name {
+    color: #2EB0FF;
+    font-size: 36px;
+    margin: 0 10px;
+    font-family: 'Rouge Script', cursive;
+    text-decoration: none;
+}
+
 /* Language selector in the signin page */
 #signin .locales {
     position: absolute;
     top: 0px;
     right: 0px;
     margin: 10px 20px;
-    border: 1px solid white;
+    border: 1px solid #DBDBDB;
     padding: 5px;
-    color: white;
+    color: #000;
 }
 
 #signin .locales a {
-    color: white;
+    color: #000;
     text-decoration: none;
     font-size: 12px;
 }
@@ -1105,13 +1124,33 @@ div#heading{
     margin-right: 3px;
 }
 
+/* Welcome text in the signin page */
+#signin .welcome-text {
+    position: absolute;
+    left: 40px;
+    width: 450px;
+    font-family: 'Rouge Script', cursive;
+    color: #fff;
+}
+
+#signin .welcome-text h1 {
+    font-size: 37px;
+    line-height: 44px;
+    margin-bottom: 30px;
+}
+
+#signin .welcome-text p {
+    font-size: 26px;
+    line-height: 36px;
+}
+
 /* Signin form */
 #signin {
     background-color: #333;
 }
 
 #signin div#heading{
-    background-color: #019CDC;
+    background-color: #7998A7;
     color: #FFF;
 }
 
@@ -1143,6 +1182,7 @@ div#heading{
 
 #signin .main-content .account-signin {
     background: white;
+    box-shadow: 2px 2px 5px #474747;
 }
 
 #signin .social-signin {
@@ -1842,6 +1882,16 @@ div#container{
 }
 
 /* Signin, signup */
+#signin {
+    background-color: #048497;
+    background-size: cover;
+    -webkit-transition:all 1s ease-in;
+    -moz-transition:all 1s ease-in;
+    -o-transition:all 1s ease-in;
+    -ms-transition:all 1s ease-in;
+    transition:all 1s ease-in;
+}
+
 #signin h1 {
     text-align: center;
 }
@@ -1986,6 +2036,8 @@ div#top-nav li a {
 #application-name a {
     color:#fff;
     text-decoration: none;
+    font-size: 30px;
+    font-family: 'Rouge Script', cursive;
 }
 div#heading h1, .main-content h1.heading {
     font-size: 26px;
