@@ -23,7 +23,7 @@
         <{_t('Welcome to')}> <{$smarty.const.CONFIG_APPLICATION_NAME}>.
     </h1>
     <p>
-        <{_t('Manage your <span style="color: #E9C234;">daily works</span>, everything from <span style="text-decoration:underline;">personal</span> to <span style="text-decoration:underline;">professional</span>. Add <span style="color: #E9C234;">favourite apps</span> on the fly. And <span style="color: #E9C234;">communiate</span> your works with colleagues and partners.')}>
+        <{_t('Manage your <span style="color: #E9C234;">daily works</span>, everything from <span style="text-decoration:underline;">personal</span> to <span style="text-decoration:underline;">professional</span>. Add <span style="color: #E9C234;">favourite apps</span> on the fly. And <span style="color: #E9C234;">communicate</span> your works with colleagues and partners.')}>
     </p>
 </div>
 
