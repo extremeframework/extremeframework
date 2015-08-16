@@ -193,6 +193,20 @@ class __AppController {
         }
     }
 
+    public function getFormData() {
+		$formdata = array();
+
+        $raw = array_merge($_REQUEST, $_FILES);
+
+		foreach ($raw as $name => $value) {
+            if (preg_match('/^'.$this->module.'_formdata_(.*)/', $name, $matches)) {
+                $formdata[$matches[1]] = is_array($value)? $value : trim($value);
+            }
+		}
+
+        return $formdata;
+    }
+
     private function fill_template($template, $model) {
         if (preg_match_all('/{([a-z0-9_]*)}/i', $template, $matches)) {
             $columns = array_unique($matches[1]);
@@ -226,7 +240,7 @@ class __AppController {
     //        )
     //    );
     //////////////////////////////////////////////////////////////////
-    protected function ensure_additional_data($smarty, $formtitle, $columns, $mandatories, $formactions, &$formdata, $columnsettings = array(), $options = array()) {
+    protected function ensure_additional_data($smarty, $formtitle, $columns, $mandatories, $formactions, &$formdata, $columnsettings = array(), $options = array(), $validationcallback = null) {
         $template = isset($options['template'])? $options['template'] : "input.{$this->module}.tpl";
 
         if (!is_array($columns)) {
@@ -241,25 +255,25 @@ class __AppController {
         $firsttime = empty($formdata);
 
         $missing = false;
+        $message = '';
         if (!$firsttime) {
             foreach ($mandatories as $column) {
                 if (!isset($formdata[$column]) || empty($formdata[$column])) {
                     $missing = true;
+                    $message = 'Please enter data for the required columns';
 
                     break;
                 }
             }
+
+            if (empty($message) && !empty($validationcallback) && is_callable($validationcallback)) {
+                $message = call_user_func($validationcallback, $formdata);
+            }
         }
 
-        if ($firsttime || $missing) {
-            if (!empty($_POST)) {
-                $messages = array('Please enter data for the required columns.');
-            } else {
-                $messages = array();
-            }
-
+        if ($firsttime || !empty($message)) {
             $smarty->assign('formtitle', $formtitle);
-            $smarty->assign('messages', $messages);
+            $smarty->assign('messages', array($message));
     		$smarty->assign('formdata', $formdata);
             $smarty->assign('formactions', $formactions);
             $smarty->assign('columns', $columns);
@@ -1066,12 +1080,14 @@ class ColumnSettings {
     var $text;
     var $code;
     var $settings;
+    var $tooltip;
 
-    public function __construct($type, $text, $code, $settings = array()) {
+    public function __construct($type, $text, $code, $settings = array(), $tooltip = '') {
         $this->type = $type;
         $this->text = $text;
         $this->code = $code;
         $this->settings = $settings;
+        $this->tooltip = $tooltip;
     }
 }
 

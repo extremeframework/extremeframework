@@ -32,6 +32,15 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('TABLE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['TABLE']) && ((isset($aclviewablecolumns['TABLE']) && $aclviewablecolumns['TABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TABLE']) || $aclviewablecolumns['TABLE']))) }>
+    	            <th class="column-table">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminmodule/sort/table"><{_t('Table')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('ID_ADMIN_PACKAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE']))) }>
     	            <th class="column-id-admin-package">

@@ -23,6 +23,14 @@
     				        		</td>
     	    <{/if}>
         <{/if}>
+	        <{if (in_array('TABLE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['TABLE']) && ((isset($aclviewablecolumns['TABLE']) && $aclviewablecolumns['TABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TABLE']) || $aclviewablecolumns['TABLE']))) }>
+                <td class="column column-table text " >
+                                        	<span>    	    <{$row->TABLE|escape}>
+    </span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
 	        <{if (in_array('ID_ADMIN_PACKAGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE']))) }>
                 <td class="column column-id-admin-package reftext " >

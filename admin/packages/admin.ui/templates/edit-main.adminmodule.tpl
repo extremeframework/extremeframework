@@ -91,6 +91,36 @@
         
         
         
+<{if !isset($excludedcolumns['TABLE'])}>
+    
+        <{if $preset == 'TABLE'}>
+            <input type="hidden" class="input-table" name="adminmodule_formdata_TABLE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['TABLE']) && !$acleditablecolumns['TABLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TABLE'])}>
+            <input type="hidden" class="input-table" name="adminmodule_formdata_TABLE" value="<{$details->TABLE}>" />
+        <{else}>
+    		<td class="form-row form-row-table">
+                <div class="form-field form-field-label">
+        		    <label><{_t('Table')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-table" colspan="3">
+                <div class="form-field form-field-value column-table">
+                                            
+
+    <input class="input-table input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_TABLE" value="<{$details->TABLE|escape}>"  />
+                        <{if $columntooltips.TABLE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.TABLE}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
     
         <{if $preset == 'ID_ADMIN_PACKAGE'}>

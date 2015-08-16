@@ -47,6 +47,21 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('TABLE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['TABLE']) && ((isset($aclviewablecolumns['TABLE']) && $aclviewablecolumns['TABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TABLE']) || $aclviewablecolumns['TABLE']))) }>
+                <td class="column column-table text" >
+                                            <{if (in_array('TABLE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataTABLE}>
+
+                        
+                            <input class="input-table" type="text" name="<{$prefix}>adminmodule_formdata_TABLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="100"<{/if}> />
+                                                <{else}>
+                            <span>    	    <{$row->TABLE|escape}>
+    </span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('ID_ADMIN_PACKAGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE']))) }>
                 <td class="column column-id-admin-package reftext" >

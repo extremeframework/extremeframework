@@ -232,6 +232,8 @@ function application_route($url = null) {
 
     //////////////////////////////////////////////////////////////////
     // Identify the right controller and action method
+    $_GET['p'] = Route::translate($_GET['p']);
+
     $p = !empty($_GET['p'])? explode('/', $_GET['p']) : array();
 
     $controller = isset($p[0])? $p[0] : 'index';

@@ -101,6 +101,24 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'TABLE' }>
+                                    <tr class="form-row form-row-table <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Table')}><{if in_array('TABLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-table">
+                                                                        <{$tmp_value = $formdataTABLE}>
+
+                        
+                            <input class="input-table" type="text" name="<{$prefix}>adminmodule_formdata_TABLE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="40"<{/if}> />
+                                                                    </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{elseif $column == 'ID_ADMIN_PACKAGE' }>
                                     <tr class="form-row form-row-id-admin-package <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>

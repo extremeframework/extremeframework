@@ -77,6 +77,40 @@
             
         
         
+            <{if !isset($excludedcolumns['TABLE']) && ((isset($aclviewablecolumns['TABLE']) && $aclviewablecolumns['TABLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['TABLE']) || $aclviewablecolumns['TABLE']))) }>
+        <{if !isset($columns2hide) || !in_array('TABLE', $columns2hide) }>
+    		<td class="form-field form-field-label column-table">
+	            		        <label class="attribute-name"><{_t('Table')}></label>
+            </td>
+            <td class="form-field form-field-value column-table" colspan="3">
+            	<div class="attribute-line column-table type-text">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['TABLE']) && $acleditablecolumns['TABLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['TABLE']) || $acleditablecolumns['TABLE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{$details->TABLE|escape}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+
+    <input class="input-table input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_TABLE" value="<{$details->TABLE|escape}>"  />
+                                </span>
+                                -->
+                            <{else}>
+                                
+    <{$details->TABLE|escape}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-package">
