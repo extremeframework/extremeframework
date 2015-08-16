@@ -26,6 +26,10 @@ class _AdminPackageCategoryController extends __AppController
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
+       if (in_array('CODE', $columns2check) && trim($model->CODE) == '') {
+           $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
+           return false;
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminpackagecategory', $model, $errors)) {
@@ -217,13 +221,13 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        $columns2return = array('ID' => 'id', 'NAME' => 'name');
+        $columns2return = array('CODE' => 'id', 'NAME' => 'name');
 
         $term = isset($_REQUEST['term'])? $_REQUEST['term'] : '';
 
 		$model = new AdminPackageCategoryModel();
 		if (!empty($term)) {
-            $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
+            $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
 		}
 		$model->find();
 
@@ -258,7 +262,7 @@ class _AdminPackageCategoryController extends __AppController
         }
 
 		$model = new AdminPackageCategoryModel();
-        $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
+        $model->whereAdd("REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%' OR CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($term))."%'");
 
 		$model->orderBy('NAME');
 		$model->limit(0, 10);
@@ -266,7 +270,7 @@ class _AdminPackageCategoryController extends __AppController
 
 		$rows = array();
      	while ($model->fetch()) {
-     		$rows[] = array('id' => $model->UUID, 'eid' => $model->ID, 'title' => $model->NAME);
+     		$rows[] = array('id' => $model->UUID, 'eid' => $model->CODE, 'title' => $model->NAME);
 		}
 
 		$smarty = Framework::getSmarty(__FILE__);
@@ -323,7 +327,7 @@ class _AdminPackageCategoryController extends __AppController
         while ($_model->fetch()) {
             $_models[] = clone $_model;
 
-            $_ids[] = $_model->ID;
+            $_ids[] = $_model->CODE;
         }
 
         foreach ($_models as $_model) {
@@ -416,7 +420,7 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
+        AclController::checkPermission('adminpackagecategory', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpackagecategory/new/');
 
@@ -551,7 +555,7 @@ class _AdminPackageCategoryController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('adminpackagecategory');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'NAME');
+        $columns2edit = array('UUID', 'NAME', 'CODE');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new AdminPackageCategoryModel();
@@ -600,7 +604,7 @@ class _AdminPackageCategoryController extends __AppController
     }
 
     protected function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'NAME');
+        $columns2edit = array('UUID', 'NAME', 'CODE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminpackagecategory'));
 
         $rows = array();
@@ -719,6 +723,12 @@ class _AdminPackageCategoryController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpackagecategory', 'edit');
+            } else {
+                AclController::checkPermission('adminpackagecategory', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpackagecategory', $model);
             
             
@@ -785,8 +795,6 @@ class _AdminPackageCategoryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
-
-        AclController::checkPermission('adminpackagecategory', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -937,7 +945,7 @@ class _AdminPackageCategoryController extends __AppController
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
 
-        $columns2export = array('NAME');
+        $columns2export = array('NAME','CODE');
 
         $header = '';
         $isref = array();
@@ -1096,7 +1104,7 @@ class _AdminPackageCategoryController extends __AppController
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
 
-        $columns2export = array('NAME');
+        $columns2export = array('NAME','CODE');
         $filename = 'adminpackagecategory_'.date('Ymd').'.xls';
 
 		set_include_path(implode(PATH_SEPARATOR, array(dirname(__FILE__).'/../library/PEAR/', get_include_path())));
@@ -1254,7 +1262,7 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
+        AclController::checkPermission('adminpackagecategory', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpackagecategory.tpl', false);
     }
@@ -1264,7 +1272,7 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
+        AclController::checkPermission('adminpackagecategory', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpackagecategory.tpl', false);
     }
@@ -1274,7 +1282,7 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
+        AclController::checkPermission('adminpackagecategory', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpackagecategory.tpl', false);
     }
@@ -1332,8 +1340,6 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1351,8 +1357,6 @@ class _AdminPackageCategoryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
-
-        AclController::checkPermission('adminpackagecategory', 'edit');
 
         $this->checkform($errors);
 
@@ -1388,8 +1392,6 @@ class _AdminPackageCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagecategory');
 
-        AclController::checkPermission('adminpackagecategory', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1402,7 +1404,7 @@ class _AdminPackageCategoryController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('NAME');
+            return array('NAME', 'CODE');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1603,7 +1605,7 @@ class _AdminPackageCategoryController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('adminpackagecategory');
 
-        $roweditablecolumns = array('NAME');
+        $roweditablecolumns = array('NAME', 'CODE');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1692,7 +1694,7 @@ class _AdminPackageCategoryController extends __AppController
 	}
 
     protected function getLayoutColumns() {
-        return array('NAME');
+        return array('NAME', 'CODE');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1712,10 +1714,12 @@ class _AdminPackageCategoryController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpackagecategory', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpackagecategory', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpackagecategory', $model);
+        }
 
 		$model->find();
 
@@ -1840,12 +1844,12 @@ class _AdminPackageCategoryController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.WFID');
     }
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY`.WFID');
     }
 
     public function getAclEnabledIds() {
@@ -1872,6 +1876,7 @@ class _AdminPackageCategoryController extends __AppController
 
             $conds[] = TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.REFID LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.NAME LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
+            $conds[] = TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.CODE LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
             $conds[] = TABLE_PREFIX."ADMIN_PACKAGE_CATEGORY.JSON LIKE '%".$model->escape(StringHelper::htmlspecialchars($keyword))."%'";
 
             $model->whereAdd(implode(' OR ', $conds));
@@ -1899,7 +1904,7 @@ class _AdminPackageCategoryController extends __AppController
 
 		set_time_limit(0);
 
-        $columns2import = array('NAME');
+        $columns2import = array('NAME','CODE');
 
 		$xls = new Spreadsheet_Excel_Reader($filepath, false, 'UTF-8');
 
@@ -1992,7 +1997,7 @@ class _AdminPackageCategoryController extends __AppController
 
 		set_time_limit(0);
 
-        $columns2import = array('NAME');
+        $columns2import = array('NAME','CODE');
         $handle = fopen($filepath, "r");
 
         if (!$handle) {

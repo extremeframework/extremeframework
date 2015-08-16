@@ -450,7 +450,7 @@ class _WorkflowController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflow');
 
-        AclController::checkPermission('workflow', 'edit');
+        AclController::checkPermission('workflow', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/workflow/new/');
 
@@ -757,6 +757,12 @@ class _WorkflowController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('workflow', 'edit');
+            } else {
+                AclController::checkPermission('workflow', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('workflow', $model);
             
             
@@ -823,8 +829,6 @@ class _WorkflowController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflow');
-
-        AclController::checkPermission('workflow', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -962,7 +966,7 @@ class _WorkflowController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflow');
 
-        AclController::checkPermission('workflow', 'edit');
+        AclController::checkPermission('workflow', 'new');
 
 		$this->_edit(0, null, 'quick-create.workflow.tpl', false);
     }
@@ -972,7 +976,7 @@ class _WorkflowController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflow');
 
-        AclController::checkPermission('workflow', 'edit');
+        AclController::checkPermission('workflow', 'new');
 
 		$this->_edit(0, null, 'pre-create.workflow.tpl', false);
     }
@@ -982,7 +986,7 @@ class _WorkflowController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflow');
 
-        AclController::checkPermission('workflow', 'edit');
+        AclController::checkPermission('workflow', 'new');
 
 		$this->_edit(0, null, 'row-edit.workflow.tpl', false);
     }
@@ -1040,8 +1044,6 @@ class _WorkflowController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflow');
 
-        AclController::checkPermission('workflow', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1059,8 +1061,6 @@ class _WorkflowController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflow');
-
-        AclController::checkPermission('workflow', 'edit');
 
         $this->checkform($errors);
 
@@ -1095,8 +1095,6 @@ class _WorkflowController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflow');
-
-        AclController::checkPermission('workflow', 'edit');
 
         $this->checkform($errors);
 
@@ -1420,10 +1418,12 @@ class _WorkflowController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('workflow', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WORKFLOW.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WORKFLOW.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WORKFLOW.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('workflow', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('workflow', $model);
+        }
 
 		$model->find();
 

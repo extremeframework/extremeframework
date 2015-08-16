@@ -26,6 +26,21 @@ class _AdminPackagePermissionController extends __AppController
            $errors['name'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Name'));
            return false;
        }
+       if (in_array('ID_ADMIN_PACKAGE', $columns2check) || in_array('ID_PERMISSION_SET', $columns2check)) {
+           $_model = new AdminPackagePermissionModel();
+           $_model->ID_ADMIN_PACKAGE = $model->ID_ADMIN_PACKAGE;
+           $_model->ID_PERMISSION_SET = $model->ID_PERMISSION_SET;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['id-admin-package+id-permission-set'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_ADMIN_PACKAGE.', '.L_PERMISSION_SET.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminpackagepermission', $model, $errors)) {
@@ -403,7 +418,7 @@ class _AdminPackagePermissionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
 
-        AclController::checkPermission('adminpackagepermission', 'edit');
+        AclController::checkPermission('adminpackagepermission', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpackagepermission/new/');
 
@@ -706,6 +721,12 @@ class _AdminPackagePermissionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpackagepermission', 'edit');
+            } else {
+                AclController::checkPermission('adminpackagepermission', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpackagepermission', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -786,8 +807,6 @@ class _AdminPackagePermissionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
-
-        AclController::checkPermission('adminpackagepermission', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1255,7 +1274,7 @@ class _AdminPackagePermissionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
 
-        AclController::checkPermission('adminpackagepermission', 'edit');
+        AclController::checkPermission('adminpackagepermission', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpackagepermission.tpl', false);
     }
@@ -1265,7 +1284,7 @@ class _AdminPackagePermissionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
 
-        AclController::checkPermission('adminpackagepermission', 'edit');
+        AclController::checkPermission('adminpackagepermission', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpackagepermission.tpl', false);
     }
@@ -1275,7 +1294,7 @@ class _AdminPackagePermissionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
 
-        AclController::checkPermission('adminpackagepermission', 'edit');
+        AclController::checkPermission('adminpackagepermission', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpackagepermission.tpl', false);
     }
@@ -1333,8 +1352,6 @@ class _AdminPackagePermissionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
 
-        AclController::checkPermission('adminpackagepermission', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1352,8 +1369,6 @@ class _AdminPackagePermissionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
-
-        AclController::checkPermission('adminpackagepermission', 'edit');
 
         $this->checkform($errors);
 
@@ -1388,8 +1403,6 @@ class _AdminPackagePermissionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagepermission');
-
-        AclController::checkPermission('adminpackagepermission', 'edit');
 
         $this->checkform($errors);
 
@@ -1719,10 +1732,12 @@ class _AdminPackagePermissionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpackagepermission', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_PERMISSION.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_PERMISSION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_PERMISSION.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_PERMISSION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PACKAGE_PERMISSION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpackagepermission', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpackagepermission', $model);
+        }
 
 		$model->find();
 

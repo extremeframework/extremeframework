@@ -66,6 +66,63 @@
             
         
         
+            <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
+        <{if !isset($columns2hide) || !in_array('ID_USER_ROLE', $columns2hide) }>
+    		<td class="form-field form-field-label column-id-user-role">
+	                    		                    		        <label class="attribute-name"><{_t('User role')}></label>
+            </td>
+            <td class="form-field form-field-value column-id-user-role" colspan="3">
+            	<div class="attribute-line column-id-user-role type-reftext">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['ID_USER_ROLE']) && $acleditablecolumns['ID_USER_ROLE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_USER_ROLE']) || $acleditablecolumns['ID_USER_ROLE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{if $details->reftext_ID_USER_ROLE}>
+        <{if isset($smarty.session.acl.userrole.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_USER_ROLE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_USER_ROLE}>
+    <{/if}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+            <{if Framework::hasModule('UserRole')}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`accessright_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+
+                            <{if isset($smarty.session.acl.userrole.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-user-role input-type-text" type="text" name="<{$prefix}>accessright_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE|escape}>"  />
+        <{/if}>
+                                    </span>
+                                -->
+                            <{else}>
+                                
+    <{if $details->reftext_ID_USER_ROLE}>
+        <{if isset($smarty.session.acl.userrole.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$details->refuuid_ID_USER_ROLE}>"><{$details->reftext_ID_USER_ROLE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_USER_ROLE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_USER_ROLE}>
+    <{/if}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
         <{if !isset($columns2hide) || !in_array('MODULE', $columns2hide) }>
     		<td class="form-field form-field-label column-module">

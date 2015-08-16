@@ -492,7 +492,7 @@ class _AdminProductController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminproduct');
 
-        AclController::checkPermission('adminproduct', 'edit');
+        AclController::checkPermission('adminproduct', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminproduct/new/');
 
@@ -803,6 +803,12 @@ class _AdminProductController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminproduct', 'edit');
+            } else {
+                AclController::checkPermission('adminproduct', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminproduct', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -880,8 +886,6 @@ class _AdminProductController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminproduct');
-
-        AclController::checkPermission('adminproduct', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1349,7 +1353,7 @@ class _AdminProductController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminproduct');
 
-        AclController::checkPermission('adminproduct', 'edit');
+        AclController::checkPermission('adminproduct', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminproduct.tpl', false);
     }
@@ -1359,7 +1363,7 @@ class _AdminProductController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminproduct');
 
-        AclController::checkPermission('adminproduct', 'edit');
+        AclController::checkPermission('adminproduct', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminproduct.tpl', false);
     }
@@ -1369,7 +1373,7 @@ class _AdminProductController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminproduct');
 
-        AclController::checkPermission('adminproduct', 'edit');
+        AclController::checkPermission('adminproduct', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminproduct.tpl', false);
     }
@@ -1427,8 +1431,6 @@ class _AdminProductController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminproduct');
 
-        AclController::checkPermission('adminproduct', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1446,8 +1448,6 @@ class _AdminProductController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminproduct');
-
-        AclController::checkPermission('adminproduct', 'edit');
 
         $this->checkform($errors);
 
@@ -1482,8 +1482,6 @@ class _AdminProductController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminproduct');
-
-        AclController::checkPermission('adminproduct', 'edit');
 
         $this->checkform($errors);
 
@@ -1807,10 +1805,12 @@ class _AdminProductController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminproduct', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PRODUCT.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PRODUCT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PRODUCT.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PRODUCT.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PRODUCT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminproduct', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminproduct', $model);
+        }
 
 		$model->find();
 

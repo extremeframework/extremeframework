@@ -6,10 +6,12 @@
  */
 class AclController
 {
-    static function loadAccessRights($id_user) {
+    static function loadAccessRights($user) {
         if (!Framework::hasModule('UserMembership')) {
             return;
         }
+
+        $id_user = $user->ID;
 
         $tbprefix = TABLE_PREFIX;
 
@@ -105,10 +107,30 @@ class AclController
         $_SESSION['memberships.groups'] = $group_ids;
         $_SESSION['memberships.roles'] = $role_ids;
 
+        // x. User domains
+        $extra_udids = array();
+
+        if (Framework::hasModule('UserExtraDomain')) {
+    		$model = new UserExtraDomainModel();
+
+            $model->whereAdd("ID_USER = '$id_user'");
+
+    		$model->find();
+
+         	while ($model->fetch()) {
+         	    $extra_udids[] = $model->EXTRA_UDID;
+    		}
+        }
+
+        $udids = array_merge(array($user->UDID), $extra_udids);
+
+        $_SESSION['memberships.udids'] = $udids;
+        $_SESSION['memberships.udids.extra'] = $extra_udids;
+
         // x. Load access rights
 		$model = new AccessRightModel();
 
-        $model->whereAdd("ID_USER_GROUP = 0 OR ID_USER_GROUP = '".implode("' OR ID_USER_GROUP = '", $group_ids)."'");
+        $model->whereAdd("ID_USER_GROUP IN ('".implode("', '", $group_ids)."') OR ID_USER_ROLE IN ('".implode("', '", $role_ids)."')");
 
 		$model->find();
 
@@ -169,6 +191,32 @@ class AclController
         }
 
         $_SESSION['acl'] = $accessrights;
+    }
+
+    static function getUDIDs() {
+        return isset($_SESSION['memberships.udids'])? $_SESSION['memberships.udids'] : (isset($_SESSION['user'])? array($_SESSION['user']->UDID) : array());
+    }
+
+    static function getExtraUDIDs() {
+        return isset($_SESSION['memberships.udids.extra'])? $_SESSION['memberships.udids.extra'] : array();
+    }
+
+    static function addUDID($udid) {
+        if (isset($_SESSION['memberships.udids.extra'])) {
+            if (!in_array($udid, $_SESSION['memberships.udids.extra'])) {
+                $_SESSION['memberships.udids.extra'][] = $udid;
+            }
+        } else {
+            $_SESSION['memberships.udids.extra'] = array($udid);
+        }
+
+        if (isset($_SESSION['memberships.udids'])) {
+            if (!in_array($udid, $_SESSION['memberships.udids'])) {
+                $_SESSION['memberships.udids'][] = $udid;
+            }
+        } else {
+            $_SESSION['memberships.udids'] = array($udid);
+        }
     }
 
     static function loadUserQuota($id_user) {

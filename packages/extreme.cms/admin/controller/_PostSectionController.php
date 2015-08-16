@@ -497,7 +497,7 @@ class _PostSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('postsection');
 
-        AclController::checkPermission('postsection', 'edit');
+        AclController::checkPermission('postsection', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/postsection/new/');
 
@@ -806,6 +806,12 @@ class _PostSectionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('postsection', 'edit');
+            } else {
+                AclController::checkPermission('postsection', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('postsection', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -883,8 +889,6 @@ class _PostSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postsection');
-
-        AclController::checkPermission('postsection', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1352,7 +1356,7 @@ class _PostSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('postsection');
 
-        AclController::checkPermission('postsection', 'edit');
+        AclController::checkPermission('postsection', 'new');
 
 		$this->_edit(0, null, 'quick-create.postsection.tpl', false);
     }
@@ -1362,7 +1366,7 @@ class _PostSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('postsection');
 
-        AclController::checkPermission('postsection', 'edit');
+        AclController::checkPermission('postsection', 'new');
 
 		$this->_edit(0, null, 'pre-create.postsection.tpl', false);
     }
@@ -1372,7 +1376,7 @@ class _PostSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('postsection');
 
-        AclController::checkPermission('postsection', 'edit');
+        AclController::checkPermission('postsection', 'new');
 
 		$this->_edit(0, null, 'row-edit.postsection.tpl', false);
     }
@@ -1430,8 +1434,6 @@ class _PostSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('postsection');
 
-        AclController::checkPermission('postsection', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1449,8 +1451,6 @@ class _PostSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postsection');
-
-        AclController::checkPermission('postsection', 'edit');
 
         $this->checkform($errors);
 
@@ -1485,8 +1485,6 @@ class _PostSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postsection');
-
-        AclController::checkPermission('postsection', 'edit');
 
         $this->checkform($errors);
 
@@ -1816,10 +1814,12 @@ class _PostSectionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('postsection', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST_SECTION.UDID = 0 OR ".TABLE_PREFIX."POST_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST_SECTION.UDID = 0 OR ".TABLE_PREFIX."POST_SECTION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('postsection', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('postsection', $model);
+        }
 
 		$model->find();
 

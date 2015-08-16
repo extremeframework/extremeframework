@@ -23,6 +23,15 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
+    	            <th class="column-id-user-role">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/accessright/sort/id_user_role"><{_t('User role')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('MODULE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
     	            <th class="column-module">
@@ -246,6 +255,92 @@
             });
         <{/if}>
 
+                    // x. Row expanders
+            $('#accessrightlist .list-row-expander').die('click').live('click', function(event) {
+                event.preventDefault();
+
+                var expander = $(this);
+
+                var tr = expander.closest('tr');
+                var table = tr.closest('table');
+
+                var id = tr.data('id');
+
+                // Hide others
+                table.find('tr.row-view').not('tr#item_' + id).find('.list-row-expander').addClass('fa-caret-right').removeClass('fa-caret-down');
+                table.find('tr.row-embedded-view').not('tr.accessright-row-embedded-view-' + id).hide();
+
+                expander.toggleClass('fa-caret-right');
+                expander.toggleClass('fa-caret-down');
+
+                var tr_expandable = tr.next('tr.accessright-row-embedded-view-' + id);
+
+                if (tr_expandable.length == 0) {
+                    $.ajax({
+                        type: "get",
+                        url: "<{$smarty.const.APPLICATION_URL}>/accessright/rowExpandedView/" + id + "?source=list&colcount=<{$colcount}>&readonly=<{$readonly}>"
+                    }).done(function(html) {
+                        tr.after(html);
+                    });
+                }
+
+                tr_expandable.toggle();
+                tr.after(tr_expandable);
+            });
+
+            <{if !$readonly}>
+                // x. Row embedded view - Edit
+                $('#accessrightlist tr.row-embedded-view .row-embedded-view-edit').die('click').live('click', function(event) {
+                    event.preventDefault();
+
+                    var tr = $(this).closest('tr');
+                    var id = tr.data('id');
+
+                    $.ajax({
+                        type: "get",
+                        url: "<{$smarty.const.APPLICATION_URL}>/accessright/rowExpandedEdit/" + id + "?source=list&colcount=" + <{$colcount}>
+                    }).done(function(html) {
+                        tr.after(html);
+                        tr.remove();
+                    });
+                });
+
+                // x. Row embedded edit - Save
+                $('#accessrightlist tr.row-embedded-view .row-embedded-edit-save').die('click').live('click', function(event) {
+                    event.preventDefault();
+
+                    tinyMCE.triggerSave();
+
+                    var tr = $(this).closest('tr');
+
+                    $.ajax({
+                        url: "<{$smarty.const.APPLICATION_URL}>/accessright/rowExpandedSave?source=list&colcount=" + <{$colcount}>,
+                        type: "post",
+                        data: new FormData($('#accessrightform')[0]),
+                        contentType: false,
+                        processData: false
+                    }).done(function(html) {
+                        tr.after(html);
+                        tr.remove();
+                    });
+                });
+
+                // x. Row embedded edit - Cancel
+                $('#accessrightlist tr.row-embedded-view .row-embedded-edit-cancel').die('click').live('click', function(event) {
+                    event.preventDefault();
+
+                    var tr = $(this).closest('tr');
+                    var id = tr.data('id');
+
+                    $.ajax({
+                        type: "get",
+                        url: "<{$smarty.const.APPLICATION_URL}>/accessright/rowExpandedView/" + id + "?source=list&colcount=" + <{$colcount}>
+                    }).done(function(html) {
+                        tr.after(html);
+                        tr.remove();
+                    });
+                });
+            <{/if}>
             });
 </script>
 

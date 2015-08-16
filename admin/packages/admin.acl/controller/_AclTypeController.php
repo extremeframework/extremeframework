@@ -446,7 +446,7 @@ class _AclTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('acltype');
 
-        AclController::checkPermission('acltype', 'edit');
+        AclController::checkPermission('acltype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/acltype/new/');
 
@@ -751,6 +751,12 @@ class _AclTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('acltype', 'edit');
+            } else {
+                AclController::checkPermission('acltype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('acltype', $model);
             
             
@@ -817,8 +823,6 @@ class _AclTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('acltype');
-
-        AclController::checkPermission('acltype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -956,7 +960,7 @@ class _AclTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('acltype');
 
-        AclController::checkPermission('acltype', 'edit');
+        AclController::checkPermission('acltype', 'new');
 
 		$this->_edit(0, null, 'quick-create.acltype.tpl', false);
     }
@@ -966,7 +970,7 @@ class _AclTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('acltype');
 
-        AclController::checkPermission('acltype', 'edit');
+        AclController::checkPermission('acltype', 'new');
 
 		$this->_edit(0, null, 'pre-create.acltype.tpl', false);
     }
@@ -976,7 +980,7 @@ class _AclTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('acltype');
 
-        AclController::checkPermission('acltype', 'edit');
+        AclController::checkPermission('acltype', 'new');
 
 		$this->_edit(0, null, 'row-edit.acltype.tpl', false);
     }
@@ -1034,8 +1038,6 @@ class _AclTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('acltype');
 
-        AclController::checkPermission('acltype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1053,8 +1055,6 @@ class _AclTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('acltype');
-
-        AclController::checkPermission('acltype', 'edit');
 
         $this->checkform($errors);
 
@@ -1089,8 +1089,6 @@ class _AclTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('acltype');
-
-        AclController::checkPermission('acltype', 'edit');
 
         $this->checkform($errors);
 
@@ -1414,10 +1412,12 @@ class _AclTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('acltype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ACL_TYPE.UDID = 0 OR ".TABLE_PREFIX."ACL_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ACL_TYPE.UDID = 0 OR ".TABLE_PREFIX."ACL_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ACL_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('acltype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('acltype', $model);
+        }
 
 		$model->find();
 

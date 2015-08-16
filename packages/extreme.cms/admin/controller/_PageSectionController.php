@@ -518,7 +518,7 @@ class _PageSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagesection');
 
-        AclController::checkPermission('pagesection', 'edit');
+        AclController::checkPermission('pagesection', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/pagesection/new/');
 
@@ -909,6 +909,12 @@ class _PageSectionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('pagesection', 'edit');
+            } else {
+                AclController::checkPermission('pagesection', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('pagesection', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -992,8 +998,6 @@ class _PageSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagesection');
-
-        AclController::checkPermission('pagesection', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1461,7 +1465,7 @@ class _PageSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagesection');
 
-        AclController::checkPermission('pagesection', 'edit');
+        AclController::checkPermission('pagesection', 'new');
 
 		$this->_edit(0, null, 'quick-create.pagesection.tpl', false);
     }
@@ -1471,7 +1475,7 @@ class _PageSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagesection');
 
-        AclController::checkPermission('pagesection', 'edit');
+        AclController::checkPermission('pagesection', 'new');
 
 		$this->_edit(0, null, 'pre-create.pagesection.tpl', false);
     }
@@ -1481,7 +1485,7 @@ class _PageSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagesection');
 
-        AclController::checkPermission('pagesection', 'edit');
+        AclController::checkPermission('pagesection', 'new');
 
 		$this->_edit(0, null, 'row-edit.pagesection.tpl', false);
     }
@@ -1539,8 +1543,6 @@ class _PageSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagesection');
 
-        AclController::checkPermission('pagesection', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1558,8 +1560,6 @@ class _PageSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagesection');
-
-        AclController::checkPermission('pagesection', 'edit');
 
         $this->checkform($errors);
 
@@ -1594,8 +1594,6 @@ class _PageSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagesection');
-
-        AclController::checkPermission('pagesection', 'edit');
 
         $this->checkform($errors);
 
@@ -1925,10 +1923,12 @@ class _PageSectionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('pagesection', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAGE_SECTION.UDID = 0 OR ".TABLE_PREFIX."PAGE_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAGE_SECTION.UDID = 0 OR ".TABLE_PREFIX."PAGE_SECTION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAGE_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('pagesection', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('pagesection', $model);
+        }
 
 		$model->find();
 

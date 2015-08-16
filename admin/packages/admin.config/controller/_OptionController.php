@@ -432,7 +432,7 @@ class _OptionController extends __AppController
 
         LicenseController::enforceLicenseCheck('option');
 
-        AclController::checkPermission('option', 'edit');
+        AclController::checkPermission('option', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/option/new/');
 
@@ -735,6 +735,12 @@ class _OptionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('option', 'edit');
+            } else {
+                AclController::checkPermission('option', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('option', $model);
             
             
@@ -803,8 +809,6 @@ class _OptionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('option');
-
-        AclController::checkPermission('option', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -942,7 +946,7 @@ class _OptionController extends __AppController
 
         LicenseController::enforceLicenseCheck('option');
 
-        AclController::checkPermission('option', 'edit');
+        AclController::checkPermission('option', 'new');
 
 		$this->_edit(0, null, 'quick-create.option.tpl', false);
     }
@@ -952,7 +956,7 @@ class _OptionController extends __AppController
 
         LicenseController::enforceLicenseCheck('option');
 
-        AclController::checkPermission('option', 'edit');
+        AclController::checkPermission('option', 'new');
 
 		$this->_edit(0, null, 'pre-create.option.tpl', false);
     }
@@ -962,7 +966,7 @@ class _OptionController extends __AppController
 
         LicenseController::enforceLicenseCheck('option');
 
-        AclController::checkPermission('option', 'edit');
+        AclController::checkPermission('option', 'new');
 
 		$this->_edit(0, null, 'row-edit.option.tpl', false);
     }
@@ -1020,8 +1024,6 @@ class _OptionController extends __AppController
 
         LicenseController::enforceLicenseCheck('option');
 
-        AclController::checkPermission('option', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1039,8 +1041,6 @@ class _OptionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('option');
-
-        AclController::checkPermission('option', 'edit');
 
         $this->checkform($errors);
 
@@ -1075,8 +1075,6 @@ class _OptionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('option');
-
-        AclController::checkPermission('option', 'edit');
 
         $this->checkform($errors);
 
@@ -1401,10 +1399,12 @@ class _OptionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('option', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."OPTION.UDID = 0 OR ".TABLE_PREFIX."OPTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."OPTION.UDID = 0 OR ".TABLE_PREFIX."OPTION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."OPTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('option', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('option', $model);
+        }
 
 		$model->find();
 

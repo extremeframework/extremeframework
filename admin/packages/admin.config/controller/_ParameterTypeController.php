@@ -442,7 +442,7 @@ class _ParameterTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametertype');
 
-        AclController::checkPermission('parametertype', 'edit');
+        AclController::checkPermission('parametertype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/parametertype/new/');
 
@@ -747,6 +747,12 @@ class _ParameterTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('parametertype', 'edit');
+            } else {
+                AclController::checkPermission('parametertype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('parametertype', $model);
             
             
@@ -813,8 +819,6 @@ class _ParameterTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametertype');
-
-        AclController::checkPermission('parametertype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -952,7 +956,7 @@ class _ParameterTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametertype');
 
-        AclController::checkPermission('parametertype', 'edit');
+        AclController::checkPermission('parametertype', 'new');
 
 		$this->_edit(0, null, 'quick-create.parametertype.tpl', false);
     }
@@ -962,7 +966,7 @@ class _ParameterTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametertype');
 
-        AclController::checkPermission('parametertype', 'edit');
+        AclController::checkPermission('parametertype', 'new');
 
 		$this->_edit(0, null, 'pre-create.parametertype.tpl', false);
     }
@@ -972,7 +976,7 @@ class _ParameterTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametertype');
 
-        AclController::checkPermission('parametertype', 'edit');
+        AclController::checkPermission('parametertype', 'new');
 
 		$this->_edit(0, null, 'row-edit.parametertype.tpl', false);
     }
@@ -1030,8 +1034,6 @@ class _ParameterTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametertype');
 
-        AclController::checkPermission('parametertype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1049,8 +1051,6 @@ class _ParameterTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametertype');
-
-        AclController::checkPermission('parametertype', 'edit');
 
         $this->checkform($errors);
 
@@ -1085,8 +1085,6 @@ class _ParameterTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametertype');
-
-        AclController::checkPermission('parametertype', 'edit');
 
         $this->checkform($errors);
 
@@ -1410,10 +1408,12 @@ class _ParameterTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('parametertype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PARAMETER_TYPE.UDID = 0 OR ".TABLE_PREFIX."PARAMETER_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PARAMETER_TYPE.UDID = 0 OR ".TABLE_PREFIX."PARAMETER_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PARAMETER_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('parametertype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('parametertype', $model);
+        }
 
 		$model->find();
 

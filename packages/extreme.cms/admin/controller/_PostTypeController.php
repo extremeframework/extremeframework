@@ -420,7 +420,7 @@ class _PostTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('posttype');
 
-        AclController::checkPermission('posttype', 'edit');
+        AclController::checkPermission('posttype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/posttype/new/');
 
@@ -723,6 +723,12 @@ class _PostTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('posttype', 'edit');
+            } else {
+                AclController::checkPermission('posttype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('posttype', $model);
             
             
@@ -789,8 +795,6 @@ class _PostTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('posttype');
-
-        AclController::checkPermission('posttype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1258,7 +1262,7 @@ class _PostTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('posttype');
 
-        AclController::checkPermission('posttype', 'edit');
+        AclController::checkPermission('posttype', 'new');
 
 		$this->_edit(0, null, 'quick-create.posttype.tpl', false);
     }
@@ -1268,7 +1272,7 @@ class _PostTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('posttype');
 
-        AclController::checkPermission('posttype', 'edit');
+        AclController::checkPermission('posttype', 'new');
 
 		$this->_edit(0, null, 'pre-create.posttype.tpl', false);
     }
@@ -1278,7 +1282,7 @@ class _PostTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('posttype');
 
-        AclController::checkPermission('posttype', 'edit');
+        AclController::checkPermission('posttype', 'new');
 
 		$this->_edit(0, null, 'row-edit.posttype.tpl', false);
     }
@@ -1336,8 +1340,6 @@ class _PostTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('posttype');
 
-        AclController::checkPermission('posttype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1355,8 +1357,6 @@ class _PostTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('posttype');
-
-        AclController::checkPermission('posttype', 'edit');
 
         $this->checkform($errors);
 
@@ -1391,8 +1391,6 @@ class _PostTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('posttype');
-
-        AclController::checkPermission('posttype', 'edit');
 
         $this->checkform($errors);
 
@@ -1716,10 +1714,12 @@ class _PostTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('posttype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST_TYPE.UDID = 0 OR ".TABLE_PREFIX."POST_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST_TYPE.UDID = 0 OR ".TABLE_PREFIX."POST_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('posttype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('posttype', $model);
+        }
 
 		$model->find();
 

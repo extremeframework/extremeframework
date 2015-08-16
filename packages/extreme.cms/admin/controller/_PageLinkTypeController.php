@@ -446,7 +446,7 @@ class _PageLinkTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelinktype');
 
-        AclController::checkPermission('pagelinktype', 'edit');
+        AclController::checkPermission('pagelinktype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/pagelinktype/new/');
 
@@ -751,6 +751,12 @@ class _PageLinkTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('pagelinktype', 'edit');
+            } else {
+                AclController::checkPermission('pagelinktype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('pagelinktype', $model);
             
             
@@ -817,8 +823,6 @@ class _PageLinkTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelinktype');
-
-        AclController::checkPermission('pagelinktype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1286,7 +1290,7 @@ class _PageLinkTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelinktype');
 
-        AclController::checkPermission('pagelinktype', 'edit');
+        AclController::checkPermission('pagelinktype', 'new');
 
 		$this->_edit(0, null, 'quick-create.pagelinktype.tpl', false);
     }
@@ -1296,7 +1300,7 @@ class _PageLinkTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelinktype');
 
-        AclController::checkPermission('pagelinktype', 'edit');
+        AclController::checkPermission('pagelinktype', 'new');
 
 		$this->_edit(0, null, 'pre-create.pagelinktype.tpl', false);
     }
@@ -1306,7 +1310,7 @@ class _PageLinkTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelinktype');
 
-        AclController::checkPermission('pagelinktype', 'edit');
+        AclController::checkPermission('pagelinktype', 'new');
 
 		$this->_edit(0, null, 'row-edit.pagelinktype.tpl', false);
     }
@@ -1364,8 +1368,6 @@ class _PageLinkTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelinktype');
 
-        AclController::checkPermission('pagelinktype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1383,8 +1385,6 @@ class _PageLinkTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelinktype');
-
-        AclController::checkPermission('pagelinktype', 'edit');
 
         $this->checkform($errors);
 
@@ -1419,8 +1419,6 @@ class _PageLinkTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelinktype');
-
-        AclController::checkPermission('pagelinktype', 'edit');
 
         $this->checkform($errors);
 
@@ -1744,10 +1742,12 @@ class _PageLinkTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('pagelinktype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAGE_LINK_TYPE.UDID = 0 OR ".TABLE_PREFIX."PAGE_LINK_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAGE_LINK_TYPE.UDID = 0 OR ".TABLE_PREFIX."PAGE_LINK_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAGE_LINK_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('pagelinktype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('pagelinktype', $model);
+        }
 
 		$model->find();
 

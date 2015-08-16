@@ -454,7 +454,7 @@ class _PostCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('postcategory');
 
-        AclController::checkPermission('postcategory', 'edit');
+        AclController::checkPermission('postcategory', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/postcategory/new/');
 
@@ -845,6 +845,12 @@ class _PostCategoryController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('postcategory', 'edit');
+            } else {
+                AclController::checkPermission('postcategory', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('postcategory', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -925,8 +931,6 @@ class _PostCategoryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postcategory');
-
-        AclController::checkPermission('postcategory', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1394,7 +1398,7 @@ class _PostCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('postcategory');
 
-        AclController::checkPermission('postcategory', 'edit');
+        AclController::checkPermission('postcategory', 'new');
 
 		$this->_edit(0, null, 'quick-create.postcategory.tpl', false);
     }
@@ -1404,7 +1408,7 @@ class _PostCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('postcategory');
 
-        AclController::checkPermission('postcategory', 'edit');
+        AclController::checkPermission('postcategory', 'new');
 
 		$this->_edit(0, null, 'pre-create.postcategory.tpl', false);
     }
@@ -1414,7 +1418,7 @@ class _PostCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('postcategory');
 
-        AclController::checkPermission('postcategory', 'edit');
+        AclController::checkPermission('postcategory', 'new');
 
 		$this->_edit(0, null, 'row-edit.postcategory.tpl', false);
     }
@@ -1472,8 +1476,6 @@ class _PostCategoryController extends __AppController
 
         LicenseController::enforceLicenseCheck('postcategory');
 
-        AclController::checkPermission('postcategory', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1491,8 +1493,6 @@ class _PostCategoryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postcategory');
-
-        AclController::checkPermission('postcategory', 'edit');
 
         $this->checkform($errors);
 
@@ -1527,8 +1527,6 @@ class _PostCategoryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postcategory');
-
-        AclController::checkPermission('postcategory', 'edit');
 
         $this->checkform($errors);
 
@@ -1852,10 +1850,12 @@ class _PostCategoryController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('postcategory', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST_CATEGORY.UDID = 0 OR ".TABLE_PREFIX."POST_CATEGORY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST_CATEGORY.UDID = 0 OR ".TABLE_PREFIX."POST_CATEGORY.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST_CATEGORY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('postcategory', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('postcategory', $model);
+        }
 
 		$model->find();
 

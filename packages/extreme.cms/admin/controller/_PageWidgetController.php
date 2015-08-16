@@ -509,7 +509,7 @@ class _PageWidgetController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagewidget');
 
-        AclController::checkPermission('pagewidget', 'edit');
+        AclController::checkPermission('pagewidget', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/pagewidget/new/');
 
@@ -818,6 +818,12 @@ class _PageWidgetController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('pagewidget', 'edit');
+            } else {
+                AclController::checkPermission('pagewidget', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('pagewidget', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -901,8 +907,6 @@ class _PageWidgetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagewidget');
-
-        AclController::checkPermission('pagewidget', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1370,7 +1374,7 @@ class _PageWidgetController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagewidget');
 
-        AclController::checkPermission('pagewidget', 'edit');
+        AclController::checkPermission('pagewidget', 'new');
 
 		$this->_edit(0, null, 'quick-create.pagewidget.tpl', false);
     }
@@ -1380,7 +1384,7 @@ class _PageWidgetController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagewidget');
 
-        AclController::checkPermission('pagewidget', 'edit');
+        AclController::checkPermission('pagewidget', 'new');
 
 		$this->_edit(0, null, 'pre-create.pagewidget.tpl', false);
     }
@@ -1390,7 +1394,7 @@ class _PageWidgetController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagewidget');
 
-        AclController::checkPermission('pagewidget', 'edit');
+        AclController::checkPermission('pagewidget', 'new');
 
 		$this->_edit(0, null, 'row-edit.pagewidget.tpl', false);
     }
@@ -1448,8 +1452,6 @@ class _PageWidgetController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagewidget');
 
-        AclController::checkPermission('pagewidget', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1467,8 +1469,6 @@ class _PageWidgetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagewidget');
-
-        AclController::checkPermission('pagewidget', 'edit');
 
         $this->checkform($errors);
 
@@ -1503,8 +1503,6 @@ class _PageWidgetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagewidget');
-
-        AclController::checkPermission('pagewidget', 'edit');
 
         $this->checkform($errors);
 
@@ -1834,10 +1832,12 @@ class _PageWidgetController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('pagewidget', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAGE_WIDGET.UDID = 0 OR ".TABLE_PREFIX."PAGE_WIDGET.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAGE_WIDGET.UDID = 0 OR ".TABLE_PREFIX."PAGE_WIDGET.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAGE_WIDGET.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('pagewidget', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('pagewidget', $model);
+        }
 
 		$model->find();
 

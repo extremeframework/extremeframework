@@ -399,7 +399,7 @@ class _UserLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('userlog');
 
-        AclController::checkPermission('userlog', 'edit');
+        AclController::checkPermission('userlog', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/userlog/new/');
 
@@ -721,6 +721,12 @@ class _UserLogController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('userlog', 'edit');
+            } else {
+                AclController::checkPermission('userlog', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('userlog', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -798,8 +804,6 @@ class _UserLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userlog');
-
-        AclController::checkPermission('userlog', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -937,7 +941,7 @@ class _UserLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('userlog');
 
-        AclController::checkPermission('userlog', 'edit');
+        AclController::checkPermission('userlog', 'new');
 
 		$this->_edit(0, null, 'quick-create.userlog.tpl', false);
     }
@@ -947,7 +951,7 @@ class _UserLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('userlog');
 
-        AclController::checkPermission('userlog', 'edit');
+        AclController::checkPermission('userlog', 'new');
 
 		$this->_edit(0, null, 'pre-create.userlog.tpl', false);
     }
@@ -957,7 +961,7 @@ class _UserLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('userlog');
 
-        AclController::checkPermission('userlog', 'edit');
+        AclController::checkPermission('userlog', 'new');
 
 		$this->_edit(0, null, 'row-edit.userlog.tpl', false);
     }
@@ -1015,8 +1019,6 @@ class _UserLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('userlog');
 
-        AclController::checkPermission('userlog', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1034,8 +1036,6 @@ class _UserLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userlog');
-
-        AclController::checkPermission('userlog', 'edit');
 
         $this->checkform($errors);
 
@@ -1070,8 +1070,6 @@ class _UserLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userlog');
-
-        AclController::checkPermission('userlog', 'edit');
 
         $this->checkform($errors);
 
@@ -1402,10 +1400,12 @@ class _UserLogController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('userlog', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_LOG.UDID = 0 OR ".TABLE_PREFIX."USER_LOG.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_LOG.UDID = 0 OR ".TABLE_PREFIX."USER_LOG.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_LOG.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('userlog', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('userlog', $model);
+        }
 
 		$model->find();
 

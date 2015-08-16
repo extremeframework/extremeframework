@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
 $(function() {
-	var ugid = '<{$id_user_group}>';
+	var ugid = '<{base64_encode("$id_user_group,`$id_user_role`")}>';
 
 	$('a.toggle').click(function(e) {
         e.preventDefault();

@@ -403,7 +403,7 @@ class _WorkflowLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowlog');
 
-        AclController::checkPermission('workflowlog', 'edit');
+        AclController::checkPermission('workflowlog', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/workflowlog/new/');
 
@@ -725,6 +725,12 @@ class _WorkflowLogController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('workflowlog', 'edit');
+            } else {
+                AclController::checkPermission('workflowlog', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('workflowlog', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -811,8 +817,6 @@ class _WorkflowLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowlog');
-
-        AclController::checkPermission('workflowlog', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -950,7 +954,7 @@ class _WorkflowLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowlog');
 
-        AclController::checkPermission('workflowlog', 'edit');
+        AclController::checkPermission('workflowlog', 'new');
 
 		$this->_edit(0, null, 'quick-create.workflowlog.tpl', false);
     }
@@ -960,7 +964,7 @@ class _WorkflowLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowlog');
 
-        AclController::checkPermission('workflowlog', 'edit');
+        AclController::checkPermission('workflowlog', 'new');
 
 		$this->_edit(0, null, 'pre-create.workflowlog.tpl', false);
     }
@@ -970,7 +974,7 @@ class _WorkflowLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowlog');
 
-        AclController::checkPermission('workflowlog', 'edit');
+        AclController::checkPermission('workflowlog', 'new');
 
 		$this->_edit(0, null, 'row-edit.workflowlog.tpl', false);
     }
@@ -1028,8 +1032,6 @@ class _WorkflowLogController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowlog');
 
-        AclController::checkPermission('workflowlog', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1047,8 +1049,6 @@ class _WorkflowLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowlog');
-
-        AclController::checkPermission('workflowlog', 'edit');
 
         $this->checkform($errors);
 
@@ -1083,8 +1083,6 @@ class _WorkflowLogController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowlog');
-
-        AclController::checkPermission('workflowlog', 'edit');
 
         $this->checkform($errors);
 
@@ -1414,10 +1412,12 @@ class _WorkflowLogController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('workflowlog', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_LOG.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_LOG.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WORKFLOW_LOG.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('workflowlog', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('workflowlog', $model);
+        }
 
 		$model->find();
 

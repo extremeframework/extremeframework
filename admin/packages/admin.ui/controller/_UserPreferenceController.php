@@ -413,7 +413,7 @@ class _UserPreferenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpreference');
 
-        AclController::checkPermission('userpreference', 'edit');
+        AclController::checkPermission('userpreference', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/userpreference/new/');
 
@@ -716,6 +716,12 @@ class _UserPreferenceController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('userpreference', 'edit');
+            } else {
+                AclController::checkPermission('userpreference', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('userpreference', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -796,8 +802,6 @@ class _UserPreferenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpreference');
-
-        AclController::checkPermission('userpreference', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -935,7 +939,7 @@ class _UserPreferenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpreference');
 
-        AclController::checkPermission('userpreference', 'edit');
+        AclController::checkPermission('userpreference', 'new');
 
 		$this->_edit(0, null, 'quick-create.userpreference.tpl', false);
     }
@@ -945,7 +949,7 @@ class _UserPreferenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpreference');
 
-        AclController::checkPermission('userpreference', 'edit');
+        AclController::checkPermission('userpreference', 'new');
 
 		$this->_edit(0, null, 'pre-create.userpreference.tpl', false);
     }
@@ -955,7 +959,7 @@ class _UserPreferenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpreference');
 
-        AclController::checkPermission('userpreference', 'edit');
+        AclController::checkPermission('userpreference', 'new');
 
 		$this->_edit(0, null, 'row-edit.userpreference.tpl', false);
     }
@@ -1013,8 +1017,6 @@ class _UserPreferenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpreference');
 
-        AclController::checkPermission('userpreference', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1032,8 +1034,6 @@ class _UserPreferenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpreference');
-
-        AclController::checkPermission('userpreference', 'edit');
 
         $this->checkform($errors);
 
@@ -1068,8 +1068,6 @@ class _UserPreferenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpreference');
-
-        AclController::checkPermission('userpreference', 'edit');
 
         $this->checkform($errors);
 
@@ -1406,10 +1404,12 @@ class _UserPreferenceController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('userpreference', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_PREFERENCE.UDID = 0 OR ".TABLE_PREFIX."USER_PREFERENCE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_PREFERENCE.UDID = 0 OR ".TABLE_PREFIX."USER_PREFERENCE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_PREFERENCE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('userpreference', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('userpreference', $model);
+        }
 
 		$model->find();
 

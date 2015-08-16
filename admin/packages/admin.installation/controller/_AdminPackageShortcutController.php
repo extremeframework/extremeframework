@@ -30,6 +30,21 @@ class _AdminPackageShortcutController extends __AppController
            $errors['path'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Path'));
            return false;
        }
+       if (in_array('ID_ADMIN_PACKAGE', $columns2check) || in_array('PATH', $columns2check)) {
+           $_model = new AdminPackageShortcutModel();
+           $_model->ID_ADMIN_PACKAGE = $model->ID_ADMIN_PACKAGE;
+           $_model->PATH = $model->PATH;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['id-admin-package+path'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_ADMIN_PACKAGE.', '.L_PATH.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminpackageshortcut', $model, $errors)) {
@@ -475,7 +490,7 @@ class _AdminPackageShortcutController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
 
-        AclController::checkPermission('adminpackageshortcut', 'edit');
+        AclController::checkPermission('adminpackageshortcut', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpackageshortcut/new/');
 
@@ -778,6 +793,12 @@ class _AdminPackageShortcutController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpackageshortcut', 'edit');
+            } else {
+                AclController::checkPermission('adminpackageshortcut', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpackageshortcut', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -855,8 +876,6 @@ class _AdminPackageShortcutController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
-
-        AclController::checkPermission('adminpackageshortcut', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1324,7 +1343,7 @@ class _AdminPackageShortcutController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
 
-        AclController::checkPermission('adminpackageshortcut', 'edit');
+        AclController::checkPermission('adminpackageshortcut', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpackageshortcut.tpl', false);
     }
@@ -1334,7 +1353,7 @@ class _AdminPackageShortcutController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
 
-        AclController::checkPermission('adminpackageshortcut', 'edit');
+        AclController::checkPermission('adminpackageshortcut', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpackageshortcut.tpl', false);
     }
@@ -1344,7 +1363,7 @@ class _AdminPackageShortcutController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
 
-        AclController::checkPermission('adminpackageshortcut', 'edit');
+        AclController::checkPermission('adminpackageshortcut', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpackageshortcut.tpl', false);
     }
@@ -1402,8 +1421,6 @@ class _AdminPackageShortcutController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
 
-        AclController::checkPermission('adminpackageshortcut', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1421,8 +1438,6 @@ class _AdminPackageShortcutController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
-
-        AclController::checkPermission('adminpackageshortcut', 'edit');
 
         $this->checkform($errors);
 
@@ -1457,8 +1472,6 @@ class _AdminPackageShortcutController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackageshortcut');
-
-        AclController::checkPermission('adminpackageshortcut', 'edit');
 
         $this->checkform($errors);
 
@@ -1788,10 +1801,12 @@ class _AdminPackageShortcutController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpackageshortcut', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_SHORTCUT.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_SHORTCUT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_SHORTCUT.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_SHORTCUT.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PACKAGE_SHORTCUT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpackageshortcut', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpackageshortcut', $model);
+        }
 
 		$model->find();
 

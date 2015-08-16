@@ -434,7 +434,7 @@ class _WidgetPositionController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgetposition');
 
-        AclController::checkPermission('widgetposition', 'edit');
+        AclController::checkPermission('widgetposition', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/widgetposition/new/');
 
@@ -737,6 +737,12 @@ class _WidgetPositionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('widgetposition', 'edit');
+            } else {
+                AclController::checkPermission('widgetposition', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('widgetposition', $model);
             
             
@@ -803,8 +809,6 @@ class _WidgetPositionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgetposition');
-
-        AclController::checkPermission('widgetposition', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1272,7 +1276,7 @@ class _WidgetPositionController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgetposition');
 
-        AclController::checkPermission('widgetposition', 'edit');
+        AclController::checkPermission('widgetposition', 'new');
 
 		$this->_edit(0, null, 'quick-create.widgetposition.tpl', false);
     }
@@ -1282,7 +1286,7 @@ class _WidgetPositionController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgetposition');
 
-        AclController::checkPermission('widgetposition', 'edit');
+        AclController::checkPermission('widgetposition', 'new');
 
 		$this->_edit(0, null, 'pre-create.widgetposition.tpl', false);
     }
@@ -1292,7 +1296,7 @@ class _WidgetPositionController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgetposition');
 
-        AclController::checkPermission('widgetposition', 'edit');
+        AclController::checkPermission('widgetposition', 'new');
 
 		$this->_edit(0, null, 'row-edit.widgetposition.tpl', false);
     }
@@ -1350,8 +1354,6 @@ class _WidgetPositionController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgetposition');
 
-        AclController::checkPermission('widgetposition', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1369,8 +1371,6 @@ class _WidgetPositionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgetposition');
-
-        AclController::checkPermission('widgetposition', 'edit');
 
         $this->checkform($errors);
 
@@ -1405,8 +1405,6 @@ class _WidgetPositionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgetposition');
-
-        AclController::checkPermission('widgetposition', 'edit');
 
         $this->checkform($errors);
 
@@ -1730,10 +1728,12 @@ class _WidgetPositionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('widgetposition', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WIDGET_POSITION.UDID = 0 OR ".TABLE_PREFIX."WIDGET_POSITION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WIDGET_POSITION.UDID = 0 OR ".TABLE_PREFIX."WIDGET_POSITION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WIDGET_POSITION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('widgetposition', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('widgetposition', $model);
+        }
 
 		$model->find();
 

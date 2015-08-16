@@ -432,7 +432,7 @@ class _AdminOrderController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorder');
 
-        AclController::checkPermission('adminorder', 'edit');
+        AclController::checkPermission('adminorder', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminorder/new/');
 
@@ -909,6 +909,12 @@ class _AdminOrderController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminorder', 'edit');
+            } else {
+                AclController::checkPermission('adminorder', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminorder', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -989,8 +995,6 @@ class _AdminOrderController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorder');
-
-        AclController::checkPermission('adminorder', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1457,7 +1461,7 @@ class _AdminOrderController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorder');
 
-        AclController::checkPermission('adminorder', 'edit');
+        AclController::checkPermission('adminorder', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminorder.tpl', false);
     }
@@ -1467,7 +1471,7 @@ class _AdminOrderController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorder');
 
-        AclController::checkPermission('adminorder', 'edit');
+        AclController::checkPermission('adminorder', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminorder.tpl', false);
     }
@@ -1477,7 +1481,7 @@ class _AdminOrderController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorder');
 
-        AclController::checkPermission('adminorder', 'edit');
+        AclController::checkPermission('adminorder', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminorder.tpl', false);
     }
@@ -1535,8 +1539,6 @@ class _AdminOrderController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorder');
 
-        AclController::checkPermission('adminorder', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1554,8 +1556,6 @@ class _AdminOrderController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorder');
-
-        AclController::checkPermission('adminorder', 'edit');
 
         $this->checkform($errors);
 
@@ -1590,8 +1590,6 @@ class _AdminOrderController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorder');
-
-        AclController::checkPermission('adminorder', 'edit');
 
         $this->checkform($errors);
 
@@ -1915,10 +1913,12 @@ class _AdminOrderController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminorder', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.UDID = 0 OR ".TABLE_PREFIX."ADMIN_ORDER.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.UDID = 0 OR ".TABLE_PREFIX."ADMIN_ORDER.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_ORDER.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminorder', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminorder', $model);
+        }
 
 		$model->find();
 

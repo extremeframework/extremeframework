@@ -446,7 +446,7 @@ class _AdminLayoutSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
-        AclController::checkPermission('adminlayoutsection', 'edit');
+        AclController::checkPermission('adminlayoutsection', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminlayoutsection/new/');
 
@@ -751,6 +751,12 @@ class _AdminLayoutSectionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminlayoutsection', 'edit');
+            } else {
+                AclController::checkPermission('adminlayoutsection', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminlayoutsection', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -828,8 +834,6 @@ class _AdminLayoutSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
-
-        AclController::checkPermission('adminlayoutsection', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -967,7 +971,7 @@ class _AdminLayoutSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
-        AclController::checkPermission('adminlayoutsection', 'edit');
+        AclController::checkPermission('adminlayoutsection', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminlayoutsection.tpl', false);
     }
@@ -977,7 +981,7 @@ class _AdminLayoutSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
-        AclController::checkPermission('adminlayoutsection', 'edit');
+        AclController::checkPermission('adminlayoutsection', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminlayoutsection.tpl', false);
     }
@@ -987,7 +991,7 @@ class _AdminLayoutSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
-        AclController::checkPermission('adminlayoutsection', 'edit');
+        AclController::checkPermission('adminlayoutsection', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminlayoutsection.tpl', false);
     }
@@ -1045,8 +1049,6 @@ class _AdminLayoutSectionController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
 
-        AclController::checkPermission('adminlayoutsection', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1064,8 +1066,6 @@ class _AdminLayoutSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
-
-        AclController::checkPermission('adminlayoutsection', 'edit');
 
         $this->checkform($errors);
 
@@ -1100,8 +1100,6 @@ class _AdminLayoutSectionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutsection');
-
-        AclController::checkPermission('adminlayoutsection', 'edit');
 
         $this->checkform($errors);
 
@@ -1425,10 +1423,12 @@ class _AdminLayoutSectionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminlayoutsection', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_LAYOUT_SECTION.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LAYOUT_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_LAYOUT_SECTION.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LAYOUT_SECTION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_LAYOUT_SECTION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminlayoutsection', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminlayoutsection', $model);
+        }
 
 		$model->find();
 

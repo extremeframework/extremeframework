@@ -84,6 +84,25 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'ID_USER_ROLE' }>
+                                    <tr class="form-row form-row-id-user-role <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('User role')}><{if in_array('ID_USER_ROLE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-user-role">
+                                                                        <{$tmp_value = $formdataID_USER_ROLE}>
+
+                                                    
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-user-role" name="`$prefix`accessright_formdata_ID_USER_ROLE" value=$formdata.ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{elseif $column == 'MODULE' }>
                                     <tr class="form-row form-row-module <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>

@@ -424,7 +424,7 @@ class _PermissionSetController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionset');
 
-        AclController::checkPermission('permissionset', 'edit');
+        AclController::checkPermission('permissionset', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/permissionset/new/');
 
@@ -823,6 +823,12 @@ class _PermissionSetController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('permissionset', 'edit');
+            } else {
+                AclController::checkPermission('permissionset', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('permissionset', $model);
             
             
@@ -889,8 +895,6 @@ class _PermissionSetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionset');
-
-        AclController::checkPermission('permissionset', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1357,7 +1361,7 @@ class _PermissionSetController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionset');
 
-        AclController::checkPermission('permissionset', 'edit');
+        AclController::checkPermission('permissionset', 'new');
 
 		$this->_edit(0, null, 'quick-create.permissionset.tpl', false);
     }
@@ -1367,7 +1371,7 @@ class _PermissionSetController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionset');
 
-        AclController::checkPermission('permissionset', 'edit');
+        AclController::checkPermission('permissionset', 'new');
 
 		$this->_edit(0, null, 'pre-create.permissionset.tpl', false);
     }
@@ -1377,7 +1381,7 @@ class _PermissionSetController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionset');
 
-        AclController::checkPermission('permissionset', 'edit');
+        AclController::checkPermission('permissionset', 'new');
 
 		$this->_edit(0, null, 'row-edit.permissionset.tpl', false);
     }
@@ -1435,8 +1439,6 @@ class _PermissionSetController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionset');
 
-        AclController::checkPermission('permissionset', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1454,8 +1456,6 @@ class _PermissionSetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionset');
-
-        AclController::checkPermission('permissionset', 'edit');
 
         $this->checkform($errors);
 
@@ -1490,8 +1490,6 @@ class _PermissionSetController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionset');
-
-        AclController::checkPermission('permissionset', 'edit');
 
         $this->checkform($errors);
 
@@ -1815,10 +1813,12 @@ class _PermissionSetController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('permissionset', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PERMISSION_SET.UDID = 0 OR ".TABLE_PREFIX."PERMISSION_SET.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PERMISSION_SET.UDID = 0 OR ".TABLE_PREFIX."PERMISSION_SET.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PERMISSION_SET.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('permissionset', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('permissionset', $model);
+        }
 
 		$model->find();
 

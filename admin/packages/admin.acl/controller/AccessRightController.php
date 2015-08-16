@@ -9,18 +9,27 @@ defined('APPLICATION_DIR') OR exit();
 class AccessRightController extends _AccessRightController
 {
 	function jsonAddPermissionAction() {
- 		list($id_user_group, $module, $action) = explode('/', $_REQUEST['args']);
+ 		list($encode, $module, $action) = explode('/', $_REQUEST['args']);
 
 		$success = true;
 		$message = '';
 
-		if (empty($id_user_group) || empty($module) || trim($action) == '') {
+        list($id_user_group, $id_user_role) = explode(',', base64_decode($encode));
+
+		if ((empty($id_user_group) && empty($id_user_role)) || empty($module) || trim($action) == '') {
 			$success = false;
 			$message = 'Parameter missing';
 		} else {
 			$am = new AccessRightModel();
 
-			$am->ID_USER_GROUP = $id_user_group;
+            if ($id_user_group) {
+			    $am->ID_USER_GROUP = $id_user_group;
+            }
+
+            if ($id_user_role) {
+			    $am->ID_USER_ROLE = $id_user_role;
+            }
+
 			$am->MODULE = $module;
 
 			$am->find();
@@ -38,7 +47,14 @@ class AccessRightController extends _AccessRightController
 			} else {
 				$am = new AccessRightModel();
 
-				$am->ID_USER_GROUP = $id_user_group;
+                if ($id_user_group) {
+    			    $am->ID_USER_GROUP = $id_user_group;
+                }
+
+                if ($id_user_role) {
+    			    $am->ID_USER_ROLE = $id_user_role;
+                }
+
 				$am->MODULE = $module;
 				$am->ACTIONS = $action;
 
@@ -50,18 +66,26 @@ class AccessRightController extends _AccessRightController
 	}
 
 	function jsonRemovePermissionAction() {
- 		list($id_user_group, $module, $action) = explode('/', $_REQUEST['args']);
+ 		list($encode, $module, $action) = explode('/', $_REQUEST['args']);
 
 		$success = true;
 		$message = '';
 
-		if (empty($id_user_group) || empty($module) || trim($action) == '') {
+        list($id_user_group, $id_user_role) = explode(',', base64_decode($encode));
+
+		if ((empty($id_user_group) && empty($id_user_role)) || empty($module) || trim($action) == '') {
 			$success = false;
 			$message = 'Parameter missing';
 		} else {
 			$am = new AccessRightModel();
 
-			$am->ID_USER_GROUP = $id_user_group;
+            if ($id_user_group) {
+			    $am->ID_USER_GROUP = $id_user_group;
+            }
+
+            if ($id_user_role) {
+			    $am->ID_USER_ROLE = $id_user_role;
+            }
 			$am->MODULE = $module;
 
 			$am->find();

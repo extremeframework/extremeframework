@@ -10,7 +10,7 @@ class AuthenticationController extends __AppController
         if (!isset($_SESSION['user'])) {
             $return = isset($_SERVER['REQUEST_URI'])? $_SERVER['REQUEST_URI'] : '';
 
-            AuthenticationController::loginAction($return);
+            self::loginAction($return);
 
             exit(0);
         }
@@ -23,7 +23,7 @@ class AuthenticationController extends __AppController
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user']->ID == 1) {
                 if (isset($_REQUEST['as'])) {
-                    AuthenticationController::tryLoginAs($_REQUEST['as']);
+                    self::tryLoginAs($_REQUEST['as']);
                 }
             }
 
@@ -96,7 +96,7 @@ class AuthenticationController extends __AppController
 	                $smarty->display('.force_password_change.tpl');
                 } else {
                     // Login
-                    AuthenticationController::login($member);
+                    self::login($member);
 
 	                if (!empty($return)) {
 	                    Framework::redirect($return);
@@ -122,7 +122,7 @@ class AuthenticationController extends __AppController
 		$member->find(1);
 
 		if ($member->ID) {
-            AuthenticationController::login($member);
+            self::login($member);
         }
     }
 
@@ -148,13 +148,15 @@ class AuthenticationController extends __AppController
         }
 
         // Initialize user context
-        AuthenticationController::initializeUserContext($user->ID);
+        self::initializeUserContext($user);
     }
 
-    static function initializeUserContext($id_user) {
+    static function initializeUserContext($user) {
+        $id_user = $user->ID;
+
         // Load access rights
         $acl = new AclController();
-		$acl->loadAccessRights($id_user);
+		$acl->loadAccessRights($user);
 
         // Load user quota
 		$acl->loadUserQuota($id_user);
@@ -178,7 +180,7 @@ class AuthenticationController extends __AppController
         }
 
         // Load default menu
-        AuthenticationController::loadMenu($preferences->ID_ADMIN_MENU);
+        self::loadMenu($preferences->ID_ADMIN_MENU);
 
         // Load user message
         if (Framework::hasModule('UserMessage')) {
@@ -254,17 +256,23 @@ class AuthenticationController extends __AppController
 	}
 
     function refreshAction() {
-        AuthenticationController::authenticate();
+        self::authenticate();
 
-        $member = $_SESSION['user'];
+        $user = $_SESSION['user'];
 
         // Initialize user context
-        AuthenticationController::initializeUserContext($member->ID);
+        self::initializeUserContext($user);
 
         ContextStack::back(0);
     }
 
     function logoutAction() {
+        self::logout();
+
+        Framework::redirect(APPLICATION_URL);
+    }
+
+    static function logout() {
         if (isset($_COOKIE['_cookies'])){
            setcookie('_cookies', '', time()-60*60*24, '/');
         }
@@ -277,7 +285,5 @@ class AuthenticationController extends __AppController
 
         // Finally, destroy the session.
         session_destroy();
-
-        Framework::redirect(APPLICATION_URL);
     }
 }

@@ -516,7 +516,7 @@ class _PostController extends __AppController
 
         LicenseController::enforceLicenseCheck('post');
 
-        AclController::checkPermission('post', 'edit');
+        AclController::checkPermission('post', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/post/new/');
 
@@ -939,6 +939,12 @@ class _PostController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('post', 'edit');
+            } else {
+                AclController::checkPermission('post', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('post', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -1023,8 +1029,6 @@ class _PostController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('post');
-
-        AclController::checkPermission('post', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1493,7 +1497,7 @@ class _PostController extends __AppController
 
         LicenseController::enforceLicenseCheck('post');
 
-        AclController::checkPermission('post', 'edit');
+        AclController::checkPermission('post', 'new');
 
 		$this->_edit(0, null, 'quick-create.post.tpl', false);
     }
@@ -1503,7 +1507,7 @@ class _PostController extends __AppController
 
         LicenseController::enforceLicenseCheck('post');
 
-        AclController::checkPermission('post', 'edit');
+        AclController::checkPermission('post', 'new');
 
 		$this->_edit(0, null, 'pre-create.post.tpl', false);
     }
@@ -1513,7 +1517,7 @@ class _PostController extends __AppController
 
         LicenseController::enforceLicenseCheck('post');
 
-        AclController::checkPermission('post', 'edit');
+        AclController::checkPermission('post', 'new');
 
 		$this->_edit(0, null, 'row-edit.post.tpl', false);
     }
@@ -1571,8 +1575,6 @@ class _PostController extends __AppController
 
         LicenseController::enforceLicenseCheck('post');
 
-        AclController::checkPermission('post', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1590,8 +1592,6 @@ class _PostController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('post');
-
-        AclController::checkPermission('post', 'edit');
 
         $this->checkform($errors);
 
@@ -1626,8 +1626,6 @@ class _PostController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('post');
-
-        AclController::checkPermission('post', 'edit');
 
         $this->checkform($errors);
 
@@ -1951,10 +1949,12 @@ class _PostController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('post', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST.UDID = 0 OR ".TABLE_PREFIX."POST.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST.UDID = 0 OR ".TABLE_PREFIX."POST.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('post', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('post', $model);
+        }
 
 		$model->find();
 

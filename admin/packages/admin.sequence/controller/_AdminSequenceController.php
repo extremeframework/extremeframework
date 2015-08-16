@@ -421,7 +421,7 @@ class _AdminSequenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminsequence');
 
-        AclController::checkPermission('adminsequence', 'edit');
+        AclController::checkPermission('adminsequence', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminsequence/new/');
 
@@ -726,6 +726,12 @@ class _AdminSequenceController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminsequence', 'edit');
+            } else {
+                AclController::checkPermission('adminsequence', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminsequence', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -803,8 +809,6 @@ class _AdminSequenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminsequence');
-
-        AclController::checkPermission('adminsequence', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -942,7 +946,7 @@ class _AdminSequenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminsequence');
 
-        AclController::checkPermission('adminsequence', 'edit');
+        AclController::checkPermission('adminsequence', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminsequence.tpl', false);
     }
@@ -952,7 +956,7 @@ class _AdminSequenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminsequence');
 
-        AclController::checkPermission('adminsequence', 'edit');
+        AclController::checkPermission('adminsequence', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminsequence.tpl', false);
     }
@@ -962,7 +966,7 @@ class _AdminSequenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminsequence');
 
-        AclController::checkPermission('adminsequence', 'edit');
+        AclController::checkPermission('adminsequence', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminsequence.tpl', false);
     }
@@ -1020,8 +1024,6 @@ class _AdminSequenceController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminsequence');
 
-        AclController::checkPermission('adminsequence', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1039,8 +1041,6 @@ class _AdminSequenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminsequence');
-
-        AclController::checkPermission('adminsequence', 'edit');
 
         $this->checkform($errors);
 
@@ -1075,8 +1075,6 @@ class _AdminSequenceController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminsequence');
-
-        AclController::checkPermission('adminsequence', 'edit');
 
         $this->checkform($errors);
 
@@ -1400,10 +1398,12 @@ class _AdminSequenceController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminsequence', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_SEQUENCE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_SEQUENCE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_SEQUENCE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_SEQUENCE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_SEQUENCE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminsequence', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminsequence', $model);
+        }
 
 		$model->find();
 

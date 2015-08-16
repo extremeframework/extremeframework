@@ -442,7 +442,7 @@ class _ParameterGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametergroup');
 
-        AclController::checkPermission('parametergroup', 'edit');
+        AclController::checkPermission('parametergroup', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/parametergroup/new/');
 
@@ -747,6 +747,12 @@ class _ParameterGroupController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('parametergroup', 'edit');
+            } else {
+                AclController::checkPermission('parametergroup', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('parametergroup', $model);
             
             
@@ -813,8 +819,6 @@ class _ParameterGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametergroup');
-
-        AclController::checkPermission('parametergroup', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -952,7 +956,7 @@ class _ParameterGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametergroup');
 
-        AclController::checkPermission('parametergroup', 'edit');
+        AclController::checkPermission('parametergroup', 'new');
 
 		$this->_edit(0, null, 'quick-create.parametergroup.tpl', false);
     }
@@ -962,7 +966,7 @@ class _ParameterGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametergroup');
 
-        AclController::checkPermission('parametergroup', 'edit');
+        AclController::checkPermission('parametergroup', 'new');
 
 		$this->_edit(0, null, 'pre-create.parametergroup.tpl', false);
     }
@@ -972,7 +976,7 @@ class _ParameterGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametergroup');
 
-        AclController::checkPermission('parametergroup', 'edit');
+        AclController::checkPermission('parametergroup', 'new');
 
 		$this->_edit(0, null, 'row-edit.parametergroup.tpl', false);
     }
@@ -1030,8 +1034,6 @@ class _ParameterGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('parametergroup');
 
-        AclController::checkPermission('parametergroup', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1049,8 +1051,6 @@ class _ParameterGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametergroup');
-
-        AclController::checkPermission('parametergroup', 'edit');
 
         $this->checkform($errors);
 
@@ -1085,8 +1085,6 @@ class _ParameterGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('parametergroup');
-
-        AclController::checkPermission('parametergroup', 'edit');
 
         $this->checkform($errors);
 
@@ -1410,10 +1408,12 @@ class _ParameterGroupController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('parametergroup', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PARAMETER_GROUP.UDID = 0 OR ".TABLE_PREFIX."PARAMETER_GROUP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PARAMETER_GROUP.UDID = 0 OR ".TABLE_PREFIX."PARAMETER_GROUP.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PARAMETER_GROUP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('parametergroup', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('parametergroup', $model);
+        }
 
 		$model->find();
 

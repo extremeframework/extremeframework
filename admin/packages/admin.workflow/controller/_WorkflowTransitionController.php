@@ -462,7 +462,7 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        AclController::checkPermission('workflowtransition', 'edit');
+        AclController::checkPermission('workflowtransition', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/workflowtransition/new/');
 
@@ -767,6 +767,12 @@ class _WorkflowTransitionController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('workflowtransition', 'edit');
+            } else {
+                AclController::checkPermission('workflowtransition', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('workflowtransition', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -859,8 +865,6 @@ class _WorkflowTransitionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowtransition');
-
-        AclController::checkPermission('workflowtransition', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -998,7 +1002,7 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        AclController::checkPermission('workflowtransition', 'edit');
+        AclController::checkPermission('workflowtransition', 'new');
 
 		$this->_edit(0, null, 'quick-create.workflowtransition.tpl', false);
     }
@@ -1008,7 +1012,7 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        AclController::checkPermission('workflowtransition', 'edit');
+        AclController::checkPermission('workflowtransition', 'new');
 
 		$this->_edit(0, null, 'pre-create.workflowtransition.tpl', false);
     }
@@ -1018,7 +1022,7 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        AclController::checkPermission('workflowtransition', 'edit');
+        AclController::checkPermission('workflowtransition', 'new');
 
 		$this->_edit(0, null, 'row-edit.workflowtransition.tpl', false);
     }
@@ -1076,8 +1080,6 @@ class _WorkflowTransitionController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowtransition');
 
-        AclController::checkPermission('workflowtransition', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1095,8 +1097,6 @@ class _WorkflowTransitionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowtransition');
-
-        AclController::checkPermission('workflowtransition', 'edit');
 
         $this->checkform($errors);
 
@@ -1131,8 +1131,6 @@ class _WorkflowTransitionController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowtransition');
-
-        AclController::checkPermission('workflowtransition', 'edit');
 
         $this->checkform($errors);
 
@@ -1462,10 +1460,12 @@ class _WorkflowTransitionController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('workflowtransition', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_TRANSITION.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_TRANSITION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_TRANSITION.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_TRANSITION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WORKFLOW_TRANSITION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('workflowtransition', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('workflowtransition', $model);
+        }
 
 		$model->find();
 

@@ -8,7 +8,7 @@ require_once('GetResponse/GetResponseApi.php');
 
 class UserMembershipController extends _UserMembershipController
 {
-    function addUserToGroup($user, $id_user_group, $valid_from = null, $valid_until = null) {
+    function addUserToGroup($user, $id_user_group, $id_user_role = null, $valid_from = null, $valid_until = null) {
         // x. Get user group information
         $ugm = new UserGroupModel();
 
@@ -28,12 +28,13 @@ class UserMembershipController extends _UserMembershipController
 
         $umm->ID_USER = $user->ID;
         $umm->ID_USER_GROUP = $id_user_group;
+        $umm->ID_USER_ROLE = $id_user_role;
         $umm->VALID_FROM = $valid_from;
         $umm->VALID_UNTIL = $valid_until;
         $umm->GUID = $user->ID;
         $umm->UDID = $user->ID;
 
-        $umm->insert();
+        $umm->insert(false);
 
         // x. Get GetResponse's mailing lists corresponding to the user group
         if (class_exists('GetResponseCampaignModel')) {
@@ -74,7 +75,7 @@ class UserMembershipController extends _UserMembershipController
         $upm->GUID = $user->ID;
         $upm->UDID = $user->ID;
 
-        $upm->insert();
+        $upm->insert(false);
 
         return true;
     }

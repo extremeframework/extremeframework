@@ -118,6 +118,12 @@
     <{plugin key="userrole_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
+            <{if isset($smarty.session.acl.accessright) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
+            <{if isset($smarty.session.acl.userinvitation) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.usermembership) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -128,6 +134,12 @@
             <{if $canaccess2anytab}>
             <div id="userroletabs" class="section">
                 <ul>
+                                            <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
+                            <li><a href="#tab-accessrights"><{_t('Access right')}> <span class="badge accessright-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
+                            <li><a href="#tab-userinvitations"><{_t('User invitation')}> <span class="badge userinvitation-badge-count"></span></a></li>
+                        <{/if}>
                                             <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                             <li><a href="#tab-usermemberships"><{_t('User membership')}> <span class="badge usermembership-badge-count"></span></a></li>
                         <{/if}>
@@ -136,6 +148,22 @@
                         <{/if}>
                                     </ul>
 
+                                    <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
+                        <div id="tab-accessrights">
+                        	<{if true || $tab == 'accessrights'}>
+                            	<h2 class="print"><{_t('Access right')}></h2>
+                                                                    <{ajaxmodule class="WidgetListAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.accessright.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
+                        <div id="tab-userinvitations">
+                        	<{if true || $tab == 'userinvitations'}>
+                            	<h2 class="print"><{_t('User invitation')}></h2>
+                                                                    <{ajaxmodule class="WidgetListUserInvitation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.userinvitation.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
                                     <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
                         <div id="tab-usermemberships">
                         	<{if true || $tab == 'usermemberships'}>

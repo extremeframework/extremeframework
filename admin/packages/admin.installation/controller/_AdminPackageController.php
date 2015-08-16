@@ -516,7 +516,7 @@ class _AdminPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackage');
 
-        AclController::checkPermission('adminpackage', 'edit');
+        AclController::checkPermission('adminpackage', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpackage/new/');
 
@@ -857,6 +857,12 @@ class _AdminPackageController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpackage', 'edit');
+            } else {
+                AclController::checkPermission('adminpackage', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpackage', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -916,7 +922,7 @@ class _AdminPackageController extends __AppController
             $refclass = get_class($refobject);
             
             if ($refclass == 'AdminPackageCategoryModel' && empty($model->ID_ADMIN_PACKAGE_CATEGORY)) {
-                $model->ID_ADMIN_PACKAGE_CATEGORY = $refobject->ID;
+                $model->ID_ADMIN_PACKAGE_CATEGORY = $refobject->CODE;
             }
 
         }
@@ -934,8 +940,6 @@ class _AdminPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackage');
-
-        AclController::checkPermission('adminpackage', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1073,7 +1077,7 @@ class _AdminPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackage');
 
-        AclController::checkPermission('adminpackage', 'edit');
+        AclController::checkPermission('adminpackage', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpackage.tpl', false);
     }
@@ -1083,7 +1087,7 @@ class _AdminPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackage');
 
-        AclController::checkPermission('adminpackage', 'edit');
+        AclController::checkPermission('adminpackage', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpackage.tpl', false);
     }
@@ -1093,7 +1097,7 @@ class _AdminPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackage');
 
-        AclController::checkPermission('adminpackage', 'edit');
+        AclController::checkPermission('adminpackage', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpackage.tpl', false);
     }
@@ -1151,8 +1155,6 @@ class _AdminPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackage');
 
-        AclController::checkPermission('adminpackage', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1170,8 +1172,6 @@ class _AdminPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackage');
-
-        AclController::checkPermission('adminpackage', 'edit');
 
         $this->checkform($errors);
 
@@ -1206,8 +1206,6 @@ class _AdminPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackage');
-
-        AclController::checkPermission('adminpackage', 'edit');
 
         $this->checkform($errors);
 
@@ -1531,10 +1529,12 @@ class _AdminPackageController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpackage', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PACKAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpackage', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpackage', $model);
+        }
 
 		$model->find();
 
@@ -1689,7 +1689,7 @@ class _AdminPackageController extends __AppController
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
-                $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:ID'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
             }
         }
     }
@@ -1707,7 +1707,7 @@ class _AdminPackageController extends __AppController
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
-                $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:ID'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
             }
         }
     }

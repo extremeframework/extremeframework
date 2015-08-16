@@ -442,7 +442,7 @@ class _AdminMenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
 
-        AclController::checkPermission('adminmenuitem', 'edit');
+        AclController::checkPermission('adminmenuitem', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminmenuitem/new/');
 
@@ -829,6 +829,12 @@ class _AdminMenuItemController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminmenuitem', 'edit');
+            } else {
+                AclController::checkPermission('adminmenuitem', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminmenuitem', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -912,8 +918,6 @@ class _AdminMenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
-
-        AclController::checkPermission('adminmenuitem', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1069,7 +1073,7 @@ class _AdminMenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
 
-        AclController::checkPermission('adminmenuitem', 'edit');
+        AclController::checkPermission('adminmenuitem', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminmenuitem.tpl', false);
     }
@@ -1079,7 +1083,7 @@ class _AdminMenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
 
-        AclController::checkPermission('adminmenuitem', 'edit');
+        AclController::checkPermission('adminmenuitem', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminmenuitem.tpl', false);
     }
@@ -1089,7 +1093,7 @@ class _AdminMenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
 
-        AclController::checkPermission('adminmenuitem', 'edit');
+        AclController::checkPermission('adminmenuitem', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminmenuitem.tpl', false);
     }
@@ -1147,8 +1151,6 @@ class _AdminMenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
 
-        AclController::checkPermission('adminmenuitem', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1166,8 +1168,6 @@ class _AdminMenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
-
-        AclController::checkPermission('adminmenuitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1202,8 +1202,6 @@ class _AdminMenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmenuitem');
-
-        AclController::checkPermission('adminmenuitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1537,10 +1535,12 @@ class _AdminMenuItemController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminmenuitem', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_MENU_ITEM.UDID = 0 OR ".TABLE_PREFIX."ADMIN_MENU_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_MENU_ITEM.UDID = 0 OR ".TABLE_PREFIX."ADMIN_MENU_ITEM.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_MENU_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminmenuitem', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminmenuitem', $model);
+        }
 
 		$model->find();
 

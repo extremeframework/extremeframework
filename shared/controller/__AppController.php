@@ -777,10 +777,10 @@ class __AppController {
                     $self_or_group_user_ids = array_unique($self_or_group_user_ids);
 
                     // UDID: 0 - public
-                    $self_or_group_where = "{$model->__table}.UDID = 0 OR {$model->__table}.GUID IN (".implode(',', $self_or_group_user_ids).")";
+                    $self_or_group_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR {$model->__table}.GUID IN (".implode(',', $self_or_group_user_ids).")";
                 } else {
                     // UDID: 0 - public
-                    $self_or_group_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID = ".$_SESSION['user']->UDID;
+                    $self_or_group_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID IN ('".implode("','", AclController::getUDIDs())."')";
                 }
 
                 // x. Inherited items
@@ -815,7 +815,7 @@ class __AppController {
                 $peer_where = '';
                 if (AclController::hasPermission($module, 'viewpeer')) {
                     // UDID: 0 - public
-                    $peer_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID = ".$_SESSION['user']->UDID;
+                    $peer_where = "{$model->__table}.UDID = 0 OR {$model->__table}.UDID IN ('".implode("','", AclController::getUDIDs())."')";
                 }
 
                 // x. Building whereAdd
@@ -838,7 +838,7 @@ class __AppController {
                 }
 
                 if (!empty($or_wheres)) {
-                    $model->whereAdd("((".implode(') OR (', array_unique($or_wheres))."))");
+                    $model->whereAdd("(".implode(') OR (', array_unique($or_wheres)).")");
                 }
             }
         }

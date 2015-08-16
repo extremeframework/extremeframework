@@ -414,7 +414,7 @@ class _UserPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpackage');
 
-        AclController::checkPermission('userpackage', 'edit');
+        AclController::checkPermission('userpackage', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/userpackage/new/');
 
@@ -732,6 +732,12 @@ class _UserPackageController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('userpackage', 'edit');
+            } else {
+                AclController::checkPermission('userpackage', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('userpackage', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -812,8 +818,6 @@ class _UserPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpackage');
-
-        AclController::checkPermission('userpackage', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1281,7 +1285,7 @@ class _UserPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpackage');
 
-        AclController::checkPermission('userpackage', 'edit');
+        AclController::checkPermission('userpackage', 'new');
 
 		$this->_edit(0, null, 'quick-create.userpackage.tpl', false);
     }
@@ -1291,7 +1295,7 @@ class _UserPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpackage');
 
-        AclController::checkPermission('userpackage', 'edit');
+        AclController::checkPermission('userpackage', 'new');
 
 		$this->_edit(0, null, 'pre-create.userpackage.tpl', false);
     }
@@ -1301,7 +1305,7 @@ class _UserPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpackage');
 
-        AclController::checkPermission('userpackage', 'edit');
+        AclController::checkPermission('userpackage', 'new');
 
 		$this->_edit(0, null, 'row-edit.userpackage.tpl', false);
     }
@@ -1359,8 +1363,6 @@ class _UserPackageController extends __AppController
 
         LicenseController::enforceLicenseCheck('userpackage');
 
-        AclController::checkPermission('userpackage', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1378,8 +1380,6 @@ class _UserPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpackage');
-
-        AclController::checkPermission('userpackage', 'edit');
 
         $this->checkform($errors);
 
@@ -1414,8 +1414,6 @@ class _UserPackageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userpackage');
-
-        AclController::checkPermission('userpackage', 'edit');
 
         $this->checkform($errors);
 
@@ -1745,10 +1743,12 @@ class _UserPackageController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('userpackage', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_PACKAGE.UDID = 0 OR ".TABLE_PREFIX."USER_PACKAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_PACKAGE.UDID = 0 OR ".TABLE_PREFIX."USER_PACKAGE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_PACKAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('userpackage', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('userpackage', $model);
+        }
 
 		$model->find();
 

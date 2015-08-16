@@ -501,7 +501,7 @@ class _PageGalleryController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagegallery');
 
-        AclController::checkPermission('pagegallery', 'edit');
+        AclController::checkPermission('pagegallery', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/pagegallery/new/');
 
@@ -810,6 +810,12 @@ class _PageGalleryController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('pagegallery', 'edit');
+            } else {
+                AclController::checkPermission('pagegallery', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('pagegallery', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -890,8 +896,6 @@ class _PageGalleryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagegallery');
-
-        AclController::checkPermission('pagegallery', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1359,7 +1363,7 @@ class _PageGalleryController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagegallery');
 
-        AclController::checkPermission('pagegallery', 'edit');
+        AclController::checkPermission('pagegallery', 'new');
 
 		$this->_edit(0, null, 'quick-create.pagegallery.tpl', false);
     }
@@ -1369,7 +1373,7 @@ class _PageGalleryController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagegallery');
 
-        AclController::checkPermission('pagegallery', 'edit');
+        AclController::checkPermission('pagegallery', 'new');
 
 		$this->_edit(0, null, 'pre-create.pagegallery.tpl', false);
     }
@@ -1379,7 +1383,7 @@ class _PageGalleryController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagegallery');
 
-        AclController::checkPermission('pagegallery', 'edit');
+        AclController::checkPermission('pagegallery', 'new');
 
 		$this->_edit(0, null, 'row-edit.pagegallery.tpl', false);
     }
@@ -1437,8 +1441,6 @@ class _PageGalleryController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagegallery');
 
-        AclController::checkPermission('pagegallery', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1456,8 +1458,6 @@ class _PageGalleryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagegallery');
-
-        AclController::checkPermission('pagegallery', 'edit');
 
         $this->checkform($errors);
 
@@ -1492,8 +1492,6 @@ class _PageGalleryController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagegallery');
-
-        AclController::checkPermission('pagegallery', 'edit');
 
         $this->checkform($errors);
 
@@ -1823,10 +1821,12 @@ class _PageGalleryController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('pagegallery', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAGE_GALLERY.UDID = 0 OR ".TABLE_PREFIX."PAGE_GALLERY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAGE_GALLERY.UDID = 0 OR ".TABLE_PREFIX."PAGE_GALLERY.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAGE_GALLERY.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('pagegallery', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('pagegallery', $model);
+        }
 
 		$model->find();
 

@@ -432,7 +432,7 @@ class _TemplateController extends __AppController
 
         LicenseController::enforceLicenseCheck('template');
 
-        AclController::checkPermission('template', 'edit');
+        AclController::checkPermission('template', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/template/new/');
 
@@ -735,6 +735,12 @@ class _TemplateController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('template', 'edit');
+            } else {
+                AclController::checkPermission('template', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('template', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -812,8 +818,6 @@ class _TemplateController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('template');
-
-        AclController::checkPermission('template', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1281,7 +1285,7 @@ class _TemplateController extends __AppController
 
         LicenseController::enforceLicenseCheck('template');
 
-        AclController::checkPermission('template', 'edit');
+        AclController::checkPermission('template', 'new');
 
 		$this->_edit(0, null, 'quick-create.template.tpl', false);
     }
@@ -1291,7 +1295,7 @@ class _TemplateController extends __AppController
 
         LicenseController::enforceLicenseCheck('template');
 
-        AclController::checkPermission('template', 'edit');
+        AclController::checkPermission('template', 'new');
 
 		$this->_edit(0, null, 'pre-create.template.tpl', false);
     }
@@ -1301,7 +1305,7 @@ class _TemplateController extends __AppController
 
         LicenseController::enforceLicenseCheck('template');
 
-        AclController::checkPermission('template', 'edit');
+        AclController::checkPermission('template', 'new');
 
 		$this->_edit(0, null, 'row-edit.template.tpl', false);
     }
@@ -1359,8 +1363,6 @@ class _TemplateController extends __AppController
 
         LicenseController::enforceLicenseCheck('template');
 
-        AclController::checkPermission('template', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1378,8 +1380,6 @@ class _TemplateController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('template');
-
-        AclController::checkPermission('template', 'edit');
 
         $this->checkform($errors);
 
@@ -1414,8 +1414,6 @@ class _TemplateController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('template');
-
-        AclController::checkPermission('template', 'edit');
 
         $this->checkform($errors);
 
@@ -1739,10 +1737,12 @@ class _TemplateController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('template', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."TEMPLATE.UDID = 0 OR ".TABLE_PREFIX."TEMPLATE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."TEMPLATE.UDID = 0 OR ".TABLE_PREFIX."TEMPLATE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."TEMPLATE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('template', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('template', $model);
+        }
 
 		$model->find();
 

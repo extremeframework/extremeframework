@@ -403,7 +403,7 @@ class _RecycleBinController extends __AppController
 
         LicenseController::enforceLicenseCheck('recyclebin');
 
-        AclController::checkPermission('recyclebin', 'edit');
+        AclController::checkPermission('recyclebin', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/recyclebin/new/');
 
@@ -725,6 +725,12 @@ class _RecycleBinController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('recyclebin', 'edit');
+            } else {
+                AclController::checkPermission('recyclebin', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('recyclebin', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -805,8 +811,6 @@ class _RecycleBinController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('recyclebin');
-
-        AclController::checkPermission('recyclebin', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -944,7 +948,7 @@ class _RecycleBinController extends __AppController
 
         LicenseController::enforceLicenseCheck('recyclebin');
 
-        AclController::checkPermission('recyclebin', 'edit');
+        AclController::checkPermission('recyclebin', 'new');
 
 		$this->_edit(0, null, 'quick-create.recyclebin.tpl', false);
     }
@@ -954,7 +958,7 @@ class _RecycleBinController extends __AppController
 
         LicenseController::enforceLicenseCheck('recyclebin');
 
-        AclController::checkPermission('recyclebin', 'edit');
+        AclController::checkPermission('recyclebin', 'new');
 
 		$this->_edit(0, null, 'pre-create.recyclebin.tpl', false);
     }
@@ -964,7 +968,7 @@ class _RecycleBinController extends __AppController
 
         LicenseController::enforceLicenseCheck('recyclebin');
 
-        AclController::checkPermission('recyclebin', 'edit');
+        AclController::checkPermission('recyclebin', 'new');
 
 		$this->_edit(0, null, 'row-edit.recyclebin.tpl', false);
     }
@@ -1022,8 +1026,6 @@ class _RecycleBinController extends __AppController
 
         LicenseController::enforceLicenseCheck('recyclebin');
 
-        AclController::checkPermission('recyclebin', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1041,8 +1043,6 @@ class _RecycleBinController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('recyclebin');
-
-        AclController::checkPermission('recyclebin', 'edit');
 
         $this->checkform($errors);
 
@@ -1077,8 +1077,6 @@ class _RecycleBinController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('recyclebin');
-
-        AclController::checkPermission('recyclebin', 'edit');
 
         $this->checkform($errors);
 
@@ -1403,10 +1401,12 @@ class _RecycleBinController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('recyclebin', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."RECYCLE_BIN.UDID = 0 OR ".TABLE_PREFIX."RECYCLE_BIN.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."RECYCLE_BIN.UDID = 0 OR ".TABLE_PREFIX."RECYCLE_BIN.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."RECYCLE_BIN.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('recyclebin', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('recyclebin', $model);
+        }
 
 		$model->find();
 

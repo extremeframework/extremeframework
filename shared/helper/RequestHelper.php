@@ -22,4 +22,27 @@ class RequestHelper {
 
         return $default;
 	}
+
+    static function filter($prefix, $columns = null) {
+        $params = array();
+
+		$raw = $_REQUEST;
+		foreach ($_FILES as $key => $value) {
+		    $raw[$key] = $value['name'];
+		}
+
+		foreach ($raw as $name => $value) {
+            if (preg_match('/^'.$prefix.'(.*)/', $name, $matches)) {
+                $key = $matches[1];
+
+    		    if (!empty($columns) && !in_array($key, $columns)) {
+                    continue;
+    		    }
+
+    		    $params[$key] = $value;
+            }
+		}
+
+        return $params;
+    }
 }

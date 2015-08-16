@@ -434,7 +434,7 @@ class _AdminLanguageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguage');
 
-        AclController::checkPermission('adminlanguage', 'edit');
+        AclController::checkPermission('adminlanguage', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminlanguage/new/');
 
@@ -831,6 +831,12 @@ class _AdminLanguageController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminlanguage', 'edit');
+            } else {
+                AclController::checkPermission('adminlanguage', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminlanguage', $model);
             
             
@@ -897,8 +903,6 @@ class _AdminLanguageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguage');
-
-        AclController::checkPermission('adminlanguage', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1035,7 +1039,7 @@ class _AdminLanguageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguage');
 
-        AclController::checkPermission('adminlanguage', 'edit');
+        AclController::checkPermission('adminlanguage', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminlanguage.tpl', false);
     }
@@ -1045,7 +1049,7 @@ class _AdminLanguageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguage');
 
-        AclController::checkPermission('adminlanguage', 'edit');
+        AclController::checkPermission('adminlanguage', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminlanguage.tpl', false);
     }
@@ -1055,7 +1059,7 @@ class _AdminLanguageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguage');
 
-        AclController::checkPermission('adminlanguage', 'edit');
+        AclController::checkPermission('adminlanguage', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminlanguage.tpl', false);
     }
@@ -1113,8 +1117,6 @@ class _AdminLanguageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguage');
 
-        AclController::checkPermission('adminlanguage', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1132,8 +1134,6 @@ class _AdminLanguageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguage');
-
-        AclController::checkPermission('adminlanguage', 'edit');
 
         $this->checkform($errors);
 
@@ -1168,8 +1168,6 @@ class _AdminLanguageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguage');
-
-        AclController::checkPermission('adminlanguage', 'edit');
 
         $this->checkform($errors);
 
@@ -1493,10 +1491,12 @@ class _AdminLanguageController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminlanguage', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_LANGUAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LANGUAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_LANGUAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LANGUAGE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_LANGUAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminlanguage', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminlanguage', $model);
+        }
 
 		$model->find();
 

@@ -403,7 +403,7 @@ class _PostRelationController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelation');
 
-        AclController::checkPermission('postrelation', 'edit');
+        AclController::checkPermission('postrelation', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/postrelation/new/');
 
@@ -706,6 +706,12 @@ class _PostRelationController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('postrelation', 'edit');
+            } else {
+                AclController::checkPermission('postrelation', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('postrelation', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -789,8 +795,6 @@ class _PostRelationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelation');
-
-        AclController::checkPermission('postrelation', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1258,7 +1262,7 @@ class _PostRelationController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelation');
 
-        AclController::checkPermission('postrelation', 'edit');
+        AclController::checkPermission('postrelation', 'new');
 
 		$this->_edit(0, null, 'quick-create.postrelation.tpl', false);
     }
@@ -1268,7 +1272,7 @@ class _PostRelationController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelation');
 
-        AclController::checkPermission('postrelation', 'edit');
+        AclController::checkPermission('postrelation', 'new');
 
 		$this->_edit(0, null, 'pre-create.postrelation.tpl', false);
     }
@@ -1278,7 +1282,7 @@ class _PostRelationController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelation');
 
-        AclController::checkPermission('postrelation', 'edit');
+        AclController::checkPermission('postrelation', 'new');
 
 		$this->_edit(0, null, 'row-edit.postrelation.tpl', false);
     }
@@ -1336,8 +1340,6 @@ class _PostRelationController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelation');
 
-        AclController::checkPermission('postrelation', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1355,8 +1357,6 @@ class _PostRelationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelation');
-
-        AclController::checkPermission('postrelation', 'edit');
 
         $this->checkform($errors);
 
@@ -1391,8 +1391,6 @@ class _PostRelationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelation');
-
-        AclController::checkPermission('postrelation', 'edit');
 
         $this->checkform($errors);
 
@@ -1722,10 +1720,12 @@ class _PostRelationController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('postrelation', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST_RELATION.UDID = 0 OR ".TABLE_PREFIX."POST_RELATION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST_RELATION.UDID = 0 OR ".TABLE_PREFIX."POST_RELATION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST_RELATION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('postrelation', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('postrelation', $model);
+        }
 
 		$model->find();
 

@@ -434,7 +434,7 @@ class _WidgetTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgettype');
 
-        AclController::checkPermission('widgettype', 'edit');
+        AclController::checkPermission('widgettype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/widgettype/new/');
 
@@ -737,6 +737,12 @@ class _WidgetTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('widgettype', 'edit');
+            } else {
+                AclController::checkPermission('widgettype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('widgettype', $model);
             
             
@@ -803,8 +809,6 @@ class _WidgetTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgettype');
-
-        AclController::checkPermission('widgettype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1272,7 +1276,7 @@ class _WidgetTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgettype');
 
-        AclController::checkPermission('widgettype', 'edit');
+        AclController::checkPermission('widgettype', 'new');
 
 		$this->_edit(0, null, 'quick-create.widgettype.tpl', false);
     }
@@ -1282,7 +1286,7 @@ class _WidgetTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgettype');
 
-        AclController::checkPermission('widgettype', 'edit');
+        AclController::checkPermission('widgettype', 'new');
 
 		$this->_edit(0, null, 'pre-create.widgettype.tpl', false);
     }
@@ -1292,7 +1296,7 @@ class _WidgetTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgettype');
 
-        AclController::checkPermission('widgettype', 'edit');
+        AclController::checkPermission('widgettype', 'new');
 
 		$this->_edit(0, null, 'row-edit.widgettype.tpl', false);
     }
@@ -1350,8 +1354,6 @@ class _WidgetTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('widgettype');
 
-        AclController::checkPermission('widgettype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1369,8 +1371,6 @@ class _WidgetTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgettype');
-
-        AclController::checkPermission('widgettype', 'edit');
 
         $this->checkform($errors);
 
@@ -1405,8 +1405,6 @@ class _WidgetTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('widgettype');
-
-        AclController::checkPermission('widgettype', 'edit');
 
         $this->checkform($errors);
 
@@ -1730,10 +1728,12 @@ class _WidgetTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('widgettype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WIDGET_TYPE.UDID = 0 OR ".TABLE_PREFIX."WIDGET_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WIDGET_TYPE.UDID = 0 OR ".TABLE_PREFIX."WIDGET_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WIDGET_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('widgettype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('widgettype', $model);
+        }
 
 		$model->find();
 

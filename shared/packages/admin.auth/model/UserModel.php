@@ -11,7 +11,7 @@ class UserModel extends DataObject_USER {
 
 	function find($n = null) {
 	    if (isset($_SESSION['user']) && $_SESSION['user']->ID != 1) {
-	        $this->whereAdd(TABLE_PREFIX.$this->__table.".UDID = 0 OR ".TABLE_PREFIX.$this->__table.".UDID = '".$_SESSION['user']->UDID."'");
+	        $this->whereAdd(TABLE_PREFIX.$this->__table.".UDID = 0 OR ".TABLE_PREFIX.$this->__table.".UDID IN ('".implode("','", AclController::getUDIDs())."')");
         }
 
 		return parent::find($n);

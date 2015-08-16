@@ -446,7 +446,7 @@ class _PaymentTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('paymenttype');
 
-        AclController::checkPermission('paymenttype', 'edit');
+        AclController::checkPermission('paymenttype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/paymenttype/new/');
 
@@ -755,6 +755,12 @@ class _PaymentTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('paymenttype', 'edit');
+            } else {
+                AclController::checkPermission('paymenttype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('paymenttype', $model);
             
             
@@ -821,8 +827,6 @@ class _PaymentTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('paymenttype');
-
-        AclController::checkPermission('paymenttype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1290,7 +1294,7 @@ class _PaymentTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('paymenttype');
 
-        AclController::checkPermission('paymenttype', 'edit');
+        AclController::checkPermission('paymenttype', 'new');
 
 		$this->_edit(0, null, 'quick-create.paymenttype.tpl', false);
     }
@@ -1300,7 +1304,7 @@ class _PaymentTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('paymenttype');
 
-        AclController::checkPermission('paymenttype', 'edit');
+        AclController::checkPermission('paymenttype', 'new');
 
 		$this->_edit(0, null, 'pre-create.paymenttype.tpl', false);
     }
@@ -1310,7 +1314,7 @@ class _PaymentTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('paymenttype');
 
-        AclController::checkPermission('paymenttype', 'edit');
+        AclController::checkPermission('paymenttype', 'new');
 
 		$this->_edit(0, null, 'row-edit.paymenttype.tpl', false);
     }
@@ -1368,8 +1372,6 @@ class _PaymentTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('paymenttype');
 
-        AclController::checkPermission('paymenttype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1387,8 +1389,6 @@ class _PaymentTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('paymenttype');
-
-        AclController::checkPermission('paymenttype', 'edit');
 
         $this->checkform($errors);
 
@@ -1423,8 +1423,6 @@ class _PaymentTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('paymenttype');
-
-        AclController::checkPermission('paymenttype', 'edit');
 
         $this->checkform($errors);
 
@@ -1748,10 +1746,12 @@ class _PaymentTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('paymenttype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAYMENT_TYPE.UDID = 0 OR ".TABLE_PREFIX."PAYMENT_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAYMENT_TYPE.UDID = 0 OR ".TABLE_PREFIX."PAYMENT_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAYMENT_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('paymenttype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('paymenttype', $model);
+        }
 
 		$model->find();
 

@@ -6,7 +6,7 @@
 		<input type="checkbox" id="chk-accessright-<{$row->UUID}>" class="accessrightlistchk" name="accessrightlist_selection[]" value="<{$row->UUID}>" />
 		<input type="hidden" class="column-id" name="<{$prefix}>accessright_multiformdata_UUID[<{$rowsignature}>]" value="<{$row->UUID}>" />
 	</td>
-	<td class="indicators"></td>
+	<td class="indicators"><i class="fa fa-caret-right row-expander list-row-expander"></i></td>
             <{if (in_array('ID_USER_GROUP', $filtercolumns)) }>
             <{if !isset($excludedcolumns['ID_USER_GROUP']) && ((isset($aclviewablecolumns['ID_USER_GROUP']) && $aclviewablecolumns['ID_USER_GROUP']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_GROUP']) || $aclviewablecolumns['ID_USER_GROUP']))) }>
                 <td class="column column-id-user-group reftext " >
@@ -17,6 +17,21 @@
             <{$row->reftext_ID_USER_GROUP|escape}>        <{/if}>
     <{else}>
     	<{if $row->ID_USER_GROUP}><{$row->ID_USER_GROUP|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
+	        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
+                <td class="column column-id-user-role reftext " >
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/accessright/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_USER_ROLE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.userrole.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$row->refuuid_ID_USER_ROLE}>"><{$row->reftext_ID_USER_ROLE|escape}></a>
+        <{else}>
+            <{$row->reftext_ID_USER_ROLE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->ID_USER_ROLE}><{$row->ID_USER_ROLE|escape}><{/if}>
     <{/if}>
 <{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>

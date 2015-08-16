@@ -41,6 +41,21 @@ class _AccessRightController extends __AppController
                return false;
            }
        }
+       if (in_array('ID_USER_ROLE', $columns2check) || in_array('MODULE', $columns2check)) {
+           $_model = new AccessRightModel();
+           $_model->ID_USER_ROLE = $model->ID_USER_ROLE;
+           $_model->MODULE = $model->MODULE;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['id-user-role+module'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_USER_ROLE.', '.L_MODULE.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('accessright', $model, $errors)) {
@@ -418,7 +433,7 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
+        AclController::checkPermission('accessright', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/accessright/new/');
 
@@ -553,7 +568,7 @@ class _AccessRightController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('accessright');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'ID_USER_GROUP', 'MODULE', 'ACTIONS');
+        $columns2edit = array('UUID', 'ID_USER_GROUP', 'ID_USER_ROLE', 'MODULE', 'ACTIONS');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new AccessRightModel();
@@ -602,7 +617,7 @@ class _AccessRightController extends __AppController
     }
 
     protected function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'ID_USER_GROUP', 'MODULE', 'ACTIONS');
+        $columns2edit = array('UUID', 'ID_USER_GROUP', 'ID_USER_ROLE', 'MODULE', 'ACTIONS');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('accessright'));
 
         $rows = array();
@@ -721,6 +736,12 @@ class _AccessRightController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('accessright', 'edit');
+            } else {
+                AclController::checkPermission('accessright', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('accessright', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -782,6 +803,9 @@ class _AccessRightController extends __AppController
             if ($refclass == 'UserGroupModel' && empty($model->ID_USER_GROUP)) {
                 $model->ID_USER_GROUP = $refobject->ID;
             }
+            if ($refclass == 'UserRoleModel' && empty($model->ID_USER_ROLE)) {
+                $model->ID_USER_ROLE = $refobject->ID;
+            }
             if ($refclass == 'AdminModuleModel' && empty($model->MODULE)) {
                 $model->MODULE = $refobject->MODULE;
             }
@@ -801,8 +825,6 @@ class _AccessRightController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('accessright');
-
-        AclController::checkPermission('accessright', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -940,7 +962,7 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
+        AclController::checkPermission('accessright', 'new');
 
 		$this->_edit(0, null, 'quick-create.accessright.tpl', false);
     }
@@ -950,7 +972,7 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
+        AclController::checkPermission('accessright', 'new');
 
 		$this->_edit(0, null, 'pre-create.accessright.tpl', false);
     }
@@ -960,7 +982,7 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
+        AclController::checkPermission('accessright', 'new');
 
 		$this->_edit(0, null, 'row-edit.accessright.tpl', false);
     }
@@ -1018,8 +1040,6 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1037,8 +1057,6 @@ class _AccessRightController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('accessright');
-
-        AclController::checkPermission('accessright', 'edit');
 
         $this->checkform($errors);
 
@@ -1074,8 +1092,6 @@ class _AccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('accessright');
 
-        AclController::checkPermission('accessright', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1088,7 +1104,7 @@ class _AccessRightController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('ID_USER_GROUP', 'MODULE', 'ACTIONS');
+            return array('ID_USER_GROUP', 'ID_USER_ROLE', 'MODULE', 'ACTIONS');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1289,7 +1305,7 @@ class _AccessRightController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('accessright');
 
-        $roweditablecolumns = array('ID_USER_GROUP', 'MODULE', 'ACTIONS');
+        $roweditablecolumns = array('ID_USER_GROUP', 'ID_USER_ROLE', 'MODULE', 'ACTIONS');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
@@ -1381,7 +1397,7 @@ class _AccessRightController extends __AppController
 	}
 
     protected function getLayoutColumns() {
-        return array('ID_USER_GROUP', 'MODULE', 'ACTIONS');
+        return array('ID_USER_GROUP', 'ID_USER_ROLE', 'MODULE', 'ACTIONS');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1401,10 +1417,12 @@ class _AccessRightController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('accessright', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ACCESS_RIGHT.UDID = 0 OR ".TABLE_PREFIX."ACCESS_RIGHT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ACCESS_RIGHT.UDID = 0 OR ".TABLE_PREFIX."ACCESS_RIGHT.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ACCESS_RIGHT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('accessright', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('accessright', $model);
+        }
 
 		$model->find();
 
@@ -1512,6 +1530,15 @@ class _AccessRightController extends __AppController
 
                         break;
 
+                    case 'ID_USER_ROLE':
+                        if ($value == '__NULL__') {
+                            $model->whereAdd(TABLE_PREFIX."ACCESS_RIGHT.ID_USER_ROLE IS NULL");
+                        } else {
+                            $model->whereAdd(TABLE_PREFIX."ACCESS_RIGHT.ID_USER_ROLE = '$value'");
+                        }
+
+                        break;
+
                     case 'MODULE':
                         $model->whereAdd(TABLE_PREFIX."ACCESS_RIGHT.MODULE LIKE '%".$model->escape(StringHelper::htmlspecialchars($value))."%'");
 
@@ -1538,12 +1565,16 @@ class _AccessRightController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_ROLE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
     
         if ($join) {
             if (Framework::hasModule('UserGroup')) {
                 $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
                 $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
             }
             if (Framework::hasModule('AdminModule')) {
                 $model->selectAdd('reftable_MODULE.NAME as reftext_MODULE');
@@ -1555,6 +1586,9 @@ class _AccessRightController extends __AppController
             if (Framework::hasModule('UserGroup')) {
                 $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
             }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
+            }
             if (Framework::hasModule('AdminModule')) {
                 $model->joinAdd(array('MODULE',TABLE_PREFIX.'ADMIN_MODULE:MODULE'), 'LEFT', 'reftable_MODULE');
             }
@@ -1563,18 +1597,25 @@ class _AccessRightController extends __AppController
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_GROUP, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID_USER_ROLE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.MODULE, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ACTIONS, `'.TABLE_PREFIX.'ACCESS_RIGHT`.ID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.JSON, `'.TABLE_PREFIX.'ACCESS_RIGHT`.UUID, `'.TABLE_PREFIX.'ACCESS_RIGHT`.WFID');
     
         if ($join) {
             if (Framework::hasModule('UserGroup')) {
                 $model->selectAdd('reftable_ID_USER_GROUP.NAME as reftext_ID_USER_GROUP');
                 $model->selectAdd('reftable_ID_USER_GROUP.UUID as refuuid_ID_USER_GROUP');
             }
+            if (Framework::hasModule('UserRole')) {
+                $model->selectAdd('reftable_ID_USER_ROLE.NAME as reftext_ID_USER_ROLE');
+                $model->selectAdd('reftable_ID_USER_ROLE.UUID as refuuid_ID_USER_ROLE');
+            }
         }
     
         if ($join) {
             if (Framework::hasModule('UserGroup')) {
                 $model->joinAdd(array('ID_USER_GROUP',TABLE_PREFIX.'USER_GROUP:ID'), 'LEFT', 'reftable_ID_USER_GROUP');
+            }
+            if (Framework::hasModule('UserRole')) {
+                $model->joinAdd(array('ID_USER_ROLE',TABLE_PREFIX.'USER_ROLE:ID'), 'LEFT', 'reftable_ID_USER_ROLE');
             }
         }
     }

@@ -407,7 +407,7 @@ class _AdminPageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpage');
 
-        AclController::checkPermission('adminpage', 'edit');
+        AclController::checkPermission('adminpage', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpage/new/');
 
@@ -714,6 +714,12 @@ class _AdminPageController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpage', 'edit');
+            } else {
+                AclController::checkPermission('adminpage', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpage', $model);
             
             
@@ -780,8 +786,6 @@ class _AdminPageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpage');
-
-        AclController::checkPermission('adminpage', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1249,7 +1253,7 @@ class _AdminPageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpage');
 
-        AclController::checkPermission('adminpage', 'edit');
+        AclController::checkPermission('adminpage', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpage.tpl', false);
     }
@@ -1259,7 +1263,7 @@ class _AdminPageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpage');
 
-        AclController::checkPermission('adminpage', 'edit');
+        AclController::checkPermission('adminpage', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpage.tpl', false);
     }
@@ -1269,7 +1273,7 @@ class _AdminPageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpage');
 
-        AclController::checkPermission('adminpage', 'edit');
+        AclController::checkPermission('adminpage', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpage.tpl', false);
     }
@@ -1327,8 +1331,6 @@ class _AdminPageController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpage');
 
-        AclController::checkPermission('adminpage', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1346,8 +1348,6 @@ class _AdminPageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpage');
-
-        AclController::checkPermission('adminpage', 'edit');
 
         $this->checkform($errors);
 
@@ -1382,8 +1382,6 @@ class _AdminPageController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpage');
-
-        AclController::checkPermission('adminpage', 'edit');
 
         $this->checkform($errors);
 
@@ -1707,10 +1705,12 @@ class _AdminPageController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpage', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PAGE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PAGE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PAGE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpage', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpage', $model);
+        }
 
 		$model->find();
 

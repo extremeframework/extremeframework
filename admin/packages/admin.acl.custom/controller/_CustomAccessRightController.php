@@ -399,7 +399,7 @@ class _CustomAccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('customaccessright');
 
-        AclController::checkPermission('customaccessright', 'edit');
+        AclController::checkPermission('customaccessright', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/customaccessright/new/');
 
@@ -740,6 +740,12 @@ class _CustomAccessRightController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('customaccessright', 'edit');
+            } else {
+                AclController::checkPermission('customaccessright', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('customaccessright', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -820,8 +826,6 @@ class _CustomAccessRightController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('customaccessright');
-
-        AclController::checkPermission('customaccessright', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1289,7 +1293,7 @@ class _CustomAccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('customaccessright');
 
-        AclController::checkPermission('customaccessright', 'edit');
+        AclController::checkPermission('customaccessright', 'new');
 
 		$this->_edit(0, null, 'quick-create.customaccessright.tpl', false);
     }
@@ -1299,7 +1303,7 @@ class _CustomAccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('customaccessright');
 
-        AclController::checkPermission('customaccessright', 'edit');
+        AclController::checkPermission('customaccessright', 'new');
 
 		$this->_edit(0, null, 'pre-create.customaccessright.tpl', false);
     }
@@ -1309,7 +1313,7 @@ class _CustomAccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('customaccessright');
 
-        AclController::checkPermission('customaccessright', 'edit');
+        AclController::checkPermission('customaccessright', 'new');
 
 		$this->_edit(0, null, 'row-edit.customaccessright.tpl', false);
     }
@@ -1367,8 +1371,6 @@ class _CustomAccessRightController extends __AppController
 
         LicenseController::enforceLicenseCheck('customaccessright');
 
-        AclController::checkPermission('customaccessright', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1386,8 +1388,6 @@ class _CustomAccessRightController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('customaccessright');
-
-        AclController::checkPermission('customaccessright', 'edit');
 
         $this->checkform($errors);
 
@@ -1422,8 +1422,6 @@ class _CustomAccessRightController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('customaccessright');
-
-        AclController::checkPermission('customaccessright', 'edit');
 
         $this->checkform($errors);
 
@@ -1747,10 +1745,12 @@ class _CustomAccessRightController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('customaccessright', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."CUSTOM_ACCESS_RIGHT.UDID = 0 OR ".TABLE_PREFIX."CUSTOM_ACCESS_RIGHT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."CUSTOM_ACCESS_RIGHT.UDID = 0 OR ".TABLE_PREFIX."CUSTOM_ACCESS_RIGHT.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."CUSTOM_ACCESS_RIGHT.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('customaccessright', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('customaccessright', $model);
+        }
 
 		$model->find();
 

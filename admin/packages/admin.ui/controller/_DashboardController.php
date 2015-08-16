@@ -420,7 +420,7 @@ class _DashboardController extends __AppController
 
         LicenseController::enforceLicenseCheck('dashboard');
 
-        AclController::checkPermission('dashboard', 'edit');
+        AclController::checkPermission('dashboard', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/dashboard/new/');
 
@@ -723,6 +723,12 @@ class _DashboardController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('dashboard', 'edit');
+            } else {
+                AclController::checkPermission('dashboard', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('dashboard', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -800,8 +806,6 @@ class _DashboardController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('dashboard');
-
-        AclController::checkPermission('dashboard', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -939,7 +943,7 @@ class _DashboardController extends __AppController
 
         LicenseController::enforceLicenseCheck('dashboard');
 
-        AclController::checkPermission('dashboard', 'edit');
+        AclController::checkPermission('dashboard', 'new');
 
 		$this->_edit(0, null, 'quick-create.dashboard.tpl', false);
     }
@@ -949,7 +953,7 @@ class _DashboardController extends __AppController
 
         LicenseController::enforceLicenseCheck('dashboard');
 
-        AclController::checkPermission('dashboard', 'edit');
+        AclController::checkPermission('dashboard', 'new');
 
 		$this->_edit(0, null, 'pre-create.dashboard.tpl', false);
     }
@@ -959,7 +963,7 @@ class _DashboardController extends __AppController
 
         LicenseController::enforceLicenseCheck('dashboard');
 
-        AclController::checkPermission('dashboard', 'edit');
+        AclController::checkPermission('dashboard', 'new');
 
 		$this->_edit(0, null, 'row-edit.dashboard.tpl', false);
     }
@@ -1017,8 +1021,6 @@ class _DashboardController extends __AppController
 
         LicenseController::enforceLicenseCheck('dashboard');
 
-        AclController::checkPermission('dashboard', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1036,8 +1038,6 @@ class _DashboardController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('dashboard');
-
-        AclController::checkPermission('dashboard', 'edit');
 
         $this->checkform($errors);
 
@@ -1072,8 +1072,6 @@ class _DashboardController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('dashboard');
-
-        AclController::checkPermission('dashboard', 'edit');
 
         $this->checkform($errors);
 
@@ -1401,10 +1399,12 @@ class _DashboardController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('dashboard', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."DASHBOARD.UDID = 0 OR ".TABLE_PREFIX."DASHBOARD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."DASHBOARD.UDID = 0 OR ".TABLE_PREFIX."DASHBOARD.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."DASHBOARD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('dashboard', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('dashboard', $model);
+        }
 
 		$model->find();
 

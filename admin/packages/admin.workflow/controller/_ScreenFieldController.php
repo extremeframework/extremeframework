@@ -437,7 +437,7 @@ class _ScreenFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('screenfield');
 
-        AclController::checkPermission('screenfield', 'edit');
+        AclController::checkPermission('screenfield', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/screenfield/new/');
 
@@ -742,6 +742,12 @@ class _ScreenFieldController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('screenfield', 'edit');
+            } else {
+                AclController::checkPermission('screenfield', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('screenfield', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -822,8 +828,6 @@ class _ScreenFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('screenfield');
-
-        AclController::checkPermission('screenfield', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -961,7 +965,7 @@ class _ScreenFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('screenfield');
 
-        AclController::checkPermission('screenfield', 'edit');
+        AclController::checkPermission('screenfield', 'new');
 
 		$this->_edit(0, null, 'quick-create.screenfield.tpl', false);
     }
@@ -971,7 +975,7 @@ class _ScreenFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('screenfield');
 
-        AclController::checkPermission('screenfield', 'edit');
+        AclController::checkPermission('screenfield', 'new');
 
 		$this->_edit(0, null, 'pre-create.screenfield.tpl', false);
     }
@@ -981,7 +985,7 @@ class _ScreenFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('screenfield');
 
-        AclController::checkPermission('screenfield', 'edit');
+        AclController::checkPermission('screenfield', 'new');
 
 		$this->_edit(0, null, 'row-edit.screenfield.tpl', false);
     }
@@ -1039,8 +1043,6 @@ class _ScreenFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('screenfield');
 
-        AclController::checkPermission('screenfield', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1058,8 +1060,6 @@ class _ScreenFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('screenfield');
-
-        AclController::checkPermission('screenfield', 'edit');
 
         $this->checkform($errors);
 
@@ -1094,8 +1094,6 @@ class _ScreenFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('screenfield');
-
-        AclController::checkPermission('screenfield', 'edit');
 
         $this->checkform($errors);
 
@@ -1425,10 +1423,12 @@ class _ScreenFieldController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('screenfield', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."SCREEN_FIELD.UDID = 0 OR ".TABLE_PREFIX."SCREEN_FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."SCREEN_FIELD.UDID = 0 OR ".TABLE_PREFIX."SCREEN_FIELD.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."SCREEN_FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('screenfield', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('screenfield', $model);
+        }
 
 		$model->find();
 

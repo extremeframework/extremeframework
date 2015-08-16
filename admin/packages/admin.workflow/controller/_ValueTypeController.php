@@ -434,7 +434,7 @@ class _ValueTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('valuetype');
 
-        AclController::checkPermission('valuetype', 'edit');
+        AclController::checkPermission('valuetype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/valuetype/new/');
 
@@ -737,6 +737,12 @@ class _ValueTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('valuetype', 'edit');
+            } else {
+                AclController::checkPermission('valuetype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('valuetype', $model);
             
             
@@ -803,8 +809,6 @@ class _ValueTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('valuetype');
-
-        AclController::checkPermission('valuetype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -942,7 +946,7 @@ class _ValueTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('valuetype');
 
-        AclController::checkPermission('valuetype', 'edit');
+        AclController::checkPermission('valuetype', 'new');
 
 		$this->_edit(0, null, 'quick-create.valuetype.tpl', false);
     }
@@ -952,7 +956,7 @@ class _ValueTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('valuetype');
 
-        AclController::checkPermission('valuetype', 'edit');
+        AclController::checkPermission('valuetype', 'new');
 
 		$this->_edit(0, null, 'pre-create.valuetype.tpl', false);
     }
@@ -962,7 +966,7 @@ class _ValueTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('valuetype');
 
-        AclController::checkPermission('valuetype', 'edit');
+        AclController::checkPermission('valuetype', 'new');
 
 		$this->_edit(0, null, 'row-edit.valuetype.tpl', false);
     }
@@ -1020,8 +1024,6 @@ class _ValueTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('valuetype');
 
-        AclController::checkPermission('valuetype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1039,8 +1041,6 @@ class _ValueTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('valuetype');
-
-        AclController::checkPermission('valuetype', 'edit');
 
         $this->checkform($errors);
 
@@ -1075,8 +1075,6 @@ class _ValueTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('valuetype');
-
-        AclController::checkPermission('valuetype', 'edit');
 
         $this->checkform($errors);
 
@@ -1400,10 +1398,12 @@ class _ValueTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('valuetype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."VALUE_TYPE.UDID = 0 OR ".TABLE_PREFIX."VALUE_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."VALUE_TYPE.UDID = 0 OR ".TABLE_PREFIX."VALUE_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."VALUE_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('valuetype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('valuetype', $model);
+        }
 
 		$model->find();
 

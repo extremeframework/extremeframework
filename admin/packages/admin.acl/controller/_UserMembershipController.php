@@ -399,7 +399,7 @@ class _UserMembershipController extends __AppController
 
         LicenseController::enforceLicenseCheck('usermembership');
 
-        AclController::checkPermission('usermembership', 'edit');
+        AclController::checkPermission('usermembership', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/usermembership/new/');
 
@@ -740,6 +740,12 @@ class _UserMembershipController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('usermembership', 'edit');
+            } else {
+                AclController::checkPermission('usermembership', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('usermembership', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -823,8 +829,6 @@ class _UserMembershipController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usermembership');
-
-        AclController::checkPermission('usermembership', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -962,7 +966,7 @@ class _UserMembershipController extends __AppController
 
         LicenseController::enforceLicenseCheck('usermembership');
 
-        AclController::checkPermission('usermembership', 'edit');
+        AclController::checkPermission('usermembership', 'new');
 
 		$this->_edit(0, null, 'quick-create.usermembership.tpl', false);
     }
@@ -972,7 +976,7 @@ class _UserMembershipController extends __AppController
 
         LicenseController::enforceLicenseCheck('usermembership');
 
-        AclController::checkPermission('usermembership', 'edit');
+        AclController::checkPermission('usermembership', 'new');
 
 		$this->_edit(0, null, 'pre-create.usermembership.tpl', false);
     }
@@ -982,7 +986,7 @@ class _UserMembershipController extends __AppController
 
         LicenseController::enforceLicenseCheck('usermembership');
 
-        AclController::checkPermission('usermembership', 'edit');
+        AclController::checkPermission('usermembership', 'new');
 
 		$this->_edit(0, null, 'row-edit.usermembership.tpl', false);
     }
@@ -1040,8 +1044,6 @@ class _UserMembershipController extends __AppController
 
         LicenseController::enforceLicenseCheck('usermembership');
 
-        AclController::checkPermission('usermembership', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1059,8 +1061,6 @@ class _UserMembershipController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usermembership');
-
-        AclController::checkPermission('usermembership', 'edit');
 
         $this->checkform($errors);
 
@@ -1095,8 +1095,6 @@ class _UserMembershipController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usermembership');
-
-        AclController::checkPermission('usermembership', 'edit');
 
         $this->checkform($errors);
 
@@ -1432,10 +1430,12 @@ class _UserMembershipController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('usermembership', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_MEMBERSHIP.UDID = 0 OR ".TABLE_PREFIX."USER_MEMBERSHIP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_MEMBERSHIP.UDID = 0 OR ".TABLE_PREFIX."USER_MEMBERSHIP.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_MEMBERSHIP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('usermembership', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('usermembership', $model);
+        }
 
 		$model->find();
 

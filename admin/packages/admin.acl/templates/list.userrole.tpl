@@ -115,6 +115,12 @@
     <div id="userrolecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$copyguidelines}></p>
         <ul>
+                            <{if Framework::hasModule('AccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('Access Right')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserInvitation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userinvitation" /> <{_t('Copy also')}> <{_t('User Invitation')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
@@ -127,6 +133,12 @@
     <div id="userroleapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$approveguidelines}></p>
         <ul>
+                            <{if Framework::hasModule('AccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('Access Right')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserInvitation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userinvitation" /> <{_t('Approve also')}> <{_t('User Invitation')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>
@@ -139,6 +151,12 @@
     <div id="userroledeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Role', true)|strtolower}>">
         <p><{$deleteguidelines}></p>
         <ul>
+                            <{if Framework::hasModule('AccessRight')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('Access Right')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('UserInvitation')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userinvitation" /> <{_t('Delete also')}> <{_t('User Invitation')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('UserMembership')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
                 <{/if}>

@@ -89,6 +89,7 @@ class DashboardController extends _DashboardController
         $smarty->assign('dashboard', $dashboard);
         $smarty->assign('positions', $positions);
         $smarty->assign('widgets', $widgets);
+        $smarty->assign('messages', $this->getMessages());
 
         if ($this->caller == 'ajax') {
 		    $content = $smarty->fetch('dashboard.config.tpl');

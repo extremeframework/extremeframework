@@ -414,7 +414,7 @@ class _AdminLanguageItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
 
-        AclController::checkPermission('adminlanguageitem', 'edit');
+        AclController::checkPermission('adminlanguageitem', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminlanguageitem/new/');
 
@@ -721,6 +721,12 @@ class _AdminLanguageItemController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminlanguageitem', 'edit');
+            } else {
+                AclController::checkPermission('adminlanguageitem', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminlanguageitem', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -801,8 +807,6 @@ class _AdminLanguageItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
-
-        AclController::checkPermission('adminlanguageitem', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -958,7 +962,7 @@ class _AdminLanguageItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
 
-        AclController::checkPermission('adminlanguageitem', 'edit');
+        AclController::checkPermission('adminlanguageitem', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminlanguageitem.tpl', false);
     }
@@ -968,7 +972,7 @@ class _AdminLanguageItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
 
-        AclController::checkPermission('adminlanguageitem', 'edit');
+        AclController::checkPermission('adminlanguageitem', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminlanguageitem.tpl', false);
     }
@@ -978,7 +982,7 @@ class _AdminLanguageItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
 
-        AclController::checkPermission('adminlanguageitem', 'edit');
+        AclController::checkPermission('adminlanguageitem', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminlanguageitem.tpl', false);
     }
@@ -1036,8 +1040,6 @@ class _AdminLanguageItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
 
-        AclController::checkPermission('adminlanguageitem', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1055,8 +1057,6 @@ class _AdminLanguageItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
-
-        AclController::checkPermission('adminlanguageitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1091,8 +1091,6 @@ class _AdminLanguageItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlanguageitem');
-
-        AclController::checkPermission('adminlanguageitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1426,10 +1424,12 @@ class _AdminLanguageItemController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminlanguageitem', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_LANGUAGE_ITEM.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LANGUAGE_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_LANGUAGE_ITEM.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LANGUAGE_ITEM.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_LANGUAGE_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminlanguageitem', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminlanguageitem', $model);
+        }
 
 		$model->find();
 

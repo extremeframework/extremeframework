@@ -390,6 +390,14 @@ class _UserRoleController extends __AppController
             if (!empty($relations)) {
                 foreach ($relations as $module) {
                     switch ($module) {
+                        case 'accessright': 
+                            (new AccessRightController())->delete('ID_USER_ROLE', $_ids);
+                            break;
+
+                        case 'userinvitation': 
+                            (new UserInvitationController())->delete('ID_USER_ROLE', $_ids);
+                            break;
+
                         case 'usermembership': 
                             (new UserMembershipController())->delete('ID_USER_ROLE', $_ids);
                             break;
@@ -420,7 +428,7 @@ class _UserRoleController extends __AppController
 
         LicenseController::enforceLicenseCheck('userrole');
 
-        AclController::checkPermission('userrole', 'edit');
+        AclController::checkPermission('userrole', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/userrole/new/');
 
@@ -723,6 +731,12 @@ class _UserRoleController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('userrole', 'edit');
+            } else {
+                AclController::checkPermission('userrole', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('userrole', $model);
             
             
@@ -789,8 +803,6 @@ class _UserRoleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userrole');
-
-        AclController::checkPermission('userrole', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -928,7 +940,7 @@ class _UserRoleController extends __AppController
 
         LicenseController::enforceLicenseCheck('userrole');
 
-        AclController::checkPermission('userrole', 'edit');
+        AclController::checkPermission('userrole', 'new');
 
 		$this->_edit(0, null, 'quick-create.userrole.tpl', false);
     }
@@ -938,7 +950,7 @@ class _UserRoleController extends __AppController
 
         LicenseController::enforceLicenseCheck('userrole');
 
-        AclController::checkPermission('userrole', 'edit');
+        AclController::checkPermission('userrole', 'new');
 
 		$this->_edit(0, null, 'pre-create.userrole.tpl', false);
     }
@@ -948,7 +960,7 @@ class _UserRoleController extends __AppController
 
         LicenseController::enforceLicenseCheck('userrole');
 
-        AclController::checkPermission('userrole', 'edit');
+        AclController::checkPermission('userrole', 'new');
 
 		$this->_edit(0, null, 'row-edit.userrole.tpl', false);
     }
@@ -1006,8 +1018,6 @@ class _UserRoleController extends __AppController
 
         LicenseController::enforceLicenseCheck('userrole');
 
-        AclController::checkPermission('userrole', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1025,8 +1035,6 @@ class _UserRoleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userrole');
-
-        AclController::checkPermission('userrole', 'edit');
 
         $this->checkform($errors);
 
@@ -1061,8 +1069,6 @@ class _UserRoleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('userrole');
-
-        AclController::checkPermission('userrole', 'edit');
 
         $this->checkform($errors);
 
@@ -1386,10 +1392,12 @@ class _UserRoleController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('userrole', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_ROLE.UDID = 0 OR ".TABLE_PREFIX."USER_ROLE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_ROLE.UDID = 0 OR ".TABLE_PREFIX."USER_ROLE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_ROLE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('userrole', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('userrole', $model);
+        }
 
 		$model->find();
 

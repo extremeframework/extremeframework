@@ -66,4 +66,4 @@
     <{$page->CONTENT}>
 </div>
 
-<{include file="footer.tpl"}>
+<{include file="footer.tpl" show_footer_links=true}>

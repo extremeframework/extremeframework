@@ -45,6 +45,34 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('ID_USER_ROLE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ID_USER_ROLE']) && ((isset($aclviewablecolumns['ID_USER_ROLE']) && $aclviewablecolumns['ID_USER_ROLE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_USER_ROLE']) || $aclviewablecolumns['ID_USER_ROLE']))) }>
+                <td class="column column-id-user-role reftext" >
+                                            <{if (in_array('ID_USER_ROLE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataID_USER_ROLE}>
+
+                                                    
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-user-role" name="`$prefix`accessright_formdata_ID_USER_ROLE" value=$formdata.ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                    <{if isset($smarty.session.acl.userrole.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                                        </span>
+                                    <{/if}>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/accessright/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_USER_ROLE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.userrole.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/view/<{$row->refuuid_ID_USER_ROLE}>"><{$row->reftext_ID_USER_ROLE|escape}></a>
+        <{else}>
+            <{$row->reftext_ID_USER_ROLE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->ID_USER_ROLE}><{$row->ID_USER_ROLE|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.accessright.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('MODULE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['MODULE']) && ((isset($aclviewablecolumns['MODULE']) && $aclviewablecolumns['MODULE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['MODULE']) || $aclviewablecolumns['MODULE']))) }>
                 <td class="column column-module text" >

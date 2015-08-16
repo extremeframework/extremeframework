@@ -420,7 +420,7 @@ class _PostRelationTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelationtype');
 
-        AclController::checkPermission('postrelationtype', 'edit');
+        AclController::checkPermission('postrelationtype', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/postrelationtype/new/');
 
@@ -723,6 +723,12 @@ class _PostRelationTypeController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('postrelationtype', 'edit');
+            } else {
+                AclController::checkPermission('postrelationtype', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('postrelationtype', $model);
             
             
@@ -789,8 +795,6 @@ class _PostRelationTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelationtype');
-
-        AclController::checkPermission('postrelationtype', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1258,7 +1262,7 @@ class _PostRelationTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelationtype');
 
-        AclController::checkPermission('postrelationtype', 'edit');
+        AclController::checkPermission('postrelationtype', 'new');
 
 		$this->_edit(0, null, 'quick-create.postrelationtype.tpl', false);
     }
@@ -1268,7 +1272,7 @@ class _PostRelationTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelationtype');
 
-        AclController::checkPermission('postrelationtype', 'edit');
+        AclController::checkPermission('postrelationtype', 'new');
 
 		$this->_edit(0, null, 'pre-create.postrelationtype.tpl', false);
     }
@@ -1278,7 +1282,7 @@ class _PostRelationTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelationtype');
 
-        AclController::checkPermission('postrelationtype', 'edit');
+        AclController::checkPermission('postrelationtype', 'new');
 
 		$this->_edit(0, null, 'row-edit.postrelationtype.tpl', false);
     }
@@ -1336,8 +1340,6 @@ class _PostRelationTypeController extends __AppController
 
         LicenseController::enforceLicenseCheck('postrelationtype');
 
-        AclController::checkPermission('postrelationtype', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1355,8 +1357,6 @@ class _PostRelationTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelationtype');
-
-        AclController::checkPermission('postrelationtype', 'edit');
 
         $this->checkform($errors);
 
@@ -1391,8 +1391,6 @@ class _PostRelationTypeController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('postrelationtype');
-
-        AclController::checkPermission('postrelationtype', 'edit');
 
         $this->checkform($errors);
 
@@ -1716,10 +1714,12 @@ class _PostRelationTypeController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('postrelationtype', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."POST_RELATION_TYPE.UDID = 0 OR ".TABLE_PREFIX."POST_RELATION_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."POST_RELATION_TYPE.UDID = 0 OR ".TABLE_PREFIX."POST_RELATION_TYPE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."POST_RELATION_TYPE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('postrelationtype', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('postrelationtype', $model);
+        }
 
 		$model->find();
 

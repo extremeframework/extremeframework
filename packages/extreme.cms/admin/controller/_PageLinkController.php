@@ -433,7 +433,7 @@ class _PageLinkController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelink');
 
-        AclController::checkPermission('pagelink', 'edit');
+        AclController::checkPermission('pagelink', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/pagelink/new/');
 
@@ -738,6 +738,12 @@ class _PageLinkController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('pagelink', 'edit');
+            } else {
+                AclController::checkPermission('pagelink', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('pagelink', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -821,8 +827,6 @@ class _PageLinkController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelink');
-
-        AclController::checkPermission('pagelink', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1290,7 +1294,7 @@ class _PageLinkController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelink');
 
-        AclController::checkPermission('pagelink', 'edit');
+        AclController::checkPermission('pagelink', 'new');
 
 		$this->_edit(0, null, 'quick-create.pagelink.tpl', false);
     }
@@ -1300,7 +1304,7 @@ class _PageLinkController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelink');
 
-        AclController::checkPermission('pagelink', 'edit');
+        AclController::checkPermission('pagelink', 'new');
 
 		$this->_edit(0, null, 'pre-create.pagelink.tpl', false);
     }
@@ -1310,7 +1314,7 @@ class _PageLinkController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelink');
 
-        AclController::checkPermission('pagelink', 'edit');
+        AclController::checkPermission('pagelink', 'new');
 
 		$this->_edit(0, null, 'row-edit.pagelink.tpl', false);
     }
@@ -1368,8 +1372,6 @@ class _PageLinkController extends __AppController
 
         LicenseController::enforceLicenseCheck('pagelink');
 
-        AclController::checkPermission('pagelink', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1387,8 +1389,6 @@ class _PageLinkController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelink');
-
-        AclController::checkPermission('pagelink', 'edit');
 
         $this->checkform($errors);
 
@@ -1423,8 +1423,6 @@ class _PageLinkController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('pagelink');
-
-        AclController::checkPermission('pagelink', 'edit');
 
         $this->checkform($errors);
 
@@ -1754,10 +1752,12 @@ class _PageLinkController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('pagelink', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PAGE_LINK.UDID = 0 OR ".TABLE_PREFIX."PAGE_LINK.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PAGE_LINK.UDID = 0 OR ".TABLE_PREFIX."PAGE_LINK.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PAGE_LINK.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('pagelink', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('pagelink', $model);
+        }
 
 		$model->find();
 

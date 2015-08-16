@@ -35,12 +35,13 @@
 
 <div id="footer">
     <div class="content">
-        <{if !isset($smarty.session.user)}>
+        <{if $show_footer_links}>
             <ul class="links">
                 <li><a href="about"><{_t('About')}></a></li>
-                <li><a href="help"><{_t('Help')}></a></li>
-                <li><a href="terms"><{_t('Terms')}></a></li>
-                <li><a href="privacy"><{_t('Privacy')}></a></li>
+                <li><a href="terms"><{_t('Terms of Service')}></a></li>
+                <li><a href="privacy"><{_t('Privacy Policy')}></a></li>
+                <li><a href="ipr"><{_t('IPR Complaints')}></a></li>
+                <li><a href="contact"><{_t('Contact')}></a></li>
             </ul>
         <{/if}>
         <span><{$smarty.const.COPYRIGHT_NOTICE}></span>

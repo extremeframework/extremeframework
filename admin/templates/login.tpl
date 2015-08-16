@@ -126,4 +126,4 @@
     </script>
 <{/if}>
 
-<{include file="footer.tpl"}>
+<{include file="footer.tpl" show_footer_links=true}>

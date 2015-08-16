@@ -460,7 +460,7 @@ class _AdminOrderStatusController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
-        AclController::checkPermission('adminorderstatus', 'edit');
+        AclController::checkPermission('adminorderstatus', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminorderstatus/new/');
 
@@ -765,6 +765,12 @@ class _AdminOrderStatusController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminorderstatus', 'edit');
+            } else {
+                AclController::checkPermission('adminorderstatus', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminorderstatus', $model);
             
             
@@ -831,8 +837,6 @@ class _AdminOrderStatusController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
-
-        AclController::checkPermission('adminorderstatus', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1300,7 +1304,7 @@ class _AdminOrderStatusController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
-        AclController::checkPermission('adminorderstatus', 'edit');
+        AclController::checkPermission('adminorderstatus', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminorderstatus.tpl', false);
     }
@@ -1310,7 +1314,7 @@ class _AdminOrderStatusController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
-        AclController::checkPermission('adminorderstatus', 'edit');
+        AclController::checkPermission('adminorderstatus', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminorderstatus.tpl', false);
     }
@@ -1320,7 +1324,7 @@ class _AdminOrderStatusController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
-        AclController::checkPermission('adminorderstatus', 'edit');
+        AclController::checkPermission('adminorderstatus', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminorderstatus.tpl', false);
     }
@@ -1378,8 +1382,6 @@ class _AdminOrderStatusController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
 
-        AclController::checkPermission('adminorderstatus', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1397,8 +1399,6 @@ class _AdminOrderStatusController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
-
-        AclController::checkPermission('adminorderstatus', 'edit');
 
         $this->checkform($errors);
 
@@ -1433,8 +1433,6 @@ class _AdminOrderStatusController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminorderstatus');
-
-        AclController::checkPermission('adminorderstatus', 'edit');
 
         $this->checkform($errors);
 
@@ -1758,10 +1756,12 @@ class _AdminOrderStatusController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminorderstatus', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER_STATUS.UDID = 0 OR ".TABLE_PREFIX."ADMIN_ORDER_STATUS.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER_STATUS.UDID = 0 OR ".TABLE_PREFIX."ADMIN_ORDER_STATUS.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_ORDER_STATUS.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminorderstatus', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminorderstatus', $model);
+        }
 
 		$model->find();
 

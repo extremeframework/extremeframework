@@ -414,7 +414,7 @@ class _AdminPackageMenuController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
 
-        AclController::checkPermission('adminpackagemenu', 'edit');
+        AclController::checkPermission('adminpackagemenu', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminpackagemenu/new/');
 
@@ -717,6 +717,12 @@ class _AdminPackageMenuController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminpackagemenu', 'edit');
+            } else {
+                AclController::checkPermission('adminpackagemenu', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminpackagemenu', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -797,8 +803,6 @@ class _AdminPackageMenuController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
-
-        AclController::checkPermission('adminpackagemenu', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1266,7 +1270,7 @@ class _AdminPackageMenuController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
 
-        AclController::checkPermission('adminpackagemenu', 'edit');
+        AclController::checkPermission('adminpackagemenu', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminpackagemenu.tpl', false);
     }
@@ -1276,7 +1280,7 @@ class _AdminPackageMenuController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
 
-        AclController::checkPermission('adminpackagemenu', 'edit');
+        AclController::checkPermission('adminpackagemenu', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminpackagemenu.tpl', false);
     }
@@ -1286,7 +1290,7 @@ class _AdminPackageMenuController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
 
-        AclController::checkPermission('adminpackagemenu', 'edit');
+        AclController::checkPermission('adminpackagemenu', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminpackagemenu.tpl', false);
     }
@@ -1344,8 +1348,6 @@ class _AdminPackageMenuController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
 
-        AclController::checkPermission('adminpackagemenu', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1363,8 +1365,6 @@ class _AdminPackageMenuController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
-
-        AclController::checkPermission('adminpackagemenu', 'edit');
 
         $this->checkform($errors);
 
@@ -1399,8 +1399,6 @@ class _AdminPackageMenuController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminpackagemenu');
-
-        AclController::checkPermission('adminpackagemenu', 'edit');
 
         $this->checkform($errors);
 
@@ -1730,10 +1728,12 @@ class _AdminPackageMenuController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminpackagemenu', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_MENU.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_MENU.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE_MENU.UDID = 0 OR ".TABLE_PREFIX."ADMIN_PACKAGE_MENU.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_PACKAGE_MENU.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminpackagemenu', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminpackagemenu', $model);
+        }
 
 		$model->find();
 

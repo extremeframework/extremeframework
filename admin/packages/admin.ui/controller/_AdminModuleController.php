@@ -34,20 +34,6 @@ class _AdminModuleController extends __AppController
            $errors['prefix'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Prefix'));
            return false;
        }
-       if (in_array('MODULE', $columns2check)) {
-           $_model = new AdminModuleModel();
-           $_model->MODULE = $model->MODULE;
-
-           if ($model->UUID) {
-               $_model->whereAdd('UUID != '.$model->UUID);
-           }
-
-           $_model->find();
-           if ($_model->N) {
-               $errors['module'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_MODULE.'}');
-               return false;
-           }
-       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminmodule', $model, $errors)) {
@@ -506,7 +492,7 @@ class _AdminModuleController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmodule');
 
-        AclController::checkPermission('adminmodule', 'edit');
+        AclController::checkPermission('adminmodule', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminmodule/new/');
 
@@ -809,6 +795,12 @@ class _AdminModuleController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminmodule', 'edit');
+            } else {
+                AclController::checkPermission('adminmodule', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminmodule', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -886,8 +878,6 @@ class _AdminModuleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmodule');
-
-        AclController::checkPermission('adminmodule', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1025,7 +1015,7 @@ class _AdminModuleController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmodule');
 
-        AclController::checkPermission('adminmodule', 'edit');
+        AclController::checkPermission('adminmodule', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminmodule.tpl', false);
     }
@@ -1035,7 +1025,7 @@ class _AdminModuleController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmodule');
 
-        AclController::checkPermission('adminmodule', 'edit');
+        AclController::checkPermission('adminmodule', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminmodule.tpl', false);
     }
@@ -1045,7 +1035,7 @@ class _AdminModuleController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmodule');
 
-        AclController::checkPermission('adminmodule', 'edit');
+        AclController::checkPermission('adminmodule', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminmodule.tpl', false);
     }
@@ -1103,8 +1093,6 @@ class _AdminModuleController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminmodule');
 
-        AclController::checkPermission('adminmodule', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1122,8 +1110,6 @@ class _AdminModuleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmodule');
-
-        AclController::checkPermission('adminmodule', 'edit');
 
         $this->checkform($errors);
 
@@ -1158,8 +1144,6 @@ class _AdminModuleController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminmodule');
-
-        AclController::checkPermission('adminmodule', 'edit');
 
         $this->checkform($errors);
 
@@ -1483,10 +1467,12 @@ class _AdminModuleController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminmodule', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_MODULE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_MODULE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_MODULE.UDID = 0 OR ".TABLE_PREFIX."ADMIN_MODULE.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_MODULE.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminmodule', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminmodule', $model);
+        }
 
 		$model->find();
 

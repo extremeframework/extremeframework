@@ -418,7 +418,7 @@ class _WorkflowApplicationController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowapplication');
 
-        AclController::checkPermission('workflowapplication', 'edit');
+        AclController::checkPermission('workflowapplication', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/workflowapplication/new/');
 
@@ -721,6 +721,12 @@ class _WorkflowApplicationController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('workflowapplication', 'edit');
+            } else {
+                AclController::checkPermission('workflowapplication', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('workflowapplication', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -801,8 +807,6 @@ class _WorkflowApplicationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowapplication');
-
-        AclController::checkPermission('workflowapplication', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -940,7 +944,7 @@ class _WorkflowApplicationController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowapplication');
 
-        AclController::checkPermission('workflowapplication', 'edit');
+        AclController::checkPermission('workflowapplication', 'new');
 
 		$this->_edit(0, null, 'quick-create.workflowapplication.tpl', false);
     }
@@ -950,7 +954,7 @@ class _WorkflowApplicationController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowapplication');
 
-        AclController::checkPermission('workflowapplication', 'edit');
+        AclController::checkPermission('workflowapplication', 'new');
 
 		$this->_edit(0, null, 'pre-create.workflowapplication.tpl', false);
     }
@@ -960,7 +964,7 @@ class _WorkflowApplicationController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowapplication');
 
-        AclController::checkPermission('workflowapplication', 'edit');
+        AclController::checkPermission('workflowapplication', 'new');
 
 		$this->_edit(0, null, 'row-edit.workflowapplication.tpl', false);
     }
@@ -1018,8 +1022,6 @@ class _WorkflowApplicationController extends __AppController
 
         LicenseController::enforceLicenseCheck('workflowapplication');
 
-        AclController::checkPermission('workflowapplication', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1037,8 +1039,6 @@ class _WorkflowApplicationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowapplication');
-
-        AclController::checkPermission('workflowapplication', 'edit');
 
         $this->checkform($errors);
 
@@ -1073,8 +1073,6 @@ class _WorkflowApplicationController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('workflowapplication');
-
-        AclController::checkPermission('workflowapplication', 'edit');
 
         $this->checkform($errors);
 
@@ -1404,10 +1402,12 @@ class _WorkflowApplicationController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('workflowapplication', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_APPLICATION.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_APPLICATION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."WORKFLOW_APPLICATION.UDID = 0 OR ".TABLE_PREFIX."WORKFLOW_APPLICATION.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."WORKFLOW_APPLICATION.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('workflowapplication', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('workflowapplication', $model);
+        }
 
 		$model->find();
 

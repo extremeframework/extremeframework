@@ -442,7 +442,7 @@ class _MenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('menuitem');
 
-        AclController::checkPermission('menuitem', 'edit');
+        AclController::checkPermission('menuitem', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/menuitem/new/');
 
@@ -837,6 +837,12 @@ class _MenuItemController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('menuitem', 'edit');
+            } else {
+                AclController::checkPermission('menuitem', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('menuitem', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -929,8 +935,6 @@ class _MenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('menuitem');
-
-        AclController::checkPermission('menuitem', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1416,7 +1420,7 @@ class _MenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('menuitem');
 
-        AclController::checkPermission('menuitem', 'edit');
+        AclController::checkPermission('menuitem', 'new');
 
 		$this->_edit(0, null, 'quick-create.menuitem.tpl', false);
     }
@@ -1426,7 +1430,7 @@ class _MenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('menuitem');
 
-        AclController::checkPermission('menuitem', 'edit');
+        AclController::checkPermission('menuitem', 'new');
 
 		$this->_edit(0, null, 'pre-create.menuitem.tpl', false);
     }
@@ -1436,7 +1440,7 @@ class _MenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('menuitem');
 
-        AclController::checkPermission('menuitem', 'edit');
+        AclController::checkPermission('menuitem', 'new');
 
 		$this->_edit(0, null, 'row-edit.menuitem.tpl', false);
     }
@@ -1494,8 +1498,6 @@ class _MenuItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('menuitem');
 
-        AclController::checkPermission('menuitem', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1513,8 +1515,6 @@ class _MenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('menuitem');
-
-        AclController::checkPermission('menuitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1549,8 +1549,6 @@ class _MenuItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('menuitem');
-
-        AclController::checkPermission('menuitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1880,10 +1878,12 @@ class _MenuItemController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('menuitem', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."MENU_ITEM.UDID = 0 OR ".TABLE_PREFIX."MENU_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."MENU_ITEM.UDID = 0 OR ".TABLE_PREFIX."MENU_ITEM.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."MENU_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('menuitem', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('menuitem', $model);
+        }
 
 		$model->find();
 

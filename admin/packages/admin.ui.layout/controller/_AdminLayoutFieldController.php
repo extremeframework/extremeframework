@@ -448,7 +448,7 @@ class _AdminLayoutFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
-        AclController::checkPermission('adminlayoutfield', 'edit');
+        AclController::checkPermission('adminlayoutfield', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/adminlayoutfield/new/');
 
@@ -753,6 +753,12 @@ class _AdminLayoutFieldController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('adminlayoutfield', 'edit');
+            } else {
+                AclController::checkPermission('adminlayoutfield', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('adminlayoutfield', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -833,8 +839,6 @@ class _AdminLayoutFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
-
-        AclController::checkPermission('adminlayoutfield', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -972,7 +976,7 @@ class _AdminLayoutFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
-        AclController::checkPermission('adminlayoutfield', 'edit');
+        AclController::checkPermission('adminlayoutfield', 'new');
 
 		$this->_edit(0, null, 'quick-create.adminlayoutfield.tpl', false);
     }
@@ -982,7 +986,7 @@ class _AdminLayoutFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
-        AclController::checkPermission('adminlayoutfield', 'edit');
+        AclController::checkPermission('adminlayoutfield', 'new');
 
 		$this->_edit(0, null, 'pre-create.adminlayoutfield.tpl', false);
     }
@@ -992,7 +996,7 @@ class _AdminLayoutFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
-        AclController::checkPermission('adminlayoutfield', 'edit');
+        AclController::checkPermission('adminlayoutfield', 'new');
 
 		$this->_edit(0, null, 'row-edit.adminlayoutfield.tpl', false);
     }
@@ -1050,8 +1054,6 @@ class _AdminLayoutFieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
 
-        AclController::checkPermission('adminlayoutfield', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1069,8 +1071,6 @@ class _AdminLayoutFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
-
-        AclController::checkPermission('adminlayoutfield', 'edit');
 
         $this->checkform($errors);
 
@@ -1105,8 +1105,6 @@ class _AdminLayoutFieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('adminlayoutfield');
-
-        AclController::checkPermission('adminlayoutfield', 'edit');
 
         $this->checkform($errors);
 
@@ -1430,10 +1428,12 @@ class _AdminLayoutFieldController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('adminlayoutfield', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."ADMIN_LAYOUT_FIELD.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LAYOUT_FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."ADMIN_LAYOUT_FIELD.UDID = 0 OR ".TABLE_PREFIX."ADMIN_LAYOUT_FIELD.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."ADMIN_LAYOUT_FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('adminlayoutfield', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('adminlayoutfield', $model);
+        }
 
 		$model->find();
 

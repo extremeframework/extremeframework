@@ -14,6 +14,7 @@ class DataObject_ACCESS_RIGHT extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $ID_USER_GROUP;                   // int(4)  unique_key
+    public $ID_USER_ROLE;                    // int(4)  unique_key
     public $MODULE;                          // varchar(32)  unique_key
     public $ACTIONS;                         // varchar(128)  
     public $GUID;                            // int(4)  

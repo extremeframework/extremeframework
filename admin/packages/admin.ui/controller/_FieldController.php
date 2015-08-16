@@ -439,7 +439,7 @@ class _FieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('field');
 
-        AclController::checkPermission('field', 'edit');
+        AclController::checkPermission('field', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/field/new/');
 
@@ -742,6 +742,12 @@ class _FieldController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('field', 'edit');
+            } else {
+                AclController::checkPermission('field', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('field', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -819,8 +825,6 @@ class _FieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('field');
-
-        AclController::checkPermission('field', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -958,7 +962,7 @@ class _FieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('field');
 
-        AclController::checkPermission('field', 'edit');
+        AclController::checkPermission('field', 'new');
 
 		$this->_edit(0, null, 'quick-create.field.tpl', false);
     }
@@ -968,7 +972,7 @@ class _FieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('field');
 
-        AclController::checkPermission('field', 'edit');
+        AclController::checkPermission('field', 'new');
 
 		$this->_edit(0, null, 'pre-create.field.tpl', false);
     }
@@ -978,7 +982,7 @@ class _FieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('field');
 
-        AclController::checkPermission('field', 'edit');
+        AclController::checkPermission('field', 'new');
 
 		$this->_edit(0, null, 'row-edit.field.tpl', false);
     }
@@ -1036,8 +1040,6 @@ class _FieldController extends __AppController
 
         LicenseController::enforceLicenseCheck('field');
 
-        AclController::checkPermission('field', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1055,8 +1057,6 @@ class _FieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('field');
-
-        AclController::checkPermission('field', 'edit');
 
         $this->checkform($errors);
 
@@ -1091,8 +1091,6 @@ class _FieldController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('field');
-
-        AclController::checkPermission('field', 'edit');
 
         $this->checkform($errors);
 
@@ -1416,10 +1414,12 @@ class _FieldController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('field', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."FIELD.UDID = 0 OR ".TABLE_PREFIX."FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."FIELD.UDID = 0 OR ".TABLE_PREFIX."FIELD.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."FIELD.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('field', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('field', $model);
+        }
 
 		$model->find();
 

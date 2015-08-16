@@ -88,6 +88,45 @@
         
         
         
+<{if !isset($excludedcolumns['ID_USER_ROLE'])}>
+    
+        <{if $preset == 'ID_USER_ROLE'}>
+            <input type="hidden" class="input-id-user-role" name="accessright_formdata_ID_USER_ROLE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['ID_USER_ROLE']) && !$acleditablecolumns['ID_USER_ROLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_USER_ROLE'])}>
+            <input type="hidden" class="input-id-user-role" name="accessright_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE}>" />
+        <{else}>
+    		<td class="form-row form-row-id-user-role">
+                <div class="form-field form-field-label">
+        		    <label><{_t('User role')}></label>
+                </div>
+            </td>
+            <td class="form-row form-row-id-user-role" colspan="3">
+                <div class="form-field form-field-value column-id-user-role">
+                                            
+            <{if Framework::hasModule('UserRole')}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`accessright_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                            <{if isset($smarty.session.acl.userrole.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/new" title="Create a New User Role">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-user-role input-type-text" type="text" name="<{$prefix}>accessright_formdata_ID_USER_ROLE" value="<{$details->ID_USER_ROLE|escape}>"  />
+        <{/if}>
+                            <{if $columntooltips.ID_USER_ROLE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER_ROLE}>"></i>
+                        <{/if}>
+                                    </div>
+            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            <tr>
+    
+            
+        
+        
+        
+        
 <{if !isset($excludedcolumns['MODULE'])}>
     
         <{if $preset == 'MODULE'}>

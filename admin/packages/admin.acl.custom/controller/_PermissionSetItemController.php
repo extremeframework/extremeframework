@@ -26,6 +26,21 @@ class _PermissionSetItemController extends __AppController
            $errors['module'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Module'));
            return false;
        }
+       if (in_array('ID_PERMISSION_SET', $columns2check) || in_array('MODULE', $columns2check)) {
+           $_model = new PermissionSetItemModel();
+           $_model->ID_PERMISSION_SET = $model->ID_PERMISSION_SET;
+           $_model->MODULE = $model->MODULE;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['id-permission-set+module'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_PERMISSION_SET.', '.L_MODULE.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('permissionsetitem', $model, $errors)) {
@@ -403,7 +418,7 @@ class _PermissionSetItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
 
-        AclController::checkPermission('permissionsetitem', 'edit');
+        AclController::checkPermission('permissionsetitem', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/permissionsetitem/new/');
 
@@ -706,6 +721,12 @@ class _PermissionSetItemController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('permissionsetitem', 'edit');
+            } else {
+                AclController::checkPermission('permissionsetitem', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('permissionsetitem', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -786,8 +807,6 @@ class _PermissionSetItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
-
-        AclController::checkPermission('permissionsetitem', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1273,7 +1292,7 @@ class _PermissionSetItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
 
-        AclController::checkPermission('permissionsetitem', 'edit');
+        AclController::checkPermission('permissionsetitem', 'new');
 
 		$this->_edit(0, null, 'quick-create.permissionsetitem.tpl', false);
     }
@@ -1283,7 +1302,7 @@ class _PermissionSetItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
 
-        AclController::checkPermission('permissionsetitem', 'edit');
+        AclController::checkPermission('permissionsetitem', 'new');
 
 		$this->_edit(0, null, 'pre-create.permissionsetitem.tpl', false);
     }
@@ -1293,7 +1312,7 @@ class _PermissionSetItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
 
-        AclController::checkPermission('permissionsetitem', 'edit');
+        AclController::checkPermission('permissionsetitem', 'new');
 
 		$this->_edit(0, null, 'row-edit.permissionsetitem.tpl', false);
     }
@@ -1351,8 +1370,6 @@ class _PermissionSetItemController extends __AppController
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
 
-        AclController::checkPermission('permissionsetitem', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1370,8 +1387,6 @@ class _PermissionSetItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
-
-        AclController::checkPermission('permissionsetitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1406,8 +1421,6 @@ class _PermissionSetItemController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('permissionsetitem');
-
-        AclController::checkPermission('permissionsetitem', 'edit');
 
         $this->checkform($errors);
 
@@ -1737,10 +1750,12 @@ class _PermissionSetItemController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('permissionsetitem', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."PERMISSION_SET_ITEM.UDID = 0 OR ".TABLE_PREFIX."PERMISSION_SET_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."PERMISSION_SET_ITEM.UDID = 0 OR ".TABLE_PREFIX."PERMISSION_SET_ITEM.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."PERMISSION_SET_ITEM.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('permissionsetitem', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('permissionsetitem', $model);
+        }
 
 		$model->find();
 

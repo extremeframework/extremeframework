@@ -19,6 +19,10 @@ class DebugController extends __AppController
         print_r($_SESSION['memberships.roles']);
         echo "</pre>";
 
+        echo "<pre>Udids:";
+        print_r($_SESSION['memberships.udids']);
+        echo "</pre>";
+
         echo "<pre>Quota:";
         print_r($_SESSION['user.quotas']);
         echo "</pre>";

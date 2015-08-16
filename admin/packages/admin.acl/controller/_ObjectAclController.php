@@ -407,7 +407,7 @@ class _ObjectAclController extends __AppController
 
         LicenseController::enforceLicenseCheck('objectacl');
 
-        AclController::checkPermission('objectacl', 'edit');
+        AclController::checkPermission('objectacl', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/objectacl/new/');
 
@@ -710,6 +710,12 @@ class _ObjectAclController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('objectacl', 'edit');
+            } else {
+                AclController::checkPermission('objectacl', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('objectacl', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -802,8 +808,6 @@ class _ObjectAclController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('objectacl');
-
-        AclController::checkPermission('objectacl', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -941,7 +945,7 @@ class _ObjectAclController extends __AppController
 
         LicenseController::enforceLicenseCheck('objectacl');
 
-        AclController::checkPermission('objectacl', 'edit');
+        AclController::checkPermission('objectacl', 'new');
 
 		$this->_edit(0, null, 'quick-create.objectacl.tpl', false);
     }
@@ -951,7 +955,7 @@ class _ObjectAclController extends __AppController
 
         LicenseController::enforceLicenseCheck('objectacl');
 
-        AclController::checkPermission('objectacl', 'edit');
+        AclController::checkPermission('objectacl', 'new');
 
 		$this->_edit(0, null, 'pre-create.objectacl.tpl', false);
     }
@@ -961,7 +965,7 @@ class _ObjectAclController extends __AppController
 
         LicenseController::enforceLicenseCheck('objectacl');
 
-        AclController::checkPermission('objectacl', 'edit');
+        AclController::checkPermission('objectacl', 'new');
 
 		$this->_edit(0, null, 'row-edit.objectacl.tpl', false);
     }
@@ -1019,8 +1023,6 @@ class _ObjectAclController extends __AppController
 
         LicenseController::enforceLicenseCheck('objectacl');
 
-        AclController::checkPermission('objectacl', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1038,8 +1040,6 @@ class _ObjectAclController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('objectacl');
-
-        AclController::checkPermission('objectacl', 'edit');
 
         $this->checkform($errors);
 
@@ -1074,8 +1074,6 @@ class _ObjectAclController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('objectacl');
-
-        AclController::checkPermission('objectacl', 'edit');
 
         $this->checkform($errors);
 
@@ -1408,10 +1406,12 @@ class _ObjectAclController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('objectacl', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."OBJECT_ACL.UDID = 0 OR ".TABLE_PREFIX."OBJECT_ACL.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."OBJECT_ACL.UDID = 0 OR ".TABLE_PREFIX."OBJECT_ACL.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."OBJECT_ACL.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('objectacl', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('objectacl', $model);
+        }
 
 		$model->find();
 

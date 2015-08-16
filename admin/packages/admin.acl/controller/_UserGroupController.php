@@ -420,7 +420,7 @@ class _UserGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('usergroup');
 
-        AclController::checkPermission('usergroup', 'edit');
+        AclController::checkPermission('usergroup', 'new');
 
 		ContextStack::register(APPLICATION_URL.'/usergroup/new/');
 
@@ -805,6 +805,12 @@ class _UserGroupController extends __AppController
         }
 
         foreach ($models as $model) {
+    		if ($model->UUID) {
+                AclController::checkPermission('usergroup', 'edit');
+            } else {
+                AclController::checkPermission('usergroup', 'new');
+            }
+
             CustomFieldHelper::updateCustomFieldValues('usergroup', $model);
             
             $this->bind2refobject($model, $refobject);
@@ -885,8 +891,6 @@ class _UserGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usergroup');
-
-        AclController::checkPermission('usergroup', 'edit');
 
         $back = isset($_REQUEST['back'])? $_REQUEST['back'] : 0;
         $otherhandlers = isset($_REQUEST['otherhandlers'])? $_REQUEST['otherhandlers'] : array();
@@ -1024,7 +1028,7 @@ class _UserGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('usergroup');
 
-        AclController::checkPermission('usergroup', 'edit');
+        AclController::checkPermission('usergroup', 'new');
 
 		$this->_edit(0, null, 'quick-create.usergroup.tpl', false);
     }
@@ -1034,7 +1038,7 @@ class _UserGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('usergroup');
 
-        AclController::checkPermission('usergroup', 'edit');
+        AclController::checkPermission('usergroup', 'new');
 
 		$this->_edit(0, null, 'pre-create.usergroup.tpl', false);
     }
@@ -1044,7 +1048,7 @@ class _UserGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('usergroup');
 
-        AclController::checkPermission('usergroup', 'edit');
+        AclController::checkPermission('usergroup', 'new');
 
 		$this->_edit(0, null, 'row-edit.usergroup.tpl', false);
     }
@@ -1102,8 +1106,6 @@ class _UserGroupController extends __AppController
 
         LicenseController::enforceLicenseCheck('usergroup');
 
-        AclController::checkPermission('usergroup', 'edit');
-
         $this->checkform($errors);
 
         if (!empty($errors)) {
@@ -1121,8 +1123,6 @@ class _UserGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usergroup');
-
-        AclController::checkPermission('usergroup', 'edit');
 
         $this->checkform($errors);
 
@@ -1157,8 +1157,6 @@ class _UserGroupController extends __AppController
         AuthenticationController::authenticate();
 
         LicenseController::enforceLicenseCheck('usergroup');
-
-        AclController::checkPermission('usergroup', 'edit');
 
         $this->checkform($errors);
 
@@ -1486,10 +1484,12 @@ class _UserGroupController extends __AppController
 
 		if ($check_acl && !AclController::hasPermission('usergroup', 'viewpeer')) {
 		    // UDID: 0 - public
-		    $model->whereAdd(TABLE_PREFIX."USER_GROUP.UDID = 0 OR ".TABLE_PREFIX."USER_GROUP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
+		    $model->whereAdd(TABLE_PREFIX."USER_GROUP.UDID = 0 OR ".TABLE_PREFIX."USER_GROUP.UDID IN ('".implode("','", AclController::getExtraUDIDs())."') OR ".TABLE_PREFIX."USER_GROUP.GUID = '".(isset($_SESSION['user'])? $_SESSION['user']->ID : null)."'");
 		}
 
-        $this->enforceObjectAclCheck('usergroup', $model);
+        if ($check_acl) {
+            $this->enforceObjectAclCheck('usergroup', $model);
+        }
 
 		$model->find();
 
