@@ -30,5 +30,9 @@ class DebugController extends __AppController
         echo "<pre>ACL:";
         print_r($_SESSION['acl']);
         echo "</pre>";
+
+        echo "<pre>User:";
+        print_r($_SESSION['user']);
+        echo "</pre>";
     }
 }
