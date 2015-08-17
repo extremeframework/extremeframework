@@ -52,7 +52,7 @@ class UserInvitationController extends _UserInvitationController
             if (preg_match('/.*,.*/i',$compound)) {
                 @list($uuid, $email, $udid) = explode(',', $compound);
 
-        		if (empty($uuid) || empty($email) || empty($udid)) {
+        		if (empty($uuid) || empty($email) || trim($udid) == '') {
         		    $this->pagenotfound();
         		}
 
