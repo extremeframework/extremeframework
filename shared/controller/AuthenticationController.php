@@ -256,14 +256,18 @@ class AuthenticationController extends __AppController
 	}
 
     function refreshAction() {
+        self::refresh();
+
+        ContextStack::back(0);
+    }
+
+    static function refresh() {
         self::authenticate();
 
         $user = $_SESSION['user'];
 
         // Initialize user context
         self::initializeUserContext($user);
-
-        ContextStack::back(0);
     }
 
     function logoutAction() {

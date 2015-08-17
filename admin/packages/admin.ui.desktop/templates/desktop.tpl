@@ -58,7 +58,7 @@
         <li>
             <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/userpackages">
                 <div class="icon">
-                    <img src="http://t0.gstatic.com/images?q=tbn:ANd9GcTbFd43VBnyydy5yHII5Er2xLt9jtjZBkti4fNHzpTEx9gBWvJR"/>
+                    <img src="<{$smarty.const.APPLICATION_URL}>/images/icon-installation.png"/>
                 </div>
                 <span><{_t('Installation')}></span>
             </a>

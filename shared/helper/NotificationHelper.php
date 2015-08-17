@@ -44,7 +44,18 @@ class NotificationHelper {
     }
 
     static function notifyNewPackageInstalled() {
+        // x. Clear all cached class paths and other similar data
         array_map('unlink', glob(CACHE_DIR.'/data/*'));
+
+        // x. Notify changes for some modules
+        self::notifyChange('desktop', '');
+        self::notifyChange('installation', '');
+    }
+
+    static function notifyNewUserPackageInstalled() {
+        // x. Notify changes for some modules
+        self::notifyChange('desktop', '');
+        self::notifyChange('installation', '');
     }
 
     static function clearDataCaches() {

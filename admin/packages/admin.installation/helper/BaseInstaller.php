@@ -35,6 +35,9 @@ class BaseInstaller {
 
         // x. Notify new package installed
         NotificationHelper::notifyNewPackageInstalled();
+
+        // x. Force refreshing
+        AuthenticationController::refresh();
     }
 
     function check_package_extension($downloaded_package) {

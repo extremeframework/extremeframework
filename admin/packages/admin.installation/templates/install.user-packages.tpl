@@ -117,13 +117,21 @@
 <div class="install-browse">
     <ul>
         <{foreach from=$packages item=item}>
-            <li class="package <{if isset($user_installed_package_ids[$item->id()])}>installed<{/if}>">
+            <{$installed = isset($user_installed_package_ids[$item->id()])}>
+
+            <li class="package <{if $installed}>installed<{/if}>">
                 <div class="image"><img src="<{$smarty.const.UPLOAD_URL}>/<{$item->IMAGE}>"/></div>
                 <div class="info">
-                    <div class="name"><{$item->NAME}></div>
+                    <div class="name">
+                        <{if $installed}>
+                            <a class="scope-main" style="text-decoration:underline;" href="<{$smarty.const.APPLICATION_URL}>/desktop/package/<{$item->UUID}>"><{$item->NAME}></a>
+                        <{else}>
+                            <{$item->NAME}>
+                        <{/if}>
+                    </div>
                     <ul class="actions" style="padding:0px">
                         <li class="install">
-                            <{if isset($user_installed_package_ids[$item->id()])}>
+                            <{if $installed}>
                                 <span><{_t('Installed')}> <i class="fa fa-check"></i></span>
                             <{else}>
                                 <a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/installation/userpackages/<{$item->UUID}>"><i class="fa fa-cloud-download"></i> <{_t('Install')}></a>

@@ -157,6 +157,12 @@ class InstallationController extends __AppController
 
                     $car->insert();
                 }
+
+                // x. Notify new user package installed
+                NotificationHelper::notifyNewUserPackageInstalled();
+
+                // x. Force refreshing
+                AuthenticationController::refresh();
             }
         }
 
