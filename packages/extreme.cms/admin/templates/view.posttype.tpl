@@ -66,7 +66,7 @@
     		            	            	            <{else}>
     		        <{/if}>
 
-    	            <{if $admin_view_actions || $admin_view_options}>
+    	            <{if $admin_view_actions || $admin_view_options || isset($smarty.session.acl.posttype.customfields)}>
         	    <div class="button-general dropdown">
         	        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);" title="<{_t('More', true)}>"><i class="fa fa-cog"></i>&nbsp;<i class="caret"></i></a>
         	        <ul class="dropdown-menu pull-right">
@@ -78,6 +78,9 @@
         	            <{foreach from=$admin_view_options item=item}>
                             <li><a <{if $item->IS_PRINT_VIEW}>target="_blank"<{/if}> href="<{$smarty.const.APPLICATION_URL}>/posttype/view/<{$details->UUID}>/<{$item->CODE}>"><{$item->TITLE}></a></li>
                         <{/foreach}>
+                        <{if isset($smarty.session.acl.posttype.customfields)}>
+                            <li><a class="scope-main" href="<{$smarty.const.APPLICATION_URL}>/customfield/manage/posttype"><{_t('Manage custom fields')}></a></li>
+                        <{/if}>
                     </ul>
         	    </div>
             <{/if}>
