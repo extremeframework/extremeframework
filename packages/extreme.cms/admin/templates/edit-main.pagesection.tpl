@@ -44,62 +44,62 @@
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 2
 
 Call Stack:
-    0.0000     276864   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1140600   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3756928   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-  201.5259   18367888   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  515.6077   22490232   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  519.6977   23216592   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  519.8777   23748504   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  519.8777   23769304   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  519.8877   23791288   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  519.8877   23802480  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0100     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0100    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
+    0.1100    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
+  287.2536   11776720   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
+  287.9236   12496856   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
+  288.1256   13028160   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  288.1256   13049032   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  288.1256   13071160   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  288.1356   13082264  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 <tr class="form-row form-row-
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     276864   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1140600   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3756928   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-  201.5259   18367888   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  515.6077   22490232   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  519.6977   23216592   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  519.8777   23748504   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  519.8777   23769304   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  519.8877   23791288   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  519.8877   23802480  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0100     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0100    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
+    0.1100    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
+  287.2536   11776720   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
+  287.9236   12496856   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
+  288.1256   13028160   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  288.1256   13049032   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  288.1256   13071160   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  288.1356   13082264  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     276864   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1140600   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3756928   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-  201.5259   18367888   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  515.6077   22490232   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  519.6977   23216592   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  519.8777   23748504   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  519.8777   23769304   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  519.8877   23791288   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  519.8877   23802480  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0100     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0100    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
+    0.1100    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
+  287.2536   11776720   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
+  287.9236   12496856   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
+  288.1256   13028160   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  288.1256   13049032   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  288.1256   13071160   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  288.1356   13082264  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     276864   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0100    1140600   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3756928   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-  201.5259   18367888   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  515.6077   22490232   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  519.6977   23216592   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  519.8777   23748504   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  519.8777   23769304   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  519.8877   23791288   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  519.8877   23802480  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0100     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0100    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
+    0.1100    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
+  287.2536   11776720   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
+  287.9236   12496856   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
+  288.1256   13028160   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  288.1256   13049032   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  288.1256   13071160   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  288.1356   13082264  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 ">
             

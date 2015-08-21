@@ -39,7 +39,7 @@
         <span class="h"><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/workflowlog"><i class="fa fa-refresh"></i></a>
+            <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
         </span>
     </h1>
 <{/if}>

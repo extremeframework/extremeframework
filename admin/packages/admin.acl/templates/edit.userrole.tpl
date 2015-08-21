@@ -38,7 +38,7 @@ function saveclone()
     <span class="h"><{$title}></span>
 
     <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
-        <a style="text-decoration: none" class="button-edit-refresh scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/userrole/<{if $details->UUID}>edit/<{$details->UUID}><{else}>new<{/if}>"><i class="fa fa-refresh"></i></a>
+        <a style="text-decoration: none" class="button-edit-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
 
         <{if $details->UUID}>
             <!-- Live search -->
