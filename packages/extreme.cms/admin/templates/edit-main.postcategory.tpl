@@ -24,94 +24,80 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="postcategory_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="postcategory_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post category name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post category name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>postcategory_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-slug form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['SLUG'])}>
+        <{if !isset($excludedcolumns['SLUG'])}>
     
         <{if $preset == 'SLUG'}>
             <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
             <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$details->SLUG}>" />
         <{else}>
-    		<td class="form-row form-row-slug form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-slug form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-slug">
-                                            <{if $details->ID && $details->SLUG != ''}>
-                            <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$details->SLUG}>" />
-                            
+            <td class="form-field form-field-value column-slug" colspan="3">
+                                    <{if $details->ID && $details->SLUG != ''}>
+                        <input type="hidden" class="input-slug" name="postcategory_formdata_SLUG" value="<{$details->SLUG}>" />
+                        
     <{$details->SLUG|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-slug input-type-text" type="text" name="<{$prefix}>postcategory_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
-                            <{if $columntooltips.SLUG}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.SLUG}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-parent">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PARENT'])}>
+        <{if !isset($excludedcolumns['PARENT'])}>
     
         <{if $preset == 'PARENT'}>
             <input type="hidden" class="input-parent" name="postcategory_formdata_PARENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PARENT']) && !$acleditablecolumns['PARENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PARENT'])}>
             <input type="hidden" class="input-parent" name="postcategory_formdata_PARENT" value="<{$details->PARENT}>" />
         <{else}>
-    		<td class="form-row form-row-parent">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Parent')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Parent')}></label>
             </td>
-            <td class="form-row form-row-parent" colspan="3">
-                <div class="form-field form-field-value column-parent">
-                                            
+            <td class="form-field form-field-value column-parent" colspan="3">
+                                    
             <{if Framework::hasModule('PostCategory')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`postcategory_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -123,65 +109,55 @@
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>postcategory_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.PARENT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.PARENT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-description">
             
         
         
         
-        
-<{if !isset($excludedcolumns['DESCRIPTION'])}>
+        <{if !isset($excludedcolumns['DESCRIPTION'])}>
     
         <{if $preset == 'DESCRIPTION'}>
             <input type="hidden" class="input-description" name="postcategory_formdata_DESCRIPTION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['DESCRIPTION']) && !$acleditablecolumns['DESCRIPTION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['DESCRIPTION'])}>
             <input type="hidden" class="input-description" name="postcategory_formdata_DESCRIPTION" value="<{$details->DESCRIPTION}>" />
         <{else}>
-    		<td class="form-row form-row-description">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Description')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Description')}></label>
             </td>
-            <td class="form-row form-row-description" colspan="3">
-                <div class="form-field form-field-value column-description">
-                                            
+            <td class="form-field form-field-value column-description" colspan="3">
+                                    
     <{$tmpid = uniqid()}>
 
     <textarea class="input-description enable-html" id="<{$prefix}>postcategory_formdata_DESCRIPTION_<{$tmpid}>" name="<{$prefix}>postcategory_formdata_DESCRIPTION" rows="5" ><{$details->DESCRIPTION}></textarea>
-                        <{if $columntooltips.DESCRIPTION}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.DESCRIPTION}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.DESCRIPTION}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.DESCRIPTION}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-template form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_TEMPLATE'])}>
+        <{if !isset($excludedcolumns['ID_TEMPLATE'])}>
     
         <{if $preset == 'ID_TEMPLATE'}>
             <input type="hidden" class="input-id-template" name="postcategory_formdata_ID_TEMPLATE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_TEMPLATE']) && !$acleditablecolumns['ID_TEMPLATE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_TEMPLATE'])}>
             <input type="hidden" class="input-id-template" name="postcategory_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE}>" />
         <{else}>
-    		<td class="form-row form-row-id-template form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Template')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Template')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-id-template form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-id-template">
-                                            
+            <td class="form-field form-field-value column-id-template" colspan="3">
+                                    
             <{if Framework::hasModule('Template')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`postcategory_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -193,77 +169,59 @@
                     <{else}>
             <input class="input-id-template input-type-text" type="text" name="<{$prefix}>postcategory_formdata_ID_TEMPLATE" value="<{$details->ID_TEMPLATE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_TEMPLATE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_TEMPLATE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_TEMPLATE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_TEMPLATE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-ordering">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ORDERING'])}>
+        <{if !isset($excludedcolumns['ORDERING'])}>
     
         <{if $preset == 'ORDERING'}>
             <input type="hidden" class="input-ordering" name="postcategory_formdata_ORDERING" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ORDERING']) && !$acleditablecolumns['ORDERING'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ORDERING'])}>
             <input type="hidden" class="input-ordering" name="postcategory_formdata_ORDERING" value="<{$details->ORDERING}>" />
         <{else}>
-    		<td class="form-row form-row-ordering">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Ordering')}></label>
+            </td>
+            <td class="form-field form-field-value column-ordering" colspan="3">
+                                    
+        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>postcategory_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
+                    <{if $columntooltips.ORDERING}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Ordering')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-ordering" colspan="3">
-                <div class="form-field form-field-value column-ordering">
-                                            
-        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>postcategory_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
-                        <{if $columntooltips.ORDERING}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="postcategory_form_bottom" args=$details}>
     </form>
 </div>

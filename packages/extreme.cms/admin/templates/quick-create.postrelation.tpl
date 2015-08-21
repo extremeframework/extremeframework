@@ -42,28 +42,24 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-id-post">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_POST'])}>
+        <{if !isset($excludedcolumns['ID_POST'])}>
     
         <{if $preset == 'ID_POST'}>
             <input type="hidden" class="input-id-post" name="postrelation_formdata_ID_POST" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST']) && !$acleditablecolumns['ID_POST'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST'])}>
             <input type="hidden" class="input-id-post" name="postrelation_formdata_ID_POST" value="<{$details->ID_POST}>" />
         <{else}>
-    		<td class="form-row form-row-id-post">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post')}></label>
             </td>
-            <td class="form-row form-row-id-post" colspan="3">
-                <div class="form-field form-field-value column-id-post">
-                                            
+            <td class="form-field form-field-value column-id-post" colspan="3">
+                                    
             <{if Framework::hasModule('Post')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
@@ -75,34 +71,29 @@
                     <{else}>
             <input class="input-id-post input-type-text" type="text" name="<{$prefix}>postrelation_formdata_ID_POST" value="<{$details->ID_POST|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_POST}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_POST}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-peer-id-post">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PEER_ID_POST'])}>
+        <{if !isset($excludedcolumns['PEER_ID_POST'])}>
     
         <{if $preset == 'PEER_ID_POST'}>
             <input type="hidden" class="input-peer-id-post" name="postrelation_formdata_PEER_ID_POST" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PEER_ID_POST']) && !$acleditablecolumns['PEER_ID_POST'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PEER_ID_POST'])}>
             <input type="hidden" class="input-peer-id-post" name="postrelation_formdata_PEER_ID_POST" value="<{$details->PEER_ID_POST}>" />
         <{else}>
-    		<td class="form-row form-row-peer-id-post">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Peer post')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Peer post')}></label>
             </td>
-            <td class="form-row form-row-peer-id-post" colspan="3">
-                <div class="form-field form-field-value column-peer-id-post">
-                                            
+            <td class="form-field form-field-value column-peer-id-post" colspan="3">
+                                    
             <{if Framework::hasModule('Post')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-peer-id-post" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$details->PEER_ID_POST text=$details->reftext_PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
@@ -114,34 +105,29 @@
                     <{else}>
             <input class="input-peer-id-post input-type-text" type="text" name="<{$prefix}>postrelation_formdata_PEER_ID_POST" value="<{$details->PEER_ID_POST|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.PEER_ID_POST}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PEER_ID_POST}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.PEER_ID_POST}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PEER_ID_POST}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-post-relation-type form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_POST_RELATION_TYPE'])}>
+        <{if !isset($excludedcolumns['ID_POST_RELATION_TYPE'])}>
     
         <{if $preset == 'ID_POST_RELATION_TYPE'}>
             <input type="hidden" class="input-id-post-relation-type" name="postrelation_formdata_ID_POST_RELATION_TYPE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_RELATION_TYPE']) && !$acleditablecolumns['ID_POST_RELATION_TYPE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_RELATION_TYPE'])}>
             <input type="hidden" class="input-id-post-relation-type" name="postrelation_formdata_ID_POST_RELATION_TYPE" value="<{$details->ID_POST_RELATION_TYPE}>" />
         <{else}>
-    		<td class="form-row form-row-id-post-relation-type form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post relation type')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post relation type')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-id-post-relation-type form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-id-post-relation-type">
-                                            
+            <td class="form-field form-field-value column-id-post-relation-type" colspan="3">
+                                    
             <{if Framework::hasModule('PostRelationType')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-relation-type" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$details->ID_POST_RELATION_TYPE text=$details->reftext_ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -153,48 +139,35 @@
                     <{else}>
             <input class="input-id-post-relation-type input-type-text" type="text" name="<{$prefix}>postrelation_formdata_ID_POST_RELATION_TYPE" value="<{$details->ID_POST_RELATION_TYPE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_POST_RELATION_TYPE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_RELATION_TYPE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_POST_RELATION_TYPE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_RELATION_TYPE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="postrelation_form_bottom" args=$details}>
     </form>
 </div>

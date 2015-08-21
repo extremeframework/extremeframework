@@ -42,105 +42,83 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="pagegallery_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
             <input type="hidden" class="input-title" name="pagegallery_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Page gallery title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Page gallery title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>pagegallery_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                
+<tr class="form-row form-row-image form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IMAGE'])}>
+        <{if !isset($excludedcolumns['IMAGE'])}>
     
         <{if $preset == 'IMAGE'}>
             <input type="hidden" class="input-image" name="pagegallery_formdata_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IMAGE']) && !$acleditablecolumns['IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IMAGE'])}>
             <input type="hidden" class="input-image" name="pagegallery_formdata_IMAGE" value="<{$details->IMAGE}>" />
         <{else}>
-    		<td class="form-row form-row-image form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Image')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Image')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-image form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-image">
-                                            
+            <td class="form-field form-field-value column-image" colspan="3">
+                                    
 
 	<input class="input-image input-type-file" type="file" name="<{$prefix}>pagegallery_formdata_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
 	<{if $details->IMAGE}><div style="clear:both"></div><span id="<{$prefix}>pagegallery_IMAGE"><{media src=$details->IMAGE}> <a onclick="remove_attachment(document.pagegalleryform.<{$prefix}>pagegallery_formdata_IMAGE, '<{$details->IMAGE}>', '<{$prefix}>pagegallery_IMAGE')">Remove</a></span><{/if}>
     <input type="hidden" name="<{$prefix}>pagegallery_formdata_IMAGE" value="<{$details->IMAGE}>" />
-                        <{if $columntooltips.IMAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IMAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                    </tbody>
+    <{/if}>    </tr>                                                                                                                                                                                                                                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="pagegallery_form_bottom" args=$details}>
     </form>
 </div>

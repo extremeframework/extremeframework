@@ -24,168 +24,136 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="option_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="option_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Name?')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Name?')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>option_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
             <input type="hidden" class="input-code" name="option_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
             <input type="hidden" class="input-code" name="option_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="option_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-code" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-code" name="option_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>option_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-value">
             
         
         
         
-        
-<{if !isset($excludedcolumns['VALUE'])}>
+        <{if !isset($excludedcolumns['VALUE'])}>
     
         <{if $preset == 'VALUE'}>
             <input type="hidden" class="input-value" name="option_formdata_VALUE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['VALUE']) && !$acleditablecolumns['VALUE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['VALUE'])}>
             <input type="hidden" class="input-value" name="option_formdata_VALUE" value="<{$details->VALUE}>" />
         <{else}>
-    		<td class="form-row form-row-value">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Value')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Value')}></label>
             </td>
-            <td class="form-row form-row-value" colspan="3">
-                <div class="form-field form-field-value column-value">
-                                            
+            <td class="form-field form-field-value column-value" colspan="3">
+                                    
 
     <input class="input-value input-type-text" type="text" name="<{$prefix}>option_formdata_VALUE" value="<{$details->VALUE|escape}>"  />
-                        <{if $columntooltips.VALUE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.VALUE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.VALUE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.VALUE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-context">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CONTEXT'])}>
+        <{if !isset($excludedcolumns['CONTEXT'])}>
     
         <{if $preset == 'CONTEXT'}>
             <input type="hidden" class="input-context" name="option_formdata_CONTEXT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CONTEXT']) && !$acleditablecolumns['CONTEXT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CONTEXT'])}>
             <input type="hidden" class="input-context" name="option_formdata_CONTEXT" value="<{$details->CONTEXT}>" />
         <{else}>
-    		<td class="form-row form-row-context">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Context')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Context')}></label>
             </td>
-            <td class="form-row form-row-context" colspan="3">
-                <div class="form-field form-field-value column-context">
-                                            
+            <td class="form-field form-field-value column-context" colspan="3">
+                                    
 
     <input class="input-context input-type-text" type="text" name="<{$prefix}>option_formdata_CONTEXT" value="<{$details->CONTEXT|escape}>"  />
-                        <{if $columntooltips.CONTEXT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CONTEXT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CONTEXT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CONTEXT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="option_form_bottom" args=$details}>
     </form>
 </div>

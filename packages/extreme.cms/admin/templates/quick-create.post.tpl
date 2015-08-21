@@ -42,94 +42,80 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="post_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
             <input type="hidden" class="input-title" name="post_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>post_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-slug form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['SLUG'])}>
+        <{if !isset($excludedcolumns['SLUG'])}>
     
         <{if $preset == 'SLUG'}>
             <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
             <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$details->SLUG}>" />
         <{else}>
-    		<td class="form-row form-row-slug form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-slug form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-slug">
-                                            <{if $details->ID && $details->SLUG != ''}>
-                            <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$details->SLUG}>" />
-                            
+            <td class="form-field form-field-value column-slug" colspan="3">
+                                    <{if $details->ID && $details->SLUG != ''}>
+                        <input type="hidden" class="input-slug" name="post_formdata_SLUG" value="<{$details->SLUG}>" />
+                        
     <{$details->SLUG|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-slug input-type-text" type="text" name="<{$prefix}>post_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
-                            <{if $columntooltips.SLUG}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.SLUG}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-post-type form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_POST_TYPE'])}>
+        <{if !isset($excludedcolumns['ID_POST_TYPE'])}>
     
         <{if $preset == 'ID_POST_TYPE'}>
             <input type="hidden" class="input-id-post-type" name="post_formdata_ID_POST_TYPE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_TYPE']) && !$acleditablecolumns['ID_POST_TYPE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_TYPE'])}>
             <input type="hidden" class="input-id-post-type" name="post_formdata_ID_POST_TYPE" value="<{$details->ID_POST_TYPE}>" />
         <{else}>
-    		<td class="form-row form-row-id-post-type form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post type')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post type')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-id-post-type form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-id-post-type">
-                                            
+            <td class="form-field form-field-value column-id-post-type" colspan="3">
+                                    
             <{if Framework::hasModule('PostType')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-type" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$details->ID_POST_TYPE text=$details->reftext_ID_POST_TYPE datasource="POST_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -141,34 +127,29 @@
                     <{else}>
             <input class="input-id-post-type input-type-text" type="text" name="<{$prefix}>post_formdata_ID_POST_TYPE" value="<{$details->ID_POST_TYPE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_POST_TYPE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_TYPE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_POST_TYPE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_TYPE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-post-category">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_POST_CATEGORY'])}>
+        <{if !isset($excludedcolumns['ID_POST_CATEGORY'])}>
     
         <{if $preset == 'ID_POST_CATEGORY'}>
             <input type="hidden" class="input-id-post-category" name="post_formdata_ID_POST_CATEGORY" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_CATEGORY']) && !$acleditablecolumns['ID_POST_CATEGORY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_CATEGORY'])}>
             <input type="hidden" class="input-id-post-category" name="post_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY}>" />
         <{else}>
-    		<td class="form-row form-row-id-post-category">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post category')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post category')}></label>
             </td>
-            <td class="form-row form-row-id-post-category" colspan="3">
-                <div class="form-field form-field-value column-id-post-category">
-                                            
+            <td class="form-field form-field-value column-id-post-category" colspan="3">
+                                    
             <{if Framework::hasModule('PostCategory')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -180,81 +161,63 @@
                     <{else}>
             <input class="input-id-post-category input-type-text" type="text" name="<{$prefix}>post_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_POST_CATEGORY}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_CATEGORY}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_POST_CATEGORY}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_CATEGORY}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-image">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IMAGE'])}>
+        <{if !isset($excludedcolumns['IMAGE'])}>
     
         <{if $preset == 'IMAGE'}>
             <input type="hidden" class="input-image" name="post_formdata_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IMAGE']) && !$acleditablecolumns['IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IMAGE'])}>
             <input type="hidden" class="input-image" name="post_formdata_IMAGE" value="<{$details->IMAGE}>" />
         <{else}>
-    		<td class="form-row form-row-image">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Image')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Image')}></label>
             </td>
-            <td class="form-row form-row-image" colspan="3">
-                <div class="form-field form-field-value column-image">
-                                            
+            <td class="form-field form-field-value column-image" colspan="3">
+                                    
 
 	<input class="input-image input-type-file" type="file" name="<{$prefix}>post_formdata_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
 	<{if $details->IMAGE}><div style="clear:both"></div><span id="<{$prefix}>post_IMAGE"><{media src=$details->IMAGE}> <a onclick="remove_attachment(document.postform.<{$prefix}>post_formdata_IMAGE, '<{$details->IMAGE}>', '<{$prefix}>post_IMAGE')">Remove</a></span><{/if}>
     <input type="hidden" name="<{$prefix}>post_formdata_IMAGE" value="<{$details->IMAGE}>" />
-                        <{if $columntooltips.IMAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IMAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </tbody>
+    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="post_form_bottom" args=$details}>
     </form>
 </div>

@@ -42,208 +42,174 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                                                                                <tr>
-    
+                                                                                                                                                
+<tr class="form-row form-row-customer-first-name">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CUSTOMER_FIRST_NAME'])}>
+        <{if !isset($excludedcolumns['CUSTOMER_FIRST_NAME'])}>
     
         <{if $preset == 'CUSTOMER_FIRST_NAME'}>
             <input type="hidden" class="input-customer-first-name" name="adminorder_formdata_CUSTOMER_FIRST_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CUSTOMER_FIRST_NAME']) && !$acleditablecolumns['CUSTOMER_FIRST_NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CUSTOMER_FIRST_NAME'])}>
             <input type="hidden" class="input-customer-first-name" name="adminorder_formdata_CUSTOMER_FIRST_NAME" value="<{$details->CUSTOMER_FIRST_NAME}>" />
         <{else}>
-    		<td class="form-row form-row-customer-first-name">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Customer first name')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Customer first name')}></label>
             </td>
-            <td class="form-row form-row-customer-first-name" colspan="3">
-                <div class="form-field form-field-value column-customer-first-name">
-                                            
+            <td class="form-field form-field-value column-customer-first-name" colspan="3">
+                                    
 
     <input class="input-customer-first-name input-type-text" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_FIRST_NAME" value="<{$details->CUSTOMER_FIRST_NAME|escape}>"  />
-                        <{if $columntooltips.CUSTOMER_FIRST_NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_FIRST_NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CUSTOMER_FIRST_NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_FIRST_NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-customer-last-name">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CUSTOMER_LAST_NAME'])}>
+        <{if !isset($excludedcolumns['CUSTOMER_LAST_NAME'])}>
     
         <{if $preset == 'CUSTOMER_LAST_NAME'}>
             <input type="hidden" class="input-customer-last-name" name="adminorder_formdata_CUSTOMER_LAST_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CUSTOMER_LAST_NAME']) && !$acleditablecolumns['CUSTOMER_LAST_NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CUSTOMER_LAST_NAME'])}>
             <input type="hidden" class="input-customer-last-name" name="adminorder_formdata_CUSTOMER_LAST_NAME" value="<{$details->CUSTOMER_LAST_NAME}>" />
         <{else}>
-    		<td class="form-row form-row-customer-last-name">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Customer last name')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Customer last name')}></label>
             </td>
-            <td class="form-row form-row-customer-last-name" colspan="3">
-                <div class="form-field form-field-value column-customer-last-name">
-                                            
+            <td class="form-field form-field-value column-customer-last-name" colspan="3">
+                                    
 
     <input class="input-customer-last-name input-type-text" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_LAST_NAME" value="<{$details->CUSTOMER_LAST_NAME|escape}>"  />
-                        <{if $columntooltips.CUSTOMER_LAST_NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_LAST_NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CUSTOMER_LAST_NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_LAST_NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                        <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                                                                        
+<tr class="form-row form-row-customer-zip-code">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CUSTOMER_ZIP_CODE'])}>
+        <{if !isset($excludedcolumns['CUSTOMER_ZIP_CODE'])}>
     
         <{if $preset == 'CUSTOMER_ZIP_CODE'}>
             <input type="hidden" class="input-customer-zip-code" name="adminorder_formdata_CUSTOMER_ZIP_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CUSTOMER_ZIP_CODE']) && !$acleditablecolumns['CUSTOMER_ZIP_CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CUSTOMER_ZIP_CODE'])}>
             <input type="hidden" class="input-customer-zip-code" name="adminorder_formdata_CUSTOMER_ZIP_CODE" value="<{$details->CUSTOMER_ZIP_CODE}>" />
         <{else}>
-    		<td class="form-row form-row-customer-zip-code">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Customer zip code')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Customer zip code')}></label>
             </td>
-            <td class="form-row form-row-customer-zip-code" colspan="3">
-                <div class="form-field form-field-value column-customer-zip-code">
-                                            
+            <td class="form-field form-field-value column-customer-zip-code" colspan="3">
+                                    
 
     <input class="input-customer-zip-code input-type-text" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_ZIP_CODE" value="<{$details->CUSTOMER_ZIP_CODE|escape}>"  />
-                        <{if $columntooltips.CUSTOMER_ZIP_CODE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_ZIP_CODE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CUSTOMER_ZIP_CODE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_ZIP_CODE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-customer-email">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CUSTOMER_EMAIL'])}>
+        <{if !isset($excludedcolumns['CUSTOMER_EMAIL'])}>
     
         <{if $preset == 'CUSTOMER_EMAIL'}>
             <input type="hidden" class="input-customer-email" name="adminorder_formdata_CUSTOMER_EMAIL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CUSTOMER_EMAIL']) && !$acleditablecolumns['CUSTOMER_EMAIL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CUSTOMER_EMAIL'])}>
             <input type="hidden" class="input-customer-email" name="adminorder_formdata_CUSTOMER_EMAIL" value="<{$details->CUSTOMER_EMAIL}>" />
         <{else}>
-    		<td class="form-row form-row-customer-email">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Customer email')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Customer email')}></label>
             </td>
-            <td class="form-row form-row-customer-email" colspan="3">
-                <div class="form-field form-field-value column-customer-email">
-                                            
+            <td class="form-field form-field-value column-customer-email" colspan="3">
+                                    
 
     <input class="input-customer-email input-type-text" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_EMAIL" value="<{$details->CUSTOMER_EMAIL|escape}>"  />
-                        <{if $columntooltips.CUSTOMER_EMAIL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_EMAIL}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CUSTOMER_EMAIL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_EMAIL}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-customer-phone">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CUSTOMER_PHONE'])}>
+        <{if !isset($excludedcolumns['CUSTOMER_PHONE'])}>
     
         <{if $preset == 'CUSTOMER_PHONE'}>
             <input type="hidden" class="input-customer-phone" name="adminorder_formdata_CUSTOMER_PHONE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CUSTOMER_PHONE']) && !$acleditablecolumns['CUSTOMER_PHONE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CUSTOMER_PHONE'])}>
             <input type="hidden" class="input-customer-phone" name="adminorder_formdata_CUSTOMER_PHONE" value="<{$details->CUSTOMER_PHONE}>" />
         <{else}>
-    		<td class="form-row form-row-customer-phone">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Customer phone')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Customer phone')}></label>
             </td>
-            <td class="form-row form-row-customer-phone" colspan="3">
-                <div class="form-field form-field-value column-customer-phone">
-                                            
+            <td class="form-field form-field-value column-customer-phone" colspan="3">
+                                    
 
     <input class="input-customer-phone input-type-text" type="text" name="<{$prefix}>adminorder_formdata_CUSTOMER_PHONE" value="<{$details->CUSTOMER_PHONE|escape}>"  />
-                        <{if $columntooltips.CUSTOMER_PHONE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_PHONE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CUSTOMER_PHONE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CUSTOMER_PHONE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                
+<tr class="form-row form-row-coupon-code">
             
         
         
         
-        
-<{if !isset($excludedcolumns['COUPON_CODE'])}>
+        <{if !isset($excludedcolumns['COUPON_CODE'])}>
     
         <{if $preset == 'COUPON_CODE'}>
             <input type="hidden" class="input-coupon-code" name="adminorder_formdata_COUPON_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['COUPON_CODE']) && !$acleditablecolumns['COUPON_CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['COUPON_CODE'])}>
             <input type="hidden" class="input-coupon-code" name="adminorder_formdata_COUPON_CODE" value="<{$details->COUPON_CODE}>" />
         <{else}>
-    		<td class="form-row form-row-coupon-code">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Coupon code')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Coupon code')}></label>
             </td>
-            <td class="form-row form-row-coupon-code" colspan="3">
-                <div class="form-field form-field-value column-coupon-code">
-                                            
+            <td class="form-field form-field-value column-coupon-code" colspan="3">
+                                    
 
     <input class="input-coupon-code input-type-text" type="text" name="<{$prefix}>adminorder_formdata_COUPON_CODE" value="<{$details->COUPON_CODE|escape}>"  />
-                        <{if $columntooltips.COUPON_CODE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.COUPON_CODE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.COUPON_CODE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.COUPON_CODE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                
+<tr class="form-row form-row-id-payment-type form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_PAYMENT_TYPE'])}>
+        <{if !isset($excludedcolumns['ID_PAYMENT_TYPE'])}>
     
         <{if $preset == 'ID_PAYMENT_TYPE'}>
             <input type="hidden" class="input-id-payment-type" name="adminorder_formdata_ID_PAYMENT_TYPE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_PAYMENT_TYPE']) && !$acleditablecolumns['ID_PAYMENT_TYPE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_PAYMENT_TYPE'])}>
             <input type="hidden" class="input-id-payment-type" name="adminorder_formdata_ID_PAYMENT_TYPE" value="<{$details->ID_PAYMENT_TYPE}>" />
         <{else}>
-    		<td class="form-row form-row-id-payment-type form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Payment type')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Payment type')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-id-payment-type form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-id-payment-type">
-                                            
+            <td class="form-field form-field-value column-id-payment-type" colspan="3">
+                                    
             <{if Framework::hasModule('PaymentType')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-payment-type" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$details->ID_PAYMENT_TYPE text=$details->reftext_ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -255,34 +221,29 @@
                     <{else}>
             <input class="input-id-payment-type input-type-text" type="text" name="<{$prefix}>adminorder_formdata_ID_PAYMENT_TYPE" value="<{$details->ID_PAYMENT_TYPE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_PAYMENT_TYPE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_PAYMENT_TYPE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_PAYMENT_TYPE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_PAYMENT_TYPE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    
+<tr class="form-row form-row-id-admin-order-status">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_ORDER_STATUS'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_ORDER_STATUS'])}>
     
         <{if $preset == 'ID_ADMIN_ORDER_STATUS'}>
             <input type="hidden" class="input-id-admin-order-status" name="adminorder_formdata_ID_ADMIN_ORDER_STATUS" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_ORDER_STATUS']) && !$acleditablecolumns['ID_ADMIN_ORDER_STATUS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_ORDER_STATUS'])}>
             <input type="hidden" class="input-id-admin-order-status" name="adminorder_formdata_ID_ADMIN_ORDER_STATUS" value="<{$details->ID_ADMIN_ORDER_STATUS}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-order-status">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin order status')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin order status')}></label>
             </td>
-            <td class="form-row form-row-id-admin-order-status" colspan="3">
-                <div class="form-field form-field-value column-id-admin-order-status">
-                                            
+            <td class="form-field form-field-value column-id-admin-order-status" colspan="3">
+                                    
             <{if Framework::hasModule('AdminOrderStatus')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-order-status" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$details->ID_ADMIN_ORDER_STATUS text=$details->reftext_ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -294,79 +255,61 @@
                     <{else}>
             <input class="input-id-admin-order-status input-type-text" type="text" name="<{$prefix}>adminorder_formdata_ID_ADMIN_ORDER_STATUS" value="<{$details->ID_ADMIN_ORDER_STATUS|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_ORDER_STATUS}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_ORDER_STATUS}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_ORDER_STATUS}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_ORDER_STATUS}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-note">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NOTE'])}>
+        <{if !isset($excludedcolumns['NOTE'])}>
     
         <{if $preset == 'NOTE'}>
             <input type="hidden" class="input-note" name="adminorder_formdata_NOTE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NOTE']) && !$acleditablecolumns['NOTE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NOTE'])}>
             <input type="hidden" class="input-note" name="adminorder_formdata_NOTE" value="<{$details->NOTE}>" />
         <{else}>
-    		<td class="form-row form-row-note">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Note')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Note')}></label>
             </td>
-            <td class="form-row form-row-note" colspan="3">
-                <div class="form-field form-field-value column-note">
-                                            
+            <td class="form-field form-field-value column-note" colspan="3">
+                                    
     <{$tmpid = uniqid()}>
 
     <textarea class="input-note " id="<{$prefix}>adminorder_formdata_NOTE_<{$tmpid}>" name="<{$prefix}>adminorder_formdata_NOTE" rows="5" ><{$details->NOTE}></textarea>
-                        <{if $columntooltips.NOTE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NOTE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NOTE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NOTE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminorder_form_bottom" args=$details}>
     </form>
 </div>

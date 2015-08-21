@@ -24,94 +24,80 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="adminpackage_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="adminpackage_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
             <input type="hidden" class="input-code" name="adminpackage_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
             <input type="hidden" class="input-code" name="adminpackage_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="adminpackage_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-code" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-code" name="adminpackage_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package-category">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY'])}>
     
         <{if $preset == 'ID_ADMIN_PACKAGE_CATEGORY'}>
             <input type="hidden" class="input-id-admin-package-category" name="adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && !$acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE_CATEGORY'])}>
             <input type="hidden" class="input-id-admin-package-category" name="adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$details->ID_ADMIN_PACKAGE_CATEGORY}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-package-category">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package category')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package category')}></label>
             </td>
-            <td class="form-row form-row-id-admin-package-category" colspan="3">
-                <div class="form-field form-field-value column-id-admin-package-category">
-                                            
+            <td class="form-field form-field-value column-id-admin-package-category" colspan="3">
+                                    
             <{if Framework::hasModule('AdminPackageCategory')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-category" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$details->ID_ADMIN_PACKAGE_CATEGORY text=$details->reftext_ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -123,356 +109,336 @@
                     <{else}>
             <input class="input-id-admin-package-category input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value="<{$details->ID_ADMIN_PACKAGE_CATEGORY|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE_CATEGORY}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package-industry">
             
         
         
         
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_INDUSTRY'])}>
+    
+        <{if $preset == 'ID_ADMIN_PACKAGE_INDUSTRY'}>
+            <input type="hidden" class="input-id-admin-package-industry" name="adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && !$acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY'])}>
+            <input type="hidden" class="input-id-admin-package-industry" name="adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value="<{$details->ID_ADMIN_PACKAGE_INDUSTRY}>" />
+        <{else}>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package industry')}></label>
+            </td>
+            <td class="form-field form-field-value column-id-admin-package-industry" colspan="3">
+                                    
+            <{if Framework::hasModule('AdminPackageIndustry')}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package-industry" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$details->ID_ADMIN_PACKAGE_INDUSTRY text=$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                            <{if isset($smarty.session.acl.adminpackageindustry.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/new" title="Create a New Admin Package Industry">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-industry input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value="<{$details->ID_ADMIN_PACKAGE_INDUSTRY|escape}>"  />
+        <{/if}>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE_INDUSTRY}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE_INDUSTRY}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-image">
+            
         
-<{if !isset($excludedcolumns['IMAGE'])}>
+        
+        
+        <{if !isset($excludedcolumns['IMAGE'])}>
     
         <{if $preset == 'IMAGE'}>
             <input type="hidden" class="input-image" name="adminpackage_formdata_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IMAGE']) && !$acleditablecolumns['IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IMAGE'])}>
             <input type="hidden" class="input-image" name="adminpackage_formdata_IMAGE" value="<{$details->IMAGE}>" />
         <{else}>
-    		<td class="form-row form-row-image">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Image')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Image')}></label>
             </td>
-            <td class="form-row form-row-image" colspan="3">
-                <div class="form-field form-field-value column-image">
-                                            
+            <td class="form-field form-field-value column-image" colspan="3">
+                                    
 
 	<input class="input-image input-type-file" type="file" name="<{$prefix}>adminpackage_formdata_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
 	<{if $details->IMAGE}><div style="clear:both"></div><span id="<{$prefix}>adminpackage_IMAGE"><{media src=$details->IMAGE}> <a onclick="remove_attachment(document.adminpackageform.<{$prefix}>adminpackage_formdata_IMAGE, '<{$details->IMAGE}>', '<{$prefix}>adminpackage_IMAGE')">Remove</a></span><{/if}>
     <input type="hidden" name="<{$prefix}>adminpackage_formdata_IMAGE" value="<{$details->IMAGE}>" />
-                        <{if $columntooltips.IMAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IMAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-description">
             
         
         
         
-        
-<{if !isset($excludedcolumns['DESCRIPTION'])}>
+        <{if !isset($excludedcolumns['DESCRIPTION'])}>
     
         <{if $preset == 'DESCRIPTION'}>
             <input type="hidden" class="input-description" name="adminpackage_formdata_DESCRIPTION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['DESCRIPTION']) && !$acleditablecolumns['DESCRIPTION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['DESCRIPTION'])}>
             <input type="hidden" class="input-description" name="adminpackage_formdata_DESCRIPTION" value="<{$details->DESCRIPTION}>" />
         <{else}>
-    		<td class="form-row form-row-description">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Description')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Description')}></label>
             </td>
-            <td class="form-row form-row-description" colspan="3">
-                <div class="form-field form-field-value column-description">
-                                            
+            <td class="form-field form-field-value column-description" colspan="3">
+                                    
     <{$tmpid = uniqid()}>
 
     <textarea class="input-description enable-html" id="<{$prefix}>adminpackage_formdata_DESCRIPTION_<{$tmpid}>" name="<{$prefix}>adminpackage_formdata_DESCRIPTION" rows="5" ><{$details->DESCRIPTION}></textarea>
-                        <{if $columntooltips.DESCRIPTION}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.DESCRIPTION}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.DESCRIPTION}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.DESCRIPTION}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-entry-path form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENTRY_PATH'])}>
+        <{if !isset($excludedcolumns['ENTRY_PATH'])}>
     
         <{if $preset == 'ENTRY_PATH'}>
             <input type="hidden" class="input-entry-path" name="adminpackage_formdata_ENTRY_PATH" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENTRY_PATH']) && !$acleditablecolumns['ENTRY_PATH'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENTRY_PATH'])}>
             <input type="hidden" class="input-entry-path" name="adminpackage_formdata_ENTRY_PATH" value="<{$details->ENTRY_PATH}>" />
         <{else}>
-    		<td class="form-row form-row-entry-path form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Entry path')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Entry path')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-entry-path form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-entry-path">
-                                            
+            <td class="form-field form-field-value column-entry-path" colspan="3">
+                                    
 
     <input class="input-entry-path input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ENTRY_PATH" value="<{$details->ENTRY_PATH|escape}>"  />
-                        <{if $columntooltips.ENTRY_PATH}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENTRY_PATH}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENTRY_PATH}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENTRY_PATH}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-author">
             
         
         
         
-        
-<{if !isset($excludedcolumns['AUTHOR'])}>
+        <{if !isset($excludedcolumns['AUTHOR'])}>
     
         <{if $preset == 'AUTHOR'}>
             <input type="hidden" class="input-author" name="adminpackage_formdata_AUTHOR" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['AUTHOR']) && !$acleditablecolumns['AUTHOR'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['AUTHOR'])}>
             <input type="hidden" class="input-author" name="adminpackage_formdata_AUTHOR" value="<{$details->AUTHOR}>" />
         <{else}>
-    		<td class="form-row form-row-author">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Author')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Author')}></label>
             </td>
-            <td class="form-row form-row-author" colspan="3">
-                <div class="form-field form-field-value column-author">
-                                            
+            <td class="form-field form-field-value column-author" colspan="3">
+                                    
 
     <input class="input-author input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_AUTHOR" value="<{$details->AUTHOR|escape}>"  />
-                        <{if $columntooltips.AUTHOR}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.AUTHOR}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.AUTHOR}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.AUTHOR}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-version">
             
         
         
         
-        
-<{if !isset($excludedcolumns['VERSION'])}>
+        <{if !isset($excludedcolumns['VERSION'])}>
     
         <{if $preset == 'VERSION'}>
             <input type="hidden" class="input-version" name="adminpackage_formdata_VERSION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['VERSION']) && !$acleditablecolumns['VERSION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['VERSION'])}>
             <input type="hidden" class="input-version" name="adminpackage_formdata_VERSION" value="<{$details->VERSION}>" />
         <{else}>
-    		<td class="form-row form-row-version">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Version')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Version')}></label>
             </td>
-            <td class="form-row form-row-version" colspan="3">
-                <div class="form-field form-field-value column-version">
-                                            
+            <td class="form-field form-field-value column-version" colspan="3">
+                                    
 
     <input class="input-version input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_VERSION" value="<{$details->VERSION|escape}>"  />
-                        <{if $columntooltips.VERSION}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.VERSION}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.VERSION}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.VERSION}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-package-url">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PACKAGE_URL'])}>
+        <{if !isset($excludedcolumns['PACKAGE_URL'])}>
     
         <{if $preset == 'PACKAGE_URL'}>
             <input type="hidden" class="input-package-url" name="adminpackage_formdata_PACKAGE_URL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PACKAGE_URL']) && !$acleditablecolumns['PACKAGE_URL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PACKAGE_URL'])}>
             <input type="hidden" class="input-package-url" name="adminpackage_formdata_PACKAGE_URL" value="<{$details->PACKAGE_URL}>" />
         <{else}>
-    		<td class="form-row form-row-package-url">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Package url')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Package url')}></label>
             </td>
-            <td class="form-row form-row-package-url" colspan="3">
-                <div class="form-field form-field-value column-package-url">
-                                            
+            <td class="form-field form-field-value column-package-url" colspan="3">
+                                    
 
     <input class="input-package-url input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_PACKAGE_URL" value="<{$details->PACKAGE_URL|escape}>"  />
-                        <{if $columntooltips.PACKAGE_URL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PACKAGE_URL}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.PACKAGE_URL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PACKAGE_URL}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-author-url">
             
         
         
         
-        
-<{if !isset($excludedcolumns['AUTHOR_URL'])}>
+        <{if !isset($excludedcolumns['AUTHOR_URL'])}>
     
         <{if $preset == 'AUTHOR_URL'}>
             <input type="hidden" class="input-author-url" name="adminpackage_formdata_AUTHOR_URL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['AUTHOR_URL']) && !$acleditablecolumns['AUTHOR_URL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['AUTHOR_URL'])}>
             <input type="hidden" class="input-author-url" name="adminpackage_formdata_AUTHOR_URL" value="<{$details->AUTHOR_URL}>" />
         <{else}>
-    		<td class="form-row form-row-author-url">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Author url')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Author url')}></label>
             </td>
-            <td class="form-row form-row-author-url" colspan="3">
-                <div class="form-field form-field-value column-author-url">
-                                            
+            <td class="form-field form-field-value column-author-url" colspan="3">
+                                    
 
     <input class="input-author-url input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_AUTHOR_URL" value="<{$details->AUTHOR_URL|escape}>"  />
-                        <{if $columntooltips.AUTHOR_URL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.AUTHOR_URL}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.AUTHOR_URL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.AUTHOR_URL}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-package-path">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PACKAGE_PATH'])}>
+        <{if !isset($excludedcolumns['PACKAGE_PATH'])}>
     
         <{if $preset == 'PACKAGE_PATH'}>
             <input type="hidden" class="input-package-path" name="adminpackage_formdata_PACKAGE_PATH" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PACKAGE_PATH']) && !$acleditablecolumns['PACKAGE_PATH'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PACKAGE_PATH'])}>
             <input type="hidden" class="input-package-path" name="adminpackage_formdata_PACKAGE_PATH" value="<{$details->PACKAGE_PATH}>" />
         <{else}>
-    		<td class="form-row form-row-package-path">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Package path')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Package path')}></label>
             </td>
-            <td class="form-row form-row-package-path" colspan="3">
-                <div class="form-field form-field-value column-package-path">
-                                            
+            <td class="form-field form-field-value column-package-path" colspan="3">
+                                    
 
     <input class="input-package-path input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_PACKAGE_PATH" value="<{$details->PACKAGE_PATH|escape}>"  />
-                        <{if $columntooltips.PACKAGE_PATH}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PACKAGE_PATH}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.PACKAGE_PATH}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PACKAGE_PATH}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-installation-date">
             
         
         
         
-        
-<{if !isset($excludedcolumns['INSTALLATION_DATE'])}>
+        <{if !isset($excludedcolumns['INSTALLATION_DATE'])}>
     
         <{if $preset == 'INSTALLATION_DATE'}>
             <input type="hidden" class="input-installation-date" name="adminpackage_formdata_INSTALLATION_DATE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['INSTALLATION_DATE']) && !$acleditablecolumns['INSTALLATION_DATE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['INSTALLATION_DATE'])}>
             <input type="hidden" class="input-installation-date" name="adminpackage_formdata_INSTALLATION_DATE" value="<{$details->INSTALLATION_DATE}>" />
         <{else}>
-    		<td class="form-row form-row-installation-date">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Installation date')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Installation date')}></label>
             </td>
-            <td class="form-row form-row-installation-date" colspan="3">
-                <div class="form-field form-field-value column-installation-date">
-                                            
+            <td class="form-field form-field-value column-installation-date" colspan="3">
+                                    
     <input class="input-installation-date input-type-date field-date" type="text" id="<{$prefix}>adminpackage_formdata_INSTALLATION_DATE" name="<{$prefix}>adminpackage_formdata_INSTALLATION_DATE" value="<{$details->INSTALLATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
-                        <{if $columntooltips.INSTALLATION_DATE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.INSTALLATION_DATE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.INSTALLATION_DATE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.INSTALLATION_DATE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-latest-update">
             
         
         
-                    </tr>                                                                                            <tr>
-    
+                    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package-type form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IS_USER_PACKAGE'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE'])}>
     
-        <{if $preset == 'IS_USER_PACKAGE'}>
-            <input type="hidden" class="input-is-user-package" name="adminpackage_formdata_IS_USER_PACKAGE" value="<{$presetvalue}>" />
-        <{elseif isset($acleditablecolumns['IS_USER_PACKAGE']) && !$acleditablecolumns['IS_USER_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_USER_PACKAGE'])}>
-            <input type="hidden" class="input-is-user-package" name="adminpackage_formdata_IS_USER_PACKAGE" value="<{$details->IS_USER_PACKAGE}>" />
+        <{if $preset == 'ID_ADMIN_PACKAGE_TYPE'}>
+            <input type="hidden" class="input-id-admin-package-type" name="adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$presetvalue}>" />
+        <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) && !$acleditablecolumns['ID_ADMIN_PACKAGE_TYPE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE'])}>
+            <input type="hidden" class="input-id-admin-package-type" name="adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$details->ID_ADMIN_PACKAGE_TYPE}>" />
         <{else}>
-    		<td class="form-row form-row-is-user-package">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package type')}><span class="mandatory">*</span></label>
+            </td>
+            <td class="form-field form-field-value column-id-admin-package-type" colspan="3">
+                                    
+            <{if Framework::hasModule('AdminPackageType')}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-type" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$details->ID_ADMIN_PACKAGE_TYPE text=$details->reftext_ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                            <{if isset($smarty.session.acl.adminpackagetype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/new" title="Create a New Admin Package Type">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-type input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$details->ID_ADMIN_PACKAGE_TYPE|escape}>"  />
+        <{/if}>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE_TYPE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE_TYPE}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('User package?')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-is-user-package" colspan="3">
-                <div class="form-field form-field-value column-is-user-package">
-                                            
-
-    <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $details->IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$details->IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.IS_USER_PACKAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IS_USER_PACKAGE}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminpackage_form_bottom" args=$details}>
     </form>
 </div>

@@ -24,58 +24,49 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="adminmenuitem_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="adminmenuitem_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin menu item name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin menu item name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-menu">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_MENU'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_MENU'])}>
     
         <{if $preset == 'ID_ADMIN_MENU'}>
             <input type="hidden" class="input-id-admin-menu" name="adminmenuitem_formdata_ID_ADMIN_MENU" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_MENU']) && !$acleditablecolumns['ID_ADMIN_MENU'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_MENU'])}>
             <input type="hidden" class="input-id-admin-menu" name="adminmenuitem_formdata_ID_ADMIN_MENU" value="<{$details->ID_ADMIN_MENU}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-menu">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin menu')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin menu')}></label>
             </td>
-            <td class="form-row form-row-id-admin-menu" colspan="3">
-                <div class="form-field form-field-value column-id-admin-menu">
-                                            
+            <td class="form-field form-field-value column-id-admin-menu" colspan="3">
+                                    
             <{if Framework::hasModule('AdminMenu')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-menu" class="input-id-admin-menu" name="`$prefix`adminmenuitem_formdata_ID_ADMIN_MENU" value=$details->ID_ADMIN_MENU text=$details->reftext_ID_ADMIN_MENU datasource="ADMIN_MENU" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -87,34 +78,29 @@
                     <{else}>
             <input class="input-id-admin-menu input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_ID_ADMIN_MENU" value="<{$details->ID_ADMIN_MENU|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_MENU}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_MENU}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_MENU}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_MENU}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-parent">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PARENT'])}>
+        <{if !isset($excludedcolumns['PARENT'])}>
     
         <{if $preset == 'PARENT'}>
             <input type="hidden" class="input-parent" name="adminmenuitem_formdata_PARENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PARENT']) && !$acleditablecolumns['PARENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PARENT'])}>
             <input type="hidden" class="input-parent" name="adminmenuitem_formdata_PARENT" value="<{$details->PARENT}>" />
         <{else}>
-    		<td class="form-row form-row-parent">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Parent')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Parent')}></label>
             </td>
-            <td class="form-row form-row-parent" colspan="3">
-                <div class="form-field form-field-value column-parent">
-                                            
+            <td class="form-field form-field-value column-parent" colspan="3">
+                                    
             <{if Framework::hasModule('AdminMenuItem')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`adminmenuitem_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="ADMIN_MENU_ITEM" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="ID_ADMIN_MENU" blankitem=""}>
 
@@ -126,34 +112,29 @@
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.PARENT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.PARENT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-module">
             
         
         
         
-        
-<{if !isset($excludedcolumns['MODULE'])}>
+        <{if !isset($excludedcolumns['MODULE'])}>
     
         <{if $preset == 'MODULE'}>
             <input type="hidden" class="input-module" name="adminmenuitem_formdata_MODULE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['MODULE']) && !$acleditablecolumns['MODULE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['MODULE'])}>
             <input type="hidden" class="input-module" name="adminmenuitem_formdata_MODULE" value="<{$details->MODULE}>" />
         <{else}>
-    		<td class="form-row form-row-module">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Module')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Module')}></label>
             </td>
-            <td class="form-row form-row-module" colspan="3">
-                <div class="form-field form-field-value column-module">
-                                            
+            <td class="form-field form-field-value column-module" colspan="3">
+                                    
             <{if Framework::hasModule('AdminModule')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminmenuitem_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -165,347 +146,284 @@
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.MODULE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.MODULE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-path">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PATH'])}>
+        <{if !isset($excludedcolumns['PATH'])}>
     
         <{if $preset == 'PATH'}>
             <input type="hidden" class="input-path" name="adminmenuitem_formdata_PATH" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PATH']) && !$acleditablecolumns['PATH'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PATH'])}>
             <input type="hidden" class="input-path" name="adminmenuitem_formdata_PATH" value="<{$details->PATH}>" />
         <{else}>
-    		<td class="form-row form-row-path">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Path')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Path')}></label>
             </td>
-            <td class="form-row form-row-path" colspan="3">
-                <div class="form-field form-field-value column-path">
-                                            
+            <td class="form-field form-field-value column-path" colspan="3">
+                                    
 
     <input class="input-path input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_PATH" value="<{$details->PATH|escape}>"  />
-                        <{if $columntooltips.PATH}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PATH}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.PATH}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PATH}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-font-awesome-icon">
             
         
         
         
-        
-<{if !isset($excludedcolumns['FONT_AWESOME_ICON'])}>
+        <{if !isset($excludedcolumns['FONT_AWESOME_ICON'])}>
     
         <{if $preset == 'FONT_AWESOME_ICON'}>
             <input type="hidden" class="input-font-awesome-icon" name="adminmenuitem_formdata_FONT_AWESOME_ICON" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['FONT_AWESOME_ICON']) && !$acleditablecolumns['FONT_AWESOME_ICON'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['FONT_AWESOME_ICON'])}>
             <input type="hidden" class="input-font-awesome-icon" name="adminmenuitem_formdata_FONT_AWESOME_ICON" value="<{$details->FONT_AWESOME_ICON}>" />
         <{else}>
-    		<td class="form-row form-row-font-awesome-icon">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Font awesome icon')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Font awesome icon')}></label>
             </td>
-            <td class="form-row form-row-font-awesome-icon" colspan="3">
-                <div class="form-field form-field-value column-font-awesome-icon">
-                                            
+            <td class="form-field form-field-value column-font-awesome-icon" colspan="3">
+                                    
 
     <input class="input-font-awesome-icon input-type-text" type="text" name="<{$prefix}>adminmenuitem_formdata_FONT_AWESOME_ICON" value="<{$details->FONT_AWESOME_ICON|escape}>"  />
-                        <{if $columntooltips.FONT_AWESOME_ICON}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.FONT_AWESOME_ICON}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.FONT_AWESOME_ICON}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.FONT_AWESOME_ICON}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-enable-left">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENABLE_LEFT'])}>
+        <{if !isset($excludedcolumns['ENABLE_LEFT'])}>
     
         <{if $preset == 'ENABLE_LEFT'}>
             <input type="hidden" class="input-enable-left" name="adminmenuitem_formdata_ENABLE_LEFT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENABLE_LEFT']) && !$acleditablecolumns['ENABLE_LEFT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENABLE_LEFT'])}>
             <input type="hidden" class="input-enable-left" name="adminmenuitem_formdata_ENABLE_LEFT" value="<{$details->ENABLE_LEFT}>" />
         <{else}>
-    		<td class="form-row form-row-enable-left">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enable left?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enable left?')}></label>
             </td>
-            <td class="form-row form-row-enable-left" colspan="3">
-                <div class="form-field form-field-value column-enable-left">
-                                            
+            <td class="form-field form-field-value column-enable-left" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-enable-left" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="1" <{if $details->ENABLE_LEFT}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_LEFT" value="0" <{if !$details->ENABLE_LEFT}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.ENABLE_LEFT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_LEFT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENABLE_LEFT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_LEFT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-enable-top">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENABLE_TOP'])}>
+        <{if !isset($excludedcolumns['ENABLE_TOP'])}>
     
         <{if $preset == 'ENABLE_TOP'}>
             <input type="hidden" class="input-enable-top" name="adminmenuitem_formdata_ENABLE_TOP" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENABLE_TOP']) && !$acleditablecolumns['ENABLE_TOP'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENABLE_TOP'])}>
             <input type="hidden" class="input-enable-top" name="adminmenuitem_formdata_ENABLE_TOP" value="<{$details->ENABLE_TOP}>" />
         <{else}>
-    		<td class="form-row form-row-enable-top">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enable top?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enable top?')}></label>
             </td>
-            <td class="form-row form-row-enable-top" colspan="3">
-                <div class="form-field form-field-value column-enable-top">
-                                            
+            <td class="form-field form-field-value column-enable-top" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-enable-top" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="1" <{if $details->ENABLE_TOP}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_TOP" value="0" <{if !$details->ENABLE_TOP}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.ENABLE_TOP}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_TOP}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENABLE_TOP}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_TOP}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-enable-quick">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENABLE_QUICK'])}>
+        <{if !isset($excludedcolumns['ENABLE_QUICK'])}>
     
         <{if $preset == 'ENABLE_QUICK'}>
             <input type="hidden" class="input-enable-quick" name="adminmenuitem_formdata_ENABLE_QUICK" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENABLE_QUICK']) && !$acleditablecolumns['ENABLE_QUICK'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENABLE_QUICK'])}>
             <input type="hidden" class="input-enable-quick" name="adminmenuitem_formdata_ENABLE_QUICK" value="<{$details->ENABLE_QUICK}>" />
         <{else}>
-    		<td class="form-row form-row-enable-quick">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enable quick?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enable quick?')}></label>
             </td>
-            <td class="form-row form-row-enable-quick" colspan="3">
-                <div class="form-field form-field-value column-enable-quick">
-                                            
+            <td class="form-field form-field-value column-enable-quick" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-enable-quick" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="1" <{if $details->ENABLE_QUICK}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_QUICK" value="0" <{if !$details->ENABLE_QUICK}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.ENABLE_QUICK}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_QUICK}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENABLE_QUICK}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_QUICK}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-enable-all">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENABLE_ALL'])}>
+        <{if !isset($excludedcolumns['ENABLE_ALL'])}>
     
         <{if $preset == 'ENABLE_ALL'}>
             <input type="hidden" class="input-enable-all" name="adminmenuitem_formdata_ENABLE_ALL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENABLE_ALL']) && !$acleditablecolumns['ENABLE_ALL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENABLE_ALL'])}>
             <input type="hidden" class="input-enable-all" name="adminmenuitem_formdata_ENABLE_ALL" value="<{$details->ENABLE_ALL}>" />
         <{else}>
-    		<td class="form-row form-row-enable-all">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enable all?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enable all?')}></label>
             </td>
-            <td class="form-row form-row-enable-all" colspan="3">
-                <div class="form-field form-field-value column-enable-all">
-                                            
+            <td class="form-field form-field-value column-enable-all" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-enable-all" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="1" <{if $details->ENABLE_ALL}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_ALL" value="0" <{if !$details->ENABLE_ALL}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.ENABLE_ALL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_ALL}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENABLE_ALL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_ALL}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-enable-settings">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ENABLE_SETTINGS'])}>
+        <{if !isset($excludedcolumns['ENABLE_SETTINGS'])}>
     
         <{if $preset == 'ENABLE_SETTINGS'}>
             <input type="hidden" class="input-enable-settings" name="adminmenuitem_formdata_ENABLE_SETTINGS" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ENABLE_SETTINGS']) && !$acleditablecolumns['ENABLE_SETTINGS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ENABLE_SETTINGS'])}>
             <input type="hidden" class="input-enable-settings" name="adminmenuitem_formdata_ENABLE_SETTINGS" value="<{$details->ENABLE_SETTINGS}>" />
         <{else}>
-    		<td class="form-row form-row-enable-settings">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enable settings?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enable settings?')}></label>
             </td>
-            <td class="form-row form-row-enable-settings" colspan="3">
-                <div class="form-field form-field-value column-enable-settings">
-                                            
+            <td class="form-field form-field-value column-enable-settings" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-enable-settings" type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="1" <{if $details->ENABLE_SETTINGS}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_ENABLE_SETTINGS" value="0" <{if !$details->ENABLE_SETTINGS}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.ENABLE_SETTINGS}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_SETTINGS}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.ENABLE_SETTINGS}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ENABLE_SETTINGS}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-open-in-new-window">
             
         
         
         
-        
-<{if !isset($excludedcolumns['OPEN_IN_NEW_WINDOW'])}>
+        <{if !isset($excludedcolumns['OPEN_IN_NEW_WINDOW'])}>
     
         <{if $preset == 'OPEN_IN_NEW_WINDOW'}>
             <input type="hidden" class="input-open-in-new-window" name="adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['OPEN_IN_NEW_WINDOW']) && !$acleditablecolumns['OPEN_IN_NEW_WINDOW'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['OPEN_IN_NEW_WINDOW'])}>
             <input type="hidden" class="input-open-in-new-window" name="adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="<{$details->OPEN_IN_NEW_WINDOW}>" />
         <{else}>
-    		<td class="form-row form-row-open-in-new-window">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Open in new window')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Open in new window')}></label>
             </td>
-            <td class="form-row form-row-open-in-new-window" colspan="3">
-                <div class="form-field form-field-value column-open-in-new-window">
-                                            
+            <td class="form-field form-field-value column-open-in-new-window" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-open-in-new-window" type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="1" <{if $details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_OPEN_IN_NEW_WINDOW" value="0" <{if !$details->OPEN_IN_NEW_WINDOW}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.OPEN_IN_NEW_WINDOW}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.OPEN_IN_NEW_WINDOW}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.OPEN_IN_NEW_WINDOW}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.OPEN_IN_NEW_WINDOW}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-is-starred">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IS_STARRED'])}>
+        <{if !isset($excludedcolumns['IS_STARRED'])}>
     
         <{if $preset == 'IS_STARRED'}>
             <input type="hidden" class="input-is-starred" name="adminmenuitem_formdata_IS_STARRED" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IS_STARRED']) && !$acleditablecolumns['IS_STARRED'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_STARRED'])}>
             <input type="hidden" class="input-is-starred" name="adminmenuitem_formdata_IS_STARRED" value="<{$details->IS_STARRED}>" />
         <{else}>
-    		<td class="form-row form-row-is-starred">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Starred?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Starred?')}></label>
             </td>
-            <td class="form-row form-row-is-starred" colspan="3">
-                <div class="form-field form-field-value column-is-starred">
-                                            
+            <td class="form-field form-field-value column-is-starred" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-is-starred" type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="1" <{if $details->IS_STARRED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmenuitem_formdata_IS_STARRED" value="0" <{if !$details->IS_STARRED}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.IS_STARRED}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IS_STARRED}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IS_STARRED}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IS_STARRED}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-ordering">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ORDERING'])}>
+        <{if !isset($excludedcolumns['ORDERING'])}>
     
         <{if $preset == 'ORDERING'}>
             <input type="hidden" class="input-ordering" name="adminmenuitem_formdata_ORDERING" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ORDERING']) && !$acleditablecolumns['ORDERING'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ORDERING'])}>
             <input type="hidden" class="input-ordering" name="adminmenuitem_formdata_ORDERING" value="<{$details->ORDERING}>" />
         <{else}>
-    		<td class="form-row form-row-ordering">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Ordering')}></label>
+            </td>
+            <td class="form-field form-field-value column-ordering" colspan="3">
+                                    
+        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>adminmenuitem_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
+                    <{if $columntooltips.ORDERING}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Ordering')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-ordering" colspan="3">
-                <div class="form-field form-field-value column-ordering">
-                                            
-        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>adminmenuitem_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
-                        <{if $columntooltips.ORDERING}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminmenuitem_form_bottom" args=$details}>
     </form>
 </div>

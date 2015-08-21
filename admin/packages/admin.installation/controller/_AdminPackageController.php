@@ -34,6 +34,10 @@ class _AdminPackageController extends __AppController
            $errors['entry-path'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Entry path'));
            return false;
        }
+       if (in_array('ID_ADMIN_PACKAGE_TYPE', $columns2check) && trim($model->ID_ADMIN_PACKAGE_TYPE) == '') {
+           $errors['id-admin-package-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Admin package type'));
+           return false;
+       }
        if (in_array('PACKAGE_URL', $columns2check) && !empty($model->PACKAGE_URL) && !preg_match('/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.?[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?/i', $model->PACKAGE_URL)) {
            $errors['package-url'] = sprintf(_t('L_VALIDATION_URL'), _t('Package url'));
            return false;
@@ -685,7 +689,7 @@ class _AdminPackageController extends __AppController
         $customfieldcolumns = CustomFieldHelper::getCustomFieldColumns('adminpackage');
         $customfieldvalues = array();
 
-        $columns2edit = array('UUID', 'NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'IS_USER_PACKAGE');
+        $columns2edit = array('UUID', 'NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'ID_ADMIN_PACKAGE_INDUSTRY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'ID_ADMIN_PACKAGE_TYPE');
         $columns2edit = array_merge($columns2edit, $customfieldcolumns);
 
 		$model = new AdminPackageModel();
@@ -738,7 +742,7 @@ class _AdminPackageController extends __AppController
     }
 
     protected function form2models($prefix = null, &$columns2check = null) {
-        $columns2edit = array('UUID', 'NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'IS_USER_PACKAGE');
+        $columns2edit = array('UUID', 'NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'ID_ADMIN_PACKAGE_INDUSTRY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'ID_ADMIN_PACKAGE_TYPE');
         $columns2edit = array_merge($columns2edit, CustomFieldHelper::getCustomFieldColumns('adminpackage'));
 
         $rows = array();
@@ -923,6 +927,12 @@ class _AdminPackageController extends __AppController
             
             if ($refclass == 'AdminPackageCategoryModel' && empty($model->ID_ADMIN_PACKAGE_CATEGORY)) {
                 $model->ID_ADMIN_PACKAGE_CATEGORY = $refobject->CODE;
+            }
+            if ($refclass == 'AdminPackageIndustryModel' && empty($model->ID_ADMIN_PACKAGE_INDUSTRY)) {
+                $model->ID_ADMIN_PACKAGE_INDUSTRY = $refobject->CODE;
+            }
+            if ($refclass == 'AdminPackageTypeModel' && empty($model->ID_ADMIN_PACKAGE_TYPE)) {
+                $model->ID_ADMIN_PACKAGE_TYPE = $refobject->CODE;
             }
 
         }
@@ -1271,7 +1281,6 @@ class _AdminPackageController extends __AppController
             $this->pagenotfound('No view available');
         }
 
-        $excludedcolumns = AclController::getSystemExcludedColumns('adminpackage');
         
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
@@ -1280,6 +1289,11 @@ class _AdminPackageController extends __AppController
         $orderby = $this->getRealOrderBy('ID');
         $limit = $this->getPageSize();
         $page = $this->getPageNumber();
+
+        $excludedcolumns = AclController::getSystemExcludedColumns('adminpackage');
+        foreach ($presetdata as $column => $value) {
+            $excludedcolumns[$column] = true;
+        }
 
         $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
         
@@ -1360,8 +1374,13 @@ class _AdminPackageController extends __AppController
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
-        if (!empty($preset)) {
+        if (!empty($preset) && !empty($presetvalue)) {
             $aclviewablecolumns[$preset] = false;
+        }
+
+        $presetdata = $this->getPresetData();
+        foreach ($presetdata as $column => $value) {
+            $aclviewablecolumns[$column] = true;
         }
 
         $ids = isset($_SESSION['adminpackage.list.ids'])? $_SESSION['adminpackage.list.ids'] : array();
@@ -1420,13 +1439,19 @@ class _AdminPackageController extends __AppController
 
         $excludedcolumns = AclController::getSystemExcludedColumns('adminpackage');
 
-        $roweditablecolumns = array('NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'IS_USER_PACKAGE');
+        $roweditablecolumns = array('NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'ID_ADMIN_PACKAGE_INDUSTRY', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'ID_ADMIN_PACKAGE_TYPE');
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
 
         $presets = !empty($preset)? explode(',', $preset) : array();
         $presetvalues = !empty($presetvalue)? explode(',', $presetvalue) : array();
+
+        $presetdata = $this->getPresetData();
+        foreach ($presetdata as $column => $value) {
+            $presets[] = $column;
+            $presetvalues[] = $value;
+        }
 
         foreach ($_REQUEST as $param => $value) {
             if (preg_match('/^preset_(.*)/i', $param, $match)) {
@@ -1509,7 +1534,7 @@ class _AdminPackageController extends __AppController
 	}
 
     protected function getLayoutColumns() {
-        return array('NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'IS_USER_PACKAGE');
+        return array('NAME', 'CODE', 'ID_ADMIN_PACKAGE_CATEGORY', 'ID_ADMIN_PACKAGE_INDUSTRY', 'IMAGE', 'DESCRIPTION', 'ENTRY_PATH', 'AUTHOR', 'VERSION', 'PACKAGE_URL', 'AUTHOR_URL', 'PACKAGE_PATH', 'INSTALLATION_DATE', 'LATEST_UPDATE', 'ID_ADMIN_PACKAGE_TYPE');
     }
 
     public function getItem($id_or_filters, $join = false, $check_acl = true, $additional_select_fields = '') {
@@ -1647,6 +1672,15 @@ class _AdminPackageController extends __AppController
 
                         break;
 
+                    case 'ID_ADMIN_PACKAGE_INDUSTRY':
+                        if ($value == '__NULL__') {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.ID_ADMIN_PACKAGE_INDUSTRY IS NULL");
+                        } else {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.ID_ADMIN_PACKAGE_INDUSTRY = '$value'");
+                        }
+
+                        break;
+
                     case 'LATEST_UPDATE__FROM':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE >= '".$this->field_sanitize('LATEST_UPDATE', $value)."'");
 
@@ -1654,6 +1688,15 @@ class _AdminPackageController extends __AppController
 
                     case 'LATEST_UPDATE__TO':
                         $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE IS NULL OR ".TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE <= '".$this->field_sanitize('LATEST_UPDATE', $value)."')");
+
+                        break;
+
+                    case 'ID_ADMIN_PACKAGE_TYPE':
+                        if ($value == '__NULL__') {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.ID_ADMIN_PACKAGE_TYPE IS NULL");
+                        } else {
+                            $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.ID_ADMIN_PACKAGE_TYPE = '$value'");
+                        }
 
                         break;
 
@@ -1678,36 +1721,64 @@ class _AdminPackageController extends __AppController
 
     protected function initViewModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_CATEGORY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.DESCRIPTION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ENTRY_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.VERSION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_URL, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR_URL, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.INSTALLATION_DATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.LATEST_UPDATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IS_USER_PACKAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_CATEGORY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_INDUSTRY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.DESCRIPTION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ENTRY_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.VERSION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_URL, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR_URL, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.INSTALLATION_DATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.LATEST_UPDATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_TYPE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.WFID');
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
                 $model->selectAdd('reftable_ID_ADMIN_PACKAGE_CATEGORY.NAME as reftext_ID_ADMIN_PACKAGE_CATEGORY');
                 $model->selectAdd('reftable_ID_ADMIN_PACKAGE_CATEGORY.UUID as refuuid_ID_ADMIN_PACKAGE_CATEGORY');
             }
+            if (Framework::hasModule('AdminPackageIndustry')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_INDUSTRY.NAME as reftext_ID_ADMIN_PACKAGE_INDUSTRY');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_INDUSTRY.UUID as refuuid_ID_ADMIN_PACKAGE_INDUSTRY');
+            }
+            if (Framework::hasModule('AdminPackageType')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_TYPE.NAME as reftext_ID_ADMIN_PACKAGE_TYPE');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_TYPE.UUID as refuuid_ID_ADMIN_PACKAGE_TYPE');
+            }
         }
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
                 $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
+            }
+            if (Framework::hasModule('AdminPackageIndustry')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_INDUSTRY',TABLE_PREFIX.'ADMIN_PACKAGE_INDUSTRY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_INDUSTRY');
+            }
+            if (Framework::hasModule('AdminPackageType')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_TYPE',TABLE_PREFIX.'ADMIN_PACKAGE_TYPE:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_TYPE');
             }
         }
     }
 
     protected function initListModel(&$model, $join = false) {
         $model->selectAdd();
-        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_CATEGORY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ENTRY_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.VERSION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.INSTALLATION_DATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.LATEST_UPDATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IS_USER_PACKAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.WFID');
+        $model->selectAdd('`'.TABLE_PREFIX.'ADMIN_PACKAGE`.NAME, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.CODE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_CATEGORY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_INDUSTRY, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.IMAGE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ENTRY_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.AUTHOR, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.VERSION, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.PACKAGE_PATH, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.INSTALLATION_DATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.LATEST_UPDATE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID_ADMIN_PACKAGE_TYPE, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.ID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.JSON, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.UUID, `'.TABLE_PREFIX.'ADMIN_PACKAGE`.WFID');
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
                 $model->selectAdd('reftable_ID_ADMIN_PACKAGE_CATEGORY.NAME as reftext_ID_ADMIN_PACKAGE_CATEGORY');
                 $model->selectAdd('reftable_ID_ADMIN_PACKAGE_CATEGORY.UUID as refuuid_ID_ADMIN_PACKAGE_CATEGORY');
             }
+            if (Framework::hasModule('AdminPackageIndustry')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_INDUSTRY.NAME as reftext_ID_ADMIN_PACKAGE_INDUSTRY');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_INDUSTRY.UUID as refuuid_ID_ADMIN_PACKAGE_INDUSTRY');
+            }
+            if (Framework::hasModule('AdminPackageType')) {
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_TYPE.NAME as reftext_ID_ADMIN_PACKAGE_TYPE');
+                $model->selectAdd('reftable_ID_ADMIN_PACKAGE_TYPE.UUID as refuuid_ID_ADMIN_PACKAGE_TYPE');
+            }
         }
     
         if ($join) {
             if (Framework::hasModule('AdminPackageCategory')) {
                 $model->joinAdd(array('ID_ADMIN_PACKAGE_CATEGORY',TABLE_PREFIX.'ADMIN_PACKAGE_CATEGORY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_CATEGORY');
+            }
+            if (Framework::hasModule('AdminPackageIndustry')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_INDUSTRY',TABLE_PREFIX.'ADMIN_PACKAGE_INDUSTRY:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_INDUSTRY');
+            }
+            if (Framework::hasModule('AdminPackageType')) {
+                $model->joinAdd(array('ID_ADMIN_PACKAGE_TYPE',TABLE_PREFIX.'ADMIN_PACKAGE_TYPE:CODE'), 'LEFT', 'reftable_ID_ADMIN_PACKAGE_TYPE');
             }
         }
     }

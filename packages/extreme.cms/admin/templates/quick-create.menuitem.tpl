@@ -42,58 +42,49 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="menuitem_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
             <input type="hidden" class="input-title" name="menuitem_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Menu item title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Menu item title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>menuitem_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    
+<tr class="form-row form-row-id-post-category">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_POST_CATEGORY'])}>
+        <{if !isset($excludedcolumns['ID_POST_CATEGORY'])}>
     
         <{if $preset == 'ID_POST_CATEGORY'}>
             <input type="hidden" class="input-id-post-category" name="menuitem_formdata_ID_POST_CATEGORY" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_POST_CATEGORY']) && !$acleditablecolumns['ID_POST_CATEGORY'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_POST_CATEGORY'])}>
             <input type="hidden" class="input-id-post-category" name="menuitem_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY}>" />
         <{else}>
-    		<td class="form-row form-row-id-post-category">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Post category')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Post category')}></label>
             </td>
-            <td class="form-row form-row-id-post-category" colspan="3">
-                <div class="form-field form-field-value column-id-post-category">
-                                            
+            <td class="form-field form-field-value column-id-post-category" colspan="3">
+                                    
             <{if Framework::hasModule('PostCategory')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`menuitem_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -105,34 +96,29 @@
                     <{else}>
             <input class="input-id-post-category input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ID_POST_CATEGORY" value="<{$details->ID_POST_CATEGORY|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_POST_CATEGORY}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_CATEGORY}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_POST_CATEGORY}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_POST_CATEGORY}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                                                                                                                            
+<tr class="form-row form-row-acl-id-user-group">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ACL_ID_USER_GROUP'])}>
+        <{if !isset($excludedcolumns['ACL_ID_USER_GROUP'])}>
     
         <{if $preset == 'ACL_ID_USER_GROUP'}>
             <input type="hidden" class="input-acl-id-user-group" name="menuitem_formdata_ACL_ID_USER_GROUP" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ACL_ID_USER_GROUP']) && !$acleditablecolumns['ACL_ID_USER_GROUP'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ACL_ID_USER_GROUP'])}>
             <input type="hidden" class="input-acl-id-user-group" name="menuitem_formdata_ACL_ID_USER_GROUP" value="<{$details->ACL_ID_USER_GROUP}>" />
         <{else}>
-    		<td class="form-row form-row-acl-id-user-group">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Acl user group')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Acl user group')}></label>
             </td>
-            <td class="form-row form-row-acl-id-user-group" colspan="3">
-                <div class="form-field form-field-value column-acl-id-user-group">
-                                            
+            <td class="form-field form-field-value column-acl-id-user-group" colspan="3">
+                                    
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-acl-id-user-group" class="input-acl-id-user-group" name="`$prefix`menuitem_formdata_ACL_ID_USER_GROUP" value=$details->ACL_ID_USER_GROUP text=$details->reftext_ACL_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -144,48 +130,35 @@
                     <{else}>
             <input class="input-acl-id-user-group input-type-text" type="text" name="<{$prefix}>menuitem_formdata_ACL_ID_USER_GROUP" value="<{$details->ACL_ID_USER_GROUP|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ACL_ID_USER_GROUP}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ACL_ID_USER_GROUP}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ACL_ID_USER_GROUP}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ACL_ID_USER_GROUP}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="menuitem_form_bottom" args=$details}>
     </form>
 </div>

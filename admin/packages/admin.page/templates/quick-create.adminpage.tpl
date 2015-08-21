@@ -42,139 +42,112 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="adminpage_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
             <input type="hidden" class="input-title" name="adminpage_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin page title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin page title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>adminpage_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-slug form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['SLUG'])}>
+        <{if !isset($excludedcolumns['SLUG'])}>
     
         <{if $preset == 'SLUG'}>
             <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SLUG']) && !$acleditablecolumns['SLUG'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SLUG'])}>
             <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$details->SLUG}>" />
         <{else}>
-    		<td class="form-row form-row-slug form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Slug')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-slug form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-slug">
-                                            <{if $details->ID && $details->SLUG != ''}>
-                            <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$details->SLUG}>" />
-                            
+            <td class="form-field form-field-value column-slug" colspan="3">
+                                    <{if $details->ID && $details->SLUG != ''}>
+                        <input type="hidden" class="input-slug" name="adminpage_formdata_SLUG" value="<{$details->SLUG}>" />
+                        
     <{$details->SLUG|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-slug input-type-text" type="text" name="<{$prefix}>adminpage_formdata_SLUG" value="<{$details->SLUG|escape}>"  />
-                            <{if $columntooltips.SLUG}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.SLUG}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.SLUG}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-content">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CONTENT'])}>
+        <{if !isset($excludedcolumns['CONTENT'])}>
     
         <{if $preset == 'CONTENT'}>
             <input type="hidden" class="input-content" name="adminpage_formdata_CONTENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CONTENT']) && !$acleditablecolumns['CONTENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CONTENT'])}>
             <input type="hidden" class="input-content" name="adminpage_formdata_CONTENT" value="<{$details->CONTENT}>" />
         <{else}>
-    		<td class="form-row form-row-content">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Content')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Content')}></label>
             </td>
-            <td class="form-row form-row-content" colspan="3">
-                <div class="form-field form-field-value column-content">
-                                            
+            <td class="form-field form-field-value column-content" colspan="3">
+                                    
     <{$tmpid = uniqid()}>
 
     <textarea class="input-content enable-html" id="<{$prefix}>adminpage_formdata_CONTENT_<{$tmpid}>" name="<{$prefix}>adminpage_formdata_CONTENT" rows="5" ><{$details->CONTENT}></textarea>
-                        <{if $columntooltips.CONTENT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CONTENT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CONTENT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CONTENT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminpage_form_bottom" args=$details}>
     </form>
 </div>

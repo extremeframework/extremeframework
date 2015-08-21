@@ -41,6 +41,15 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('ID_ADMIN_PACKAGE_INDUSTRY', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']))) }>
+    	            <th class="column-id-admin-package-industry">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/id_admin_package_industry"><{_t('Admin package industry')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('IMAGE', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
     	            <th class="column-image">
@@ -104,10 +113,10 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
-		                        <{if (in_array('IS_USER_PACKAGE', $filtercolumns)) }>
-    	        <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
-    	            <th class="column-is-user-package">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/is_user_package"><{_t('User package?')}></a>
+		                        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+    	            <th class="column-id-admin-package-type">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/id_admin_package_type"><{_t('Admin package type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>

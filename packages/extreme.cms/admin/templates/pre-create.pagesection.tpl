@@ -58,34 +58,34 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
+                                            
+<tr class="form-row form-row-tab-anchor-title">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-parent">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
-                    </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-tag-line">
+                        </tr>                                            
+<tr class="form-row form-row-meta-keywords">
+                        </tr>                                            
+<tr class="form-row form-row-meta-description">
+                        </tr>                                            
+<tr class="form-row form-row-id-template">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-content">
             
-                    </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-tags">
+                        </tr>                                            
+<tr class="form-row form-row-latest-update">
                         </tr>                                    </tbody>
             </table>
         </div>
@@ -102,20 +102,20 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
+                                            
+<tr class="form-row form-row-nbr-views">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-background-image">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-background-color">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-font-awesome-icon">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-image">
             
                     </tr>                                    </tbody>
             </table>
@@ -133,25 +133,25 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                                            
+<tr class="form-row form-row-video">
+                        </tr>                                            
+<tr class="form-row form-row-">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-view-more-title">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-view-more-id-page">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-view-more-link">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-hide-title">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-is-tab-anchor-section">
             
                     </tr>                                    </tbody>
             </table>
@@ -177,39 +177,33 @@
         </div>
         <!-- Custom layout tabs end -->
     
-        
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
 
+            <!-- Custom fields -->
+            <div class="layout-block layout-block-rows">
+                <table class="table table-bordered table-custom-layout equal-split">
+                    <tbody>
+                        <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                    </tbody>
+                </table>
+            </div>
+        
         <{plugin key="pagesection_form_bottom" args=$details}>
     </form>
 </div>

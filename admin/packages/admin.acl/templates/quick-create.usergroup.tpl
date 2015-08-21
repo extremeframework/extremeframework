@@ -42,58 +42,49 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="usergroup_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="usergroup_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('User group name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('User group name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>usergroup_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-default-id-dashboard">
             
         
         
         
-        
-<{if !isset($excludedcolumns['DEFAULT_ID_DASHBOARD'])}>
+        <{if !isset($excludedcolumns['DEFAULT_ID_DASHBOARD'])}>
     
         <{if $preset == 'DEFAULT_ID_DASHBOARD'}>
             <input type="hidden" class="input-default-id-dashboard" name="usergroup_formdata_DEFAULT_ID_DASHBOARD" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['DEFAULT_ID_DASHBOARD']) && !$acleditablecolumns['DEFAULT_ID_DASHBOARD'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['DEFAULT_ID_DASHBOARD'])}>
             <input type="hidden" class="input-default-id-dashboard" name="usergroup_formdata_DEFAULT_ID_DASHBOARD" value="<{$details->DEFAULT_ID_DASHBOARD}>" />
         <{else}>
-    		<td class="form-row form-row-default-id-dashboard">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Default dashboard')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Default dashboard')}></label>
             </td>
-            <td class="form-row form-row-default-id-dashboard" colspan="3">
-                <div class="form-field form-field-value column-default-id-dashboard">
-                                            
+            <td class="form-field form-field-value column-default-id-dashboard" colspan="3">
+                                    
             <{if Framework::hasModule('Dashboard')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-default-id-dashboard" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$details->DEFAULT_ID_DASHBOARD text=$details->reftext_DEFAULT_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -105,34 +96,29 @@
                     <{else}>
             <input class="input-default-id-dashboard input-type-text" type="text" name="<{$prefix}>usergroup_formdata_DEFAULT_ID_DASHBOARD" value="<{$details->DEFAULT_ID_DASHBOARD|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.DEFAULT_ID_DASHBOARD}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.DEFAULT_ID_DASHBOARD}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.DEFAULT_ID_DASHBOARD}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.DEFAULT_ID_DASHBOARD}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-parent">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PARENT'])}>
+        <{if !isset($excludedcolumns['PARENT'])}>
     
         <{if $preset == 'PARENT'}>
             <input type="hidden" class="input-parent" name="usergroup_formdata_PARENT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PARENT']) && !$acleditablecolumns['PARENT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PARENT'])}>
             <input type="hidden" class="input-parent" name="usergroup_formdata_PARENT" value="<{$details->PARENT}>" />
         <{else}>
-    		<td class="form-row form-row-parent">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Parent')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Parent')}></label>
             </td>
-            <td class="form-row form-row-parent" colspan="3">
-                <div class="form-field form-field-value column-parent">
-                                            
+            <td class="form-field form-field-value column-parent" colspan="3">
+                                    
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`usergroup_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -144,48 +130,35 @@
                     <{else}>
             <input class="input-parent input-type-text" type="text" name="<{$prefix}>usergroup_formdata_PARENT" value="<{$details->PARENT|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.PARENT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.PARENT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PARENT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="usergroup_form_bottom" args=$details}>
     </form>
 </div>

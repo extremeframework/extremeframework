@@ -134,6 +134,63 @@
             
         
         
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']))) }>
+        <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_INDUSTRY', $columns2hide) }>
+    		<td class="form-field form-field-label column-id-admin-package-industry">
+	                    		                    		        <label class="attribute-name"><{_t('Admin package industry')}></label>
+            </td>
+            <td class="form-field form-field-value column-id-admin-package-industry" colspan="3">
+            	<div class="attribute-line column-id-admin-package-industry type-reftext">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && $acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || $acleditablecolumns['ID_ADMIN_PACKAGE_INDUSTRY'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{if $details->reftext_ID_ADMIN_PACKAGE_INDUSTRY}>
+        <{if isset($smarty.session.acl.adminpackageindustry.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/view/<{$details->refuuid_ID_ADMIN_PACKAGE_INDUSTRY}>"><{$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_INDUSTRY}>
+    <{/if}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+            <{if Framework::hasModule('AdminPackageIndustry')}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package-industry" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$details->ID_ADMIN_PACKAGE_INDUSTRY text=$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+
+                            <{if isset($smarty.session.acl.adminpackageindustry.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/new" title="Create a New Admin Package Industry">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-industry input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value="<{$details->ID_ADMIN_PACKAGE_INDUSTRY|escape}>"  />
+        <{/if}>
+                                    </span>
+                                -->
+                            <{else}>
+                                
+    <{if $details->reftext_ID_ADMIN_PACKAGE_INDUSTRY}>
+        <{if isset($smarty.session.acl.adminpackageindustry.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/view/<{$details->refuuid_ID_ADMIN_PACKAGE_INDUSTRY}>"><{$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_INDUSTRY}>
+    <{/if}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
         <{if !isset($columns2hide) || !in_array('IMAGE', $columns2hide) }>
     		<td class="form-field form-field-label column-image">
@@ -476,88 +533,92 @@
             
         
         
-            <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
-        <{if !isset($columns2hide) || !in_array('IS_USER_PACKAGE', $columns2hide) }>
-    		<td class="form-field form-field-label column-is-user-package">
-	            		        <label class="attribute-name"><{_t('User package?')}></label>
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+        <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_TYPE', $columns2hide) }>
+    		<td class="form-field form-field-label column-id-admin-package-type">
+	                    		                    		        <label class="attribute-name"><{_t('Admin package type')}></label>
             </td>
-            <td class="form-field form-field-value column-is-user-package" colspan="3">
-            	<div class="attribute-line column-is-user-package type-yesno">
+            <td class="form-field form-field-value column-id-admin-package-type" colspan="3">
+            	<div class="attribute-line column-id-admin-package-type type-reftext">
             		<div class="attribute-value">
-            		                		        <{if (isset($acleditablecolumns['IS_USER_PACKAGE']) && $acleditablecolumns['IS_USER_PACKAGE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['IS_USER_PACKAGE']) || $acleditablecolumns['IS_USER_PACKAGE'])) }>
+            		                		        <{if (isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE'])) }>
                     		    <span class="value-mode">
                                     
-    <{if $details->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_TYPE}>
+    <{/if}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
                                     
+            <{if Framework::hasModule('AdminPackageType')}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-type" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$details->ID_ADMIN_PACKAGE_TYPE text=$details->reftext_ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
-    <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $details->IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$details->IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
-                                </span>
+                            <{if isset($smarty.session.acl.adminpackagetype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/new" title="Create a New Admin Package Type">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-type input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$details->ID_ADMIN_PACKAGE_TYPE|escape}>"  />
+        <{/if}>
+                                    </span>
                                 -->
                             <{else}>
                                 
-    <{if $details->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
+    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_TYPE}>
+    <{/if}>
                             <{/if}>
                                     		</div>
             	</div>
             </td>
     	<{/if}>
 	<{/if}>
-    </tr>                            </tbody>
+    </tr>                
+                <!-- Custom fields -->
+                <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>">
+    		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
+		        <label class="attribute-name"><{_t($item->NAME)}></label>
+            </td>
+            <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+        		<div class="attribute-value">
+                    <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+        		</div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>
+
+<{if $additional_view_fields}>
+    <{foreach from=$additional_view_fields item=item}>
+        <tr class="attribute-line">
+    		<td class="form-field form-field-label">
+		        <label class="attribute-name"><{$item.label}></label>
+            </td>
+            <td class="form-field form-field-value">
+        		<div class="attribute-value">
+                    <{$item.value}>
+        		</div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>            </tbody>
         </table>
     	<!-- Standard layout columns end -->
     
-    <{if $customfields}>
-        <div class="layout-block layout-block-section">
-            <div class="layout-section">
-                <div class="layout-section-header">
-                    <span><{_t('Additional information')}></span>
-                    <div class="header-arrow"></div>
-                    <div class="clearer"></div>
-                </div>
-                <div class="layout-section-content">
-                    <table class="table table-bordered table-custom-layout equal-split">
-                        <tbody>
-                            <{foreach from=$customfields item=item}>
-                                <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
-                            		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
-                                    </td>
-                                    <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                		<div class="attribute-value">
-                                            <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                		</div>
-                                    </td>
-                        		</tr>
-                        	<{/foreach}>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    <{/if}>
-
-    <{if $additional_view_fields}>
-        <table class="table table-bordered table-custom-layout equal-split">
-            <tbody>
-                <{foreach from=$additional_view_fields item=item}>
-                    <tr class="attribute-line">
-                		<td class="form-field form-field-label">
-            		        <label class="attribute-name"><{$item.label}></label>
-                        </td>
-                        <td class="form-field form-field-value">
-                    		<div class="attribute-value">
-                                <{$item.value}>
-                    		</div>
-                        </td>
-            		</tr>
-            	<{/foreach}>
-            </tbody>
-        </table>
-    <{/if}>
-
     <{plugin key="adminpackage_view_bottom" args=$details}>
 
     <script type="text/javascript">

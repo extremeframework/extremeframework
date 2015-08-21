@@ -24,28 +24,24 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-id-user">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_USER'])}>
+        <{if !isset($excludedcolumns['ID_USER'])}>
     
         <{if $preset == 'ID_USER'}>
             <input type="hidden" class="input-id-user" name="userpackage_formdata_ID_USER" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_USER']) && !$acleditablecolumns['ID_USER'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_USER'])}>
             <input type="hidden" class="input-id-user" name="userpackage_formdata_ID_USER" value="<{$details->ID_USER}>" />
         <{else}>
-    		<td class="form-row form-row-id-user">
-                <div class="form-field form-field-label">
-        		    <label><{_t('User')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('User')}></label>
             </td>
-            <td class="form-row form-row-id-user" colspan="3">
-                <div class="form-field form-field-value column-id-user">
-                                            
+            <td class="form-field form-field-value column-id-user" colspan="3">
+                                    
             <{if Framework::hasModule('User')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`userpackage_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol="FIRST_NAME" groupcol="" blankitem=""}>
 
@@ -57,34 +53,29 @@
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>userpackage_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_USER}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_USER}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
     
         <{if $preset == 'ID_ADMIN_PACKAGE'}>
             <input type="hidden" class="input-id-admin-package" name="userpackage_formdata_ID_ADMIN_PACKAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE']) && !$acleditablecolumns['ID_ADMIN_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE'])}>
             <input type="hidden" class="input-id-admin-package" name="userpackage_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-package">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package')}></label>
             </td>
-            <td class="form-row form-row-id-admin-package" colspan="3">
-                <div class="form-field form-field-value column-id-admin-package">
-                                            
+            <td class="form-field form-field-value column-id-admin-package" colspan="3">
+                                    
             <{if Framework::hasModule('AdminPackage')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`userpackage_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -96,77 +87,59 @@
                     <{else}>
             <input class="input-id-admin-package input-type-text" type="text" name="<{$prefix}>userpackage_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_PACKAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-installation-date">
             
         
         
         
-        
-<{if !isset($excludedcolumns['INSTALLATION_DATE'])}>
+        <{if !isset($excludedcolumns['INSTALLATION_DATE'])}>
     
         <{if $preset == 'INSTALLATION_DATE'}>
             <input type="hidden" class="input-installation-date" name="userpackage_formdata_INSTALLATION_DATE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['INSTALLATION_DATE']) && !$acleditablecolumns['INSTALLATION_DATE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['INSTALLATION_DATE'])}>
             <input type="hidden" class="input-installation-date" name="userpackage_formdata_INSTALLATION_DATE" value="<{$details->INSTALLATION_DATE}>" />
         <{else}>
-    		<td class="form-row form-row-installation-date">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Installation date')}></label>
+            </td>
+            <td class="form-field form-field-value column-installation-date" colspan="3">
+                                    
+    <input class="input-installation-date input-type-date field-date" type="text" id="<{$prefix}>userpackage_formdata_INSTALLATION_DATE" name="<{$prefix}>userpackage_formdata_INSTALLATION_DATE" value="<{$details->INSTALLATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
+                    <{if $columntooltips.INSTALLATION_DATE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.INSTALLATION_DATE}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Installation date')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-installation-date" colspan="3">
-                <div class="form-field form-field-value column-installation-date">
-                                            
-    <input class="input-installation-date input-type-date field-date" type="text" id="<{$prefix}>userpackage_formdata_INSTALLATION_DATE" name="<{$prefix}>userpackage_formdata_INSTALLATION_DATE" value="<{$details->INSTALLATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
-                        <{if $columntooltips.INSTALLATION_DATE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.INSTALLATION_DATE}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="userpackage_form_bottom" args=$details}>
     </form>
 </div>

@@ -24,58 +24,49 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
             <input type="hidden" class="input-title" name="screen_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
             <input type="hidden" class="input-title" name="screen_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Screen title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Screen title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>screen_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-workflow">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_WORKFLOW'])}>
+        <{if !isset($excludedcolumns['ID_WORKFLOW'])}>
     
         <{if $preset == 'ID_WORKFLOW'}>
             <input type="hidden" class="input-id-workflow" name="screen_formdata_ID_WORKFLOW" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_WORKFLOW']) && !$acleditablecolumns['ID_WORKFLOW'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_WORKFLOW'])}>
             <input type="hidden" class="input-id-workflow" name="screen_formdata_ID_WORKFLOW" value="<{$details->ID_WORKFLOW}>" />
         <{else}>
-    		<td class="form-row form-row-id-workflow">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Workflow')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Workflow')}></label>
             </td>
-            <td class="form-row form-row-id-workflow" colspan="3">
-                <div class="form-field form-field-value column-id-workflow">
-                                            
+            <td class="form-field form-field-value column-id-workflow" colspan="3">
+                                    
             <{if Framework::hasModule('Workflow')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-workflow" class="input-id-workflow" name="`$prefix`screen_formdata_ID_WORKFLOW" value=$details->ID_WORKFLOW text=$details->reftext_ID_WORKFLOW datasource="WORKFLOW" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -87,84 +78,66 @@
                     <{else}>
             <input class="input-id-workflow input-type-text" type="text" name="<{$prefix}>screen_formdata_ID_WORKFLOW" value="<{$details->ID_WORKFLOW|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_WORKFLOW}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_WORKFLOW}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_WORKFLOW}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_WORKFLOW}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
             <input type="hidden" class="input-code" name="screen_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
             <input type="hidden" class="input-code" name="screen_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="screen_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-code" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-code" name="screen_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>screen_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="screen_form_bottom" args=$details}>
     </form>
 </div>

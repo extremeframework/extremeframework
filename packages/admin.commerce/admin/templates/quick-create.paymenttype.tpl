@@ -42,169 +42,137 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="paymenttype_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="paymenttype_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Payment type name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Payment type name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>paymenttype_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
             <input type="hidden" class="input-code" name="paymenttype_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
             <input type="hidden" class="input-code" name="paymenttype_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="paymenttype_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-code" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-code" name="paymenttype_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>paymenttype_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-is-enabled">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IS_ENABLED'])}>
+        <{if !isset($excludedcolumns['IS_ENABLED'])}>
     
         <{if $preset == 'IS_ENABLED'}>
             <input type="hidden" class="input-is-enabled" name="paymenttype_formdata_IS_ENABLED" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IS_ENABLED']) && !$acleditablecolumns['IS_ENABLED'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_ENABLED'])}>
             <input type="hidden" class="input-is-enabled" name="paymenttype_formdata_IS_ENABLED" value="<{$details->IS_ENABLED}>" />
         <{else}>
-    		<td class="form-row form-row-is-enabled">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Enabled?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Enabled?')}></label>
             </td>
-            <td class="form-row form-row-is-enabled" colspan="3">
-                <div class="form-field form-field-value column-is-enabled">
-                                            
+            <td class="form-field form-field-value column-is-enabled" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-is-enabled" type="radio" name="<{$prefix}>paymenttype_formdata_IS_ENABLED" value="1" <{if $details->IS_ENABLED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>paymenttype_formdata_IS_ENABLED" value="0" <{if !$details->IS_ENABLED}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.IS_ENABLED}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IS_ENABLED}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IS_ENABLED}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IS_ENABLED}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                    <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                    
+<tr class="form-row form-row-note">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NOTE'])}>
+        <{if !isset($excludedcolumns['NOTE'])}>
     
         <{if $preset == 'NOTE'}>
             <input type="hidden" class="input-note" name="paymenttype_formdata_NOTE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NOTE']) && !$acleditablecolumns['NOTE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NOTE'])}>
             <input type="hidden" class="input-note" name="paymenttype_formdata_NOTE" value="<{$details->NOTE}>" />
         <{else}>
-    		<td class="form-row form-row-note">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Note')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Note')}></label>
             </td>
-            <td class="form-row form-row-note" colspan="3">
-                <div class="form-field form-field-value column-note">
-                                            
+            <td class="form-field form-field-value column-note" colspan="3">
+                                    
     <{$tmpid = uniqid()}>
 
     <textarea class="input-note " id="<{$prefix}>paymenttype_formdata_NOTE_<{$tmpid}>" name="<{$prefix}>paymenttype_formdata_NOTE" rows="5" ><{$details->NOTE}></textarea>
-                        <{if $columntooltips.NOTE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NOTE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NOTE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NOTE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="paymenttype_form_bottom" args=$details}>
     </form>
 </div>

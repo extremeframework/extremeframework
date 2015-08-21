@@ -142,6 +142,9 @@
             <{if isset($smarty.session.acl.changelog) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.customfieldset) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
             <{if isset($smarty.session.acl.field) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
@@ -172,6 +175,9 @@
             <{if isset($smarty.session.acl.workflowlog) }>
             <{assign var='canaccess2anytab' value='1'}>
         <{/if}>
+            <{if isset($smarty.session.acl.xxxnotification) }>
+            <{assign var='canaccess2anytab' value='1'}>
+        <{/if}>
     
             <{if $canaccess2anytab}>
             <div id="adminmoduletabs" class="section">
@@ -199,6 +205,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('ChangeLog') && isset($smarty.session.acl.changelog) }>
                             <li><a href="#tab-changelogs"><{_t('Change log')}> <span class="badge changelog-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('CustomFieldSet') && isset($smarty.session.acl.customfieldset) }>
+                            <li><a href="#tab-customfieldsets"><{_t('Custom field set')}> <span class="badge customfieldset-badge-count"></span></a></li>
                         <{/if}>
                                             <{if Framework::hasModule('Field') && isset($smarty.session.acl.field) }>
                             <li><a href="#tab-fields"><{_t('Field')}> <span class="badge field-badge-count"></span></a></li>
@@ -229,6 +238,9 @@
                         <{/if}>
                                             <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
                             <li><a href="#tab-workflowlogs"><{_t('Workflow log')}> <span class="badge workflowlog-badge-count"></span></a></li>
+                        <{/if}>
+                                            <{if Framework::hasModule('XxxNotification') && isset($smarty.session.acl.xxxnotification) }>
+                            <li><a href="#tab-xxxnotifications"><{_t('Xxx notification')}> <span class="badge xxxnotification-badge-count"></span></a></li>
                         <{/if}>
                                     </ul>
 
@@ -293,6 +305,14 @@
                         	<{if true || $tab == 'changelogs'}>
                             	<h2 class="print"><{_t('Change log')}></h2>
                                                                     <{ajaxmodule class="WidgetListChangeLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.changelog.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('CustomFieldSet') && isset($smarty.session.acl.customfieldset) }>
+                        <div id="tab-customfieldsets">
+                        	<{if true || $tab == 'customfieldsets'}>
+                            	<h2 class="print"><{_t('Custom field set')}></h2>
+                                                                    <{ajaxmodule class="WidgetListCustomFieldSet" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.customfieldset.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>
@@ -372,7 +392,15 @@
                         <div id="tab-workflowlogs">
                         	<{if true || $tab == 'workflowlogs'}>
                             	<h2 class="print"><{_t('Workflow log')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.workflowlog.tpl'}>
+                                                                    <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where=""  template='widgetlist.workflowlog.tpl'}>
+                                                            <{/if}>
+                        </div>
+                    <{/if}>
+                                    <{if Framework::hasModule('XxxNotification') && isset($smarty.session.acl.xxxnotification) }>
+                        <div id="tab-xxxnotifications">
+                        	<{if true || $tab == 'xxxnotifications'}>
+                            	<h2 class="print"><{_t('Xxx notification')}></h2>
+                                                                    <{ajaxmodule class="WidgetListXxxNotification" method="" readonly=!WorkflowHelper::isEditable($details->WFID) MODULE="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.xxxnotification.tpl'}>
                                                             <{/if}>
                         </div>
                     <{/if}>

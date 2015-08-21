@@ -24,28 +24,24 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-id-user">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_USER'])}>
+        <{if !isset($excludedcolumns['ID_USER'])}>
     
         <{if $preset == 'ID_USER'}>
             <input type="hidden" class="input-id-user" name="userextradomain_formdata_ID_USER" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_USER']) && !$acleditablecolumns['ID_USER'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_USER'])}>
             <input type="hidden" class="input-id-user" name="userextradomain_formdata_ID_USER" value="<{$details->ID_USER}>" />
         <{else}>
-    		<td class="form-row form-row-id-user">
-                <div class="form-field form-field-label">
-        		    <label><{_t('User')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('User')}></label>
             </td>
-            <td class="form-row form-row-id-user" colspan="3">
-                <div class="form-field form-field-value column-id-user">
-                                            
+            <td class="form-field form-field-value column-id-user" colspan="3">
+                                    
             <{if Framework::hasModule('User')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user" class="input-id-user" name="`$prefix`userextradomain_formdata_ID_USER" value=$details->ID_USER text=$details->reftext_ID_USER datasource="USER" valuecol="ID" textcol="FIRST_NAME+LAST_NAME" sortcol="FIRST_NAME" groupcol="" blankitem=""}>
 
@@ -57,135 +53,107 @@
                     <{else}>
             <input class="input-id-user input-type-text" type="text" name="<{$prefix}>userextradomain_formdata_ID_USER" value="<{$details->ID_USER|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_USER}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_USER}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-extra-udid">
             
         
         
         
-        
-<{if !isset($excludedcolumns['EXTRA_UDID'])}>
+        <{if !isset($excludedcolumns['EXTRA_UDID'])}>
     
         <{if $preset == 'EXTRA_UDID'}>
             <input type="hidden" class="input-extra-udid" name="userextradomain_formdata_EXTRA_UDID" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['EXTRA_UDID']) && !$acleditablecolumns['EXTRA_UDID'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['EXTRA_UDID'])}>
             <input type="hidden" class="input-extra-udid" name="userextradomain_formdata_EXTRA_UDID" value="<{$details->EXTRA_UDID}>" />
         <{else}>
-    		<td class="form-row form-row-extra-udid">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Extra udid')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Extra udid')}></label>
             </td>
-            <td class="form-row form-row-extra-udid" colspan="3">
-                <div class="form-field form-field-value column-extra-udid">
-                                            
+            <td class="form-field form-field-value column-extra-udid" colspan="3">
+                                    
         <input class="input-extra-udid input-type-number" type="text" name="<{$prefix}>userextradomain_formdata_EXTRA_UDID" value="<{if $details->EXTRA_UDID != 0}><{$details->EXTRA_UDID}><{/if}>"  />
-                        <{if $columntooltips.EXTRA_UDID}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.EXTRA_UDID}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.EXTRA_UDID}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.EXTRA_UDID}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-valid-from">
             
         
         
         
-        
-<{if !isset($excludedcolumns['VALID_FROM'])}>
+        <{if !isset($excludedcolumns['VALID_FROM'])}>
     
         <{if $preset == 'VALID_FROM'}>
             <input type="hidden" class="input-valid-from" name="userextradomain_formdata_VALID_FROM" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['VALID_FROM']) && !$acleditablecolumns['VALID_FROM'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['VALID_FROM'])}>
             <input type="hidden" class="input-valid-from" name="userextradomain_formdata_VALID_FROM" value="<{$details->VALID_FROM}>" />
         <{else}>
-    		<td class="form-row form-row-valid-from">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Valid from')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Valid from')}></label>
             </td>
-            <td class="form-row form-row-valid-from" colspan="3">
-                <div class="form-field form-field-value column-valid-from">
-                                            
+            <td class="form-field form-field-value column-valid-from" colspan="3">
+                                    
     <input class="input-valid-from input-type-date field-date" type="text" id="<{$prefix}>userextradomain_formdata_VALID_FROM" name="<{$prefix}>userextradomain_formdata_VALID_FROM" value="<{$details->VALID_FROM|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
-                        <{if $columntooltips.VALID_FROM}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.VALID_FROM}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.VALID_FROM}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.VALID_FROM}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-valid-until">
             
         
         
         
-        
-<{if !isset($excludedcolumns['VALID_UNTIL'])}>
+        <{if !isset($excludedcolumns['VALID_UNTIL'])}>
     
         <{if $preset == 'VALID_UNTIL'}>
             <input type="hidden" class="input-valid-until" name="userextradomain_formdata_VALID_UNTIL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['VALID_UNTIL']) && !$acleditablecolumns['VALID_UNTIL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['VALID_UNTIL'])}>
             <input type="hidden" class="input-valid-until" name="userextradomain_formdata_VALID_UNTIL" value="<{$details->VALID_UNTIL}>" />
         <{else}>
-    		<td class="form-row form-row-valid-until">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Valid until')}></label>
+            </td>
+            <td class="form-field form-field-value column-valid-until" colspan="3">
+                                    
+    <input class="input-valid-until input-type-date field-date" type="text" id="<{$prefix}>userextradomain_formdata_VALID_UNTIL" name="<{$prefix}>userextradomain_formdata_VALID_UNTIL" value="<{$details->VALID_UNTIL|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
+                    <{if $columntooltips.VALID_UNTIL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.VALID_UNTIL}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Valid until')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-valid-until" colspan="3">
-                <div class="form-field form-field-value column-valid-until">
-                                            
-    <input class="input-valid-until input-type-date field-date" type="text" id="<{$prefix}>userextradomain_formdata_VALID_UNTIL" name="<{$prefix}>userextradomain_formdata_VALID_UNTIL" value="<{$details->VALID_UNTIL|date_format:$smarty.const.SMARTY_DATE_FORMAT}>"  />
-                        <{if $columntooltips.VALID_UNTIL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.VALID_UNTIL}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="userextradomain_form_bottom" args=$details}>
     </form>
 </div>

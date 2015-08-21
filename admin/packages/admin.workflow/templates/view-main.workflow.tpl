@@ -107,59 +107,40 @@
             </td>
     	<{/if}>
 	<{/if}>
-    </tr>                            </tbody>
+    </tr>                
+                <!-- Custom fields -->
+                <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>">
+    		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
+		        <label class="attribute-name"><{_t($item->NAME)}></label>
+            </td>
+            <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+        		<div class="attribute-value">
+                    <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+        		</div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>
+
+<{if $additional_view_fields}>
+    <{foreach from=$additional_view_fields item=item}>
+        <tr class="attribute-line">
+    		<td class="form-field form-field-label">
+		        <label class="attribute-name"><{$item.label}></label>
+            </td>
+            <td class="form-field form-field-value">
+        		<div class="attribute-value">
+                    <{$item.value}>
+        		</div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>            </tbody>
         </table>
     	<!-- Standard layout columns end -->
     
-    <{if $customfields}>
-        <div class="layout-block layout-block-section">
-            <div class="layout-section">
-                <div class="layout-section-header">
-                    <span><{_t('Additional information')}></span>
-                    <div class="header-arrow"></div>
-                    <div class="clearer"></div>
-                </div>
-                <div class="layout-section-content">
-                    <table class="table table-bordered table-custom-layout equal-split">
-                        <tbody>
-                            <{foreach from=$customfields item=item}>
-                                <tr class="attribute-line column-<{$item->COLUMN_CODE}> type-<{$item->TYPE}>>
-                            		<td class="form-field form-field-label column-<{$item->COLUMN_CODE}>">
-                        		        <label class="attribute-name"><{_t($item->NAME)}></label>
-                                    </td>
-                                    <td class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                		<div class="attribute-value">
-                                            <{CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                		</div>
-                                    </td>
-                        		</tr>
-                        	<{/foreach}>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    <{/if}>
-
-    <{if $additional_view_fields}>
-        <table class="table table-bordered table-custom-layout equal-split">
-            <tbody>
-                <{foreach from=$additional_view_fields item=item}>
-                    <tr class="attribute-line">
-                		<td class="form-field form-field-label">
-            		        <label class="attribute-name"><{$item.label}></label>
-                        </td>
-                        <td class="form-field form-field-value">
-                    		<div class="attribute-value">
-                                <{$item.value}>
-                    		</div>
-                        </td>
-            		</tr>
-            	<{/foreach}>
-            </tbody>
-        </table>
-    <{/if}>
-
     <{plugin key="workflow_view_bottom" args=$details}>
 
     <script type="text/javascript">

@@ -42,69 +42,57 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                                                                                <tr>
-    
+                                                                                                                                                
+<tr class="form-row form-row-customer-first-name">
             
-                    </tr>                                                                                            <tr>
-    
+                    </tr>                                                                                            
+<tr class="form-row form-row-customer-last-name">
             
-                    </tr>                                                                                                                                                                                                                                                        <tr>
-    
+                    </tr>                                                                                                                                                                                                                                                        
+<tr class="form-row form-row-customer-zip-code">
             
-                    </tr>                                                                                            <tr>
-    
+                    </tr>                                                                                            
+<tr class="form-row form-row-customer-email">
             
-                    </tr>                                                                                            <tr>
-    
+                    </tr>                                                                                            
+<tr class="form-row form-row-customer-phone">
             
-                    </tr>                                                                                                                                                <tr>
-    
+                    </tr>                                                                                                                                                
+<tr class="form-row form-row-coupon-code">
             
-                    </tr>                                                                                                                                                <tr>
-    
+                    </tr>                                                                                                                                                
+<tr class="form-row form-row-id-payment-type form-row-mandatory">
             
-                    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    <tr>
-    
+                    </tr>                                                                                                                                                                                                                                                                                                                                                                                                                    
+<tr class="form-row form-row-id-admin-order-status">
             
-                    </tr>                                                                                            <tr>
-    
+                    </tr>                                                                                            
+<tr class="form-row form-row-note">
             
-                    </tr>                                    </tbody>
+                    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminorder_form_bottom" args=$details}>
     </form>
 </div>

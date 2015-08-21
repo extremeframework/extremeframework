@@ -24,28 +24,24 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-module form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['MODULE'])}>
+        <{if !isset($excludedcolumns['MODULE'])}>
     
         <{if $preset == 'MODULE'}>
             <input type="hidden" class="input-module" name="adminlayoutfield_formdata_MODULE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['MODULE']) && !$acleditablecolumns['MODULE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['MODULE'])}>
             <input type="hidden" class="input-module" name="adminlayoutfield_formdata_MODULE" value="<{$details->MODULE}>" />
         <{else}>
-    		<td class="form-row form-row-module form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Module')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-module form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-module">
-                                            
+            <td class="form-field form-field-value column-module" colspan="3">
+                                    
             <{if Framework::hasModule('AdminModule')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminlayoutfield_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -57,34 +53,29 @@
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>adminlayoutfield_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.MODULE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.MODULE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-layout-section">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_LAYOUT_SECTION'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_LAYOUT_SECTION'])}>
     
         <{if $preset == 'ID_ADMIN_LAYOUT_SECTION'}>
             <input type="hidden" class="input-id-admin-layout-section" name="adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_LAYOUT_SECTION']) && !$acleditablecolumns['ID_ADMIN_LAYOUT_SECTION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_LAYOUT_SECTION'])}>
             <input type="hidden" class="input-id-admin-layout-section" name="adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value="<{$details->ID_ADMIN_LAYOUT_SECTION}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-layout-section">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin layout section')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin layout section')}></label>
             </td>
-            <td class="form-row form-row-id-admin-layout-section" colspan="3">
-                <div class="form-field form-field-value column-id-admin-layout-section">
-                                            
+            <td class="form-field form-field-value column-id-admin-layout-section" colspan="3">
+                                    
             <{if Framework::hasModule('AdminLayoutSection')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-layout-section" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$details->ID_ADMIN_LAYOUT_SECTION text=$details->reftext_ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -96,137 +87,109 @@
                     <{else}>
             <input class="input-id-admin-layout-section input-type-text" type="text" name="<{$prefix}>adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value="<{$details->ID_ADMIN_LAYOUT_SECTION|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_LAYOUT_SECTION}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_LAYOUT_SECTION}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_LAYOUT_SECTION}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_LAYOUT_SECTION}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-column form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['COLUMN'])}>
+        <{if !isset($excludedcolumns['COLUMN'])}>
     
         <{if $preset == 'COLUMN'}>
             <input type="hidden" class="input-column" name="adminlayoutfield_formdata_COLUMN" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['COLUMN']) && !$acleditablecolumns['COLUMN'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['COLUMN'])}>
             <input type="hidden" class="input-column" name="adminlayoutfield_formdata_COLUMN" value="<{$details->COLUMN}>" />
         <{else}>
-    		<td class="form-row form-row-column form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Column')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Column')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-column form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-column">
-                                            
+            <td class="form-field form-field-value column-column" colspan="3">
+                                    
 
     <input class="input-column input-type-text" type="text" name="<{$prefix}>adminlayoutfield_formdata_COLUMN" value="<{$details->COLUMN|escape}>"  />
-                        <{if $columntooltips.COLUMN}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.COLUMN}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.COLUMN}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.COLUMN}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-position">
             
         
         
         
-        
-<{if !isset($excludedcolumns['POSITION'])}>
+        <{if !isset($excludedcolumns['POSITION'])}>
     
         <{if $preset == 'POSITION'}>
             <input type="hidden" class="input-position" name="adminlayoutfield_formdata_POSITION" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['POSITION']) && !$acleditablecolumns['POSITION'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['POSITION'])}>
             <input type="hidden" class="input-position" name="adminlayoutfield_formdata_POSITION" value="<{$details->POSITION}>" />
         <{else}>
-    		<td class="form-row form-row-position">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Position')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Position')}></label>
             </td>
-            <td class="form-row form-row-position" colspan="3">
-                <div class="form-field form-field-value column-position">
-                                            
+            <td class="form-field form-field-value column-position" colspan="3">
+                                    
 
     <input class="input-position input-type-text" type="text" name="<{$prefix}>adminlayoutfield_formdata_POSITION" value="<{$details->POSITION|escape}>"  />
-                        <{if $columntooltips.POSITION}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.POSITION}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.POSITION}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.POSITION}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-ordering">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ORDERING'])}>
+        <{if !isset($excludedcolumns['ORDERING'])}>
     
         <{if $preset == 'ORDERING'}>
             <input type="hidden" class="input-ordering" name="adminlayoutfield_formdata_ORDERING" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ORDERING']) && !$acleditablecolumns['ORDERING'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ORDERING'])}>
             <input type="hidden" class="input-ordering" name="adminlayoutfield_formdata_ORDERING" value="<{$details->ORDERING}>" />
         <{else}>
-    		<td class="form-row form-row-ordering">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Ordering')}></label>
+            </td>
+            <td class="form-field form-field-value column-ordering" colspan="3">
+                                    
+        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>adminlayoutfield_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
+                    <{if $columntooltips.ORDERING}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Ordering')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-ordering" colspan="3">
-                <div class="form-field form-field-value column-ordering">
-                                            
-        <input class="input-ordering input-type-number number-format" type="text" name="<{$prefix}>adminlayoutfield_formdata_ORDERING" value="<{if $details->ORDERING != 0}><{$details->ORDERING}><{/if}>"  />
-                        <{if $columntooltips.ORDERING}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ORDERING}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminlayoutfield_form_bottom" args=$details}>
     </form>
 </div>

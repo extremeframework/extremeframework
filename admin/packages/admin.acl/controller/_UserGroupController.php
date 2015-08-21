@@ -1222,7 +1222,6 @@ class _UserGroupController extends __AppController
             $this->pagenotfound('No view available');
         }
 
-        $excludedcolumns = AclController::getSystemExcludedColumns('usergroup');
         
         $presetdata = $this->getPresetData();
         $searchdata = $this->getSearchData();
@@ -1231,6 +1230,11 @@ class _UserGroupController extends __AppController
         $orderby = $this->getRealOrderBy('ID');
         $limit = $this->getPageSize();
         $page = $this->getPageNumber();
+
+        $excludedcolumns = AclController::getSystemExcludedColumns('usergroup');
+        foreach ($presetdata as $column => $value) {
+            $excludedcolumns[$column] = true;
+        }
 
         $rows = $this->getList(true, $searchdata + $customfilterdata + $presetdata, $filterdata, $orderby, $limit, $page, $pagination);
         
@@ -1311,8 +1315,13 @@ class _UserGroupController extends __AppController
 
         $preset = RequestHelper::get('preset');
         $presetvalue = RequestHelper::get('presetvalue');
-        if (!empty($preset)) {
+        if (!empty($preset) && !empty($presetvalue)) {
             $aclviewablecolumns[$preset] = false;
+        }
+
+        $presetdata = $this->getPresetData();
+        foreach ($presetdata as $column => $value) {
+            $aclviewablecolumns[$column] = true;
         }
 
         $ids = isset($_SESSION['usergroup.list.ids'])? $_SESSION['usergroup.list.ids'] : array();
@@ -1378,6 +1387,12 @@ class _UserGroupController extends __AppController
 
         $presets = !empty($preset)? explode(',', $preset) : array();
         $presetvalues = !empty($presetvalue)? explode(',', $presetvalue) : array();
+
+        $presetdata = $this->getPresetData();
+        foreach ($presetdata as $column => $value) {
+            $presets[] = $column;
+            $presetvalues[] = $value;
+        }
 
         foreach ($_REQUEST as $param => $value) {
             if (preg_match('/^preset_(.*)/i', $param, $match)) {

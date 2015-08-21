@@ -24,58 +24,49 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="adminpackagepermission_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="adminpackagepermission_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package permission name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package permission name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>adminpackagepermission_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
     
         <{if $preset == 'ID_ADMIN_PACKAGE'}>
             <input type="hidden" class="input-id-admin-package" name="adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE']) && !$acleditablecolumns['ID_ADMIN_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE'])}>
             <input type="hidden" class="input-id-admin-package" name="adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-package">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package')}></label>
             </td>
-            <td class="form-row form-row-id-admin-package" colspan="3">
-                <div class="form-field form-field-value column-id-admin-package">
-                                            
+            <td class="form-field form-field-value column-id-admin-package" colspan="3">
+                                    
             <{if Framework::hasModule('AdminPackage')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -87,34 +78,29 @@
                     <{else}>
             <input class="input-id-admin-package input-type-text" type="text" name="<{$prefix}>adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_PACKAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-permission-set">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_PERMISSION_SET'])}>
+        <{if !isset($excludedcolumns['ID_PERMISSION_SET'])}>
     
         <{if $preset == 'ID_PERMISSION_SET'}>
             <input type="hidden" class="input-id-permission-set" name="adminpackagepermission_formdata_ID_PERMISSION_SET" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_PERMISSION_SET']) && !$acleditablecolumns['ID_PERMISSION_SET'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_PERMISSION_SET'])}>
             <input type="hidden" class="input-id-permission-set" name="adminpackagepermission_formdata_ID_PERMISSION_SET" value="<{$details->ID_PERMISSION_SET}>" />
         <{else}>
-    		<td class="form-row form-row-id-permission-set">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Permission set')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Permission set')}></label>
             </td>
-            <td class="form-row form-row-id-permission-set" colspan="3">
-                <div class="form-field form-field-value column-id-permission-set">
-                                            
+            <td class="form-field form-field-value column-id-permission-set" colspan="3">
+                                    
             <{if Framework::hasModule('PermissionSet')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-permission-set" class="input-id-permission-set" name="`$prefix`adminpackagepermission_formdata_ID_PERMISSION_SET" value=$details->ID_PERMISSION_SET text=$details->reftext_ID_PERMISSION_SET datasource="PERMISSION_SET" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -126,48 +112,35 @@
                     <{else}>
             <input class="input-id-permission-set input-type-text" type="text" name="<{$prefix}>adminpackagepermission_formdata_ID_PERMISSION_SET" value="<{$details->ID_PERMISSION_SET|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_PERMISSION_SET}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_PERMISSION_SET}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_PERMISSION_SET}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_PERMISSION_SET}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminpackagepermission_form_bottom" args=$details}>
     </form>
 </div>

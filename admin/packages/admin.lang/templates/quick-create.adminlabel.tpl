@@ -42,72 +42,55 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-label">
             
         
         
         
-        
-<{if !isset($excludedcolumns['LABEL'])}>
+        <{if !isset($excludedcolumns['LABEL'])}>
     
         <{if $preset == 'LABEL'}>
             <input type="hidden" class="input-label" name="adminlabel_formdata_LABEL" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['LABEL']) && !$acleditablecolumns['LABEL'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['LABEL'])}>
             <input type="hidden" class="input-label" name="adminlabel_formdata_LABEL" value="<{$details->LABEL}>" />
         <{else}>
-    		<td class="form-row form-row-label">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Label')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Label')}></label>
             </td>
-            <td class="form-row form-row-label" colspan="3">
-                <div class="form-field form-field-value column-label">
-                                            
+            <td class="form-field form-field-value column-label" colspan="3">
+                                    
 
     <input class="input-label input-type-text" type="text" name="<{$prefix}>adminlabel_formdata_LABEL" value="<{$details->LABEL|escape}>"  />
-                        <{if $columntooltips.LABEL}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.LABEL}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.LABEL}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.LABEL}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminlabel_form_bottom" args=$details}>
     </form>
 </div>

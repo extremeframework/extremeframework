@@ -139,6 +139,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="changelog" /> <{_t('Copy also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomFieldSet')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="customfieldset" /> <{_t('Copy also')}> <{_t('Custom Field Set')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="field" /> <{_t('Copy also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -168,6 +171,9 @@
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('Workflow Log')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('XxxNotification')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="xxxnotification" /> <{_t('Copy also')}> <{_t('Xxx Notification')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -199,6 +205,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="changelog" /> <{_t('Approve also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomFieldSet')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="customfieldset" /> <{_t('Approve also')}> <{_t('Custom Field Set')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="field" /> <{_t('Approve also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -228,6 +237,9 @@
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('Workflow Log')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('XxxNotification')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="xxxnotification" /> <{_t('Approve also')}> <{_t('Xxx Notification')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>
@@ -259,6 +271,9 @@
                             <{if Framework::hasModule('ChangeLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="changelog" /> <{_t('Delete also')}> <{_t('Change Log')|strtolower}></li>
                 <{/if}>
+                            <{if Framework::hasModule('CustomFieldSet')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="customfieldset" /> <{_t('Delete also')}> <{_t('Custom Field Set')|strtolower}></li>
+                <{/if}>
                             <{if Framework::hasModule('Field')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="field" /> <{_t('Delete also')}> <{_t('Field')|strtolower}></li>
                 <{/if}>
@@ -288,6 +303,9 @@
                 <{/if}>
                             <{if Framework::hasModule('WorkflowLog')}>
                     <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('Workflow Log')|strtolower}></li>
+                <{/if}>
+                            <{if Framework::hasModule('XxxNotification')}>
+                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="xxxnotification" /> <{_t('Delete also')}> <{_t('Xxx Notification')|strtolower}></li>
                 <{/if}>
                     </ul>
     </div>

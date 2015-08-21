@@ -24,118 +24,99 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="adminmodule_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="adminmodule_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin module name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin module name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-module form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['MODULE'])}>
+        <{if !isset($excludedcolumns['MODULE'])}>
     
         <{if $preset == 'MODULE'}>
             <input type="hidden" class="input-module" name="adminmodule_formdata_MODULE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['MODULE']) && !$acleditablecolumns['MODULE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['MODULE'])}>
             <input type="hidden" class="input-module" name="adminmodule_formdata_MODULE" value="<{$details->MODULE}>" />
         <{else}>
-    		<td class="form-row form-row-module form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Module')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-module form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-module">
-                                            
+            <td class="form-field form-field-value column-module" colspan="3">
+                                    
 
     <input class="input-module input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
-                        <{if $columntooltips.MODULE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.MODULE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-table">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TABLE'])}>
+        <{if !isset($excludedcolumns['TABLE'])}>
     
         <{if $preset == 'TABLE'}>
             <input type="hidden" class="input-table" name="adminmodule_formdata_TABLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TABLE']) && !$acleditablecolumns['TABLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TABLE'])}>
             <input type="hidden" class="input-table" name="adminmodule_formdata_TABLE" value="<{$details->TABLE}>" />
         <{else}>
-    		<td class="form-row form-row-table">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Table')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Table')}></label>
             </td>
-            <td class="form-row form-row-table" colspan="3">
-                <div class="form-field form-field-value column-table">
-                                            
+            <td class="form-field form-field-value column-table" colspan="3">
+                                    
 
     <input class="input-table input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_TABLE" value="<{$details->TABLE|escape}>"  />
-                        <{if $columntooltips.TABLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TABLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TABLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TABLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
+        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE'])}>
     
         <{if $preset == 'ID_ADMIN_PACKAGE'}>
             <input type="hidden" class="input-id-admin-package" name="adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_ADMIN_PACKAGE']) && !$acleditablecolumns['ID_ADMIN_PACKAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_ADMIN_PACKAGE'])}>
             <input type="hidden" class="input-id-admin-package" name="adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE}>" />
         <{else}>
-    		<td class="form-row form-row-id-admin-package">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Admin package')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Admin package')}></label>
             </td>
-            <td class="form-row form-row-id-admin-package" colspan="3">
-                <div class="form-field form-field-value column-id-admin-package">
-                                            
+            <td class="form-field form-field-value column-id-admin-package" colspan="3">
+                                    
             <{if Framework::hasModule('AdminPackage')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`adminmodule_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -147,138 +128,110 @@
                     <{else}>
             <input class="input-id-admin-package input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_ID_ADMIN_PACKAGE" value="<{$details->ID_ADMIN_PACKAGE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_ADMIN_PACKAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_ADMIN_PACKAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_ADMIN_PACKAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-prefix form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['PREFIX'])}>
+        <{if !isset($excludedcolumns['PREFIX'])}>
     
         <{if $preset == 'PREFIX'}>
             <input type="hidden" class="input-prefix" name="adminmodule_formdata_PREFIX" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['PREFIX']) && !$acleditablecolumns['PREFIX'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['PREFIX'])}>
             <input type="hidden" class="input-prefix" name="adminmodule_formdata_PREFIX" value="<{$details->PREFIX}>" />
         <{else}>
-    		<td class="form-row form-row-prefix form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Prefix')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Prefix')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-prefix form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-prefix">
-                                            
+            <td class="form-field form-field-value column-prefix" colspan="3">
+                                    
 
     <input class="input-prefix input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_PREFIX" value="<{$details->PREFIX|escape}>"  />
-                        <{if $columntooltips.PREFIX}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.PREFIX}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.PREFIX}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.PREFIX}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-available-actions">
             
         
         
         
-        
-<{if !isset($excludedcolumns['AVAILABLE_ACTIONS'])}>
+        <{if !isset($excludedcolumns['AVAILABLE_ACTIONS'])}>
     
         <{if $preset == 'AVAILABLE_ACTIONS'}>
             <input type="hidden" class="input-available-actions" name="adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['AVAILABLE_ACTIONS']) && !$acleditablecolumns['AVAILABLE_ACTIONS'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['AVAILABLE_ACTIONS'])}>
             <input type="hidden" class="input-available-actions" name="adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$details->AVAILABLE_ACTIONS}>" />
         <{else}>
-    		<td class="form-row form-row-available-actions">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Available actions')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Available actions')}></label>
             </td>
-            <td class="form-row form-row-available-actions" colspan="3">
-                <div class="form-field form-field-value column-available-actions">
-                                            
+            <td class="form-field form-field-value column-available-actions" colspan="3">
+                                    
 
     <input class="input-available-actions input-type-text" type="text" name="<{$prefix}>adminmodule_formdata_AVAILABLE_ACTIONS" value="<{$details->AVAILABLE_ACTIONS|escape}>"  />
-                        <{if $columntooltips.AVAILABLE_ACTIONS}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.AVAILABLE_ACTIONS}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.AVAILABLE_ACTIONS}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.AVAILABLE_ACTIONS}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-is-comment-enabled">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IS_COMMENT_ENABLED'])}>
+        <{if !isset($excludedcolumns['IS_COMMENT_ENABLED'])}>
     
         <{if $preset == 'IS_COMMENT_ENABLED'}>
             <input type="hidden" class="input-is-comment-enabled" name="adminmodule_formdata_IS_COMMENT_ENABLED" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IS_COMMENT_ENABLED']) && !$acleditablecolumns['IS_COMMENT_ENABLED'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IS_COMMENT_ENABLED'])}>
             <input type="hidden" class="input-is-comment-enabled" name="adminmodule_formdata_IS_COMMENT_ENABLED" value="<{$details->IS_COMMENT_ENABLED}>" />
         <{else}>
-    		<td class="form-row form-row-is-comment-enabled">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Comment enabled?')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Comment enabled?')}></label>
             </td>
-            <td class="form-row form-row-is-comment-enabled" colspan="3">
-                <div class="form-field form-field-value column-is-comment-enabled">
-                                            
+            <td class="form-field form-field-value column-is-comment-enabled" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-is-comment-enabled" type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="1" <{if $details->IS_COMMENT_ENABLED}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminmodule_formdata_IS_COMMENT_ENABLED" value="0" <{if !$details->IS_COMMENT_ENABLED}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.IS_COMMENT_ENABLED}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IS_COMMENT_ENABLED}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IS_COMMENT_ENABLED}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IS_COMMENT_ENABLED}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminmodule_form_bottom" args=$details}>
     </form>
 </div>

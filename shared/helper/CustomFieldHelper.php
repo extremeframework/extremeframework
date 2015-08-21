@@ -10,10 +10,11 @@ class CustomFieldHelper {
             return array();
         }
 
+        $cache = Cache::session();
         $key = 'system.customfields';
 
         // x. Load ALL custom fields in the system
-        if (!Cache::has($key)) {
+        if (!$cache->has($key)) {
             $model = new CustomFieldModel();
 
             $model->selectAdd();
@@ -35,10 +36,10 @@ class CustomFieldHelper {
                 $customfields[$model->MODULE][] = clone $model;
             }
 
-            Cache::set($key, $customfields);
+            $cache->set($key, $customfields);
         }
 
-        $customfields = Cache::get($key);
+        $customfields = $cache->get($key);
 
         return isset($customfields[$module])? $customfields[$module] : array();
     }

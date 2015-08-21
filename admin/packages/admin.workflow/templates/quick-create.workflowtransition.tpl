@@ -42,94 +42,80 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                                                                                <tr>
-    
+                                                                                                                                                
+<tr class="form-row form-row-name form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['NAME'])}>
+        <{if !isset($excludedcolumns['NAME'])}>
     
         <{if $preset == 'NAME'}>
             <input type="hidden" class="input-name" name="workflowtransition_formdata_NAME" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['NAME']) && !$acleditablecolumns['NAME'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['NAME'])}>
             <input type="hidden" class="input-name" name="workflowtransition_formdata_NAME" value="<{$details->NAME}>" />
         <{else}>
-    		<td class="form-row form-row-name form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Workflow transition name')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Workflow transition name')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-name form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-name">
-                                            
+            <td class="form-field form-field-value column-name" colspan="3">
+                                    
 
     <input class="input-name input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_NAME" value="<{$details->NAME|escape}>"  />
-                        <{if $columntooltips.NAME}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.NAME}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.NAME}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
             <input type="hidden" class="input-code" name="workflowtransition_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
             <input type="hidden" class="input-code" name="workflowtransition_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="workflowtransition_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-code" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-code" name="workflowtransition_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                                                                        <tr>
-    
+    <{/if}>    </tr>                                                                                                                                                                                                                                                        
+<tr class="form-row form-row-id-user-group">
             
         
         
         
-        
-<{if !isset($excludedcolumns['ID_USER_GROUP'])}>
+        <{if !isset($excludedcolumns['ID_USER_GROUP'])}>
     
         <{if $preset == 'ID_USER_GROUP'}>
             <input type="hidden" class="input-id-user-group" name="workflowtransition_formdata_ID_USER_GROUP" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['ID_USER_GROUP']) && !$acleditablecolumns['ID_USER_GROUP'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['ID_USER_GROUP'])}>
             <input type="hidden" class="input-id-user-group" name="workflowtransition_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP}>" />
         <{else}>
-    		<td class="form-row form-row-id-user-group">
-                <div class="form-field form-field-label">
-        		    <label><{_t('User group')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('User group')}></label>
             </td>
-            <td class="form-row form-row-id-user-group" colspan="3">
-                <div class="form-field form-field-value column-id-user-group">
-                                            
+            <td class="form-field form-field-value column-id-user-group" colspan="3">
+                                    
             <{if Framework::hasModule('UserGroup')}>
             <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`workflowtransition_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -141,48 +127,35 @@
                     <{else}>
             <input class="input-id-user-group input-type-text" type="text" name="<{$prefix}>workflowtransition_formdata_ID_USER_GROUP" value="<{$details->ID_USER_GROUP|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.ID_USER_GROUP}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER_GROUP}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.ID_USER_GROUP}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.ID_USER_GROUP}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                                                                                                                                </tbody>
+    <{/if}>    </tr>                                                                                                                                                                                
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="workflowtransition_form_bottom" args=$details}>
     </form>
 </div>

@@ -58,94 +58,84 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
+                                            
+<tr class="form-row form-row-tab-anchor-title">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TITLE'])}>
+        <{if !isset($excludedcolumns['TITLE'])}>
     
         <{if $preset == 'TITLE'}>
-            <input type="hidden" class="input-title" name="pagesection_formdata_TITLE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-tab-anchor-title" name="pagesection_formdata_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TITLE']) && !$acleditablecolumns['TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TITLE'])}>
-            <input type="hidden" class="input-title" name="pagesection_formdata_TITLE" value="<{$details->TITLE}>" />
+            <input type="hidden" class="input-tab-anchor-title" name="pagesection_formdata_TITLE" value="<{$details->TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-title form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Page section title')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Page section title')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-title form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-title">
-                                            
+            <td class="form-field form-field-value column-tab-anchor-title" colspan="3">
+                                    
 
     <input class="input-title input-type-text" type="text" name="<{$prefix}>pagesection_formdata_TITLE" value="<{$details->TITLE|escape}>"  />
-                        <{if $columntooltips.TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-title form-row-mandatory">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-parent">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CODE'])}>
+        <{if !isset($excludedcolumns['CODE'])}>
     
         <{if $preset == 'CODE'}>
-            <input type="hidden" class="input-code" name="pagesection_formdata_CODE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-parent" name="pagesection_formdata_CODE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CODE']) && !$acleditablecolumns['CODE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CODE'])}>
-            <input type="hidden" class="input-code" name="pagesection_formdata_CODE" value="<{$details->CODE}>" />
+            <input type="hidden" class="input-parent" name="pagesection_formdata_CODE" value="<{$details->CODE}>" />
         <{else}>
-    		<td class="form-row form-row-code form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Code')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Code')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-code form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-code">
-                                            <{if $details->ID && $details->CODE != ''}>
-                            <input type="hidden" class="input-code" name="pagesection_formdata_CODE" value="<{$details->CODE}>" />
-                            
+            <td class="form-field form-field-value column-parent" colspan="3">
+                                    <{if $details->ID && $details->CODE != ''}>
+                        <input type="hidden" class="input-parent" name="pagesection_formdata_CODE" value="<{$details->CODE}>" />
+                        
     <{$details->CODE|escape}>
-                        <{else}>
-                            
+                    <{else}>
+                        
 
     <input class="input-code input-type-text" type="text" name="<{$prefix}>pagesection_formdata_CODE" value="<{$details->CODE|escape}>"  />
-                            <{if $columntooltips.CODE}>
-                                <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
-                            <{/if}>
+                        <{if $columntooltips.CODE}>
+                            <i class="fa fa-info-circle" title="<{$columntooltips.CODE}>"></i>
                         <{/if}>
-                                    </div>
-            </td>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-code form-row-mandatory">
             
-                    </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-tag-line">
+                        </tr>                                            
+<tr class="form-row form-row-meta-keywords">
+                        </tr>                                            
+<tr class="form-row form-row-meta-description">
+                        </tr>                                            
+<tr class="form-row form-row-id-template">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-content">
             
-                    </tr>                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-tags">
+                        </tr>                                            
+<tr class="form-row form-row-latest-update">
                         </tr>                                    </tbody>
             </table>
         </div>
@@ -162,80 +152,70 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
+                                            
+<tr class="form-row form-row-nbr-views">
             
         
         
         
-        
-<{if !isset($excludedcolumns['BACKGROUND_IMAGE'])}>
+        <{if !isset($excludedcolumns['BACKGROUND_IMAGE'])}>
     
         <{if $preset == 'BACKGROUND_IMAGE'}>
-            <input type="hidden" class="input-background-image" name="pagesection_formdata_BACKGROUND_IMAGE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-nbr-views" name="pagesection_formdata_BACKGROUND_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['BACKGROUND_IMAGE']) && !$acleditablecolumns['BACKGROUND_IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['BACKGROUND_IMAGE'])}>
-            <input type="hidden" class="input-background-image" name="pagesection_formdata_BACKGROUND_IMAGE" value="<{$details->BACKGROUND_IMAGE}>" />
+            <input type="hidden" class="input-nbr-views" name="pagesection_formdata_BACKGROUND_IMAGE" value="<{$details->BACKGROUND_IMAGE}>" />
         <{else}>
-    		<td class="form-row form-row-background-image">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Background image')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Background image')}></label>
             </td>
-            <td class="form-row form-row-background-image" colspan="3">
-                <div class="form-field form-field-value column-background-image">
-                                            
+            <td class="form-field form-field-value column-nbr-views" colspan="3">
+                                    
 
 	<input class="input-background-image input-type-file" type="file" name="<{$prefix}>pagesection_formdata_BACKGROUND_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="BACKGROUND_IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="BACKGROUND_IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
 	<{if $details->BACKGROUND_IMAGE}><div style="clear:both"></div><span id="<{$prefix}>pagesection_BACKGROUND_IMAGE"><{media src=$details->BACKGROUND_IMAGE}> <a onclick="remove_attachment(document.pagesectionform.<{$prefix}>pagesection_formdata_BACKGROUND_IMAGE, '<{$details->BACKGROUND_IMAGE}>', '<{$prefix}>pagesection_BACKGROUND_IMAGE')">Remove</a></span><{/if}>
     <input type="hidden" name="<{$prefix}>pagesection_formdata_BACKGROUND_IMAGE" value="<{$details->BACKGROUND_IMAGE}>" />
-                        <{if $columntooltips.BACKGROUND_IMAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.BACKGROUND_IMAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.BACKGROUND_IMAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.BACKGROUND_IMAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-background-image">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-background-color">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-font-awesome-icon">
             
         
         
         
-        
-<{if !isset($excludedcolumns['IMAGE'])}>
+        <{if !isset($excludedcolumns['IMAGE'])}>
     
         <{if $preset == 'IMAGE'}>
-            <input type="hidden" class="input-image" name="pagesection_formdata_IMAGE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-font-awesome-icon" name="pagesection_formdata_IMAGE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['IMAGE']) && !$acleditablecolumns['IMAGE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['IMAGE'])}>
-            <input type="hidden" class="input-image" name="pagesection_formdata_IMAGE" value="<{$details->IMAGE}>" />
+            <input type="hidden" class="input-font-awesome-icon" name="pagesection_formdata_IMAGE" value="<{$details->IMAGE}>" />
         <{else}>
-    		<td class="form-row form-row-image">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Image')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Image')}></label>
             </td>
-            <td class="form-row form-row-image" colspan="3">
-                <div class="form-field form-field-value column-image">
-                                            
+            <td class="form-field form-field-value column-font-awesome-icon" colspan="3">
+                                    
 
 	<input class="input-image input-type-file" type="file" name="<{$prefix}>pagesection_formdata_IMAGE" />
     <span class="input-sizes-width-height"><input type="text" name="IMAGE[width]" size="3" style="height:20px;width:25px;margin:0"> x <input type="text" name="IMAGE[height]" size="3" style="height:20px;width:25px;margin:0" /></span>
 	<{if $details->IMAGE}><div style="clear:both"></div><span id="<{$prefix}>pagesection_IMAGE"><{media src=$details->IMAGE}> <a onclick="remove_attachment(document.pagesectionform.<{$prefix}>pagesection_formdata_IMAGE, '<{$details->IMAGE}>', '<{$prefix}>pagesection_IMAGE')">Remove</a></span><{/if}>
     <input type="hidden" name="<{$prefix}>pagesection_formdata_IMAGE" value="<{$details->IMAGE}>" />
-                        <{if $columntooltips.IMAGE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.IMAGE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.IMAGE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-image">
             
                     </tr>                                    </tbody>
             </table>
@@ -253,106 +233,91 @@
         <div class="layout-block layout-block-rows">
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                            <tr>
-    
-                        </tr>                                            <tr>
-    
+                                            
+<tr class="form-row form-row-video">
+                        </tr>                                            
+<tr class="form-row form-row-">
             
         
         
         
-        
-<{if !isset($excludedcolumns['VIEW_MORE_TITLE'])}>
+        <{if !isset($excludedcolumns['VIEW_MORE_TITLE'])}>
     
         <{if $preset == 'VIEW_MORE_TITLE'}>
-            <input type="hidden" class="input-view-more-title" name="pagesection_formdata_VIEW_MORE_TITLE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-" name="pagesection_formdata_VIEW_MORE_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['VIEW_MORE_TITLE']) && !$acleditablecolumns['VIEW_MORE_TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['VIEW_MORE_TITLE'])}>
-            <input type="hidden" class="input-view-more-title" name="pagesection_formdata_VIEW_MORE_TITLE" value="<{$details->VIEW_MORE_TITLE}>" />
+            <input type="hidden" class="input-" name="pagesection_formdata_VIEW_MORE_TITLE" value="<{$details->VIEW_MORE_TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-view-more-title">
-                <div class="form-field form-field-label">
-        		    <label><{_t('View more title')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('View more title')}></label>
             </td>
-            <td class="form-row form-row-view-more-title" colspan="3">
-                <div class="form-field form-field-value column-view-more-title">
-                                            
+            <td class="form-field form-field-value column-" colspan="3">
+                                    
 
     <input class="input-view-more-title input-type-text" type="text" name="<{$prefix}>pagesection_formdata_VIEW_MORE_TITLE" value="<{$details->VIEW_MORE_TITLE|escape}>"  />
-                        <{if $columntooltips.VIEW_MORE_TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.VIEW_MORE_TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.VIEW_MORE_TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.VIEW_MORE_TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-view-more-title">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-view-more-id-page">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-view-more-link">
             
         
         
         
-        
-<{if !isset($excludedcolumns['HIDE_TITLE'])}>
+        <{if !isset($excludedcolumns['HIDE_TITLE'])}>
     
         <{if $preset == 'HIDE_TITLE'}>
-            <input type="hidden" class="input-hide-title" name="pagesection_formdata_HIDE_TITLE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-view-more-link" name="pagesection_formdata_HIDE_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['HIDE_TITLE']) && !$acleditablecolumns['HIDE_TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['HIDE_TITLE'])}>
-            <input type="hidden" class="input-hide-title" name="pagesection_formdata_HIDE_TITLE" value="<{$details->HIDE_TITLE}>" />
+            <input type="hidden" class="input-view-more-link" name="pagesection_formdata_HIDE_TITLE" value="<{$details->HIDE_TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-hide-title">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Hide title')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Hide title')}></label>
             </td>
-            <td class="form-row form-row-hide-title" colspan="3">
-                <div class="form-field form-field-value column-hide-title">
-                                            
+            <td class="form-field form-field-value column-view-more-link" colspan="3">
+                                    
 
     <span class="input-type-radio"><input class="input-hide-title" type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="1" <{if $details->HIDE_TITLE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>pagesection_formdata_HIDE_TITLE" value="0" <{if !$details->HIDE_TITLE}>checked="checked"<{/if}> /><{_t('No')}></span>
-                        <{if $columntooltips.HIDE_TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.HIDE_TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.HIDE_TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.HIDE_TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                            <tr>
-    
+    <{/if}>    </tr>                                            
+<tr class="form-row form-row-hide-title">
             
-                    </tr>                                            <tr>
-    
+                    </tr>                                            
+<tr class="form-row form-row-is-tab-anchor-section">
             
         
         
         
-        
-<{if !isset($excludedcolumns['TAB_ANCHOR_TITLE'])}>
+        <{if !isset($excludedcolumns['TAB_ANCHOR_TITLE'])}>
     
         <{if $preset == 'TAB_ANCHOR_TITLE'}>
-            <input type="hidden" class="input-tab-anchor-title" name="pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$presetvalue}>" />
+            <input type="hidden" class="input-is-tab-anchor-section" name="pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['TAB_ANCHOR_TITLE']) && !$acleditablecolumns['TAB_ANCHOR_TITLE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['TAB_ANCHOR_TITLE'])}>
-            <input type="hidden" class="input-tab-anchor-title" name="pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$details->TAB_ANCHOR_TITLE}>" />
+            <input type="hidden" class="input-is-tab-anchor-section" name="pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$details->TAB_ANCHOR_TITLE}>" />
         <{else}>
-    		<td class="form-row form-row-tab-anchor-title">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Tab anchor title')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Tab anchor title')}></label>
             </td>
-            <td class="form-row form-row-tab-anchor-title" colspan="3">
-                <div class="form-field form-field-value column-tab-anchor-title">
-                                            
+            <td class="form-field form-field-value column-is-tab-anchor-section" colspan="3">
+                                    
 
     <input class="input-tab-anchor-title input-type-text" type="text" name="<{$prefix}>pagesection_formdata_TAB_ANCHOR_TITLE" value="<{$details->TAB_ANCHOR_TITLE|escape}>"  />
-                        <{if $columntooltips.TAB_ANCHOR_TITLE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.TAB_ANCHOR_TITLE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.TAB_ANCHOR_TITLE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.TAB_ANCHOR_TITLE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
     <{/if}>    </tr>                                    </tbody>
             </table>
@@ -378,39 +343,33 @@
         </div>
         <!-- Custom layout tabs end -->
     
-        
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
 
+            <!-- Custom fields -->
+            <div class="layout-block layout-block-rows">
+                <table class="table table-bordered table-custom-layout equal-split">
+                    <tbody>
+                        <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
+                <div class="form-field form-field-label">
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
+            </td>
+		</tr>
+	<{/foreach}>
+<{/if}>                    </tbody>
+                </table>
+            </div>
+        
         <{plugin key="pagesection_form_bottom" args=$details}>
     </form>
 </div>

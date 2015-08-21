@@ -75,6 +75,34 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
+	        <{if (in_array('ID_ADMIN_PACKAGE_INDUSTRY', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_INDUSTRY']))) }>
+                <td class="column column-id-admin-package-industry reftext" >
+                                            <{if (in_array('ID_ADMIN_PACKAGE_INDUSTRY', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataID_ADMIN_PACKAGE_INDUSTRY}>
+
+                                                    
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$formdata.ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                    <{if isset($smarty.session.acl.adminpackageindustry.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/new" title="Create a New Admin Package Industry">+</a>
+                                        </span>
+                                    <{/if}>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PACKAGE_INDUSTRY}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.adminpackageindustry.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/view/<{$row->refuuid_ID_ADMIN_PACKAGE_INDUSTRY}>"><{$row->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}></a>
+        <{else}>
+            <{$row->reftext_ID_ADMIN_PACKAGE_INDUSTRY|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->ID_ADMIN_PACKAGE_INDUSTRY}><{$row->ID_ADMIN_PACKAGE_INDUSTRY|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+                        <{/if}>
+                            		</td>
+    	    <{/if}>
+	    <{/if}>
 	        <{if (in_array('IMAGE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['IMAGE']) && ((isset($aclviewablecolumns['IMAGE']) && $aclviewablecolumns['IMAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IMAGE']) || $aclviewablecolumns['IMAGE']))) }>
                 <td class="column column-image image" >
@@ -173,23 +201,30 @@
                             		</td>
     	    <{/if}>
 	    <{/if}>
-	        <{if (in_array('IS_USER_PACKAGE', $filtercolumns)) }>
-            <{if !isset($excludedcolumns['IS_USER_PACKAGE']) && ((isset($aclviewablecolumns['IS_USER_PACKAGE']) && $aclviewablecolumns['IS_USER_PACKAGE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['IS_USER_PACKAGE']) || $aclviewablecolumns['IS_USER_PACKAGE']))) }>
-                <td class="column column-is-user-package yesno" data-value="<{$row->IS_USER_PACKAGE}>" data-column="IS_USER_PACKAGE" data-module="adminpackage">
-                                            <{if (in_array('IS_USER_PACKAGE', $roweditablecolumns)) }>
-                    	                            <{$tmp_value = $formdataIS_USER_PACKAGE}>
+	        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+                <td class="column column-id-admin-package-type reftext" >
+                                            <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $roweditablecolumns)) }>
+                    	                            <{$tmp_value = $formdataID_ADMIN_PACKAGE_TYPE}>
 
-                                                    <{if $force_boolean_dropdown}>
-                                <select class="input-is-user-package" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" >
-                                    <option value="1" <{if $formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('Yes')}></option>
-                                    <option value="0" <{if !$formdata.IS_USER_PACKAGE}>selected="selected"<{/if}>><{_t('No')}></option>
-                                </select>
-                            <{else}>
-                                <span class="input-type-radio"><input class="input-is-user-package" type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="1" <{if $formdata.IS_USER_PACKAGE}>checked="checked"<{/if}>><{_t('Yes')}> <input type="radio" name="<{$prefix}>adminpackage_formdata_IS_USER_PACKAGE" value="0" <{if !$formdata.IS_USER_PACKAGE}>checked="checked"<{/if}> /><{_t('No')}></span>
-                            <{/if}>
-                                                <{else}>
-                            <span>	<{if $row->IS_USER_PACKAGE}><{_t('Yes')}><{else}><{_t('No')}><{/if}>
-</span>
+                                                    
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$formdata.ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                    <{if isset($smarty.session.acl.adminpackagetype.new)}>
+                                        <span class="onflycreation">
+                                            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/new" title="Create a New Admin Package Type">+</a>
+                                        </span>
+                                    <{/if}>
+                                                                                                            <{else}>
+                            <span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$row->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->ID_ADMIN_PACKAGE_TYPE}><{$row->ID_ADMIN_PACKAGE_TYPE|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
                         <{/if}>
                             		</td>
     	    <{/if}>

@@ -24,28 +24,24 @@
                     <!-- Standard layout rows -->
             <table class="table table-bordered table-custom-layout equal-split">
                 <tbody>
-                                                                                            <tr>
-    
+                                                                                            
+<tr class="form-row form-row-module form-row-mandatory">
             
         
         
         
-        
-<{if !isset($excludedcolumns['MODULE'])}>
+        <{if !isset($excludedcolumns['MODULE'])}>
     
         <{if $preset == 'MODULE'}>
             <input type="hidden" class="input-module" name="adminsequence_formdata_MODULE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['MODULE']) && !$acleditablecolumns['MODULE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['MODULE'])}>
             <input type="hidden" class="input-module" name="adminsequence_formdata_MODULE" value="<{$details->MODULE}>" />
         <{else}>
-    		<td class="form-row form-row-module form-row-mandatory">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Module')}><span class="mandatory">*</span></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Module')}><span class="mandatory">*</span></label>
             </td>
-            <td class="form-row form-row-module form-row-mandatory" colspan="3">
-                <div class="form-field form-field-value column-module">
-                                            
+            <td class="form-field form-field-value column-module" colspan="3">
+                                    
             <{if Framework::hasModule('AdminModule')}>
             <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminsequence_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
@@ -57,137 +53,109 @@
                     <{else}>
             <input class="input-module input-type-text" type="text" name="<{$prefix}>adminsequence_formdata_MODULE" value="<{$details->MODULE|escape}>"  />
         <{/if}>
-                            <{if $columntooltips.MODULE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                        <{if $columntooltips.MODULE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.MODULE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-sequence-format">
             
         
         
         
-        
-<{if !isset($excludedcolumns['SEQUENCE_FORMAT'])}>
+        <{if !isset($excludedcolumns['SEQUENCE_FORMAT'])}>
     
         <{if $preset == 'SEQUENCE_FORMAT'}>
             <input type="hidden" class="input-sequence-format" name="adminsequence_formdata_SEQUENCE_FORMAT" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SEQUENCE_FORMAT']) && !$acleditablecolumns['SEQUENCE_FORMAT'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SEQUENCE_FORMAT'])}>
             <input type="hidden" class="input-sequence-format" name="adminsequence_formdata_SEQUENCE_FORMAT" value="<{$details->SEQUENCE_FORMAT}>" />
         <{else}>
-    		<td class="form-row form-row-sequence-format">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Sequence format')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Sequence format')}></label>
             </td>
-            <td class="form-row form-row-sequence-format" colspan="3">
-                <div class="form-field form-field-value column-sequence-format">
-                                            
+            <td class="form-field form-field-value column-sequence-format" colspan="3">
+                                    
 
     <input class="input-sequence-format input-type-text" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_FORMAT" value="<{$details->SEQUENCE_FORMAT|escape}>"  />
-                        <{if $columntooltips.SEQUENCE_FORMAT}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.SEQUENCE_FORMAT}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.SEQUENCE_FORMAT}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.SEQUENCE_FORMAT}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-current-value">
             
         
         
         
-        
-<{if !isset($excludedcolumns['CURRENT_VALUE'])}>
+        <{if !isset($excludedcolumns['CURRENT_VALUE'])}>
     
         <{if $preset == 'CURRENT_VALUE'}>
             <input type="hidden" class="input-current-value" name="adminsequence_formdata_CURRENT_VALUE" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['CURRENT_VALUE']) && !$acleditablecolumns['CURRENT_VALUE'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['CURRENT_VALUE'])}>
             <input type="hidden" class="input-current-value" name="adminsequence_formdata_CURRENT_VALUE" value="<{$details->CURRENT_VALUE}>" />
         <{else}>
-    		<td class="form-row form-row-current-value">
-                <div class="form-field form-field-label">
-        		    <label><{_t('Current value')}></label>
-                </div>
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Current value')}></label>
             </td>
-            <td class="form-row form-row-current-value" colspan="3">
-                <div class="form-field form-field-value column-current-value">
-                                            
+            <td class="form-field form-field-value column-current-value" colspan="3">
+                                    
 
     <input class="input-current-value input-type-text" type="text" name="<{$prefix}>adminsequence_formdata_CURRENT_VALUE" value="<{$details->CURRENT_VALUE|escape}>"  />
-                        <{if $columntooltips.CURRENT_VALUE}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.CURRENT_VALUE}>"></i>
-                        <{/if}>
-                                    </div>
-            </td>
+                    <{if $columntooltips.CURRENT_VALUE}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.CURRENT_VALUE}>"></i>
+                    <{/if}>
+                            </td>
     	<{/if}>
-    <{/if}>    </tr>                                                                                            <tr>
-    
+    <{/if}>    </tr>                                                                                            
+<tr class="form-row form-row-sequence-step">
             
         
         
         
-        
-<{if !isset($excludedcolumns['SEQUENCE_STEP'])}>
+        <{if !isset($excludedcolumns['SEQUENCE_STEP'])}>
     
         <{if $preset == 'SEQUENCE_STEP'}>
             <input type="hidden" class="input-sequence-step" name="adminsequence_formdata_SEQUENCE_STEP" value="<{$presetvalue}>" />
         <{elseif isset($acleditablecolumns['SEQUENCE_STEP']) && !$acleditablecolumns['SEQUENCE_STEP'] || !isset($acleditablecolumns['*']) && !isset($acleditablecolumns['SEQUENCE_STEP'])}>
             <input type="hidden" class="input-sequence-step" name="adminsequence_formdata_SEQUENCE_STEP" value="<{$details->SEQUENCE_STEP}>" />
         <{else}>
-    		<td class="form-row form-row-sequence-step">
+    		<td class="form-field form-field-label">
+    		    <label><{_t('Sequence step')}></label>
+            </td>
+            <td class="form-field form-field-value column-sequence-step" colspan="3">
+                                    
+        <input class="input-sequence-step input-type-number number-format" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_STEP" value="<{if $details->SEQUENCE_STEP != 0}><{$details->SEQUENCE_STEP}><{/if}>"  />
+                    <{if $columntooltips.SEQUENCE_STEP}>
+                        <i class="fa fa-info-circle" title="<{$columntooltips.SEQUENCE_STEP}>"></i>
+                    <{/if}>
+                            </td>
+    	<{/if}>
+    <{/if}>    </tr>                    
+                    <!-- Custom fields -->
+                    <{if $customfields}>
+    <{foreach from=$customfields item=item}>
+        <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
+    		<td>
                 <div class="form-field form-field-label">
-        		    <label><{_t('Sequence step')}></label>
+        		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
                 </div>
             </td>
-            <td class="form-row form-row-sequence-step" colspan="3">
-                <div class="form-field form-field-value column-sequence-step">
-                                            
-        <input class="input-sequence-step input-type-number number-format" type="text" name="<{$prefix}>adminsequence_formdata_SEQUENCE_STEP" value="<{if $details->SEQUENCE_STEP != 0}><{$details->SEQUENCE_STEP}><{/if}>"  />
-                        <{if $columntooltips.SEQUENCE_STEP}>
-                            <i class="fa fa-info-circle" title="<{$columntooltips.SEQUENCE_STEP}>"></i>
-                        <{/if}>
-                                    </div>
+            <td colspan="3">
+                <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
+                    <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
+                    <{if $item->TOOLTIP}>
+                        <i class="fa fa-info-circle" title="<{$item->TOOLTIP}>"></i>
+                    <{/if}>
+                </div>
             </td>
-    	<{/if}>
-    <{/if}>    </tr>                                    </tbody>
+		</tr>
+	<{/foreach}>
+<{/if}>                </tbody>
             </table>
         	<!-- Standard layout rows end -->
         
-        <{if $customfields}>
-            <div class="layout-block layout-block-section">
-                <div class="layout-section">
-                    <div class="layout-section-header">
-                        <span><{_t('Additional information')}></span>
-                        <div class="header-arrow"></div>
-                        <div class="clearer"></div>
-                    </div>
-                    <div class="layout-section-content">
-                        <table class="table table-bordered table-custom-layout equal-split">
-                            <tbody>
-                                <{foreach from=$customfields item=item}>
-                                    <tr class="form-row form-row-<{$item->COLUMN_CODE}><{if $item->IS_REQUIRED}> form-row-mandatory<{/if}>">
-                                		<td>
-                                            <div class="form-field form-field-label">
-                                    		    <label><{_t($item->NAME)}><{if $item->IS_REQUIRED}><span class="mandatory">*</span><{/if}></label>
-                                            </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-<{$item->COLUMN_CODE}>">
-                                                <{include file="item.edit.tpl" customfield=$item id=$details->UUID value=CustomFieldHelper::getCustomFieldValue($details, $item->COLUMN)}>
-                                            </div>
-                                        </td>
-                            		</tr>
-                            	<{/foreach}>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        <{/if}>
-
         <{plugin key="adminsequence_form_bottom" args=$details}>
     </form>
 </div>
