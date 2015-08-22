@@ -397,9 +397,10 @@ class OpcacheController extends __AppController
         foreach ($tablecolumns as $column => $type) {
             if (!in_array($column, $script_columns) && !in_array($column, array('REFID', 'GUID', 'UDID', 'WFID', 'UUID', 'JSON'))) {
                 if (preg_match('/^json_/is', $column)) {
-                    $logs[] = "DROP COLUMN `$column`";
+                    $logs[] = "ALTER TABLE `$rawname` DROP COLUMN `$column`";
                 } else {
-                    $logs[] = "Column not found in script <-- $column";
+                    $logs[] = "/* Column not found in script <-- $column */";
+                    $logs[] = "ALTER TABLE `$rawname` DROP COLUMN `$column`";
                 }
             }
         }
