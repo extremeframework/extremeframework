@@ -26,8 +26,12 @@ class OpcacheController extends __AppController
         echo '<a href="'.APPLICATION_URL.'/opcache/test-memcache">Test Memcache</a> &nbsp; ';
         echo '<a href="'.APPLICATION_URL.'/opcache/backupdb">Backup database</a> &nbsp; ';
 
-        echo '<br/> <form action="'.APPLICATION_URL.'/opcache/checkdb" method="POST" enctype="multipart/form-data">';
-        echo 'Database script: <input type="file" name="dbfile"/>';
+        echo '<br/> <br/><form action="'.APPLICATION_URL.'/opcache/checkdbcore" method="POST" enctype="multipart/form-data">';
+        echo 'Check with CORE database script: <input type="submit" value="Check"/>';
+        echo '</form>';
+
+        echo '<form action="'.APPLICATION_URL.'/opcache/checkdb" method="POST" enctype="multipart/form-data">';
+        echo 'Check with specific database script: <input type="file" name="dbfile"/>';
         echo '<input type="submit" value="Check"/>';
         echo '</form>';
 
@@ -105,6 +109,16 @@ class OpcacheController extends __AppController
 
         if ($operation == 'checkdb') {
             $dbfile = $_FILES['dbfile']['tmp_name'];
+
+            $ok = $this->check_against_script_file($dbfile);
+
+            if ($ok) {
+                echo 'DB checking done';
+            }
+        }
+
+        if ($operation == 'checkdbcore') {
+            $dbfile = APPLICATION_DIR.'/../install/database.sql';
 
             $ok = $this->check_against_script_file($dbfile);
 
