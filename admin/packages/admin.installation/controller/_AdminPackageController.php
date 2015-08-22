@@ -30,12 +30,12 @@ class _AdminPackageController extends __AppController
            $errors['code'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Code'));
            return false;
        }
-       if (in_array('ENTRY_PATH', $columns2check) && trim($model->ENTRY_PATH) == '') {
-           $errors['entry-path'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Entry path'));
-           return false;
-       }
        if (in_array('ID_ADMIN_PACKAGE_TYPE', $columns2check) && trim($model->ID_ADMIN_PACKAGE_TYPE) == '') {
            $errors['id-admin-package-type'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Admin package type'));
+           return false;
+       }
+       if (in_array('ENTRY_PATH', $columns2check) && trim($model->ENTRY_PATH) == '') {
+           $errors['entry-path'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Entry path'));
            return false;
        }
        if (in_array('PACKAGE_URL', $columns2check) && !empty($model->PACKAGE_URL) && !preg_match('/^(http|https|ftp):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.?[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?/i', $model->PACKAGE_URL)) {
@@ -662,7 +662,7 @@ class _AdminPackageController extends __AppController
             } else {
                 $value = '';
             }
-        } elseif ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+        } elseif ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -673,11 +673,7 @@ class _AdminPackageController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -925,14 +921,14 @@ class _AdminPackageController extends __AppController
         if ($refobject != null) {
             $refclass = get_class($refobject);
             
+            if ($refclass == 'AdminPackageTypeModel' && empty($model->ID_ADMIN_PACKAGE_TYPE)) {
+                $model->ID_ADMIN_PACKAGE_TYPE = $refobject->CODE;
+            }
             if ($refclass == 'AdminPackageCategoryModel' && empty($model->ID_ADMIN_PACKAGE_CATEGORY)) {
                 $model->ID_ADMIN_PACKAGE_CATEGORY = $refobject->CODE;
             }
             if ($refclass == 'AdminPackageIndustryModel' && empty($model->ID_ADMIN_PACKAGE_INDUSTRY)) {
                 $model->ID_ADMIN_PACKAGE_INDUSTRY = $refobject->CODE;
-            }
-            if ($refclass == 'AdminPackageTypeModel' && empty($model->ID_ADMIN_PACKAGE_TYPE)) {
-                $model->ID_ADMIN_PACKAGE_TYPE = $refobject->CODE;
             }
 
         }
@@ -1229,7 +1225,7 @@ class _AdminPackageController extends __AppController
 
     protected function getCustomFilterColumns($module, &$filter = null) {
         if (!Framework::hasModule('AdminFilter')) {
-            return array('NAME', 'IMAGE', 'AUTHOR', 'VERSION', 'INSTALLATION_DATE', 'IS_USER_PACKAGE');
+            return array('NAME', 'IMAGE', 'AUTHOR', 'VERSION', 'INSTALLATION_DATE', 'ID_ADMIN_PACKAGE_TYPE');
         }
 
         $filter = $this->getCustomFilterModel($module);
@@ -1678,16 +1674,6 @@ class _AdminPackageController extends __AppController
                         } else {
                             $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.ID_ADMIN_PACKAGE_INDUSTRY = '$value'");
                         }
-
-                        break;
-
-                    case 'LATEST_UPDATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE >= '".$this->field_sanitize('LATEST_UPDATE', $value)."'");
-
-                        break;
-
-                    case 'LATEST_UPDATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE IS NULL OR ".TABLE_PREFIX."ADMIN_PACKAGE.LATEST_UPDATE <= '".$this->field_sanitize('LATEST_UPDATE', $value)."')");
 
                         break;
 

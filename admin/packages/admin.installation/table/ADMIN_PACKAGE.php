@@ -15,6 +15,7 @@ class DataObject_ADMIN_PACKAGE extends DB_DataObject
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(128)  
     public $CODE;                            // varchar(32)  
+    public $ID_ADMIN_PACKAGE_TYPE;           // varchar(24)  
     public $ID_ADMIN_PACKAGE_CATEGORY;       // varchar(24)  
     public $ID_ADMIN_PACKAGE_INDUSTRY;       // varchar(24)  
     public $IMAGE;                           // varchar(128)  
@@ -27,7 +28,6 @@ class DataObject_ADMIN_PACKAGE extends DB_DataObject
     public $PACKAGE_PATH;                    // varchar(128)  
     public $INSTALLATION_DATE;               // date  
     public $LATEST_UPDATE;                   // date  
-    public $ID_ADMIN_PACKAGE_TYPE;           // varchar(24)  
     public $GUID;                            // int(4)  
     public $JSON;                            // text  
     public $UDID;                            // int(4)  

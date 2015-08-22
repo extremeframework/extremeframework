@@ -36,12 +36,12 @@ class IndexController extends __AppController {
 
         LicenseController::enforceLicenseCheck();
 
-        $iddashboard = isset($_SESSION['user']->preferences->ID_DASHBOARD)? $_SESSION['user']->preferences->ID_DASHBOARD : '';
+        $id_dashboard = isset($_SESSION['user']->preferences->ID_DASHBOARD)? $_SESSION['user']->preferences->ID_DASHBOARD : '';
 
-        if (!empty($iddashboard)) {
+        if (!empty($id_dashboard) && Framework::hasModule('Dashboard')) {
             $handler = new DashboardController();
 
-            $handler->_display($iddashboard, false);
+            $handler->showDashoard($id_dashboard);
         } else {
     		$smarty = Framework::getSmarty(__FILE__);
     		$smarty->assign('module', 'index');

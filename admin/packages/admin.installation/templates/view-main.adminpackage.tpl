@@ -506,12 +506,12 @@
 	            		        <label class="attribute-name"><{_t('Latest update')}></label>
             </td>
             <td class="form-field form-field-value column-latest-update" colspan="3">
-            	<div class="attribute-line column-latest-update type-datetime">
+            	<div class="attribute-line column-latest-update type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['LATEST_UPDATE']) && $acleditablecolumns['LATEST_UPDATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['LATEST_UPDATE']) || $acleditablecolumns['LATEST_UPDATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -521,7 +521,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>
