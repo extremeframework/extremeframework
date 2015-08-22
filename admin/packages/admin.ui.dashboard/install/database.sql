@@ -49,6 +49,8 @@ CREATE TABLE IF NOT EXISTS `DASHBOARD` (
 --
 
 /*!40000 ALTER TABLE `DASHBOARD` DISABLE KEYS */;
+INSERT IGNORE INTO `DASHBOARD` (`ID`, `REFID`, `NAME`, `TITLE`, `SUBTITLE`, `ID_ADMIN_PACKAGE`, `ID_ADMIN_MENU`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES (1,'DSH0000000001','Admin Dashboard','Welcome to Extreme Framework','Where do you want to start?','',1,1,'{\"DASHBOARD_ITEM\":[{\"ID\":\"1\",\"REFID\":\"DSI0000000001\",\"TITLE\":\"View your apps\",\"ID_DASHBOARD\":\"3\",\"IMAGE\":\"dashboarditem\\/image\\/chq.png\",\"PATH\":\"desktop\",\"ID_DASHBOARD_ITEM_TYPE\":\"block\",\"ORDERING\":null,\"GUID\":\"1\",\"JSON\":null,\"WFID\":null,\"UDID\":\"0\",\"UUID\":\"c988bdf6-3a67-451f-b397-4a7fddace211\",\"N\":5},{\"ID\":\"2\",\"REFID\":\"DSI0000000002\",\"TITLE\":\"Install new apps\",\"ID_DASHBOARD\":\"3\",\"IMAGE\":\"dashboarditem\\/image\\/pie.png\",\"PATH\":\"installation\\/userpackages\",\"ID_DASHBOARD_ITEM_TYPE\":\"block\",\"ORDERING\":null,\"GUID\":\"1\",\"JSON\":null,\"WFID\":null,\"UDID\":\"0\",\"UUID\":\"01f24b6b-9df2-4f53-b968-262e19a4d0cd\",\"N\":5},{\"ID\":\"3\",\"REFID\":\"DSI0000000003\",\"TITLE\":\"Set up account\",\"ID_DASHBOARD\":\"3\",\"IMAGE\":\"dashboarditem\\/image\\/chq.png\",\"PATH\":\"user\\/edit-account\",\"ID_DASHBOARD_ITEM_TYPE\":\"block\",\"ORDERING\":null,\"GUID\":\"1\",\"JSON\":null,\"WFID\":null,\"UDID\":\"0\",\"UUID\":\"de2774ca-5eb5-4d89-84b2-d6f5fff13fc2\",\"N\":5},{\"ID\":\"4\",\"REFID\":\"DSI0000000004\",\"TITLE\":\"Watch a tutorial video\",\"ID_DASHBOARD\":\"3\",\"IMAGE\":\"\",\"PATH\":\"tutorial\",\"ID_DASHBOARD_ITEM_TYPE\":\"link\",\"ORDERING\":null,\"GUID\":\"1\",\"JSON\":null,\"WFID\":null,\"UDID\":\"0\",\"UUID\":\"008667b7-a09f-4905-b503-c51101fb10d7\",\"N\":5},{\"ID\":\"5\",\"REFID\":null,\"TITLE\":\"Read user guides\",\"ID_DASHBOARD\":\"3\",\"IMAGE\":\"\",\"PATH\":\"guides\",\"ID_DASHBOARD_ITEM_TYPE\":\"link\",\"ORDERING\":null,\"GUID\":\"1\",\"JSON\":null,\"WFID\":null,\"UDID\":\"0\",\"UUID\":\"6233b44d-3f9c-4412-bd54-0118f9934b61\",\"N\":5}]}',0,NULL,'5fc81069-6f37-4b65-bee8-d6b3e8ec075a');
+INSERT IGNORE INTO `DASHBOARD` (`ID`, `REFID`, `NAME`, `TITLE`, `SUBTITLE`, `ID_ADMIN_PACKAGE`, `ID_ADMIN_MENU`, `GUID`, `JSON`, `UDID`, `WFID`, `UUID`) VALUES (2,'DSH0000000002','Base User Dashboard',NULL,NULL,NULL,2,1,NULL,0,NULL,'06fe2719-1a1a-11e5-b2f8-cc52af77857f');
 /*!40000 ALTER TABLE `DASHBOARD` ENABLE KEYS */;
 
 --
@@ -86,6 +88,10 @@ CREATE TABLE IF NOT EXISTS `DASHBOARD_ITEM` (
 --
 
 /*!40000 ALTER TABLE `DASHBOARD_ITEM` DISABLE KEYS */;
+INSERT IGNORE INTO `DASHBOARD_ITEM` (`ID`, `REFID`, `TITLE`, `ID_DASHBOARD`, `IMAGE`, `PATH`, `ID_DASHBOARD_ITEM_TYPE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (1,'DSI0000000001','View your apps',1,'dashboarditem/image/chq.png','desktop','block',NULL,1,NULL,NULL,0,'c988bdf6-3a67-451f-b397-4a7fddace211');
+INSERT IGNORE INTO `DASHBOARD_ITEM` (`ID`, `REFID`, `TITLE`, `ID_DASHBOARD`, `IMAGE`, `PATH`, `ID_DASHBOARD_ITEM_TYPE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (2,'DSI0000000002','Install new apps',1,'dashboarditem/image/pie.png','installation/userpackages','block',NULL,1,NULL,NULL,0,'01f24b6b-9df2-4f53-b968-262e19a4d0cd');
+INSERT IGNORE INTO `DASHBOARD_ITEM` (`ID`, `REFID`, `TITLE`, `ID_DASHBOARD`, `IMAGE`, `PATH`, `ID_DASHBOARD_ITEM_TYPE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (3,'DSI0000000003','Set up account',1,'dashboarditem/image/chq.png','user/edit-account','block',NULL,1,NULL,NULL,0,'de2774ca-5eb5-4d89-84b2-d6f5fff13fc2');
+INSERT IGNORE INTO `DASHBOARD_ITEM` (`ID`, `REFID`, `TITLE`, `ID_DASHBOARD`, `IMAGE`, `PATH`, `ID_DASHBOARD_ITEM_TYPE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (4,'DSI0000000004','Watch a tutorial video',1,'','tutorial','link',NULL,1,NULL,NULL,0,'008667b7-a09f-4905-b503-c51101fb10d7');
 /*!40000 ALTER TABLE `DASHBOARD_ITEM` ENABLE KEYS */;
 
 --
@@ -119,6 +125,8 @@ CREATE TABLE IF NOT EXISTS `DASHBOARD_ITEM_TYPE` (
 --
 
 /*!40000 ALTER TABLE `DASHBOARD_ITEM_TYPE` DISABLE KEYS */;
+INSERT IGNORE INTO `DASHBOARD_ITEM_TYPE` (`ID`, `REFID`, `NAME`, `CODE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (1,'DIT0000000001','Block','block',0,1,NULL,NULL,0,'4bb869cb-002e-4530-beec-5771cb89c576');
+INSERT IGNORE INTO `DASHBOARD_ITEM_TYPE` (`ID`, `REFID`, `NAME`, `CODE`, `ORDERING`, `GUID`, `JSON`, `WFID`, `UDID`, `UUID`) VALUES (2,'DIT0000000002','Link','link',0,1,NULL,NULL,0,'ec568162-df56-479a-b985-01d6f5ebeb6f');
 /*!40000 ALTER TABLE `DASHBOARD_ITEM_TYPE` ENABLE KEYS */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
