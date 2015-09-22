@@ -1775,7 +1775,11 @@ class _DashboardItemController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_DASHBOARD = $recent->ID_DASHBOARD;
+                    $model->ID_DASHBOARD_ITEM_TYPE = $recent->ID_DASHBOARD_ITEM_TYPE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('dashboarditem_new', $model);
             }

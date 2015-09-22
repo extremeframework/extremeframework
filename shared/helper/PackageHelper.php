@@ -6,7 +6,10 @@
  */
 class PackageHelper {
     public static function getCurrentPackage() {
-        $module = strtolower(Framework::get('controller'));
+        $controller = strtolower(Framework::get('controller'));
+        $cname = Framework::getControllerName($controller);
+
+        $module = (new $cname())->module;
 
         if (!empty($module)) {
             $modulepackagemap = self::getModulePackageMap();

@@ -1,3 +1,9 @@
+@media print{
+    .loading, .connection-error, .loading-overlay, .top-nav, .left-side, .horizontal-menu, #top-adv, .toggle-fullscreen, .ui-tabs-nav, .quicksearch, .table-top-scroll, .additem, #footer, .hidden-print {
+        display: none!important;
+    }
+}
+
 body {
 	font-family: 'Roboto', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -1015,11 +1021,6 @@ table.live-report th,table.live-report td {
     outline:0!important;
 }
 
-/* Print */
-.print {
-	display: none;
-}
-
 /* Multiple edit */
 
 .multiedit {
@@ -1109,12 +1110,12 @@ table.live-report th,table.live-report td {
 }
 
 body.module .main-content {
-    background-color: #ffffff;
+    background-color: #424F63;
     overflow: hidden;
 }
 
 body[data-type="list"] .main-content {
-    background-color: #ffffff;
+    _background-color: #ffffff;
 }
 
 div#heading{
@@ -1202,12 +1203,13 @@ div#heading{
 #signin .buttons .form-row {
     padding-top: 10px;
 }
-#signin #top-nav {
+#signin #top-nav,
+#signin #top-adv {
     display: none;
 }
 
 #signin .main-content {
-    background: transparent;
+    background-color: transparent;
 }
 
 #signin .main-content .account-signin {
@@ -1384,6 +1386,7 @@ table.item_list thead tr {
 .item_list th a {
     text-decoration: none;
     color: #666;
+    font-weight: bold;
 }
 
 table.item_list tr td:nth-child(3) a {
@@ -1777,6 +1780,35 @@ table.item_list .embedded-view .table tr {
     color: #A9A9A9;
 }
 
+/* Toggle fullscreen mode */
+.toggle-fullscreen {
+	float: right;
+    color: #D7D7D7;
+    cursor: pointer;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    padding: 1px 6px;
+	z-index: 1;
+}
+
+.toggle-fullscreen:hover {
+    color: #000;
+	transition: 500ms;
+}
+
+body.fullscreen .content-inner {
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 3;
+    width: 100%;
+}
+
+body.fullscreen .left-side {
+	display: none;
+}
+
 /* Tabs */
 ul.tabs {
     height: 26px;
@@ -1992,6 +2024,7 @@ body#signup .col-two {
 }
 #signin div.main-content .content-inner{
     margin:0;
+    background-color: transparent!important;
 }
 #signin #container{
     margin: auto;
@@ -2014,7 +2047,8 @@ body#signup .col-two {
     text-decoration:none;
 }
 .main-content .content-inner {
-	margin: 0px 10px 10px 10px;
+	padding: 10px 10px 10px 10px;
+    background-color: #fff;
 }
 div#top-nav{
     width:100%;
@@ -2076,6 +2110,17 @@ div#heading h1, .main-content h1.heading {
     text-transform: uppercase;
     font-weight: 300;
     font-family: "Open Sans", "segoe ui", Helvetica, Arial, sans-serif;
+}
+.main-content h1.heading .h  .module-icon {
+	position: relative;
+    top: -5px;
+    width: 26px;
+    padding: 6px;
+    font-size: 13px;
+    text-align: center;
+    margin-right: 5px;
+    background-color: #B32EC0;
+    color: white;
 }
 .button-bar{
     clear: both;
@@ -2384,13 +2429,17 @@ div.button-save-more:hover {
 .heading a.button-edit-refresh,
 .heading a.button-view-new {
     position: relative;
-    bottom: 5px;
+    bottom: 3px;
+    color: #1BC2A2;
+    font-size: 14px;
 }
 
+.live-search {
+	margin-left: 8px;
+}
 .live-search input {
     width: 150px;
     bottom: 6px;
-    margin-left: 3px;
 }
 
 /* Language selection */

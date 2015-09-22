@@ -430,19 +430,6 @@ class _AdminPackageIndustryController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminpackage': 
-                            (new AdminPackageController())->delete('ID_ADMIN_PACKAGE_INDUSTRY', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

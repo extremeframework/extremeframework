@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -95,7 +95,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataDEFAULT_ID_DASHBOARD}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$formdata.DEFAULT_ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-default-id-dashboard" name="`$prefix`usergroup_formdata_DEFAULT_ID_DASHBOARD" value=$formdata.DEFAULT_ID_DASHBOARD datasource="DASHBOARD" datasourcename="Dashboard" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -114,7 +114,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataPARENT}>
 
                                                     
-                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-parent" name="`$prefix`usergroup_formdata_PARENT" value=$formdata.PARENT datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-parent" name="`$prefix`usergroup_formdata_PARENT" value=$formdata.PARENT datasource="USER_GROUP" datasourcename="UserGroup" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

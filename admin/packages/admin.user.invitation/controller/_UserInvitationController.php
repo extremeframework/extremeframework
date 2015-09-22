@@ -1698,7 +1698,12 @@ class _UserInvitationController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_USER_GROUP = $recent->ID_USER_GROUP;
+                    $model->ID_USER_ROLE = $recent->ID_USER_ROLE;
+                    $model->ID_USER_INVITATION_STATUS = $recent->ID_USER_INVITATION_STATUS;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('userinvitation_new', $model);
             }

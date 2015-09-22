@@ -5,7 +5,7 @@
  * Released under the MIT license (http://opensource.org/licenses/MIT)
  */
 class ModelHelper {
-    static function sanitize($model) {
+    static function sanitize($model, $force_lowercase_properties = false) {
         if (!empty($model)) {
             if (is_object($model)) {
                 if (!isset($vars)) {
@@ -15,11 +15,21 @@ class ModelHelper {
                 foreach ($vars as $var) {
                     if ($var[0] == '_') {
                         unset($model->$var);
-                    }
+                    } else {
+						if ($force_lowercase_properties) {
+							$lower = strtolower($var);
+							
+							if ($lower != $var) {
+								$model->$lower = $model->$var;
+								
+								unset($model->$var);
+							}				
+						}
+					}
                 }
             } elseif (is_array($model)) {
                 foreach ($model as &$m) {
-                    ModelHelper::sanitize($m);
+                    ModelHelper::sanitize($m, $force_lowercase_properties);
                 }
             }
         }

@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,92 +121,7 @@
     <{plugin key="user_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.usermembership) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.userpreference) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="usertabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                            <li><a href="#tab-usermemberships"><{_t('User membership')}> <span class="badge usermembership-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('UserPreference') && isset($smarty.session.acl.userpreference) }>
-                            <li><a href="#tab-userpreferences"><{_t('User preference')}> <span class="badge userpreference-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                        <div id="tab-usermemberships">
-                        	<{if true || $tab == 'usermemberships'}>
-                            	<h2 class="print"><{_t('User membership')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserMembership" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.usermembership.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('UserPreference') && isset($smarty.session.acl.userpreference) }>
-                        <div id="tab-userpreferences">
-                        	<{if true || $tab == 'userpreferences'}>
-                            	<h2 class="print"><{_t('User preference')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserPreference" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER="`$details->ID`" where=""  template='widgetlist.userpreference.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#usertabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("user_active_tab", $("#usertabs").tabs("option", "active"));
-//                        },
-//                        active: $("#usertabs").tabs({ active: $.cookie("user_active_tab") })
-                    });
-                	$("#usertabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#usertabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#usertabs .expand-collapse');
-
-                	var details = $('#userview .view-main');
-
-                    if ($.cookie('userexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('userexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('userexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

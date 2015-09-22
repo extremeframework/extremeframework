@@ -44,62 +44,62 @@
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 2
 
 Call Stack:
-    0.0000     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0000    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-    0.0900    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  431.0718   11779824   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  431.8388   12508088   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  432.0488   13071480   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  432.0488   13092488   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  432.0488   13114080   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  432.0488   13125200  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0010     276696   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0080    1144432   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0520    3755696   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2570
+  279.6490   20401592   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:326
+  653.6084   25097000   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:985
+  654.3094   25977784   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1023
+  654.5284   26600792   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  654.5294   26621848   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  654.5294   26643728   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  654.5304   26654912  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 <tr class="form-row form-row-
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0000    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-    0.0900    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  431.0718   11779824   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  431.8388   12508088   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  432.0488   13071480   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  432.0488   13092488   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  432.0488   13114080   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  432.0488   13125200  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0010     276696   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0080    1144432   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0520    3755696   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2570
+  279.6490   20401592   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:326
+  653.6084   25097000   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:985
+  654.3094   25977784   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1023
+  654.5284   26600792   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  654.5294   26621848   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  654.5294   26643728   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  654.5304   26654912  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0000    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-    0.0900    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  431.0718   11779824   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  431.8388   12508088   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  432.0488   13071480   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  432.0488   13092488   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  432.0488   13114080   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  432.0488   13125200  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0010     276696   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0080    1144432   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0520    3755696   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2570
+  279.6490   20401592   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:326
+  653.6084   25097000   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:985
+  654.3094   25977784   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1023
+  654.5284   26600792   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  654.5294   26621848   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  654.5294   26643728   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  654.5304   26654912  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 
 Notice: Undefined variable: column in D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl on line 4
 
 Call Stack:
-    0.0000     277024   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
-    0.0000    1140760   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
-    0.0500    3757288   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2551
-    0.0900    3778040   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:317
-  431.0718   11779824   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:969
-  431.8388   12508088   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1007
-  432.0488   13071480   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
-  432.0488   13092488   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
-  432.0488   13114080   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
-  432.0488   13125200  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
+    0.0010     276696   1. {main}() D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:0
+    0.0080    1144432   2. include('D:\wamp\www\generator\generate.php') D:\wamp\www\apps4clouds.com\apps\extremeframework-git\generator.conf.php:126
+    0.0520    3755696   3. CliGenerator->execute() D:\wamp\www\generator\generate.php:2570
+  279.6490   20401592   4. CliGenerator->generateAllTemplates() D:\wamp\www\generator\generate.php:326
+  653.6084   25097000   5. CliGenerator->generateTemplate() D:\wamp\www\generator\generate.php:985
+  654.3094   25977784   6. EditTemplateGenerator->generateEditTemplateFile() D:\wamp\www\generator\generate.php:1023
+  654.5284   26600792   7. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl') D:\wamp\www\generator\base\EditTemplateGenerator.php:215
+  654.5294   26621848   8. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-main.tpl:42
+  654.5294   26643728   9. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:57
+  654.5304   26654912  10. include('D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout-row.tpl') D:\wamp\www\generator\meta\overriding\vendhq\meta.edit-custom-layout.tpl:10
 
 ">
             
@@ -169,7 +169,7 @@ Call Stack:
             <td class="form-field form-field-value column-title" colspan="3">
                                     
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE" datasourcename="Page" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">
@@ -310,7 +310,7 @@ Call Stack:
             <td class="form-field form-field-value column-meta-description" colspan="3">
                                     
             <{if Framework::hasModule('Template')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" datasourcename="Template" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.template.new)}>
                     <span class="onflycreation">
@@ -603,7 +603,7 @@ Call Stack:
             <td class="form-field form-field-value column-additional-css" colspan="3">
                                     
             <{if Framework::hasModule('Menu')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-top-id-menu" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$details->CUSTOM_TOP_ID_MENU text=$details->reftext_CUSTOM_TOP_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-top-id-menu" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$details->CUSTOM_TOP_ID_MENU text=$details->reftext_CUSTOM_TOP_ID_MENU datasource="MENU" datasourcename="Menu" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.menu.new)}>
                     <span class="onflycreation">
@@ -637,7 +637,7 @@ Call Stack:
             <td class="form-field form-field-value column-custom-top-id-menu" colspan="3">
                                     
             <{if Framework::hasModule('Menu')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-side-id-menu" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$details->CUSTOM_SIDE_ID_MENU text=$details->reftext_CUSTOM_SIDE_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-side-id-menu" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$details->CUSTOM_SIDE_ID_MENU text=$details->reftext_CUSTOM_SIDE_ID_MENU datasource="MENU" datasourcename="Menu" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.menu.new)}>
                     <span class="onflycreation">
@@ -696,7 +696,7 @@ Call Stack:
             <td class="form-field form-field-value column-view-more-title" colspan="3">
                                     
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" datasourcename="Page" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">

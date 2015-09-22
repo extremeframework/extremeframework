@@ -71,8 +71,9 @@
 }
 
 .ui-widget-header .ui-state-default {
-    background-color: #E8E7F8;
+    background-color: #fff;
     border: 1px solid rgb(195, 188, 188);
+    border-radius: 0;
 }
 
 .ui-widget-header .ui-state-default a {
@@ -80,7 +81,8 @@
 }
 
 .ui-widget-header .ui-state-active {
-    background-color: #21759B;
+    background-color: #0081C6;
+    border-radius: 0;
 }
 
 .ui-widget-header .ui-state-active a {
@@ -311,4 +313,10 @@ span.easytree-icon {
 
 .live-search-results li:hover a {
     color: white;
+}
+
+/* Hide some list columns */
+.item_list td.column-ordering,
+.item_list th.column-ordering {
+    display: none;
 }

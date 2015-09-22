@@ -416,19 +416,6 @@ class _PaymentTypeController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminorder': 
-                            (new AdminOrderController())->delete('ID_PAYMENT_TYPE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

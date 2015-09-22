@@ -444,7 +444,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('PaymentType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-payment-type" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$details->ID_PAYMENT_TYPE text=$details->reftext_ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-payment-type" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$details->ID_PAYMENT_TYPE text=$details->reftext_ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" datasourcename="PaymentType" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.paymenttype.new)}>
                     <span class="onflycreation">
@@ -483,12 +483,12 @@
 	            		        <label class="attribute-name"><{_t('Creation date')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
-            	<div class="attribute-line column-creation-date type-datetime">
+            	<div class="attribute-line column-creation-date type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['CREATION_DATE']) && $acleditablecolumns['CREATION_DATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CREATION_DATE']) || $acleditablecolumns['CREATION_DATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -498,7 +498,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -701,7 +701,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminOrderStatus')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-order-status" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$details->ID_ADMIN_ORDER_STATUS text=$details->reftext_ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-order-status" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$details->ID_ADMIN_ORDER_STATUS text=$details->reftext_ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" datasourcename="AdminOrderStatus" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.adminorderstatus.new)}>
                     <span class="onflycreation">

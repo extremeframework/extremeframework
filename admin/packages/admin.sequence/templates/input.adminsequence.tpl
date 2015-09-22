@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -77,7 +77,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataMODULE}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`adminsequence_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-module" name="`$prefix`adminsequence_formdata_MODULE" value=$formdata.MODULE datasource="ADMIN_MODULE" datasourcename="AdminModule" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

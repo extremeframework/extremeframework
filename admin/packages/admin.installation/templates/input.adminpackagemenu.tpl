@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -77,7 +77,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_PACKAGE}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-package" name="`$prefix`adminpackagemenu_formdata_ID_ADMIN_PACKAGE" value=$formdata.ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-package" name="`$prefix`adminpackagemenu_formdata_ID_ADMIN_PACKAGE" value=$formdata.ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" datasourcename="AdminPackage" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -96,7 +96,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_MENU}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-menu" name="`$prefix`adminpackagemenu_formdata_ID_ADMIN_MENU" value=$formdata.ID_ADMIN_MENU datasource="ADMIN_MENU" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-menu" name="`$prefix`adminpackagemenu_formdata_ID_ADMIN_MENU" value=$formdata.ID_ADMIN_MENU datasource="ADMIN_MENU" datasourcename="AdminMenu" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

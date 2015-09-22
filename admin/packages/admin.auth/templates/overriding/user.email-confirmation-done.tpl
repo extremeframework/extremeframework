@@ -12,7 +12,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Email confirmed')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Email confirmed')}></span>
 </h1>
 
 <p><{sprintf(_t('Your email address has been confirmed. Click <a href="%s">here</a> to login to your account.'), $smarty.const.APPLICATION_URL)}></p>

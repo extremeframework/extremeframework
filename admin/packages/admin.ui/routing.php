@@ -33,7 +33,6 @@ Route::registerControllerNames(array(
     'adminmodule' => 'AdminModule',
     'adminmenu' => 'AdminMenu',
     'adminmenuitem' => 'AdminMenuItem',
-    'dashboard' => 'Dashboard',
     'field' => 'Field',
     'userpreference' => 'UserPreference'
 ));

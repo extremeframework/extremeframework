@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="menu_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.menuitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="menutabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                            <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                        <div id="tab-menuitems">
-                        	<{if true || $tab == 'menuitems'}>
-                            	<h2 class="print"><{_t('Menu item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_MENU="`$details->CODE`" where=""  template='widgetlist.menuitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#menutabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("menu_active_tab", $("#menutabs").tabs("option", "active"));
-//                        },
-//                        active: $("#menutabs").tabs({ active: $.cookie("menu_active_tab") })
-                    });
-                	$("#menutabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#menutabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#menutabs .expand-collapse');
-
-                	var details = $('#menuview .view-main');
-
-                    if ($.cookie('menuexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('menuexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('menuexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

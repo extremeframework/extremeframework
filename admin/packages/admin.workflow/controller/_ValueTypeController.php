@@ -404,19 +404,6 @@ class _ValueTypeController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'screenfield': 
-                            (new ScreenFieldController())->delete('ID_VALUE_TYPE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

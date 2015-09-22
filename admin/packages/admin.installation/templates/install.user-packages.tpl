@@ -103,7 +103,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Install a package')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Install a package')}></span>
 </h1>
 
 <{if $messages}>

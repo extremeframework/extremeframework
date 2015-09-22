@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,47 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Screen', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Screen', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Screen', true)), strtolower(_t('Screen', true))));
-    <{/php}>
-
-    <div id="screencopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Screen', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="screenapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Screen', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="screendeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Screen', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -172,63 +131,18 @@ function screen_save() {
 }
 
 function screen_delete() {
-	var dialog = $( "#screendeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/delete/');
-            	$('#screenlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#screenlistform'));
+	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/delete/');
+	$('#screenlistform').submit();
 }
 
 function screen_copy() {
-	var dialog = $( "#screencopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/copy/');
-            	$('#screenlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#screenlistform'));
+	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/copy/');
+	$('#screenlistform').submit();
 }
 
 function screen_approve() {
-	var dialog = $( "#screenapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/approve/');
-            	$('#screenlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#screenlistform'));
+	$('#screenlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/screen/approve/');
+	$('#screenlistform').submit();
 }
 
 function screen_batchedit() {

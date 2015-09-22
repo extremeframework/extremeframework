@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="field_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminfiltercondition) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="fieldtabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
-                            <li><a href="#tab-adminfilterconditions"><{_t('Admin filter condition')}> <span class="badge adminfiltercondition-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminFilterCondition') && isset($smarty.session.acl.adminfiltercondition) }>
-                        <div id="tab-adminfilterconditions">
-                        	<{if true || $tab == 'adminfilterconditions'}>
-                            	<h2 class="print"><{_t('Admin filter condition')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminFilterCondition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_FIELD="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.adminfiltercondition.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#fieldtabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("field_active_tab", $("#fieldtabs").tabs("option", "active"));
-//                        },
-//                        active: $("#fieldtabs").tabs({ active: $.cookie("field_active_tab") })
-                    });
-                	$("#fieldtabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#fieldtabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#fieldtabs .expand-collapse');
-
-                	var details = $('#fieldview .view-main');
-
-                    if ($.cookie('fieldexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('fieldexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('fieldexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

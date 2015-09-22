@@ -404,19 +404,6 @@ class _WidgetPositionController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'pagewidget': 
-                            (new PageWidgetController())->delete('ID_WIDGET_POSITION', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

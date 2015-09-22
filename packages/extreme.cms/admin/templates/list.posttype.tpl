@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Post Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Post Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Post Type', true)), strtolower(_t('Post Type', true))));
-    <{/php}>
-
-    <div id="posttypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Post Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="post" /> <{_t('Copy also')}> <{_t('Post')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="posttypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Post Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="post" /> <{_t('Approve also')}> <{_t('Post')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="posttypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Post Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Post')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="post" /> <{_t('Delete also')}> <{_t('Post')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function posttype_save() {
 }
 
 function posttype_delete() {
-	var dialog = $( "#posttypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/delete/');
-            	$('#posttypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#posttypelistform'));
+	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/delete/');
+	$('#posttypelistform').submit();
 }
 
 function posttype_copy() {
-	var dialog = $( "#posttypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/copy/');
-            	$('#posttypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#posttypelistform'));
+	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/copy/');
+	$('#posttypelistform').submit();
 }
 
 function posttype_approve() {
-	var dialog = $( "#posttypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/approve/');
-            	$('#posttypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#posttypelistform'));
+	$('#posttypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/posttype/approve/');
+	$('#posttypelistform').submit();
 }
 
 function posttype_batchedit() {

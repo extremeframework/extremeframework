@@ -236,10 +236,10 @@ function application_route($url = null) {
 
     $p = !empty($_GET['p'])? explode('/', $_GET['p']) : array();
 
-    $controller = isset($p[0])? $p[0] : 'index';
+    $old_controller = isset($p[0])? $p[0] : 'index';
     $action = isset($p[1])? $p[1] : 'index';
 
-    $controller = ucfirst(Route::translateControllerName($controller));
+    $controller = ucfirst(Route::translateControllerName($old_controller));
     $controllername = Framework::getControllerName($controller);
     $actionmethod = Framework::getActionName($action);
 
@@ -264,10 +264,10 @@ function application_route($url = null) {
 
             return application_route();
         } else {
-            $controller = 'index';
+            $old_controller = 'index';
             $action = 'index';
 
-            $controllername = Framework::getControllerName($controller);
+            $controllername = Framework::getControllerName($old_controller);
             $actionmethod = Framework::getActionName($action);
 
             $handler = new $controllername();
@@ -276,7 +276,7 @@ function application_route($url = null) {
 
     //////////////////////////////////////////////////////////////////
     // Request arguments
-    $args = preg_replace('/^'.$controller.'\/?/i', '', $_GET['p']);
+    $args = preg_replace('/^'.$old_controller.'\/?/i', '', $_GET['p']);
     $args = preg_replace('/^\/?'.$action.'\/?/i', '', $args);
     $_REQUEST['args'] = $args;
 

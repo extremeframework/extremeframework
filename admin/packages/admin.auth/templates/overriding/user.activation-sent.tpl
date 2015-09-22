@@ -12,7 +12,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Account created')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Account created')}></span>
 </h1>
 
 <p><{_t('Your account has been created. Please check your mailbox for instructions to activate the account.')}></p>

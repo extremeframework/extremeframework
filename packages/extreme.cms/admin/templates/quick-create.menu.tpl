@@ -278,41 +278,7 @@
 </script>                    </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.menuitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="menutabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.menuitem) }>
-                    <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.menuitem) }>
-                    <div id="tab-menuitems">
-                    	<{if true || $tab == 'menuitems'}>
-                        	<h2 class="print"><{_t('Menu item')}></h2>
-                                                            <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_MENU="`$details->CODE`" where=""  template='widgetlist.menuitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#menutabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
     
             <div class="modal-footer quickCreateActions">
             <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>

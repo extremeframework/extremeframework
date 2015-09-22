@@ -35,7 +35,7 @@ function saveclone()
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$title}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
     <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
         <a style="text-decoration: none" class="button-edit-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -89,41 +89,7 @@ function saveclone()
                     </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminlanguageitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="adminlanguagetabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <li><a href="#tab-adminlanguageitems"><{_t('Admin language item')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <div id="tab-adminlanguageitems">
-                    	<{if true || $tab == 'adminlanguageitems'}>
-                        	<h2 class="print"><{_t('Admin language item')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LANGUAGE="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#adminlanguagetabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
             <!-- Control buttons -->
         <div class="edit-buttons edit-buttons-bottom hidden-print">
             <div class="button-general button-save btn btn-success">
@@ -139,8 +105,8 @@ function saveclone()
             <{if $details->ID}>
                             <{/if}>
             <a class="button-cancel scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminlanguage/cancel/"><{_t('Cancel')}></a>
-            <div class="clearer"></div>
         </div>
+        <div class="clearer"></div>
     
     </div>
 

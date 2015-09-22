@@ -101,7 +101,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('PostType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-type" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$details->ID_POST_TYPE text=$details->reftext_ID_POST_TYPE datasource="POST_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-type" class="input-id-post-type" name="`$prefix`post_formdata_ID_POST_TYPE" value=$details->ID_POST_TYPE text=$details->reftext_ID_POST_TYPE datasource="POST_TYPE" datasourcename="PostType" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.posttype.new)}>
                     <span class="onflycreation">
@@ -163,7 +163,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('PostCategory')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-post-category" class="input-id-post-category" name="`$prefix`post_formdata_ID_POST_CATEGORY" value=$details->ID_POST_CATEGORY text=$details->reftext_ID_POST_CATEGORY datasource="POST_CATEGORY" datasourcename="PostCategory" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.postcategory.new)}>
                     <span class="onflycreation">
@@ -498,7 +498,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Template')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`post_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`post_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" datasourcename="Template" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.template.new)}>
                     <span class="onflycreation">
@@ -537,12 +537,12 @@
 	            		        <label class="attribute-name"><{_t('Creation date')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
-            	<div class="attribute-line column-creation-date type-datetime">
+            	<div class="attribute-line column-creation-date type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['CREATION_DATE']) && $acleditablecolumns['CREATION_DATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CREATION_DATE']) || $acleditablecolumns['CREATION_DATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -552,7 +552,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -570,12 +570,12 @@
 	            		        <label class="attribute-name"><{_t('Latest update')}></label>
             </td>
             <td class="form-field form-field-value column-latest-update" colspan="3">
-            	<div class="attribute-line column-latest-update type-datetime">
+            	<div class="attribute-line column-latest-update type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['LATEST_UPDATE']) && $acleditablecolumns['LATEST_UPDATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['LATEST_UPDATE']) || $acleditablecolumns['LATEST_UPDATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -585,7 +585,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>

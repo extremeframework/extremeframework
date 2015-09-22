@@ -86,7 +86,7 @@
             <td class="form-field form-field-value column-id-page-link-type" colspan="3">
                                     
             <{if Framework::hasModule('PageLinkType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-page-link-type" class="input-id-page-link-type" name="`$prefix`pagelink_formdata_ID_PAGE_LINK_TYPE" value=$details->ID_PAGE_LINK_TYPE text=$details->reftext_ID_PAGE_LINK_TYPE datasource="PAGE_LINK_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-page-link-type" class="input-id-page-link-type" name="`$prefix`pagelink_formdata_ID_PAGE_LINK_TYPE" value=$details->ID_PAGE_LINK_TYPE text=$details->reftext_ID_PAGE_LINK_TYPE datasource="PAGE_LINK_TYPE" datasourcename="PageLinkType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.pagelinktype.new)}>
                     <span class="onflycreation">

@@ -394,27 +394,6 @@ class _TemplateController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'page': 
-                            (new PageController())->delete('ID_TEMPLATE', $_ids);
-                            break;
-
-                        case 'post': 
-                            (new PostController())->delete('ID_TEMPLATE', $_ids);
-                            break;
-
-                        case 'postcategory': 
-                            (new PostCategoryController())->delete('ID_TEMPLATE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

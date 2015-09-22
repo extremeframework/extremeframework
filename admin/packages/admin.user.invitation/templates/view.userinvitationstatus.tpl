@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="userinvitationstatus_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.userinvitation) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="userinvitationstatustabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
-                            <li><a href="#tab-userinvitations"><{_t('User invitation')}> <span class="badge userinvitation-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
-                        <div id="tab-userinvitations">
-                        	<{if true || $tab == 'userinvitations'}>
-                            	<h2 class="print"><{_t('User invitation')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserInvitation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_INVITATION_STATUS="`$details->CODE`" where=""  template='widgetlist.userinvitation.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#userinvitationstatustabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("userinvitationstatus_active_tab", $("#userinvitationstatustabs").tabs("option", "active"));
-//                        },
-//                        active: $("#userinvitationstatustabs").tabs({ active: $.cookie("userinvitationstatus_active_tab") })
-                    });
-                	$("#userinvitationstatustabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#userinvitationstatustabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#userinvitationstatustabs .expand-collapse');
-
-                	var details = $('#userinvitationstatusview .view-main');
-
-                    if ($.cookie('userinvitationstatusexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('userinvitationstatusexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('userinvitationstatusexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,47 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Acl Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Acl Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Acl Type', true)), strtolower(_t('Acl Type', true))));
-    <{/php}>
-
-    <div id="acltypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Acl Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="fieldacl" /> <{_t('Copy also')}> <{_t('Field Acl')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="objectacl" /> <{_t('Copy also')}> <{_t('Object Acl')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="acltypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Acl Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="fieldacl" /> <{_t('Approve also')}> <{_t('Field Acl')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="objectacl" /> <{_t('Approve also')}> <{_t('Object Acl')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="acltypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Acl Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('FieldAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="fieldacl" /> <{_t('Delete also')}> <{_t('Field Acl')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('ObjectAcl')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="objectacl" /> <{_t('Delete also')}> <{_t('Object Acl')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -172,63 +131,18 @@ function acltype_save() {
 }
 
 function acltype_delete() {
-	var dialog = $( "#acltypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/delete/');
-            	$('#acltypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#acltypelistform'));
+	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/delete/');
+	$('#acltypelistform').submit();
 }
 
 function acltype_copy() {
-	var dialog = $( "#acltypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/copy/');
-            	$('#acltypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#acltypelistform'));
+	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/copy/');
+	$('#acltypelistform').submit();
 }
 
 function acltype_approve() {
-	var dialog = $( "#acltypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/approve/');
-            	$('#acltypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#acltypelistform'));
+	$('#acltypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/acltype/approve/');
+	$('#acltypelistform').submit();
 }
 
 function acltype_batchedit() {

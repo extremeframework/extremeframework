@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -138,65 +138,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Post', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Post', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Post', true)), strtolower(_t('Post', true))));
-    <{/php}>
-
-    <div id="postcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Post', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="menuitem" /> <{_t('Copy also')}> <{_t('Menu Item')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postgallery" /> <{_t('Copy also')}> <{_t('Post Gallery')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('Copy also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postsection" /> <{_t('Copy also')}> <{_t('Post Section')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="postapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Post', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="menuitem" /> <{_t('Approve also')}> <{_t('Menu Item')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postgallery" /> <{_t('Approve also')}> <{_t('Post Gallery')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('Approve also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postsection" /> <{_t('Approve also')}> <{_t('Post Section')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="postdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Post', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('MenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="menuitem" /> <{_t('Delete also')}> <{_t('Menu Item')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostGallery')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postgallery" /> <{_t('Delete also')}> <{_t('Post Gallery')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('Delete also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PostSection')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postsection" /> <{_t('Delete also')}> <{_t('Post Section')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -222,63 +163,18 @@ function post_save() {
 }
 
 function post_delete() {
-	var dialog = $( "#postdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/delete/');
-            	$('#postlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postlistform'));
+	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/delete/');
+	$('#postlistform').submit();
 }
 
 function post_copy() {
-	var dialog = $( "#postcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/copy/');
-            	$('#postlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postlistform'));
+	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/copy/');
+	$('#postlistform').submit();
 }
 
 function post_approve() {
-	var dialog = $( "#postapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/approve/');
-            	$('#postlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postlistform'));
+	$('#postlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/post/approve/');
+	$('#postlistform').submit();
 }
 
 function post_batchedit() {

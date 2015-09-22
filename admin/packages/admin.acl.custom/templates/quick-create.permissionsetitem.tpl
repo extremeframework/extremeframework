@@ -61,7 +61,7 @@
             <td class="form-field form-field-value column-id-permission-set" colspan="3">
                                     
             <{if Framework::hasModule('PermissionSet')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-permission-set" class="input-id-permission-set" name="`$prefix`permissionsetitem_formdata_ID_PERMISSION_SET" value=$details->ID_PERMISSION_SET text=$details->reftext_ID_PERMISSION_SET datasource="PERMISSION_SET" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-permission-set" class="input-id-permission-set" name="`$prefix`permissionsetitem_formdata_ID_PERMISSION_SET" value=$details->ID_PERMISSION_SET text=$details->reftext_ID_PERMISSION_SET datasource="PERMISSION_SET" datasourcename="PermissionSet" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.permissionset.new)}>
                     <span class="onflycreation">
@@ -95,7 +95,7 @@
             <td class="form-field form-field-value column-module" colspan="3">
                                     
             <{if Framework::hasModule('AdminModule')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`permissionsetitem_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`permissionsetitem_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" datasourcename="AdminModule" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminmodule.new)}>
                     <span class="onflycreation">

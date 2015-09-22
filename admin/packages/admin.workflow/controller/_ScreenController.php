@@ -404,23 +404,6 @@ class _ScreenController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'screenfield': 
-                            (new ScreenFieldController())->delete('ID_SCREEN', $_ids);
-                            break;
-
-                        case 'workflowtransition': 
-                            (new WorkflowTransitionController())->delete('TRANSITION_ID_SCREEN', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1359,7 +1342,10 @@ class _ScreenController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_WORKFLOW = $recent->ID_WORKFLOW;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('screen_new', $model);
             }

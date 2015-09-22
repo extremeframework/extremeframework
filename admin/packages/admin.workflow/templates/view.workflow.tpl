@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,134 +121,7 @@
     <{plugin key="workflow_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.screen) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowapplication) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowlog) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowstage) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowtransition) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="workflowtabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('Screen') && isset($smarty.session.acl.screen) }>
-                            <li><a href="#tab-screens"><{_t('Screen')}> <span class="badge screen-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
-                            <li><a href="#tab-workflowapplications"><{_t('Workflow application')}> <span class="badge workflowapplication-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                            <li><a href="#tab-workflowlogs"><{_t('Workflow log')}> <span class="badge workflowlog-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('WorkflowStage') && isset($smarty.session.acl.workflowstage) }>
-                            <li><a href="#tab-workflowstages"><{_t('Workflow stage')}> <span class="badge workflowstage-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{_t('Workflow transition')}> <span class="badge workflowtransition-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('Screen') && isset($smarty.session.acl.screen) }>
-                        <div id="tab-screens">
-                        	<{if true || $tab == 'screens'}>
-                            	<h2 class="print"><{_t('Screen')}></h2>
-                                                                    <{ajaxmodule class="WidgetListScreen" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.screen.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowApplication') && isset($smarty.session.acl.workflowapplication) }>
-                        <div id="tab-workflowapplications">
-                        	<{if true || $tab == 'workflowapplications'}>
-                            	<h2 class="print"><{_t('Workflow application')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowApplication" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowapplication.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowLog') && isset($smarty.session.acl.workflowlog) }>
-                        <div id="tab-workflowlogs">
-                        	<{if true || $tab == 'workflowlogs'}>
-                            	<h2 class="print"><{_t('Workflow log')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowLog" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowlog.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowStage') && isset($smarty.session.acl.workflowstage) }>
-                        <div id="tab-workflowstages">
-                        	<{if true || $tab == 'workflowstages'}>
-                            	<h2 class="print"><{_t('Workflow stage')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowStage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowstage.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                        <div id="tab-workflowtransitions">
-                        	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{_t('Workflow transition')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_WORKFLOW="`$details->CODE`" where=""  template='widgetlist.workflowtransition.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#workflowtabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("workflow_active_tab", $("#workflowtabs").tabs("option", "active"));
-//                        },
-//                        active: $("#workflowtabs").tabs({ active: $.cookie("workflow_active_tab") })
-                    });
-                	$("#workflowtabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#workflowtabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#workflowtabs .expand-collapse');
-
-                	var details = $('#workflowview .view-main');
-
-                    if ($.cookie('workflowexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('workflowexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('workflowexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

@@ -195,7 +195,7 @@
             <td class="form-field form-field-value column-product-id-page" colspan="3">
                                     
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-product-id-page" class="input-product-id-page" name="`$prefix`adminproduct_formdata_PRODUCT_ID_PAGE" value=$details->PRODUCT_ID_PAGE text=$details->reftext_PRODUCT_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-product-id-page" class="input-product-id-page" name="`$prefix`adminproduct_formdata_PRODUCT_ID_PAGE" value=$details->PRODUCT_ID_PAGE text=$details->reftext_PRODUCT_ID_PAGE datasource="PAGE" datasourcename="Page" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">

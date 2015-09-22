@@ -101,7 +101,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('UserGroup')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`userinvitation_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-user-group" class="input-id-user-group" name="`$prefix`userinvitation_formdata_ID_USER_GROUP" value=$details->ID_USER_GROUP text=$details->reftext_ID_USER_GROUP datasource="USER_GROUP" datasourcename="UserGroup" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.usergroup.new)}>
                     <span class="onflycreation">
@@ -158,7 +158,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('UserRole')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`userinvitation_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-user-role" class="input-id-user-role" name="`$prefix`userinvitation_formdata_ID_USER_ROLE" value=$details->ID_USER_ROLE text=$details->reftext_ID_USER_ROLE datasource="USER_ROLE" datasourcename="UserRole" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.userrole.new)}>
                     <span class="onflycreation">

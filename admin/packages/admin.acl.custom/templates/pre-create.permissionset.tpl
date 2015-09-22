@@ -193,69 +193,7 @@
 </script>                    </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminpackagepermission) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.customaccessright) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.permissionsetitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="permissionsettabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.adminpackagepermission) }>
-                    <li><a href="#tab-adminpackagepermissions"><{_t('Admin package permission')}> <span class="badge adminpackagepermission-badge-count"></span></a></li>
-                <{/if}>
-                                <{if isset($smarty.session.acl.customaccessright) }>
-                    <li><a href="#tab-customaccessrights"><{_t('Custom access right')}> <span class="badge customaccessright-badge-count"></span></a></li>
-                <{/if}>
-                                <{if isset($smarty.session.acl.permissionsetitem) }>
-                    <li><a href="#tab-permissionsetitems"><{_t('Permission set item')}> <span class="badge permissionsetitem-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.adminpackagepermission) }>
-                    <div id="tab-adminpackagepermissions">
-                    	<{if true || $tab == 'adminpackagepermissions'}>
-                        	<h2 class="print"><{_t('Admin package permission')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminPackagePermission" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.adminpackagepermission.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                            <{if isset($smarty.session.acl.customaccessright) }>
-                    <div id="tab-customaccessrights">
-                    	<{if true || $tab == 'customaccessrights'}>
-                        	<h2 class="print"><{_t('Custom access right')}></h2>
-                                                            <{ajaxmodule class="WidgetListCustomAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.customaccessright.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                            <{if isset($smarty.session.acl.permissionsetitem) }>
-                    <div id="tab-permissionsetitems">
-                    	<{if true || $tab == 'permissionsetitems'}>
-                        	<h2 class="print"><{_t('Permission set item')}></h2>
-                                                            <{ajaxmodule class="WidgetListPermissionSetItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.permissionsetitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#permissionsettabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
     
             <div class="modal-footer quickCreateActions">
             <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>

@@ -32,6 +32,15 @@
             		<{assign var='colcount' value=$colcount+1}>
                 <{/if}>
             <{/if}>
+		                        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
+    	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+    	            <th class="column-id-admin-package-type">
+            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/id_admin_package_type"><{_t('Admin package type')}></a>
+            	        
+                		    				</th>
+            		<{assign var='colcount' value=$colcount+1}>
+                <{/if}>
+            <{/if}>
 		                        <{if (in_array('ID_ADMIN_PACKAGE_CATEGORY', $filtercolumns)) }>
     	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']))) }>
     	            <th class="column-id-admin-package-category">
@@ -108,15 +117,6 @@
     	        <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
     	            <th class="column-latest-update">
             	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/latest_update"><{_t('Latest update')}></a>
-            	        
-                		    				</th>
-            		<{assign var='colcount' value=$colcount+1}>
-                <{/if}>
-            <{/if}>
-		                        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
-    	        <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
-    	            <th class="column-id-admin-package-type">
-            	                    	            <a class="sorter scope-list" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/sort/id_admin_package_type"><{_t('Admin package type')}></a>
             	        
                 		    				</th>
             		<{assign var='colcount' value=$colcount+1}>

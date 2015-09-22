@@ -90,7 +90,7 @@
 <{/if}>
 
 <h1 class="heading">
-    <span class="h">Install a <{ucfirst(_t($title))}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i>Install a <{ucfirst(_t($title))}></span>
     <a href="#" class="use-upload btn-heading">Upload</a>
     <a href="#" class="use-browse btn-heading">Browse</a>
     <a class="scope-main cachable btn-heading" style="background:none;" href="<{$smarty.const.APPLICATION_URL}>/installation/">Back</a>

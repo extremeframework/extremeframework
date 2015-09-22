@@ -114,7 +114,7 @@
             <td class="form-field form-field-value column-id-dashboard-item-type" colspan="3">
                                     
             <{if Framework::hasModule('DashboardItemType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-dashboard-item-type" class="input-id-dashboard-item-type" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD_ITEM_TYPE" value=$details->ID_DASHBOARD_ITEM_TYPE text=$details->reftext_ID_DASHBOARD_ITEM_TYPE datasource="DASHBOARD_ITEM_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-dashboard-item-type" class="input-id-dashboard-item-type" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD_ITEM_TYPE" value=$details->ID_DASHBOARD_ITEM_TYPE text=$details->reftext_ID_DASHBOARD_ITEM_TYPE datasource="DASHBOARD_ITEM_TYPE" datasourcename="DashboardItemType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.dashboarditemtype.new)}>
                     <span class="onflycreation">

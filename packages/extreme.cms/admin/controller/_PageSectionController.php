@@ -488,19 +488,6 @@ class _PageSectionController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'pagesection': 
-                            (new PageSectionController())->delete('PARENT', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1863,7 +1850,12 @@ class _PageSectionController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PAGE = $recent->ID_PAGE;
+                    $model->PARENT = $recent->PARENT;
+                    $model->VIEW_MORE_ID_PAGE = $recent->VIEW_MORE_ID_PAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('pagesection_new', $model);
             }

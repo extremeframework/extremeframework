@@ -402,19 +402,6 @@ class _AdminOrderController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminorderitem': 
-                            (new AdminOrderItemController())->delete('ID_ADMIN_ORDER', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -632,7 +619,7 @@ class _AdminOrderController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new AdminOrderItemController())->delete('ID_ADMIN_ORDER', array($id));
+        
         TransactionHelper::end();
     }
 
@@ -657,7 +644,7 @@ class _AdminOrderController extends __AppController
             $value = preg_replace('/[^0-9\.]/is', '', $value);
         } elseif ($column == 'COUPON_DISCOUNT') {
             $value = preg_replace('/[^0-9\.]/is', '', $value);
-        } elseif ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+        } elseif ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -668,11 +655,7 @@ class _AdminOrderController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -1859,7 +1842,12 @@ class _AdminOrderController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->CUSTOMER_ID_COUNTRY = $recent->CUSTOMER_ID_COUNTRY;
+                    $model->ID_PAYMENT_TYPE = $recent->ID_PAYMENT_TYPE;
+                    $model->ID_ADMIN_ORDER_STATUS = $recent->ID_ADMIN_ORDER_STATUS;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminorder_new', $model);
             }
@@ -2067,16 +2055,6 @@ class _AdminOrderController extends __AppController
                         } else {
                             $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.ID_PAYMENT_TYPE = '$value'");
                         }
-
-                        break;
-
-                    case 'CREATION_DATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.CREATION_DATE >= '".$this->field_sanitize('CREATION_DATE', $value)."'");
-
-                        break;
-
-                    case 'CREATION_DATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."ADMIN_ORDER.CREATION_DATE IS NULL OR ".TABLE_PREFIX."ADMIN_ORDER.CREATION_DATE <= '".$this->field_sanitize('CREATION_DATE', $value)."')");
 
                         break;
 

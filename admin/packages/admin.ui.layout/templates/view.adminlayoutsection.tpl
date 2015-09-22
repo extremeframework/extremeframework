@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="adminlayoutsection_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminlayoutfield) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminlayoutsectiontabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
-                            <li><a href="#tab-adminlayoutfields"><{_t('Admin layout field')}> <span class="badge adminlayoutfield-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminLayoutField') && isset($smarty.session.acl.adminlayoutfield) }>
-                        <div id="tab-adminlayoutfields">
-                        	<{if true || $tab == 'adminlayoutfields'}>
-                            	<h2 class="print"><{_t('Admin layout field')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminLayoutField" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LAYOUT_SECTION="`$details->ID`" where="" MODULE="`$details->MODULE`" template='widgetlist.adminlayoutfield.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminlayoutsectiontabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminlayoutsection_active_tab", $("#adminlayoutsectiontabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminlayoutsectiontabs").tabs({ active: $.cookie("adminlayoutsection_active_tab") })
-                    });
-                	$("#adminlayoutsectiontabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminlayoutsectiontabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminlayoutsectiontabs .expand-collapse');
-
-                	var details = $('#adminlayoutsectionview .view-main');
-
-                    if ($.cookie('adminlayoutsectionexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminlayoutsectionexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminlayoutsectionexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

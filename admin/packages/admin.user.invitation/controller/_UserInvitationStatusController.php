@@ -416,19 +416,6 @@ class _UserInvitationStatusController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'userinvitation': 
-                            (new UserInvitationController())->delete('ID_USER_INVITATION_STATUS', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

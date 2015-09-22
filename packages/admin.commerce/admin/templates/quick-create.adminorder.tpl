@@ -211,7 +211,7 @@
             <td class="form-field form-field-value column-id-payment-type" colspan="3">
                                     
             <{if Framework::hasModule('PaymentType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-payment-type" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$details->ID_PAYMENT_TYPE text=$details->reftext_ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-payment-type" class="input-id-payment-type" name="`$prefix`adminorder_formdata_ID_PAYMENT_TYPE" value=$details->ID_PAYMENT_TYPE text=$details->reftext_ID_PAYMENT_TYPE datasource="PAYMENT_TYPE" datasourcename="PaymentType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.paymenttype.new)}>
                     <span class="onflycreation">
@@ -245,7 +245,7 @@
             <td class="form-field form-field-value column-id-admin-order-status" colspan="3">
                                     
             <{if Framework::hasModule('AdminOrderStatus')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-order-status" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$details->ID_ADMIN_ORDER_STATUS text=$details->reftext_ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-order-status" class="input-id-admin-order-status" name="`$prefix`adminorder_formdata_ID_ADMIN_ORDER_STATUS" value=$details->ID_ADMIN_ORDER_STATUS text=$details->reftext_ID_ADMIN_ORDER_STATUS datasource="ADMIN_ORDER_STATUS" datasourcename="AdminOrderStatus" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminorderstatus.new)}>
                     <span class="onflycreation">
@@ -434,41 +434,7 @@
 </script>                    </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminorderitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="adminordertabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.adminorderitem) }>
-                    <li><a href="#tab-adminorderitems"><{_t('Admin order item')}> <span class="badge adminorderitem-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.adminorderitem) }>
-                    <div id="tab-adminorderitems">
-                    	<{if true || $tab == 'adminorderitems'}>
-                        	<h2 class="print"><{_t('Admin order item')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_ORDER="`$details->ID`" where=""  template='widgetlist.adminorderitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#adminordertabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
     
             <div class="modal-footer quickCreateActions">
             <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>

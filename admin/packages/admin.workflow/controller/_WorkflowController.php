@@ -404,35 +404,6 @@ class _WorkflowController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'screen': 
-                            (new ScreenController())->delete('ID_WORKFLOW', $_ids);
-                            break;
-
-                        case 'workflowapplication': 
-                            (new WorkflowApplicationController())->delete('ID_WORKFLOW', $_ids);
-                            break;
-
-                        case 'workflowlog': 
-                            (new WorkflowLogController())->delete('ID_WORKFLOW', $_ids);
-                            break;
-
-                        case 'workflowstage': 
-                            (new WorkflowStageController())->delete('ID_WORKFLOW', $_ids);
-                            break;
-
-                        case 'workflowtransition': 
-                            (new WorkflowTransitionController())->delete('ID_WORKFLOW', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

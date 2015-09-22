@@ -34,6 +34,20 @@ class _AdminModuleController extends __AppController
            $errors['prefix'] = sprintf(_t('L_VALIDATION_NOT_EMPTY'), _t('Prefix'));
            return false;
        }
+       if (in_array('MODULE', $columns2check)) {
+           $_model = new AdminModuleModel();
+           $_model->MODULE = $model->MODULE;
+
+           if ($model->UUID) {
+               $_model->whereAdd('UUID != '.$model->UUID);
+           }
+
+           $_model->find();
+           if ($_model->N) {
+               $errors['module'] = sprintf(L_VALIDATION_ALREADY_EXISTS, '{'.L_MODULE.'}');
+               return false;
+           }
+       }
 
 
         if (!CustomFieldHelper::checkCustomFieldConstraint('adminmodule', $model, $errors)) {
@@ -394,95 +408,6 @@ class _AdminModuleController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'accessright': 
-                            (new AccessRightController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminfilter': 
-                            (new AdminFilterController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminlayoutfield': 
-                            (new AdminLayoutFieldController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminlayoutsection': 
-                            (new AdminLayoutSectionController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminmenuitem': 
-                            (new AdminMenuItemController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminsequence': 
-                            (new AdminSequenceController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'adminview': 
-                            (new AdminViewController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'changelog': 
-                            (new ChangeLogController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'customfieldset': 
-                            (new CustomFieldSetController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'field': 
-                            (new FieldController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'fieldacl': 
-                            (new FieldAclController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'objectacl': 
-                            (new ObjectAclController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'permissionsetitem': 
-                            (new PermissionSetItemController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'recyclebin': 
-                            (new RecycleBinController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'template': 
-                            (new TemplateController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'userquota': 
-                            (new UserQuotaController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'userquotalog': 
-                            (new UserQuotaLogController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'workflowapplication': 
-                            (new WorkflowApplicationController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'workflowlog': 
-                            (new WorkflowLogController())->delete('MODULE', $_ids);
-                            break;
-
-                        case 'xxxnotification': 
-                            (new XxxNotificationController())->delete('MODULE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1421,7 +1346,10 @@ class _AdminModuleController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_PACKAGE = $recent->ID_ADMIN_PACKAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminmodule_new', $model);
             }

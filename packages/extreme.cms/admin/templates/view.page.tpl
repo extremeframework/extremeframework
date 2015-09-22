@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,134 +121,7 @@
     <{plugin key="page_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.page) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.pagegallery) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.pagelink) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.pagesection) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.pagewidget) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="pagetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                            <li><a href="#tab-pages"><{_t('Page')}> <span class="badge page-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
-                            <li><a href="#tab-pagegalleries"><{_t('Page gallery')}> <span class="badge pagegallery-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
-                            <li><a href="#tab-pagelinks"><{_t('Page link')}> <span class="badge pagelink-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                            <li><a href="#tab-pagesections"><{_t('Page section')}> <span class="badge pagesection-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
-                            <li><a href="#tab-pagewidgets"><{_t('Page widget')}> <span class="badge pagewidget-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                        <div id="tab-pages">
-                        	<{if true || $tab == 'pages'}>
-                            	<h2 class="print"><{_t('Page')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->ID`" where=""  template='widgetlist.page.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PageGallery') && isset($smarty.session.acl.pagegallery) }>
-                        <div id="tab-pagegalleries">
-                        	<{if true || $tab == 'pagegalleries'}>
-                            	<h2 class="print"><{_t('Page gallery')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPageGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagegallery.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PageLink') && isset($smarty.session.acl.pagelink) }>
-                        <div id="tab-pagelinks">
-                        	<{if true || $tab == 'pagelinks'}>
-                            	<h2 class="print"><{_t('Page link')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPageLink" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagelink.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                        <div id="tab-pagesections">
-                        	<{if true || $tab == 'pagesections'}>
-                            	<h2 class="print"><{_t('Page section')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPageSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where="" PARENT="`$details->PARENT`" VIEW_MORE_ID_PAGE="`$details->VIEW_MORE_ID_PAGE`" template='widgetlist.pagesection.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PageWidget') && isset($smarty.session.acl.pagewidget) }>
-                        <div id="tab-pagewidgets">
-                        	<{if true || $tab == 'pagewidgets'}>
-                            	<h2 class="print"><{_t('Page widget')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPageWidget" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAGE="`$details->ID`" where=""  template='widgetlist.pagewidget.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#pagetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("page_active_tab", $("#pagetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#pagetabs").tabs({ active: $.cookie("page_active_tab") })
-                    });
-                	$("#pagetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#pagetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#pagetabs .expand-collapse');
-
-                	var details = $('#pageview .view-main');
-
-                    if ($.cookie('pageexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('pageexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('pageexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

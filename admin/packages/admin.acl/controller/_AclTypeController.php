@@ -412,23 +412,6 @@ class _AclTypeController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'fieldacl': 
-                            (new FieldAclController())->delete('ID_ACL_TYPE', $_ids);
-                            break;
-
-                        case 'objectacl': 
-                            (new ObjectAclController())->delete('ID_ACL_TYPE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

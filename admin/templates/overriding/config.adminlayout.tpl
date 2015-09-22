@@ -8,7 +8,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{$title}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 </h1>
 
 <p><strong>Note: </strong>Remember to rebuild views after modification.</p>

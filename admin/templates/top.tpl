@@ -44,4 +44,11 @@
     <{include file="menu.horizontal.tpl"}>
 <{/if}>
 
+<div id="top-adv" style="background-color: #424F63;max-height:50px">
+    <a href="#" target="_blank">
+        <img src="http://www.shakeout.org/2008/downloads/ShakeOut_BannerAds_DontFreak_728x90_v3.gif" style="margin: 5px 5px 5px 0;max-height:40px">
+    </a>
+</div>
+
 <div class="content-inner">
+	<{include file="toggle-fullscreen.tpl"}>

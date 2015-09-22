@@ -1,4 +1,4 @@
-<tr id="item_<{$row->UUID}>" class="row-view <{if $counter%2 }>row1<{else}>row0<{/if}> category-<{$row->reftext_ID_ADMIN_PACKAGE_CATEGORY|ascode}> type-<{$row->reftext_ID_ADMIN_PACKAGE_TYPE|ascode}>" data-id="<{$row->UUID}>"<{if $row->DESCRIPTION}> title="<{$row->DESCRIPTION|strip_tags}>"<{/if}>>
+<tr id="item_<{$row->UUID}>" class="row-view <{if $counter%2 }>row1<{else}>row0<{/if}> type-<{$row->reftext_ID_ADMIN_PACKAGE_TYPE|ascode}> category-<{$row->reftext_ID_ADMIN_PACKAGE_CATEGORY|ascode}>" data-id="<{$row->UUID}>"<{if $row->DESCRIPTION}> title="<{$row->DESCRIPTION|strip_tags}>"<{/if}>>
     <{assign var='alreadyindent' value=0}>
     <{assign var='alreadyhaslink' value=0}>
 	<{assign var="rowsignature" value=$row->UUID}>
@@ -20,6 +20,21 @@
                 <td class="column column-code text " >
                                         	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/view/<{$row->UUID}>"><{/if}>    	    <{$row->CODE|escape}>
     <{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
+    				        		</td>
+    	    <{/if}>
+        <{/if}>
+	        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+                <td class="column column-id-admin-package-type reftext " >
+                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if $alreadyhaslink && isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$row->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+    	<{if $row->ID_ADMIN_PACKAGE_TYPE}><{$row->ID_ADMIN_PACKAGE_TYPE|escape}><{/if}>
+    <{/if}>
+<{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>
@@ -108,21 +123,6 @@
                                         	<span>
             <{$row->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
     </span>
-    				        		</td>
-    	    <{/if}>
-        <{/if}>
-	        <{if (in_array('ID_ADMIN_PACKAGE_TYPE', $filtercolumns)) }>
-            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
-                <td class="column column-id-admin-package-type reftext " >
-                                        	<span><{if isset($row->INDENT) && !$alreadyindent}><{$row->INDENT}><{assign var='alreadyindent' value=1}><{/if}><{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink }><a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackage/view/<{$row->UUID}>"><{/if}>    <{if $row->reftext_ID_ADMIN_PACKAGE_TYPE}>
-        <{if $alreadyhaslink && isset($smarty.session.acl.adminpackagetype.view)}>
-            <a class="refview scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$row->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
-        <{else}>
-            <{$row->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
-    <{else}>
-    	<{if $row->ID_ADMIN_PACKAGE_TYPE}><{$row->ID_ADMIN_PACKAGE_TYPE|escape}><{/if}>
-    <{/if}>
-<{if isset($smarty.session.acl.adminpackage.view) && !$alreadyhaslink}></a><{assign var='alreadyhaslink' value=1}><{/if}></span>
     				        		</td>
     	    <{/if}>
         <{/if}>

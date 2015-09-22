@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -95,7 +95,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_DASHBOARD}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-dashboard" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD" value=$formdata.ID_DASHBOARD datasource="DASHBOARD" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-dashboard" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD" value=$formdata.ID_DASHBOARD datasource="DASHBOARD" datasourcename="Dashboard" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -156,7 +156,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_DASHBOARD_ITEM_TYPE}>
 
                                                     
-                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-dashboard-item-type" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD_ITEM_TYPE" value=$formdata.ID_DASHBOARD_ITEM_TYPE datasource="DASHBOARD_ITEM_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-dashboard-item-type" name="`$prefix`dashboarditem_formdata_ID_DASHBOARD_ITEM_TYPE" value=$formdata.ID_DASHBOARD_ITEM_TYPE datasource="DASHBOARD_ITEM_TYPE" datasourcename="DashboardItemType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

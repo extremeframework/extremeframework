@@ -253,41 +253,7 @@
 </script>                    </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminlanguageitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="adminlanguagetabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <li><a href="#tab-adminlanguageitems"><{_t('Admin language item')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.adminlanguageitem) }>
-                    <div id="tab-adminlanguageitems">
-                    	<{if true || $tab == 'adminlanguageitems'}>
-                        	<h2 class="print"><{_t('Admin language item')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LANGUAGE="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#adminlanguagetabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
     
             <div class="modal-footer quickCreateActions">
             <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>

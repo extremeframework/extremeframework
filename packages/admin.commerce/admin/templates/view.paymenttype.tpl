@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="paymenttype_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminorder) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="paymenttypetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
-                            <li><a href="#tab-adminorders"><{_t('Admin order')}> <span class="badge adminorder-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminOrder') && isset($smarty.session.acl.adminorder) }>
-                        <div id="tab-adminorders">
-                        	<{if true || $tab == 'adminorders'}>
-                            	<h2 class="print"><{_t('Admin order')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminOrder" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PAYMENT_TYPE="`$details->CODE`" where=""  template='widgetlist.adminorder.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#paymenttypetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("paymenttype_active_tab", $("#paymenttypetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#paymenttypetabs").tabs({ active: $.cookie("paymenttype_active_tab") })
-                    });
-                	$("#paymenttypetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#paymenttypetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#paymenttypetabs .expand-collapse');
-
-                	var details = $('#paymenttypeview .view-main');
-
-                    if ($.cookie('paymenttypeexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('paymenttypeexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('paymenttypeexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

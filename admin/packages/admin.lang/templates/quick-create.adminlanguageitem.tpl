@@ -61,7 +61,7 @@
             <td class="form-field form-field-value column-id-admin-language" colspan="3">
                                     
             <{if Framework::hasModule('AdminLanguage')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-language" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$details->ID_ADMIN_LANGUAGE text=$details->reftext_ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-language" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$details->ID_ADMIN_LANGUAGE text=$details->reftext_ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" datasourcename="AdminLanguage" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminlanguage.new)}>
                     <span class="onflycreation">
@@ -95,7 +95,7 @@
             <td class="form-field form-field-value column-id-admin-label" colspan="3">
                                     
             <{if Framework::hasModule('AdminLabel')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-label" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$details->ID_ADMIN_LABEL text=$details->reftext_ID_ADMIN_LABEL datasource="ADMIN_LABEL" valuecol="ID" textcol="LABEL" sortcol="LABEL" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-label" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$details->ID_ADMIN_LABEL text=$details->reftext_ID_ADMIN_LABEL datasource="ADMIN_LABEL" datasourcename="AdminLabel" valuecol="ID" textcol="LABEL" sortcol="LABEL" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminlabel.new)}>
                     <span class="onflycreation">

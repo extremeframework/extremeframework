@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,120 +121,7 @@
     <{plugin key="post_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.menuitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.postgallery) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.postrelation) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.postsection) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="posttabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                            <li><a href="#tab-menuitems"><{_t('Menu item')}> <span class="badge menuitem-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
-                            <li><a href="#tab-postgalleries"><{_t('Post gallery')}> <span class="badge postgallery-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
-                            <li><a href="#tab-postrelations"><{_t('Post relation')}> <span class="badge postrelation-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
-                            <li><a href="#tab-postsections"><{_t('Post section')}> <span class="badge postsection-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('MenuItem') && isset($smarty.session.acl.menuitem) }>
-                        <div id="tab-menuitems">
-                        	<{if true || $tab == 'menuitems'}>
-                            	<h2 class="print"><{_t('Menu item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where="" ID_POST_CATEGORY="`$details->ID_POST_CATEGORY`" template='widgetlist.menuitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PostGallery') && isset($smarty.session.acl.postgallery) }>
-                        <div id="tab-postgalleries">
-                        	<{if true || $tab == 'postgalleries'}>
-                            	<h2 class="print"><{_t('Post gallery')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPostGallery" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postgallery.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PostRelation') && isset($smarty.session.acl.postrelation) }>
-                        <div id="tab-postrelations">
-                        	<{if true || $tab == 'postrelations'}>
-                            	<h2 class="print"><{_t('Post relation')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPostRelation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postrelation.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PostSection') && isset($smarty.session.acl.postsection) }>
-                        <div id="tab-postsections">
-                        	<{if true || $tab == 'postsections'}>
-                            	<h2 class="print"><{_t('Post section')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPostSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_POST="`$details->ID`" where=""  template='widgetlist.postsection.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#posttabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("post_active_tab", $("#posttabs").tabs("option", "active"));
-//                        },
-//                        active: $("#posttabs").tabs({ active: $.cookie("post_active_tab") })
-                    });
-                	$("#posttabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#posttabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#posttabs .expand-collapse');
-
-                	var details = $('#postview .view-main');
-
-                    if ($.cookie('postexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('postexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('postexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

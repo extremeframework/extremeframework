@@ -530,7 +530,7 @@ class _WorkflowLogController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-		if ($column == 'DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+		if ($column == 'DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -541,11 +541,7 @@ class _WorkflowLogController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -1352,7 +1348,14 @@ class _WorkflowLogController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                $model->ID_USER = $_SESSION['user']->ID;
+
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_WORKFLOW = $recent->ID_WORKFLOW;
+                    $model->ID_WORKFLOW_TRANSITION = $recent->ID_WORKFLOW_TRANSITION;
+                    $model->OBJECT_ID = $recent->OBJECT_ID;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('workflowlog_new', $model);
             }
@@ -1546,16 +1549,6 @@ class _WorkflowLogController extends __AppController
                         } else {
                             $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.ID_WORKFLOW_TRANSITION = '$value'");
                         }
-
-                        break;
-
-                    case 'DATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.DATE >= '".$this->field_sanitize('DATE', $value)."'");
-
-                        break;
-
-                    case 'DATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."WORKFLOW_LOG.DATE IS NULL OR ".TABLE_PREFIX."WORKFLOW_LOG.DATE <= '".$this->field_sanitize('DATE', $value)."')");
 
                         break;
 

@@ -1683,7 +1683,13 @@ class _AdminOrderItemController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                $model->QUANTITY = '1';
+
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_ORDER = $recent->ID_ADMIN_ORDER;
+                    $model->ID_ADMIN_PRODUCT = $recent->ID_ADMIN_PRODUCT;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminorderitem_new', $model);
             }

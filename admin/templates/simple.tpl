@@ -6,7 +6,7 @@
 
 <{include file="top.tpl"}>
 
-<h1 class="heading"><span class="h"><{$title}></span></h1>
+<h1 class="heading"><span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span></h1>
 
 <div style="padding: 10px 0 0 10px"><{$message}></div>
 

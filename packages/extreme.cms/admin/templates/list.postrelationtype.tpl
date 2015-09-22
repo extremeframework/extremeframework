@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Post Relation Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Post Relation Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Post Relation Type', true)), strtolower(_t('Post Relation Type', true))));
-    <{/php}>
-
-    <div id="postrelationtypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Post Relation Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="postrelation" /> <{_t('Copy also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="postrelationtypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Post Relation Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="postrelation" /> <{_t('Approve also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="postrelationtypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Post Relation Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PostRelation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="postrelation" /> <{_t('Delete also')}> <{_t('Post Relation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function postrelationtype_save() {
 }
 
 function postrelationtype_delete() {
-	var dialog = $( "#postrelationtypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/delete/');
-            	$('#postrelationtypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postrelationtypelistform'));
+	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/delete/');
+	$('#postrelationtypelistform').submit();
 }
 
 function postrelationtype_copy() {
-	var dialog = $( "#postrelationtypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/copy/');
-            	$('#postrelationtypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postrelationtypelistform'));
+	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/copy/');
+	$('#postrelationtypelistform').submit();
 }
 
 function postrelationtype_approve() {
-	var dialog = $( "#postrelationtypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/approve/');
-            	$('#postrelationtypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#postrelationtypelistform'));
+	$('#postrelationtypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/postrelationtype/approve/');
+	$('#postrelationtypelistform').submit();
 }
 
 function postrelationtype_batchedit() {

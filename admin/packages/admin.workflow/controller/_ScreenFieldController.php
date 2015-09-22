@@ -1363,7 +1363,10 @@ class _ScreenFieldController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_SCREEN = $recent->ID_SCREEN;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('screenfield_new', $model);
             }

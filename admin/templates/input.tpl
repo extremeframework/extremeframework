@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{_t($formtitle)}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t($formtitle)}></span>
 </h1>
 
 <div class="edit_details">

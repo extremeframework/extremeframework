@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -77,7 +77,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_LANGUAGE}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$formdata.ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-language" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LANGUAGE" value=$formdata.ID_ADMIN_LANGUAGE datasource="ADMIN_LANGUAGE" datasourcename="AdminLanguage" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -96,7 +96,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_LABEL}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$formdata.ID_ADMIN_LABEL datasource="ADMIN_LABEL" valuecol="ID" textcol="LABEL" sortcol="LABEL" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-label" name="`$prefix`adminlanguageitem_formdata_ID_ADMIN_LABEL" value=$formdata.ID_ADMIN_LABEL datasource="ADMIN_LABEL" datasourcename="AdminLabel" valuecol="ID" textcol="LABEL" sortcol="LABEL" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

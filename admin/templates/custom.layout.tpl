@@ -5,7 +5,7 @@
 <{assign var='title' value=_t('L_LAYOUT')}>
 <{include file="top.tpl"}>
 
-<h1 class="heading"><span class="h"><{$title}></span></h1>
+<h1 class="heading"><span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span></h1>
 
 <div style="float:right;padding:5px 0 5px 0;">
 <b>Page:</b> <select name="page_id" class="select" style="width:200px" onchange="if(this.value!='0') window.location = '<{$smarty.const.APPLICATION_URL}>/customlayout/'+this[this.selectedIndex].value; else window.location = '<{$smarty.const.APPLICATION_URL}>/customlayout/';">

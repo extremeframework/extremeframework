@@ -1761,7 +1761,11 @@ class _PageGalleryController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PAGE = $recent->ID_PAGE;
+                    $model->LINK_ID_PAGE = $recent->LINK_ID_PAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('pagegallery_new', $model);
             }

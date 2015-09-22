@@ -1758,7 +1758,10 @@ class _PostGalleryController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_POST = $recent->ID_POST;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('postgallery_new', $model);
             }

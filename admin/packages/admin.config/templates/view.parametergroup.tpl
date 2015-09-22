@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="parametergroup_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.parameter) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="parametergrouptabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('Parameter') && isset($smarty.session.acl.parameter) }>
-                            <li><a href="#tab-parameters"><{_t('Parameter')}> <span class="badge parameter-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('Parameter') && isset($smarty.session.acl.parameter) }>
-                        <div id="tab-parameters">
-                        	<{if true || $tab == 'parameters'}>
-                            	<h2 class="print"><{_t('Parameter')}></h2>
-                                                                    <{ajaxmodule class="WidgetListParameter" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PARAMETER_GROUP="`$details->ID`" where=""  template='widgetlist.parameter.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#parametergrouptabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("parametergroup_active_tab", $("#parametergrouptabs").tabs("option", "active"));
-//                        },
-//                        active: $("#parametergrouptabs").tabs({ active: $.cookie("parametergroup_active_tab") })
-                    });
-                	$("#parametergrouptabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#parametergrouptabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#parametergrouptabs .expand-collapse');
-
-                	var details = $('#parametergroupview .view-main');
-
-                    if ($.cookie('parametergroupexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('parametergroupexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('parametergroupexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

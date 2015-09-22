@@ -404,19 +404,6 @@ class _AdminLanguageController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminlanguageitem': 
-                            (new AdminLanguageItemController())->delete('ID_ADMIN_LANGUAGE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -634,7 +621,7 @@ class _AdminLanguageController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new AdminLanguageItemController())->delete('ID_ADMIN_LANGUAGE', array($id));
+        
         TransactionHelper::end();
     }
 

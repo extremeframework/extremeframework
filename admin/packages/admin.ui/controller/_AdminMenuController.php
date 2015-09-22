@@ -412,27 +412,6 @@ class _AdminMenuController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminmenuitem': 
-                            (new AdminMenuItemController())->delete('ID_ADMIN_MENU', $_ids);
-                            break;
-
-                        case 'adminpackagemenu': 
-                            (new AdminPackageMenuController())->delete('ID_ADMIN_MENU', $_ids);
-                            break;
-
-                        case 'dashboard': 
-                            (new DashboardController())->delete('ID_ADMIN_MENU', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -650,9 +629,7 @@ class _AdminMenuController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new AdminMenuItemController())->delete('ID_ADMIN_MENU', array($id));
-        (new AdminPackageMenuController())->delete('ID_ADMIN_MENU', array($id));
-        (new DashboardController())->delete('ID_ADMIN_MENU', array($id));
+        
         TransactionHelper::end();
     }
 

@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -101,6 +101,25 @@ function remove_attachment(element, attachment, spanid)
                                     </tr>
 
                         	
+                                <{elseif $column == 'ID_ADMIN_PACKAGE_TYPE' }>
+                                    <tr class="form-row form-row-id-admin-package-type <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
+                                		<td>
+                                		    <div class="form-field form-field-label">
+                                		        <label><{_t('Admin package type')}><{if in_array('ID_ADMIN_PACKAGE_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
+                                		    </div>
+                                        </td>
+                                        <td colspan="3">
+                                            <div class="form-field form-field-value column-id-admin-package-type">
+                                                                        <{$tmp_value = $formdataID_ADMIN_PACKAGE_TYPE}>
+
+                                                    
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$formdata.ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" datasourcename="AdminPackageType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+
+                                                                                                                                </div>
+                                        </td>
+                                    </tr>
+
+                        	
                                 <{elseif $column == 'ID_ADMIN_PACKAGE_CATEGORY' }>
                                     <tr class="form-row form-row-id-admin-package-category <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
                                 		<td>
@@ -113,7 +132,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_PACKAGE_CATEGORY}>
 
                                                     
-                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$formdata.ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$formdata.ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" datasourcename="AdminPackageCategory" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -132,7 +151,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_ADMIN_PACKAGE_INDUSTRY}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$formdata.ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$formdata.ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" datasourcename="AdminPackageIndustry" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -320,25 +339,6 @@ function remove_attachment(element, attachment, spanid)
                         
                             <input class="input-latest-update" type="text" name="<{$prefix}>adminpackage_formdata_LATEST_UPDATE" value="<{$tmp_value|escape}>" <{if !$row_edit}>size="80"<{/if}> />
                                                                     </div>
-                                        </td>
-                                    </tr>
-
-                        	
-                                <{elseif $column == 'ID_ADMIN_PACKAGE_TYPE' }>
-                                    <tr class="form-row form-row-id-admin-package-type <{if in_array($column, $mandatories) }>form-row-mandatory<{/if}>">
-                                		<td>
-                                		    <div class="form-field form-field-label">
-                                		        <label><{_t('Admin package type')}><{if in_array('ID_ADMIN_PACKAGE_TYPE', $mandatories) }><span class="mandatory">*</span><{/if}></label>
-                                		    </div>
-                                        </td>
-                                        <td colspan="3">
-                                            <div class="form-field form-field-value column-id-admin-package-type">
-                                                                        <{$tmp_value = $formdataID_ADMIN_PACKAGE_TYPE}>
-
-                                                    
-                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$formdata.ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
-
-                                                                                                                                </div>
                                         </td>
                                     </tr>
 

@@ -1660,7 +1660,12 @@ class _PostRelationController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_POST = $recent->ID_POST;
+                    $model->PEER_ID_POST = $recent->PEER_ID_POST;
+                    $model->ID_POST_RELATION_TYPE = $recent->ID_POST_RELATION_TYPE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('postrelation_new', $model);
             }

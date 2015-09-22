@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,106 +121,7 @@
     <{plugin key="adminmenu_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminmenuitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.adminpackagemenu) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.dashboard) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminmenutabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
-                            <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('AdminPackageMenu') && isset($smarty.session.acl.adminpackagemenu) }>
-                            <li><a href="#tab-adminpackagemenus"><{_t('Admin package menu')}> <span class="badge adminpackagemenu-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('Dashboard') && isset($smarty.session.acl.dashboard) }>
-                            <li><a href="#tab-dashboards"><{_t('Dashboard')}> <span class="badge dashboard-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminMenuItem') && isset($smarty.session.acl.adminmenuitem) }>
-                        <div id="tab-adminmenuitems">
-                        	<{if true || $tab == 'adminmenuitems'}>
-                            	<h2 class="print"><{_t('Admin menu item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('AdminPackageMenu') && isset($smarty.session.acl.adminpackagemenu) }>
-                        <div id="tab-adminpackagemenus">
-                        	<{if true || $tab == 'adminpackagemenus'}>
-                            	<h2 class="print"><{_t('Admin package menu')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackageMenu" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminpackagemenu.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('Dashboard') && isset($smarty.session.acl.dashboard) }>
-                        <div id="tab-dashboards">
-                        	<{if true || $tab == 'dashboards'}>
-                            	<h2 class="print"><{_t('Dashboard')}></h2>
-                                                                    <{ajaxmodule class="WidgetListDashboard" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.dashboard.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminmenutabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminmenu_active_tab", $("#adminmenutabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminmenutabs").tabs({ active: $.cookie("adminmenu_active_tab") })
-                    });
-                	$("#adminmenutabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminmenutabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminmenutabs .expand-collapse');
-
-                	var details = $('#adminmenuview .view-main');
-
-                    if ($.cookie('adminmenuexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminmenuexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminmenuexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

@@ -1672,7 +1672,11 @@ class _AdminPackagePermissionController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_PACKAGE = $recent->ID_ADMIN_PACKAGE;
+                    $model->ID_PERMISSION_SET = $recent->ID_PERMISSION_SET;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminpackagepermission_new', $model);
             }

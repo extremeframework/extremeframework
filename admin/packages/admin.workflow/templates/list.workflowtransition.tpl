@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,38 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Workflow Transition', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Workflow Transition', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Workflow Transition', true)), strtolower(_t('Workflow Transition', true))));
-    <{/php}>
-
-    <div id="workflowtransitioncopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Workflow Transition', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="workflowtransitionapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Workflow Transition', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="workflowtransitiondeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Workflow Transition', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -163,63 +131,18 @@ function workflowtransition_save() {
 }
 
 function workflowtransition_delete() {
-	var dialog = $( "#workflowtransitiondeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/delete/');
-            	$('#workflowtransitionlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowtransitionlistform'));
+	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/delete/');
+	$('#workflowtransitionlistform').submit();
 }
 
 function workflowtransition_copy() {
-	var dialog = $( "#workflowtransitioncopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/copy/');
-            	$('#workflowtransitionlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowtransitionlistform'));
+	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/copy/');
+	$('#workflowtransitionlistform').submit();
 }
 
 function workflowtransition_approve() {
-	var dialog = $( "#workflowtransitionapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/approve/');
-            	$('#workflowtransitionlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowtransitionlistform'));
+	$('#workflowtransitionlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflowtransition/approve/');
+	$('#workflowtransitionlistform').submit();
 }
 
 function workflowtransition_batchedit() {

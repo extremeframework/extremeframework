@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,47 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('User Group', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('User Group', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('User Group', true)), strtolower(_t('User Group', true))));
-    <{/php}>
-
-    <div id="usergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Group', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="usergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Group', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="usergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Group', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -172,63 +131,18 @@ function usergroup_save() {
 }
 
 function usergroup_delete() {
-	var dialog = $( "#usergroupdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/delete/');
-            	$('#usergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#usergrouplistform'));
+	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/delete/');
+	$('#usergrouplistform').submit();
 }
 
 function usergroup_copy() {
-	var dialog = $( "#usergroupcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/copy/');
-            	$('#usergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#usergrouplistform'));
+	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/copy/');
+	$('#usergrouplistform').submit();
 }
 
 function usergroup_approve() {
-	var dialog = $( "#usergroupapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/approve/');
-            	$('#usergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#usergrouplistform'));
+	$('#usergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/usergroup/approve/');
+	$('#usergrouplistform').submit();
 }
 
 function usergroup_batchedit() {

@@ -1754,7 +1754,10 @@ class _PostSectionController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_POST = $recent->ID_POST;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('postsection_new', $model);
             }

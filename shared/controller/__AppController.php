@@ -122,7 +122,7 @@ class __AppController {
 		header('Content-type: application/json');
         header('Access-Control-Allow-Origin: *');
 
-    	echo json_encode($data);
+    	echo json_encode($data, JSON_NUMERIC_CHECK);
 		application_exit(0);
 	}
 

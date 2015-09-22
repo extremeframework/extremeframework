@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,65 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('User Role', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('User Role', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('User Role', true)), strtolower(_t('User Role', true))));
-    <{/php}>
-
-    <div id="userrolecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Role', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="accessright" /> <{_t('Copy also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userinvitation" /> <{_t('Copy also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="usermembership" /> <{_t('Copy also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="userroleapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Role', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="accessright" /> <{_t('Approve also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userinvitation" /> <{_t('Approve also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="usermembership" /> <{_t('Approve also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="userroledeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Role', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="accessright" /> <{_t('Delete also')}> <{_t('Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userinvitation" /> <{_t('Delete also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserMembership')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="usermembership" /> <{_t('Delete also')}> <{_t('User Membership')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -190,63 +131,18 @@ function userrole_save() {
 }
 
 function userrole_delete() {
-	var dialog = $( "#userroledeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/delete/');
-            	$('#userrolelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userrolelistform'));
+	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/delete/');
+	$('#userrolelistform').submit();
 }
 
 function userrole_copy() {
-	var dialog = $( "#userrolecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/copy/');
-            	$('#userrolelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userrolelistform'));
+	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/copy/');
+	$('#userrolelistform').submit();
 }
 
 function userrole_approve() {
-	var dialog = $( "#userroleapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/approve/');
-            	$('#userrolelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userrolelistform'));
+	$('#userrolelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userrole/approve/');
+	$('#userrolelistform').submit();
 }
 
 function userrole_batchedit() {

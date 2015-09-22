@@ -1709,7 +1709,8 @@ class _UserExtraDomainController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                $model->ID_USER = $_SESSION['user']->ID;
+
                 $this->onInitialization($model);
                 PluginManager::do_action('userextradomain_new', $model);
             }

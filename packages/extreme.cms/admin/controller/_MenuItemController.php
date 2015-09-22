@@ -412,19 +412,6 @@ class _MenuItemController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'menuitem': 
-                            (new MenuItemController())->delete('PARENT', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1818,7 +1805,15 @@ class _MenuItemController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_MENU = $recent->ID_MENU;
+                    $model->PARENT = $recent->PARENT;
+                    $model->ID_PAGE = $recent->ID_PAGE;
+                    $model->ID_POST = $recent->ID_POST;
+                    $model->ID_POST_CATEGORY = $recent->ID_POST_CATEGORY;
+                    $model->ACL_ID_USER_GROUP = $recent->ACL_ID_USER_GROUP;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('menuitem_new', $model);
             }

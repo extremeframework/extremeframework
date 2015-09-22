@@ -14,7 +14,7 @@ class DataObject_ADMIN_MODULE extends DB_DataObject
     public $ID;                              // int(4)  primary_key not_null
     public $REFID;                           // varchar(16)  
     public $NAME;                            // varchar(32)  
-    public $MODULE;                          // varchar(32)  
+    public $MODULE;                          // varchar(32)  unique_key
     public $TABLE;                           // varchar(32)  
     public $ID_ADMIN_PACKAGE;                // varchar(32)  
     public $PREFIX;                          // varchar(3)  

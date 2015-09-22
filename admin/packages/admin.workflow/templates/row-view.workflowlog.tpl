@@ -55,7 +55,7 @@
         <{/if}>
 	        <{if (in_array('DATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['DATE']) && ((isset($aclviewablecolumns['DATE']) && $aclviewablecolumns['DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE']) || $aclviewablecolumns['DATE']))) }>
-                <td class="column column-date datetime " >
+                <td class="column column-date date " >
                                         	<span>
             <{$row->DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
     </span>

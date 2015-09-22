@@ -217,7 +217,7 @@
 	    <{/if}>
 	        <{if (in_array('CREATION_DATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
-                <td class="column column-creation-date datetime" >
+                <td class="column column-creation-date date" >
                                             <{if (in_array('CREATION_DATE', $roweditablecolumns)) }>
                     	                            <{$tmp_value = $formdataCREATION_DATE}>
 

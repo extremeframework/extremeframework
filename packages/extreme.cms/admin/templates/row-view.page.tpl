@@ -133,7 +133,7 @@
         <{/if}>
 	        <{if (in_array('LATEST_UPDATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
-                <td class="column column-latest-update datetime " >
+                <td class="column column-latest-update date " >
                                         	<span>
             <{$row->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
     </span>

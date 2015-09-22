@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('User Invitation Status', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('User Invitation Status', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('User Invitation Status', true)), strtolower(_t('User Invitation Status', true))));
-    <{/php}>
-
-    <div id="userinvitationstatuscopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('User Invitation Status', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userinvitation" /> <{_t('Copy also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="userinvitationstatusapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('User Invitation Status', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userinvitation" /> <{_t('Approve also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="userinvitationstatusdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('User Invitation Status', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('UserInvitation')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userinvitation" /> <{_t('Delete also')}> <{_t('User Invitation')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function userinvitationstatus_save() {
 }
 
 function userinvitationstatus_delete() {
-	var dialog = $( "#userinvitationstatusdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/delete/');
-            	$('#userinvitationstatuslistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userinvitationstatuslistform'));
+	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/delete/');
+	$('#userinvitationstatuslistform').submit();
 }
 
 function userinvitationstatus_copy() {
-	var dialog = $( "#userinvitationstatuscopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/copy/');
-            	$('#userinvitationstatuslistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userinvitationstatuslistform'));
+	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/copy/');
+	$('#userinvitationstatuslistform').submit();
 }
 
 function userinvitationstatus_approve() {
-	var dialog = $( "#userinvitationstatusapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/approve/');
-            	$('#userinvitationstatuslistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#userinvitationstatuslistform'));
+	$('#userinvitationstatuslistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/userinvitationstatus/approve/');
+	$('#userinvitationstatuslistform').submit();
 }
 
 function userinvitationstatus_batchedit() {

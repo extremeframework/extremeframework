@@ -43,7 +43,7 @@
             <td class="form-field form-field-value column-id-admin-order" colspan="3">
                                     
             <{if Framework::hasModule('AdminOrder')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-order" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$details->ID_ADMIN_ORDER text=$details->reftext_ID_ADMIN_ORDER datasource="ADMIN_ORDER" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol="CUSTOMER_FIRST_NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-order" class="input-id-admin-order" name="`$prefix`adminorderitem_formdata_ID_ADMIN_ORDER" value=$details->ID_ADMIN_ORDER text=$details->reftext_ID_ADMIN_ORDER datasource="ADMIN_ORDER" datasourcename="AdminOrder" valuecol="ID" textcol="CUSTOMER_FIRST_NAME" sortcol="CUSTOMER_FIRST_NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminorder.new)}>
                     <span class="onflycreation">
@@ -77,7 +77,7 @@
             <td class="form-field form-field-value column-id-admin-product" colspan="3">
                                     
             <{if Framework::hasModule('AdminProduct')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-product" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$details->ID_ADMIN_PRODUCT text=$details->reftext_ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-product" class="input-id-admin-product" name="`$prefix`adminorderitem_formdata_ID_ADMIN_PRODUCT" value=$details->ID_ADMIN_PRODUCT text=$details->reftext_ID_ADMIN_PRODUCT datasource="ADMIN_PRODUCT" datasourcename="AdminProduct" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminproduct.new)}>
                     <span class="onflycreation">

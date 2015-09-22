@@ -1692,7 +1692,12 @@ class _PageLinkController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PAGE = $recent->ID_PAGE;
+                    $model->LINK_ID_PAGE = $recent->LINK_ID_PAGE;
+                    $model->ID_PAGE_LINK_TYPE = $recent->ID_PAGE_LINK_TYPE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('pagelink_new', $model);
             }

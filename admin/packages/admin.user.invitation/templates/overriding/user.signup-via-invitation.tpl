@@ -21,7 +21,7 @@ a.button-register {
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Sign Up via Invitation')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Sign Up via Invitation')}></span>
 </h1>
 
 <div class="edit_details">

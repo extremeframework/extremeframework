@@ -41,10 +41,20 @@ class ApiController
                     $controller->indexAction();
                 }
             } else {
-                Api::error(400, 'Bad Request');
+                die('not found'.$controllerName);
+                self::error(400, 'Bad Request');
             }
         } else {
-            Api::error(400, 'Bad Request');
+            self::error(400, 'Bad Request');
         }
     }
+
+	public static function error($errorcode, $errormessage) {
+		header('HTTP/1.1 ' . $errorcode . ' Bad Request');
+		header('Content-type: application/json');
+        header('Access-Control-Allow-Origin: *');
+
+    	echo json_encode(array('code' => $errorcode, 'message' => $errormessage));
+		application_exit(0);
+	}
 }

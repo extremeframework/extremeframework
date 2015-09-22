@@ -420,23 +420,6 @@ class _PostCategoryController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'postcategory': 
-                            (new PostCategoryController())->delete('PARENT', $_ids);
-                            break;
-
-                        case 'post': 
-                            (new PostController())->delete('ID_POST_CATEGORY', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1796,7 +1779,11 @@ class _PostCategoryController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->PARENT = $recent->PARENT;
+                    $model->ID_TEMPLATE = $recent->ID_TEMPLATE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('postcategory_new', $model);
             }

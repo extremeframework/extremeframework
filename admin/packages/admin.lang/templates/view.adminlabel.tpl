@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="adminlabel_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminlanguageitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminlabeltabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminLanguageItem') && isset($smarty.session.acl.adminlanguageitem) }>
-                            <li><a href="#tab-adminlanguageitems"><{_t('Admin language item')}> <span class="badge adminlanguageitem-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminLanguageItem') && isset($smarty.session.acl.adminlanguageitem) }>
-                        <div id="tab-adminlanguageitems">
-                        	<{if true || $tab == 'adminlanguageitems'}>
-                            	<h2 class="print"><{_t('Admin language item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminLanguageItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_LABEL="`$details->ID`" where=""  template='widgetlist.adminlanguageitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminlabeltabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminlabel_active_tab", $("#adminlabeltabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminlabeltabs").tabs({ active: $.cookie("adminlabel_active_tab") })
-                    });
-                	$("#adminlabeltabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminlabeltabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminlabeltabs .expand-collapse');
-
-                	var details = $('#adminlabelview .view-main');
-
-                    if ($.cookie('adminlabelexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminlabelexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminlabelexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

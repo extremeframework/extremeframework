@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Admin Package Category', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Admin Package Category', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Admin Package Category', true)), strtolower(_t('Admin Package Category', true))));
-    <{/php}>
-
-    <div id="adminpackagecategorycopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Package Category', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackage" /> <{_t('Copy also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackagecategoryapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Package Category', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackage" /> <{_t('Approve also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackagecategorydeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Package Category', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackage" /> <{_t('Delete also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function adminpackagecategory_save() {
 }
 
 function adminpackagecategory_delete() {
-	var dialog = $( "#adminpackagecategorydeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/delete/');
-            	$('#adminpackagecategorylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagecategorylistform'));
+	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/delete/');
+	$('#adminpackagecategorylistform').submit();
 }
 
 function adminpackagecategory_copy() {
-	var dialog = $( "#adminpackagecategorycopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/copy/');
-            	$('#adminpackagecategorylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagecategorylistform'));
+	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/copy/');
+	$('#adminpackagecategorylistform').submit();
 }
 
 function adminpackagecategory_approve() {
-	var dialog = $( "#adminpackagecategoryapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/approve/');
-            	$('#adminpackagecategorylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagecategorylistform'));
+	$('#adminpackagecategorylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackagecategory/approve/');
+	$('#adminpackagecategorylistform').submit();
 }
 
 function adminpackagecategory_batchedit() {

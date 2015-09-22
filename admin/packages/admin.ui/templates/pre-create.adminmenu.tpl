@@ -199,69 +199,7 @@
 </script>                    </div>
     </div>
 
-        <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminmenuitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.adminpackagemenu) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.dashboard) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-    <{if $canaccess2anytab}>
-        <div id="adminmenutabs" class="section">
-            <ul>
-                                <{if isset($smarty.session.acl.adminmenuitem) }>
-                    <li><a href="#tab-adminmenuitems"><{_t('Admin menu item')}> <span class="badge adminmenuitem-badge-count"></span></a></li>
-                <{/if}>
-                                <{if isset($smarty.session.acl.adminpackagemenu) }>
-                    <li><a href="#tab-adminpackagemenus"><{_t('Admin package menu')}> <span class="badge adminpackagemenu-badge-count"></span></a></li>
-                <{/if}>
-                                <{if isset($smarty.session.acl.dashboard) }>
-                    <li><a href="#tab-dashboards"><{_t('Dashboard')}> <span class="badge dashboard-badge-count"></span></a></li>
-                <{/if}>
-                            </ul>
-
-                            <{if isset($smarty.session.acl.adminmenuitem) }>
-                    <div id="tab-adminmenuitems">
-                    	<{if true || $tab == 'adminmenuitems'}>
-                        	<h2 class="print"><{_t('Admin menu item')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminMenuItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminmenuitem.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                            <{if isset($smarty.session.acl.adminpackagemenu) }>
-                    <div id="tab-adminpackagemenus">
-                    	<{if true || $tab == 'adminpackagemenus'}>
-                        	<h2 class="print"><{_t('Admin package menu')}></h2>
-                                                            <{ajaxmodule class="WidgetListAdminPackageMenu" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.adminpackagemenu.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                            <{if isset($smarty.session.acl.dashboard) }>
-                    <div id="tab-dashboards">
-                    	<{if true || $tab == 'dashboards'}>
-                        	<h2 class="print"><{_t('Dashboard')}></h2>
-                                                            <{ajaxmodule class="WidgetListDashboard" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_MENU="`$details->ID`" where=""  template='widgetlist.dashboard.tpl'}>
-                                                    <{/if}>
-                    </div>
-                <{/if}>
-                    </div>
-
-        <script type="text/javascript">
-        $(document).ready(function(){
-        	$( "#adminmenutabs" ).tabs({
-        		cookie: {
-        			// store cookie for a day, without, it would be a session cookie
-        			expires: 1
-        		}
-        	});
-        });
-        </script>
-    <{/if}>
-
     
             <div class="modal-footer quickCreateActions">
             <a class="btn-cancel pull-right" type="reset" data-dismiss="modal"><{_t('Cancel')}></a>

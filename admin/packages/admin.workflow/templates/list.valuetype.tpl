@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,38 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Value Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Value Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Value Type', true)), strtolower(_t('Value Type', true))));
-    <{/php}>
-
-    <div id="valuetypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Value Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screenfield" /> <{_t('Copy also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="valuetypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Value Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screenfield" /> <{_t('Approve also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="valuetypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Value Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('ScreenField')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screenfield" /> <{_t('Delete also')}> <{_t('Screen Field')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -163,63 +131,18 @@ function valuetype_save() {
 }
 
 function valuetype_delete() {
-	var dialog = $( "#valuetypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/delete/');
-            	$('#valuetypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#valuetypelistform'));
+	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/delete/');
+	$('#valuetypelistform').submit();
 }
 
 function valuetype_copy() {
-	var dialog = $( "#valuetypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/copy/');
-            	$('#valuetypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#valuetypelistform'));
+	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/copy/');
+	$('#valuetypelistform').submit();
 }
 
 function valuetype_approve() {
-	var dialog = $( "#valuetypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/approve/');
-            	$('#valuetypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#valuetypelistform'));
+	$('#valuetypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/valuetype/approve/');
+	$('#valuetypelistform').submit();
 }
 
 function valuetype_batchedit() {

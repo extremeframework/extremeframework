@@ -430,19 +430,6 @@ class _AdminOrderStatusController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminorder': 
-                            (new AdminOrderController())->delete('ID_ADMIN_ORDER_STATUS', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

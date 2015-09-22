@@ -156,7 +156,7 @@
 	    <{/if}>
 	        <{if (in_array('CREATION_DATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['CREATION_DATE']) && ((isset($aclviewablecolumns['CREATION_DATE']) && $aclviewablecolumns['CREATION_DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['CREATION_DATE']) || $aclviewablecolumns['CREATION_DATE']))) }>
-                <td class="column column-creation-date datetime" >
+                <td class="column column-creation-date date" >
                                             <{if (in_array('CREATION_DATE', $roweditablecolumns)) }>
                     	                            <{$tmp_value = $formdataCREATION_DATE}>
 
@@ -171,7 +171,7 @@
 	    <{/if}>
 	        <{if (in_array('LATEST_UPDATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['LATEST_UPDATE']) && ((isset($aclviewablecolumns['LATEST_UPDATE']) && $aclviewablecolumns['LATEST_UPDATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['LATEST_UPDATE']) || $aclviewablecolumns['LATEST_UPDATE']))) }>
-                <td class="column column-latest-update datetime" >
+                <td class="column column-latest-update date" >
                                             <{if (in_array('LATEST_UPDATE', $roweditablecolumns)) }>
                     	                            <{$tmp_value = $formdataLATEST_UPDATE}>
 

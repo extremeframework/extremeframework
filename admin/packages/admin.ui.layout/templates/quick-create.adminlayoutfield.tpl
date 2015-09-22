@@ -61,7 +61,7 @@
             <td class="form-field form-field-value column-module" colspan="3">
                                     
             <{if Framework::hasModule('AdminModule')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminlayoutfield_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-module" class="input-module" name="`$prefix`adminlayoutfield_formdata_MODULE" value=$details->MODULE text=$details->reftext_MODULE datasource="ADMIN_MODULE" datasourcename="AdminModule" valuecol="MODULE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminmodule.new)}>
                     <span class="onflycreation">
@@ -95,7 +95,7 @@
             <td class="form-field form-field-value column-id-admin-layout-section" colspan="3">
                                     
             <{if Framework::hasModule('AdminLayoutSection')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-layout-section" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$details->ID_ADMIN_LAYOUT_SECTION text=$details->reftext_ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-layout-section" class="input-id-admin-layout-section" name="`$prefix`adminlayoutfield_formdata_ID_ADMIN_LAYOUT_SECTION" value=$details->ID_ADMIN_LAYOUT_SECTION text=$details->reftext_ID_ADMIN_LAYOUT_SECTION datasource="ADMIN_LAYOUT_SECTION" datasourcename="AdminLayoutSection" valuecol="ID" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.adminlayoutsection.new)}>
                     <span class="onflycreation">

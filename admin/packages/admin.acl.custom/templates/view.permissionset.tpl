@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,106 +121,7 @@
     <{plugin key="permissionset_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminpackagepermission) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.customaccessright) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.permissionsetitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="permissionsettabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminPackagePermission') && isset($smarty.session.acl.adminpackagepermission) }>
-                            <li><a href="#tab-adminpackagepermissions"><{_t('Admin package permission')}> <span class="badge adminpackagepermission-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
-                            <li><a href="#tab-customaccessrights"><{_t('Custom access right')}> <span class="badge customaccessright-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PermissionSetItem') && isset($smarty.session.acl.permissionsetitem) }>
-                            <li><a href="#tab-permissionsetitems"><{_t('Permission set item')}> <span class="badge permissionsetitem-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminPackagePermission') && isset($smarty.session.acl.adminpackagepermission) }>
-                        <div id="tab-adminpackagepermissions">
-                        	<{if true || $tab == 'adminpackagepermissions'}>
-                            	<h2 class="print"><{_t('Admin package permission')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackagePermission" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.adminpackagepermission.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('CustomAccessRight') && isset($smarty.session.acl.customaccessright) }>
-                        <div id="tab-customaccessrights">
-                        	<{if true || $tab == 'customaccessrights'}>
-                            	<h2 class="print"><{_t('Custom access right')}></h2>
-                                                                    <{ajaxmodule class="WidgetListCustomAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.customaccessright.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PermissionSetItem') && isset($smarty.session.acl.permissionsetitem) }>
-                        <div id="tab-permissionsetitems">
-                        	<{if true || $tab == 'permissionsetitems'}>
-                            	<h2 class="print"><{_t('Permission set item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPermissionSetItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_PERMISSION_SET="`$details->ID`" where=""  template='widgetlist.permissionsetitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#permissionsettabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("permissionset_active_tab", $("#permissionsettabs").tabs("option", "active"));
-//                        },
-//                        active: $("#permissionsettabs").tabs({ active: $.cookie("permissionset_active_tab") })
-                    });
-                	$("#permissionsettabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#permissionsettabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#permissionsettabs .expand-collapse');
-
-                	var details = $('#permissionsetview .view-main');
-
-                    if ($.cookie('permissionsetexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('permissionsetexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('permissionsetexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

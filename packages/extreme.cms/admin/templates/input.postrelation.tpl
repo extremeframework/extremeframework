@@ -14,7 +14,7 @@ function remove_attachment(element, attachment, spanid)
 </script>
 
 <h1 class="heading">
-    <span class="h"><{$formtitle}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$formtitle}></span>
 </h1>
 
 <div class="edit_details">
@@ -77,7 +77,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_POST}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$formdata.ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-id-post" name="`$prefix`postrelation_formdata_ID_POST" value=$formdata.ID_POST datasource="POST" datasourcename="Post" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -96,7 +96,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataPEER_ID_POST}>
 
                                                     
-                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$formdata.PEER_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" class="input-peer-id-post" name="`$prefix`postrelation_formdata_PEER_ID_POST" value=$formdata.PEER_ID_POST datasource="POST" datasourcename="Post" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>
@@ -115,7 +115,7 @@ function remove_attachment(element, attachment, spanid)
                                                                         <{$tmp_value = $formdataID_POST_RELATION_TYPE}>
 
                                                     
-                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$formdata.ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+                                <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" class="input-id-post-relation-type" name="`$prefix`postrelation_formdata_ID_POST_RELATION_TYPE" value=$formdata.ID_POST_RELATION_TYPE datasource="POST_RELATION_TYPE" datasourcename="PostRelationType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                                                                                                                                 </div>
                                         </td>

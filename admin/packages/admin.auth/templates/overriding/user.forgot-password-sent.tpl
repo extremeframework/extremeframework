@@ -12,7 +12,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Password Reset Sent')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Password Reset Sent')}></span>
 </h1>
 
 <p><{_t('A link to reset your password has been sent to your email address. Please check your mailbox for instructions to reset your password.')}></p>

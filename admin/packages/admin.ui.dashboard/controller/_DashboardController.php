@@ -390,27 +390,6 @@ class _DashboardController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'dashboarditem': 
-                            (new DashboardItemController())->delete('ID_DASHBOARD', $_ids);
-                            break;
-
-                        case 'usergroup': 
-                            (new UserGroupController())->delete('DEFAULT_ID_DASHBOARD', $_ids);
-                            break;
-
-                        case 'userpreference': 
-                            (new UserPreferenceController())->delete('ID_DASHBOARD', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -628,9 +607,7 @@ class _DashboardController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new DashboardItemController())->delete('ID_DASHBOARD', array($id));
-        (new UserGroupController())->delete('DEFAULT_ID_DASHBOARD', array($id));
-        (new UserPreferenceController())->delete('ID_DASHBOARD', array($id));
+        
         TransactionHelper::end();
     }
 
@@ -1448,8 +1425,8 @@ class _DashboardController extends __AppController
             } else {
                 // Set default values here
                 if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_PACKAGE = $recent->ID_ADMIN_PACKAGE;
                     $model->ID_ADMIN_MENU = $recent->ID_ADMIN_MENU;
-                    $model->ID_DASHBOARD_LAYOUT = $recent->ID_DASHBOARD_LAYOUT;
                 }
 
                 $this->onInitialization($model);

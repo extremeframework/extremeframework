@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="pagesection_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.pagesection) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="pagesectiontabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                            <li><a href="#tab-pagesections"><{_t('Page section')}> <span class="badge pagesection-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('PageSection') && isset($smarty.session.acl.pagesection) }>
-                        <div id="tab-pagesections">
-                        	<{if true || $tab == 'pagesections'}>
-                            	<h2 class="print"><{_t('Page section')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPageSection" method="" readonly=!WorkflowHelper::isEditable($details->WFID) PARENT="`$details->CODE`" where=""  template='widgetlist.pagesection.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#pagesectiontabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("pagesection_active_tab", $("#pagesectiontabs").tabs("option", "active"));
-//                        },
-//                        active: $("#pagesectiontabs").tabs({ active: $.cookie("pagesection_active_tab") })
-                    });
-                	$("#pagesectiontabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#pagesectiontabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#pagesectiontabs .expand-collapse');
-
-                	var details = $('#pagesectionview .view-main');
-
-                    if ($.cookie('pagesectionexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('pagesectionexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('pagesectionexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

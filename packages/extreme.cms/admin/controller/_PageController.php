@@ -474,35 +474,6 @@ class _PageController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'page': 
-                            (new PageController())->delete('PARENT', $_ids);
-                            break;
-
-                        case 'pagegallery': 
-                            (new PageGalleryController())->delete('ID_PAGE', $_ids);
-                            break;
-
-                        case 'pagelink': 
-                            (new PageLinkController())->delete('ID_PAGE', $_ids);
-                            break;
-
-                        case 'pagesection': 
-                            (new PageSectionController())->delete('ID_PAGE', $_ids);
-                            break;
-
-                        case 'pagewidget': 
-                            (new PageWidgetController())->delete('ID_PAGE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -834,7 +805,7 @@ class _PageController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-		if ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+		if ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -845,11 +816,7 @@ class _PageController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -1993,7 +1960,14 @@ class _PageController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->PARENT = $recent->PARENT;
+                    $model->ID_TEMPLATE = $recent->ID_TEMPLATE;
+                    $model->CUSTOM_TOP_ID_MENU = $recent->CUSTOM_TOP_ID_MENU;
+                    $model->CUSTOM_SIDE_ID_MENU = $recent->CUSTOM_SIDE_ID_MENU;
+                    $model->VIEW_MORE_ID_PAGE = $recent->VIEW_MORE_ID_PAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('page_new', $model);
             }
@@ -2219,16 +2193,6 @@ class _PageController extends __AppController
                         } else {
                             $model->whereAdd(TABLE_PREFIX."PAGE.VIEW_MORE_ID_PAGE = '$value'");
                         }
-
-                        break;
-
-                    case 'LATEST_UPDATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."PAGE.LATEST_UPDATE >= '".$this->field_sanitize('LATEST_UPDATE', $value)."'");
-
-                        break;
-
-                    case 'LATEST_UPDATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."PAGE.LATEST_UPDATE IS NULL OR ".TABLE_PREFIX."PAGE.LATEST_UPDATE <= '".$this->field_sanitize('LATEST_UPDATE', $value)."')");
 
                         break;
 

@@ -1668,7 +1668,11 @@ class _AdminPackageMenuController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_PACKAGE = $recent->ID_ADMIN_PACKAGE;
+                    $model->ID_ADMIN_MENU = $recent->ID_ADMIN_MENU;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminpackagemenu_new', $model);
             }

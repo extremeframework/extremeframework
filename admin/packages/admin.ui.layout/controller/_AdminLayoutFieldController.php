@@ -1374,7 +1374,10 @@ class _AdminLayoutFieldController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_LAYOUT_SECTION = $recent->ID_ADMIN_LAYOUT_SECTION;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminlayoutfield_new', $model);
             }

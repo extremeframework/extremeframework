@@ -12,7 +12,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Account Activation')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Account Activation')}></span>
 </h1>
 
 <p><{_t('A link to activate your account has been sent to your email address. Please check your mailbox for detailed instructions.')}></p>

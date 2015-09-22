@@ -5,7 +5,7 @@
     <{$title = _t('Import')}>
 <{include file="top.tpl"}>
 
-<h1 class="heading"><span class="h"><{$title}></span></h1>
+<h1 class="heading"><span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span></h1>
 
 <{if $messages}>
 <{foreach from=$messages key=ignored item=message}>

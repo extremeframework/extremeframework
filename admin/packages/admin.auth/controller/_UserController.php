@@ -478,23 +478,6 @@ class _UserController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'usermembership': 
-                            (new UserMembershipController())->delete('ID_USER', $_ids);
-                            break;
-
-                        case 'userpreference': 
-                            (new UserPreferenceController())->delete('ID_USER', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -654,7 +637,7 @@ class _UserController extends __AppController
             } else {
                 $value = '';
             }
-        } elseif ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+        } elseif ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -665,11 +648,7 @@ class _UserController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -1663,16 +1642,6 @@ class _UserController extends __AppController
                 switch ($key) {
                     case '__QUICKSEARCH__':
                         $this->setupQuickSearchModel($model, StringHelper::htmlspecialchars($value));
-
-                        break;
-
-                    case 'CREATION_DATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."USER.CREATION_DATE >= '".$this->field_sanitize('CREATION_DATE', $value)."'");
-
-                        break;
-
-                    case 'CREATION_DATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."USER.CREATION_DATE IS NULL OR ".TABLE_PREFIX."USER.CREATION_DATE <= '".$this->field_sanitize('CREATION_DATE', $value)."')");
 
                         break;
 

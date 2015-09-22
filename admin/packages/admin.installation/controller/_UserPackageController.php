@@ -1683,7 +1683,12 @@ class _UserPackageController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                $model->ID_USER = $_SESSION['user']->ID;
+
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_ADMIN_PACKAGE = $recent->ID_ADMIN_PACKAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('userpackage_new', $model);
             }

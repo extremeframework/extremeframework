@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,74 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Workflow', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Workflow', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Workflow', true)), strtolower(_t('Workflow', true))));
-    <{/php}>
-
-    <div id="workflowcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Workflow', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="screen" /> <{_t('Copy also')}> <{_t('Screen')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowapplication" /> <{_t('Copy also')}> <{_t('Workflow Application')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowlog" /> <{_t('Copy also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowstage" /> <{_t('Copy also')}> <{_t('Workflow Stage')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="workflowtransition" /> <{_t('Copy also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="workflowapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Workflow', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="screen" /> <{_t('Approve also')}> <{_t('Screen')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowapplication" /> <{_t('Approve also')}> <{_t('Workflow Application')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowlog" /> <{_t('Approve also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowstage" /> <{_t('Approve also')}> <{_t('Workflow Stage')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="workflowtransition" /> <{_t('Approve also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="workflowdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Workflow', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Screen')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="screen" /> <{_t('Delete also')}> <{_t('Screen')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowApplication')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowapplication" /> <{_t('Delete also')}> <{_t('Workflow Application')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowLog')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowlog" /> <{_t('Delete also')}> <{_t('Workflow Log')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowStage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowstage" /> <{_t('Delete also')}> <{_t('Workflow Stage')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('WorkflowTransition')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="workflowtransition" /> <{_t('Delete also')}> <{_t('Workflow Transition')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -199,63 +131,18 @@ function workflow_save() {
 }
 
 function workflow_delete() {
-	var dialog = $( "#workflowdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/delete/');
-            	$('#workflowlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowlistform'));
+	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/delete/');
+	$('#workflowlistform').submit();
 }
 
 function workflow_copy() {
-	var dialog = $( "#workflowcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/copy/');
-            	$('#workflowlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowlistform'));
+	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/copy/');
+	$('#workflowlistform').submit();
 }
 
 function workflow_approve() {
-	var dialog = $( "#workflowapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/approve/');
-            	$('#workflowlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#workflowlistform'));
+	$('#workflowlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/workflow/approve/');
+	$('#workflowlistform').submit();
 }
 
 function workflow_batchedit() {

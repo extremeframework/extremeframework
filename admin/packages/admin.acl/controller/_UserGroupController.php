@@ -386,23 +386,6 @@ class _UserGroupController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'accessright': 
-                            (new AccessRightController())->delete('ID_USER_GROUP', $_ids);
-                            break;
-
-                        case 'usermembership': 
-                            (new UserMembershipController())->delete('ID_USER_GROUP', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

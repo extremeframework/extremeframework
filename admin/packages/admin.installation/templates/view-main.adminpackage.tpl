@@ -77,6 +77,63 @@
             
         
         
+            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
+        <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_TYPE', $columns2hide) }>
+    		<td class="form-field form-field-label column-id-admin-package-type">
+	                    		                    		        <label class="attribute-name"><{_t('Admin package type')}></label>
+            </td>
+            <td class="form-field form-field-value column-id-admin-package-type" colspan="3">
+            	<div class="attribute-line column-id-admin-package-type type-reftext">
+            		<div class="attribute-value">
+            		                		        <{if (isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE'])) }>
+                    		    <span class="value-mode">
+                                    
+    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_TYPE}>
+    <{/if}>
+                                </span>
+                                <!--
+                    		    <span class="edit-mode" style="display:none">
+                                    
+            <{if Framework::hasModule('AdminPackageType')}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-type" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$details->ID_ADMIN_PACKAGE_TYPE text=$details->reftext_ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" datasourcename="AdminPackageType" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+
+                            <{if isset($smarty.session.acl.adminpackagetype.new)}>
+                    <span class="onflycreation">
+                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/new" title="Create a New Admin Package Type">+</a>
+                    </span>
+                <{/if}>
+                    <{else}>
+            <input class="input-id-admin-package-type input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$details->ID_ADMIN_PACKAGE_TYPE|escape}>"  />
+        <{/if}>
+                                    </span>
+                                -->
+                            <{else}>
+                                
+    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
+        <{if isset($smarty.session.acl.adminpackagetype.view)}>
+            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
+        <{else}>
+            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
+    <{else}>
+		<{$details->ID_ADMIN_PACKAGE_TYPE}>
+    <{/if}>
+                            <{/if}>
+                                    		</div>
+            	</div>
+            </td>
+    	<{/if}>
+	<{/if}>
+    </tr>                                                        <tr>
+    
+            
+        
+        
             <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_CATEGORY']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_CATEGORY']))) }>
         <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_CATEGORY', $columns2hide) }>
     		<td class="form-field form-field-label column-id-admin-package-category">
@@ -101,7 +158,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminPackageCategory')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-category" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$details->ID_ADMIN_PACKAGE_CATEGORY text=$details->reftext_ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-category" class="input-id-admin-package-category" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_CATEGORY" value=$details->ID_ADMIN_PACKAGE_CATEGORY text=$details->reftext_ID_ADMIN_PACKAGE_CATEGORY datasource="ADMIN_PACKAGE_CATEGORY" datasourcename="AdminPackageCategory" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.adminpackagecategory.new)}>
                     <span class="onflycreation">
@@ -158,7 +215,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminPackageIndustry')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package-industry" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$details->ID_ADMIN_PACKAGE_INDUSTRY text=$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package-industry" class="input-id-admin-package-industry" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_INDUSTRY" value=$details->ID_ADMIN_PACKAGE_INDUSTRY text=$details->reftext_ID_ADMIN_PACKAGE_INDUSTRY datasource="ADMIN_PACKAGE_INDUSTRY" datasourcename="AdminPackageIndustry" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.adminpackageindustry.new)}>
                     <span class="onflycreation">
@@ -522,63 +579,6 @@
                             <{else}>
                                 
     <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
-                            <{/if}>
-                                    		</div>
-            	</div>
-            </td>
-    	<{/if}>
-	<{/if}>
-    </tr>                                                        <tr>
-    
-            
-        
-        
-            <{if !isset($excludedcolumns['ID_ADMIN_PACKAGE_TYPE']) && ((isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $aclviewablecolumns['ID_ADMIN_PACKAGE_TYPE']))) }>
-        <{if !isset($columns2hide) || !in_array('ID_ADMIN_PACKAGE_TYPE', $columns2hide) }>
-    		<td class="form-field form-field-label column-id-admin-package-type">
-	                    		                    		        <label class="attribute-name"><{_t('Admin package type')}></label>
-            </td>
-            <td class="form-field form-field-value column-id-admin-package-type" colspan="3">
-            	<div class="attribute-line column-id-admin-package-type type-reftext">
-            		<div class="attribute-value">
-            		                		        <{if (isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) && $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['ID_ADMIN_PACKAGE_TYPE']) || $acleditablecolumns['ID_ADMIN_PACKAGE_TYPE'])) }>
-                    		    <span class="value-mode">
-                                    
-    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
-        <{if isset($smarty.session.acl.adminpackagetype.view)}>
-            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
-        <{else}>
-            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
-    <{else}>
-		<{$details->ID_ADMIN_PACKAGE_TYPE}>
-    <{/if}>
-                                </span>
-                                <!--
-                    		    <span class="edit-mode" style="display:none">
-                                    
-            <{if Framework::hasModule('AdminPackageType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-admin-package-type" class="input-id-admin-package-type" name="`$prefix`adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value=$details->ID_ADMIN_PACKAGE_TYPE text=$details->reftext_ID_ADMIN_PACKAGE_TYPE datasource="ADMIN_PACKAGE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
-
-                            <{if isset($smarty.session.acl.adminpackagetype.new)}>
-                    <span class="onflycreation">
-                        <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/new" title="Create a New Admin Package Type">+</a>
-                    </span>
-                <{/if}>
-                    <{else}>
-            <input class="input-id-admin-package-type input-type-text" type="text" name="<{$prefix}>adminpackage_formdata_ID_ADMIN_PACKAGE_TYPE" value="<{$details->ID_ADMIN_PACKAGE_TYPE|escape}>"  />
-        <{/if}>
-                                    </span>
-                                -->
-                            <{else}>
-                                
-    <{if $details->reftext_ID_ADMIN_PACKAGE_TYPE}>
-        <{if isset($smarty.session.acl.adminpackagetype.view)}>
-            <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/adminpackagetype/view/<{$details->refuuid_ID_ADMIN_PACKAGE_TYPE}>"><{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}></a>
-        <{else}>
-            <{$details->reftext_ID_ADMIN_PACKAGE_TYPE|escape}>        <{/if}>
-    <{else}>
-		<{$details->ID_ADMIN_PACKAGE_TYPE}>
-    <{/if}>
                             <{/if}>
                                     		</div>
             	</div>

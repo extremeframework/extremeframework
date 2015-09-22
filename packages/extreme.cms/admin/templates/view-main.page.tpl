@@ -122,7 +122,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-parent" class="input-parent" name="`$prefix`page_formdata_PARENT" value=$details->PARENT text=$details->reftext_PARENT datasource="PAGE" datasourcename="Page" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">
@@ -316,7 +316,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Template')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-template" class="input-id-template" name="`$prefix`page_formdata_ID_TEMPLATE" value=$details->ID_TEMPLATE text=$details->reftext_ID_TEMPLATE datasource="TEMPLATE" datasourcename="Template" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.template.new)}>
                     <span class="onflycreation">
@@ -390,12 +390,12 @@
 	            		        <label class="attribute-name"><{_t('Latest update')}></label>
             </td>
             <td class="form-field form-field-value column-latest-update" colspan="3">
-            	<div class="attribute-line column-latest-update type-datetime">
+            	<div class="attribute-line column-latest-update type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['LATEST_UPDATE']) && $acleditablecolumns['LATEST_UPDATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['LATEST_UPDATE']) || $acleditablecolumns['LATEST_UPDATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -405,7 +405,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->LATEST_UPDATE|escape}>
+    <{$details->LATEST_UPDATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>
@@ -750,7 +750,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Menu')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-top-id-menu" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$details->CUSTOM_TOP_ID_MENU text=$details->reftext_CUSTOM_TOP_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-top-id-menu" class="input-custom-top-id-menu" name="`$prefix`page_formdata_CUSTOM_TOP_ID_MENU" value=$details->CUSTOM_TOP_ID_MENU text=$details->reftext_CUSTOM_TOP_ID_MENU datasource="MENU" datasourcename="Menu" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.menu.new)}>
                     <span class="onflycreation">
@@ -807,7 +807,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Menu')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-side-id-menu" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$details->CUSTOM_SIDE_ID_MENU text=$details->reftext_CUSTOM_SIDE_ID_MENU datasource="MENU" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-custom-side-id-menu" class="input-custom-side-id-menu" name="`$prefix`page_formdata_CUSTOM_SIDE_ID_MENU" value=$details->CUSTOM_SIDE_ID_MENU text=$details->reftext_CUSTOM_SIDE_ID_MENU datasource="MENU" datasourcename="Menu" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.menu.new)}>
                     <span class="onflycreation">
@@ -903,7 +903,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('Page')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-view-more-id-page" class="input-view-more-id-page" name="`$prefix`page_formdata_VIEW_MORE_ID_PAGE" value=$details->VIEW_MORE_ID_PAGE text=$details->reftext_VIEW_MORE_ID_PAGE datasource="PAGE" datasourcename="Page" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.page.new)}>
                     <span class="onflycreation">

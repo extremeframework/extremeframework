@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,38 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Admin Menu Item', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Admin Menu Item', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Admin Menu Item', true)), strtolower(_t('Admin Menu Item', true))));
-    <{/php}>
-
-    <div id="adminmenuitemcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Menu Item', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmenuitem" /> <{_t('Copy also')}> <{_t('Admin Menu Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminmenuitemapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Menu Item', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmenuitem" /> <{_t('Approve also')}> <{_t('Admin Menu Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminmenuitemdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Menu Item', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminMenuItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmenuitem" /> <{_t('Delete also')}> <{_t('Admin Menu Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -163,63 +131,18 @@ function adminmenuitem_save() {
 }
 
 function adminmenuitem_delete() {
-	var dialog = $( "#adminmenuitemdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/delete/');
-            	$('#adminmenuitemlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminmenuitemlistform'));
+	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/delete/');
+	$('#adminmenuitemlistform').submit();
 }
 
 function adminmenuitem_copy() {
-	var dialog = $( "#adminmenuitemcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/copy/');
-            	$('#adminmenuitemlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminmenuitemlistform'));
+	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/copy/');
+	$('#adminmenuitemlistform').submit();
 }
 
 function adminmenuitem_approve() {
-	var dialog = $( "#adminmenuitemapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/approve/');
-            	$('#adminmenuitemlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminmenuitemlistform'));
+	$('#adminmenuitemlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminmenuitem/approve/');
+	$('#adminmenuitemlistform').submit();
 }
 
 function adminmenuitem_batchedit() {

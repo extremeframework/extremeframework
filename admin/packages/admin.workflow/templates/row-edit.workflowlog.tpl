@@ -105,7 +105,7 @@
 	    <{/if}>
 	        <{if (in_array('DATE', $filtercolumns)) }>
             <{if !isset($excludedcolumns['DATE']) && ((isset($aclviewablecolumns['DATE']) && $aclviewablecolumns['DATE']) || (isset($aclviewablecolumns['*']) && (!isset($aclviewablecolumns['DATE']) || $aclviewablecolumns['DATE']))) }>
-                <td class="column column-date datetime" >
+                <td class="column column-date date" >
                                             <{if (in_array('DATE', $roweditablecolumns)) }>
                     	                            <{$tmp_value = $formdataDATE}>
 

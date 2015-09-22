@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,106 +121,7 @@
     <{plugin key="template_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.page) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.post) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.postcategory) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="templatetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                            <li><a href="#tab-pages"><{_t('Page')}> <span class="badge page-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
-                            <li><a href="#tab-posts"><{_t('Post')}> <span class="badge post-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
-                            <li><a href="#tab-postcategories"><{_t('Post category')}> <span class="badge postcategory-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('Page') && isset($smarty.session.acl.page) }>
-                        <div id="tab-pages">
-                        	<{if true || $tab == 'pages'}>
-                            	<h2 class="print"><{_t('Page')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where=""  template='widgetlist.page.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('Post') && isset($smarty.session.acl.post) }>
-                        <div id="tab-posts">
-                        	<{if true || $tab == 'posts'}>
-                            	<h2 class="print"><{_t('Post')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPost" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where=""  template='widgetlist.post.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('PostCategory') && isset($smarty.session.acl.postcategory) }>
-                        <div id="tab-postcategories">
-                        	<{if true || $tab == 'postcategories'}>
-                            	<h2 class="print"><{_t('Post category')}></h2>
-                                                                    <{ajaxmodule class="WidgetListPostCategory" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_TEMPLATE="`$details->CODE`" where="" MODULE="`$details->MODULE`" template='widgetlist.postcategory.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#templatetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("template_active_tab", $("#templatetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#templatetabs").tabs({ active: $.cookie("template_active_tab") })
-                    });
-                	$("#templatetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#templatetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#templatetabs .expand-collapse');
-
-                	var details = $('#templateview .view-main');
-
-                    if ($.cookie('templateexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('templateexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('templateexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

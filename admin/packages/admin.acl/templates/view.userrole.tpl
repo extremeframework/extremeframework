@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,120 +121,7 @@
     <{plugin key="userrole_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.accessright) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.userinvitation) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.usermembership) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.workflowtransition) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="userroletabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
-                            <li><a href="#tab-accessrights"><{_t('Access right')}> <span class="badge accessright-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
-                            <li><a href="#tab-userinvitations"><{_t('User invitation')}> <span class="badge userinvitation-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                            <li><a href="#tab-usermemberships"><{_t('User membership')}> <span class="badge usermembership-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                            <li><a href="#tab-workflowtransitions"><{_t('Workflow transition')}> <span class="badge workflowtransition-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AccessRight') && isset($smarty.session.acl.accessright) }>
-                        <div id="tab-accessrights">
-                        	<{if true || $tab == 'accessrights'}>
-                            	<h2 class="print"><{_t('Access right')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAccessRight" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.accessright.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('UserInvitation') && isset($smarty.session.acl.userinvitation) }>
-                        <div id="tab-userinvitations">
-                        	<{if true || $tab == 'userinvitations'}>
-                            	<h2 class="print"><{_t('User invitation')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserInvitation" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.userinvitation.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('UserMembership') && isset($smarty.session.acl.usermembership) }>
-                        <div id="tab-usermemberships">
-                        	<{if true || $tab == 'usermemberships'}>
-                            	<h2 class="print"><{_t('User membership')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserMembership" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.usermembership.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('WorkflowTransition') && isset($smarty.session.acl.workflowtransition) }>
-                        <div id="tab-workflowtransitions">
-                        	<{if true || $tab == 'workflowtransitions'}>
-                            	<h2 class="print"><{_t('Workflow transition')}></h2>
-                                                                    <{ajaxmodule class="WidgetListWorkflowTransition" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_USER_ROLE="`$details->ID`" where=""  template='widgetlist.workflowtransition.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#userroletabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("userrole_active_tab", $("#userroletabs").tabs("option", "active"));
-//                        },
-//                        active: $("#userroletabs").tabs({ active: $.cookie("userrole_active_tab") })
-                    });
-                	$("#userroletabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#userroletabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#userroletabs .expand-collapse');
-
-                	var details = $('#userroleview .view-main');
-
-                    if ($.cookie('userroleexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('userroleexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('userroleexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

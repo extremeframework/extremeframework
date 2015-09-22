@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -128,74 +128,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Admin Package', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Admin Package', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Admin Package', true)), strtolower(_t('Admin Package', true))));
-    <{/php}>
-
-    <div id="adminpackagecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Package', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminmodule" /> <{_t('Copy also')}> <{_t('Admin Module')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackagemenu" /> <{_t('Copy also')}> <{_t('Admin Package Menu')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackagepermission" /> <{_t('Copy also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageShortcut')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackageshortcut" /> <{_t('Copy also')}> <{_t('Admin Package Shortcut')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="userpackage" /> <{_t('Copy also')}> <{_t('User Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackageapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Package', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminmodule" /> <{_t('Approve also')}> <{_t('Admin Module')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackagemenu" /> <{_t('Approve also')}> <{_t('Admin Package Menu')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackagepermission" /> <{_t('Approve also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageShortcut')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackageshortcut" /> <{_t('Approve also')}> <{_t('Admin Package Shortcut')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="userpackage" /> <{_t('Approve also')}> <{_t('User Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackagedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Package', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminModule')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminmodule" /> <{_t('Delete also')}> <{_t('Admin Module')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageMenu')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackagemenu" /> <{_t('Delete also')}> <{_t('Admin Package Menu')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackagepermission" /> <{_t('Delete also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('AdminPackageShortcut')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackageshortcut" /> <{_t('Delete also')}> <{_t('Admin Package Shortcut')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('UserPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="userpackage" /> <{_t('Delete also')}> <{_t('User Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -221,63 +153,18 @@ function adminpackage_save() {
 }
 
 function adminpackage_delete() {
-	var dialog = $( "#adminpackagedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/delete/');
-            	$('#adminpackagelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagelistform'));
+	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/delete/');
+	$('#adminpackagelistform').submit();
 }
 
 function adminpackage_copy() {
-	var dialog = $( "#adminpackagecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/copy/');
-            	$('#adminpackagelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagelistform'));
+	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/copy/');
+	$('#adminpackagelistform').submit();
 }
 
 function adminpackage_approve() {
-	var dialog = $( "#adminpackageapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/approve/');
-            	$('#adminpackagelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackagelistform'));
+	$('#adminpackagelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackage/approve/');
+	$('#adminpackagelistform').submit();
 }
 
 function adminpackage_batchedit() {

@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="adminpackagecategory_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminpackage) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminpackagecategorytabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminPackage') && isset($smarty.session.acl.adminpackage) }>
-                            <li><a href="#tab-adminpackages"><{_t('Admin package')}> <span class="badge adminpackage-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminPackage') && isset($smarty.session.acl.adminpackage) }>
-                        <div id="tab-adminpackages">
-                        	<{if true || $tab == 'adminpackages'}>
-                            	<h2 class="print"><{_t('Admin package')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE_CATEGORY="`$details->CODE`" where=""  template='widgetlist.adminpackage.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminpackagecategorytabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminpackagecategory_active_tab", $("#adminpackagecategorytabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminpackagecategorytabs").tabs({ active: $.cookie("adminpackagecategory_active_tab") })
-                    });
-                	$("#adminpackagecategorytabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminpackagecategorytabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminpackagecategorytabs .expand-collapse');
-
-                	var details = $('#adminpackagecategoryview .view-main');
-
-                    if ($.cookie('adminpackagecategoryexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminpackagecategoryexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminpackagecategoryexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

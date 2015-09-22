@@ -68,7 +68,7 @@
             <td class="form-field form-field-value column-id-post" colspan="3">
                                     
             <{if Framework::hasModule('Post')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postgallery_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-post" class="input-id-post" name="`$prefix`postgallery_formdata_ID_POST" value=$details->ID_POST text=$details->reftext_ID_POST datasource="POST" datasourcename="Post" valuecol="ID" textcol="TITLE" sortcol="TITLE" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.post.new)}>
                     <span class="onflycreation">

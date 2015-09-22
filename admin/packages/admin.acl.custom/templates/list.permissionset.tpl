@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,56 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Permission Set', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Permission Set', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Permission Set', true)), strtolower(_t('Permission Set', true))));
-    <{/php}>
-
-    <div id="permissionsetcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Permission Set', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackagepermission" /> <{_t('Copy also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="customaccessright" /> <{_t('Copy also')}> <{_t('Custom Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PermissionSetItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="permissionsetitem" /> <{_t('Copy also')}> <{_t('Permission Set Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="permissionsetapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Permission Set', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackagepermission" /> <{_t('Approve also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="customaccessright" /> <{_t('Approve also')}> <{_t('Custom Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PermissionSetItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="permissionsetitem" /> <{_t('Approve also')}> <{_t('Permission Set Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="permissionsetdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Permission Set', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackagePermission')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackagepermission" /> <{_t('Delete also')}> <{_t('Admin Package Permission')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('CustomAccessRight')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="customaccessright" /> <{_t('Delete also')}> <{_t('Custom Access Right')|strtolower}></li>
-                <{/if}>
-                            <{if Framework::hasModule('PermissionSetItem')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="permissionsetitem" /> <{_t('Delete also')}> <{_t('Permission Set Item')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -191,63 +141,18 @@ function permissionset_save() {
 }
 
 function permissionset_delete() {
-	var dialog = $( "#permissionsetdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/delete/');
-            	$('#permissionsetlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#permissionsetlistform'));
+	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/delete/');
+	$('#permissionsetlistform').submit();
 }
 
 function permissionset_copy() {
-	var dialog = $( "#permissionsetcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/copy/');
-            	$('#permissionsetlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#permissionsetlistform'));
+	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/copy/');
+	$('#permissionsetlistform').submit();
 }
 
 function permissionset_approve() {
-	var dialog = $( "#permissionsetapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/approve/');
-            	$('#permissionsetlistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#permissionsetlistform'));
+	$('#permissionsetlistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/permissionset/approve/');
+	$('#permissionsetlistform').submit();
 }
 
 function permissionset_batchedit() {

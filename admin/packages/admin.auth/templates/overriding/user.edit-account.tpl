@@ -5,7 +5,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Edit Account Information')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Edit Account Information')}></span>
 
     <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
         <a style="text-decoration: none" class="button-edit-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>

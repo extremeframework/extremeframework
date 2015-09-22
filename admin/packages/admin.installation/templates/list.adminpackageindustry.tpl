@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Admin Package Industry', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Admin Package Industry', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Admin Package Industry', true)), strtolower(_t('Admin Package Industry', true))));
-    <{/php}>
-
-    <div id="adminpackageindustrycopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Admin Package Industry', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="adminpackage" /> <{_t('Copy also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackageindustryapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Admin Package Industry', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="adminpackage" /> <{_t('Approve also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="adminpackageindustrydeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Admin Package Industry', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('AdminPackage')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="adminpackage" /> <{_t('Delete also')}> <{_t('Admin Package')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function adminpackageindustry_save() {
 }
 
 function adminpackageindustry_delete() {
-	var dialog = $( "#adminpackageindustrydeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/delete/');
-            	$('#adminpackageindustrylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackageindustrylistform'));
+	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/delete/');
+	$('#adminpackageindustrylistform').submit();
 }
 
 function adminpackageindustry_copy() {
-	var dialog = $( "#adminpackageindustrycopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/copy/');
-            	$('#adminpackageindustrylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackageindustrylistform'));
+	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/copy/');
+	$('#adminpackageindustrylistform').submit();
 }
 
 function adminpackageindustry_approve() {
-	var dialog = $( "#adminpackageindustryapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/approve/');
-            	$('#adminpackageindustrylistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#adminpackageindustrylistform'));
+	$('#adminpackageindustrylistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/adminpackageindustry/approve/');
+	$('#adminpackageindustrylistform').submit();
 }
 
 function adminpackageindustry_batchedit() {

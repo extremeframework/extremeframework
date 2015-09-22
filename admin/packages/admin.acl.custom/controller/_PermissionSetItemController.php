@@ -1690,7 +1690,10 @@ class _PermissionSetItemController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PERMISSION_SET = $recent->ID_PERMISSION_SET;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('permissionsetitem_new', $model);
             }

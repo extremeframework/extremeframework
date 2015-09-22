@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="adminproduct_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminorderitem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminproducttabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
-                            <li><a href="#tab-adminorderitems"><{_t('Admin order item')}> <span class="badge adminorderitem-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminOrderItem') && isset($smarty.session.acl.adminorderitem) }>
-                        <div id="tab-adminorderitems">
-                        	<{if true || $tab == 'adminorderitems'}>
-                            	<h2 class="print"><{_t('Admin order item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminOrderItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PRODUCT="`$details->ID`" where=""  template='widgetlist.adminorderitem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminproducttabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminproduct_active_tab", $("#adminproducttabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminproducttabs").tabs({ active: $.cookie("adminproduct_active_tab") })
-                    });
-                	$("#adminproducttabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminproducttabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminproducttabs .expand-collapse');
-
-                	var details = $('#adminproductview .view-main');
-
-                    if ($.cookie('adminproductexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminproductexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminproductexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

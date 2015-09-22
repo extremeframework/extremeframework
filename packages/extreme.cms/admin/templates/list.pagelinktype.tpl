@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Page Link Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Page Link Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Page Link Type', true)), strtolower(_t('Page Link Type', true))));
-    <{/php}>
-
-    <div id="pagelinktypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Page Link Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagelink" /> <{_t('Copy also')}> <{_t('Page Link')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="pagelinktypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Page Link Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagelink" /> <{_t('Approve also')}> <{_t('Page Link')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="pagelinktypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Page Link Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageLink')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagelink" /> <{_t('Delete also')}> <{_t('Page Link')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function pagelinktype_save() {
 }
 
 function pagelinktype_delete() {
-	var dialog = $( "#pagelinktypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/delete/');
-            	$('#pagelinktypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#pagelinktypelistform'));
+	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/delete/');
+	$('#pagelinktypelistform').submit();
 }
 
 function pagelinktype_copy() {
-	var dialog = $( "#pagelinktypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/copy/');
-            	$('#pagelinktypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#pagelinktypelistform'));
+	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/copy/');
+	$('#pagelinktypelistform').submit();
 }
 
 function pagelinktype_approve() {
-	var dialog = $( "#pagelinktypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/approve/');
-            	$('#pagelinktypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#pagelinktypelistform'));
+	$('#pagelinktypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/pagelinktype/approve/');
+	$('#pagelinktypelistform').submit();
 }
 
 function pagelinktype_batchedit() {

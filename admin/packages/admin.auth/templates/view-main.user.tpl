@@ -697,12 +697,12 @@
 	            		        <label class="attribute-name"><{_t('Creation date')}></label>
             </td>
             <td class="form-field form-field-value column-creation-date" colspan="3">
-            	<div class="attribute-line column-creation-date type-datetime">
+            	<div class="attribute-line column-creation-date type-date">
             		<div class="attribute-value">
             		                		        <{if (isset($acleditablecolumns['CREATION_DATE']) && $acleditablecolumns['CREATION_DATE']) || (isset($acleditablecolumns['*']) && (!isset($acleditablecolumns['CREATION_DATE']) || $acleditablecolumns['CREATION_DATE'])) }>
                     		    <span class="value-mode">
                                     
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                                 </span>
                                 <!--
                     		    <span class="edit-mode" style="display:none">
@@ -712,7 +712,7 @@
                                 -->
                             <{else}>
                                 
-    <{$details->CREATION_DATE|escape}>
+    <{$details->CREATION_DATE|date_format:$smarty.const.SMARTY_DATE_FORMAT}>
                             <{/if}>
                                     		</div>
             	</div>

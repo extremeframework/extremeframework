@@ -1342,7 +1342,10 @@ class _WorkflowApplicationController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_WORKFLOW = $recent->ID_WORKFLOW;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('workflowapplication_new', $model);
             }

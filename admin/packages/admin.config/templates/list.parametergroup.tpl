@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -106,38 +106,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Parameter Group', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Parameter Group', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Parameter Group', true)), strtolower(_t('Parameter Group', true))));
-    <{/php}>
-
-    <div id="parametergroupcopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Parameter Group', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="parameter" /> <{_t('Copy also')}> <{_t('Parameter')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="parametergroupapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Parameter Group', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="parameter" /> <{_t('Approve also')}> <{_t('Parameter')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="parametergroupdeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Parameter Group', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('Parameter')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="parameter" /> <{_t('Delete also')}> <{_t('Parameter')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -163,63 +131,18 @@ function parametergroup_save() {
 }
 
 function parametergroup_delete() {
-	var dialog = $( "#parametergroupdeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/delete/');
-            	$('#parametergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#parametergrouplistform'));
+	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/delete/');
+	$('#parametergrouplistform').submit();
 }
 
 function parametergroup_copy() {
-	var dialog = $( "#parametergroupcopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/copy/');
-            	$('#parametergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#parametergrouplistform'));
+	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/copy/');
+	$('#parametergrouplistform').submit();
 }
 
 function parametergroup_approve() {
-	var dialog = $( "#parametergroupapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/approve/');
-            	$('#parametergrouplistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#parametergrouplistform'));
+	$('#parametergrouplistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/parametergroup/approve/');
+	$('#parametergrouplistform').submit();
 }
 
 function parametergroup_batchedit() {

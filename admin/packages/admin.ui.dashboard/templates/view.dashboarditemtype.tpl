@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,78 +121,7 @@
     <{plugin key="dashboarditemtype_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.dashboarditem) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="dashboarditemtypetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('DashboardItem') && isset($smarty.session.acl.dashboarditem) }>
-                            <li><a href="#tab-dashboarditems"><{_t('Dashboard item')}> <span class="badge dashboarditem-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('DashboardItem') && isset($smarty.session.acl.dashboarditem) }>
-                        <div id="tab-dashboarditems">
-                        	<{if true || $tab == 'dashboarditems'}>
-                            	<h2 class="print"><{_t('Dashboard item')}></h2>
-                                                                    <{ajaxmodule class="WidgetListDashboardItem" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_DASHBOARD_ITEM_TYPE="`$details->CODE`" where=""  template='widgetlist.dashboarditem.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#dashboarditemtypetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("dashboarditemtype_active_tab", $("#dashboarditemtypetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#dashboarditemtypetabs").tabs({ active: $.cookie("dashboarditemtype_active_tab") })
-                    });
-                	$("#dashboarditemtypetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#dashboarditemtypetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#dashboarditemtypetabs .expand-collapse');
-
-                	var details = $('#dashboarditemtypeview .view-main');
-
-                    if ($.cookie('dashboarditemtypeexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('dashboarditemtypeexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('dashboarditemtypeexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

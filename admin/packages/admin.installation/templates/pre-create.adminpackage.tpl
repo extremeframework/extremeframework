@@ -49,6 +49,9 @@
 <tr class="form-row form-row-code form-row-mandatory">
             
                     </tr>                                                                                            
+<tr class="form-row form-row-id-admin-package-type form-row-mandatory">
+            
+                    </tr>                                                                                            
 <tr class="form-row form-row-id-admin-package-category">
             
                     </tr>                                                                                                                                                
@@ -60,10 +63,7 @@
                     </tr>                                                                                            
 <tr class="form-row form-row-author-url">
             
-                    </tr>                                                                                                                                                                                                                                                        
-<tr class="form-row form-row-id-admin-package-type form-row-mandatory">
-            
-                    </tr>                    
+                    </tr>                                                                                                                                                                                
                     <!-- Custom fields -->
                     <{if $customfields}>
     <{foreach from=$customfields item=item}>

@@ -1772,7 +1772,12 @@ class _PageWidgetController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PAGE = $recent->ID_PAGE;
+                    $model->ID_WIDGET_TYPE = $recent->ID_WIDGET_TYPE;
+                    $model->ID_WIDGET_POSITION = $recent->ID_WIDGET_POSITION;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('pagewidget_new', $model);
             }

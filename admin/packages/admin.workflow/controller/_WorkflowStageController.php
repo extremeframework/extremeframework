@@ -390,19 +390,6 @@ class _WorkflowStageController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'workflowtransition': 
-                            (new WorkflowTransitionController())->delete('START_ID_WORKFLOW_STAGE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1341,7 +1328,10 @@ class _WorkflowStageController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_WORKFLOW = $recent->ID_WORKFLOW;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('workflowstage_new', $model);
             }

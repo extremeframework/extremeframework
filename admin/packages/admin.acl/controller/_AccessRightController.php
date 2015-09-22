@@ -1362,6 +1362,7 @@ class _AccessRightController extends __AppController
                 // Set default values here
                 if ($recent = $this->getRecentModel()) {
                     $model->ID_USER_GROUP = $recent->ID_USER_GROUP;
+                    $model->ID_USER_ROLE = $recent->ID_USER_ROLE;
                 }
 
                 $this->onInitialization($model);

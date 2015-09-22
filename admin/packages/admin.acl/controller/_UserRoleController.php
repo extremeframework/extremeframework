@@ -386,31 +386,6 @@ class _UserRoleController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'accessright': 
-                            (new AccessRightController())->delete('ID_USER_ROLE', $_ids);
-                            break;
-
-                        case 'userinvitation': 
-                            (new UserInvitationController())->delete('ID_USER_ROLE', $_ids);
-                            break;
-
-                        case 'usermembership': 
-                            (new UserMembershipController())->delete('ID_USER_ROLE', $_ids);
-                            break;
-
-                        case 'workflowtransition': 
-                            (new WorkflowTransitionController())->delete('ID_USER_ROLE', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();

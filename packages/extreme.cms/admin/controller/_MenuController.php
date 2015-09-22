@@ -390,19 +390,6 @@ class _MenuController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'menuitem': 
-                            (new MenuItemController())->delete('ID_MENU', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -620,7 +607,7 @@ class _MenuController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new MenuItemController())->delete('ID_MENU', array($id));
+        
         TransactionHelper::end();
     }
 

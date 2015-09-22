@@ -462,19 +462,6 @@ class _AdminProductController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminorderitem': 
-                            (new AdminOrderItemController())->delete('ID_ADMIN_PRODUCT', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -1751,7 +1738,10 @@ class _AdminProductController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->PRODUCT_ID_PAGE = $recent->PRODUCT_ID_PAGE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('adminproduct_new', $model);
             }

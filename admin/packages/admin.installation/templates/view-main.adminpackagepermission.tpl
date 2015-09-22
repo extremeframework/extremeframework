@@ -72,7 +72,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('AdminPackage')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-admin-package" class="input-id-admin-package" name="`$prefix`adminpackagepermission_formdata_ID_ADMIN_PACKAGE" value=$details->ID_ADMIN_PACKAGE text=$details->reftext_ID_ADMIN_PACKAGE datasource="ADMIN_PACKAGE" datasourcename="AdminPackage" valuecol="CODE" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.adminpackage.new)}>
                     <span class="onflycreation">
@@ -129,7 +129,7 @@
                     		    <span class="edit-mode" style="display:none">
                                     
             <{if Framework::hasModule('PermissionSet')}>
-            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-permission-set" class="input-id-permission-set" name="`$prefix`adminpackagepermission_formdata_ID_PERMISSION_SET" value=$details->ID_PERMISSION_SET text=$details->reftext_ID_PERMISSION_SET datasource="PERMISSION_SET" valuecol="ID" textcol="NAME" sortcol="NAME"}>
+            <{html_ref_select multilingual="0" autocomplete="1" ajax="0" method="" id="input-id-permission-set" class="input-id-permission-set" name="`$prefix`adminpackagepermission_formdata_ID_PERMISSION_SET" value=$details->ID_PERMISSION_SET text=$details->reftext_ID_PERMISSION_SET datasource="PERMISSION_SET" datasourcename="PermissionSet" valuecol="ID" textcol="NAME" sortcol="NAME"}>
 
                             <{if isset($smarty.session.acl.permissionset.new)}>
                     <span class="onflycreation">

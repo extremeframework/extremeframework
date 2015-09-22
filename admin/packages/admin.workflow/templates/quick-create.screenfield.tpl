@@ -117,7 +117,7 @@
             <td class="form-field form-field-value column-id-value-type" colspan="3">
                                     
             <{if Framework::hasModule('ValueType')}>
-            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-value-type" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$details->ID_VALUE_TYPE text=$details->reftext_ID_VALUE_TYPE datasource="VALUE_TYPE" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
+            <{html_ref_select multilingual="1" autocomplete="1" ajax="0" method="" id="input-id-value-type" class="input-id-value-type" name="`$prefix`screenfield_formdata_ID_VALUE_TYPE" value=$details->ID_VALUE_TYPE text=$details->reftext_ID_VALUE_TYPE datasource="VALUE_TYPE" datasourcename="ValueType" valuecol="CODE" textcol="NAME" sortcol="NAME" groupcol="" blankitem=""}>
 
                             <{if isset($smarty.session.acl.valuetype.new)}>
                     <span class="onflycreation">

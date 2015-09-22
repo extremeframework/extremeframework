@@ -1691,7 +1691,12 @@ class _CustomAccessRightController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                $model->ID_USER = $_SESSION['user']->ID;
+
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_PERMISSION_SET = $recent->ID_PERMISSION_SET;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('customaccessright_new', $model);
             }

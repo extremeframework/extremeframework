@@ -7,7 +7,7 @@
 
 <{include file="top.tpl"}>
 
-<h1 class="heading"><span class="h"><{$title}></span></h1>
+<h1 class="heading"><span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span></h1>
 
 <div class="btn button-general" style="margin:5px 0;clear:both;width:120px;">
     <a class="scope-main cachable" href="<{$smarty.const.APPLICATION_URL}>/installation/package"><span class="button-face">Install a package</span></a>

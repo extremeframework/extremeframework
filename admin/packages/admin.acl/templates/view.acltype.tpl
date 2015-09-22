@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,92 +121,7 @@
     <{plugin key="acltype_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.fieldacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.objectacl) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="acltypetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                            <li><a href="#tab-fieldacls"><{_t('Field acl')}> <span class="badge fieldacl-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                            <li><a href="#tab-objectacls"><{_t('Object acl')}> <span class="badge objectacl-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('FieldAcl') && isset($smarty.session.acl.fieldacl) }>
-                        <div id="tab-fieldacls">
-                        	<{if true || $tab == 'fieldacls'}>
-                            	<h2 class="print"><{_t('Field acl')}></h2>
-                                                                    <{ajaxmodule class="WidgetListFieldAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ACL_TYPE="`$details->ID`" where=""  template='widgetlist.fieldacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('ObjectAcl') && isset($smarty.session.acl.objectacl) }>
-                        <div id="tab-objectacls">
-                        	<{if true || $tab == 'objectacls'}>
-                            	<h2 class="print"><{_t('Object acl')}></h2>
-                                                                    <{ajaxmodule class="WidgetListObjectAcl" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ACL_TYPE="`$details->ID`" where=""  template='widgetlist.objectacl.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#acltypetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("acltype_active_tab", $("#acltypetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#acltypetabs").tabs({ active: $.cookie("acltype_active_tab") })
-                    });
-                	$("#acltypetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#acltypetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#acltypetabs .expand-collapse');
-
-                	var details = $('#acltypeview .view-main');
-
-                    if ($.cookie('acltypeexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('acltypeexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('acltypeexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

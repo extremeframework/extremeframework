@@ -11,7 +11,7 @@
     <{include file="top.tpl"}>
 
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <!-- Prev / Next -->
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
@@ -121,134 +121,7 @@
     <{plugin key="adminpackage_view_before_tabs" args=$details}>
 
     <{assign var='canaccess2anytab' value='0'}>
-            <{if isset($smarty.session.acl.adminmodule) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.adminpackagemenu) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.adminpackagepermission) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.adminpackageshortcut) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
-            <{if isset($smarty.session.acl.userpackage) }>
-            <{assign var='canaccess2anytab' value='1'}>
-        <{/if}>
     
-            <{if $canaccess2anytab}>
-            <div id="adminpackagetabs" class="section">
-                <ul>
-                                            <{if Framework::hasModule('AdminModule') && isset($smarty.session.acl.adminmodule) }>
-                            <li><a href="#tab-adminmodules"><{_t('Admin module')}> <span class="badge adminmodule-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('AdminPackageMenu') && isset($smarty.session.acl.adminpackagemenu) }>
-                            <li><a href="#tab-adminpackagemenus"><{_t('Admin package menu')}> <span class="badge adminpackagemenu-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('AdminPackagePermission') && isset($smarty.session.acl.adminpackagepermission) }>
-                            <li><a href="#tab-adminpackagepermissions"><{_t('Admin package permission')}> <span class="badge adminpackagepermission-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('AdminPackageShortcut') && isset($smarty.session.acl.adminpackageshortcut) }>
-                            <li><a href="#tab-adminpackageshortcuts"><{_t('Admin package shortcut')}> <span class="badge adminpackageshortcut-badge-count"></span></a></li>
-                        <{/if}>
-                                            <{if Framework::hasModule('UserPackage') && isset($smarty.session.acl.userpackage) }>
-                            <li><a href="#tab-userpackages"><{_t('User package')}> <span class="badge userpackage-badge-count"></span></a></li>
-                        <{/if}>
-                                    </ul>
-
-                                    <{if Framework::hasModule('AdminModule') && isset($smarty.session.acl.adminmodule) }>
-                        <div id="tab-adminmodules">
-                        	<{if true || $tab == 'adminmodules'}>
-                            	<h2 class="print"><{_t('Admin module')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminModule" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE="`$details->CODE`" where=""  template='widgetlist.adminmodule.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('AdminPackageMenu') && isset($smarty.session.acl.adminpackagemenu) }>
-                        <div id="tab-adminpackagemenus">
-                        	<{if true || $tab == 'adminpackagemenus'}>
-                            	<h2 class="print"><{_t('Admin package menu')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackageMenu" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE="`$details->CODE`" where=""  template='widgetlist.adminpackagemenu.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('AdminPackagePermission') && isset($smarty.session.acl.adminpackagepermission) }>
-                        <div id="tab-adminpackagepermissions">
-                        	<{if true || $tab == 'adminpackagepermissions'}>
-                            	<h2 class="print"><{_t('Admin package permission')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackagePermission" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE="`$details->CODE`" where=""  template='widgetlist.adminpackagepermission.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('AdminPackageShortcut') && isset($smarty.session.acl.adminpackageshortcut) }>
-                        <div id="tab-adminpackageshortcuts">
-                        	<{if true || $tab == 'adminpackageshortcuts'}>
-                            	<h2 class="print"><{_t('Admin package shortcut')}></h2>
-                                                                    <{ajaxmodule class="WidgetListAdminPackageShortcut" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE="`$details->CODE`" where=""  template='widgetlist.adminpackageshortcut.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                                    <{if Framework::hasModule('UserPackage') && isset($smarty.session.acl.userpackage) }>
-                        <div id="tab-userpackages">
-                        	<{if true || $tab == 'userpackages'}>
-                            	<h2 class="print"><{_t('User package')}></h2>
-                                                                    <{ajaxmodule class="WidgetListUserPackage" method="" readonly=!WorkflowHelper::isEditable($details->WFID) ID_ADMIN_PACKAGE="`$details->CODE`" where=""  template='widgetlist.userpackage.tpl'}>
-                                                            <{/if}>
-                        </div>
-                    <{/if}>
-                
-                <script type="text/javascript">
-                $(document).ready(function(){
-                	$("#adminpackagetabs").tabs({
-//                        activate: function( event, ui ) {
-//                            $.cookie("adminpackage_active_tab", $("#adminpackagetabs").tabs("option", "active"));
-//                        },
-//                        active: $("#adminpackagetabs").tabs({ active: $.cookie("adminpackage_active_tab") })
-                    });
-                	$("#adminpackagetabs").tabs("paging", {cycle: false, follow: true});
-                });
-                </script>
-
-                <script type="text/javascript">
-                $(document).ready(function(){
-                    $('#adminpackagetabs').prepend('<div class="expand-collapse" style="float:right;"></div>');
-                    var handler = $('#adminpackagetabs .expand-collapse');
-
-                	var details = $('#adminpackageview .view-main');
-
-                    if ($.cookie('adminpackageexpandcollapse') == 'collapsed') {
-                        details.hide();
-
-                	    handler.addClass('collapsed');
-                    } else {
-                        details.show();
-
-                	    handler.addClass('expanded');
-                    }
-
-                	handler.click(function () {
-                        if (handler.hasClass('expanded')) {
-                            details.animate({ height: 'hide', opacity: 'hide' }, 'slow');
-
-                            handler.removeClass('expanded');
-                            handler.addClass('collapsed');
-
-                            $.cookie('adminpackageexpandcollapse', 'collapsed');
-                        } else {
-                            details.animate({ height: 'show' }, 'slow');
-
-                            handler.removeClass('collapsed');
-                            handler.addClass('expanded');
-
-                            $.cookie('adminpackageexpandcollapse', 'expanded');
-                        }
-                	});
-                });
-                </script>
-
-            </div>
-        <{/if}>
     
 <{if Framework::hasModule('AdminComment')}>
     <!-- Comments start -->

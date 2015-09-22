@@ -474,31 +474,6 @@ class _PostController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'menuitem': 
-                            (new MenuItemController())->delete('ID_POST', $_ids);
-                            break;
-
-                        case 'postgallery': 
-                            (new PostGalleryController())->delete('ID_POST', $_ids);
-                            break;
-
-                        case 'postrelation': 
-                            (new PostRelationController())->delete('ID_POST', $_ids);
-                            break;
-
-                        case 'postsection': 
-                            (new PostSectionController())->delete('ID_POST', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -721,7 +696,7 @@ class _PostController extends __AppController
     }
 
     protected function field_sanitize($column, $value) {
-		if ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+		if ($column == 'CREATION_DATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -732,15 +707,11 @@ class _PostController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
-        } elseif ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/', $value)) {
+        } elseif ($column == 'LATEST_UPDATE' && !preg_match('/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $value)) {
             $format = DATE_FORMAT;
             $format = str_ireplace(array('yy', 'mm', 'dd'), array('Y', 'm', 'd'), $format);
 
@@ -751,11 +722,7 @@ class _PostController extends __AppController
                 $month = substr('00'.$info['month'], -2);
                 $day = substr('00'.$info['day'], -2);
 
-                $hour = substr('00'.$info['hour'], -2);
-                $minute = substr('00'.$info['minute'], -2);
-                $second = substr('00'.$info['second'], -2);
-
-                $value = "$year-$month-$day $hour:$minute:$second";
+                $value = "$year-$month-$day";
             } else {
                 $value = '';
             }
@@ -1895,7 +1862,12 @@ class _PostController extends __AppController
                 }
             } else {
                 // Set default values here
-                
+                if ($recent = $this->getRecentModel()) {
+                    $model->ID_POST_TYPE = $recent->ID_POST_TYPE;
+                    $model->ID_POST_CATEGORY = $recent->ID_POST_CATEGORY;
+                    $model->ID_TEMPLATE = $recent->ID_TEMPLATE;
+                }
+
                 $this->onInitialization($model);
                 PluginManager::do_action('post_new', $model);
             }
@@ -2097,26 +2069,6 @@ class _PostController extends __AppController
                         } else {
                             $model->whereAdd(TABLE_PREFIX."POST.ID_TEMPLATE = '$value'");
                         }
-
-                        break;
-
-                    case 'CREATION_DATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."POST.CREATION_DATE >= '".$this->field_sanitize('CREATION_DATE', $value)."'");
-
-                        break;
-
-                    case 'CREATION_DATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."POST.CREATION_DATE IS NULL OR ".TABLE_PREFIX."POST.CREATION_DATE <= '".$this->field_sanitize('CREATION_DATE', $value)."')");
-
-                        break;
-
-                    case 'LATEST_UPDATE__FROM':
-                        $model->whereAdd(TABLE_PREFIX."POST.LATEST_UPDATE >= '".$this->field_sanitize('LATEST_UPDATE', $value)."'");
-
-                        break;
-
-                    case 'LATEST_UPDATE__TO':
-                        $model->whereAdd(TABLE_PREFIX."POST.LATEST_UPDATE IS NULL OR ".TABLE_PREFIX."POST.LATEST_UPDATE <= '".$this->field_sanitize('LATEST_UPDATE', $value)."')");
 
                         break;
 

@@ -12,7 +12,7 @@
 <{include file="top.tpl"}>
 
 <h1 class="heading">
-    <span class="h"><{_t('Activation failed')}></span>
+    <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{_t('Activation failed')}></span>
 </h1>
 
 <p><{sprintf(_t('Unable to perform account activation.')}></p>

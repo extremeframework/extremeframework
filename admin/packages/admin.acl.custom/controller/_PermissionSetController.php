@@ -386,27 +386,6 @@ class _PermissionSetController extends __AppController
 
 		if (!empty($selection)) {
 		    $this->delete('UUID', $selection, $_ids);
-
-            if (!empty($relations)) {
-                foreach ($relations as $module) {
-                    switch ($module) {
-                        case 'adminpackagepermission': 
-                            (new AdminPackagePermissionController())->delete('ID_PERMISSION_SET', $_ids);
-                            break;
-
-                        case 'customaccessright': 
-                            (new CustomAccessRightController())->delete('ID_PERMISSION_SET', $_ids);
-                            break;
-
-                        case 'permissionsetitem': 
-                            (new PermissionSetItemController())->delete('ID_PERMISSION_SET', $_ids);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
         }
 
         TransactionHelper::end();
@@ -624,9 +603,7 @@ class _PermissionSetController extends __AppController
 
         $this->delete('UUID', array($id));
 
-        (new AdminPackagePermissionController())->delete('ID_PERMISSION_SET', array($id));
-        (new CustomAccessRightController())->delete('ID_PERMISSION_SET', array($id));
-        (new PermissionSetItemController())->delete('ID_PERMISSION_SET', array($id));
+        
         TransactionHelper::end();
     }
 

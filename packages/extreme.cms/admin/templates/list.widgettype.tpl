@@ -41,7 +41,7 @@
 
 <{if isset($title) }>
     <h1 class="heading">
-        <span class="h"><{$title}></span>
+        <span class="h"><i class="module-icon fa fa-paper-plane-o"></i><{$title}></span>
 
         <span style="margin-left:10px; font-size:12px; font-weight: normal" class="hidden-print">
             <a style="text-decoration: none" class="button-view-refresh scope-main cachable" href="<{ContextStack::getCurrentContext()}>"><i class="fa fa-refresh"></i></a>
@@ -116,38 +116,6 @@
 <{/if}>
 
 <!-- Relations -->
-    <{php}>
-    	$template->assign('copyguidelines',  sprintf(_t('L_GUIDELINES_COPY_RELS', true), strtolower(_t('Widget Type', true))));
-    	$template->assign('approveguidelines', sprintf(_t('L_GUIDELINES_APPROVE_RELS', true), strtolower(_t('Widget Type', true))));
-    	$template->assign('deleteguidelines', sprintf(_t('L_GUIDELINES_DELETE_RELS', true), strtolower(_t('Widget Type', true)), strtolower(_t('Widget Type', true))));
-    <{/php}>
-
-    <div id="widgettypecopyrelations" style="display:none" title="<{_t('Copy', true)}> <{_t('Widget Type', true)|strtolower}>">
-        <p><{$copyguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="copyrelations[]" value="pagewidget" /> <{_t('Copy also')}> <{_t('Page Widget')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="widgettypeapproverelations" style="display:none" title="<{_t('Approve', true)}> <{_t('Widget Type', true)|strtolower}>">
-        <p><{$approveguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="approverelations[]" value="pagewidget" /> <{_t('Approve also')}> <{_t('Page Widget')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
-
-    <div id="widgettypedeleterelations" style="display:none" title="<{_t('Delete', true)}> <{_t('Widget Type', true)|strtolower}>">
-        <p><{$deleteguidelines}></p>
-        <ul>
-                            <{if Framework::hasModule('PageWidget')}>
-                    <li style="padding:5px 0 5px 0"><input type="checkbox" name="deleterelations[]" value="pagewidget" /> <{_t('Delete also')}> <{_t('Page Widget')|strtolower}></li>
-                <{/if}>
-                    </ul>
-    </div>
 
 <!-- Search form -->
 
@@ -173,63 +141,18 @@ function widgettype_save() {
 }
 
 function widgettype_delete() {
-	var dialog = $( "#widgettypedeleterelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Delete', true)}>": function() {
-            	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/delete/');
-            	$('#widgettypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#widgettypelistform'));
+	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/delete/');
+	$('#widgettypelistform').submit();
 }
 
 function widgettype_copy() {
-	var dialog = $( "#widgettypecopyrelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Copy', true)}>": function() {
-            	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/copy/');
-            	$('#widgettypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#widgettypelistform'));
+	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/copy/');
+	$('#widgettypelistform').submit();
 }
 
 function widgettype_approve() {
-	var dialog = $( "#widgettypeapproverelations" ).dialog({
-		resizable: true,
-		width: 500,
-		modal: false,
-		buttons: {
-			"<{_t('Approve', true)}>": function() {
-            	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/approve/');
-            	$('#widgettypelistform').submit();
-				$( this ).dialog( "close" );
-			},
-			"<{_t('Cancel', true)}>": function() {
-				$( this ).dialog( "close" );
-			}
-		}
-	});
-
-	dialog.parent().appendTo($('#widgettypelistform'));
+	$('#widgettypelistform').attr('action', '<{$smarty.const.APPLICATION_URL}>/widgettype/approve/');
+	$('#widgettypelistform').submit();
 }
 
 function widgettype_batchedit() {
