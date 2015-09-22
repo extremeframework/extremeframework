@@ -33,6 +33,7 @@ function smarty_function_html_ref_select($params, &$smarty)
 	$method = isset($params['method'])? $params['method'] : '';
 	$optionstring = isset($params['options'])? $params['options'] : '';
 	$datasource = $params['datasource'];
+	$datasourcename = isset($params['datasourcename']) && !empty($params['datasourcename'])? $params['datasourcename'] : str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($datasource))));
 	$noauth = isset($params['noauth'])? $params['noauth'] : false;
 	$multilingual = isset($params['multilingual'])? $params['multilingual'] : false;
 
@@ -68,12 +69,7 @@ function smarty_function_html_ref_select($params, &$smarty)
     } else if (!empty($callback) && is_callable($callback)) {
         $options .= call_user_func($callback, $params);
     } else {
-    	$datasource = $params['datasource'];
-        $module = str_replace('_', '', strtolower($datasource));
-
-        $friendly = str_replace(' ', '', ucwords(str_replace('_', ' ', strtolower($datasource))));
-
-    	$modelName = $friendly.'Model';
+    	$modelName = $datasourcename.'Model';
 
         if (!class_exists($modelName)) {
             return _smarty_function_html_ref_select_simple_input($params);
@@ -81,7 +77,7 @@ function smarty_function_html_ref_select($params, &$smarty)
 
     	$model = new $modelName();
 
-    	$controllerName = $friendly.'Controller';
+    	$controllerName = $datasourcename.'Controller';
 
         if (!class_exists($controllerName)) {
             return _smarty_function_html_ref_select_simple_input($params);
@@ -140,6 +136,13 @@ function smarty_function_html_ref_select($params, &$smarty)
             $presetvalue = isset($params['presetvalue'])? $params['presetvalue'] : '';
             if (!empty($preset) && property_exists($model, $preset)) {
                 $model->whereAdd("$preset = '$presetvalue'");
+            }
+
+            $filters = HtmlRefSelectHelper::getAdditionalFilters($params['name']);
+            foreach ($filters as $key => $value) {
+                if (property_exists($model, $key)) {
+                    $model->whereAdd("$key = '$value'");
+                }
             }
 
             foreach($_REQUEST as $key => $value) {
